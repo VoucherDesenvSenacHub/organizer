@@ -1,0 +1,128 @@
+html {
+    font-family: "Poppins", serif;
+}
+:root {
+    --backgroud: #1C3464;
+    --container-background: #FFFFFF;
+    --title: #5282E3;
+    --input-background: #00000022;
+    --button: #E3B652;
+    --button-hover: #9747FF;
+}
+h1 {
+    font-size: 48px;
+    font-weight: 200;
+    color: #5282E3;
+}
+header {
+    display: flex;
+    position: fixed;
+    top: 0;
+    padding: 8px 32px;
+    z-index: 999;
+    width: 100%;
+    background-color: #1C3464;
+    justify-content: space-between;
+    color: #FFFFFF;
+    align-items: center;
+}
+#header-direita {
+    display: flex;
+    padding: 10px 30px;
+    gap: 60px;
+    align-items: center;
+}
+nav a {
+    gap: 30px;
+    color: #FFFFFF;
+    text-decoration: none;
+    padding: 30px;
+    font-weight: 600;
+    font-size: 24px;
+}
+nav ul li {
+    display: inline-block;
+}
+body {
+    background-color: var(--backgroud);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.input-email {
+    font-family: "Poppins", serif;
+    font-size: 24px;
+    padding: 0px 20px 0px 20px;
+    width: 518px;
+    height: 96px;
+    border-radius: 5px;
+    background-color: var(--input-background);
+    border: none;
+    margin-bottom: 30px;
+}
+.input-senha {
+    font-family: "Poppins", serif;
+    font-size: 24px;
+    padding: 0px 20px 0px 20px;
+    width: 518px;
+    height: 96px;
+    border-radius: 5px;
+    background-color: var(--input-background);
+    border: none;
+    /* margin-bottom: 30px; */
+}
+.input-label {
+    font-family: "Poppins", serif;
+    font-size: 24px;
+}
+.input-check {
+    font-family: "Poppins", serif;
+    width: 20px;
+    height: 20px;
+    border-color: black;
+    margin-bottom: 55px;
+}
+.btn-login-adm {
+    width: 520px;
+    height: 80px;
+    background-color: var(--button);
+    font-family: "Poppins", serif;
+    font-size: 24px;
+    border: none;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: 0.2s;
+}
+.btn-login-adm:hover {
+    background-color: var(--button-hover);
+}
+
+#btn-login {
+    padding: 15px 25px;
+    background-color: #E3B652;
+    color: #FFFFFF;
+    font-size: 24px;
+    font-weight: 500;
+    border: none;
+    border-radius: 8px;
+}
+#btn-login:hover{
+    cursor: pointer;
+}
+#principal {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 90%;
+    height: 800px;
+    margin: 180px auto;
+    background-color: var(--container-background);
+    border-radius: 8px;
+    /* padding: 0px 0px 0px 60px; */
+}
+.principal-esq {
+    padding: 60px 0px 0px 60px;
+}
+.principal-dir {
+    width: 600px;
+    height: 650px;
+}
