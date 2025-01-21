@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsável</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+
+    <!-- Início cabeçalho -->
+    <header>
+        <div id="logo">
+            <img src="../assets/images/logo.png" alt="">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">HOME</a></li>
+                <li><a href="#">ONGS</a></li>
+                <li><a href="#">PROJETOS</a></li>
+                <li><a href="#">NOTÍCIAS</a></li>
+            </ul>
+        </nav>
+        <div id="header-direita">
+            <div>
+                <a href="#"><img src="../assets/images/lupa.png" alt="" id="busca"></a>
+            </div>
+            <div id="login">
+                <button id="btn-login">
+                    Login
+                </button>
+            </div>
+        </div>        
+            <button id="botao-hamburger" onclick="mudaMenu()">
+                <img src="../assets/images/hamburger.png" alt="" id="hamburger">
+            </button>
+        
+            <div id="hamburger-menu">
+                <ul>
+                    <li><a href="login-corporativo.html">HOME</a></li>
+                    <li><a href="#">ONGS</a></li>
+                    <li><a href="#">PROJETOS</a></li>
+                    <li><a href="#">NOTÍCIAS</a></li>
+                </ul>
+            </div>
+        </header>
+        <!-- Fim cabeçalho -->
+
+
+    <!-- Início DIV principal -->
+    <div id="principal">
+        <div id="cadastro-ong">
+            <div class="titulo-cadastro">
+                <h1>RESPONSÁVEL PELA ONG</h1>
+            </div>
+            <div class="progress">
+                <img src="../assets/images/progress-4.png" alt="">
+            </div>
+            <div id="text-progress">
+                <div class="text-detalhes">Dados<br>da ONG</div>
+                <div class="text-detalhes">Descrição</div>
+                <div class="text-detalhes">Endereço</div>
+                <div class="text-detalhes">Responsável</div>
+                <div class="text-detalhes-draft">Banco</div>
+                <div class="text-detalhes-draft">Login</div>
+            </div>
+            <form class="form-cadastro">
+                <div class="form-direita">
+                    <label for="nome">Nome</label><br>
+                    <input type="text" id="nome" placeholder="Nome completo"><br>
+                    <label for="telefone">Telefone</label><br>
+                    <input type="tel" id="telefone" placeholder="(00) 0000-0000">
+                </div>
+                <div class="form-esquerda">
+                    <label for="cpf">CPF</label><br>
+                    <input type="text" id="cpf" placeholder="000.000.000-00"><br>
+                    <label for="email">Email</label><br>
+                    <input type="email" id="email" placeholder="usuario@conta.com">
+                </div>
+            </form>
+            <div class="btn-navegacao">
+                <a href="endereco.html"><button class="voltar">Voltar</button></a>
+                <a href="dados-bancarios.html"><button class="proximo">Próximo</button></a>
+            </div>
+        </div>
+    </div>
+    <!-- Fim DIV principal  -->
+    <script src="../assets/js/main.js"></script>
+</body>
+</html>
