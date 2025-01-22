@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Mulish:ital,wght@0,200..1000;1,200..1000&family=Outfit:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: "Poppins", sans-serif;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #1C3464;
+  }
+  
+  .conteiner-forma{
+    background-color: #1C3464;
+    border-radius: 10px;
+    padding: 20px;
+    width: 600px;
+    height:330px ;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #ffffff;
+    font-weight: 400;
+  }
+
+  .Cnpj{
+    color:#E3B652;
+  }
+  
+  .mens{
+    color:#E3B652;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  label {
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+  
+  input,
+  textarea {
+    background-color: #2d4b7a;
+    border: none;
+    border-radius: 5px;
+    color: #ffffff;
+    padding: 10px;
+    margin-bottom: 15px;
+    font-size: 14px;
+  }
+  
+  input::placeholder,
+  textarea::placeholder {
+    color: #6C8CCA;
+  }
+  
+  button {
+    background-color: #E3B652;
+    color: #000000;
+    border: none;
+    border-radius: 5px;
+    padding: 15px 210px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.5s;
+  }
+  
+  button:hover {
+    background-color: #dda439;
+    top: 100px;
+  }
+
+.botoes{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.botoes a{
+  text-decoration: none;
+  background-color: #2d4b7a;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 12px;
+  color: #ffffff;
+}
+
+@media (max-width:700px) {
+  .conteiner-forma{
+    width: 300px;
+  }
+
+  button{
+    padding: 12px 70px;
+    font-size: 12px;
+  }
+}
