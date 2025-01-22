@@ -261,7 +261,7 @@ select {
 
 @keyframes slide-esq-senha {
     from {bottom: -450px;}
-    to {bottom: 80px;}
+    to {bottom: 25%;}
 }
 
 #password-recovery {
@@ -544,7 +544,7 @@ select {
 
 @keyframes slide-esq-senha {
     from {bottom: -450px;}
-    to {bottom: -30px;}
+    to {bottom: 3%;}
 }
 
 #password-recovery {
