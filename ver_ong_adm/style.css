@@ -247,3 +247,25 @@ nav ul li {
 .card_img {
     width: 200px;
 }
+.botoes {
+    display: flex;
+    justify-content: space-between;
+    gap: 13px;
+}
+.btn_nav {
+    /* border: solid 1px #0000004c; */
+    border: none;
+    font-family: "Poppins", serif;
+    font-size: 17px;
+    font-weight: 500;
+    width: 30px;
+    height: 30px;
+    background-color: var(--container-background);
+    box-shadow: 0 4px 5px #0000006d;
+    border-radius: 5px;
+    transition: 0.4s;
+}
+.btn_nav:hover {
+    background-color: black;
+    color: white;
+}
