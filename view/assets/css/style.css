@@ -1,0 +1,580 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Mulish:ital,wght@0,200..1000;1,200..1000&family=Outfit:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    width: 100%;
+    z-index: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #1C3464;
+}
+h1 {
+    font-size: 1.5em;
+    font-weight: 400;
+    color: #5282E3;
+}
+a {
+    text-decoration: none;
+    transition: 0.7s;
+
+}
+a:hover {
+    transition: 0.7s;
+    color: #E3B652;
+    font-weight: 700;
+}
+button:hover {
+    cursor: pointer;
+}
+header {
+    display: flex;
+    position: fixed;
+    top: 0;
+    padding: 8px;
+    z-index: 999;
+    width: 100%;
+    background-color: #1C3464;
+    justify-content: space-around;
+    align-items: center;
+    border-bottom: 2px solid #5282E3;
+}
+#logo>img{
+    width: 50%;
+}
+#header-direita {
+    display: flex;
+    padding: 10px 30px;
+    gap: 60px;
+    align-items: center;
+}
+#btn-invisible {
+    display: none;
+}
+nav a {
+    gap: 30px;
+    color: #FFFFFF;
+    text-decoration: none;
+    padding: 30px;
+    font-weight: 600;
+    font-size: 1.3em;
+    letter-spacing: 3px;
+}
+nav ul li {
+    display: inline-block;
+}
+#hamburger {
+    display: none;
+}
+#hamburger-menu {
+    display: none;
+}
+#botao-hamburger {
+    display: none;
+}
+#busca{
+    width: 70%;
+}
+#btn-login {
+    padding: 10px 15px;
+    background-color: #E3B652;
+    color: #FFFFFF;
+    font-size: 1.3em;
+    font-weight: 500;
+    border: none;
+    border-radius: 8px;
+}
+#btn-login:hover{
+    transition: 0.7s;
+    cursor: pointer;
+    background-color: #FFFFFF;
+    color: #E3B652;
+}
+#principal {
+    display: flex;
+    justify-content: space-around;
+    z-index: 1;
+    width: 60%;
+    margin: 120px auto;
+    padding: 20px;
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.7);
+}
+.titulo-login {
+    margin: 10px auto;
+    text-align: center;
+}
+.titulo-cadastro {
+    text-align: left;
+    margin-left: 90px;
+}
+.progress {
+    display: flex;
+    margin: 15px auto;
+    justify-content: center;
+}
+.progress>img{
+    width: 70%;
+}
+#text-progress {
+    display: flex;
+    font-size: 0.8em;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 115px;
+}
+.text-detalhes-draft {
+    color: #6e6a6a;
+}
+.form-cadastro {
+    display: flex;
+    justify-content: space-around;
+    padding: 35px;
+}
+.btn-navegacao{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 90px;
+}
+.voltar, .proximo {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 1em;
+    letter-spacing: 2px;
+    border: none;
+    border-radius: 6px;
+    width: 150px;
+    height: 38px;
+}
+.voltar {
+    background-color: #8f8888;
+}
+.proximo {
+    background-color: #E3B652;
+    color: #FFFFFF;
+}
+.voltar:hover {
+    transition: 0.7s;
+    color: #FFFFFF;
+    background-color: black;
+}
+.proximo:hover {
+    transition: 0.7s;
+    color: black;
+    background-color: #FFFFFF;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.3);
+}
+.principal-esq {
+    padding-top: 80px;
+    width: 50%;
+}
+
+.form-login {
+    font-size: 1.3em;
+    text-align: left;
+    margin: 20px auto;
+    padding-bottom: 10px;
+    padding-left: 10px;
+}
+.form-email>input,
+.form-senha>input,
+.form-esquerda>input,
+.form-direita>input{
+    font-size: 0.9em;
+    height: 40px;
+    width: 250px;
+    border: none;
+    background-color: #F2F2F2;
+    border-radius: 8px;
+    padding-left: 10px;
+}
+select {
+    font-size: 0.9em;
+    height: 40px;
+    width: 250px;
+    border: none;
+    background-color: #F2F2F2;
+    border-radius: 8px;
+    padding-left: 10px;
+}
+#ver-senha{
+    display: block;
+    position: relative;
+    border: none;
+    top: -35px;
+    left: 210px;
+}
+.form-opcoes {
+    display: flex;
+    width: 60%;
+    justify-content: space-between;
+    font-size: 0.5em;
+    align-items: center;
+}
+#chk-box>input {
+    align-items: center;
+    width: 15px;
+    height: 15px;
+}
+#esqueci-senha {
+    color: black;
+}
+#login-ong {
+    display: flex;
+    justify-content: center;
+}
+.login-submit {
+    width: 80px;
+    height: 50px;
+    background-color: #E3B652;
+    border-radius: 8px;
+    font-size: 0.8em;
+    font-weight: 600;
+    color: black;
+    border: none;
+    margin-top: 20px;
+    margin-right: 10px;
+}
+#cadastrar-ong>a{
+    color: black;
+    font-size: 1em;
+    margin-bottom: 20px;
+}
+#laranja{
+    color: #FFBE58;
+}
+.principal-dir {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 50%;
+    margin: auto;
+}
+.principal-dir>img{
+    width: 80%;
+}
+
+/* Recuperar senha */
+
+@keyframes slide-esq-senha {
+    from {bottom: -450px;}
+    to {bottom: 80px;}
+}
+
+#password-recovery {
+    display: none;
+    z-index: 999;
+    margin: 0 auto;
+    padding: 15px;
+    position: absolute;
+    animation: slide-esq-senha 1s forwards;
+    left: 300px;
+    border-radius: 12px;
+    width: 55%;
+    justify-content: center;
+    background-color: #e0e0e0;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.7);
+}
+
+#pr-left>img {
+    width: 70%;
+}
+
+#pr-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+/* Descrição da ONG */
+#descricao-ong {
+    margin-top: 10px;
+    width: 400px;
+    height: 100px;
+}
+#areasDeAtuacao {
+    display: flex;
+    margin-left: 10px;
+    margin-top: 10px;
+    flex-direction: column;
+}
+.opt-atuacao{
+    display: flex;
+    width: 130px;
+    justify-content: left;
+    font-size: 0.8em;
+
+}
+.row-checkbox {
+    display: flex;
+    justify-content: left;
+    margin-right: 15px;
+}
+/* Responsivo */
+
+@media (max-width: 481px){
+    body {
+        width: 90%;
+        font-family: 'Poppins', sans-serif;
+        background-color: #1C3464;
+        margin: 0 auto;
+    }
+    header {
+        display: flex;
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        padding: 8px;
+        z-index: 999;
+        width: 100%;
+        background-color: #1C3464;
+        justify-content: space-around;
+        align-items: center;
+        border-bottom: 2px solid #5282E3;
+    }
+    #header-direita {
+        display: flex;
+        padding: 5px 10px;
+        gap: 10px;
+        align-items: center;
+    }
+    #busca{
+        width: 70%;
+    }
+    nav {
+        display: none;
+    }
+    #hamburger {
+        display: block;
+        width: 50%;
+    }
+    #hamburger-menu{
+        display: none;
+        position: absolute;
+        right: 15px;
+        top: 0px;
+        background-color: #1C3464;
+    }
+    @keyframes slide-menu {
+        from {top: -100px}
+        to {top: 20px}
+    }
+
+    
+    #hamburger-menu ul li {
+        list-style: none;    
+    }
+    #hamburger-menu a {
+        color: #FFFFFF;
+        border-bottom: 1px solid #FFFFFF;
+    }
+    #botao-hamburger {
+        display: flex;
+        justify-content: center;
+        background-color: rgba(0, 0, 0, 0);
+        border: none;
+    }
+    #hamburger-menu-slide{
+        display: flex;
+        position: absolute;
+        animation: slide-menu 0.5s forwards;
+        right: 15px;
+        top: -100px;
+        background-color: #1C3464;
+    }
+    #hamburger-menu-slide ul li {
+        list-style: none;    
+    }
+    #hamburger-menu-slide a {
+        color: #FFFFFF;
+        border-bottom: 1px solid #FFFFFF;
+    }
+    h1 {
+        font-size: 1.3em;
+        font-weight: 400;
+        color: #5282E3;
+    }
+    .titulo-login, .titulo-cadastro {
+        margin: 10px auto;
+        text-align: center;
+    }
+    #principal {
+        display: flex;
+        flex-direction: column;
+        width: 90%;
+        margin: 0 auto;
+        margin-top: 130px;
+        margin-bottom: 30px;
+        padding: 10px;
+        background-color: #FFFFFF;
+        border-radius: 8px;
+    }
+    .principal-esq {
+        margin: 0 auto;
+        padding-top: 20px;
+        width: 90%;
+    }
+    .form-login {
+        font-size: 1em;
+        text-align: left;
+        margin: 0 auto;
+        padding-left: 0px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .form-opcoes {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        align-items: center;
+        font-size: 0.7em;
+        align-items: center;
+    }
+    .login-submit {
+        width: 190px;
+        height: 40px;
+        background-color: #E3B652;
+        border-radius: 6px;
+        font-size: 1em;
+        font-weight: 600;
+        color: black;
+        border: none;
+        margin: 20px auto;
+    }
+    #cadastrar-ong {
+        display: flex;
+        justify-content: center;
+    }
+    #cadastrar-ong>a{
+        color: black;
+        font-size: 0.7em;
+        margin-bottom: 20px;
+    }
+    .principal-dir {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: auto;
+    }
+    .principal-dir>img{
+        width: 120%;
+    }
+    .form-cadastro {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        padding: 35px;
+    }
+    .progress {
+        margin: 0 auto;
+    }
+    .progress>img{
+        width: 100%;
+    }
+    #text-progress {
+        display: flex;
+        font-size: 0.3em;
+        margin: 5px auto;
+    }
+    .btn-navegacao {
+        display: flex;
+        justify-content: center;
+        margin: 5px auto;
+        gap: 60px;
+    }
+    .voltar, .proximo {
+        font-family: 'Poppins', sans-serif;
+        font-weight: 500;
+        font-size: 0.5em;
+        letter-spacing: 2px;
+        border: none;
+        border-radius: 6px;
+        width: 80px;
+        height: 20px;
+    }
+    .form-esquerda>input,
+    .form-direita>input{
+        font-size: 0.7em;
+        height: 40px;
+        width: 190px;
+        border: none;
+        background-color: #F2F2F2;
+        border-radius: 8px;
+        padding-left: 10px;
+    }
+    .form-esquerda>label,
+    .form-direita>label {
+        font-size: 0.8em;
+    }
+    select {
+        font-size: 0.7em;
+        height: 40px;
+        width: 190px;
+        border: none;
+        background-color: #F2F2F2;
+        border-radius: 8px;
+        padding-left: 10px;
+    }
+    #cadastro-ong {
+        width: 90%;
+    }
+    #descricao-ong {
+        width: 200px;
+        height: 100px;
+    }
+    #areasDeAtuacao {
+        display: flex;
+        flex-direction: column;
+        margin-top: 10px;
+    }
+    .opt-atuacao{
+        display: flex;
+        width: 130px;
+        justify-content: left;
+        font-size: 0.6em;
+    }
+    .row-checkbox {
+        display: flex;
+        justify-content: left;
+        flex-direction: column;
+    }
+    /* Recuperar senha */
+
+@keyframes slide-esq-senha {
+    from {bottom: -450px;}
+    to {bottom: -30px;}
+}
+
+#password-recovery {
+    display: none;
+    flex-direction: column;
+    z-index: 999;
+    margin: 0 auto;
+    padding: 15px;
+    position: absolute;
+    animation: slide-esq-senha 1s forwards;
+    left: 10%;
+    border-radius: 12px;
+    width: 80%;
+    justify-content: center;
+    background-color: #e0e0e0;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.7);
+}
+
+#pr-left>img {
+    display: flex;
+    margin: 8px auto;
+    justify-content: center;
+    width: 70%;
+}
+
+#pr-right {
+    display: flex;
+    align-items: baseline;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+}
