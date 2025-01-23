@@ -193,6 +193,7 @@ nav ul li {
 }
 
 /* Página de edição de notícias */
+
 .container-fotos {
     margin: auto;
     margin-top: 40px;
@@ -262,11 +263,16 @@ nav ul li {
     from {opacity: 0;}
     to {opacity: 1;}
 }
+
 #pagina-edicao {
     display: none;
     margin: 0 auto;
     justify-content: space-around;
     background-color: #FFFFFF;
+    position: absolute;
+    top: 15%;
+    left: 15%;
+    animation: editar-noticia 1.5s forwards;
     width: 70%;
     border-radius: 8px;
     padding: 10px;
