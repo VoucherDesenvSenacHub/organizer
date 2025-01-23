@@ -9,9 +9,22 @@ function esqueciSenha() {
     let painelSenha = document.querySelector('#password-recovery');
     painelSenha.style.display = 'flex';
 }
+function slider(){
+    contador++;
+    if (contador > 4) {
+        contador=0;
+    }
+    box.style.transform = `translateX(${-contador * slideWidth}px)`;
+}
+
+function editarNoticia() {
+    let principal = document.querySelector('#principal');
+    let edicao = document.querySelector('#pagina-edicao');
+    principal.style.display = 'none';
+    edicao.style.display = 'flex';
+}
 
 const box = document.querySelector(".fotos-slide");
-// const imagens = document.querySelectorAll(".fotos-slide img");
 
 let contador = 0;
 let tela = window.innerWidth;
@@ -21,13 +34,5 @@ if(tela <= 481){
 }else{
     slideWidth = 1016;
 }
-function slider(){
-    contador++;
-    if (contador > 4) {
-        contador=0;
-    }
-    box.style.transform = `translateX(${-contador * slideWidth}px)`;
-}
+setInterval (slider, 2000);
 
-
-setInterval (slider, 3000);
