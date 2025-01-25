@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ongs-ADM</ONGS-ADM></title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Início cabeçalho -->
+    <header>
+        <div id="logo">
+            <img src="images/logo.png" alt="">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">HOME</a></li>
+                <li><a href="#">ONGS</a></li>
+                <li><a href="#">PROJETOS</a></li>
+                <li><a href="#">NOTÍCIAS</a></li>
+            </ul>
+        </nav>
+        <div id="header-direita">
+            <div>
+                <a href="#"><img src="images/lupa.png" alt="" id="busca"></a>
+            </div>
+            <div id="login">
+                <button id="btn-login">
+                    Login
+                </button>
+            </div>
+        </div>
+        <button id="botao-hamburger" onclick="mudaMenu()">
+            <img src="images/hamburger.png" alt="" id="hamburger">
+        </button>
+
+        <div id="hamburger-menu">
+            <ul>
+                <li><a href="login-corporativo.html">HOME</a></li>
+                <li><a href="#">ONGS</a></li>
+                <li><a href="#">PROJETOS</a></li>
+                <li><a href="#">NOTÍCIAS</a></li>
+            </ul>
+        </div>
+    </header>
+    <!-- Fim cabeçalho -->
+
+
+    <!-- Início DIV principal -->
+    <div id="principal">
+        <div class="top">
+            <h1 class="top-text">TODAS AS ONGS</h1>
+            <div class="buscar">
+                <input type="text" id="buscar" placeholder="Buscar">
+                <img src="images/search_img.png" class="search_img">
+            </div>
+        </div>
+
+        <div class="ongs">
+            <div class="card_ong">
+                <img src="images/ong_placeholder.png" class="card_img">
+                <h1 class="card-text">ONG Todos Juntos</h1>
+                <button class="btn_card">Vizualizar</button>
+            </div>
+            <div class="card_ong">
+                <img src="images/ong_placeholder.png" class="card_img">
+                <h1 class="card-text">ONG Todos Juntos</h1>
+                <button class="btn_card">Vizualizar</button>
+            </div>
+            <div class="card_ong">
+                <img src="images/ong_placeholder.png" class="card_img">
+                <h1 class="card-text">ONG Todos Juntos</h1>
+                <button class="btn_card">Vizualizar</button>
+            </div>
+            <div class="card_ong">
+                <img src="images/ong_placeholder.png" class="card_img">
+                <h1 class="card-text">ONG Todos Juntos</h1>
+                <button class="btn_card">Vizualizar</button>
+            </div>
+            <div class="card_ong">
+                <img src="images/ong_placeholder.png" class="card_img">
+                <h1 class="card-text">ONG Todos Juntos</h1>
+                <button class="btn_card">Vizualizar</button>
+            </div>
+            <div class="card_ong">
+                <img src="images/ong_placeholder.png" class="card_img">
+                <h1 class="card-text">ONG Todos Juntos</h1>
+                <button class="btn_card">Vizualizar</button>
+            </div>
+        </div>
+        <div class="botoes">
+            <button class="btn_nav">1</button>
+            <button class="btn_nav">2</button>
+            <button class="btn_nav">3</button>
+            <button class="btn_nav">4</button>
+            <button class="btn_nav">></button>
+        </div>
+    </div>
+    <!-- Fim DIV principal  -->
+    <script src="main.js"></script>
+</body>
+
+</html>
