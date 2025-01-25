@@ -61,7 +61,7 @@
             </div>
             <div class="botoes-edicao">
                 <button style="background-color: #FFCC00;" onclick="editarNoticia()">Editar<img src="../assets/images/edit-noticia.png" alt="" ></button>
-                <button style="background-color: #E41D1D;">Excluir<img src="../assets/images/delete-noticia.png" alt=""></button>
+                <button style="background-color: #E41D1D;" onclick="popConclusao('delete')">Excluir<img src="../assets/images/delete-noticia.png" alt=""></button>
             </div>
         </div>
         <div id="texto-noticia">
@@ -80,6 +80,8 @@
         </div>
     </div>
     <!-- Fim DIV principal  -->
+
+    <!-- DIV Pop-up Edição -->
     <div id="pagina-edicao">
         <div id="edicao-esquerda">
             <h1>EDITAR NOTÍCIA</h1>
@@ -90,13 +92,13 @@
                         <input type="text" id="titulo-noticia" placeholder="Título">
                     </div>
                     <div>
-                        <label for="subtitulo-noticia">Título</label><br>
+                        <label for="subtitulo-noticia">Subítulo</label><br>
                         <input type="text" id="subtitulo-noticia" placeholder="Subtítulo">
                     </div>
                 </div>
                 <label for="texto1">Texto 1</label><br>
                 <textarea name="texto1" id="texto1" cols="80" rows="10"></textarea><br>
-                <label for="texto2">Texto 1</label><br>
+                <label for="texto2">Texto 2</label><br>
                 <textarea name="texto2" id="texto2" cols="80" rows="10"></textarea><br>
             </form>
         </div>
@@ -105,9 +107,19 @@
                 <img src="../assets/images/avatar.png" alt="" width="90%">
                 <button><img src="../assets/images/icon-upload.png" alt="">Upload de fotos</button>
             </div>
-            <button>Salvar alteração <img src="../assets/images/edit-noticia.png" alt=""></button>
+            <button onclick="popConclusao('edicao')">Salvar alteração <img src="../assets/images/edit-noticia.png" alt=""></button>
         </div>
     </div>
+    <!-- Fim da Pop-up edição -->
+
+    
+    <!-- Pop-up conclusão -->
+    <div id="pop-conclusao">
+        <img id="icone-conclusao" src="" alt="" width="20%">
+        <p id="texto-conclusao"></p>
+    </div>
     <script src="../assets/js/main.js"></script>
+    <!-- Fim do popup conclusão -->
+
 </body>
 </html>

@@ -24,6 +24,25 @@ function editarNoticia() {
     edicao.style.display = 'flex';
 }
 
+function popConclusao(tipo) {
+    let janela = document.querySelector('#pop-conclusao');
+    let icone = document.querySelector('#icone-conclusao');
+    let texto = document.querySelector('#texto-conclusao');
+    janela.style.display = 'block';
+    if(tipo == 'edicao'){
+        icone.setAttribute('src', '../assets/images/edit-popup.png');
+        janela.style.color = '#FFCC00'
+        texto.innerHTML = 'Notícia Alterada';
+    }else if(tipo == 'delete'){
+        icone.setAttribute('src', '../assets/images/delete-popup.png');
+        janela.style.color = '#E64545'
+        texto.innerHTML = 'Notícia Removida';
+    }
+    setTimeout(() => {
+        janela.style.display = 'none';
+    }, 3000);
+}
+
 const box = document.querySelector(".fotos-slide");
 
 let contador = 0;

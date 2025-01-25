@@ -281,7 +281,6 @@ nav ul li {
 #edicao-esquerda {
    display: flex;
    flex-direction: column;
-   padding: 10px;
    width: 65%;
    border-radius: 8px;
    box-shadow: 2px 2px 2px rgba(0,0,0,0.5);
@@ -299,14 +298,21 @@ nav ul li {
 #edicao-esquerda form textarea {
     border-radius: 8px;
     border: none;
+    margin-left: 20px;
     box-shadow: 3px 3px 3px rgba(1,1,1,0.7);
 }
 #linha1-edicao {
     display: flex;
-    justify-content: space-around;
+    padding: 10px 10px;
+    justify-content: space-between;
+
+    /* justify-content: space-between;
+    height: 100px;
     margin-top: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 20px;*/
 }
+
+
 #edicao-direita {
     display: flex;
     flex-direction: column;
@@ -344,6 +350,27 @@ nav ul li {
     background-color: #F29200;
     border: none;
 }
+
+/* Pop Up conclusão */
+
+#pop-conclusao{
+    display: none;
+    position: absolute;
+    width: 15%;
+    text-align: center;
+    top: 40%;
+    left: 40%;
+    background-color: #efe2e2;
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 3px 3px 3px rgba(1,1,1,0.7);
+}
+
+
+
 /* Responsivo */
 
 @media (max-width: 481px){
@@ -354,18 +381,13 @@ nav ul li {
         margin: 0 auto;
     }
     header {
-        display: flex;
-        position: fixed;
-        top: 0px;
         left: 0px;
         padding: 8px;
         z-index: 999;
         width: 100%;
-        background-color: #1C3464;
         justify-content: space-around;
-        align-items: center;
-        border-bottom: 2px solid #5282E3;
     }
+    
     #header-direita {
         display: flex;
         padding: 5px 10px;
