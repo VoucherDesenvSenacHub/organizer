@@ -305,11 +305,6 @@ nav ul li {
     display: flex;
     padding: 10px 10px;
     justify-content: space-between;
-
-    /* justify-content: space-between;
-    height: 100px;
-    margin-top: 20px;
-    margin-bottom: 20px;*/
 }
 
 
@@ -528,11 +523,7 @@ nav ul li {
         width: 200px;
         height: 97px;
     }
-    /* .fotos-slide {
-        display: flex;
-        transition: 0.7s ease-in-out;
-        transform: translateX(0);
-    } */
+    
     .fotos-slide>img {
         width: 200px;
         height: 97px;
@@ -576,6 +567,43 @@ nav ul li {
         padding-right: 15px;
         padding-top: 15px;
         padding-bottom: 15px;
+    }
+
+    /* Edição individual de notícias */
+
+    #pagina-edicao {
+        flex-direction: column;
+        width: 90%;
+        left: auto;
+    }
+    #linha1-edicao {
+        flex-direction: column;
+    }
+    #edicao-esquerda {
+        width: 100%;
+    }
+    #edicao-esquerda form label {
+        font-size: 13px;
+    }
+    #edicao-esquerda form input {
+        width: 250px;
+        height: 30px;
+    }
+    #edicao-esquerda form textarea {
+        width: 250px;
+
+    }
+    #edicao-direita {
+        width: 100%;
+        margin-top: 20px;
+        padding: 10px;
+        gap: 20px;
+    }
+    #pop-conclusao{
+        top: 80%;
+        left: 20%;
+        width: 60%;
+
     }
     
 }

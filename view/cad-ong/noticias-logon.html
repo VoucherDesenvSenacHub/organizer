@@ -58,7 +58,7 @@
                 </span>
                 <span class="btn-edicao">
                     <a href="noticias-edicao.html"><button><img src="../assets/images/edit.png" alt=""></button></a>
-                    <button><img src="../assets/images/delete.png" alt=""></button>
+                    <button onclick="popConclusao('delete')"><img src="../assets/images/delete.png" alt=""></button>
                 </span>
             </div>
             <div class="card-noticia">
@@ -69,7 +69,7 @@
                 </span>
                 <span class="btn-edicao">
                     <button><img src="../assets/images/edit.png" alt=""></button>
-                    <button><img src="../assets/images/delete.png" alt=""></button>
+                    <button onclick="popConclusao('delete')"><img src="../assets/images/delete.png" alt=""></button>
                 </span>
             </div>
             <div class="card-noticia">
@@ -80,7 +80,7 @@
                 </span>
                 <span class="btn-edicao">
                     <button><img src="../assets/images/edit.png" alt=""></button>
-                    <button><img src="../assets/images/delete.png" alt=""></button>
+                    <button onclick="popConclusao('delete')"><img src="../assets/images/delete.png" alt=""></button>
                 </span>
             </div>
             <div class="card-noticia">
@@ -91,12 +91,21 @@
                 </span>
                 <span class="btn-edicao">
                     <button><img src="../assets/images/edit.png" alt=""></button>
-                    <button><img src="../assets/images/delete.png" alt=""></button>
+                    <button onclick="popConclusao('delete')"><img src="../assets/images/delete.png" alt=""></button>
                 </span>
             </div>
         </div>
     </div>
     <!-- Fim DIV principal  -->
+
+    <!-- Pop-up conclusão -->
+    <div id="pop-conclusao">
+        <img id="icone-conclusao" src="" alt="" width="20%">
+        <p id="texto-conclusao"></p>
+    </div>
+    <script src="../assets/js/main.js"></script>
+    <!-- Fim do popup conclusão -->
+    
     <script src="../assets/js/main.js"></script>
 </body>
 </html>
