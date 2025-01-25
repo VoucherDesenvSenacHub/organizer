@@ -163,7 +163,7 @@ header .btn-login {
 }
 
 .titulo {
-    font-size: 1.5em;
+    font-size: 2em;
     font-weight: 400;
     margin-top: 10px;
     margin-bottom: 40px;
@@ -228,11 +228,20 @@ header .btn-login {
 .progress-name{
     display: flex;
     justify-content: space-between;
+    position: relative;
+}
+
+.progress-name #banco{
+    position: absolute;
+    right: 46%
 }
 
 .card-form {
     margin-top: 20px;
     padding: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .form-row {
@@ -260,7 +269,7 @@ label {
 input {
     font-size: 0.9em;
     height: 40px;
-    width: 250px;
+    width: 350px;
     border: none;
     background-color: #F2F2F2;
     border-radius: 8px;
@@ -270,15 +279,19 @@ input {
 .buttons {
     display: flex;
     justify-content: space-between;
-    margin-top: 80px;
+    width: 100%;
+    margin-top: 60px;
 }
 
 .btn-cad {
-    padding: 15px 100px;
+    padding: 15px 50px;
     border: none;
     border-radius: 5px;
     font-size: 14px;
     cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
     font-size: 20px;
 }
 
@@ -320,5 +333,11 @@ input {
         flex-direction: column-reverse;
         justify-content: space-around;
         gap: 15px;
+        
+    }
+
+    .progress-name #banco{
+        position: absolute;
+        right: 40%
     }
 }
