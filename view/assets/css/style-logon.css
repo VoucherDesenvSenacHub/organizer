@@ -362,8 +362,79 @@ nav ul li {
     box-shadow: 3px 3px 3px rgba(1,1,1,0.7);
 }
 
+/* Página de Voluntários */
 
+#cabecalho-voluntarios {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 30px;
+}
+#cabecalho-voluntarios h1 {
+    color: #F79329;
+    font-weight: 600;
+    font-size: 2em;
+}
+#busca-voluntario {
+    width: 280px;
+    height: 45px;
+    border-radius: 20px;
+    padding-left: 25px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+}
+#lupa-voluntarios {
+    display: block;
+    position: relative;
+    top: -35px;
+    right: -240px;
+    background: none;
+    border: none;
+}
 
+#listagem-voluntarios {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.voluntarios-ativos, .solicitacoes {
+    display: flex;
+}
+.card-voluntarios {
+    display: flex;
+    width: 30%;
+    height: 50px;
+    height: auto;
+    border: 1px solid red;
+}
+
+.card-voluntarios h1 {
+    color: #000;
+    font-size: 1.4em;
+}
+/* .card-voluntarios img {
+    width: 150%;
+} */
+.texto-voluntarios {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
+    margin-left: 10px;
+    border: 1px solid blue;
+}
+.voluntarios-ativos, .solicitacoes {
+    font-size: 0.8em;
+    font-weight: 700;
+    margin: 10px 0px;
+    gap: 5px;
+    border: 1px solid red;
+}
+.voluntarios-ativos {
+    color: #188241;
+}
+.solicitacoes {
+    color: #FF5A79;
+}
 /* Responsivo */
 
 @media (max-width: 481px){
