@@ -393,8 +393,12 @@ nav ul li {
 
 #listagem-voluntarios {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     flex-wrap: wrap;
+}
+.imagem-voluntarios img {
+    width: 100%;
+    height: 100%;
 }
 
 .voluntarios-ativos, .solicitacoes {
@@ -402,32 +406,30 @@ nav ul li {
 }
 .card-voluntarios {
     display: flex;
-    width: 30%;
-    height: 50px;
+    width: 31%;
     height: auto;
-    border: 1px solid red;
+    box-shadow: 0px 0px 6px gray;
+    overflow: hidden;
+    border-radius: 8px;
+    margin: 20px 10px;
 }
 
 .card-voluntarios h1 {
     color: #000;
-    font-size: 1.4em;
+    font-size: 1.1em;
 }
-/* .card-voluntarios img {
-    width: 150%;
-} */
+
 .texto-voluntarios {
     display: flex;
     flex-direction: column;
-    /* justify-content: space-between; */
+    justify-content: space-between;
     margin-left: 10px;
-    border: 1px solid blue;
 }
 .voluntarios-ativos, .solicitacoes {
     font-size: 0.8em;
     font-weight: 700;
     margin: 10px 0px;
-    gap: 5px;
-    border: 1px solid red;
+    gap: 3px;
 }
 .voluntarios-ativos {
     color: #188241;
