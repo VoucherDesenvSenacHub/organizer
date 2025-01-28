@@ -472,5 +472,144 @@ p{
 
 .div-botao-editar-inativar{
     display: flex;
-    padding-top: 5px;
+    padding-top: 10px;
+    gap: 20px;
+    padding-bottom: 40px;
+}
+
+.div-botao-editar{
+    display: flex;
+    position: relative;
+    width: 250,px;
+}
+
+.div-botao-editar img{
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 50%; 
+    transform: translateY(-50%);
+    right: 10px;
+}
+
+.btn-editar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 158px;
+    height: 55px;
+    font-family: "Comfortaa", serif;
+    font-size: 24px;
+    color: #5B4900;
+    border: none;
+    border-radius: 5px;
+    background-color: #FFCC00;
+    position: relative;
+    padding-right: 40px;
+}
+
+.div-botao-inativar{
+    display: flex;
+    position: relative;
+    width: 250,px;
+}
+
+.div-botao-inativar img{
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 50%; 
+    transform: translateY(-50%);
+    right: 5px;
+    
+}
+
+.btn-inativar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 158px;
+    height: 55px;
+    font-family: "Comfortaa", serif;
+    font-size: 24px;
+    color: #5B4900;
+    border: none;
+    border-radius: 5px;
+    background-color: #E41D1D;
+    position: relative;
+    padding-right: 40px;
+}
+
+.sobre-projeto{
+    width: 100%;
+    padding-top: 10px;
+    gap: 10px;
+    box-shadow: 4px 4px 4px 0 rgba(0, 0, 0, 0.1);
+}
+
+.div-btn-sobre{
+    display: flex;
+    position: relative;
+    width: 100px;
+}
+
+.btn-sobre{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 108px;
+    height: 40px;
+    font-family: "Poppins", serif;
+    font-size: 24px;
+    color: black;
+    
+    border-radius: 50px;
+    background-color: white;
+    position: relative;
+    padding-right: 30px;
+}
+
+.img-sobre{
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 50%; 
+    transform: translateY(-50%);
+    right: 5px;
+}
+
+.sobre-projeto p{
+    font-size: 18px;
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+
+.sobre-projeto textarea{
+    font-size: 14px;
+    width: 70%;
+    height: 100px;
+    border: none;
+}
+
+/* sub tela edição */
+
+.tela-de-edicao-projeto {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.tela-de-edicao-projeto-fundo {
+    display: flex;
+    background-color: white;
+    padding: 20px;
+    margin: 15% auto;
+    width: 50%;
+    border-radius: 10px;
+    gap: 10px;
 }
