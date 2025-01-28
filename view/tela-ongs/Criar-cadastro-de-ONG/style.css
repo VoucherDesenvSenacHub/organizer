@@ -13,60 +13,156 @@ body {
     padding-top: 80px; /* Para não sobrepor o cabeçalho fixo */
 }
 
-header {
+header .container {
+    max-width: 1200px;
     display: flex;
-    position: fixed;
-    top: 0;
-    padding: 8px 32px;
-    z-index: 999;
-    width: 100%;
-    background-color: #1C3464; /* Cor de fundo do cabeçalho */
+    align-items: center;
     justify-content: space-between;
-    color: #FFFFFF; /* Cor do texto no cabeçalho */
-    align-items: center;
+    height: 100%;
+    margin: 0 auto;
 }
 
-#logo img {
-    width: 120px; /* Logo tamanho fixo */
-}
-
-nav a {
-    color: #FFFFFF; /* Cor dos links do menu */
-    text-decoration: none;
-    padding: 15px 30px;
-    font-weight: 600;
-    font-size: 24px; /* Tamanho do texto no menu */
-}
-
-nav ul {
-    display: flex;
-    gap: 30px;
-}
-
-nav ul li {
-    display: inline-block;
-}
-
-#header-direita {
-    display: flex;
-    gap: 30px;
-    align-items: center;
-}
-
-#btn-login {
+header .btn {
     padding: 10px 20px;
-    background-color: #E6B954; /* Cor de fundo do botão */
-    color: #FFFFFF; /* Cor do texto do botão */
-    font-size: 18px;
-    font-weight: 500;
     border: none;
-    border-radius: 8px;
+    background-color: #E3B652;
+    border-radius: 4px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
     cursor: pointer;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: #1C3464;
+    transition: .3s;
 }
 
-#btn-login:hover {
-    background-color: #dcb760; /* Cor do botão ao passar o mouse */
+header .btn:hover {
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    background-color: #cca44d;
 }
+
+header .btn a {
+    text-decoration: none;
+    color: #1C3464;
+}
+
+header {
+    padding: 0 30px;
+    height: 60px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    background-color: #1C3464;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+
+header .logo {
+    color: aliceblue;
+}
+
+header nav ul {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+header nav ul li {
+    transform: translateY(0);
+    transition: .3s;
+}
+
+header nav ul li:hover {
+    transform: translateY(-2px);
+}
+
+header nav a {
+    color: aliceblue;
+    text-decoration: none;
+    padding-block: 8px;
+    transform: translateY(0);
+    transition: .3s;
+}
+
+header nav a:hover {
+    color: #E3B652;
+}
+
+header .btn-login {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+header nav.active {
+    height: 180px;
+    transition: .3s;
+}
+
+#hamburguer {
+    border: none;
+    border-top: 4px solid #E3B652;
+    background: none;
+    border-radius: 3px;
+    display: none;
+    cursor: pointer;
+    position: relative;
+}
+
+#hamburguer::after,
+#hamburguer::before {
+    content: '';
+    margin-top: 3px;
+    width: 30px;
+    height: 4px;
+    display: block;
+    background-color: #E3B652;
+    border-radius: 3px;
+    transition: .3s;
+}
+
+#hamburguer.active {
+    border: none;
+}
+
+#hamburguer.active::after {
+    transform: rotate(45deg);
+    top: 0;
+    position: absolute;
+}
+
+#hamburguer.active::before {
+    transform: rotate(-45deg);
+}
+
+@media (max-width: 700px) {
+    header nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #1C3464;
+        overflow: hidden;
+        box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;
+        height: 0;
+        transition: .3s;
+        z-index: 999;
+    }
+
+    header nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        padding: 15px 0;
+    }
+
+    #hamburguer {
+        display: block;
+    }
+
+    #fundo-popup #popup .img {
+        display: none;
+    }
+}
+
 
 #principal {
     display: flex;

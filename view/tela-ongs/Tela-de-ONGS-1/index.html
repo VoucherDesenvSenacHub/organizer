@@ -7,16 +7,25 @@
     <link rel="stylesheet" href="styles.css"> <!-- Link para o arquivo CSS -->
 </head>
 <body>
-    <nav>
-        <img src="/Tela de ONGS 1/svgs projeto ongs/Logo.svg" alt="Logo" class="logo">
-        <div class="nav-links">
-            <a href="#">Home</a>
-            <a href="#">Ongs</a>
-            <a href="#">Projetos</a>
-            <a href="#">Notícias</a>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="/view/tela-ongs/Tela-de-ONGS-1/svgs projeto ongs/Logo.svg" alt="Logo" class="logo">
+            </div>
+            <nav id="nav-bar">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#">Ongs</a></li>
+                    <li><a href="#">Projetos</a></li>
+                    <li><a href="#">Notícias</a></li>
+                </ul>
+            </nav>
+            <div class="btn-login">
+                <button class="btn" id="openPopup" onclick="loginPopup()">LOGIN</button>
+                <button onclick="menu_mobile()" id="hamburguer"></button>
+            </div>
         </div>
-        <button class="login-btn">Login</button>
-    </nav>
+    </header>
 
     <main>
         <div class="hero-section">
