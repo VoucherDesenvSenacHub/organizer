@@ -1,11 +1,15 @@
-function mudaMenu() {
-    let hbgMenu = document.querySelector('#hamburger-menu');
-    let btnHamburger = document.querySelector("#botao-hamburger");
-    hbgMenu.style.display = 'flex';
-    hbgMenu.id = 'hamburger-menu-slide';
-    btnHamburger.style.opacity = 0;
+function menu_mobile() {
+    const nav_bar = document.getElementById('nav-bar');
+    const hamburguer = document.getElementById('hamburguer');
+    nav_bar.classList.toggle('active');
+    hamburguer.classList.toggle('active');
 }
-function esqueciSenha() {
-    let painelSenha = document.querySelector('#password-recovery');
-    painelSenha.style.display = 'flex';
-}
+
+window.addEventListener('resize', () => {
+    const nav_bar = document.getElementById('nav-bar');
+    const hamburguer = document.getElementById('hamburguer');
+    if (window.innerWidth > 700 && nav_bar.classList.contains('active')) {
+        nav_bar.classList.remove('active');
+        hamburguer.classList.remove('active');
+    }
+});
