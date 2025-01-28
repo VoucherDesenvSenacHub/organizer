@@ -1,6 +1,3 @@
-
-// !!!!! COPIAR ESSA PARTE ABAIXO
-// NAV-BAR MOBILE
 function menu_mobile() {
     const nav_bar = document.getElementById('nav-bar');
     const hamburguer = document.getElementById('hamburguer');
@@ -16,5 +13,3 @@ window.addEventListener('resize', () => {
         hamburguer.classList.remove('active');
     }
 });
-
-// ============== ATÉ AQUI===============
