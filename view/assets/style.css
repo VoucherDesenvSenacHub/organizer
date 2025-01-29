@@ -1,0 +1,343 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Mulish:ital,wght@0,200..1000;1,200..1000&family=Outfit:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --cor-principal: #1C3464;
+    --cor-principal-claro: #203866;
+    --cor-amarelo: #E3B652;
+    --cor-amarelo-hover: #cca44d;
+    --cor-azul: #45BEE6;
+    --font-poppins: "Poppins", serif;
+    --font-comfortaa: "Comfortaa", serif;
+}
+
+body {
+    width: 100%;
+    z-index: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #1C3464;
+}
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 1200px;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    background-color: var(--cor-amarelo);
+    border-radius: 4px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    cursor: pointer;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: #1C3464;
+    transition: .3s;
+}
+
+.btn:hover {
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    background-color: var(--cor-amarelo-hover);
+}
+
+
+header {
+    padding: 0 30px;
+    height: 60px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    background-color: var(--cor-principal);
+    position: sticky;
+    top: 0;
+}
+
+header .container {
+    justify-content: space-between;
+}
+
+header nav.active {
+    height: 180px;
+    transition: .3s;
+}
+
+header nav ul {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+header nav a {
+    color: aliceblue;
+    text-decoration: none;
+    padding-block: 8px;
+    transition: .3s;
+}
+
+header nav a:hover {
+    color: var(--cor-amarelo);
+}
+
+header .btn-login {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+#hamburguer {
+    border: none;
+    border-top: 4px solid var(--cor-amarelo);
+    background: none;
+    border-radius: 3px;
+    display: none;
+    cursor: pointer;
+}
+
+#hamburguer::after,
+#hamburguer::before {
+    content: '';
+    margin-top: 3px;
+    width: 30px;
+    height: 4px;
+    display: block;
+    background-color: var(--cor-amarelo);
+    border-radius: 3px;
+    transition: .3s;
+}
+
+#hamburguer.active {
+    border: none;
+    position: relative;
+}
+
+#hamburguer.active::after {
+    transform: rotate(45deg);
+    top: 0;
+    position: absolute;
+}
+
+#hamburguer.active::before {
+    transform: rotate(-45deg);
+}
+
+@media (max-width: 700px) {
+    header nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: var(--cor-principal);
+        overflow: hidden;
+        box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;
+        height: 0;
+        transition: .3s;
+        z-index: 1;
+    }
+
+    header nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        padding: 15px 0;
+    }
+
+    #hamburguer {
+        display: block;
+    }
+}
+
+.container-cad {
+    width: 60%;
+    margin: 50px auto;
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.titulo {
+    font-size: 2em;
+    font-weight: 400;
+    margin-top: 10px;
+    margin-bottom: 40px;
+    color: #2d3a5a;
+    text-align: left;
+}
+
+
+.progresso {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: space-between;
+    margin: 20px 0 30px;
+}
+
+.progress-step {
+    flex: 1;
+    text-align: center;
+    color: #2d2d2d;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 50px;
+    
+}
+
+.progress-step.active {
+    color: #2d3a5a;
+    margin-top: 10px;
+}
+
+.progress-line {
+    flex: 1;
+    height: 3px;
+    background-color: #ddd;
+}
+.progress-linen {
+    flex: 1;
+    height: 3px;
+    background-color: #1C3464;
+}
+.bolinha1{
+    height: 20px;
+    width: 20px;
+    background-color: #2d3a5a;
+    border-radius: 30px;
+
+}
+.bolinha2{
+    height: 20px;
+    width: 20px;
+    background-color: #ddd;
+    border-radius: 30px;
+}
+.bolinha3{
+    height: 20px;
+    width: 20px;
+    background-color: #ddd;
+    border-radius: 30px;
+}
+
+.progress-name{
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+}
+
+.progress-name #banco{
+    position: absolute;
+    right: 46%
+}
+
+.card-form {
+    margin-top: 20px;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.form-group:last-child {
+    margin-right: 0;
+}
+
+label {
+    display: block;
+    font-size: 17px;
+    color: #2d2d2d;
+    margin-bottom: 5px;
+}
+
+input {
+    font-size: 0.9em;
+    height: 40px;
+    width: 350px;
+    border: none;
+    background-color: #F2F2F2;
+    border-radius: 8px;
+    padding-left: 10px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 60px;
+}
+
+.btn-cad {
+    padding: 15px 50px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    font-size: 20px;
+}
+
+.voltar {
+    background-color: #ddd;
+    color: #2d2d2d;
+}
+
+.pular {
+    background-color: transparent;
+    color: #2d2d2d;
+    border: 1px solid #ddd;
+}
+
+.proximo {
+    background-color: #E3B652;
+    color: #fff;
+}
+
+@media (max-width: 700px) {
+    .titulo{
+        font-size: 30px
+    }
+
+    .card-form {
+        margin-top: 20px;
+        padding: 5px;
+    }
+
+    .form-row {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 10px;
+    }
+
+    .buttons{
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: space-around;
+        gap: 15px;
+        
+    }
+
+    .progress-name #banco{
+        position: absolute;
+        right: 40%
+    }
+}

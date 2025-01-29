@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/cadastro.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>LOGO</h1>
+            </div>
+            <nav id="nav-bar">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#">Ongs</a></li>
+                    <li><a href="#">Projetos</a></li>
+                    <li><a href="#">Notícias</a></li>
+                </ul>
+            </nav>
+            <div class="btn-login">
+                <button class="btn" id="openPopup" onclick="loginPopup()">LOGIN</button>
+                <button onclick="menu_mobile()" id="hamburguer"></button>
+            </div>
+        </div>
+    </header>
+    <div id="fundo-popup">
+        <div id="popup">
+            <div class="msg">
+                <h1>Olá, Seja <br> Bem-Vindo!</h1>
+                <p>Escolha seu tipo de acesso:</p>
+                <ul>
+                    <li><i class="fa-solid fa-user"></i><a href="login_doador.html">Sou um Doador</a></li>
+                    <li><i class="fa-solid fa-house-flag"></i><a href="login_ong.html">Sou uma ONG</a></li>
+                    <li><i class="fa-solid fa-user-secret"></i></i><a href="login_adm.html">Administrador</a></li>
+                </ul>
+            </div>
+            <div class="img">
+                <img src="../img/celular.png">
+            </div>
+        </div>
+    </div>
+    <main>
+        <section>
+            <div class="container">
+                <h1>FAÇA SEU CADASTRO</h1>
+                <div class="line">
+                    <div id="linhaClara"></div>
+                    <div id="linhaAzul"></div>
+                    <div class="item active">
+                        <div class="circle"><i class="fa-solid fa-check"></i></div>
+                        <p>Dados do Usúario</p>
+                    </div>
+                    <div class="item">
+                        <div class="circle"><i class="fa-solid fa-check"></i></div>
+                        <p>Banco</p>
+                    </div>
+                    <div class="item">
+                        <div class="circle"><i class="fa-solid fa-check"></i></div>
+                        <p>Login</p>
+                    </div>
+                </div>
+                <form id="form">
+                    <div class="formBox">
+                        <div class="inputBox">
+                            <label for="nome">Nome Completo</label>
+                            <input id="nome" type="text" placeholder="Seu Nome">
+                            <span class="visor"></span>
+                        </div>
+                        <div class="inputBox">
+                            <label for="telefone">Telefone</label>
+                            <input id="telefone" type="number" placeholder="(67) 9 0000-0000">
+                            <span class="visor"></span>
+                        </div>
+                        <div class="inputBox">
+                            <label for="cpf">CPF</label>
+                            <input id="cpf" type="number" placeholder="000.000.000-00">
+                            <span class="visor"></span>
+                        </div>
+                        <div class="inputBox">
+                            <label for="data">Data de Nascimento</label>
+                            <input id="data" type="date" placeholder="DD/MM/AA">
+                            <span class="visor"></span>
+                        </div>
+                        <div class="btnNext">
+                            <button class="btn" type="button" onclick="return proximo(1)">Próximo</button>
+                        </div>
+                    </div>
+                    <div class="formBox">
+                        <div class="inputBox">
+                            <label for="nome_cartao">Titular do Cartão</label>
+                            <input id="nome_cartao" type="text" placeholder="Nome Completo">
+                            <span class="visor"></span>
+                        </div>
+                        <div class="inputBox">
+                            <label for="num_cartao">Número do Cartão</label>
+                            <input id="num_cartao" type="number" placeholder="0000 0000 0000 0000">
+                            <span class="visor"></span>
+                        </div>
+                        <div class="inputBox">
+                            <label for="data_cartao">Data de Validade</label>
+                            <input id="data_cartao" type="date" placeholder="MM/AA">
+                            <span class="visor"></span>
+                        </div>
+                        <div class="inputBox">
+                            <label for="code_cartao">Código de Segurança</label>
+                            <input id="code_cartao" type="number" placeholder="CVV">
+                            <span class="visor"></span>
+                        </div>
+                        <div class="btnNextBack">
+                            <button class="btn btnVoltar" type="button" onclick="voltar(1)">Voltar</button>
+                            <button class="btn" type="button" onclick="return proximo(2)">Próximo</button>
+                        </div>
+                    </div>
+                    <div class="formBox">
+                        <div class="inputBox" id="BoxG">
+                            <label for="email">Email</label>
+                            <input id="email" type="email" placeholder="usúario@conta.com">
+                            <span class="visor"></span>
+                        </div>
+                        <div class="inputBox">
+                            <label for="senha">Senha</label>
+                            <input id="senha" type="password" placeholder="********">
+                            <span class="visor"></span>
+                        </div>
+                        <div class="inputBox">
+                            <label for="confirm_senha">Confirmar Senha</label>
+                            <input id="confirm_senha" type="password" placeholder="********">
+                            <span class="visor"></span>
+                        </div>
+                        <div class="inputBox" id="mobileInput">
+                            <label></label>
+                            <input type="text" disabled>
+                        </div>
+                        <div class="btnNextBack">
+                            <button class="btn btnVoltar" type="button" onclick="voltar(2)">Voltar</button>
+                            <button class="btn" onclick="return proximo(3)">CADASTRAR</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+    <script src="../js/main.js"></script>
+    <script src="../js/cadastro.js"></script>
+</body>
+</html>
