@@ -118,6 +118,39 @@ nav ul li {
 .progress>img{
     width: 70%;
 }
+.indicador-tela{
+    display: flex;
+    font-size: 1em;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 115px;
+}
+.descricao-indicador-tela-descricao{
+    margin-left: 20px;
+}
+
+.descricao-indicador-tela {
+    font-size: 0.8em;
+}
+
+.descricao-indicador-tela-endereco {
+    margin-left: 25px;
+}
+
+.descricao-indicador-tela-responsavel {
+    margin-left: 28px;
+    opacity: 0.5;
+}
+
+.descricao-indicador-tela-banco {
+    margin-left: 15px;
+    opacity: 0.5;
+}
+
+.descricao-indicador-tela-login {
+    margin-left: 35px;
+    opacity: 0.5;
+}
 #text-progress {
     display: flex;
     font-size: 0.8em;
@@ -172,11 +205,27 @@ nav ul li {
 }
 
 .form-login {
-    font-size: 1.3em;
+    font-size: 1em;
     text-align: left;
     margin: 20px auto;
     padding-bottom: 10px;
     padding-left: 10px;
+}
+.container input {
+    font-size: 1em;
+    height: 40px;
+    width: 250px;
+    border: none;
+    background-color: #F2F2F2;
+    border-radius: 8px;
+    padding-left: 10px;
+  }
+.form-container {
+    display: grid;
+    flex-direction: column;
+    justify-content: flex-end;
+    width: 48%;
+    
 }
 .form-email>input,
 .form-senha>input,
@@ -252,6 +301,11 @@ select {
     width: 50%;
     height: 50%;
     margin: auto;
+}
+.container{
+    display: flex;
+    justify-content: center;
+    padding: 20px;
 }
 .principal-dir>img{
     width: 80%;
@@ -416,6 +470,7 @@ select {
         padding-top: 20px;
         width: 90%;
     }
+    
     .form-login {
         font-size: 1em;
         text-align: left;
