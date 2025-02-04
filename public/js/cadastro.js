@@ -30,8 +30,9 @@ function proximo(x) {
         }
         // Validar CPF
         let cpf = document.getElementById('cpf');
-        if (cpf.value.length != 11) {
+        if (cpf.value.length != 14) {
             visor[2].innerHTML = icon + 'CPF Inválido';
+            // alert(cpf.value.length)
             cpf.focus();
             return false;
         } else {
