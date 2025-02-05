@@ -406,7 +406,7 @@ nav ul li {
 }
 .card-voluntarios {
     display: flex;
-    width: 31%;
+    width: 350px;
     height: auto;
     box-shadow: 0px 0px 6px gray;
     overflow: hidden;
