@@ -97,6 +97,8 @@ h1{
 .header-principal{
     display: flex;
     gap: 50px;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .input-buscar-projetos{
@@ -125,7 +127,7 @@ h1{
 }
 
 .div-input-lupa{
-    display: flex;
+    
     position: relative;
     width: 250,px;
 }
@@ -146,9 +148,9 @@ h1{
 .div-card-geral{
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: center;
     padding-top: 20px;
-    gap: 30px;
+    gap: 65px;
 }
 
 .card{
@@ -472,7 +474,7 @@ p{
 
 .div-botao-editar-inativar{
     display: flex;
-    padding-top: 10px;
+    padding-top: 30px;
     gap: 20px;
     padding-bottom: 40px;
 }
@@ -544,7 +546,9 @@ p{
     width: 100%;
     padding-top: 10px;
     gap: 10px;
-    box-shadow: 4px 4px 4px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.1);
+    
+    
 }
 
 .div-btn-sobre{
@@ -589,6 +593,7 @@ p{
     width: 70%;
     height: 100px;
     border: none;
+    
 }
 
 /* sub tela edição */
