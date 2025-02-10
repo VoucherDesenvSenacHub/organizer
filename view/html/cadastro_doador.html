@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Index</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/cadastro.css">
 </head>
+
 <body>
     <header>
         <div class="container">
@@ -75,12 +77,12 @@
                         </div>
                         <div class="inputBox">
                             <label for="telefone">Telefone</label>
-                            <input id="telefone" type="number" placeholder="(67) 9 0000-0000">
+                            <input id="telefone" type="text" placeholder="(67) 9 0000-0000">
                             <span class="visor"></span>
                         </div>
                         <div class="inputBox">
                             <label for="cpf">CPF</label>
-                            <input id="cpf" type="number" placeholder="000.000.000-00">
+                            <input id="cpf" type="text" placeholder="000.000.000-00">
                             <span class="visor"></span>
                         </div>
                         <div class="inputBox">
@@ -100,7 +102,7 @@
                         </div>
                         <div class="inputBox">
                             <label for="num_cartao">Número do Cartão</label>
-                            <input id="num_cartao" type="number" placeholder="0000 0000 0000 0000">
+                            <input id="num_cartao" type="text" placeholder="0000 0000 0000 0000">
                             <span class="visor"></span>
                         </div>
                         <div class="inputBox">
@@ -149,5 +151,13 @@
     </main>
     <script src="../js/main.js"></script>
     <script src="../js/cadastro.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
+    <script type="text/javascript">
+        $("#telefone").mask("(00) 0 0000-0000");
+        $("#cpf").mask("000.000.000-00");
+        $("#num_cartao").mask("0000 0000 0000 0000");
+    </script>
 </body>
+
 </html>
