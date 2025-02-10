@@ -1,3 +1,4 @@
+// NAV-BAR MOBILE
 function menu_mobile() {
     const nav_bar = document.getElementById('nav-bar');
     const hamburguer = document.getElementById('hamburguer');
@@ -13,3 +14,18 @@ window.addEventListener('resize', () => {
         hamburguer.classList.remove('active');
     }
 });
+
+// EFEITO POUP
+function loginPopup() {
+    const fundoPopup = document.getElementById('fundo-popup');
+    fundoPopup.classList.add('ativo');
+
+    fundoPopup.addEventListener('click', (event) => {
+        if (event.target === fundoPopup) {
+            fundoPopup.classList.remove('ativo');
+        }
+    });
+}
+
+
+
