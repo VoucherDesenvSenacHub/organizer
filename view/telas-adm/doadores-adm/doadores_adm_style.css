@@ -256,15 +256,20 @@ header nav.active {
     margin: 0px;
     padding: 0px;
 }
-/* .info_doador {
-    margin-right: 19%;
-    margin-left: 12px;
-} */
+.info_doador {
+    /* margin-right: 19%; */
+    margin-left: 18px;
+}
 
 .top {
     display: flex;
     justify-content: space-between;
     width: 100%;
+}
+.top-text {
+    font-size: 1.5em;
+    color: var(--backgroud);
+    font-weight: 500;
 }
 
 .btn_delete_user {
@@ -283,6 +288,15 @@ header nav.active {
 }
 .img_delete_user:hover {
     backdrop-filter: brightness(60%);
+}
+
+.card-esq {
+    display: flex;
+}
+.card-dir {
+    display: flex;
+    align-items: center;
+    gap: 170px;
 }
 
 .botoes {
@@ -376,9 +390,11 @@ header nav.active {
         right: 0%;
     }
 
-    /* .ongs {
-        display: flex;
+    .card_doador {
         flex-direction: column;
-        align-items: center;
-    } */
+        height: 110px;
+    }
+    .card-dir {
+        gap: 70px;
+    }
 }
