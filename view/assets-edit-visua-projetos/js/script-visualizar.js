@@ -5,7 +5,6 @@ const telaDeConfirmacao = document.getElementById('tela-confirma-criacao');
 
 
 
-
 novoProjetoBtn.onclick = function() {
     telaDeCriacao.style.display = "block";
 }
@@ -14,6 +13,7 @@ novoProjetoBtn.onclick = function() {
 salvarProjeto.onclick = function() {
     telaDeConfirmacao.style.display = "block";
 }
+
 
 
 
@@ -26,9 +26,5 @@ window.onclick = function(event) {
     }
 }
 
-const editarprojeto = document.getElementById('editarprojeto');
-const telaDeEdicaoProjeto = document.getElementById('tela-de-edicao-projeto');
 
-editarprojeto.onclick = function() {
-    telaDeEdicaoProjeto.style.display = "block";
-}
+

@@ -618,3 +618,155 @@ p{
     border-radius: 10px;
     gap: 10px;
 }
+
+.tela-de-edicao-projeto-conteudo{
+    width: 70%;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
+    padding: 5px;
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+}
+
+.img-editar{
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 50%; 
+    transform: translateY(-50%);
+    right: 5px;
+}
+
+.div-botao-salvar-ateracao{
+    display: flex;
+    position: relative;
+    width: 250,px;
+}
+
+
+
+.botao-salvar-alteracao{
+    display: flex;
+    align-items: center;
+    font-family: "Agdasima", serif;
+    background-color: #FFCC00;
+    color: #5B4900;
+    width: 190px;
+    height: 45px;
+    font-size: 20px;
+    border-radius: 5px;
+    border: none;
+    padding: 20px;
+}
+
+.botao-salvar-alteracao:hover{
+    background-color: #fcd847;
+}
+
+/* tela de confirmação edição */
+
+.tela-confirma-edicao{
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.card-confirma-edicao{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    padding: 20px;
+    margin: 15% auto;
+    width: 20%;
+    border-radius: 10px;
+    gap: 10px;
+}
+
+.div-projeto-editado{
+    display: flex;
+    position: relative;
+    width: 250,px;
+}
+
+.titulo-projeto-editado{
+    font-size: 25px;
+    color: #188241;
+}
+
+.img-check{
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 50%; 
+    transform: translateY(-50%);
+    right: -30px;
+    
+}
+
+/* tela para inativar Projeto */
+
+.tela-inativa-projeto {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.tela-inativa-projeto-fundo {
+    display: flex;
+    background-color: white;
+    padding: 20px;
+    margin: 15% auto;
+    width: 50%;
+    border-radius: 10px;
+    gap: 10px;
+}
+
+.tela-inativa-projeto-conteudo{
+    width: 100%;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
+    padding: 5px;
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+}
+
+.quadro {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+}
+.quadro h2 {
+    text-align: left;
+    color: #333;
+}
+.opcoes {
+    list-style-type: none;
+    padding: 0;
+}
+.opcoes li {
+    padding: 10px;
+    background-color: #f0f0f0;
+    margin-bottom: 8px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.opcoes li:hover {
+    background-color: #d3d3d3;
+}
