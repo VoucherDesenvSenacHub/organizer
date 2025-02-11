@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsável pela ONG</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="/view/tela-ongs/Criar-cadastro-de-ONG/svgs projeto ongs/Logo.svg" alt="Logo" class="logo">
+            </div>
+            <nav id="nav-bar">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#">Ongs</a></li>
+                    <li><a href="#">Projetos</a></li>
+                    <li><a href="#">Notícias</a></li>
+                </ul>
+            </nav>
+            <div class="btn-login">
+                <button class="btn" id="openPopup" onclick="loginPopup()">LOGIN</button>
+                <button onclick="menu_mobile()" id="hamburguer"></button>
+            </div>
+        </div>
+    </header>
+
+    <div id="principal">
+        <div class="conteudo-centralizado">
+            <div class="principal-esq">
+                <h1>RESPONSÁVEL PELA ONG</h1>
+                <div class="etapas">
+                    <div class="etapa ativa">1</div>
+                    <div class="conector ativa"></div>
+                    <div class="etapa ativa">2</div>
+                    <div class="conector ativa"></div>
+                    <div class="etapa ativa">3</div>
+                    <div class="conector ativa"></div>
+                    <div class="etapa ativa">4</div>
+                    <div class="conector ativa"></div>
+                    <div class="etapa">5</div>
+                    <div class="conector"></div>
+                    <div class="etapa">6</div>
+                </div>
+                <form class="form">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="nome" class="form-label">Nome</label>
+                            <input type="text" id="nome" placeholder="Nome Completo" class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label for="cpf" class="form-label">CPF</label>
+                            <input type="text" id="cpf" placeholder="000.000.000-00" class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label for="telefone" class="form-label">Telefone</label>
+                            <input type="tel" id="telefone" placeholder="(00) 00000-0000" class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" id="email" placeholder="usuario@conta.com" class="form-input">
+                        </div>
+                    </div>
+                    <div class="form-buttons">
+                        <button class="botao-voltar">Voltar</button>
+                        <button class="botao-proximo">Próximo</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

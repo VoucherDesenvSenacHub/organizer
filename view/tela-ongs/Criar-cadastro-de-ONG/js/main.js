@@ -1,7 +1,5 @@
 
-
 // !!!!! COPIAR ESSA PARTE ABAIXO
-
 // NAV-BAR MOBILE
 function menu_mobile() {
     const nav_bar = document.getElementById('nav-bar');
@@ -19,7 +17,6 @@ window.addEventListener('resize', () => {
     }
 });
 
-
 // ============== ATÉ AQUI===============
 
 
@@ -30,9 +27,6 @@ window.addEventListener('resize', () => {
 
 
 
-
-
-// EFEITO POUP
 
 function loginPopup() {
     const fundoPopup = document.getElementById('fundo-popup');
