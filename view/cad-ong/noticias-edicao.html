@@ -16,8 +16,8 @@
         <nav>
             <ul>
                 <li><a href="ong-logon.html">CONTA</a></li>
-                <li><a href="#">PROJETOS</a></li>
-                <li><a href="#">VOLUNTÁRIOS</a></li>
+                <li><a href="projetos-edicao.html">PROJETOS</a></li>
+                <li><a href="voluntarios.html">VOLUNTÁRIOS</a></li>
                 <li><a href="#">PERFIL</a></li>
                 <li><a href="#">RELATÓRIOS</a></li>
             </ul>
@@ -32,8 +32,8 @@
         <div id="hamburger-menu">
             <ul>
                 <li><a href="ong-logon.html">CONTA</a></li>
-                <li><a href="#">PROJETOS</a></li>
-                <li><a href="#">VOLUNTÁRIOS</a></li>
+                <li><a href="projetos-edicao.html">PROJETOS</a></li>
+                <li><a href="voluntarios.html">VOLUNTÁRIOS</a></li>
                 <li><a href="#">PERFIL</a></li>
                 <li><a href="#">RELATÓRIOS</a></li>
             </ul>
@@ -60,8 +60,8 @@
                 <h2 class="h2-pb">Publicado em 29 de agosto de 2024</h2>
             </div>
             <div class="botoes-edicao">
-                <button style="background-color: #FFCC00;">Editar<img src="../assets/images/edit-noticia.png" alt=""></button>
-                <button style="background-color: #E41D1D;">Excluir<img src="../assets/images/delete-noticia.png" alt=""></button>
+                <button style="background-color: #FFCC00;" onclick="editarNoticia()">Editar<img src="../assets/images/edit-noticia.png" alt="" ></button>
+                <button style="background-color: #E41D1D;" onclick="popConclusao('delete')">Excluir<img src="../assets/images/delete-noticia.png" alt=""></button>
             </div>
         </div>
         <div id="texto-noticia">
@@ -80,6 +80,46 @@
         </div>
     </div>
     <!-- Fim DIV principal  -->
+
+    <!-- DIV Pop-up Edição -->
+    <div id="pagina-edicao">
+        <div id="edicao-esquerda">
+            <h1>EDITAR NOTÍCIA</h1>
+            <form>
+                <div id="linha1-edicao">
+                    <div>
+                        <label for="titulo-noticia">Título</label><br>
+                        <input type="text" id="titulo-noticia" placeholder="Título">
+                    </div>
+                    <div>
+                        <label for="subtitulo-noticia">Subítulo</label><br>
+                        <input type="text" id="subtitulo-noticia" placeholder="Subtítulo">
+                    </div>
+                </div>
+                <label for="texto1">Texto 1</label><br>
+                <textarea name="texto1" id="texto1" cols="60" rows="10"></textarea><br>
+                <label for="texto2">Texto 2</label><br>
+                <textarea name="texto2" id="texto2" cols="60" rows="10"></textarea><br>
+            </form>
+        </div>
+        <div id="edicao-direita">
+            <div id="upload-fotos">
+                <img src="../assets/images/avatar.png" alt="" width="90%">
+                <button><img src="../assets/images/icon-upload.png" alt="">Upload de fotos</button>
+            </div>
+            <button onclick="popConclusao('edicao')">Salvar alteração <img src="../assets/images/edit-noticia.png" alt=""></button>
+        </div>
+    </div>
+    <!-- Fim da Pop-up edição -->
+
+    
+    <!-- Pop-up conclusão -->
+    <div id="pop-conclusao">
+        <img id="icone-conclusao" src="" alt="" width="20%">
+        <p id="texto-conclusao"></p>
+    </div>
     <script src="../assets/js/main.js"></script>
+    <!-- Fim do popup conclusão -->
+
 </body>
 </html>

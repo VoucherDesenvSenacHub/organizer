@@ -9,9 +9,41 @@ function esqueciSenha() {
     let painelSenha = document.querySelector('#password-recovery');
     painelSenha.style.display = 'flex';
 }
+function slider(){
+    contador++;
+    if (contador > 4) {
+        contador=0;
+    }
+    box.style.transform = `translateX(${-contador * slideWidth}px)`;
+}
+
+function editarNoticia() {
+    let principal = document.querySelector('#principal');
+    let edicao = document.querySelector('#pagina-edicao');
+    principal.style.display = 'none';
+    edicao.style.display = 'flex';
+}
+
+function popConclusao(tipo) {
+    let janela = document.querySelector('#pop-conclusao');
+    let icone = document.querySelector('#icone-conclusao');
+    let texto = document.querySelector('#texto-conclusao');
+    janela.style.display = 'block';
+    if(tipo == 'edicao'){
+        icone.setAttribute('src', '../assets/images/edit-popup.png');
+        janela.style.color = '#FFCC00'
+        texto.innerHTML = 'Notícia Alterada';
+    }else if(tipo == 'delete'){
+        icone.setAttribute('src', '../assets/images/delete-popup.png');
+        janela.style.color = '#E64545'
+        texto.innerHTML = 'Notícia Removida';
+    }
+    setTimeout(() => {
+        janela.style.display = 'none';
+    }, 3000);
+}
 
 const box = document.querySelector(".fotos-slide");
-// const imagens = document.querySelectorAll(".fotos-slide img");
 
 let contador = 0;
 let tela = window.innerWidth;
@@ -21,13 +53,5 @@ if(tela <= 481){
 }else{
     slideWidth = 1016;
 }
-function slider(){
-    contador++;
-    if (contador > 4) {
-        contador=0;
-    }
-    box.style.transform = `translateX(${-contador * slideWidth}px)`;
-}
+setInterval (slider, 2000);
 
-
-setInterval (slider, 3000);

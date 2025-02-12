@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Endereço</title>
+    <title>Base para páginas</title>
     <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 <body>
@@ -22,7 +22,7 @@
             </ul>
         </nav>
         <div id="header-direita">
-            <div>
+            <div id="busca">
                 <a href="#"><img src="../assets/images/lupa.png" alt="" id="busca"></a>
             </div>
             <div id="login">
@@ -30,62 +30,51 @@
                     Login
                 </button>
             </div>
-        </div>        
-            <button id="botao-hamburger" onclick="mudaMenu()">
-                <img src="../assets/images/hamburger.png" alt="" id="hamburger">
-            </button>
-        
-            <div id="hamburger-menu">
-                <ul>
-                    <li><a href="login-corporativo.html">HOME</a></li>
-                    <li><a href="#">ONGS</a></li>
-                    <li><a href="#">PROJETOS</a></li>
-                    <li><a href="#">NOTÍCIAS</a></li>
-                </ul>
-            </div>
-        </header>
-        <!-- Fim cabeçalho -->
+        </div>
+    </header>
+    <!-- Fim cabeçalho -->
 
 
     <!-- Início DIV principal -->
     <div id="principal">
-        <div id="cadastro-ong">
+        <div >
             <div class="titulo-cadastro">
                 <h1>ENDEREÇO</h1>
             </div>
-            <div class="progress">
-                <img src="../assets/images/progress-3.png" alt="">
-            </div>
-            <div id="text-progress">
-                <div class="text-detalhes">Dados<br>da ONG</div>
-                <div class="text-detalhes">Descrição</div>
-                <div class="text-detalhes">Endereço</div>
-                <div class="text-detalhes-draft">Responsável</div>
-                <div class="text-detalhes-draft">Banco</div>
-                <div class="text-detalhes-draft">Login</div>
-            </div>
-            <form class="form-cadastro">
-                <div class="form-direita">
-                    <label for="endereco">Endereço</label><br>
-                    <input type="text" id="endereco" placeholder="Ex. Rua Projetada, 199"><br>
-                    <label for="cidade">Cidade</label><br>
-                    <input type="text" id="cidade" placeholder="Campo Grande">
+            <div class="progress"><img src="../assets/images/progress-3.png" alt=""></div>
+
+                <div class="indicador-tela">
+                    <div><p class="descricao-indicador-tela">Dados <br> da ONG</p></div>
+                    <div class="descricao-indicador-tela-descricao"><p class="descricao-indicador-tela">Descrição</p></div>
+                    <div class="descricao-indicador-tela-endereco"><p class="descricao-indicador-tela">Endereço</p></div>
+                    <div class="descricao-indicador-tela-responsavel"><p class="descricao-indicador-tela">Responsável</p></div>
+                    <div class="descricao-indicador-tela-banco"><p class="descricao-indicador-tela">Banco</p></div>
+                    <div class="descricao-indicador-tela-login"><p class="descricao-indicador-tela">Login</p></div>
                 </div>
-                <div class="form-esquerda">
-                    <label for="cep">CEP</label><br>
-                    <input type="text" id="cep" placeholder="00000-000"><br>
-                    <label for="uf">UF</label><br>
-                    <input type="text" id="uf" placeholder="Mato Grosso do Sul">
+            <div class="container">
+                <div>
+                    <form class="form-login">
+                        <label for="rua">Rua</label><br>
+                        <input type="text" placeholder="Ex: Rua Afonso Pena, 3050" name="Rua" > <br>
+                        <label for="cep">Cep</label><br>
+                        <input type="text" placeholder="00000-000" name="Cep" > <br>
+                    </form>
+                    <a href="atuacao.html"><button class="voltar" type="submit">VOLTAR</button></a>
                 </div>
-            </form>
-            <div class="btn-navegacao">
-                <a href="atuacao.html"><button class="voltar">Voltar</button></a>
-                <a href="responsavel-ong.html"><button class="proximo">Próximo</button></a>
+        
+                <div class="form-container">
+                    <form class="form-login">
+                        <label for="bairro">Bairro</label><br>
+                        <input type="text" placeholder="Ex: Centro" name="Bairro" > <br>
+                        <label for="cidade">Cidade</label><br>
+                        <input type="text" placeholder="Campo Grande" name="Cidade" > <br>
+                    </form>
+                    <a href="responsavel-ong.html"><button class="proximo" type="submit">PROXIMO</button></a>
+                </div>
             </div>
         </div>
-        
     </div>
     <!-- Fim DIV principal  -->
-    <script src="../assets/js/main.js"></script>
+     
 </body>
 </html>
