@@ -607,6 +607,7 @@ p{
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
+    
 }
 
 .tela-de-edicao-projeto-fundo {
@@ -617,6 +618,7 @@ p{
     width: 50%;
     border-radius: 10px;
     gap: 10px;
+   
 }
 
 .tela-de-edicao-projeto-conteudo{
@@ -627,6 +629,7 @@ p{
     display: flex;
     gap: 20px;
     flex-direction: column;
+    
 }
 
 .img-editar{
@@ -722,6 +725,7 @@ p{
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
+    overflow: scroll;
 }
 
 .tela-inativa-projeto-fundo {
@@ -732,6 +736,8 @@ p{
     width: 50%;
     border-radius: 10px;
     gap: 10px;
+    
+    
 }
 
 .tela-inativa-projeto-conteudo{
@@ -742,6 +748,8 @@ p{
     display: flex;
     gap: 20px;
     flex-direction: column;
+    
+ 
 }
 
 .quadro {
@@ -769,4 +777,67 @@ p{
 }
 .opcoes li:hover {
     background-color: #d3d3d3;
+}
+
+.div-btn-inativar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.btn-inativa{
+    background-color: #E3B652;
+    color: black;
+    width: 200px;
+    height: 45px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+}
+
+/* tela confirma inativação */
+
+.tela-confirmacao-inativacao{
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.card-confirma-inativacao{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    padding: 20px;
+    margin: 15% auto;
+    width: 20%;
+    border-radius: 10px;
+    gap: 10px;
+}
+
+.div-confirma-inativacao{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.img-lixeira{
+    width: 50px;
+    height: 50px;
+}
+
+.titulo-confirma-inativacao{
+    font-size: 20px;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    color: #9747FF;
+    
 }
