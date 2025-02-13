@@ -398,3 +398,114 @@ header nav.active {
         gap: 70px;
     }
 }
+
+
+/* !!! COPIAR ESSA PARTE ABAIXO SE VOCÊ NÂO TIVER O EFEITO POP-UP LOGIN */
+#login-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+#block-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+#login-popup.ativo {
+    opacity: 1;
+    visibility: visible;
+}
+
+#login-popup.ativo #popup {
+    margin-top: 0;
+}
+
+#block-popup.ativo {
+    opacity: 1;
+    visibility: visible;
+}
+
+#block-popup.ativo #popup {
+    margin-top: 0;
+}
+
+#popup {
+    background-color: var(--container-background);
+    border-radius: 10px;
+    display: flex;
+    padding: 15px 35px;
+    gap: 50px;
+    margin-top: 100%;
+    height: 150px;
+    transition: .5s ease;
+    color: aliceblue;
+}
+
+#popup .msg {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: space-around;
+}
+
+#popup .msg h1 {
+    line-height: 1.2;
+    font-size: 1.3em;
+    font-weight: 400;
+    color: #9747FF;
+    width: 100%;
+}
+
+#popup .msg p {
+    font-size: 14px;
+}
+#popup .block-buttons {
+    display: flex;
+    gap: 60px;
+    justify-content: center;
+}
+#popup button {
+    font-family: "Poppins", serif;
+    font-size: 0.9em;
+    transition: 0.2s;
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.396);
+}
+#popup button:hover {
+    filter: brightness(0.8);
+}
+
+#popup .btn-sim {
+    background-color: #51CD32;
+    border: none;
+    width: 80px;
+    height: 35px;
+    border-radius: 5px;
+}
+#popup .btn-nao {
+    background-color: #E41D1D;
+    border: none;
+    width: 80px;
+    height: 35px;
+    border-radius: 5px;
+}

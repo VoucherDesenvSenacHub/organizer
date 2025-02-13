@@ -13,3 +13,25 @@ window.addEventListener('resize', () => {
         hamburguer.classList.remove('active');
     }
 });
+
+function loginPopup() {
+    const fundoPopup = document.getElementById('login-popup');
+    fundoPopup.classList.add('ativo');
+
+    fundoPopup.addEventListener('click', (event) => {
+        if (event.target === fundoPopup) {
+            fundoPopup.classList.remove('ativo');
+        }
+    });
+}
+
+function blockpopup() {
+    const fundoPopup = document.getElementById('block-popup');
+    fundoPopup.classList.add('ativo');
+
+    fundoPopup.addEventListener('click', (event) => {
+        if (event.target === fundoPopup) {
+            fundoPopup.classList.remove('ativo');
+        }
+    });
+}

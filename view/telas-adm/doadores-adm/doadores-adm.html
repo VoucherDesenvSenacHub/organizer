@@ -25,12 +25,32 @@
                 </ul>
             </nav>
             <div class="btn-login">
-                <button class="btn" id="openPopup" onclick="loginPopup()">LOGIN</button>
+                <button class="btn">LOGIN</button>
                 <button onclick="menu_mobile()" id="hamburguer"></button>
             </div>
         </div>
     </header>
     <!-- Fim cabeçalho -->
+
+    <div id="login-popup">
+        <div id="popup">
+            <div class="msg">
+                <h1>BLOQUEAR ESSE USUÁRIO?</h1>
+                <div class="block-buttons">
+                    <button onclick="blockpopup()" class="btn-sim">SIM</button>
+                    <button class="btn-nao">NÃO</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="block-popup">
+        <div id="popup">
+            <div class="msg">
+                <h1>USUÁRIO BLOQUEADO</h1>
+            </div>
+        </div>
+    </div>
 
 
     <!-- Início DIV principal -->
@@ -54,11 +74,10 @@
                 </div>
                 <div class="card-dir">
                     <p class="email_doador">28/08/2024</p>
-                    <button class="btn_delete_user">
+                    <button onclick="loginPopup()" class="btn_delete_user">
                         <img class="img_delete_user" src="../assets-telas-adm/images/delete_user.png">
                     </button>
                 </div>
-
             </div>
 
             <div class="card_doador">
@@ -71,12 +90,12 @@
                 </div>
                 <div class="card-dir">
                     <p class="email_doador">28/08/2024</p>
-                    <button class="btn_delete_user">
+                    <button onclick="loginPopup()" class="btn_delete_user">
                         <img class="img_delete_user" src="../assets-telas-adm/images/delete_user.png">
                     </button>
                 </div>
-
             </div>
+
             <div class="card_doador">
                 <div class="card-esq">
                     <img class="perfil_img" src="../assets-telas-adm/images/Perfil.png">
@@ -87,12 +106,12 @@
                 </div>
                 <div class="card-dir">
                     <p class="email_doador">28/08/2024</p>
-                    <button class="btn_delete_user">
+                    <button onclick="loginPopup()" class="btn_delete_user">
                         <img class="img_delete_user" src="../assets-telas-adm/images/delete_user.png">
                     </button>
                 </div>
-
             </div>
+
             <div class="card_doador">
                 <div class="card-esq">
                     <img class="perfil_img" src="../assets-telas-adm/images/Perfil.png">
@@ -103,12 +122,12 @@
                 </div>
                 <div class="card-dir">
                     <p class="email_doador">28/08/2024</p>
-                    <button class="btn_delete_user">
+                    <button onclick="loginPopup()" class="btn_delete_user">
                         <img class="img_delete_user" src="../assets-telas-adm/images/delete_user.png">
                     </button>
                 </div>
-
             </div>
+
             <div class="card_doador">
                 <div class="card-esq">
                     <img class="perfil_img" src="../assets-telas-adm/images/Perfil.png">
@@ -119,11 +138,10 @@
                 </div>
                 <div class="card-dir">
                     <p class="email_doador">28/08/2024</p>
-                    <button class="btn_delete_user">
+                    <button onclick="loginPopup()" class="btn_delete_user">
                         <img class="img_delete_user" src="../assets-telas-adm/images/delete_user.png">
                     </button>
                 </div>
-
             </div>
 
         </div>
