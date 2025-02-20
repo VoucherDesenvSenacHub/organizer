@@ -16,6 +16,7 @@ window.addEventListener('resize', () => {
 
 function loginPopup() {
     const fundoPopup = document.getElementById('login-popup');
+    const btnNao = document.getElementById('btn-nao')
     fundoPopup.classList.add('ativo');
 
     fundoPopup.addEventListener('click', (event) => {
@@ -23,14 +24,22 @@ function loginPopup() {
             fundoPopup.classList.remove('ativo');
         }
     });
+
+    fundoPopup.addEventListener('click', (event) => {
+        if (event.target === btnNao) {
+            fundoPopup.classList.remove('ativo');
+        }
+    });
 }
 
 function blockpopup() {
-    const fundoPopup = document.getElementById('block-popup');
+    const fundoPopupBlock = document.getElementById('login-popup');
+    const fundoPopup = document.getElementById('block-popup')
     fundoPopup.classList.add('ativo');
 
     fundoPopup.addEventListener('click', (event) => {
         if (event.target === fundoPopup) {
+            fundoPopupBlock.classList.remove('ativo');
             fundoPopup.classList.remove('ativo');
         }
     });
