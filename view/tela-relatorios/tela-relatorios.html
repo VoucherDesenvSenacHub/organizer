@@ -8,13 +8,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
         integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="tela-relatorios.css">
 </head>
 
 <body>
 
-    <!-- PASSO 1: VOCÊ TEM QUE APAGAR O <header> DO SEU CÓDIGO E COLAR ESSE NO LUGAR -->
-    <!-- !!!!! COPIAR APENAS ESSE <header>  -->
     <header>
         <div class="container">
             <div class="logo">
@@ -55,12 +53,69 @@
     </div>
     <main>
         <section>
-            <div class="container">
+            <div id="principal">
+                <div class="topo-relatorios">
+                    <h1>RELATÓRIOS</h1>
+                </div>
+                <div class="conteudo-relatorios">
+                    <div class="relatorio-voluntarios">
+                        <div class="topo-grafico">
+                            <h2>Voluntários por Projeto</h2>
+                            <button>
+                                <img src="../assets/images/icon-download-report.png" alt="">
+                            </button>
+                        </div>
+                            <img src="../assets/images/graph-vol-proj.png" alt="">
+                        <span class="rodape-grafico">
+                            <img src="../assets/images/SquareFill.png" alt="">
+                            <p>Voluntários</p>
+                        </span>
+                    </div>
+                    <div class="relatorio-doacoes-mensais">
+                        <div class="topo-grafico">
+                            <h2>Doações Mensais</h2>
+                            <button>
+                                <img src="../assets/images/icon-download-report.png" alt="">
+                            </button>
+                        </div>
+                        <img src="../assets/images/montly-donation.png" alt="">
+                        <span class="rodape-grafico">
+                            <img src="../assets/images/donation.png" alt="">
+                            <p>Doações</p>
+                        </span>
+                    </div>
+                    <div class="relatorio-doacoes-projeto">
+                        <div class="topo-grafico">
+                            <h2>Doações por Projeto</h2>
+                            <button>
+                                <img src="../assets/images/icon-download-report.png" alt="">
+                            </button>
+                        </div>
+                        <img src="../assets//images/pie-graph.png" alt="">
+                        <img src="../assets//images/legend-pie-graph.png" alt="">
+                    </div>
+                    <div class="relatorio-doacoes-voluntario">
+                        <div class="topo-grafico">
+                            <h2>Doações/Voluntários por Projeto</h2>
+                            <button>
+                                <img src="../assets/images/icon-download-report.png" alt="">
+                            </button>
+                        </div>
+                        <img src="../assets/images/yAxisTop.png" alt="" id="axis">
+                        <img src="../assets/images/volunt-doac-relat.png" alt="">
+                        <span class="rodape-grafico">
+                            <img src="../assets/images/greenSquare.png" alt="">
+                            <p>Doações</p>
+                            <img src="../assets/images/blueSquare.png" alt="">
+                            <p>Voluntários</p>
+                        </span>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
 
-    <!-- ENTRE NO MEU ARQUIVO (main.js) E COPIE O CÓDIGO MARCADO LÁ -->
+
     <script src="../js/main.js"></script>
 </body>
 
