@@ -32,22 +32,46 @@ body {
     border-radius: 8px;
     padding: 30px 15px;
     background-color: white;
-    color: red;
+    color: purple;
     font-size: 35px;
 
-    .card1{
+    .cards {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .icon {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+
+        button {
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+        }
+    }
+
+    .card1 {
         background-color: white;
+        color: black;
         border-radius: 10px;
         box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.2);
         padding: 20px;
         margin: 20px;
-        width: 300px;
+        width: 620px;
         display: flex;
         flex-direction: column;
-        align-items: center;
+        /* align-items: center; */
         justify-content: center;
-        text-align: center;
+        text-align: left;
         font-size: 20px;
+    }
+
+    .sub {
+        margin-top: 15px;
     }
 }
 
@@ -63,7 +87,7 @@ header .container {
 }
 
 
- /* CLASSE BOTÃO */
+/* CLASSE BOTÃO */
 .btn {
     padding: 10px 20px;
     border: none;
