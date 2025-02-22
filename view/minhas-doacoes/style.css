@@ -174,29 +174,85 @@ body{
 
 #principal {
     display: flex;
-    /* justify-content: space-around; */
-    justify-content: space-between;
-    width: 70%;
+    flex-direction: column;
+    align-items: center;
+    width: 55%;
     height: 580px;
     margin: 130px auto;
     background-color: #FFFFFF;
     border-radius: 8px;
     padding: 10px;
+    overflow-y: auto;
+    overflow-x: hidden;
+
 
 }
 #principal h1{
     color: #5282E3;
     font-family: 'Poppins', serif;
-    width: 30%;
-    height: 150px;
+    text-align: left;
+    width: 100%;
 }
 
 .card{
-    background: #5282E3;
+    background: #FFFFFF;
     display:flex;
     justify-content: space-between;
-    width: 100%;
+    align-items: center;
+    width: 95%;
     height: 100px;
-    margin: 200px auto;
+    /* margin: 200px auto; */
+    border-radius: 5px;
+    box-shadow: 0 3px 7px #00000096;
+    padding: 8px;
    
+}
+
+.pleaceholder{
+    height: 100px;
+    border-radius: 3px;
+}
+.card_esq{
+    display: flex;
+    
+    
+}
+.card_esq .info{
+    margin-left: 10px;
+} 
+.card_esq .info h2{
+    color: #FF5A79;
+    margin: 0;
+    padding: 0;
+}
+.card_esq .info p{
+    margin: 0;
+    padding: 0;
+}
+.btn_comprovante{
+    height: 58px;
+    width: 130px;
+    background-color: #1C3464;
+    color: #FFFFFF;
+    margin-right: 10px;
+    border: none;
+    border-radius: 3px;
+    font-family: "Poppins", serif ; 
+    transition: 0.2s;
+}
+.btn_comprovante:hover{
+    background-color: #5282E3;
+}
+.cardes {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.grafico{
+    height: 500px;
+    
 }
