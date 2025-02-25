@@ -192,6 +192,8 @@ body{
     font-family: 'Poppins', serif;
     text-align: left;
     width: 100%;
+    font-weight: 500;
+    margin-left: 50px;
 }
 
 .card{
@@ -254,5 +256,63 @@ body{
 
 .grafico{
     height: 500px;
+    margin-right: 200px;
     
+}
+
+.caixa_grafico1{
+    background-color: #FF5A79;
+    display: flex;
+    width: 20px;
+    height: 20px;
+}
+.caixa_grafico2{
+    background-color:#5282E3;
+    display: flex;
+    width: 20px;
+    height: 20px;
+}
+.caixa_grafico3{
+    background-color:#E3B652;
+    display: flex;
+    width: 20px;
+    height: 20px;
+    justify-content: space-between;
+}
+
+.legenda_grafico{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    text-align: left;
+    
+
+}
+.legendas{
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
+    gap: 0px;
+    text-align: left;
+    width: 100%;
+    margin-top:150px;
+    font-weight: 400;
+}
+.caixas_grafico{
+    display: flex;
+    flex-direction: column;
+    gap: 33px;
+    margin-top: 170px;
+    margin-left: 60px;
+}
+.info_top{
+    display: flex;
+    gap: 5px;
+    width: 100%;
+    margin-left: 50px;
+    font-size: 1.3em;
+}
+.negrito{
+    font-weight: 600;
 }
