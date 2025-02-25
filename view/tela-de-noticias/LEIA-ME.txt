@@ -1,0 +1,11 @@
+- Na parte do HTML, você vai ter que apagar seu <header> inteiro e colar o meu no lugar
+
+
+NO CSS:
+ - Você precisa apagar todo o seu estilo que meche com a nav-bar antiga
+ - E colar o novo CSS no lugar
+!!!!! Essa é a parte que pode entrar em conflito se você deixar algum estilo antigo.
+
+
+
+ !Lembre-se de copiar o código do JavaScript tmb e conectar ele com o HTML
