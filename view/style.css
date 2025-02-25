@@ -10,7 +10,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: #f5f5f5;
+    background: #ffffff;
 }
 
 .container {
@@ -18,9 +18,10 @@ body {
     background: white;
     width: 800px;
     border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.348);
     overflow: hidden;
 }
+
 
 /* Barra lateral */
 .sidebar {
@@ -30,8 +31,8 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    border-right: 1px  solid#ffffff;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-right: 12px  #ffffff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.16);
 }
 
 .profile {
@@ -41,32 +42,34 @@ body {
 .profile img {
     width: 100px;
     height: 100px;
-    border-radius: 100%;
-    border: 3px solid #000000;
+    border-radius: 50%;
+    border: 3px solid #ddd;
 }
 
 .username {
-    font-size: 18px;
-    font-weight: bold;
+    font-size: 24px;
     margin: 10px 0;
 }
 
 .email {
-    font-size: 14px;
-    color: #808080;
+    font-size: 16px;
+    color: #66666692;
 }
 
 .logout {
-    margin-top: 20px;
+    margin-top: 250px;
     padding: 10px;
-    width: 100%;
+    width: 220px;
+    height: 50px;
     background: #e74c3c;
-    color: rgb(255, 255, 255);
+    color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 4px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 24px;
+    
 }
+
 
 .logout:hover {
     background: #c0392b;
@@ -74,9 +77,22 @@ body {
 
 /* Conteúdo principal */
 .main-content {
-    flex: 1;
+    flex: 1px;
     padding: 20px;
+    
 }
+.container1{
+    flex: 1px;
+    padding: 20px;
+
+}
+.container2{
+    flex: 1px;
+    padding: 20px;
+    
+}
+
+
 
 h2 {
     color: #007bff;
@@ -95,18 +111,35 @@ h2 {
 
 label {
     display: block;
-    font-weight: bold;
+    font-size: 18px;
     margin-bottom: 5px;
 }
 
 .input-box {
-    background: #ffffff;
+    background: #f9f9f9;
     padding: 10px;
     border-radius: 5px;
     display: flex;
     align-items: center;
-    border: 1px solid #ddd;
-    width: 250px;
+    border: 1px solid #ededed;
+
+}
+.input-email {
+    background: #f9f9f9;
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    border: 1px solid #ededed;
+    width: 50%;
+}
+.input-email input {
+    border: none;
+    background: transparent;
+    width: 100%;
+    font-size: 16px;
+    outline: none;
+    cursor: default;
 }
 
 .input-box span {
@@ -118,16 +151,16 @@ label {
     border: none;
     background: transparent;
     width: 100%;
-    font-size: 14px;
+    font-size: 16px;
     outline: none;
-
+    cursor: default;
 }
 
 /* Botão de alterar senha */
 .change-password {
-    width: 250px;
+    width: 50%;
     padding: 10px;
-    background: #ddd;
+    background: #f4f4f4;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -135,5 +168,5 @@ label {
 }
 
 .change-password:hover {
-    background: #c7c7c7;
+    background: #f0f0f0e6;
 }

@@ -5,64 +5,74 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil de Usuário</title>
     <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
 </head>
 <body>
     <div class="container">
         <!-- Barra lateral -->
         <div class="sidebar">
             <div class="profile">
-                <img src="avatar.jpg" alt="Foto de Perfil">
+                <img src="Foto.png" alt="Foto de Perfil">
                 <p class="username">Julia</p>
                 <p class="email">julia@gmail.com.br</p>
             </div>
-            <button class="logout">⟲ Sair</button>
+            <div>
+                <button class="logout">
+                    <span class="material-symbols-outlined">
+                        logout
+                        </span>Sair</button>
+            </div>
         </div>
+        
 
         <!-- Conteúdo principal -->
         <div class="main-content">
-            <h2>MEU PERFIL</h2>
-            <div class="info-grid">
-                <div class="info">
-
-                    <label for="nome">Nome</label>
-                    <div class="input-box">
-                        <span>👤</span>
-                        <input type="text" id="nome" name="nome" placeholder="Julia" >
+            <div class="content2">
+                    <h2>MEU PERFIL</h2>
+                <div class="info-grid">
+                    <div class="info">
+                        <label for="nome">Nome</label>
+                        <div class="input-box">
+                            <span></span>
+                            <input type="text" id="nome" value="Julia" >
+                        </div>
                     </div>
-                </div>
-                <div class="info">
-                    <label for="telefone">Telefone</label>
-                    <div class="input-box">
-                        <span>📞</span>
-                        <input type="text" id="telefone" name="telefone"  placeholder="(00) 00000-0000" >
+                    <div class="info">
+                        <label for="telefone">Telefone</label>
+                        <div class="input-box">
+                            <span></span>
+                            <input type="number" id="telefone" placeholder="(00) 00000-0000" >
+                        </div>
                     </div>
-                </div>
-                <div class="info">
-                    <label for="cpf">CPF</label>
-                    <div class="input-box">
-                        <span>🆔</span>
-                        <input type="text" id="cpf" name="cpf" placeholder="000.000.000-00" >
+                    <div class="info">
+                        <label for="cpf">CPF</label>
+                        <div class="input-box">
+                            <span></span>
+                            <input type="number" id="cpf" placeholder="000.000.000-00" >
+                        </div>
                     </div>
-                </div>
-                <div class="info">
-                    <label for="nascimento">Data de Nascimento</label>
-                    <div class="input-box">
-                        <span>📅</span>
-                        <input type="text" id="nascimento" name="nascimento" placeholder="DD/MM/AA" >
+                    <div class="info">
+                        <label for="nascimento">Data de Nascimento</label>
+                        <div class="input-box">
+                            <span></span>
+                            <input type="date" id="nascimento" value="DD/MM/AA" >
+                        </div>
                     </div>
                 </div>
             </div>
-
-            <h2>LOGIN</h2>
-            <div class="info">
+            <div class="content1">
+                <h2 >LOGIN</h2>
+                <div class="info">
                 <label for="email">Email</label>
-                <div class="input-box">
-                    <span>📧</span>
-                    <input type="email" id="email" name="email" placeholder="julia@gmail.com.br" >
+                <div class="input-email">
+                    <span></span>
+                    <input type="email" id="email" value="julia@gmail.com.br" >
+                    </div>
                 </div>
-            </div>
 
             <button class="change-password"> Alterar Senha</button>
+            </div>
         </div>
     </div>
 </body>
