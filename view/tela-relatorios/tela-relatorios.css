@@ -3,6 +3,128 @@
 @import url("../css/style.css");
 @import url("../assets//css/style.css");
 
+header .container {
+    max-width: 1200px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    margin: 0 auto;
+}
+
+
+/* CLASSE BOTÃO */
+.btn {
+    padding: 10px 20px;
+    border: none;
+    background-color: #E3B652;
+    border-radius: 4px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    cursor: pointer;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: #1C3464;
+    transition: .3s;
+}
+
+.btn:hover {
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    background-color: #cca44d;
+}
+
+.btn a {
+    text-decoration: none;
+    color: #1C3464;
+}
+
+header {
+    padding: 0 30px;
+    height: 60px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    background-color: #1C3464;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+
+header .logo {
+    color: aliceblue;
+}
+
+header nav ul {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+header nav ul li {
+    transform: translateY(0);
+    transition: .3s;
+}
+
+header nav ul li:hover {
+    transform: translateY(-2px);
+}
+
+header nav a {
+    color: aliceblue;
+    text-decoration: none;
+    padding-block: 8px;
+    transform: translateY(0);
+    transition: .3s;
+}
+
+header nav a:hover {
+    color: #E3B652;
+}
+
+header .btn-login {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+header nav.active {
+    display: block;
+    height: 180px;
+    transition: .3s;
+}
+
+#hamburguer {
+    border: none;
+    border-top: 4px solid #E3B652;
+    background: none;
+    border-radius: 3px;
+    display: none;
+    cursor: pointer;
+    position: relative;
+}
+
+#hamburguer::after,
+#hamburguer::before {
+    content: '';
+    margin-top: 3px;
+    width: 30px;
+    height: 4px;
+    display: block;
+    background-color: #E3B652;
+    border-radius: 3px;
+    transition: .3s;
+}
+
+#hamburguer.active {
+    border: none;
+}
+
+#hamburguer.active::after {
+    transform: rotate(45deg);
+    top: 0;
+    position: absolute;
+}
+
+#hamburguer.active::before {
+    transform: rotate(-45deg);
+}
 
 #principal {
     display: flex;
@@ -10,12 +132,10 @@
     justify-content: start;
     position: absolute;
     margin-top: 200px;
-    margin-bottom: 100px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 90%;
-    /* height: 100vh; */
     background-color: #FFF;
 }
 .topo-relatorios {
@@ -71,5 +191,69 @@
     gap: 10px;
     p {
         font-size: 12px;
+    }
+}
+
+
+
+/* Responsivo */
+@media (max-width: 481px) {
+    header nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #1C3464;
+        overflow: hidden;
+        box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;
+        height: 0;
+        transition: .3s;
+        z-index: 999;
+    }
+
+    header nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        padding: 15px 0;
+    }
+
+    #hamburguer {
+        display: block;
+    }
+
+    #fundo-popup #popup .img {
+        display: none;
+    }
+    #principal {
+        margin-top: 200px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 90%;
+        background-color: #FFF;
+    }
+    .relatorio-voluntarios,
+    .relatorio-doacoes-mensais,
+    .relatorio-doacoes-projeto,
+    .relatorio-doacoes-voluntario {
+        width: 90%;
+        
+        h2{
+            font-size: 14px;
+            font-weight: 300;
+        }
+        img {
+            width: 90%;
+        }
+    }
+    .rodape-grafico img {
+        width: 5%;
+    }
+    #pie-graph {
+        width: 70%;
+    }
+    #legend-pie-graph {
+        width: 10%;
     }
 }
