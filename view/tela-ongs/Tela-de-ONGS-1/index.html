@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Descubra as ONGs</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="/view/tela-ongs/Tela-de-ONGS-1/svgs projeto ongs/Logo.svg" alt="Logo" class="logo-img">
+            </div>
+            <nav id="nav-bar">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#">Ongs</a></li>
+                    <li><a href="#">Projetos</a></li>
+                    <li><a href="#">Notícias</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <button class="search-btn">
+                    <img src="/view/tela-ongs/Tela-de-ONGS-1/svgs projeto ongs/Busca.svg" alt="Buscar">
+                </button>
+                <button class="btn" id="openPopup" onclick="loginPopup()">LOGIN</button>
+                <button onclick="menu_mobile()" id="hamburguer"></button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="hero-section">
+            <div class="hero-content">
+                <h1>ENCONTRE PROJETOS</h1>
+                <h2>Explore projetos inspiradores e apoie causas e faça a diferença hoje mesmo.</h2>
+                <div class="filters-container">
+                    <div class="filters">
+                        <select>
+                            <option value="">Status</option>
+                            <option value="em-andamento">Em andamento</option>
+                            <option value="concluido">Concluído</option>
+                        </select>
+                        <select>
+                            <option value="">Categoria</option>
+                            <option value="sport">Esporte</option>
+                            <option value="saude">Saúde</option>
+                            <option value="educacao">Educação</option>
+                            <option value="tecnologia">Tecnologia</option>
+                            <option value="cultura">Cultura</option>
+                            <option value="meio-ambiente">Meio Ambiente</option>
+                            <option value="direitos-humanos">Direitos Humanos</option>
+                            <option value="assistencia-social">Assistência Social</option>
+                        </select>
+                        <select>
+                            <option value="">Região</option>
+                            <option value="norte">Norte</option>
+                            <option value="sul">Sul</option>
+                            <option value="leste">Leste</option>
+                            <option value="oeste">Oeste</option>
+                        </select>
+                        <button class="filter-btn">Filtrar</button>
+                    </div>
+                </div>
+            </div>
+            <div class="illustration">
+                <img src="/view/tela-ongs/Tela-de-ONGS-1/svgs projeto ongs/Busca.svg" alt="Ilustração">
+            </div>
+        </div>
+
+        <h2>🌎 TODAS AS ONGS</h2>
+
+        <div class="ong-grid">
+            <!-- Card 1 -->
+            <div class="card">
+                <button class="heart-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                    </svg>
+                </button>
+                <button class="share-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/>
+                    </svg>
+                </button>
+                <div class="img">250x130</div>
+                <div class="info">
+                    <h5>ONG Todos Juntos</h5>
+                    <p>Projeto de assistência social para comunidades carentes.</p>
+                    <div class="barra-doacao">
+                        <span>45%</span>
+                        <div class="barra">
+                            <div class="barra-laranja" style="width: 45%"></div>
+                        </div>
+                    </div>
+                </div>
+                <button class="saiba-mais">Saiba Mais</button>
+            </div>
+        </div>
+
+        <div class="pagination">
+            <span class="page-number active">1</span>
+            <span class="page-number">2</span>
+            <span class="page-number">3</span>
+            <span class="page-number">4</span>
+            <span class="page-number">></span>
+        </div>
+    </main>
+
+    <!-- Popup de Login -->
+    <div id="fundo-popup">
+        <div class="popup">
+            <div class="popup-header">
+                <h3>Login</h3>
+                <button class="close-btn">&times;</button>
+            </div>
+            <form class="popup-form">
+                <input type="email" placeholder="E-mail" required>
+                <input type="password" placeholder="Senha" required>
+                <button type="submit">Entrar</button>
+                <a href="#">Esqueceu a senha?</a>
+                <a href="#">Criar conta</a>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

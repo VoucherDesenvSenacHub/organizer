@@ -1,0 +1,507 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #1e3771;
+}
+
+header {
+    padding: 0 30px;
+    height: 80px;
+    background-color: #1C3464;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.24);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-img {
+    height: 60px;
+}
+
+nav ul {
+    display: flex;
+    gap: 48px;
+    list-style: none;
+    margin-left: 48px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #E3B652;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.search-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+}
+
+.search-btn img {
+    width: 24px;
+    height: 24px;
+}
+
+.btn {
+    background: #E3B652;
+    color: #1C3464;
+    padding: 8px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+.btn:hover {
+    background: #d4a73b;
+}
+
+#hamburguer {
+    display: none;
+    background: none;
+    border: none;
+    width: 30px;
+    height: 24px;
+    position: relative;
+    cursor: pointer;
+}
+
+main {
+    background: white;
+    padding: 2rem;
+    margin: 2rem;
+    border-radius: 8px;
+}
+
+.hero-section {
+    display: flex;
+    gap: 4rem;
+    margin-bottom: 2rem;
+    align-items: flex-start;
+    position: relative;
+}
+
+.hero-content {
+    flex: 1;
+}
+
+.hero-content h1 {
+    color: #4169E1;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.hero-content h2 {
+    color: #666;
+    font-size: 1.2rem;
+    font-weight: normal;
+    margin-bottom: 2rem;
+}
+
+.illustration {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 2rem;
+}
+
+.illustration img {
+    max-width: 100%;
+    height: auto;
+}
+
+.filters-container {
+    margin: 2rem 0;
+}
+
+.filters {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+select {
+    padding: 12px 16px;
+    border: 1px solid #E8E8E8;
+    border-radius: 6px;
+    background: white;
+    color: #333;
+    font-size: 14px;
+    cursor: pointer;
+    min-width: 160px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+select:focus {
+    outline: none;
+    border-color: #E3B652;
+}
+
+.filter-btn {
+    background: #E3B652;
+    color: #1C3464;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.filter-btn:hover {
+    background: #d4a73b;
+}
+
+.ong-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 24px;
+    padding: 24px 0;
+}
+
+.card {
+    width: 280px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 12px;
+    background-color: #E3B652;
+    transition: all 0.3s ease;
+    z-index: 1;
+}
+
+.img {
+    height: 160px;
+    background: #F5F5F5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.info {
+    padding: 16px;
+    position: relative;
+    z-index: 1;
+}
+
+.info h5 {
+    color: #333;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.info p {
+    color: #666;
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 16px;
+}
+
+.barra-doacao {
+    padding: 16px;
+    border-top: 1px solid #F0F0F0;
+    position: relative;
+    z-index: 1;
+}
+
+.barra-doacao span {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.barra {
+    height: 6px;
+    background: #F0F0F0;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.barra-laranja {
+    height: 100%;
+    background: #E3B652;
+    border-radius: 3px;
+}
+
+.heart-btn, .share-btn {
+    position: absolute;
+    top: 12px;
+    background: white;
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    z-index: 2;
+}
+
+.heart-btn {
+    right: 12px;
+}
+
+.share-btn {
+    right: 52px;
+    opacity: 0;
+    transform: translateX(10px);
+}
+
+.card:hover .share-btn {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.heart-btn svg, .share-btn svg {
+    width: 18px;
+    height: 18px;
+    stroke: #666;
+}
+
+.heart-btn.active svg {
+    fill: #ff6b6b;
+    stroke: #ff6b6b;
+}
+
+.saiba-mais {
+    width: 100%;
+    padding: 16px;
+    background: #4169E1;
+    color: white;
+    border: none;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    position: absolute;
+    bottom: -50px;
+    left: 0;
+    transition: all 0.3s ease;
+    z-index: 3;
+}
+
+.card:hover {
+    transform: translateY(-12px);
+}
+
+.card:hover::after {
+    bottom: -12px;
+}
+
+.card:hover .saiba-mais {
+    bottom: 0;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 2rem;
+}
+
+.page-number {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #E8E8E8;
+    border-radius: 6px;
+    cursor: pointer;
+    color: #333;
+    transition: all 0.3s;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.page-number:hover {
+    background: #E3B652;
+    color: white;
+    border-color: #E3B652;
+}
+
+.page-number.active {
+    background: #E3B652;
+    color: white;
+    border-color: #E3B652;
+}
+
+#fundo-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+#fundo-popup.ativo {
+    display: flex;
+}
+
+.popup {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    width: 400px;
+    position: relative;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.popup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #666;
+}
+
+.popup-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.popup-form input {
+    padding: 10px;
+    border: 1px solid #E8E8E8;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.popup-form input:focus {
+    outline: none;
+    border-color: #E3B652;
+}
+
+.popup-form button {
+    background: #E3B652;
+    color: #1C3464;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.popup-form a {
+    color: #666;
+    text-decoration: none;
+    text-align: center;
+    font-size: 14px;
+}
+
+.popup-form a:hover {
+    color: #E3B652;
+}
+
+
+@media (max-width: 768px) {
+    #hamburguer {
+        display: block;
+    }
+
+    nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #1C3464;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s;
+    }
+
+    nav.active {
+        max-height: 300px;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+    }
+
+    .hero-section {
+        flex-direction: column;
+    }
+
+    .filters {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    select, .filter-btn {
+        width: 100%;
+    }
+
+    .popup {
+        width: 90%;
+        margin: 20px;
+    }
+
+    .ong-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .card {
+        width: 100%;
+    }
+
+    .illustration {
+        display: none;
+    }
+}
