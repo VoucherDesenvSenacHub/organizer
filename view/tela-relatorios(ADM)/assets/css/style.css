@@ -80,6 +80,7 @@ body {
 
     #download p{
         font-size: 18px;
+        color: black;
     }
 
     #download {
@@ -91,7 +92,7 @@ body {
         padding: 20px;
         position: fixed;
         right: 76px;
-        background-color: pink;
+        background-color: rgb(123, 215, 238);
         border-radius: 5px;
         top: 125px;
         display: none;
