@@ -414,21 +414,6 @@ header nav.active {
 
 
 /* !!! COPIAR ESSA PARTE ABAIXO SE VOCÊ NÂO TIVER O EFEITO POP-UP LOGIN */
-#login-popup {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 999;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: rgba(0, 0, 0, 0.5);
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
-}
 #block-popup {
     position: fixed;
     top: 0;
@@ -444,14 +429,20 @@ header nav.active {
     visibility: hidden;
     transition: opacity 0.3s ease, visibility 0.3s ease;
 }
-
-#login-popup.ativo {
-    opacity: 1;
-    visibility: visible;
-}
-
-#login-popup.ativo #popup {
-    margin-top: 0;
+#block-popup2 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
 #block-popup.ativo {
@@ -459,7 +450,16 @@ header nav.active {
     visibility: visible;
 }
 
-#block-popup.ativo #popup {
+#block-popup.ativo #ipopup {
+    margin-top: 0;
+}
+
+#block-popup2.ativo {
+    opacity: 1;
+    visibility: visible;
+}
+
+#block-popup2.ativo #ipopup {
     margin-top: 0;
 }
 
@@ -474,7 +474,7 @@ header nav.active {
 }
 
 
-#popup {
+#ipopup {
     background-color: var(--container-background);
     border-radius: 10px;
     display: flex;
@@ -486,7 +486,7 @@ header nav.active {
     color: aliceblue;
 }
 
-#popup .msg {
+#ipopup .msg {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -494,7 +494,7 @@ header nav.active {
     justify-content: space-around;
 }
 
-#popup .msg h1 {
+#ipopup .msg h1 {
     line-height: 1.2;
     font-size: 1.3em;
     font-weight: 400;
@@ -502,32 +502,32 @@ header nav.active {
     width: 100%;
 }
 
-#popup .msg p {
+#ipopup .msg p {
     font-size: 14px;
 }
-#popup .block-buttons {
+#ipopup .block-buttons {
     display: flex;
     gap: 60px;
     justify-content: center;
 }
-#popup button {
+#ipopup button {
     font-family: "Poppins", serif;
     font-size: 0.9em;
     transition: 0.2s;
     box-shadow: 0 3px 3px rgba(0, 0, 0, 0.396);
 }
-#popup button:hover {
+#ipopup button:hover {
     filter: brightness(0.8);
 }
 
-#popup .btn-sim {
+#ipopup .btn-sim {
     background-color: #51CD32;
     border: none;
     width: 80px;
     height: 35px;
     border-radius: 5px;
 }
-#popup .btn-nao {
+#ipopup .btn-nao {
     background-color: #E41D1D;
     border: none;
     width: 80px;
