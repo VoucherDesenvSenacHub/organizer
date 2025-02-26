@@ -1,3 +1,4 @@
+/* Reset e Estilos Globais */
 * {
     margin: 0;
     padding: 0;
@@ -9,6 +10,7 @@ body {
     background-color: #1e3771;
 }
 
+/* Header */
 header {
     padding: 0 30px;
     height: 80px;
@@ -93,6 +95,7 @@ nav a:hover {
     cursor: pointer;
 }
 
+/* Main */
 main {
     background: white;
     padding: 2rem;
@@ -180,21 +183,42 @@ select:focus {
     background: #d4a73b;
 }
 
+/* Cards */
+
+
+
 .ong-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 24px;
+    grid-template-columns: repeat(3, minmax(280px, 1fr));
+    gap: 80px;
+    margin: 0px 140px;
     padding: 24px 0;
 }
 
+.titulo.projetos {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.titulo.projetos img {
+    width: 80px;
+    height: auto;
+}
+
+.titulo.projetos h2 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
 .card {
-    width: 280px;
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    background-color: white;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    border-radius: 10px;
     overflow: hidden;
     position: relative;
-    transition: all 0.3s ease;
+    transition: .3s;
 }
 
 .card::after {
@@ -238,20 +262,20 @@ select:focus {
 }
 
 .barra-doacao {
+    display: flex;
+    align-items: center;
     padding: 16px;
     border-top: 1px solid #F0F0F0;
-    position: relative;
-    z-index: 1;
 }
 
 .barra-doacao span {
     color: #666;
     font-size: 14px;
-    margin-bottom: 8px;
-    display: block;
+    margin-right: 8px;
 }
 
 .barra {
+    flex: 1;
     height: 6px;
     background: #F0F0F0;
     border-radius: 3px;
@@ -307,20 +331,22 @@ select:focus {
     stroke: #ff6b6b;
 }
 
+.share-btn.active svg {
+    fill: #4169E1;
+    stroke: #4169E1;
+}
+
 .saiba-mais {
     width: 100%;
     padding: 16px;
     background: #4169E1;
     color: white;
     border: none;
-    font-size: 14px;
-    font-weight: 500;
-    cursor: pointer;
+    font-size: 15px;
+    letter-spacing: 1px;
     position: absolute;
-    bottom: -50px;
-    left: 0;
-    transition: all 0.3s ease;
-    z-index: 3;
+    bottom: -135px;
+    z-index: 10;
 }
 
 .card:hover {
@@ -333,8 +359,11 @@ select:focus {
 
 .card:hover .saiba-mais {
     bottom: 0;
+    transition: .3s ease;
+    cursor: pointer;
 }
 
+/* Paginação */
 .pagination {
     display: flex;
     justify-content: center;
@@ -357,9 +386,10 @@ select:focus {
 }
 
 .page-number:hover {
-    background: #E3B652;
+    background: #d69f27;
     color: white;
     border-color: #E3B652;
+    transition: 600ms;
 }
 
 .page-number.active {
@@ -368,6 +398,7 @@ select:focus {
     border-color: #E3B652;
 }
 
+/* Popup */
 #fundo-popup {
     position: fixed;
     top: 0;
@@ -448,7 +479,111 @@ select:focus {
     color: #E3B652;
 }
 
+/* Modal de Compartilhamento */
+.share-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
 
+.share-modal.active {
+    display: flex;
+}
+
+.share-modal-content {
+    background-color: #1B2B65;
+    padding: 2.5rem;
+    border-radius: 12px;
+    position: relative;
+    width: 90%;
+    max-width: 600px;
+    color: white;
+    display: flex;
+    align-items: center;
+}
+
+.share-close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: white;
+    padding: 4px;
+}
+
+.share-close-btn:hover {
+    color: #F4B63F;
+}
+
+.share-illustration {
+    width: 40%;
+    max-width: 200px;
+    height: auto;
+    margin-right: 2rem;
+}
+
+.share-modal-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.share-modal h2 {
+    color: #F4B63F;
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.share-modal p {
+    margin: 0.5rem 0 1.5rem 0;
+    color: #fff;
+    font-size: 1rem;
+}
+
+.share-link-container {
+    display: flex;
+    gap: 0.5rem;
+    width: 100%;
+}
+
+.share-link-container input {
+    flex: 1;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background: white;
+    font-size: 0.875rem;
+}
+
+#copy-button {
+    background-color: #F4B63F;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.2s;
+    white-space: nowrap;
+}
+
+#copy-button:hover {
+    background-color: #e5a730;
+}
+
+/* Responsividade */
 @media (max-width: 768px) {
     #hamburguer {
         display: block;
@@ -503,5 +638,33 @@ select:focus {
 
     .illustration {
         display: none;
+    }
+
+    .share-modal-content {
+        flex-direction: column;
+        padding: 2rem 1.5rem;
+    }
+
+    .share-illustration {
+        width: 60%;
+        max-width: 150px;
+        margin-right: 0;
+        margin-bottom: 1.5rem;
+    }
+
+    .share-modal-body {
+        align-items: center;
+    }
+
+    .share-modal p {
+        text-align: center;
+    }
+
+    .share-link-container {
+        flex-direction: column;
+    }
+
+    #copy-button {
+        width: 100%;
     }
 }
