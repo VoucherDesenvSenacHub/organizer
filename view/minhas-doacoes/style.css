@@ -193,7 +193,7 @@ body{
     text-align: left;
     width: 100%;
     font-weight: 500;
-    margin-left: 50px;
+    margin-left: 20px;
 }
 
 .card{
@@ -255,9 +255,10 @@ body{
 }
 
 .grafico{
-    height: 500px;
-    margin-right: 200px;
-    
+    display: flex;
+    /* height: 500px; */
+
+    margin-right: 25%;
 }
 
 .caixa_grafico1{
@@ -297,7 +298,7 @@ body{
     text-align: left;
     width: 100%;
     margin-top:150px;
-    font-weight: 400;
+    font-weight: 350;
 }
 .caixas_grafico{
     display: flex;
@@ -308,11 +309,32 @@ body{
 }
 .info_top{
     display: flex;
-    gap: 5px;
+    flex-direction: column;
+    justify-content: left;
+    /* gap: 5px; */
     width: 100%;
-    margin-left: 50px;
+    /* margin-left: 50px; */
     font-size: 1.3em;
+
+        p{
+            margin-left: 20px;
+        }
 }
-.negrito{
+
+p span{
     font-weight: 600;
+}
+
+.teste{
+    display: flex;
+    width: 500px;
+    height: 500px;
+
+    border-radius: 100%;
+    background: conic-gradient(
+        #FF5A79 0% 30%, 
+        #007AFF 30% 45%, 
+        #FCC21B 40% 100%
+    );
+    float: left;
 }
