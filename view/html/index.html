@@ -29,14 +29,41 @@
                     <li><a href="#">Notícias</a></li>
                 </ul>
             </nav>
-            <div class="btn-login">
+            <!-- <div class="btn-login">
                 <button class="btn" id="openPopup" onclick="loginPopup()">LOGIN</button>
                 <button onclick="menu_mobile()" id="hamburguer"></button>
-            </div>
+            </div> -->
+            <button onclick="asidebar()"><i class="fa-solid fa-bars"></i></button>
         </div>
     </header>
 
-
+    <aside id="aside">
+        <div class="topo-aside">
+            <div class="btn-fechar">
+                <button onclick="fechar_aside()"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="aside-nav">
+                <i class="fa-solid fa-coins"></i>
+                <p>Minhas doações</p>
+            </div>
+            <div class="aside-nav">
+                <i class="fa-solid fa-heart"></i>
+                <p>Favoritos</p>
+            </div>
+            <div class="aside-nav">
+                <i class="fa-solid fa-credit-card"></i>
+                <p>Meu cartões</p>
+            </div>
+            <div class="aside-nav">
+                <i class="fa-solid fa-user-group"></i>
+                <p>Participações</p>
+            </div>
+        </div>
+        <div class="aside-nav">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            <p>Sair</p>
+        </div>
+    </aside>
 
     <div id="fundo-popup">
         <div id="popup">

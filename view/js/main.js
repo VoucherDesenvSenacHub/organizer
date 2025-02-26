@@ -19,7 +19,15 @@ window.addEventListener('resize', () => {
     }
 });
 
+function asidebar(){
+    let aside = document.getElementById("aside");
+    aside.style.right= "0px"
+}
 
+function fechar_aside(){
+    let aside = document.getElementById("aside");
+    aside.style.right= "-200px"
+}
 // ============== ATÉ AQUI===============
 
 

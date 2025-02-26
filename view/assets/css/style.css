@@ -290,11 +290,11 @@ body {
     font-family: 'Poppins', sans-serif;
     background-color: #1C3464;
 }
-h1 {
+/* h1 {
     font-size: 1.5em;
     font-weight: 400;
     color: #5282E3;
-}
+} */
 a {
     text-decoration: none;
     transition: 0.7s;
@@ -308,69 +308,7 @@ a:hover {
 button:hover {
     cursor: pointer;
 }
-header {
-    display: flex;
-    position: fixed;
-    top: 0;
-    padding: 8px;
-    z-index: 999;
-    width: 100%;
-    background-color: #1C3464;
-    justify-content: space-around;
-    align-items: center;
-    border-bottom: 2px solid #5282E3;
-}
-#logo>img{
-    width: 50%;
-}
-#header-direita {
-    display: flex;
-    padding: 10px 30px;
-    gap: 60px;
-    align-items: center;
-}
-#btn-invisible {
-    display: none;
-}
-nav a {
-    gap: 30px;
-    color: #FFFFFF;
-    text-decoration: none;
-    padding: 30px;
-    font-weight: 600;
-    font-size: 1.3em;
-    letter-spacing: 3px;
-}
-nav ul li {
-    display: inline-block;
-}
-#hamburger {
-    display: none;
-}
-#hamburger-menu {
-    display: none;
-}
-#botao-hamburger {
-    display: none;
-}
-#busca{
-    width: 70%;
-}
-#btn-login {
-    padding: 10px 15px;
-    background-color: #E3B652;
-    color: #FFFFFF;
-    font-size: 1.3em;
-    font-weight: 500;
-    border: none;
-    border-radius: 8px;
-}
-#btn-login:hover{
-    transition: 0.7s;
-    cursor: pointer;
-    background-color: #FFFFFF;
-    color: #E3B652;
-}
+
 #principal {
     display: flex;
     justify-content: space-around;
@@ -582,11 +520,11 @@ select {
     height: 50%;
     margin: auto;
 }
-.container{
+/* .container{
     display: flex;
     justify-content: center;
     padding: 20px;
-}
+} */
 .principal-dir>img{
     width: 80%;
 }
@@ -725,11 +663,11 @@ select {
         color: #FFFFFF;
         border-bottom: 1px solid #FFFFFF;
     }
-    h1 {
+    /* h1 {
         font-size: 1.3em;
         font-weight: 400;
         color: #5282E3;
-    }
+    } */
     .titulo-login, .titulo-cadastro {
         margin: 10px auto;
         text-align: center;
