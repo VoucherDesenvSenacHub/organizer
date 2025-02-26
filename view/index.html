@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil de Usuário</title>
     <link rel="stylesheet" href="style.css">
-
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
 </head>
+
 <body>
     <div class="container">
         <!-- Barra lateral -->
@@ -16,64 +17,89 @@
                 <img src="Foto.png" alt="Foto de Perfil">
                 <p class="username">Julia</p>
                 <p class="email">julia@gmail.com.br</p>
+
             </div>
             <div>
-                <button class="logout">
-                    <span class="material-symbols-outlined">
-                        logout
-                        </span>Sair</button>
+                <button class="logout" a="">
+                    <span class="material-symbols-outlined">logout</span>
+                    Sair
+                </button>
             </div>
         </div>
-        
 
         <!-- Conteúdo principal -->
         <div class="main-content">
-            <div class="content2">
+            <form action="#" method="POST">
+                <div class="infose">
                     <h2>MEU PERFIL</h2>
-                <div class="info-grid">
-                    <div class="info">
-                        <label for="nome">Nome</label>
-                        <div class="input-box">
-                            <span></span>
-                            <input type="text" id="nome" value="Julia" >
+                    <div class="info-grid">
+                        <div class="info">
+                            <label for="nome">Nome</label>
+                            <div class="input-box">
+
+                                <span class="material-symbols-outlined">person</span>
+                                <input type="text" id="nome" value="Julia" disabled>
+                            </div>
                         </div>
-                    </div>
-                    <div class="info">
-                        <label for="telefone">Telefone</label>
-                        <div class="input-box">
-                            <span></span>
-                            <input type="number" id="telefone" placeholder="(00) 00000-0000" >
+                        <div class="info">
+                            <label for="telefone">Telefone</label>
+                            <div class="input-box">
+                                <span class="material-symbols-outlined">call</span>
+                                <input type="tel" id="telefone" placeholder="(00) 00000-0000">
+                                <img class="imge" src="Vector.png" alt="foto">
+                            </div>
                         </div>
-                    </div>
-                    <div class="info">
-                        <label for="cpf">CPF</label>
-                        <div class="input-box">
-                            <span></span>
-                            <input type="number" id="cpf" placeholder="000.000.000-00" >
+                        <div class="info">
+                            <label for="cpf">CPF</label>
+                            <div class="input-box">
+                                <span class="material-symbols-outlined">badge</span>
+                                <input type="text" id="cpf" placeholder="000.000.000-00" required maxlength="11"
+                                    disabled>
+                            </div>
                         </div>
-                    </div>
-                    <div class="info">
-                        <label for="nascimento">Data de Nascimento</label>
-                        <div class="input-box">
-                            <span></span>
-                            <input type="date" id="nascimento" value="DD/MM/AA" >
+                        <div class="info">
+                            <label for="nascimento">Data de Nascimento</label>
+                            <div class="input-box">
+                                <span class="material-symbols-outlined">calendar_today</span>
+                                <input type="date" id="nascimento" disabled>
+                                <img class="imge" src="Vector.png" alt="foto">
+                            </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <div class="content1">
-                <h2 >LOGIN</h2>
-                <div class="info">
-                <label for="email">Email</label>
-                <div class="input-email">
-                    <span></span>
-                    <input type="email" id="email" value="julia@gmail.com.br" >
                     </div>
                 </div>
 
-            <button class="change-password"> Alterar Senha</button>
-            </div>
+
+
+                <div class="info-se">
+                    <h2>LOGIN</h2>
+                    <div class="infon">
+                        <label for="email">Email</label>
+                        <div class="input-box">
+                            <span class="material-symbols-outlined">mail</span>
+                            <input type="email" id="email" value="julia@gmail.com.br">
+                            <img class="imge" src="Vector.png" alt="foto">
+                        </div>
+                    </div>
+                         
+                     <button class="change-password" type="submit"><span class="material-symbols-outlined">
+                        key_vertical  
+                    </span> Alterar Senha</button>
+                    
+                </div>
+
+                
+            </form>
         </div>
     </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#cpf").mask("000.000.000-00");
+            $("#telefone").mask("(00) 00000-0000");
+        });
+    </script>
 </body>
+
 </html>
