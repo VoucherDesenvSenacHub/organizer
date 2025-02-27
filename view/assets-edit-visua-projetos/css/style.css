@@ -155,7 +155,8 @@ h1{
 
 .card{
     width: 245px;
-    height: 235px;
+    height: 265px;
+    display: flex;
     flex-direction: column;
     align-items: center;
     gap: 20px;
@@ -179,7 +180,7 @@ p{
 .btn-card{
     background-color: #E3B652;
     color: black;
-    width: 100%;
+    width: 170px;
     height: 45px;
     border: none;
     border-radius: 5px;
