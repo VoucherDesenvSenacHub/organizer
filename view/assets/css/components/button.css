@@ -1,0 +1,22 @@
+.btn {
+    padding: 10px 20px;
+    border: none;
+    background-color: #E3B652;
+    border-radius: 4px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    cursor: pointer;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: #1C3464;
+    transition: .3s;
+}
+
+.btn:hover {
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    background-color: #cca44d;
+}
+
+.btn a {
+    text-decoration: none;
+    color: #1C3464;
+}
