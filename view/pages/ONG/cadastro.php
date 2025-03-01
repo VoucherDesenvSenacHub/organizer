@@ -105,8 +105,15 @@
             </div>
         </section>
     </main>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
+    <script type="text/javascript">
+        $("#telefone").mask("(00) 0 0000-0000");
+        $("#cpf").mask("000.000.000-00");
+        $("#num_cartao").mask("0000 0000 0000 0000");
+    </script>
 <?php
+
     $jsPagina = ['cadastro.js']; //Colocar o arquivo .js (exemplo: 'ONG/cadastro.js')
     require_once '../../components/footer.php';
 ?>
