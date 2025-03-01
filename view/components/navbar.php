@@ -5,7 +5,7 @@
         </div>
         <nav id="nav-bar">
             <ul>
-                <li><a href="../../index.php">Home</a></li>
+                <li><a href="../../../index.php">Home</a></li>
                 <li><a href="#">Ongs</a></li>
                 <li><a href="#">Projetos</a></li>
                 <li><a href="#">Notícias</a></li>
