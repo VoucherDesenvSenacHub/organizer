@@ -158,15 +158,13 @@ select {
         background-color: #1C3464;
         margin: 0 auto;
     }
-    h1 {
-        font-size: 1.3em;
-        font-weight: 400;
-        color: #5282E3;
-    }
     .titulo-login {
         margin: 10px auto;
         width: 100%;
-
+    }
+    .titulo-login h1 {
+        font-size: 1.6em;
+        font-weight: 500;
     }
     #principal {
         display: flex;
