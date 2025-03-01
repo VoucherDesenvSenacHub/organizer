@@ -1,56 +1,11 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+<?php 
+    $tituloPagina = 'tela inicial'; // Definir o título da página
+    $cssPagina = ['ADM/tela-inicial-adm.css']; //Colocar o arquivo .css 
+    require_once '../../components/header.php';
+?>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Base para páginas</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-</head>
 
 <body>
-
-    <!-- Início cabeçalho -->
-    <header>
-        <div id="logo">
-            <img src="images/logo.png" alt="">
-        </div>
-        <nav>
-            <ul>
-                <li><a href="#">HOME</a></li>
-                <li><a href="#">ONGS</a></li>
-                <li><a href="#">PROJETOS</a></li>
-                <li><a href="#">NOTÍCIAS</a></li>
-            </ul>
-        </nav>
-        <div id="header-direita">
-            <!-- <div>
-            <a href="#"><img src="images/lupa.png" alt="" id="busca"></a>
-        </div> -->
-            <div id="adm">
-                <button id="btn-adm">
-                    ADM
-                </button>
-            </div>
-            <!-- </div>      
-        <button id="botao-hamburger" onclick="mudaMenu()">
-            <img src="images/hamburger.png" alt="" id="hamburger">
-        </button> -->
-
-            <div id="hamburger-menu">
-                <ul>
-                    <li><a href="login-corporativo.html">HOME</a></li>
-                    <li><a href="#">ONGS</a></li>
-                    <li><a href="#">PROJETOS</a></li>
-                    <li><a href="#">NOTÍCIAS</a></li>
-                </ul>
-            </div>
-    </header>
-    <!-- Fim cabeçalho -->
-
-
     <!-- Início DIV principal -->
     <div id="principal">
         <div class="principal-esq">
@@ -71,7 +26,7 @@
                     </div>
                 </div>
                 <div class="principal-dir">
-                    <img src="images/aaaaaaaaaaaa 1.png" alt="">
+                    <img src="../../assets/images/figura-inicial.png" alt="">
                 </div>
                 <h4 class="sub-dir">DASHBOARD</h4>
             </div>
