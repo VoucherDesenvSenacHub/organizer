@@ -1,36 +1,8 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ongs-ADM</ONGS-ADM></title>
-    <link rel="stylesheet" href="ver_ong_adm_style.css">
-</head>
-
-<body>
-
-    <!-- Início cabeçalho -->
-    <header>
-        <div class="container">
-            <div class="logo">
-                <h1>LOGO</h1>
-            </div>
-            <nav id="nav-bar">
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="#">Ongs</a></li>
-                    <li><a href="#">Projetos</a></li>
-                    <li><a href="#">Notícias</a></li>
-                </ul>
-            </nav>
-            <div class="btn-login">
-                <button class="btn" id="openPopup" onclick="loginPopup()">LOGIN</button>
-                <button onclick="menu_mobile()" id="hamburguer"></button>
-            </div>
-        </div>
-    </header>
-    <!-- Fim cabeçalho -->
+<?php 
+    $tituloPagina = 'Ver ONG ADM '; // Definir o título da página
+    $cssPagina = ['ADM/ver_ong_adm_style.css']; //Colocar o arquivo .css 
+    require_once '../../components/header.php';
+?>
 
 
     <!-- Início DIV principal -->
@@ -39,38 +11,38 @@
             <h1 class="top-text">TODAS AS ONGS</h1>
             <div class="buscar">
                 <input type="text" id="buscar" placeholder="Buscar">
-                <img src="../assets-telas-adm/images/search_img.png" class="search_img">
+                <img src="../../assets/images/search_img.png" class="search_img">
             </div>
         </div>
 
         <div class="ongs">
             <div class="card_ong">
-                <img src="../assets-telas-adm/images/ong_placeholder.png" class="card_img">
+                <img src="../../assets/images/ong_placeholder.png" class="card_img">
                 <h1 class="card-text">ONG Todos Juntos</h1>
                 <button class="btn_card">Vizualizar</button>
             </div>
             <div class="card_ong">
-                <img src="../assets-telas-adm/images/ong_placeholder_2.png" class="card_img">
+                <img src="../../assets/images/ong_placeholder_2.png" class="card_img">
                 <h1 class="card-text">ONG Todos Juntos</h1>
                 <button class="btn_card">Vizualizar</button>
             </div>
             <div class="card_ong">
-                <img src="../assets-telas-adm/images/ong_placeholder.png" class="card_img">
+                <img src="../../assets/images/ong_placeholder.png" class="card_img">
                 <h1 class="card-text">ONG Todos Juntos</h1>
                 <button class="btn_card">Vizualizar</button>
             </div>
             <div class="card_ong">
-                <img src="../assets-telas-adm/images/ong_placeholder_2.png" class="card_img">
+                <img src="../../assets/images/ong_placeholder_2.png" class="card_img">
                 <h1 class="card-text">ONG Todos Juntos</h1>
                 <button class="btn_card">Vizualizar</button>
             </div>
             <div class="card_ong">
-                <img src="../assets-telas-adm/images/ong_placeholder.png" class="card_img">
+                <img src="../../assets/images/ong_placeholder.png" class="card_img">
                 <h1 class="card-text">ONG Todos Juntos</h1>
                 <button class="btn_card">Vizualizar</button>
             </div>
             <div class="card_ong">
-                <img src="../assets-telas-adm/images/ong_placeholder_2.png" class="card_img">
+                <img src="../../assets/images/ong_placeholder_2.png" class="card_img">
                 <h1 class="card-text">ONG Todos Juntos</h1>
                 <button class="btn_card">Vizualizar</button>
             </div>
