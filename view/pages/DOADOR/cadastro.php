@@ -113,6 +113,6 @@
     $("#num_cartao").mask("0000 0000 0000 0000");
 </script>
 <?php
-    $jsPagina = ['cadastro.js'];
+    $jsPagina = ['cadastro-doador.js'];
     require_once '../../components/footer.php';
 ?>
