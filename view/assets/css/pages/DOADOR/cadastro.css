@@ -1,12 +1,3 @@
-:root {
-    --cor-principal: #1C3464;
-    --cor-principal-claro: #203866;
-    --cor-amarelo: #E3B652;
-    --cor-amarelo-hover: #cca44d;
-    --cor-azul: #45BEE6;
-    --fonte: "Poppins", serif;
-}
-
 main {
     padding: 0 30px;
     height: calc(100vh - 60px);
@@ -178,7 +169,6 @@ section .container h1 {
 }
 
 @media (max-width: 750px) {
-
     main {
         padding: 50px 0;
         height: auto;

@@ -1,17 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
+@import url(../components/cores.css);
 @import url(../components/button.css);
 @import url(../components/header.css);
-@import url(../components/popup.css);
-
-:root {
-    --cor-principal: #1C3464;
-    --cor-principal-claro: #203866;
-    --cor-amarelo: #E3B652;
-    --cor-amarelo-hover: #cca44d;
-    --cor-azul: #45BEE6;
-    --fonte: "Poppins", serif;
-}
+@import url(../components/login-popup.css);
 
 * {
     margin: 0;
@@ -30,7 +22,7 @@ body {
     max-width: 1200px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     height: 100%;
     margin: 0 auto;
 }
