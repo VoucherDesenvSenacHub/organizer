@@ -1,3 +1,5 @@
+<!-- PEGAR A BASE NO README.md -->
+
 <?php 
     $tituloPagina = ''; // Definir o título da página
     $cssPagina = ['VISITANTE/home.css']; //Colocar o arquivo .css 
@@ -41,14 +43,14 @@
                             <p><span>150 </span>Doações</p>
                             <p><span>9 </span>Projetos</p>
                         </div>
-                        <div class="saiba-mais">
-                            <button>Saiba Mais</button>
+                        <div class="acoes-ong">
+                            <a href="#" class="saiba-mais-ong">Saiba Mais</a>
                             <div class="btn-salvar">
                                 <div class="share">
                                     <i class="fa-solid fa-share-nodes"></i>
                                 </div>
                                 <div class="like">
-                                    <i class="fa-regular fa-heart"></i>
+                                    <i class="fa-solid fa-heart"></i>
                                 </div>
                             </div>
                         </div>
@@ -72,14 +74,14 @@
                             <p><span>150 </span>Doações</p>
                             <p><span>9 </span>Projetos</p>
                         </div>
-                        <div class="saiba-mais">
-                            <button>Saiba Mais</button>
+                        <div class="acoes-ong">
+                            <a href="#" class="saiba-mais-ong">Saiba Mais</a>
                             <div class="btn-salvar">
                                 <div class="share">
                                     <i class="fa-solid fa-share-nodes"></i>
                                 </div>
                                 <div class="like">
-                                    <i class="fa-regular fa-heart"></i>
+                                    <i class="fa-solid fa-heart"></i>
                                 </div>
                             </div>
                         </div>
@@ -103,14 +105,14 @@
                             <p><span>150 </span>Doações</p>
                             <p><span>9 </span>Projetos</p>
                         </div>
-                        <div class="saiba-mais">
-                            <button>Saiba Mais</button>
+                        <div class="acoes-ong">
+                            <a href="#" class="saiba-mais-ong">Saiba Mais</a>
                             <div class="btn-salvar">
                                 <div class="share">
                                     <i class="fa-solid fa-share-nodes"></i>
                                 </div>
                                 <div class="like">
-                                    <i class="fa-regular fa-heart"></i>
+                                    <i class="fa-solid fa-heart"></i>
                                 </div>
                             </div>
                         </div>
@@ -134,14 +136,14 @@
                             <p><span>150 </span>Doações</p>
                             <p><span>9 </span>Projetos</p>
                         </div>
-                        <div class="saiba-mais">
-                            <button>Saiba Mais</button>
+                        <div class="acoes-ong">
+                            <a href="#" class="saiba-mais-ong">Saiba Mais</a>
                             <div class="btn-salvar">
                                 <div class="share">
                                     <i class="fa-solid fa-share-nodes"></i>
                                 </div>
                                 <div class="like">
-                                    <i class="fa-regular fa-heart"></i>
+                                    <i class="fa-solid fa-heart"></i>
                                 </div>
                             </div>
                         </div>
@@ -165,14 +167,14 @@
                             <p><span>150 </span>Doações</p>
                             <p><span>9 </span>Projetos</p>
                         </div>
-                        <div class="saiba-mais">
-                            <button>Saiba Mais</button>
+                        <div class="acoes-ong">
+                            <a href="#" class="saiba-mais-ong">Saiba Mais</a>
                             <div class="btn-salvar">
                                 <div class="share">
                                     <i class="fa-solid fa-share-nodes"></i>
                                 </div>
                                 <div class="like">
-                                    <i class="fa-regular fa-heart"></i>
+                                    <i class="fa-solid fa-heart"></i>
                                 </div>
                             </div>
                         </div>
@@ -196,14 +198,14 @@
                             <p><span>150 </span>Doações</p>
                             <p><span>9 </span>Projetos</p>
                         </div>
-                        <div class="saiba-mais">
-                            <button>Saiba Mais</button>
+                        <div class="acoes-ong">
+                            <a href="#" class="saiba-mais-ong">Saiba Mais</a>
                             <div class="btn-salvar">
                                 <div class="share">
                                     <i class="fa-solid fa-share-nodes"></i>
                                 </div>
                                 <div class="like">
-                                    <i class="fa-regular fa-heart"></i>
+                                    <i class="fa-solid fa-heart"></i>
                                 </div>
                             </div>
                         </div>

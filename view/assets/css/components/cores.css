@@ -1,9 +1,9 @@
 :root {
+    --fonte: "Poppins", serif;
     --cor-principal: #1C3464;
     --cor-principal-claro: #203866;
     --cor-amarelo: #E3B652;
     --cor-amarelo-hover: #e69d00;
     --cor-azul: #45BEE6;
-    --fonte: "Poppins", serif;
-    --teste-cor: pink;
+    --cor-azul-hover: #289AC0;
 }
