@@ -136,6 +136,6 @@ $cssPagina = ['ADM/doadores_adm_style.css']; //Colocar o arquivo .css
 
 
 <?php
-$jsPagina = []; //Colocar o arquivo .js
+$jsPagina = ['doadores_adm_js.js']; //Colocar o arquivo .js
 require_once '../../components/footer.php';
 ?>
