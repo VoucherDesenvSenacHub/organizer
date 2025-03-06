@@ -1,5 +1,5 @@
 <?php
-$tituloPagina = 'Login ADM'; // Definir o título da página
+$tituloPagina = 'Doadores ADM'; // Definir o título da página
 $cssPagina = ['ADM/doadores_adm_style.css']; //Colocar o arquivo .css 
 ?>
 
