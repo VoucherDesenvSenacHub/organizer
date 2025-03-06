@@ -49,6 +49,9 @@
         
     </div>
     <!-- Fim DIV principal  -->
-    <script src="../assets//js/main.js"></script>
+    <?php
+        $jsPagina = []; //Colocar o arquivo .js
+        require_once '../../components/footer.php';
+    ?>
 </body>
 </html>
