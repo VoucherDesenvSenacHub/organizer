@@ -37,14 +37,14 @@ $cssPagina = ['ADM/doadores_adm_style.css']; //Colocar o arquivo .css
         <h1 class="top-text">DOADORES</h1>
         <div class="buscar">
             <input type="text" id="buscar" placeholder="Buscar">
-            <img src="../assets-telas-adm/images/search_img.png" class="search_img">
+            <img src="../../assets/images/search_img.png" class="search_img">
         </div>
     </div>
 
     <div class="doadores">
         <div class="card_doador">
             <div class="card-esq">
-                <img class="perfil_img" src="../assets-telas-adm/images/Perfil.png">
+                <img class="perfil_img" src="../../assets/images/Perfil-doadores.png">
                 <div class="info_doador">
                     <h2 class="nome_doador">João</h2>
                     <p class="email_doador">joaozin@gmail.com</p>
@@ -53,14 +53,14 @@ $cssPagina = ['ADM/doadores_adm_style.css']; //Colocar o arquivo .css
             <div class="card-dir">
                 <p class="email_doador">28/08/2024</p>
                 <button onclick="blockpopup()" class="btn_delete_user">
-                    <img class="img_delete_user" src="../assets-telas-adm/images/delete_user.png">
+                    <img class="img_delete_user" src="../../assets/images/delete_user.png">
                 </button>
             </div>
         </div>
 
         <div class="card_doador">
             <div class="card-esq">
-                <img class="perfil_img" src="../assets-telas-adm/images/Perfil.png">
+                <img class="perfil_img" src="../../assets/images/Perfil-doadores.png">
                 <div class="info_doador">
                     <h2 class="nome_doador">João</h2>
                     <p class="email_doador">joaozin@gmail.com</p>
@@ -69,14 +69,14 @@ $cssPagina = ['ADM/doadores_adm_style.css']; //Colocar o arquivo .css
             <div class="card-dir">
                 <p class="email_doador">28/08/2024</p>
                 <button onclick="blockpopup()" class="btn_delete_user">
-                    <img class="img_delete_user" src="../assets-telas-adm/images/delete_user.png">
+                    <img class="img_delete_user" src="../../assets/images/delete_user.png">
                 </button>
             </div>
         </div>
 
         <div class="card_doador">
             <div class="card-esq">
-                <img class="perfil_img" src="../assets-telas-adm/images/Perfil.png">
+                <img class="perfil_img" src="../../assets/images/Perfil-doadores.png">
                 <div class="info_doador">
                     <h2 class="nome_doador">João</h2>
                     <p class="email_doador">joaozin@gmail.com</p>
@@ -85,14 +85,14 @@ $cssPagina = ['ADM/doadores_adm_style.css']; //Colocar o arquivo .css
             <div class="card-dir">
                 <p class="email_doador">28/08/2024</p>
                 <button onclick="blockpopup()" class="btn_delete_user">
-                    <img class="img_delete_user" src="../assets-telas-adm/images/delete_user.png">
+                    <img class="img_delete_user" src="../../assets/images/delete_user.png">
                 </button>
             </div>
         </div>
 
         <div class="card_doador">
             <div class="card-esq">
-                <img class="perfil_img" src="../assets-telas-adm/images/Perfil.png">
+                <img class="perfil_img" src="../../assets/images/Perfil-doadores.png">
                 <div class="info_doador">
                     <h2 class="nome_doador">João</h2>
                     <p class="email_doador">joaozin@gmail.com</p>
@@ -101,14 +101,14 @@ $cssPagina = ['ADM/doadores_adm_style.css']; //Colocar o arquivo .css
             <div class="card-dir">
                 <p class="email_doador">28/08/2024</p>
                 <button onclick="blockpopup()" class="btn_delete_user">
-                    <img class="img_delete_user" src="../assets-telas-adm/images/delete_user.png">
+                    <img class="img_delete_user" src="../../assets/images/delete_user.png">
                 </button>
             </div>
         </div>
 
         <div class="card_doador">
             <div class="card-esq">
-                <img class="perfil_img" src="../assets-telas-adm/images/Perfil.png">
+                <img class="perfil_img" src="../../assets/images/Perfil-doadores.png">
                 <div class="info_doador">
                     <h2 class="nome_doador">João</h2>
                     <p class="email_doador">joaozin@gmail.com</p>
@@ -117,7 +117,7 @@ $cssPagina = ['ADM/doadores_adm_style.css']; //Colocar o arquivo .css
             <div class="card-dir">
                 <p class="email_doador">28/08/2024</p>
                 <button onclick="blockpopup()" class="btn_delete_user">
-                    <img class="img_delete_user" src="../assets-telas-adm/images/delete_user.png">
+                    <img class="img_delete_user" src="../../assets/images/delete_user.png">
                 </button>
             </div>
         </div>
