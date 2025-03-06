@@ -24,15 +24,19 @@
                 <div class="text-detalhes-draft">Login</div>
             </div>
             <form class="form-cadastro">
-                <div class="form-direita">
+                <div>
                     <label for="rSocial">Razão Social</label><br>
-                    <input type="text" id="rSocial" placeholder="Digite o nome"><br>
+                    <input type="text" id="rSocial" placeholder="Digite o nome">
+                </div>
+                <div>
+                    <label for="telefone">CEP</label><br>
+                    <input type="tel" id="foneOng" placeholder="(00) 0000-0000">
+                </div>
+                <div>
                     <label for="cnpj">CNPJ</label><br>
                     <input type="text" id="cnpj" placeholder="00.000.000/0000-00">
                 </div>
-                <div class="form-esquerda">
-                    <label for="telefone">CEP</label><br>
-                    <input type="tel" id="foneOng" placeholder="(00) 0000-0000"><br>
+                <div>
                     <label for="email">Email</label><br>
                     <input type="email" id="mailOng" placeholder="usuario@conta.com">
                 </div>
