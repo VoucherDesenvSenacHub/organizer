@@ -1,112 +1,50 @@
 <?php 
-    $tituloPagina = 'Cadastro da ONG'; // Definir o título da página
-    $cssPagina = ['ONG/cadastro.css']; //Colocar o arquivo .css (exemplo: 'ONG/cadastro.css')
+    $tituloPagina = 'Cadastro ONG'; // Definir o título da página
+    $cssPagina = ['ONG/cadastro.css']; //Colocar o arquivo .css 
     require_once '../../components/header.php';
 ?>
-<!-- COMEÇAR SEU CÓDIGO AQUI -->
-    <main>
-        <section>
-            <div class="container">
-                <h1>FAÇA SEU CADASTRO</h1>
-                <div class="line">
-                    <div id="linhaClara"></div>
-                    <div id="linhaAzul"></div>
-                    <div class="item active">
-                        <div class="circle"><i class="fa-solid fa-check"></i></div>
-                        <p>Dados do Usúario</p>
-                    </div>
-                    <div class="item">
-                        <div class="circle"><i class="fa-solid fa-check"></i></div>
-                        <p>Banco</p>
-                    </div>
-                    <div class="item">
-                        <div class="circle"><i class="fa-solid fa-check"></i></div>
-                        <p>Login</p>
-                    </div>
-                </div>
-                <form id="form">
-                    <div class="formBox">
-                        <div class="inputBox">
-                            <label for="nome">Nome Completo</label>
-                            <input id="nome" type="text" placeholder="Seu Nome">
-                            <span class="visor"></span>
-                        </div>
-                        <div class="inputBox">
-                            <label for="telefone">Telefone</label>
-                            <input id="telefone" type="text" placeholder="(67) 9 0000-0000">
-                            <span class="visor"></span>
-                        </div>
-                        <div class="inputBox">
-                            <label for="cpf">CPF</label>
-                            <input id="cpf" type="text" placeholder="000.000.000-00">
-                            <span class="visor"></span>
-                        </div>
-                        <div class="inputBox">
-                            <label for="data">Data de Nascimento</label>
-                            <input id="data" type="date" placeholder="DD/MM/AA">
-                            <span class="visor"></span>
-                        </div>
-                        <div class="btnNext">
-                            <button class="btn" type="button" onclick="return proximo(1)">Próximo</button>
-                        </div>
-                    </div>
-                    <div class="formBox">
-                        <div class="inputBox">
-                            <label for="nome_cartao">Titular do Cartão</label>
-                            <input id="nome_cartao" type="text" placeholder="Nome Completo">
-                            <span class="visor"></span>
-                        </div>
-                        <div class="inputBox">
-                            <label for="num_cartao">Número do Cartão</label>
-                            <input id="num_cartao" type="text" placeholder="0000 0000 0000 0000">
-                            <span class="visor"></span>
-                        </div>
-                        <div class="inputBox">
-                            <label for="data_cartao">Data de Validade</label>
-                            <input id="data_cartao" type="date" placeholder="MM/AA">
-                            <span class="visor"></span>
-                        </div>
-                        <div class="inputBox">
-                            <label for="code_cartao">Código de Segurança</label>
-                            <input id="code_cartao" type="number" placeholder="CVV">
-                            <span class="visor"></span>
-                        </div>
-                        <div class="btnNextBack">
-                            <button class="btn btnVoltar" type="button" onclick="voltar(1)">Voltar</button>
-                            <button class="btn" type="button" onclick="return proximo(2)">Próximo</button>
-                        </div>
-                    </div>
-                    <div class="formBox">
-                        <div class="inputBox" id="BoxG">
-                            <label for="email">Email</label>
-                            <input id="email" type="email" placeholder="usúario@conta.com">
-                            <span class="visor"></span>
-                        </div>
-                        <div class="inputBox">
-                            <label for="senha">Senha</label>
-                            <input id="senha" type="password" placeholder="********">
-                            <span class="visor"></span>
-                        </div>
-                        <div class="inputBox">
-                            <label for="confirm_senha">Confirmar Senha</label>
-                            <input id="confirm_senha" type="password" placeholder="********">
-                            <span class="visor"></span>
-                        </div>
-                        <div class="inputBox" id="mobileInput">
-                            <label></label>
-                            <input type="text" disabled>
-                        </div>
-                        <div class="btnNextBack">
-                            <button class="btn btnVoltar" type="button" onclick="voltar(2)">Voltar</button>
-                            <button class="btn" onclick="return proximo(3)">CADASTRAR</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </section>
-    </main>
+        <!-- Fim cabeçalho -->
 
-<?php
-    $jsPagina = ['cadastro.js']; //Colocar o arquivo .js (exemplo: 'ONG/cadastro.js')
-    require_once '../../components/footer.php';
-?>
+
+    <!-- Início DIV principal -->
+    <div id="principal">
+        <div id="cadastro-ong">
+            <div class="titulo-cadastro">
+                <h1>CADASTRO</h1>
+            </div>
+            <div class="progress">
+                <img src="../../assets/images/progress-1.png" alt="">
+            </div>
+            <div id="text-progress">
+                <div class="text-detalhes">Dados<br>da ONG</div>
+                <div class="text-detalhes-draft">Descrição</div>
+                <div class="text-detalhes-draft">Endereço</div>
+                <div class="text-detalhes-draft">Responsável</div>
+                <div class="text-detalhes-draft">Banco</div>
+                <div class="text-detalhes-draft">Login</div>
+            </div>
+            <form class="form-cadastro">
+                <div class="form-direita">
+                    <label for="rSocial">Razão Social</label><br>
+                    <input type="text" id="rSocial" placeholder="Digite o nome"><br>
+                    <label for="cnpj">CNPJ</label><br>
+                    <input type="text" id="cnpj" placeholder="00.000.000/0000-00">
+                </div>
+                <div class="form-esquerda">
+                    <label for="telefone">CEP</label><br>
+                    <input type="tel" id="foneOng" placeholder="(00) 0000-0000"><br>
+                    <label for="email">Email</label><br>
+                    <input type="email" id="mailOng" placeholder="usuario@conta.com">
+                </div>
+            </form>
+            <div class="btn-navegacao">
+                <a href="login-corporativo.html"><button class="voltar">Voltar</button></a>
+                <a href="atuacao.html"><button class="proximo">Próximo</button></a>
+            </div>
+        </div>
+        
+    </div>
+    <!-- Fim DIV principal  -->
+    <script src="../assets//js/main.js"></script>
+</body>
+</html>
