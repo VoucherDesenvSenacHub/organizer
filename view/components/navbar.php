@@ -1,7 +1,8 @@
 <header>
     <div class="container">
         <div class="logo">
-            <h1>LOGO</h1>
+        <img src="../../assets/images/global/Logo-Organizer.png">
+        <h1>Organizer</h1>
         </div>
         <nav id="nav-bar">
             <ul>

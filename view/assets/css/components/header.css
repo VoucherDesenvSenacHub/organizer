@@ -13,7 +13,27 @@ header .container {
 }
 
 header .logo {
-    color: aliceblue;
+    display: flex;
+    align-items: center;
+    font-size: 11px;
+    gap: 10px;
+    
+    background: linear-gradient(90deg, #f8c35c, #f67f2a);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradiente 3s infinite linear;
+}
+
+@keyframes gradiente {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+
+header .logo img {
+    width: 45px;
 }
 
 /* nav */
