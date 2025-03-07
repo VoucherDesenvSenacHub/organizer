@@ -56,7 +56,7 @@
         </div>
     </div>
     <!-- Fim DIV principal  -->
-    <script src="../assets-telas-adm/js/main.js"></script>
-</body>
-
-</html>
+<?php
+    $jsPagina = []; //Colocar o arquivo .js (exemplo: 'ONG/cadastro.js')
+    require_once '../../components/footer.php';
+?>
