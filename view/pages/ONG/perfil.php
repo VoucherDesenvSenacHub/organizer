@@ -380,11 +380,12 @@
           </div>
         </div>
       </div>
+    </div>
+    <div class="save-button-container">
       <button class="save-button">Salvar Alteração</button>
     </div>
   </div>
-
 <?php
-    $jsPagina = []; //Colocar o arquivo .js (exemplo: 'ONG/cadastro.js')
+    $jsPagina = ['','https://unpkg.com/lucide@latest']; //Colocar o arquivo .js (exemplo: 'ONG/cadastro.js')
     require_once '../../components/footer.php';
 ?>
