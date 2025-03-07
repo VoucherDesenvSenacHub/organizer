@@ -389,6 +389,6 @@
 </div>
 
 <?php
-    $jsPagina = ['','https://unpkg.com/lucide@latest']; //Colocar o arquivo .js (exemplo: 'ONG/cadastro.js')
+    $jsPagina = ['perfil-ong.js','https://unpkg.com/lucide@latest']; //Colocar o arquivo .js (exemplo: 'ONG/cadastro.js')
     require_once '../../components/footer.php';
 ?>
