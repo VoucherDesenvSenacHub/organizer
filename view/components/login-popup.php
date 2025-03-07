@@ -10,7 +10,7 @@
             </ul>
         </div>
         <div class="img">
-            <img src="../assets/images/global/celular.png">
+            <img src="../../assets/images/celular.png">
         </div>
     </div>
 </div>

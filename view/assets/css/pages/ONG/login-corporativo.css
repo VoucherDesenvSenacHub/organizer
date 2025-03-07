@@ -1,0 +1,180 @@
+h1 {
+    font-size: 1.5em;
+    font-weight: 400;
+    color: #5282E3;
+}
+h2 {
+    font-size: 1.3em;
+    font-weight: 600;
+}
+h3 {
+    font-size: 1.1em;
+    font-weight: 400;
+}
+h4 {
+    color: #5282E3;
+    padding-bottom: 10px;
+}
+input {
+    width: 280px;
+    height: 50px;
+    border-radius: 6px;
+    border: none;
+    background-color: #e0d2d2;
+    padding-left: 20px;
+}
+
+#principal {
+    display: flex;
+    justify-content: space-around;
+    z-index: 1;
+    width: 60%;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.7);
+}
+.principal-dir>img{
+    width: 80%;
+}
+.form-login {
+    font-size: 1em;
+    text-align: left;
+    margin: 20px auto;
+    padding-bottom: 10px;
+    padding-left: 10px;
+}
+/* 
+.titulo-cadastro {
+    text-align: left;
+    margin-left: 90px;
+    
+}
+.progress {
+    display: flex;
+    margin: 15px auto;
+    justify-content: center;
+}
+.progress>img{
+    width: 70%;
+}
+#text-progress {
+    display: flex;
+    font-size: 0.8em;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 115px;
+}
+.text-detalhes-draft {
+    color: #6e6a6a;
+}
+
+.form-cadastro {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 35px;
+    gap: 40px;
+    input {
+        width: 280px;
+        height: 50px;
+        border-radius: 6px;
+        border: none;
+        background-color: #e0d2d2;
+        padding-left: 20px;
+    }
+}
+.btn-navegacao{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 90px;
+}
+.voltar, .proximo {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 1em;
+    letter-spacing: 2px;
+    border: none;
+    border-radius: 6px;
+    width: 150px;
+    height: 38px;
+}
+.voltar {
+    background-color: #8f8888;
+}
+.proximo {
+    background-color: #E3B652;
+    color: #FFFFFF;
+}
+.voltar:hover {
+    transition: 0.7s;
+    color: #FFFFFF;
+    background-color: black;
+}
+.proximo:hover {
+    transition: 0.7s;
+    color: black;
+    background-color: #FFFFFF;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.3);
+} */
+
+/* Responsividade */
+
+/* @media (max-width: 481px) {
+    #principal {
+        display: flex;
+        flex-direction: column;
+        width: 80%;
+        margin: 0 auto;
+        margin-top: 130px;
+        margin-bottom: 30px;
+        padding: 10px;
+        background-color: #FFFFFF;
+        border-radius: 8px;
+    }
+    .form-cadastro {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        padding: 20px;
+        input {
+            width: 200px;
+            height: 50px;
+            border-radius: 6px;
+            border: none;
+            background-color: #e0d2d2;
+            padding-left: 20px;
+        }
+    }
+    #cadastro-ong {
+        width: 100%;
+    }
+    .progress {
+        margin: 0 auto;
+    }
+    .progress>img{
+        width: 90%;
+    }
+    #text-progress {
+        display: flex;
+        font-size: 0.3em;
+        margin: 5px auto;
+    }
+    .btn-navegacao {
+        display: flex;
+        justify-content: center;
+        margin: 5px auto;
+        gap: 60px;
+    }
+    .voltar, .proximo {
+        font-family: 'Poppins', sans-serif;
+        font-weight: 500;
+        font-size: 0.5em;
+        letter-spacing: 2px;
+        border: none;
+        border-radius: 6px;
+        width: 80px;
+        height: 20px;
+    }
+} */
