@@ -8,7 +8,7 @@
 
 
 <?php
-    $jsPagina = []; //Colocar o arquivo .js (exemplo: 'ONG/cadastro.js')
+    $jsPagina = []; //Colocar o arquivo .js (exemplo: 'cadastro.js')
     require_once '../../components/footer.php';
 ?>
 
