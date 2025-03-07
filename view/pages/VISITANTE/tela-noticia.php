@@ -33,7 +33,7 @@
                                 </div>
                             </div>
                             <div class="img">
-                                <img src=" " alt="">
+                                <img src=".././../assets/images/sos-rs.png" alt="">
                             </div>
                         </div>
                         <div class="card">

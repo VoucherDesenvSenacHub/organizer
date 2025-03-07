@@ -6,10 +6,10 @@
     <div id="principal">
         <div class="carousel">
             <div class="carousel-imgs">
-                <img src="../../assets/images/sos.png" class="carousel-item">
-                <img src="../../assets/images/bombeiro.png" class="carousel-item">
-                <img src="../../assets/images/alagamento1.jpg" class="carousel-item">
-                <img src="../../assets/images/alagamento2.jpg" class="carousel-item">
+                <img src="../../assets/images/noticia-foto1.jpg" class="carousel-item">
+                <img src="../../assets/images/noticia-foto2.jpg" class="carousel-item">
+                <img src="../../assets/images/noticia-foto3.jpg" class="carousel-item">
+                <img src="../../assets/images/noticia-foto4.jpg" class="carousel-item">
             </div>
         </div>
 
@@ -30,7 +30,7 @@
 
         <div class="baixo">
             <div>
-                <img src="../../assets/images/lama.png" > 
+                <img src="../../assets/images/noticia-foto-meio.png" > 
             </div>
 
             <div class="subtitulo">
