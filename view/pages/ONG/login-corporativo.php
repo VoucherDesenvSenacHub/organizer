@@ -20,7 +20,7 @@
                 <div class="form-senha">
                     <label for="senha">Senha</label><br>
                     <input type="password" id="password-corp" placeholder="**********"><br>
-                    <button id="ver-senha"><img src="images/eye.png" alt=""></button>
+                    <button id="ver-senha"><img src="../../assets/images/eye.png" alt=""></button>
                 </div>
                 <div class="form-opcoes">
                     <div id="chk-box">
@@ -38,7 +38,7 @@
                 </div>
             </form>
             <div id="cadastrar-ong">
-                <a href="cadastro.html"><span>Quer cadastrar sua ONG </span><span id="laranja"> Criar ONG</span></a>
+                <a href="cadastro.php"><span>Quer cadastrar sua ONG </span><span id="laranja"> Criar ONG</span></a>
             </div>
         </div>
         <div class="principal-dir">
@@ -53,7 +53,7 @@
 </div>
 <div id="password-recovery">
     <div id="pr-left">
-        <img src="../assets/images/password-recovery.png" alt="">
+        <img src="../../assets/images/password-recovery.png" alt="">
     </div>
     <div id="pr-right">
         <h1>RECUPERAR SENHA</h1>
@@ -67,7 +67,7 @@
         </form>
     </div>
     <?php
-        $jsPagina = []; //Colocar o arquivo .js
+        $jsPagina = ['ongs.js']; //Colocar o arquivo .js
         require_once '../../components/footer.php';
     ?>
 </body>
