@@ -6,7 +6,7 @@
             <ul>
                 <li><a href="../../pages/DOADOR/login.php"><i class="fa-solid fa-user"></i>Sou um Doador</a></li>
                 <li><a href="#"><i class="fa-solid fa-house-flag"></i>Sou uma ONG</a></li>
-                <li><a href="#"><i class="fa-solid fa-user-secret"></i>Administrador</a></li>
+                <li><a href="../../pages/ADM/login_adm.php"><i class="fa-solid fa-user-secret"></i>Administrador</a></li>
             </ul>
         </div>
         <div class="img">
