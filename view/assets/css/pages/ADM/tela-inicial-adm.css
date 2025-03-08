@@ -1,10 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Mulish:ital,wght@0,200..1000;1,200..1000&family=Outfit:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
 
-
-*{
-    margin:0;
-    padding: 0;
-}
 #principal {
     display: flex;
     justify-content: space-around;
@@ -62,12 +57,17 @@
     margin-left: 50%;
     height: 400px;
 }
+.sub-principal-esq h1{
+    color: #5282E3
+}
 
 .sub-dir {
     text-align: right;
+    font-weight: 500;
+    color:#0E4658;
 }
 
-p {
+.card1 p {
     margin-top: 8%;
     font-size: 25px;
     color: black;
@@ -111,6 +111,7 @@ p {
     border-bottom: 3px solid #8a4af3;
 }
 
+
 .section-header-o {
     display: flex;
     align-items: center;
@@ -148,8 +149,8 @@ p {
 
 .section-icon.purple {
     background-color: #8a4af3;
-    width: 70%;
-    height: 70%;
+    width: 40%;
+    height: 40%;
 }
 
 .section-icon.orange {
@@ -227,6 +228,10 @@ p {
     font-size: 0.9rem;
     color: #666;
     padding: 0 1rem; /* Adicionado padding para o texto não encostar nas bordas */
+}
+
+.cards-esq h1{
+    font-weight: 600;
 }
 
 .card-button {

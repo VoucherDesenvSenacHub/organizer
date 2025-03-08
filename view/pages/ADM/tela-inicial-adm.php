@@ -4,8 +4,6 @@
     require_once '../../components/header.php';
 ?>
 
-
-<body>
     <!-- Início DIV principal -->
     <div id="principal">
         <div class="principal-esq">
@@ -34,7 +32,7 @@
             <main class="main-content">
                 <section class="section solicitacoes">
                     <div class="section-header-s">
-                        <div><img class="section-icon purple" src="images/notificacao.png" alt=""></div>
+                        <div><img class="section-icon orange" src="../../assets/images/notificacao.png" alt=""></div>
                         <span>SOLICITAÇÕES</span>
                     </div>
                     <div class="cards-grid">
@@ -75,7 +73,7 @@
         
                 <section class="section ongs">
                     <div class="section-header-o">
-                        <div><img class="section-icon orange" src="images/lupa.png" alt=""></div>
+                        <div><img class="section-icon orange" src="../../assets/images/lupa_bg.png" alt=""></div>
                         <span>ONGS (70)</span>
                     </div>
                     <table>
@@ -113,7 +111,7 @@
         
                 <section class="section projetos">
                     <div class="section-header-p">
-                        <div><img class="section-icon green" src="images/globo.png" alt=""></div>
+                        <div><img class="section-icon green" src="../../assets/images/globo.png" alt=""></div>
                         <span>PROJETOS (110)</span>
                     </div>
                     <table>
@@ -151,7 +149,7 @@
         
                 <section class="section doadores">
                     <div class="section-header-d">
-                        <div><img class="section-icon blue" src="images/user.png" alt="">
+                        <div><img class="section-icon blue" src="../../assets/images/user.png" alt="">
                         </div>
                         <span>DOADORES (400)</span>
                     </div>
@@ -187,8 +185,7 @@
 
         </div>
     </div>
-    <!-- Fim DIV principal  -->
-
-</body>
-
-</html>
+<?php
+    $jsPagina = []; //Colocar o arquivo .js (exemplo: 'ONG/cadastro.js')
+    require_once '../../components/footer.php';
+?>
