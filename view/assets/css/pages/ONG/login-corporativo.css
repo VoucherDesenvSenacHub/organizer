@@ -141,25 +141,40 @@ button:hover {
         flex-direction: column;
         width: 80%;
         margin: 0 auto;
-        margin-top: 130px;
+        margin-top: 40px;
         margin-bottom: 30px;
         padding: 10px;
         background-color: #FFFFFF;
         border-radius: 8px;
+    }
+    .principal-esq {
+        padding-top: 20px;
+        width: 100%;
     }
     .form-cadastro {
         display: flex;
         flex-direction: column;
         justify-content: space-around;
         padding: 20px;
-        input {
-            width: 200px;
-            height: 50px;
-            border-radius: 6px;
-            border: none;
-            background-color: #e0d2d2;
-            padding-left: 20px;
-        }
+    }
+    input {
+        width: 250px;
+        height: 50px;
+        border-radius: 6px;
+        border: none;
+        background-color: #F2F2F2;
+        padding-left: 20px;
+    }
+    h1 {
+        font-size: 1.2em;
+    }
+    .titulo-login {
+        margin: 10px auto;
+        text-align: center;
+    }
+    #ver-senha{
+        top: -35px;
+        left: 200px;
     }
     #cadastro-ong {
         width: 100%;
@@ -190,5 +205,38 @@ button:hover {
         border-radius: 6px;
         width: 80px;
         height: 20px;
+    }
+    @keyframes slide-esq-senha {
+        from {bottom: -450px;}
+        to {bottom: 3%;}
+    }
+    #password-recovery {
+        display: none;
+        flex-direction: column;
+        z-index: 999;
+        margin: 0 auto;
+        padding: 15px;
+        position: absolute;
+        animation: slide-esq-senha 1s forwards;
+        left: 10%;
+        border-radius: 12px;
+        width: 80%;
+        justify-content: center;
+        background-color: #e0e0e0;
+        box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.7);
+    }
+    
+    #pr-left>img {
+        display: flex;
+        margin: 8px auto;
+        justify-content: center;
+        width: 70%;
+    }
+    
+    #pr-right {
+        display: flex;
+        align-items: baseline;
+        flex-direction: column;
+        justify-content: space-around;
     }
 } 
