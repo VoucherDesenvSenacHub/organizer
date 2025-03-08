@@ -15,7 +15,7 @@
       <div class="accordion">
         <!-- Dados da ONG -->
         <div class="accordion-item" data-color="purple">
-          <div class="accordion-header">
+          <div class="accordion-header">  
             <div class="header-content">
               <div class="icon-container purple">
                 <i data-lucide="building-2"></i>
@@ -387,8 +387,8 @@
       </div>
     </div>
 </div>
-
+<script src="https://unpkg.com/lucide@latest"></script>
 <?php
-    $jsPagina = ['perfil-ong.js','https://unpkg.com/lucide@latest']; //Colocar o arquivo .js (exemplo: 'ONG/cadastro.js')
+    $jsPagina = ['perfil-ong.js']; //Colocar o arquivo .js (exemplo: 'ONG/cadastro.js')
     require_once '../../components/footer.php';
 ?>
