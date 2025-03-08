@@ -1,37 +1,8 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Administrativo</title>
-    <link rel="stylesheet" href="login_adm_style.css">
-</head>
-
-<body>
-
-    <!-- Início cabeçalho -->
-    <header>
-        <div class="container">
-            <div class="logo">
-                <h1>LOGO</h1>
-            </div>
-            <nav id="nav-bar">
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="#">Ongs</a></li>
-                    <li><a href="#">Projetos</a></li>
-                    <li><a href="#">Notícias</a></li>
-                </ul>
-            </nav>
-            <div class="btn-login">
-                <button class="btn" id="openPopup" onclick="loginPopup()">LOGIN</button>
-                <button onclick="menu_mobile()" id="hamburguer"></button>
-            </div>
-        </div>
-    </header>
-    <!-- Fim cabeçalho -->
-
+<?php 
+    $tituloPagina = 'Login Administrador'; // Definir o título da página
+    $cssPagina = ['ADM/n_login_adm.css']; //Colocar o arquivo .css (exemplo: 'ONG/cadastro.css')
+    require_once '../../components/header.php';
+?>
 
     <!-- Início DIV principal -->
     <div id="principal">
@@ -67,7 +38,6 @@
     <!-- Fim DIV principal  -->
 
     </div>
-    <script src="../assets-telas-adm/js/main.js"></script>
+    <script src="main.js"></script>
 </body>
 
-</html>
