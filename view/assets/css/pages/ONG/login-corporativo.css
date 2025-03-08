@@ -1,17 +1,23 @@
-h1 {
+#principal h1,
+#password-recovery h1 {
     font-size: 1.5em;
     font-weight: 400;
     color: #5282E3;
 }
-h2 {
+#principal h2 
+#password-recovery h2{
     font-size: 1.3em;
     font-weight: 600;
 }
-h3 {
+
+#principal h3,
+#password-recovery h3 {
     font-size: 1.1em;
     font-weight: 400;
 }
-h4 {
+
+#principal h4,
+#password-recovery h4 {
     color: #5282E3;
     padding-bottom: 10px;
 }
@@ -46,11 +52,13 @@ input {
     padding-bottom: 10px;
     padding-left: 10px;
 }
-a {
+#principal a,
+#password-recovery a {
     text-decoration: none;
     color: #000000;
 }
-a:visited {
+#principal a:visited
+#password-recovery a:visited {
     text-decoration: none;
     color: #000000;
 }
@@ -165,7 +173,8 @@ button:hover {
         background-color: #F2F2F2;
         padding-left: 20px;
     }
-    h1 {
+    #principal h1
+    #password-recovery h1 {
         font-size: 1.2em;
     }
     .titulo-login {

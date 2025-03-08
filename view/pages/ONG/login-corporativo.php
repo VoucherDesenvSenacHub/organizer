@@ -3,49 +3,48 @@
     $cssPagina = ['ONG/login-corporativo.css']; //Colocar o arquivo .css 
     require_once '../../components/header.php';
 ?>
-        <!-- Início DIV principal -->
-        <div id="principal">
-            <div class="principal-esq">
-                <div class="titulo-login">
-                <h1>LOGIN CORPORATIVO</h1>
-            </div>
-            <form class="form-login">
-                <div class="form-email">
-                    <label for="email">Email</label><br>
-                    <input type="text" id="email-corp" placeholder="usuario@conta.com"><br>
-                </div>
-                <div class="form-senha">
-                    <label for="senha">Senha</label><br>
-                    <input type="password" id="password-corp" placeholder="**********"><br>
-                    <button id="ver-senha"><img src="../../assets/images/eye.png" alt=""></button>
-                </div>
-                <div class="form-opcoes">
-                    <div id="chk-box">
-                        <input type="checkbox" id="manter-conectado">
-                        <label for="checkbox">Manter conectado</label>
-                    </div>
-                    <div>
-                        <a href="#" id="esqueci-senha" onclick="esqueciSenha()">Esqueci a senha</a>
-                    </div>
-                </div>
-                <div id="login-ong">
-                    
-                        <button class="login-submit"><a href="ong-logon.html">Entrar</a></button>
-                    
-                </div>
-            </form>
-            <div id="cadastrar-ong">
-                <a href="cadastro.php"><span>Quer cadastrar sua ONG </span><span id="laranja"> Criar ONG</span></a>
-            </div>
+<!-- Início DIV principal -->
+<div id="principal">
+    <div class="principal-esq">
+        <div class="titulo-login">
+            <h1>LOGIN CORPORATIVO</h1>
         </div>
-        <div class="principal-dir">
-            <img src="../../assets/images/figura-principal.png" alt="">
+        <form class="form-login">
+            <div class="form-email">
+                <label for="email">Email</label><br>
+                <input type="text" id="email-corp" placeholder="usuario@conta.com"><br>
+            </div>
+            <div class="form-senha">
+                <label for="senha">Senha</label><br>
+                <input type="password" id="password-corp" placeholder="**********"><br>
+                <button id="ver-senha"><img src="../../assets/images/eye.png" alt=""></button>
+            </div>
+            <div class="form-opcoes">
+                <div id="chk-box">
+                    <input type="checkbox" id="manter-conectado">
+                    <label for="checkbox">Manter conectado</label>
+                </div>
+                <div>
+                    <a href="#" id="esqueci-senha" onclick="esqueciSenha()">Esqueci a senha</a>
+                </div>
+            </div>
+            <div id="login-ong">
+
+                <button class="login-submit"><a href="ong-logon.html">Entrar</a></button>
+
+            </div>
+        </form>
+        <div id="cadastrar-ong">
+            <a href="cadastro.php"><span>Quer cadastrar sua ONG </span><span id="laranja"> Criar ONG</span></a>
         </div>
     </div>
-    <!-- Fim DIV principal  -->
-
-    <!-- Recuperar senha -->
+    <div class="principal-dir">
+        <img src="../../assets/images/figura-principal.png" alt="">
+    </div>
 </div>
+<!-- Fim DIV principal  -->
+
+<!-- Recuperar senha -->
 <div id="password-recovery">
     <div id="pr-left">
         <img src="../../assets/images/password-recovery.png" alt="">
@@ -63,6 +62,6 @@
     </div>
 </div>
 <?php
-    $jsPagina = [ongs.js]; //Colocar o arquivo .js
+    $jsPagina = ['ongs.js']; //Colocar o arquivo .js
     require_once '../../components/footer.php';
 ?>
