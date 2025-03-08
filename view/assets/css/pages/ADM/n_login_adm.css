@@ -1,4 +1,9 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Mulish:ital,wght@0,200..1000;1,200..1000&family=Outfit:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 :root {
     --backgroud: #1C3464;
     --container-background: #FFFFFF;
@@ -6,6 +11,17 @@
     --input-background: #00000022;
     --button: #E3B652;
     --button-hover: #9747FF;
+}
+body {
+    width: 100%;
+    z-index: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #1C3464;
+}
+h1 {
+    font-size: 1.5em;
+    font-weight: 400;
+    color: #5282E3;
 }
 
 #principal {
@@ -22,10 +38,6 @@
 .titulo-login {
     margin: 10px;
     text-align: left;
-}
-.titulo-login h1 {
-    color: #5282E3;
-    font-weight: 500;
 }
 .principal-esq {
     padding: 30px;
@@ -49,7 +61,6 @@
     background-color: #F2F2F2;
     border-radius: 8px;
     padding-left: 10px;
-    padding-right: 10px;
 }
 .form-senha>input{
     font-size: 0.8em;
@@ -59,7 +70,6 @@
     background-color: #F2F2F2;
     border-radius: 8px;
     padding-left: 10px;
-    padding-right: 39px;
 }
 select {
     font-size: 0.8em;
@@ -76,7 +86,6 @@ select {
     border: none;
     top: -33px;
     left: 210px;
-    background-color: transparent;
 }
 .form-opcoes {
     display: flex;
@@ -123,14 +132,50 @@ select {
 
 
 @media (max-width: 481px){
-    
+    header nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #1C3464;
+        overflow: hidden;
+        box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;
+        height: 0;
+        transition: .3s;
+        z-index: 999;
+    }
+
+    header nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        padding: 15px 0;
+    }
+
+    #hamburguer {
+        display: block;
+    }
+
+    #fundo-popup #popup .img {
+        display: none;
+    }
+
+
+    body {
+        width: 90%;
+        font-family: 'Poppins', sans-serif;
+        background-color: #1C3464;
+        margin: 0 auto;
+    }
+    h1 {
+        font-size: 1.3em;
+        font-weight: 400;
+        color: #5282E3;
+    }
     .titulo-login {
         margin: 10px auto;
         width: 100%;
-    }
-    .titulo-login h1 {
-        font-size: 1.6em;
-        font-weight: 500;
+
     }
     #principal {
         display: flex;

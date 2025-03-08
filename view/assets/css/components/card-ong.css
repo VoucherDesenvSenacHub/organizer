@@ -1,0 +1,129 @@
+.card-ong {
+    border-radius: 5px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    border-left: 5px solid var(--cor-amarelo);
+    width: 350px;
+    max-height: 300px;
+    background-color: white;
+    transition: .3s;
+}
+
+.card-ong:hover {
+    border-left: 5px solid var(--cor-amarelo-hover);
+    transform: translateY(-4px);
+    box-shadow: rgba(60, 64, 67, 0.4) 0px 1px 2px 0px, rgba(60, 64, 67, 0.3) 0px 2px 6px 2px;
+}
+
+/* Nome e Foto da ONG */
+.perfil {
+    display: flex;
+    gap: 10px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    cursor: default;
+}
+
+.perfil .logo {
+    width: 70px;
+    height: 70px;
+    background-color: rgb(48, 48, 48);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: aliceblue;
+    font-weight: 600;
+}
+
+.perfil .nome p {
+    color: grey;
+    font-size: 13px;
+}
+
+/* Descrição - Área do Meio */
+.descricao {
+    padding: 10px;
+    font-size: 12.5px;
+    text-align: justify;
+    line-height: 1.2;
+    cursor: default;
+}
+
+/* Quantidade de Doação e Projeto */
+.doacao {
+    padding: 5px 10px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    cursor: default;
+}
+
+.doacao span {
+    font-weight: 600;
+}
+
+/* Área dos Botões */
+.acoes-ong {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    gap: 10px;
+}
+
+/* Botão Saiba Mais */
+.saiba-mais-ong {
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    width: 70%;
+    background-color: var(--cor-amarelo);
+    border-radius: 5px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: .2s;
+    height: 50px;
+    color: aliceblue;
+    text-align: center;
+}
+
+.saiba-mais-ong:hover {
+    color: black;
+    background-color: var(--cor-amarelo-hover);
+}
+
+/* Área de Salvar e Compartilhar */
+.btn-salvar {
+    display: flex;
+    width: 30%;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+}
+
+.btn-salvar div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.btn-salvar div i {
+    color: #c2c2c2;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.btn-salvar .like i:hover {
+    color: hotpink;
+}
+
+.btn-salvar .share i:hover {
+    color: #45BEE6;
+}

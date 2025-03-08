@@ -1,11 +1,12 @@
 <header>
     <div class="container">
         <div class="logo">
-            <h1>LOGO</h1>
+        <img src="../../assets/images/global/Logo-Organizer.png">
+        <h1>Organizer</h1>
         </div>
         <nav id="nav-bar">
             <ul>
-                <li><a href="index.php">Home</a></li>
+                <li><a href="../../../index.php">Home</a></li>
                 <li><a href="#">Ongs</a></li>
                 <li><a href="#">Projetos</a></li>
                 <li><a href="#">Notícias</a></li>
