@@ -1,0 +1,313 @@
+<?php 
+    $tituloPagina = ''; // Definir o título da página
+    $cssPagina = ['ONG/tela-projeto-da-ong.css']; //Colocar o arquivo .css (exemplo: 'ONG/cadastro.css')
+    require_once '../../components/header.php';
+?>
+<main>
+<div id="principal">
+        <div class="principal-esq">
+            <div class="principal-dir">
+                <div class="info-conteiner">
+                    <div class="header-conteiner">
+                        <h3>Nome do Projeto</h3>
+                        <h4 class="arrecadacao">Arrecadado: R$ 20.000</h4>
+                        <div>
+                            <progress max="100" value="20"></progress>
+                        </div>
+                    </div>
+                    <div class="info-projeto">
+                        <div>
+                            <p>Meta: <strong>R$ 100.000</strong></p>
+                            <p class="progress">Status: Em progresso (<strong>20% alcançado</strong>)</p>
+                            <p><strong>24</strong>Doações Recebidas</p>
+                        </div>
+                        <div class="btn-favoritos-compartilhar">
+                            <button class="btn-favoritos"><img src="../imgs/love.png" alt=""></button>
+                            <button class="btn-compartilhar"><img src="../imgs/share.png" alt=""></button>
+                        </div>
+                    </div>
+                    <div class="btns-ajudar-projeto">
+                        <button class="btn-doacao">Fazer uma doação</button>
+                        <button class="btn-voluntario">Tornar-se voluntário</button>
+                    </div>
+                </div>
+                <div class="carousel">
+                    <div class="carousel-imgs">
+                        <img src="../../assets/images/ambiental.png" alt="" class="carousel-item">
+                        <img src="../../assets/images/ambiental.png"alt="" class="carousel-item">
+                        <img src="" alt="" class="carousel-item">
+                    </div>
+                </div>
+            </div>
+            <div class="btns-slider">
+                <button>
+                    Sobre
+                    <img src="../../assets/images/interrogacao.png" alt="Icon de Interrogação">
+                </button>
+                <button>
+                    Doadores
+                    <img src="../imgs/donate.png" alt="Icon de Abraço">
+                </button>
+                <button>
+                    Voluntários
+                    <img src="../imgs/hug.png" alt="Icon de Medalha">
+                </button>
+                <button>
+                    Responsáveis
+                    <img src="../imgs/gold-medal.png" alt="Icon de Mão colocando moeda">
+                </button>
+            </div>
+            <ul class="conteiner">
+                <div>
+                    <li class="slide active">
+                        <span><strong>Projeto criado em: </strong>04/08/2023</span>
+                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Provident ducimus enim eum officia,
+                            molestiae nostrum? Illum dolorem repellendus pariatur numquam, earum, repellat accusantium,
+                            reiciendis maiores dignissimos sint quidem tenetur impedit.</p>
+                    </li>
+                    <li class="slide">
+                        <h4>DOADORES DESTE PROJETO</h4>
+                        <div class="doadores">
+                            <div class="doador">
+                                <div class="icon-name">
+                                    <h4>P</h4>
+                                </div>
+                                <p>Pedro</p>
+                                <p>R$ 102</p>
+                            </div>
+                            <div class="doador">
+                                <div class="icon-name">
+                                    <h4>M</h4>
+                                </div>
+                                <p>Mario</p>
+                                <p>R$ 102</p>
+                            </div>
+                            <div class="doador">
+                                <div class="icon-name">
+                                    <h4>M</h4>
+                                </div>
+                                <p>Marcio</p>
+                                <p>R$ 102</p>
+                            </div>
+                            <div class="doador">
+                                <div class="icon-name">
+                                    <h4>M</h4>
+                                </div>
+                                <p>Maria</p>
+                                <p>R$ 102</p>
+                            </div>
+                            <div class="doador">
+                                <div class="icon-name">
+                                    <h4>I</h4>
+                                </div>
+                                <p>Italo</p>
+                                <p>R$ 102</p>
+                            </div>
+                            <div class="doador">
+                                <div class="icon-name">
+                                    <h4>J</h4>
+                                </div>
+                                <p>José</p>
+                                <p>R$ 102</p>
+                            </div>
+                            <div class="doador">
+                                <div class="icon-name">
+                                    <h4>T</h4>
+                                </div>
+                                <p>Thiago</p>
+                                <p>R$ 102</p>
+                            </div>
+                            <div class="doador">
+                                <div class="icon-name">
+                                    <h4>J</h4>
+                                </div>
+                                <p>João</p>
+                                <p>R$ 102</p>
+                            </div>
+                            <div class="doador">
+                                <div class="icon-name">
+                                    <h4>P</h4>
+                                </div>
+                                <p>Paola</p>
+                                <p>R$ 102</p>
+                            </div>
+                            <div class="doador">
+                                <div class="icon-name">
+                                    <h4>R</h4>
+                                </div>
+                                <p>Rita</p>
+                                <p>R$ 102</p>
+                            </div>
+                            <div class="doador">
+                                <div class="icon-name">
+                                    <h4>W</h4>
+                                </div>
+                                <p>Wedson</p>
+                                <p>R$ 102</p>
+                            </div>
+                            <div class="doador">
+                                <div class="icon-name">
+                                    <h4>F</h4>
+                                </div>
+                                <p>Felipe</p>
+                                <p>R$ 102</p>
+                            </div>
+                        </div>
+                        <div class="paginacao">
+                            <button class="pagina-button active">1</button>
+                            <button class="pagina-button">2</button>
+                            <button class="pagina-button">3</button>
+                            <button class="pagina-button">4</button>
+                            <button class="pagina-button">></button>
+                        </div>
+                    </li>
+                    <li class="slide">
+                        <h4>NOSSOS APOIADORES</h4>
+                        <div class="voluntarios">
+                            <div class="voluntario">
+                                <div class="icon-name">
+                                    <h4>M</h4>
+                                </div>
+                                <div class="info-voluntario">
+                                    <h3>Marcos</h3>
+                                    <p>Apoiando o <strong>Projeto tal</strong></p>
+                                </div>
+                            </div>
+                            <div class="voluntario">
+                                <div class="icon-name">
+                                    <h4>J</h4>
+                                </div>
+                                <div class="info-voluntario">
+                                    <h3>João</h3>
+                                    <p>Apoiando o <strong>Projeto tal</strong></p>
+                                </div>
+                            </div>
+                            <div class="voluntario">
+                                <div class="icon-name">
+                                    <h4>C</h4>
+                                </div>
+                                <div class="info-voluntario">
+                                    <h3>Célia</h3>
+                                    <p>Apoiando o <strong>Projeto tal</strong></p>
+                                </div>
+                            </div>
+                            <div class="voluntario">
+                                <div class="icon-name">
+                                    <h4>E</h4>
+                                </div>
+                                <div class="info-voluntario">
+                                    <h3>Eren</h3>
+                                    <p>Apoiando o <strong>Projeto tal</strong></p>
+                                </div>
+                            </div>
+                            <div class="voluntario">
+                                <div class="icon-name">
+                                    <h4>L</h4>
+                                </div>
+                                <div class="info-voluntario">
+                                    <h3>Levi</h3>
+                                    <p>Apoiando o <strong>Projeto tal</strong></p>
+                                </div>
+                            </div>
+                            <div class="voluntario">
+                                <div class="icon-name">
+                                    <h4>T</h4>
+                                </div>
+                                <div class="info-voluntario">
+                                    <h3>Thiago</h3>
+                                    <p>Apoiando o <strong>Projeto tal</strong></p>
+                                </div>
+                            </div>
+                            <div class="voluntario">
+                                <div class="icon-name">
+                                    <h4>P</h4>
+                                </div>
+                                <div class="info-voluntario">
+                                    <h3>Paula</h3>
+                                    <p>Apoiando o <strong>Projeto tal</strong></p>
+                                </div>
+                            </div>
+                            <div class="voluntario">
+                                <div class="icon-name">
+                                    <h4>K</h4>
+                                </div>
+                                <div class="info-voluntario">
+                                    <h3>Kauê</h3>
+                                    <p>Apoiando o <strong>Projeto tal</strong></p>
+                                </div>
+                            </div>
+                            <div class="voluntario">
+                                <div class="icon-name">
+                                    <h4>K</h4>
+                                </div>
+                                <div class="info-voluntario">
+                                    <h3>Kauan</h3>
+                                    <p>Apoiando o <strong>Projeto tal</strong></p>
+                                </div>
+                            </div>
+                            <div class="voluntario">
+                                <div class="icon-name">
+                                    <h4>O</h4>
+                                </div>
+                                <div class="info-voluntario">
+                                    <h3>Olivia</h3>
+                                    <p>Apoiando o <strong>Projeto tal</strong></p>
+                                </div>
+                            </div>
+                            <div class="voluntario">
+                                <div class="icon-name">
+                                    <h4>A</h4>
+                                </div>
+                                <div class="info-voluntario">
+                                    <h3>Ana</h3>
+                                    <p>Apoiando o <strong>Projeto tal</strong></p>
+                                </div>
+                            </div>
+                            <div class="voluntario">
+                                <div class="icon-name">
+                                    <h4>H</h4>
+                                </div>
+                                <div class="info-voluntario">
+                                    <h3>Hebert</h3>
+                                    <p>Apoiando o <strong>Projeto tal</strong></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="paginacao">
+                            <button class="pagina-button active">1</button>
+                            <button class="pagina-button">2</button>
+                            <button class="pagina-button">3</button>
+                            <button class="pagina-button">4</button>
+                            <button class="pagina-button">></button>
+                        </div>
+                    </li>
+                    <li class="slide">
+                        <h4>ONG RESPONSÁVEL</h4>
+                        <div class="responsaveis">
+                            <div class="conteiner-responsaveis">
+                                <div class="img">
+                                    <img src="../imgs/ambiental.png" alt="Logo da ONG responsavel">
+                                </div>
+                                <div class="info-responsavel">
+                                    <h4>Nome da ONG</h4>
+                                    <p>Área de Atuação</p>
+                                    <div class="status-responsavel">
+                                        <p>Saúde</p>
+                                        <p>Esporte</p>
+                                    </div>
+                                    <button class="btn-respondavel">
+                                        Conhecer ONG
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </div>
+            </ul>
+        </div>
+
+
+<?php
+    $jsPagina = ['tela-projeto-da-ong.js']; //Colocar o arquivo .js (exemplo: 'cadastro.js')
+    require_once '../../components/footer.php';
+?>
