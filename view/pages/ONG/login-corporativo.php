@@ -3,9 +3,6 @@
     $cssPagina = ['ONG/login-corporativo.css']; //Colocar o arquivo .css 
     require_once '../../components/header.php';
 ?>
-    <!-- Fim cabeçalho -->
-        
-        
         <!-- Início DIV principal -->
         <div id="principal">
             <div class="principal-esq">
@@ -48,8 +45,6 @@
     <!-- Fim DIV principal  -->
 
     <!-- Recuperar senha -->
-
-    
 </div>
 <div id="password-recovery">
     <div id="pr-left">
@@ -66,9 +61,8 @@
             <button class="login-submit">Enviar</button>
         </form>
     </div>
-    <?php
-        $jsPagina = ['ongs.js']; //Colocar o arquivo .js
-        require_once '../../components/footer.php';
-    ?>
-</body>
-</html>
+</div>
+<?php
+    $jsPagina = [ongs.js]; //Colocar o arquivo .js
+    require_once '../../components/footer.php';
+?>

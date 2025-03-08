@@ -1,55 +1,8 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Base para páginas</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-</head>
-
-<body>
-
-    <!-- Início cabeçalho -->
-    <header>
-        <div id="logo">
-            <img src="images/logo.png" alt="">
-        </div>
-        <nav>
-            <ul>
-                <li><a href="#">HOME</a></li>
-                <li><a href="#">ONGS</a></li>
-                <li><a href="#">PROJETOS</a></li>
-                <li><a href="#">NOTÍCIAS</a></li>
-            </ul>
-        </nav>
-        <div id="header-direita">
-            <!-- <div>
-            <a href="#"><img src="images/lupa.png" alt="" id="busca"></a>
-        </div> -->
-            <div id="adm">
-                <button id="btn-adm">
-                    ADM
-                </button>
-            </div>
-            <!-- </div>      
-        <button id="botao-hamburger" onclick="mudaMenu()">
-            <img src="images/hamburger.png" alt="" id="hamburger">
-        </button> -->
-
-            <div id="hamburger-menu">
-                <ul>
-                    <li><a href="login-corporativo.html">HOME</a></li>
-                    <li><a href="#">ONGS</a></li>
-                    <li><a href="#">PROJETOS</a></li>
-                    <li><a href="#">NOTÍCIAS</a></li>
-                </ul>
-            </div>
-    </header>
-    <!-- Fim cabeçalho -->
-
+<?php 
+    $tituloPagina = 'tela inicial'; // Definir o título da página
+    $cssPagina = ['ADM/tela-inicial-adm.css']; //Colocar o arquivo .css 
+    require_once '../../components/header.php';
+?>
 
     <!-- Início DIV principal -->
     <div id="principal">
@@ -71,7 +24,7 @@
                     </div>
                 </div>
                 <div class="principal-dir">
-                    <img src="images/aaaaaaaaaaaa 1.png" alt="">
+                    <img src="../../assets/images/figura-inicial.png" alt="">
                 </div>
                 <h4 class="sub-dir">DASHBOARD</h4>
             </div>
@@ -79,7 +32,7 @@
             <main class="main-content">
                 <section class="section solicitacoes">
                     <div class="section-header-s">
-                        <div><img class="section-icon purple" src="images/notificacao.png" alt=""></div>
+                        <div><img class="section-icon orange" src="../../assets/images/notificacao.png" alt=""></div>
                         <span>SOLICITAÇÕES</span>
                     </div>
                     <div class="cards-grid">
@@ -120,7 +73,7 @@
         
                 <section class="section ongs">
                     <div class="section-header-o">
-                        <div><img class="section-icon orange" src="images/lupa.png" alt=""></div>
+                        <div><img class="section-icon orange" src="../../assets/images/lupa_bg.png" alt=""></div>
                         <span>ONGS (70)</span>
                     </div>
                     <table>
@@ -158,7 +111,7 @@
         
                 <section class="section projetos">
                     <div class="section-header-p">
-                        <div><img class="section-icon green" src="images/globo.png" alt=""></div>
+                        <div><img class="section-icon green" src="../../assets/images/globo.png" alt=""></div>
                         <span>PROJETOS (110)</span>
                     </div>
                     <table>
@@ -196,7 +149,7 @@
         
                 <section class="section doadores">
                     <div class="section-header-d">
-                        <div><img class="section-icon blue" src="images/user.png" alt="">
+                        <div><img class="section-icon blue" src="../../assets/images/user.png" alt="">
                         </div>
                         <span>DOADORES (400)</span>
                     </div>
@@ -232,8 +185,7 @@
 
         </div>
     </div>
-    <!-- Fim DIV principal  -->
-
-</body>
-
-</html>
+<?php
+    $jsPagina = []; //Colocar o arquivo .js (exemplo: 'ONG/cadastro.js')
+    require_once '../../components/footer.php';
+?>
