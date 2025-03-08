@@ -1,33 +1,8 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Index</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="assets/css/style.css">
-</head>
-
-<body>
-    <div id="fundo-popup">
-        <div id="popup">
-            <div class="msg">
-                <h1>Olá, Seja <br> Bem-Vindo!</h1>
-                <p>Escolha seu tipo de acesso:</p>
-                <ul>
-                    <li><i class="fa-solid fa-user"></i><a href="login_doador.html">Sou um Doador</a></li>
-                    <li><i class="fa-solid fa-house-flag"></i><a href="login_ong.html">Sou uma ONG</a></li>
-                    <li><i class="fa-solid fa-user-secret"></i></i><a href="login_adm.html">Administrador</a></li>
-                </ul>
-            </div>
-            <div class="img">
-                <img src="../img/celular.png">
-            </div>
-        </div>
-    </div>
+<?php 
+    $tituloPagina = 'Relatórios'; // Definir o título da página
+    $cssPagina = ["ONG/relatorios.css"]; //Colocar o arquivo .css (exemplo: 'ONG/cadastro.css')
+    require_once '../../components/header.php';
+?>
     <main>
         <div id="principal">
             <div class="titulo">
@@ -84,9 +59,8 @@
 
         </div>
     </main>
-
-    <!-- ENTRE NO MEU ARQUIVO (main.js) E COPIE O CÓDIGO MARCADO LÁ -->
-    <script src="assets/js/main.js"></script>
-</body>
-
-</html>
+    
+<?php
+    $jsPagina = ["relatorios.js"]; //Colocar o arquivo .js (exemplo: 'ONG/cadastro.js')
+    require_once '../../components/footer.php';
+?>
