@@ -42,8 +42,8 @@
                 </div>
             </form>
             <div class="btn-navegacao">
-                <a href="login-corporativo.html"><button class="voltar">Voltar</button></a>
-                <a href="atuacao.html"><button class="proximo">Próximo</button></a>
+                <a href="login-corporativo.php"><button class="voltar">Voltar</button></a>
+                <a href="atuacao.php"><button class="proximo">Próximo</button></a>
             </div>
         </div>
         
