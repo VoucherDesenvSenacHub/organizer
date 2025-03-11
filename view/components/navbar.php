@@ -9,7 +9,7 @@
                 <li><a href="../../../index.php">Home</a></li>
                 <li><a href="#">Ongs</a></li>
                 <li><a href="#">Projetos</a></li>
-                <li><a href="#">Notícias</a></li>
+                <li><a href="../VISITANTE/tela-noticia.php">Notícias</a></li>
             </ul>
         </nav>
         <div class="btn-login">
