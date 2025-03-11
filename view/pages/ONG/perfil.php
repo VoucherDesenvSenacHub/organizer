@@ -7,9 +7,9 @@
 <div id="principal">
     
   <div class="container">
-      <div class="header">
+      <div class="ONG-header">
         <h1>Dados da ONG</h1>
-        <button class="profile-btn">MEU PERFIL</button>
+        <button class="ONG-profile-btn">MEU PERFIL</button>
       </div>
       
       <div class="accordion">
