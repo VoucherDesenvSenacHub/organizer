@@ -5,6 +5,14 @@ function mudaMenu() {
     hbgMenu.id = 'hamburger-menu-slide';
     btnHamburger.style.opacity = 0;
 }
+
+// Vira página do cadastro
+document.getElementById("proximo-1").addEventListener("click", function(event){
+    event.preventDefault();
+    let pagina = document.querySelector("#cadastro");
+    pagina.style.display = "none";
+})
+
 function esqueciSenha() {
     let painelSenha = document.querySelector('#password-recovery');
     painelSenha.style.display = 'flex';

@@ -1,8 +1,8 @@
-h1 {
+/* h1 {
     font-size: 1.5em;
     font-weight: 400;
     color: #5282E3;
-}
+} */
 h2 {
     font-size: 1.3em;
     font-weight: 600;
@@ -16,18 +16,49 @@ h4 {
     padding-bottom: 10px;
 }
 
-#principal {
+#cadastro {
+    position: relative;
     display: flex;
     justify-content: space-around;
-    z-index: 1;
+    z-index: 10;
     width: 60%;
-    margin: 120px auto;
+    margin: 80px auto;
     padding: 20px;
     background-color: #FFFFFF;
     border-radius: 8px;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.7);
+    h1 {
+        font-size: 1.5em;
+        font-weight: 400;
+        color: #5282E3;
+    }
+}
+#atuacao {
+    position: absolute;
+    top: 80px;
+    left: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    z-index: 9;
+    width: 60%;
+    margin: 80px auto;
+    padding: 20px;
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.7);
+    h1 {
+        font-size: 1.5em;
+        font-weight: 400;
+        color: #5282E3;
+    }
 }
 .titulo-cadastro {
+    text-align: left;
+    margin-left: 90px;
+    
+}
+.titulo-atuacao {
     text-align: left;
     margin-left: 90px;
     
@@ -71,7 +102,12 @@ h4 {
     justify-content: space-between;
     padding: 10px 90px;
 }
-.voltar, .proximo {
+.btn-navegacao-first {
+    display: flex;
+    justify-content: end;
+    padding: 10px 90px;
+}
+.voltar, #proximo-1, .proximo {
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
     font-size: 1em;
@@ -84,7 +120,7 @@ h4 {
 .voltar {
     background-color: #8f8888;
 }
-.proximo {
+#proximo-1, .proximo {
     background-color: #E3B652;
     color: #FFFFFF;
 }
@@ -93,17 +129,47 @@ h4 {
     color: #FFFFFF;
     background-color: black;
 }
-.proximo:hover {
+#proximo-1:hover, .proximo:hover {
     transition: 0.7s;
     color: black;
     background-color: #FFFFFF;
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.3);
 }
 
+/* Atuação ONG */
+#descricao-ong {
+    margin-top: 10px;
+    width: 400px;
+    height: 100px;
+}
+#areasDeAtuacao {
+    display: flex;
+    margin-left: 10px;
+    margin-top: 10px;
+    flex-direction: column;
+}
+.row-checkbox {
+    display: flex;
+    justify-content: left;
+    margin-right: 15px;
+}
+.opt-atuacao{
+    display: flex;
+    width: 130px;
+    justify-content: left;
+    font-size: 0.8em;
+
+}
+
+/* Efeito vira página */
+@keyframes vira-pagina {
+    
+}
+
 /* Responsividade */
 
 @media (max-width: 481px) {
-    #principal {
+    #cadastro {
         display: flex;
         flex-direction: column;
         width: 80%;
@@ -148,7 +214,7 @@ h4 {
         margin: 5px auto;
         gap: 60px;
     }
-    .voltar, .proximo {
+    .voltar, #proximo-1, .proximo {
         font-family: 'Poppins', sans-serif;
         font-weight: 500;
         font-size: 0.5em;
@@ -158,4 +224,10 @@ h4 {
         width: 80px;
         height: 20px;
     }
+    /* Descrição ONG */
+    #descricao-ong {
+        width: 200px;
+        height: 100px;
+    }
+
 }
