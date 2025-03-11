@@ -13,47 +13,47 @@
                 <div class="card1">
                     <div class="icon">
                         Projetos ativos/inativos
-                        <button onclick="clicar()"><img src="assets/imgs/icon.png" alt=""></button>
+                        <button onclick="clicar()"><img src="../../assets/images/icon.png" alt=""></button>
                     </div>
-                    <img src="assets/imgs/grafico1.png" alt="grafico">
+                    <img src="../../assets/images/grafico1.png" alt="grafico">
                     <div class="sub">
-                        <img src="assets/imgs/Legends1.png" alt="">
+                        <img src="../../assets/images/Legends1.png" alt="">
                     </div>
                 </div>
 
                 <div class="card1">
                     <div class="icon">
                         Doações
-                        <button onclick="clicar()"><img src="assets/imgs/icon.png" alt=""></button>
+                        <button onclick="clicar()"><img src="../../assets/images/icon.png" alt=""></button>
                     </div>
-                    <img src="assets/imgs/grafico2.png" alt="">
+                    <img src="../../assets/images/grafico2.png" alt="">
                     <div class="sub">
-                        <img src="assets/imgs/Legends2.png" alt="">
+                        <img src="../../assets/images/Legends2.png" alt="">
                     </div>
                 </div>
 
                 <div class="card1">
                     <div class="icon">
                         Acessos no sistema
-                        <button onclick="clicar()"><img src="assets/imgs/icon.png" alt=""></button>
+                        <button onclick="clicar()"><img src="../../assets/images/icon.png" alt=""></button>
                     </div>
-                    <img src="assets/imgs/grafico3.png" alt="">
+                    <img src="../../assets/images/grafico3.png" alt="">
                     <div class="sub">
-                        <img src="assets/imgs/Legends3.png" alt="">
+                        <img src="../../assets/images/Legends3.png" alt="">
                     </div>
                 </div>
 
                 <div class="card1">
                     <div class="icon">
                         Categorias das ONGS
-                        <button onclick="clicar()"><img src="assets/imgs/icon.png" alt=""></button>
+                        <button onclick="clicar()"><img src="../../assets/images/icon.png" alt=""></button>
                     </div>
-                    <img src="assets/imgs/grafico4.png" alt="">
+                    <img src="../../assets/images/grafico4.png" alt="">
                 </div>
             </div>
 
             <div id="download">
-                <img src="assets/imgs/icon.png" alt="">
+                <img src="a../../assets/images/icon.png" alt="">
                 <p>Download Iniciado</p>
             </div>
 
