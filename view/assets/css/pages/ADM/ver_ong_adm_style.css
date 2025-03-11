@@ -8,28 +8,38 @@
     --button-hover: #9747FF;
 }
 
-#principal {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    z-index: 1;
-    width: 55%;
-    margin: 60px auto;
-    padding: 20px;
-    background-color: #FFFFFF;
-    border-radius: 8px;
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.7);
 
-}
+@media (max-width: 700px) {
+    #principal {
+        margin: 40px auto;
+        display: flex;
+        flex-direction: column;
+        width: 90%;
+        padding: 13px;
+        background-color: #FFFFFF;
+        border-radius: 8px;
+    }
 
-.buscar {
-    position: relative;
-    /* float: right; */
-    border: solid 3px #00000084;
-    width: 50%;
-    height: 33px;
-    border-radius: 50px;
-    flex-wrap: wrap;
+    .top {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .buscar {
+        width: 90%;
+    }
+
+    .search_img {
+        position: absolute;
+        right: 0%;
+    }
+
+    .ongs {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 }
 
 #buscar {
@@ -80,7 +90,6 @@
     width: 200px;
     height: 190px;
     background-color: var(--container-background);
-    /* box-shadow: 0px 0px 11px 1px #0000006d; */
     box-shadow: 0 0 11px #0000006d;
     border-radius: 5px;
 }
@@ -92,7 +101,6 @@
 }
 
 .card-text {
-    /* padding-left: 15px; */
     margin-top: 8px;
     font-size: 1em;
     font-weight: 500;
@@ -127,7 +135,6 @@
 .card_img {
     width: 180px;
     border-radius: 2px;
-    /* margin-top: 5px; */
 }
 
 .botoes {
@@ -152,37 +159,4 @@
 .btn_nav:hover {
     background-color: black;
     color: white;
-}
-
-@media (max-width: 700px) {
-    #principal {
-        margin: 40px auto;
-        display: flex;
-        flex-direction: column;
-        width: 90%;
-        padding: 13px;
-        background-color: #FFFFFF;
-        border-radius: 8px;
-    }
-
-    .top {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .buscar {
-        width: 90%;
-    }
-
-    .search_img {
-        position: absolute;
-        right: 0%;
-    }
-
-    .ongs {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
 }
