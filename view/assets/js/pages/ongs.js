@@ -6,7 +6,7 @@ function mudaMenu() {
     btnHamburger.style.opacity = 0;
 }
 
-// Vira página do cadastro
+// Vira página do cadastro forward
 document.getElementById("proximo-1").addEventListener("click", function(event){
     event.preventDefault();
     let pagina = document.querySelector("#cadastro");

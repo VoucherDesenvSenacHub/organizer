@@ -18,11 +18,11 @@ h4 {
 
 #cadastro {
     position: relative;
-    display: flex;
+    display: none;
     justify-content: space-around;
     z-index: 10;
     width: 60%;
-    margin: 80px auto;
+    margin: 20px auto;
     padding: 20px;
     background-color: #FFFFFF;
     border-radius: 8px;
@@ -35,14 +35,14 @@ h4 {
 }
 #atuacao {
     position: absolute;
-    top: 80px;
+    top: 60px;
     left: 20%;
-    display: flex;
+    display: none;
     flex-direction: column;
     justify-content: space-around;
     z-index: 9;
     width: 60%;
-    margin: 80px auto;
+    margin: 20px auto;
     padding: 20px;
     background-color: #FFFFFF;
     border-radius: 8px;
@@ -53,6 +53,67 @@ h4 {
         color: #5282E3;
     }
 }
+#endereco {
+    position: absolute;
+    top: 60px;
+    left: 20%;
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    z-index: 8;
+    width: 60%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.7);
+    h1 {
+        font-size: 1.5em;
+        font-weight: 400;
+        color: #5282E3;
+    }
+}
+#responsavel {
+    position: absolute;
+    top: 60px;
+    left: 20%;
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    z-index: 7;
+    width: 60%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.7);
+    h1 {
+        font-size: 1.5em;
+        font-weight: 400;
+        color: #5282E3;
+    }
+}
+#dados-bancarios {
+    position: absolute;
+    top: 60px;
+    left: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    z-index: 6;
+    width: 60%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.7);
+    h1 {
+        font-size: 1.5em;
+        font-weight: 400;
+        color: #5282E3;
+    }
+}
+
 .titulo-cadastro {
     text-align: left;
     margin-left: 90px;
@@ -82,13 +143,21 @@ h4 {
     color: #6e6a6a;
 }
 
-.form-cadastro {
+.form-cadastro, .formulario-geral {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
     padding: 35px;
     gap: 40px;
     input {
+        width: 280px;
+        height: 50px;
+        border-radius: 6px;
+        border: none;
+        background-color: #f2f2f2;
+        padding-left: 20px;
+    }
+    select {
         width: 280px;
         height: 50px;
         border-radius: 6px;
@@ -137,6 +206,11 @@ h4 {
 }
 
 /* Atuação ONG */
+#form-atuacao{
+    margin-left: 90px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
 #descricao-ong {
     margin-top: 10px;
     width: 400px;
@@ -182,7 +256,6 @@ h4 {
     }
     .form-cadastro {
         display: flex;
-        flex-direction: column;
         justify-content: space-around;
         padding: 20px;
         input {
