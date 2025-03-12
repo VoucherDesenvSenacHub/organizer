@@ -71,6 +71,12 @@ section .container h1 {
     width: 70px;
     text-align: center;
     gap: 2px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.line .item:hover {
+    transform: scale(1.1);
 }
 
 .line .item.active .circle {
@@ -118,6 +124,12 @@ section .container h1 {
 
 .inputBox label {
     font-size: 13px;
+}
+
+.inputBox label span {
+    font-size: 15px;
+    color: red;
+    font-weight: 600;
 }
 
 /* INPUT */
