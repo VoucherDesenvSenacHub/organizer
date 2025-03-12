@@ -1,14 +1,8 @@
 <?php 
     $tituloPagina = 'Noticias'; // Definir o título da página
-    $cssPagina = ['VISITANTE/tela-noticia.css']; //Colocar o arquivo .css 
+    $cssPagina = ['visitante/tela-noticia.css']; //Colocar o arquivo .css 
     require_once '../../components/header.php';
 ?>
-
-
-
-    <!-- PASSO 1: VOCÊ TEM QUE APAGAR O <header> DO SEU CÓDIGO E COLAR ESSE NO LUGAR -->
-    <!-- !!!!! COPIAR APENAS ESSE <header>  -->
-
     <main>
         <section>
             <div class="container">

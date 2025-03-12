@@ -1,6 +1,6 @@
 <?php 
     $tituloPagina = 'Cadastro ONG'; // Definir o título da página
-    $cssPagina = ['ONG/login-corporativo.css']; //Colocar o arquivo .css 
+    $cssPagina = ['ong/login.css']; //Colocar o arquivo .css 
     require_once '../../components/header.php';
 ?>
 <!-- Início DIV principal -->

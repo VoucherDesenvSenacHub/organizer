@@ -1,6 +1,6 @@
 <?php
 $tituloPagina = 'Ver Projetos ADM'; // Definir o título da página
-$cssPagina = ['ADM/ver_projetos_adm_style.css']; //Colocar o arquivo .css 
+$cssPagina = ['ADM/ver-projetos.css']; //Colocar o arquivo .css 
 ?>
 
 <?php require_once '../../components/header.php'; ?>
