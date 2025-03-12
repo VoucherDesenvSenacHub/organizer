@@ -201,7 +201,7 @@ h4 {
     top: -35px;
     left: 210px;
 }
-.voltar, #proximo-1, .proximo {
+.voltar, .proximo {
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
     font-size: 1em;
@@ -214,7 +214,7 @@ h4 {
 .voltar {
     background-color: #8f8888;
 }
-#proximo-1, .proximo {
+.proximo {
     background-color: #E3B652;
     color: #FFFFFF;
 }
@@ -223,7 +223,7 @@ h4 {
     color: #FFFFFF;
     background-color: black;
 }
-#proximo-1:hover, .proximo:hover {
+.proximo:hover {
     transition: 0.7s;
     color: black;
     background-color: #FFFFFF;
@@ -322,13 +322,10 @@ h4 {
     }
     .progress {
         margin: 0 auto;
-        hr {
-            color: #5282E3;
-        }
-        button {
-            background-color: none;
-            border: none;
-        }
+    }
+    .p1{
+        background-color: none;
+        border: none;
     }
     .progress>img{
         width: 90%;
@@ -344,7 +341,7 @@ h4 {
         margin: 5px auto;
         gap: 60px;
     }
-    .voltar, #proximo-1, .proximo {
+    .voltar, .proximo {
         font-family: 'Poppins', sans-serif;
         font-weight: 500;
         font-size: 0.5em;

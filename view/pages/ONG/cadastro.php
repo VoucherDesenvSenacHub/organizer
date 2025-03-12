@@ -13,8 +13,8 @@
                 <h1>CADASTRO</h1>
             </div>
             <div class="progress">
-                <div class="p1">
-                    <button type="button"><img src="../../assets/images/elipse-draft.png" alt=""></button>
+                <div>
+                    <button type="button" class="p1"><img src="../../assets/images/elipse-draft.png" alt=""></button>
                 </div>
                 <div class="p2">
 
