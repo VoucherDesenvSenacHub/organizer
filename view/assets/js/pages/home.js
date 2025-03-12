@@ -24,7 +24,29 @@ function fechar_aside(){
     aside.style.right= "-230px"
 }
 
-function meu_perfil(){
-    let perfil = document.getElementById("perfil");
-    perfil.style.right= "-2000px"
+function meu_perfil() {
+    const meuPerfil = document.getElementById('meu-perfil');
+    meuPerfil.classList.add('ativo');
+
+    meuPerfil.addEventListener('click', (event) => {
+        if (event.target === meuPerfil) {
+            meuPerfil.classList.remove('ativo');
+        }
+    });
+}
+
+function confirmacao(){
+    const confirmacao = document.getElementById('fundo-confirmacao');
+    confirmacao.classList.add('ativo');
+
+    confirmacao.addEventListener('click', (event) => {
+        if (event.target === confirmacao) {
+            confirmacao.classList.remove('ativo');
+        }
+    });
+}
+
+function fechar_confirmacao(){
+    const confirmacao = document.getElementById('fundo-confirmacao');
+    confirmacao.classList.remove('ativo');
 }

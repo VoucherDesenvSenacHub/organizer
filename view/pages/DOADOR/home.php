@@ -2,6 +2,7 @@
     $tituloPagina = 'Home'; // Definir o título da página
     $cssPagina = ['DOADOR/home.css']; //Colocar o arquivo .css (exemplo: 'ONG/cadastro.css')
     require_once '../../components/header-usuario.php';
+    require_once '../../components/aside-usuario.php';
 ?>
 
 <main>
@@ -116,7 +117,7 @@
                 </div>
             </div>
         </section>
-        <div class="meu-perfil">
+        <div id="meu-perfil">
             <div class="container-meu-perfil">
             <!-- Barra lateral -->
             <div class="sidebar">
@@ -127,7 +128,7 @@
 
                 </div>
                 <div>
-                    <button class="logout" a="">
+                    <button onclick="confirmacao()" class="logout" a="">
                         <span class="material-symbols-outlined">logout</span>
                         Sair
                     </button>
@@ -143,7 +144,6 @@
                             <div class="info">
                                 <label for="nome">Nome</label>
                                 <div class="input-box">
-
                                     <span class="material-symbols-outlined">person</span>
                                     <input type="text" id="nome" value="Julia" disabled>
                                 </div>
@@ -189,9 +189,17 @@
                         <button class="change-password" type="submit"><span class="material-symbols-outlined">
                             key_vertical  
                         </span> Alterar Senha</button>
-                        
                     </div>
                 </form>
+            </div>
+        </div>
+        <div id="fundo-confirmacao">
+            <div id="confirmacao">
+                <span>Deseja mesmo sair da conta?</span>
+                <div>
+                    <a href="../VISITANTE/home.php"><button class="sair">SIM</button></a>
+                    <button class="nao-sair" onclick="fechar_confirmacao()" href="">NÃO</button>
+                </div>
             </div>
         </div>
     </div>

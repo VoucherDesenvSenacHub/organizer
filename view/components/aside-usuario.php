@@ -7,7 +7,7 @@
             <img src="../../assets/images/meu-perfill.png" alt="">
             <div>
                 <span>Olá, Julia</span>
-                <button onclick="meu_perfil()">Meu perfil ></button>
+                <button class="open-popup" onclick="meu_perfil()" id="meu-perfil-popup">Meu perfil ></button>
             </div>
         </div>
         <div class="aside-nav">
@@ -29,6 +29,6 @@
     </div>
     <div class="aside-nav">
         <i class="fa-solid fa-right-from-bracket"></i>
-        <p>Sair</p>
+        <button onclick="confirmacao()">Sair</button>
     </div>
 </aside>

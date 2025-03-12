@@ -1,3 +1,5 @@
+@import url(../../components/aside.css);
+
 :root {
     --cor-principal: #1C3464;
     --cor-principal-claro: #203866;
@@ -309,9 +311,21 @@ section .container #secao-1{
     }
 }
 
-.meu-perfil {
-    position: absolute;
-    right: -2000px;
+#meu-perfil {
+    display: none;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+#meu-perfil.ativo{
+    display: flex;
 }
 
 .container-meu-perfil {
@@ -391,7 +405,6 @@ section .container #secao-1{
     padding: 15px;
 
 }
-
 
 h2 {
     color: #007bff;
@@ -483,4 +496,50 @@ label {
 
 .change-password:hover {
     background: #d3d3d3e6;
+}
+
+#fundo-confirmacao{
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: none;
+}
+
+#confirmacao{
+    display: flex;
+    background-color: #fff;
+    padding: 50px;
+    border-radius: 5px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+#fundo-confirmacao.ativo{
+    display: flex;
+}
+
+#confirmacao div{
+    display: flex;
+    gap: 15px;
+}
+
+#confirmacao div .nao-sair, .sair{
+    width: 80px;
+    padding: 8px 0;
+    font-size: 20px;
+    border-radius: 5px;
+}
+
+#confirmacao div .nao-sair{
+    background-color: rgba(255, 0, 0, 0.814);
+}
+
+#confirmacao div .sair{
+    background-color: green;
 }
