@@ -534,12 +534,23 @@ label {
     padding: 8px 0;
     font-size: 20px;
     border-radius: 5px;
+    color: #fff;
+    border: none;
 }
 
 #confirmacao div .nao-sair{
-    background-color: rgba(255, 0, 0, 0.814);
+    background-color: rgba(255, 0, 0, 0.86);
+}
+
+#confirmacao div .nao-sair:hover{
+    background-color: rgb(207, 30, 30);
 }
 
 #confirmacao div .sair{
-    background-color: green;
+    background-color: rgba(55, 203, 55, 0.997);
 }
+
+#confirmacao div .sair:hover{
+    background-color: rgba(46, 146, 46, 0.997);
+}
+

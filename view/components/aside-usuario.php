@@ -29,6 +29,6 @@
     </div>
     <div class="aside-nav">
         <i class="fa-solid fa-right-from-bracket"></i>
-        <button onclick="confirmacao()">Sair</button>
+        <button onclick="confirmacao()" id="fundo-confirmacao">Sair</button>
     </div>
 </aside>
