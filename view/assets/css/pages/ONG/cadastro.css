@@ -1,8 +1,4 @@
-/* h1 {
-    font-size: 1.5em;
-    font-weight: 400;
-    color: #5282E3;
-} */
+
 h2 {
     font-size: 1.3em;
     font-weight: 600;
@@ -17,8 +13,10 @@ h4 {
 }
 
 #cadastro {
-    position: relative;
-    display: none;
+    position: absolute;
+    top: 60px;
+    left: 20%;
+    display: flex;
     justify-content: space-around;
     z-index: 10;
     width: 60%;
@@ -37,7 +35,7 @@ h4 {
     position: absolute;
     top: 60px;
     left: 20%;
-    display: none;
+    display: flex;
     flex-direction: column;
     justify-content: space-around;
     z-index: 9;
@@ -57,7 +55,7 @@ h4 {
     position: absolute;
     top: 60px;
     left: 20%;
-    display: none;
+    display: flex;
     flex-direction: column;
     justify-content: space-around;
     z-index: 8;
@@ -77,7 +75,7 @@ h4 {
     position: absolute;
     top: 60px;
     left: 20%;
-    display: none;
+    display: flex;
     flex-direction: column;
     justify-content: space-around;
     z-index: 7;
@@ -101,6 +99,26 @@ h4 {
     flex-direction: column;
     justify-content: space-around;
     z-index: 6;
+    width: 60%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.7);
+    h1 {
+        font-size: 1.5em;
+        font-weight: 400;
+        color: #5282E3;
+    }
+}
+#criar-login {
+    position: absolute;
+    top: 60px;
+    left: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    z-index: 5;
     width: 60%;
     margin: 20px auto;
     padding: 20px;
@@ -176,6 +194,13 @@ h4 {
     justify-content: end;
     padding: 10px 90px;
 }
+#ver-senha{
+    display: block;
+    position: relative;
+    border: none;
+    top: -35px;
+    left: 210px;
+}
 .voltar, #proximo-1, .proximo {
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
@@ -237,7 +262,32 @@ h4 {
 
 /* Efeito vira página */
 @keyframes vira-pagina {
-    
+    from {
+        top: 60px;
+        left: 20%;
+        display: flex;
+    }
+    to {
+        /* transform: rotate3d(0, 1, 0, 90deg); */
+        top: -800px;
+        left: -600px;
+        display: none;
+        
+    }
+}
+@keyframes volta-pagina {
+    from {
+        top: -800px;
+        left: -600px;
+        display: none;
+        /* transform: rotate(0, 1, 0, -90deg); */
+    }
+    to {
+        display: flex;
+        top: 60px;
+        left: 20%;
+        /* transform: rotate(0, 1, 0, 0deg); */
+    }
 }
 
 /* Responsividade */
@@ -272,6 +322,13 @@ h4 {
     }
     .progress {
         margin: 0 auto;
+        hr {
+            color: #5282E3;
+        }
+        button {
+            background-color: none;
+            border: none;
+        }
     }
     .progress>img{
         width: 90%;

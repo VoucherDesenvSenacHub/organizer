@@ -13,7 +13,26 @@
                 <h1>CADASTRO</h1>
             </div>
             <div class="progress">
-                <img src="../../assets/images/progress-1.png" alt="">
+                <div class="p1">
+                    <button type="button"><img src="../../assets/images/elipse-draft.png" alt=""></button>
+                </div>
+                <div class="p2">
+
+                </div>
+                <div class="p3">
+
+                </div>
+                <div class="p4">
+
+                </div>
+                <div class="p5">
+
+                </div>
+                <div class="p6">
+
+                </div>
+                <hr>
+                <!-- <img src="../../assets/images/progress-1.png" alt=""> -->
             </div>
             <div id="text-progress">
                 <div class="text-detalhes">Dados<br>da ONG</div>
@@ -23,25 +42,27 @@
                 <div class="text-detalhes-draft">Banco</div>
                 <div class="text-detalhes-draft">Login</div>
             </div>
-            <form class="form-cadastro">
-                <div>
-                    <label for="rSocial">Razão Social</label><br>
-                    <input type="text" id="rSocial" placeholder="Digite o nome">
-                </div>
-                <div>
-                    <label for="telefone">CEP</label><br>
-                    <input type="tel" id="foneOng" placeholder="(00) 0000-0000">
-                </div>
-                <div>
-                    <label for="cnpj">CNPJ</label><br>
-                    <input type="text" id="cnpj" placeholder="00.000.000/0000-00">
-                </div>
-                <div>
-                    <label for="email">Email</label><br>
-                    <input type="email" id="mailOng" placeholder="usuario@conta.com">
-                </div>
+            <form action="cadastrar-ong.php" method="post">
+                <div class="formulario-geral">
+                    <div>
+                        <label for="rSocial">Razão Social</label><br>
+                        <input type="text" id="rSocial" placeholder="Digite o nome">
+                    </div>
+                    <div>
+                        <label for="telefone">CEP</label><br>
+                        <input type="tel" id="foneOng" placeholder="(00) 0000-0000">
+                    </div>
+                    <div>
+                        <label for="cnpj">CNPJ</label><br>
+                        <input type="text" id="cnpj" placeholder="00.000.000/0000-00">
+                    </div>
+                    <div>
+                        <label for="email">Email</label><br>
+                        <input type="email" id="mailOng" placeholder="usuario@conta.com">
+                    </div>
+            </div>
             <div class="btn-navegacao-first">
-                <button id="proximo-1">Próximo</button>
+                <button class="proximo" type="button" onClick="mudaPagina('cadastro', false)">Próximo</button>
             </div>
         </div>
     </div>
@@ -109,8 +130,8 @@
             </div>
         </div>
         <div class="btn-navegacao">
-            <button class="voltar">Voltar</button>
-            <button class="proximo">Próximo</button>
+            <button class="voltar" type="button" onClick="mudaPagina('cadastro', true)">Voltar</button>
+            <button class="proximo" type="button" onClick="mudaPagina('atuacao', false)">Próximo</button>
         </div>
     </div>
     <!-- Fim Atuação da ONG -->
@@ -151,8 +172,8 @@
             </div>
         </div>
         <div class="btn-navegacao">
-            <button class="voltar">Voltar</button>
-            <button class="proximo">Próximo</button>
+            <button class="voltar" type="button" onClick="mudaPagina('atuacao', true)">Voltar</button>
+            <button class="proximo" type="button" onClick="mudaPagina('endereco', false)">Próximo</button>
         </div>
     </div>
 
@@ -193,8 +214,8 @@
                 </div>
             </div>
             <div class="btn-navegacao">
-                <button class="voltar">Voltar</button>
-                <button class="proximo">Próximo</button>
+                <button class="voltar" type="button" onClick="mudaPagina('endereco', true)">Voltar</button>
+                <button class="proximo" type="button" onClick="mudaPagina('responsavel', false)">Próximo</button>
             </div>
         </div>
     <!-- Fim Responsável -->
@@ -237,11 +258,48 @@
             </div>
         </div>
         <div class="btn-navegacao">
-            <button class="voltar">Voltar</button>
-            <button class="proximo">Próximo</button>
+            <button class="voltar" type="button" onClick="mudaPagina('responsavel', true)">Voltar</button>
+            <button class="proximo" type="button" onClick="mudaPagina('dados-bancarios', false)">Próximo</button>
         </div>
     </div>
     <!-- Fim Dados bancários -->
+
+    <!-- Início Criar login -->
+
+    <div id="criar-login">
+        <div class="titulo-atuacao">
+            <h1>CRIAR SEU LOGIN</h1>
+        </div>
+        <div class="progress">
+            <img src="../../assets/images/progress-6.png" alt="">
+        </div>
+        <div id="text-progress">
+            <div class="text-detalhes">Dados<br>da ONG</div>
+            <div class="text-detalhes">Descrição</div>
+            <div class="text-detalhes">Endereço</div>
+            <div class="text-detalhes">Responsável</div>
+            <div class="text-detalhes">Banco</div>
+            <div class="text-detalhes-draft">Login</div>
+        </div>
+        <div class="formulario-geral">
+            <div>
+                <label for="senha-login">Senha</label><br>
+                <input type="password" id="senha-login" placeholder="**********">
+                <button id="ver-senha" type="button"><img src="../../assets/images/eye.png" alt=""></button>
+            </div>
+            <div>
+                <label for="conf-senha">Confirmar senha</label><br>
+                <input type="password" id="conf-senha" placeholder="**********">
+                <button id="ver-senha" type="button"><img src="../../assets/images/eye.png" alt=""></button>
+            </div>
+        </div>
+        <div class="btn-navegacao">
+            <button class="voltar" type="button" onClick="mudaPagina('dados-bancarios', true)">Voltar</button>
+            <button class="proximo" type="submit">Cadastrar</button>
+        </div>
+    </div>
+    <!-- Fim Criar login -->
+</form>
     <?php
         $jsPagina = ['ongs.js']; //Colocar o arquivo .js
         require_once '../../components/footer.php';

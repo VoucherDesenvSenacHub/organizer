@@ -13,6 +13,17 @@ document.getElementById("proximo-1").addEventListener("click", function(event){
     pagina.style.display = "none";
 })
 
+// Virar páginas gerais do cadastro
+function mudaPagina(p, action) {
+    let pagina = document.getElementById(p);
+    // action ? pagina.style.display = "flex" : pagina.style.display = "none";
+    if (!action){
+        pagina.style.animation = "vira-pagina 1s forwards";
+    }else {
+        pagina.style.animation = "volta-pagina 1s forwards";
+    }
+}
+
 function esqueciSenha() {
     let painelSenha = document.querySelector('#password-recovery');
     painelSenha.style.display = 'flex';
