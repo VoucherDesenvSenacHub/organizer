@@ -8,8 +8,38 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-
 const form = document.getElementById('form');
+
+// Mover formulario ao clicar na bolinha
+let circle_1 = document.getElementById('circle-1');
+circle_1.addEventListener('click', (event) => {
+    form.style.transform = `translateX(-0px)`;
+});
+
+let circle_2 = document.getElementById('circle-2');
+circle_2.addEventListener('click', (event) => {
+    if (window.innerWidth > 750) {
+        form.style.transform = `translateX(-660px)`;
+    }
+    else {
+        form.style.transform = `translateX(-330px)`;
+    }
+    
+});
+
+let circle_3 = document.getElementById('circle-3');
+circle_3.addEventListener('click', (event) => {
+    if (window.innerWidth > 750) {
+        form.style.transform = `translateX(-1320px)`;
+    }
+    else {
+        form.style.transform = `translateX(-660px)`;
+    }
+    
+});
+
+
+
 const linha = document.getElementById('linhaAzul');
 let visor = document.getElementsByClassName('visor');
 let bolinha = document.getElementsByClassName('item');
