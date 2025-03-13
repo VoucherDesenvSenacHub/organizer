@@ -9,30 +9,19 @@
     <!-- Início DIV Cadastro -->
     <div id="cadastro">
         <div id="cadastro-ong">
-            <div class="titulo-cadastro">
+            <div class="titulo-atuacao">
                 <h1>CADASTRO</h1>
             </div>
+            <div class="nav-buttons">
+                <button type="button" class="p1" onclick="targetPage(0,0)"></button>
+                <button type="button" class="p1" onclick="targetPage(1,0)"></button>
+                <button type="button" class="p1" onclick="targetPage(2,0)"></button>
+                <button type="button" class="p1" onclick="targetPage(3,0)"></button>
+                <button type="button" class="p1" onclick="targetPage(4,0)"></button>
+                <button type="button" class="p1" onclick="targetPage(5,0)"></button>
+            </div>
             <div class="progress">
-                <div>
-                    <button type="button" class="p1"><img src="../../assets/images/elipse-draft.png" alt=""></button>
-                </div>
-                <div class="p2">
-
-                </div>
-                <div class="p3">
-
-                </div>
-                <div class="p4">
-
-                </div>
-                <div class="p5">
-
-                </div>
-                <div class="p6">
-
-                </div>
-                <hr>
-                <!-- <img src="../../assets/images/progress-1.png" alt=""> -->
+                <img src="../../assets/images/progress-1.png" alt="">
             </div>
             <div id="text-progress">
                 <div class="text-detalhes">Dados<br>da ONG</div>
@@ -49,8 +38,8 @@
                         <input type="text" id="rSocial" placeholder="Digite o nome">
                     </div>
                     <div>
-                        <label for="telefone">CEP</label><br>
-                        <input type="tel" id="foneOng" placeholder="(00) 0000-0000">
+                        <label for="telefone">Telefone</label><br>
+                        <input type="text" id="foneOng" placeholder="(00) 0000-0000">
                     </div>
                     <div>
                         <label for="cnpj">CNPJ</label><br>
@@ -73,8 +62,16 @@
         <div class="titulo-atuacao">
             <h1>ATUAÇÃO DA ONG</h1>
         </div>
+        <div class="nav-buttons">
+            <button type="button" class="p1" onclick="targetPage(0,1)"></button>
+            <button type="button" class="p1" onclick="targetPage(1,1)"></button>
+            <button type="button" class="p1" onclick="targetPage(2,1)"></button>
+            <button type="button" class="p1" onclick="targetPage(3,1)"></button>
+            <button type="button" class="p1" onclick="targetPage(4,1)"></button>
+            <button type="button" class="p1" onclick="targetPage(5,1)"></button>
+        </div>
         <div class="progress">
-                <img src="../../assets/images/progress-2.png" alt="">
+            <img src="../../assets/images/progress-2.png" alt="">
         </div>
         <div id="text-progress">
             <div class="text-detalhes">Dados<br>da ONG</div>
@@ -142,6 +139,14 @@
         <div class="titulo-atuacao">
             <h1>ENDEREÇO</h1>
         </div>
+        <div class="nav-buttons">
+            <button type="button" class="p1" onclick="targetPage(0,2)"></button>
+            <button type="button" class="p1" onclick="targetPage(1,2)"></button>
+            <button type="button" class="p1" onclick="targetPage(2,2)"></button>
+            <button type="button" class="p1" onclick="targetPage(3,2)"></button>
+            <button type="button" class="p1" onclick="targetPage(4,2)"></button>
+            <button type="button" class="p1" onclick="targetPage(5,2)"></button>
+        </div>
         <div class="progress">
             <img src="../../assets/images/progress-3.png" alt="">
         </div>
@@ -184,6 +189,14 @@
         <div class="titulo-atuacao">
             <h1>RESPONSÁVEL PELA ONG</h1>
         </div>
+        <div class="nav-buttons">
+            <button type="button" class="p1" onclick="targetPage(0,3)"></button>
+            <button type="button" class="p1" onclick="targetPage(1,3)"></button>
+            <button type="button" class="p1" onclick="targetPage(2,3)"></button>
+            <button type="button" class="p1" onclick="targetPage(3,3)"></button>
+            <button type="button" class="p1" onclick="targetPage(4,3)"></button>
+            <button type="button" class="p1" onclick="targetPage(5,3)"></button>
+        </div>
         <div class="progress">
                 <img src="../../assets/images/progress-4.png" alt="">
             </div>
@@ -224,6 +237,14 @@
     <div id="dados-bancarios">
         <div class="titulo-atuacao">
             <h1>DADOS BANCÁRIOS</h1>
+        </div>
+        <div class="nav-buttons">
+            <button type="button" class="p1" onclick="targetPage(0,4)"></button>
+            <button type="button" class="p1" onclick="targetPage(1,4)"></button>
+            <button type="button" class="p1" onclick="targetPage(2,4)"></button>
+            <button type="button" class="p1" onclick="targetPage(3,4)"></button>
+            <button type="button" class="p1" onclick="targetPage(4,4)"></button>
+            <button type="button" class="p1" onclick="targetPage(5,4)"></button>
         </div>
         <div class="progress">
             <img src="../../assets/images/progress-5.png" alt="">
@@ -270,6 +291,14 @@
         <div class="titulo-atuacao">
             <h1>CRIAR SEU LOGIN</h1>
         </div>
+        <div class="nav-buttons">
+            <button type="button" class="p1" onclick="targetPage(0,5)"></button>
+            <button type="button" class="p1" onclick="targetPage(1,5)"></button>
+            <button type="button" class="p1" onclick="targetPage(2,5)"></button>
+            <button type="button" class="p1" onclick="targetPage(3,5)"></button>
+            <button type="button" class="p1" onclick="targetPage(4,5)"></button>
+            <button type="button" class="p1" onclick="targetPage(5,5)"></button>
+        </div>
         <div class="progress">
             <img src="../../assets/images/progress-6.png" alt="">
         </div>
@@ -285,12 +314,20 @@
             <div>
                 <label for="senha-login">Senha</label><br>
                 <input type="password" id="senha-login" placeholder="**********">
-                <button id="ver-senha" type="button"><img src="../../assets/images/eye.png" alt=""></button>
+                <button id="ver-senha" type="button"onclick="showHide('senha-login', 'eyepassword')">
+                    <span class="material-symbols-outlined" id="eyepassword">
+                        visibility
+                    </span>
+                </button>
             </div>
             <div>
                 <label for="conf-senha">Confirmar senha</label><br>
                 <input type="password" id="conf-senha" placeholder="**********">
-                <button id="ver-senha" type="button"><img src="../../assets/images/eye.png" alt=""></button>
+                <button id="ver-senha" type="button" onclick="showHide('conf-senha', 'eye-conf-password')">
+                    <span class="material-symbols-outlined" id="eye-conf-password">
+                        visibility
+                    </span>
+                </button>
             </div>
         </div>
         <div class="btn-navegacao">

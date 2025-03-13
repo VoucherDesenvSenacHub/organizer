@@ -101,6 +101,11 @@ button:hover {
     margin-top: 20px;
     margin-right: 10px;
 }
+#cadastrar-ong>a{
+    color: black;
+    font-size: 0.8em;
+    margin-bottom: 20px;
+}
 #laranja{
     color: #FFBE58;
 }

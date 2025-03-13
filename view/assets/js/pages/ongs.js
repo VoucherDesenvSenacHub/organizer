@@ -6,12 +6,20 @@ function mudaMenu() {
     btnHamburger.style.opacity = 0;
 }
 
-// Vira página do cadastro forward
-document.getElementById("proximo-1").addEventListener("click", function(event){
-    event.preventDefault();
-    let pagina = document.querySelector("#cadastro");
-    pagina.style.display = "none";
-})
+// Link para card direta do cadastro
+function targetPage(target, actual){
+    let cards = ['cadastro', 'atuacao', 'endereco','responsavel','dados-bancarios','criar-login'];
+    if(target>actual){
+        for(let i=actual; i<target; i++){
+            mudaPagina(cards[i], false);
+        }
+    }
+    if(target<actual){
+        for(let i=actual; i>=target; i--){
+            mudaPagina(cards[i], true);
+        }
+    }
+}
 
 // Virar páginas gerais do cadastro
 function mudaPagina(p, action) {
@@ -21,6 +29,20 @@ function mudaPagina(p, action) {
         pagina.style.animation = "vira-pagina 1s forwards";
     }else {
         pagina.style.animation = "volta-pagina 1s forwards";
+    }
+}
+
+// Exibe e oculta senha digitada
+
+function showHide(campo, id){
+    const senha = document.getElementById(campo);
+    const icone = document.getElementById(id);
+    if(senha.type === 'password'){
+        senha.type = 'text';
+        icone.innerHTML = 'visibility_off';
+    }else {
+        senha.type = 'password';
+        icone.innerHTML = 'visibility';
     }
 }
 
