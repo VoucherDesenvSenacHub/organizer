@@ -1,4 +1,3 @@
-
 #principal {
     display: flex;
     justify-content: space-around;
@@ -27,7 +26,7 @@
         align-items: start;
         text-align: center;
         width: 100%;
-        
+
         & .cards-esq {
             display: flex;
             justify-content: center;
@@ -47,7 +46,7 @@
 .principal-dir {
     display: block;
     flex-direction: column;
-    margin-top: 6% ;
+    margin-top: 6%;
     margin-right: 40%;
     width: 200px;
 }
@@ -56,14 +55,15 @@
     margin-left: 50%;
     height: 400px;
 }
-.sub-principal-esq h1{
+
+.sub-principal-esq h1 {
     color: #5282E3
 }
 
 .sub-dir {
     text-align: right;
     font-weight: 500;
-    color:#0E4658;
+    color: #0E4658;
 }
 
 .card1 p {
@@ -116,7 +116,7 @@
     align-items: center;
     gap: 1rem;
     padding: 1rem;
-    border-bottom: 3px solid  #ff9800;
+    border-bottom: 3px solid #ff9800;
 }
 
 .section-header-p {
@@ -180,7 +180,8 @@
 .action-card {
     border: 1px solid #e0e0e0;
     border-radius: 8px;
-    padding: 0; /* Removido o padding para o título encostar na borda */
+    padding: 0;
+    /* Removido o padding para o título encostar na borda */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -206,7 +207,8 @@
     padding: 0.5rem;
     text-align: center;
     margin-bottom: 1rem;
-    border-radius: 8px 8px 0 0; /* Bordas arredondadas apenas no topo */
+    border-radius: 8px 8px 0 0;
+    /* Bordas arredondadas apenas no topo */
 }
 
 .purple .card-header {
@@ -226,10 +228,11 @@
     margin-bottom: 1rem;
     font-size: 0.9rem;
     color: #666;
-    padding: 0 1rem; /* Adicionado padding para o texto não encostar nas bordas */
+    padding: 0 1rem;
+    /* Adicionado padding para o texto não encostar nas bordas */
 }
 
-.cards-esq h1{
+.cards-esq h1 {
     font-weight: 600;
 }
 
@@ -241,8 +244,10 @@
     border-radius: 4px;
     border: none;
     color: white;
-    width: calc(100% - 2rem); /* Ajuste para o botão não encostar nas bordas */
-    margin: 0 1rem 1rem 1rem; /* Margem para o botão não encostar nas bordas */
+    width: calc(100% - 2rem);
+    /* Ajuste para o botão não encostar nas bordas */
+    margin: 0 1rem 1rem 1rem;
+    /* Margem para o botão não encostar nas bordas */
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
@@ -284,7 +289,8 @@ table {
     border-collapse: collapse;
 }
 
-th, td {
+th,
+td {
     padding: 1rem;
     text-align: left;
     border-bottom: 1px solid #e0e0e0;
@@ -345,4 +351,63 @@ th {
 
 .section.doadores {
     border-color: #29b6f6;
+}
+
+@media (max-width: 481px) {
+    #principal {
+        width: 90%;
+        margin: 40px auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .principal-esq {
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        flex-direction: column;
+        text-align: center;
+        padding: 50px;
+        width: 100%;
+        height: 580px;
+        overflow: hidden;
+        overflow-y: scroll;
+    
+        & .sub-principal-esq {
+            display: flex;
+            justify-content: start;
+            align-items: start;
+            text-align: center;
+            width: 100%;
+    
+            & .cards-esq {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                gap: 18px;
+                margin-left: 30px;
+    
+                & h1 {
+                    font-size: 1.8em;
+                    font-weight: 500;
+                }
+            }
+        }
+    }
+
+    .cards-grid {
+        display: flex;
+        width: 200px;
+        flex-direction: column;
+        align-items: center;
+    }
+    .section.solicitacoes {
+        display: flex;
+        width: 250px;
+        flex-direction: column;
+        align-items: center;
+    }
+
 }
