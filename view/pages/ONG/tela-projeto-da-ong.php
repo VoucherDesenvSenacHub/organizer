@@ -9,10 +9,11 @@
             <div class="principal-dir">
                 <div class="info-conteiner">
                     <div class="header-conteiner">
-                        <h3>Nome do Projeto</h3>
-                        <h4 class="arrecadacao">Arrecadado: R$ 20.000</h4>
+                        <p class="nome-projeto">NOME DO PROJETO</p>
+                        <p class="arrecadado">Arrecadado: R$ 20.000</p>
+
                         <div>
-                            <progress max="100" value="20"></progress>
+                            <progress max="100" value="40" class="progress"></progres>
                         </div>
                     </div>
                     <div class="info-projeto">
@@ -22,8 +23,8 @@
                             <p><strong>24</strong>Doações Recebidas</p>
                         </div>
                         <div class="btn-favoritos-compartilhar">
-                            <button class="btn-favoritos"><img src="../imgs/love.png" alt=""></button>
-                            <button class="btn-compartilhar"><img src="../imgs/share.png" alt=""></button>
+                            <button class="btn-favoritos"><img src="../../assets/images/love.png" alt=""></button>
+                            <button class="btn-compartilhar"><img src="../../assets/images/share.png" alt=""></button>
                         </div>
                     </div>
                     <div class="btns-ajudar-projeto">
@@ -46,15 +47,15 @@
                 </button>
                 <button>
                     Doadores
-                    <img src="../imgs/donate.png" alt="Icon de Abraço">
+                    <img src="../../assets/images/donate.png" alt="Icon de Abraço">
                 </button>
                 <button>
                     Voluntários
-                    <img src="../imgs/hug.png" alt="Icon de Medalha">
+                    <img src="../../assets/images/hug.png" alt="Icon de Medalha">
                 </button>
                 <button>
                     Responsáveis
-                    <img src="../imgs/gold-medal.png" alt="Icon de Mão colocando moeda">
+                    <img src="../../assets/images/gold-medal.png" alt="Icon de Mão colocando moeda">
                 </button>
             </div>
             <ul class="conteiner">
@@ -66,88 +67,88 @@
                             reiciendis maiores dignissimos sint quidem tenetur impedit.</p>
                     </li>
                     <li class="slide">
-                        <h4>DOADORES DESTE PROJETO</h4>
+                        <p>DOADORES DESTE PROJETO</p>
                         <div class="doadores">
                             <div class="doador">
                                 <div class="icon-name">
-                                    <h4>P</h4>
+                                    <p>P</p>
                                 </div>
                                 <p>Pedro</p>
                                 <p>R$ 102</p>
                             </div>
                             <div class="doador">
                                 <div class="icon-name">
-                                    <h4>M</h4>
+                                    <p>M</p>
                                 </div>
                                 <p>Mario</p>
                                 <p>R$ 102</p>
                             </div>
                             <div class="doador">
                                 <div class="icon-name">
-                                    <h4>M</h4>
+                                    <p>M</p>
                                 </div>
                                 <p>Marcio</p>
                                 <p>R$ 102</p>
                             </div>
                             <div class="doador">
                                 <div class="icon-name">
-                                    <h4>M</h4>
+                                    <p>M</p>
                                 </div>
                                 <p>Maria</p>
                                 <p>R$ 102</p>
                             </div>
                             <div class="doador">
                                 <div class="icon-name">
-                                    <h4>I</h4>
+                                    <p>I</p>
                                 </div>
                                 <p>Italo</p>
                                 <p>R$ 102</p>
                             </div>
                             <div class="doador">
                                 <div class="icon-name">
-                                    <h4>J</h4>
+                                    <p>J</p>
                                 </div>
                                 <p>José</p>
                                 <p>R$ 102</p>
                             </div>
                             <div class="doador">
                                 <div class="icon-name">
-                                    <h4>T</h4>
+                                    <p>T</p>
                                 </div>
                                 <p>Thiago</p>
                                 <p>R$ 102</p>
                             </div>
                             <div class="doador">
                                 <div class="icon-name">
-                                    <h4>J</h4>
+                                    <p>J</p>
                                 </div>
                                 <p>João</p>
                                 <p>R$ 102</p>
                             </div>
                             <div class="doador">
                                 <div class="icon-name">
-                                    <h4>P</h4>
+                                    <p>P</p>
                                 </div>
                                 <p>Paola</p>
                                 <p>R$ 102</p>
                             </div>
                             <div class="doador">
                                 <div class="icon-name">
-                                    <h4>R</h4>
+                                    <p>R</p>
                                 </div>
                                 <p>Rita</p>
                                 <p>R$ 102</p>
                             </div>
                             <div class="doador">
                                 <div class="icon-name">
-                                    <h4>W</h4>
+                                    <p>W</p>
                                 </div>
                                 <p>Wedson</p>
                                 <p>R$ 102</p>
                             </div>
                             <div class="doador">
                                 <div class="icon-name">
-                                    <h4>F</h4>
+                                    <p>F</p>
                                 </div>
                                 <p>Felipe</p>
                                 <p>R$ 102</p>
@@ -162,113 +163,113 @@
                         </div>
                     </li>
                     <li class="slide">
-                        <h4>NOSSOS APOIADORES</h4>
+                        <p>NOSSOS APOIADORES</p>
                         <div class="voluntarios">
                             <div class="voluntario">
                                 <div class="icon-name">
-                                    <h4>M</h4>
+                                    <p>M</p>
                                 </div>
                                 <div class="info-voluntario">
-                                    <h3>Marcos</h3>
+                                    <p>Marcos<p>
                                     <p>Apoiando o <strong>Projeto tal</strong></p>
                                 </div>
                             </div>
                             <div class="voluntario">
                                 <div class="icon-name">
-                                    <h4>J</h4>
+                                    <p>J</p>
                                 </div>
                                 <div class="info-voluntario">
-                                    <h3>João</h3>
+                                    <p>João<p>
                                     <p>Apoiando o <strong>Projeto tal</strong></p>
                                 </div>
                             </div>
                             <div class="voluntario">
                                 <div class="icon-name">
-                                    <h4>C</h4>
+                                    <p>C</p>
                                 </div>
                                 <div class="info-voluntario">
-                                    <h3>Célia</h3>
+                                    <p>Célia<p>
                                     <p>Apoiando o <strong>Projeto tal</strong></p>
                                 </div>
                             </div>
                             <div class="voluntario">
                                 <div class="icon-name">
-                                    <h4>E</h4>
+                                    <p>E</p>
                                 </div>
                                 <div class="info-voluntario">
-                                    <h3>Eren</h3>
+                                    <p>Eren<p>
                                     <p>Apoiando o <strong>Projeto tal</strong></p>
                                 </div>
                             </div>
                             <div class="voluntario">
                                 <div class="icon-name">
-                                    <h4>L</h4>
+                                    <p>L</p>
                                 </div>
                                 <div class="info-voluntario">
-                                    <h3>Levi</h3>
+                                    <p>Levi<p>
                                     <p>Apoiando o <strong>Projeto tal</strong></p>
                                 </div>
                             </div>
                             <div class="voluntario">
                                 <div class="icon-name">
-                                    <h4>T</h4>
+                                    <p>T</p>
                                 </div>
                                 <div class="info-voluntario">
-                                    <h3>Thiago</h3>
+                                    <p>Thiago<p>
                                     <p>Apoiando o <strong>Projeto tal</strong></p>
                                 </div>
                             </div>
                             <div class="voluntario">
                                 <div class="icon-name">
-                                    <h4>P</h4>
+                                    <p>P</p>
                                 </div>
                                 <div class="info-voluntario">
-                                    <h3>Paula</h3>
+                                    <p>Paula<p>
                                     <p>Apoiando o <strong>Projeto tal</strong></p>
                                 </div>
                             </div>
                             <div class="voluntario">
                                 <div class="icon-name">
-                                    <h4>K</h4>
+                                    <p>K</p>
                                 </div>
                                 <div class="info-voluntario">
-                                    <h3>Kauê</h3>
+                                    <p>Kauê<p>
                                     <p>Apoiando o <strong>Projeto tal</strong></p>
                                 </div>
                             </div>
                             <div class="voluntario">
                                 <div class="icon-name">
-                                    <h4>K</h4>
+                                    <p>K</p>
                                 </div>
                                 <div class="info-voluntario">
-                                    <h3>Kauan</h3>
+                                    <p>Kauan<p>
                                     <p>Apoiando o <strong>Projeto tal</strong></p>
                                 </div>
                             </div>
                             <div class="voluntario">
                                 <div class="icon-name">
-                                    <h4>O</h4>
+                                    <p>O</p>
                                 </div>
                                 <div class="info-voluntario">
-                                    <h3>Olivia</h3>
+                                    <p>Olivia<p>
                                     <p>Apoiando o <strong>Projeto tal</strong></p>
                                 </div>
                             </div>
                             <div class="voluntario">
                                 <div class="icon-name">
-                                    <h4>A</h4>
+                                    <p>A</p>
                                 </div>
                                 <div class="info-voluntario">
-                                    <h3>Ana</h3>
+                                    <p>Ana<p>
                                     <p>Apoiando o <strong>Projeto tal</strong></p>
                                 </div>
                             </div>
                             <div class="voluntario">
                                 <div class="icon-name">
-                                    <h4>H</h4>
+                                    <p>H</p>
                                 </div>
                                 <div class="info-voluntario">
-                                    <h3>Hebert</h3>
+                                    <p>Hebert<p>
                                     <p>Apoiando o <strong>Projeto tal</strong></p>
                                 </div>
                             </div>
@@ -282,14 +283,14 @@
                         </div>
                     </li>
                     <li class="slide">
-                        <h4>ONG RESPONSÁVEL</h4>
+                        <p>ONG RESPONSÁVEL</p>
                         <div class="responsaveis">
                             <div class="conteiner-responsaveis">
                                 <div class="img">
                                     <img src="../imgs/ambiental.png" alt="Logo da ONG responsavel">
                                 </div>
                                 <div class="info-responsavel">
-                                    <h4>Nome da ONG</h4>
+                                    <p>Nome da ONG</p>
                                     <p>Área de Atuação</p>
                                     <div class="status-responsavel">
                                         <p>Saúde</p>

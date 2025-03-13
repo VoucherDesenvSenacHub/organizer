@@ -56,12 +56,11 @@
 .info-conteiner {
     display: flex;
     justify-content: start;
-    align-items: center;
     flex-direction: column;
-    border: 1px;
+    border: 1px;    
     box-shadow: 1px 2px 2px black;
     border-radius: 10px;
-    padding: 20px 10px;
+    padding: 20px 30px;
     width: 565px;
     height: 296px;
 
@@ -71,10 +70,18 @@
         align-items: end;
         width: 100%;
         margin-bottom: 20px;
+        
+        & h4 {
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            background-color: #5282E3;
+        }
 
+        & .p .nome-projeto {
+            background-color: ;
+        }
 
         & .progress {
-            width: 400px;
+            width: 400px;;
         }
 
 
@@ -120,6 +127,7 @@
         & .btn-voluntario {
             color: #FFFFFF;
             background-color: #1C3464;
+            width: 250px;
         }
     }
 }
@@ -138,8 +146,8 @@
     transition: left 0.5s ease-in-out;
 
     & h4 {
-        font-size: 1.1rem;
-        color: #5282E3;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        color: white;
     }
 
     & .doadores {
