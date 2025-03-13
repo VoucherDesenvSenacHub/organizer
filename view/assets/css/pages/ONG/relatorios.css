@@ -9,7 +9,7 @@
     border-radius: 8px;
     padding: 30px 15px;
     background-color: white;
-    color: purple;
+    color: orange;
     font-size: 35px;
 
     .titulo {
@@ -53,6 +53,23 @@
 
     .sub {
         margin-top: 15px;
+
+        .quadrado{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            img{
+                width: 10px ;
+                height: 10px;
+                margin: 1%;
+            }
+
+            p{
+                font-size: 12px;
+                color: rgba(0, 0, 0, 0.605);
+            }
+        }
     }
 
     #download p{
@@ -82,5 +99,22 @@
     }
     100% {
         top: 125px;
+    }
+}
+
+.quadrado2{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+
+    p{
+        font-size: 12px;
+        color: rgba(0, 0, 0, 0.605);
+        margin-right: 2%;
+    }
+
+    img{
+        margin: 1%;
     }
 }
