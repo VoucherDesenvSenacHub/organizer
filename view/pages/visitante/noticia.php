@@ -48,7 +48,7 @@
 
 
 <?php
-    $jsPagina = ['VISITANTE/noticias.js']; //Colocar o arquivo .js
+    $jsPagina = ['noticia.js']; //Colocar o arquivo .js
     require_once '../../components/footer.php';
 ?>
 
