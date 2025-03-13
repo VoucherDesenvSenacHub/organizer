@@ -1,6 +1,6 @@
 <?php 
     $tituloPagina = 'tela inicial'; // Definir o título da página
-    $cssPagina = ['ADM/tela-inicial-adm.css']; //Colocar o arquivo .css 
+    $cssPagina = ['adm/home.css']; //Colocar o arquivo .css 
     require_once '../../components/header.php';
 ?>
 

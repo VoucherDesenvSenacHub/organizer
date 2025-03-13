@@ -2,7 +2,7 @@
 
 <?php 
     $tituloPagina = ''; // Definir o título da página
-    $cssPagina = ['VISITANTE/home.css']; //Colocar o arquivo .css 
+    $cssPagina = ['visitante/home.css']; //Colocar o arquivo .css 
     require_once '../../components/header.php';
 ?>
 <!-- COMEÇAR SEU CÓDIGO AQUI -->

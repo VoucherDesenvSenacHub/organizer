@@ -1,6 +1,6 @@
 <?php 
     $tituloPagina = 'Leia Mais'; // Definir o título da página
-    $cssPagina = ['VISITANTE/noticia.css']; //Colocar o arquivo .css 
+    $cssPagina = ['visitante/noticia.css']; //Colocar o arquivo .css 
     require_once '../../components/header.php';
 ?>  
     <div id="principal">
@@ -48,7 +48,7 @@
 
 
 <?php
-    $jsPagina = ['VISITANTE/noticias.js']; //Colocar o arquivo .js
+    $jsPagina = ['noticia.js']; //Colocar o arquivo .js
     require_once '../../components/footer.php';
 ?>
 

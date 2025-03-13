@@ -1,6 +1,6 @@
 <?php
 $tituloPagina = 'Login ADM'; // Definir o título da página
-$cssPagina = ['ADM/login_adm_style.css']; //Colocar o arquivo .css 
+$cssPagina = ['adm/login.css']; //Colocar o arquivo .css 
 ?>
 
 <?php require_once '../../components/header.php'; ?>

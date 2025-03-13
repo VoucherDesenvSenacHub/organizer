@@ -1,6 +1,6 @@
 <?php
 $tituloPagina = 'Doadores ADM'; // Definir o título da página
-$cssPagina = ['ADM/doadores_adm_style.css']; //Colocar o arquivo .css 
+$cssPagina = ['adm/ver-doadores.css']; //Colocar o arquivo .css 
 ?>
 
 <?php require_once '../../components/header.php'; ?>
@@ -136,6 +136,6 @@ $cssPagina = ['ADM/doadores_adm_style.css']; //Colocar o arquivo .css
 
 
 <?php
-$jsPagina = ['doadores_adm_js.js']; //Colocar o arquivo .js
+$jsPagina = ['ver-doadores-adm.js']; //Colocar o arquivo .js
 require_once '../../components/footer.php';
 ?>

@@ -1,6 +1,6 @@
 <?php 
     $tituloPagina = 'Login do Doador';
-    $cssPagina = ['DOADOR/login.css'];
+    $cssPagina = ['doador/login.css'];
     require_once '../../components/header.php';
 ?>
 <!-- COMEÇAR SEU CÓDIGO AQUI -->
