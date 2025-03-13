@@ -368,7 +368,7 @@ th {
         align-items: center;
         flex-direction: column;
         text-align: center;
-        padding: 50px;
+        padding: 0px;
         width: 100%;
         height: 580px;
         overflow: hidden;
@@ -408,6 +408,21 @@ th {
         width: 250px;
         flex-direction: column;
         align-items: center;
+    }
+
+    .principal-dir {
+        display: flex;
+        flex-direction: column;
+        /* margin-top: 6%; */
+        /* margin-right: 40%; */
+        margin: 0px;
+        width: 200px;
+    }
+    
+    .principal-dir img {
+        margin: 0px;
+        height: 200px;
+        width: 200px;
     }
 
 }
