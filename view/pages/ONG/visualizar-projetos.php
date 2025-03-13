@@ -1,6 +1,6 @@
 <?php 
     $tituloPagina = 'Projeto'; // Definir o título da página
-    $cssPagina = ['ONG/visualizar-projetos.css']; //Colocar o arquivo .css (exemplo: 'ONG/cadastro.css')
+    $cssPagina = ['ong/visualizar-projetos.css']; //Colocar o arquivo .css (exemplo: 'ONG/cadastro.css')
     require_once '../../components/header.php';
 ?>
 <!-- COMEÇAR SEU CÓDIGO AQUI -->
@@ -101,7 +101,7 @@
                 <div class="div-img-botao">
                     <img class="img-tela-de-criacao" src="../../assets/images/foto-projeto-card.png" alt="">
                     <div class="div-botao-uploud">
-                        <img class="img-add" src="../../assets/images/uploud.png" alt="">
+                        <img class="img-add" src="../../assets/images/icon-upload.png" alt="">
                         <button class="upload">Upload de Fotos</button>
                     </div>                    
                 </div>
@@ -122,7 +122,7 @@
             <h2 class="titulo-projeto-editado">Projeto Alterado</h2>
             <img class="img-check" src="../../assets/images/Check.png" alt="">
             </div>
-            <a href="visualizar-projetos.html">
+            <a href="visualizar-projetos.php">
             <button class="btn-card"> Visualizar</button>
             </a>        
         </div>

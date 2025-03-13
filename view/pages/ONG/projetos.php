@@ -141,7 +141,9 @@
             <h2 class="titulo-projeto-criado">Projeto Criado</h2>
             <img class="img-check" src="../../assets/images/Check.png" alt="">
             </div>
-            <button href="./visualizar-projetos.php" class="btn-card">Visualizar</button>        
+            <a href="visualizar-projetos.php">
+            <button class="btn-card"> Visualizar</button>
+            </a>        
         </div>
      </div>
 

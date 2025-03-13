@@ -204,6 +204,9 @@
     
 }
 
+
+
+
 /* sub tela edição */
 
 .tela-de-edicao-projeto {
@@ -240,6 +243,147 @@
     
 }
 
+.titulo-tela-criacao{
+    font-family: "Poppins", serif;
+    font-weight: 400;
+    color: #F29200;
+    font-size: 30px;
+}
+
+.div-form{
+    display: flex;
+    gap: 30px;
+}
+
+.div-input-lapis {
+    position: relative;
+    width: 100%;
+}
+
+.div-input-lapis input {
+    width: 100%;
+    padding: 10px;
+    padding-left: 30px;  
+    padding-right: 30px; 
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.div-input-lapis img {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%); 
+}
+
+.img-perfil {
+    left: 5px; 
+    width: 20px;
+    height: 20px;
+}
+
+.img-cifrao {
+    left: 5px;
+    width: 20px;
+    height: 20px;
+}
+
+.lapis-input {
+    right: 5px; 
+    width: 20px;
+    height: 20px;
+}
+
+#preco{
+    width: 80px;
+    height: 25px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+#descricaoProjeto{
+    width: 100%;
+    height: 200px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.conteudo-lado-direito{
+    width: 30%;
+    height: auto;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    display: flex;
+    gap: 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
+    padding: 5px;
+}
+
+.img-tela-de-criacao{
+    width: 100%; 
+    height: auto;
+    align-items: center;
+}
+
+.div-img-botao{
+    flex-direction: column;
+    align-items: center;
+    display: flex;
+    gap: 5px;
+}
+
+.div-botao-uploud{
+    display: flex;
+    position: relative;
+    width: 250,px;
+}
+
+.img-add{
+    position: absolute;
+    top: 50%; 
+    transform: translateY(-50%);
+    text-align: center;
+    left: 10px; 
+    width: 30px;
+    height: 30px;
+}
+
+
+.upload{
+    color: black;
+    font-size: 20px;
+    font-family: "Agdasima", serif;
+    color: #F29200;
+    width: 190px;
+    height: 40px;
+    border-radius: 5px;
+    border-color: #F29200;
+    border-style: dashed;
+}
+
+.upload:hover{
+    background-color: #ccc;
+}
+
+.div-botao-add{
+    display: flex;
+    position: relative;
+    width: 250,px;
+}
+
+.img-add{
+    position: absolute;
+    top: 50%; 
+    transform: translateY(-50%);
+    right: 10px; 
+    width: 30px;
+    height: 30px;
+}
+
 .img-editar{
     width: 30px;
     height: 30px;
@@ -274,6 +418,8 @@
 .botao-salvar-alteracao:hover{
     background-color: #fcd847;
 }
+
+
 
 /* tela de confirmação edição */
 
@@ -320,6 +466,16 @@
     transform: translateY(-50%);
     right: -30px;
     
+}
+
+.btn-card{
+    background-color: #E3B652;
+    color: black;
+    width: 170px;
+    height: 45px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
 }
 
 /* tela para inativar Projeto */
