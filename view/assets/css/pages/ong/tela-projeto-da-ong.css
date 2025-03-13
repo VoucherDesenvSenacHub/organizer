@@ -7,7 +7,7 @@
     z-index: 1;
     width: 80%;
     margin: 120px auto;
-    padding: 20px;
+    padding: 10px;
     background-color: #FFFFFF;
     border-radius: 8px;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.7);
@@ -40,6 +40,8 @@
     flex-direction: column;
     width: 100%;
     height: auto;
+    gap: 20px;
+    padding: 10px;
 }
 
 .principal-dir {
@@ -50,6 +52,7 @@
     width: 100%;
     height: auto;
     gap: 20px;
+    padding: 30px;
 }
 
 /* Inicio Conteúdo da pagina */
@@ -60,8 +63,8 @@
     border: 1px;    
     box-shadow: 1px 2px 2px black;
     border-radius: 10px;
-    padding: 20px 30px;
-    width: 565px;
+    padding: 30px 30px;
+    width: 700px;
     height: 296px;
 
     & .info-projeto {
@@ -70,14 +73,7 @@
         align-items: end;
         width: 100%;
         margin-bottom: 20px;
-        
-        & h4 {
-            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-            background-color: #5282E3;
-        }
 
-        & .p .nome-projeto {
-            background-color: ;
         }
 
         & .progress {
@@ -89,17 +85,18 @@
             display: flex;
             justify-content: end;
             align-items: center;
-            gap: 20px;
+            gap: 30px;
             width: 100%;
 
             & button {
                 border: none;
                 border-radius: 50%;
-                width: 30px;
-                height: 30px;
+                width: 40px;
+                height: 40px;
             }
         }
     }
+    
 
     & .btns-ajudar-projeto {
         display: flex;
@@ -107,6 +104,7 @@
         align-items: center;
         margin: auto 10px;
         width: 100%;
+        
 
         & button {
             display: flex;
@@ -117,6 +115,7 @@
             border-radius: 8px;
             font-size: 1.3rem;
             width: 250px;
+        
         }
 
         & .btn-doacao {
@@ -130,12 +129,39 @@
             width: 250px;
         }
     }
+
+.btns-slider {
+    padding: 30px;
+}
+.nome-projeto {
+    color: #5282E3;
+    display: flex;
+    gap: 15px;
+    font-size: 35px;
+}
+
+.arrecadado {
+    color:#E3B652;
+    font-size: 20px;
+}
+
+.aleatoria {
+    color: #E3B652;
+    display: flex;
+    gap: 20px;
+    font-size: 25px;
+}
+
+.progress {
+    display: flex;
+    color: #FFBE58;
 }
 
 .btns {
     display: flex;
     justify-content: center;
     align-items: center;
+    
 }
 
 
@@ -144,6 +170,7 @@
     width: 100%;
     left: 100%;
     transition: left 0.5s ease-in-out;
+    
 
     & h4 {
         font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;

@@ -11,16 +11,16 @@
                     <div class="header-conteiner">
                         <p class="nome-projeto">NOME DO PROJETO</p>
                         <p class="arrecadado">Arrecadado: R$ 20.000</p>
-
+                        <progress max="100" value="20"></progres>
                         <div>
-                            <progress max="100" value="40" class="progress"></progres>
+                            
                         </div>
                     </div>
                     <div class="info-projeto">
                         <div>
                             <p>Meta: <strong>R$ 100.000</strong></p>
                             <p class="progress">Status: Em progresso (<strong>20% alcançado</strong>)</p>
-                            <p><strong>24</strong>Doações Recebidas</p>
+                            <p><strong>24  </strong>Doações Recebidas</p>
                         </div>
                         <div class="btn-favoritos-compartilhar">
                             <button class="btn-favoritos"><img src="../../assets/images/love.png" alt=""></button>
