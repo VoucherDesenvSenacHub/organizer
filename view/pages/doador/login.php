@@ -22,7 +22,7 @@
                         <input type="checkbox" id="lembrar">
                         <label for="lembrar">Manter conectado</label>
                     </div>
-                    <a href="#">Esqueci a senha</a>
+                    <button type="button" onclick="abrir_popup('fundo-cadastro-popup')">Esqueci a senha</button>
                 </div>
             </div>
             <button class="btn">ENTRAR</button>
@@ -31,6 +31,26 @@
             <img alt="Celular-Login" src="../../assets/images/pages/login_doador.png">
     </div>
 </main>
+
+
+<button onclick="abrir_popup('fundo-cadastro-popup')">Abrir Cadastro</button>
+<div id="fundo-cadastro-popup" class="popup-fundo">
+    <div class="popup">
+        <img src="../../assets/images/pages/esqueci-senha-doador.png" alt="">
+        <div>
+            <h2>RECUPERAR SENHA</h2>
+            <p>Digite seu email abaixo para receber um link de recuperação</p>
+            <form action="">
+                <div class="input-item">
+                    <label for="email">Email</label>
+                    <input id="email" type="email" placeholder="usúario@conta.com" required>
+                </div>
+                <button class="btn">ENVIAR</button>
+            </form>
+        </div>
+    </div>
+</div>
+
 
 <?php
     $jsPagina = [];

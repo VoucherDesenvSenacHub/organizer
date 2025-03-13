@@ -1,10 +1,10 @@
-#fundo-login-popup {
+.popup-fundo {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 999;
     height: 100%;
+    z-index: 999;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -14,16 +14,12 @@
     transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
-#fundo-login-popup.ativo {
+.popup-fundo.ativo {
     opacity: 1;
     visibility: visible;
 }
 
-#fundo-login-popup.ativo #popup {
-    margin-top: 0;
-}
-
-#popup {
+.popup {
     background-color: var(--cor-principal);
     border-radius: 10px;
     display: flex;
@@ -34,14 +30,18 @@
     color: aliceblue;
 }
 
-#popup .msg {
+.popup-fundo.ativo .popup {
+    margin-top: 0;
+}
+
+.popup .msg {
     display: flex;
     flex-direction: column;
     gap: 10px;
     justify-content: space-around;
 }
 
-#popup .msg h1 {
+.popup .msg h1 {
     line-height: 1.2;
     font-size: 28px;
     font-weight: 600;
@@ -49,23 +49,23 @@
     width: 100%;
 }
 
-#popup .msg p {
+.popup .msg p {
     font-size: 14px;
 }
 
-#popup ul {
+.popup ul {
     display: flex;
     align-items: center;
     flex-direction: column;
     gap: 10px;
 }
 
-#popup ul li {
+.popup ul li {
     list-style: none;
     display: flex;
 }
 
-#popup ul li a {
+.popup ul li a {
     color: var(--cor-principal);
     text-decoration: none;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
@@ -79,25 +79,24 @@
     gap: 10px;
 }
 
-#popup ul li a:hover {
+.popup ul li a:hover {
     background-color: var(--cor-amarelo-hover);
 }
 
-#popup img {
+.popup img {
     width: 200px;
-    transform: rotateY(180deg);
 }
 
 @media (max-width: 700px) {
-    #popup {
+    .popup {
         padding: 30px;
     }
 
-    #fundo-login-popup #popup .img {
+    #popup-fundo .popup .img {
         display: none;
     }
 
-    #popup .msg h1 {
+    .popup .msg h1 {
         text-align: center;
     }
 }

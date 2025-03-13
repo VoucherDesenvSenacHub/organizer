@@ -1,5 +1,5 @@
-<div id="fundo-login-popup">
-    <div id="popup">
+<div id="fundo-login-popup" class="popup-fundo">
+    <div class="popup">
         <div class="msg">
             <h1>Olá, Seja <br> Bem-Vindo!</h1>
             <p>Escolha seu tipo de acesso:</p>

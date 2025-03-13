@@ -65,6 +65,7 @@ form .remember-forgot {
     display: flex;
     font-size: 11px;
     justify-content: space-between;
+    align-items: center;
 }
 
 .remember-forgot .remember {
@@ -72,13 +73,15 @@ form .remember-forgot {
     gap: 3px;
 }
 
-.remember-forgot a {
-    color: black;
-    text-decoration: none;
+.remember-forgot button {
+    background: none;
+    border: none;
+    font-size: 11px;
+    cursor: pointer;
     transition: .3s;
 }
 
-.remember-forgot a:hover {
+.remember-forgot button:hover {
     color: blue;
 }
 
@@ -136,4 +139,32 @@ form span a {
     #container-login form .remember-forgot {
         flex-direction: column;
     }
+}
+
+/* POPUP */
+.popup {
+    background-color: white;
+    color: var(--cor-principal);
+}
+
+.popup div {
+    max-width: 300px;
+    text-align: justify;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.popup div h2 {
+    font-weight: 400;
+}
+
+.popup div p {
+    font-size: 15px;
+}
+
+.popup div form {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
 }
