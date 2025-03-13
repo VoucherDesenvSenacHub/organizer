@@ -46,6 +46,17 @@ function confirmacao(){
     });
 }
 
+function confirmacao_aside(){
+    const confirmacao_aside = document.getElementById('fundo-confirmacao');
+    confirmacao_aside.classList.add('ativo');
+
+    confirmacao_aside.addEventListener('click', (event) => {
+        if (event.target === confirmacao_aside) {
+            confirmacao_aside.classList.remove('ativo');
+        }
+    });
+}
+
 function fechar_confirmacao(){
     const confirmacao = document.getElementById('fundo-confirmacao');
     confirmacao.classList.remove('ativo');
