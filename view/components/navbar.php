@@ -13,7 +13,7 @@
             </ul>
         </nav>
         <div class="btn-login">
-            <button class="btn" id="openPopup" onclick="loginPopup()">LOGIN</button>
+            <button class="btn" id="openPopup" onclick="abrir_popup('fundo-login-popup')">LOGIN</button>
             <button onclick="menu_mobile()" id="hamburguer"></button>
         </div>
     </div>
