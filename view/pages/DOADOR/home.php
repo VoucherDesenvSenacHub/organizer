@@ -127,7 +127,7 @@
                 <p class="email">julia@gmail.com.br</p>
             </div>
             <div>
-                <button onclick="confirmacao()" class="logout" a="">
+                <button onclick="abrir_popup_confirmacao('fundo-confirmacao')" class="logout">
                     <span class="material-symbols-outlined">logout</span>
                     Sair
                 </button>
@@ -187,6 +187,7 @@
                     </span> Alterar Senha</button>
                 </div>
             </form>
+        </div>
         </div>
     </div>
     <div id="fundo-confirmacao">

@@ -7,7 +7,7 @@
             <img src="../../assets/images/meu-perfill.png" alt="">
             <div>
                 <span>Olá, Julia</span>
-                <button class="open-popup" onclick="meu_perfil()" id="meu-perfil-popup">Meu perfil ></button>
+                <button class="open-popup" onclick="abrir_popup_confirmacao('meu-perfil')" id="meu-perfil-popup">Meu perfil ></button>
             </div>
         </div>
         <div class="aside-nav">
@@ -28,7 +28,9 @@
         </div>
     </div>
     <div class="aside-nav">
-        <i class="fa-solid fa-right-from-bracket"></i>
-        <button onclick="confirmacao_aside()" id="popup-confirmacao-aside">Sair</button>
+        <button onclick="abrir_popup_confirmacao('fundo-confirmacao')" id="popup-confirmacao-aside">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            Sair
+        </button>
     </div>
 </aside>

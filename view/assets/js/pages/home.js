@@ -1,19 +1,3 @@
-function menu_mobile() {
-    const nav_bar = document.getElementById('nav-bar');
-    const hamburguer = document.getElementById('hamburguer');
-    nav_bar.classList.toggle('active');
-    hamburguer.classList.toggle('active');
-}
-
-window.addEventListener('resize', () => {
-    const nav_bar = document.getElementById('nav-bar');
-    const hamburguer = document.getElementById('hamburguer');
-    if (window.innerWidth > 700 && nav_bar.classList.contains('active')) {
-        nav_bar.classList.remove('active');
-        hamburguer.classList.remove('active');
-    }
-});
-
 function asidebar(){
     let aside = document.getElementById("aside");
     aside.style.right= "0px"
@@ -24,30 +8,13 @@ function fechar_aside(){
     aside.style.right= "-230px"
 }
 
-function meu_perfil() {
-    const meuPerfil = document.getElementById('meu-perfil');
-    meuPerfil.classList.add('ativo');
-
-    meuPerfil.addEventListener('click', (event) => {
-        if (event.target === meuPerfil) {
-            meuPerfil.classList.remove('ativo');
-        }
-    });
-}
-
-function confirmacao(){
+function fechar_confirmacao(){
     const confirmacao = document.getElementById('fundo-confirmacao');
-    confirmacao.classList.add('ativo');
-
-    confirmacao.addEventListener('click', (event) => {
-        if (event.target === confirmacao) {
-            confirmacao.classList.remove('ativo');
-        }
-    });
+    confirmacao.classList.remove('ativo');
 }
 
-function confirmacao_aside(){
-    const confirmacao_aside = document.getElementById('fundo-confirmacao');
+function abrir_popup_confirmacao(id){
+    const confirmacao_aside = document.getElementById(id);
     confirmacao_aside.classList.add('ativo');
 
     confirmacao_aside.addEventListener('click', (event) => {
@@ -55,9 +22,4 @@ function confirmacao_aside(){
             confirmacao_aside.classList.remove('ativo');
         }
     });
-}
-
-function fechar_confirmacao(){
-    const confirmacao = document.getElementById('fundo-confirmacao');
-    confirmacao.classList.remove('ativo');
 }
