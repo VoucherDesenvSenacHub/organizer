@@ -40,8 +40,8 @@
     flex-direction: column;
     width: 100%;
     height: auto;
-    gap: 20px;
-    padding: 10px;
+    gap: 30px;
+    padding: 40px;
 }
 
 .principal-dir {
@@ -52,7 +52,7 @@
     width: 100%;
     height: auto;
     gap: 20px;
-    padding: 30px;
+    /* padding: 10px; */
 }
 
 /* Inicio Conteúdo da pagina */
@@ -131,7 +131,9 @@
     }
 
 .btns-slider {
-    padding: 30px;
+    display: flex;
+    gap:20px;
+
 }
 .nome-projeto {
     color: #5282E3;
@@ -167,6 +169,8 @@
 
 .slide {
     display: none;
+    justify-content: center;
+    align-items: center;
     width: 100%;
     left: 100%;
     transition: left 0.5s ease-in-out;
@@ -191,8 +195,9 @@
 
         & .doador {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            justify-content:center;
+            gap:10px;
+            align-items:left;
             box-shadow: 1px 1px 1px 1px black;
             border-radius: 10px;
             padding: 10px;
@@ -229,10 +234,13 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            justify-content: center;
+            gap: 10px;
             box-shadow: 1px 1px 1px 1px black;
             border-radius: 10px;
-            padding: 10px;
-            width: 250px;
+            padding: 10x;
+            width: 300px;
+            
 
             & .icon-name {
                 background-color: #1C3464;
@@ -251,7 +259,7 @@
                 justify-content: center;
                 align-items: start;
                 flex-direction: column;
-
+                
                 & h3 {
                     letter-spacing: 1px;
 
@@ -282,12 +290,10 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        box-shadow: 1px 1px 3px 2px black;
         width: 100%;
         height: 100%;
         gap: 10px;
-        padding: 20px;
-
+        
         & .status-responsavel {
             display: flex;
             justify-content: center;
@@ -297,10 +303,12 @@
 
             & p {
                 font-size: 0.8rem;
-                background-color: #1C3464;
-                color: #E3B652;
-                border-radius: 4px;
-                padding: 2px;
+                background-color: #E3B652;
+                color: white;
+                border-radius: 5px;
+                width: 70%;
+                align-items: center;
+                padding: 3px;
             }
         }
 
@@ -322,14 +330,18 @@
             justify-content: space-between;
             align-items: start;
             flex-direction: column;
-            gap: 10px;
+            /* gap: 10px; */
+            font-size: 15px;
+            gap:5px;
 
             & .btn-respondavel {
                 display: flex;
                 justify-content: center;
                 align-items: center;
+                border-radius: 5px;
                 width: 180px;
                 height: 36px;
+                border-color: #E3B652;
                 background-color: #E3B652;
             }
         }
@@ -344,7 +356,7 @@
     position: relative;
     width: 100%;
     margin-top: 20px;
-    gap: 20px;
+    gap: 30px;
 
     & button {
         display: flex;
@@ -400,20 +412,38 @@
         & .active {
             background-color: #000;
             color: #FFFFFF;
+            border-radius: 10px;
         }
     }
 }
 
 .slide.active {
+    font-family: 'Poppins', sans-serif;
     display: block;
+    font-size: 20px;
     left: 0;
     transform: translateX(0px);
 }
-
-.btns-slider.active {
-    background-color: red;
-    /* Exemplo de estilo para o botão ativo */
+.texto-projeto {
+    display: flex; 
+    font-size:15px;
+    flex-direction: column;
 }
+
+.slide .doadores {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.doadores-projeto {
+    font-size: 1.5rem;
+    margin: 10px 0;
+    color: #5282E3;
+}
+
+/* Exemplo de estilo para o botão ativo */
 
 /* Fim Animações da pagina */
 

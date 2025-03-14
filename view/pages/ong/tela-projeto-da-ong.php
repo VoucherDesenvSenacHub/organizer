@@ -4,6 +4,21 @@
     require_once '../../components/header.php';
 ?>
 <main>
+
+<div id="fundo-popup">
+        <div class="popup">
+            <div class="img">
+                <img src="../../assets/images/erro403.png" alt="Erro 403">
+            </div>
+            <div class="msg">
+                <p class="linha1">Para realizar essa ação,</p>
+                <p>Faça seu login</p>
+                <button class="btn-maistarde" onclick="fecharPopup()">Mais Tarde</button>
+            </div>
+        </div>
+    </div>
+    <!-- Fim Popup de Erro 403 -->
+
 <div id="principal">
         <div class="principal-esq">
             <div class="principal-dir">
@@ -22,13 +37,13 @@
                             <p class="progress">Status: Em progresso (<strong>20% alcançado</strong>)</p>
                             <p><strong>24  </strong>Doações Recebidas</p>
                         </div>
-                        <div class="btn-favoritos-compartilhar">
+                        <div class="btn-favoritos-compartilhar" >
                             <button class="btn-favoritos"><img src="../../assets/images/love.png" alt=""></button>
                             <button class="btn-compartilhar"><img src="../../assets/images/share.png" alt=""></button>
                         </div>
                     </div>
                     <div class="btns-ajudar-projeto">
-                        <button class="btn-doacao">Fazer uma doação</button>
+                        <button class="btn-doacao" >Fazer uma doação</button>
                         <button class="btn-voluntario">Tornar-se voluntário</button>
                     </div>
                 </div>
@@ -40,6 +55,7 @@
                     </div>
                 </div>
             </div>
+            
             <div class="btns-slider">
                 <button>
                     Sobre
@@ -61,13 +77,14 @@
             <ul class="conteiner">
                 <div>
                     <li class="slide active">
-                        <span><strong>Projeto criado em: </strong>04/08/2023</span>
-                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Provident ducimus enim eum officia,
+                        <span>Projeto criado em: </>04/08/2023</span>
+
+                        <p class="texto-projeto"> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Provident ducimus enim eum officia,
                             molestiae nostrum? Illum dolorem repellendus pariatur numquam, earum, repellat accusantium,
                             reiciendis maiores dignissimos sint quidem tenetur impedit.</p>
                     </li>
                     <li class="slide">
-                        <p>DOADORES DESTE PROJETO</p>
+                        <p class="doadores-projeto">DOADORES DESTE PROJETO</p>
                         <div class="doadores">
                             <div class="doador">
                                 <div class="icon-name">
@@ -163,7 +180,7 @@
                         </div>
                     </li>
                     <li class="slide">
-                        <p>NOSSOS APOIADORES</p>
+                        <p class="doadores-projeto">NOSSOS APOIADORES</p>
                         <div class="voluntarios">
                             <div class="voluntario">
                                 <div class="icon-name">
@@ -283,22 +300,21 @@
                         </div>
                     </li>
                     <li class="slide">
-                        <p>ONG RESPONSÁVEL</p>
+                        <p class="doadores-projeto">ONG RESPONSÁVEL</p>
                         <div class="responsaveis">
                             <div class="conteiner-responsaveis">
                                 <div class="img">
-                                    <img src="../imgs/ambiental.png" alt="Logo da ONG responsavel">
+                                    <img src="../../assets/images/logo-novo.png" alt="">
                                 </div>
                                 <div class="info-responsavel">
-                                    <p>Nome da ONG</p>
+                                    <h3>ONG TODOS JUNTOS</h3>
                                     <p>Área de Atuação</p>
                                     <div class="status-responsavel">
-                                        <p>Saúde</p>
+                                        <p>Saúde</p>    
                                         <p>Esporte</p>
                                     </div>
-                                    <button class="btn-respondavel">
-                                        Conhecer ONG
-                                    </button>
+                                    <a href="php"></a><button class="btn-respondavel">
+                                        Conhecer ONG</button></a>
                                 </div>
                             </div>
                         </div>

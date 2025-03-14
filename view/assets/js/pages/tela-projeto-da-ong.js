@@ -70,3 +70,15 @@ function changeSlide() {
 }
 
 setInterval(changeSlide, 3000);
+
+// Popup mais tarde 
+function btnMaisTarde(){
+    const fundoPopup = document.getElementById('btn-mais-tarde');
+    fundoPopup.classList.add('ativo');
+
+    fundoPopup.addEventListener('click', (event) => {
+        if (event.target === fundoPopup) {
+            fundoPopup.classList.remove('ativo');
+        }
+    });
+}
