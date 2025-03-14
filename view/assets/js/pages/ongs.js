@@ -46,9 +46,13 @@ function showHide(campo, id){
     }
 }
 
-function esqueciSenha() {
+function esqueciSenha(status) {
     let painelSenha = document.querySelector('#password-recovery');
-    painelSenha.style.display = 'flex';
+    if(status){
+        painelSenha.style.display = 'flex';
+    }else {
+        painelSenha.style.display = 'none';
+    }
 }
 function slider(){
     contador++;

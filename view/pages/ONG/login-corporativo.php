@@ -29,7 +29,7 @@
                     <label for="checkbox">Manter conectado</label>
                 </div>
                 <div>
-                    <a href="#" id="esqueci-senha" onclick="esqueciSenha()">Esqueci a senha</a>
+                    <a href="#" id="esqueci-senha" onclick="esqueciSenha(true)">Esqueci a senha</a>
                 </div>
             </div>
             <div id="login-ong">
@@ -61,7 +61,10 @@
                 <label for="recovery-mail">Email</label><br>
                 <input type="email" id="recovery-email" placeholder="seuemail@conta.com">
             </div>
-            <button class="login-submit">Enviar</button>
+            <div>
+                <button class="login-cancel" onclick="esqueciSenha(false)">Cancelar</button>
+                <button class="login-submit">Enviar</button>
+            </div>
         </form>
     </div>
 </div>

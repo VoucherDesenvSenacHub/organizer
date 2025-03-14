@@ -101,6 +101,26 @@ button:hover {
     margin-top: 20px;
     margin-right: 10px;
 }
+.login-submit:hover {
+    cursor: pointer;
+    background-color: #e8ce96;
+}
+.login-cancel {
+    width: 150px;
+    height: 50px;
+    background-color: #f2f2f2;
+    border-radius: 8px;
+    font-size: 0.8em;
+    font-weight: 600;
+    color: black;
+    border: none;
+    margin-top: 20px;
+    margin-right: 10px;
+}
+.login-cancel:hover{
+    cursor: pointer;
+    background-color: #848080;
+}
 #cadastrar-ong>a{
     color: black;
     font-size: 0.8em;
@@ -238,6 +258,18 @@ button:hover {
         justify-content: center;
         background-color: #e0e0e0;
         box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.7);
+    }
+    .login-submit {
+        width: 80px;
+        height: 30px;
+        font-size: 0.5em;
+        font-weight: 500;
+    }
+    .login-cancel {
+        width: 80px;
+        height: 30px;
+        font-size: 0.5em;
+        font-weight: 500;
     }
     
     #pr-left>img {

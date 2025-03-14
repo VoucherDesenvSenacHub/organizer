@@ -14,14 +14,16 @@
             </div>
             <div class="nav-buttons">
                 <button type="button" class="p1" onclick="targetPage(0,0)"></button>
-                <button type="button" class="p1" onclick="targetPage(1,0)"></button>
-                <button type="button" class="p1" onclick="targetPage(2,0)"></button>
-                <button type="button" class="p1" onclick="targetPage(3,0)"></button>
-                <button type="button" class="p1" onclick="targetPage(4,0)"></button>
-                <button type="button" class="p1" onclick="targetPage(5,0)"></button>
+                <button type="button" class="p2" onclick="targetPage(1,0)"></button>
+                <button type="button" class="p2" onclick="targetPage(2,0)"></button>
+                <button type="button" class="p2" onclick="targetPage(3,0)"></button>
+                <button type="button" class="p2" onclick="targetPage(4,0)"></button>
+                <button type="button" class="p2" onclick="targetPage(5,0)"></button>
             </div>
             <div class="progress">
-                <img src="../../assets/images/progress-1.png" alt="">
+                <div class="line">
+                    <div class="line-0"></div>
+                </div>
             </div>
             <div id="text-progress">
                 <div class="text-detalhes">Dados<br>da ONG</div>
@@ -65,13 +67,15 @@
         <div class="nav-buttons">
             <button type="button" class="p1" onclick="targetPage(0,1)"></button>
             <button type="button" class="p1" onclick="targetPage(1,1)"></button>
-            <button type="button" class="p1" onclick="targetPage(2,1)"></button>
-            <button type="button" class="p1" onclick="targetPage(3,1)"></button>
-            <button type="button" class="p1" onclick="targetPage(4,1)"></button>
-            <button type="button" class="p1" onclick="targetPage(5,1)"></button>
+            <button type="button" class="p2" onclick="targetPage(2,1)"></button>
+            <button type="button" class="p2" onclick="targetPage(3,1)"></button>
+            <button type="button" class="p2" onclick="targetPage(4,1)"></button>
+            <button type="button" class="p2" onclick="targetPage(5,1)"></button>
         </div>
         <div class="progress">
-            <img src="../../assets/images/progress-2.png" alt="">
+            <div class="line">
+                <div class="line-1"></div>
+            </div>
         </div>
         <div id="text-progress">
             <div class="text-detalhes">Dados<br>da ONG</div>
@@ -143,12 +147,14 @@
             <button type="button" class="p1" onclick="targetPage(0,2)"></button>
             <button type="button" class="p1" onclick="targetPage(1,2)"></button>
             <button type="button" class="p1" onclick="targetPage(2,2)"></button>
-            <button type="button" class="p1" onclick="targetPage(3,2)"></button>
-            <button type="button" class="p1" onclick="targetPage(4,2)"></button>
-            <button type="button" class="p1" onclick="targetPage(5,2)"></button>
+            <button type="button" class="p2" onclick="targetPage(3,2)"></button>
+            <button type="button" class="p2" onclick="targetPage(4,2)"></button>
+            <button type="button" class="p2" onclick="targetPage(5,2)"></button>
         </div>
         <div class="progress">
-            <img src="../../assets/images/progress-3.png" alt="">
+            <div class="line">
+                <div class="line-2"></div>
+            </div>
         </div>
         <div id="text-progress">
             <div class="text-detalhes">Dados<br>da ONG</div>
@@ -194,11 +200,13 @@
             <button type="button" class="p1" onclick="targetPage(1,3)"></button>
             <button type="button" class="p1" onclick="targetPage(2,3)"></button>
             <button type="button" class="p1" onclick="targetPage(3,3)"></button>
-            <button type="button" class="p1" onclick="targetPage(4,3)"></button>
-            <button type="button" class="p1" onclick="targetPage(5,3)"></button>
+            <button type="button" class="p2" onclick="targetPage(4,3)"></button>
+            <button type="button" class="p2" onclick="targetPage(5,3)"></button>
         </div>
         <div class="progress">
-                <img src="../../assets/images/progress-4.png" alt="">
+            <div class="line">
+                <div class="line-3"></div>
+            </div>
             </div>
             <div id="text-progress">
                 <div class="text-detalhes">Dados<br>da ONG</div>
@@ -244,10 +252,12 @@
             <button type="button" class="p1" onclick="targetPage(2,4)"></button>
             <button type="button" class="p1" onclick="targetPage(3,4)"></button>
             <button type="button" class="p1" onclick="targetPage(4,4)"></button>
-            <button type="button" class="p1" onclick="targetPage(5,4)"></button>
+            <button type="button" class="p2" onclick="targetPage(5,4)"></button>
         </div>
         <div class="progress">
-            <img src="../../assets/images/progress-5.png" alt="">
+            <div class="line">
+                <div class="line-4"></div>
+            </div>
         </div>
         <div id="text-progress">
             <div class="text-detalhes">Dados<br>da ONG</div>
@@ -300,7 +310,9 @@
             <button type="button" class="p1" onclick="targetPage(5,5)"></button>
         </div>
         <div class="progress">
-            <img src="../../assets/images/progress-6.png" alt="">
+            <div class="line">
+                <div class="line-5"></div>
+            </div>
         </div>
         <div id="text-progress">
             <div class="text-detalhes">Dados<br>da ONG</div>
@@ -308,7 +320,7 @@
             <div class="text-detalhes">Endereço</div>
             <div class="text-detalhes">Responsável</div>
             <div class="text-detalhes">Banco</div>
-            <div class="text-detalhes-draft">Login</div>
+            <div class="text-detalhes">Login</div>
         </div>
         <div class="formulario-geral">
             <div>
