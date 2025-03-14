@@ -1,6 +1,10 @@
 <?php 
     $tituloPagina = 'Relatórios'; // Definir o título da página
+<<<<<<< HEAD:view/pages/adm/relatorios.php
     $cssPagina = ["ADM/relatorios.css"]; //Colocar o arquivo .css (exemplo: 'ONG/cadastro.css')
+=======
+    $cssPagina = ["ong/relatorios.css"]; //Colocar o arquivo .css (exemplo: 'ONG/cadastro.css')
+>>>>>>> 8b661ce1e93d94da4cac07ab1f748d858a29d7ef:view/pages/ONG/relatorios.php
     require_once '../../components/header.php';
 ?>
     <main>
@@ -12,19 +16,27 @@
             <div class="cards">
                 <div class="card1">
                     <div class="icon">
-                        Projetos ativos/inativos
-                        <button onclick="clicar()"><img src="../../assets/images/icon.png" alt=""></button>
+                    Voluntários por Projeto
+                        <button onclick="clicar()"><img src="../../assets/images/icon-download-report.png" alt=""></button>
+                        
                     </div>
-                    <img src="../../assets/images/grafico1.png" alt="grafico">
+
                     <div class="sub">
-                        <img src="../../assets/images/Legends1.png" alt="">
+                        
+                        <img src="../../assets/images/graph-vol-proj.png" alt="">
+
+                        <div class="quadrado">
+                            <img src="../../assets/images/SquareFill.png" alt="">
+                            <p>voluntarios</p>
+                        </div>
+
                     </div>
                 </div>
 
                 <div class="card1">
                     <div class="icon">
-                        Doações
-                        <button onclick="clicar()"><img src="../../assets/images/icon.png" alt=""></button>
+                        Doações Mensais
+                        <button onclick="clicar()"><img src="../../assets/images/icon-download-report.png" alt=""></button>
                     </div>
                     <img src="../../assets/images/grafico2.png" alt="">
                     <div class="sub">
@@ -34,26 +46,30 @@
 
                 <div class="card1">
                     <div class="icon">
-                        Acessos no sistema
-                        <button onclick="clicar()"><img src="../../assets/images/icon.png" alt=""></button>
+                        Doações por projeto
+                        <button onclick="clicar()"><img src="../../assets/images/icon-download-report.png" alt=""></button>
                     </div>
-                    <img src="../../assets/images/grafico3.png" alt="">
-                    <div class="sub">
-                        <img src="../../assets/images/Legends3.png" alt="">
-                    </div>
+                    <img src="../../assets//images/pie-graph.png" alt="" id="pie-graph">
                 </div>
 
                 <div class="card1">
                     <div class="icon">
-                        Categorias das ONGS
-                        <button onclick="clicar()"><img src="../../assets/images/icon.png" alt=""></button>
+                        Doações/Voluntários por Projeto
+                        <button onclick="clicar()"><img src="../../assets/images/icon-download-report.png" alt=""></button>
                     </div>
-                    <img src="../../assets/images/grafico4.png" alt="">
+                    <img src="../../assets/images/volunt-doac-relat.png" alt="">
+
+                    <div class="quadrado2">
+                        <img src="../../assets/images/greenSquare.png" alt="">
+                        <p>Doações</p>
+                        <img src="../../assets/images/blueSquare.png" alt="">
+                        <p>Voluntários</p>
+                    </div>
                 </div>
             </div>
 
             <div id="download">
-                <img src="a../../assets/images/icon.png" alt="">
+                <img src="../../assets/images/icon.png" alt="">
                 <p>Download Iniciado</p>
             </div>
 

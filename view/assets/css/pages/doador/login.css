@@ -111,6 +111,43 @@ form span a {
     transform: rotateY(180deg);
 }
 
+/* POPUP RECUPERAR SENHA */
+#popup-recuperar-senha {
+    background-color: aliceblue;
+    color: var(--cor-principal);
+    gap: 30px;
+    position: relative;
+}
+
+#popup-recuperar-senha img {
+    width: 150px;
+    transition: .3s ease;
+}
+
+#popup-recuperar-senha div {
+    max-width: 300px;
+    text-align: justify;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#popup-recuperar-senha div h2 {
+    font-weight: 400;
+}
+
+#popup-recuperar-senha div p {
+    font-size: 15px;
+}
+
+#popup-recuperar-senha div form {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-top: 5px;
+}
+
+/* RESPONSIVIDADE */
 @media (max-width: 700px) {
     #container-login {
         width: fit-content;
@@ -124,6 +161,16 @@ form span a {
         width: 100px;
         top: 8px;
         right: 8px;
+    }
+
+    #popup-recuperar-senha {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #popup-recuperar-senha img {
+        width: 75px;
+        height: 114px;
     }
 }
 
@@ -139,32 +186,4 @@ form span a {
     #container-login form .remember-forgot {
         flex-direction: column;
     }
-}
-
-/* POPUP */
-.popup {
-    background-color: white;
-    color: var(--cor-principal);
-}
-
-.popup div {
-    max-width: 300px;
-    text-align: justify;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.popup div h2 {
-    font-weight: 400;
-}
-
-.popup div p {
-    font-size: 15px;
-}
-
-.popup div form {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
 }
