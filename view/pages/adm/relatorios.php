@@ -1,10 +1,6 @@
 <?php 
     $tituloPagina = 'Relatórios'; // Definir o título da página
-<<<<<<< HEAD:view/pages/adm/relatorios.php
-    $cssPagina = ["ADM/relatorios.css"]; //Colocar o arquivo .css (exemplo: 'ONG/cadastro.css')
-=======
-    $cssPagina = ["ong/relatorios.css"]; //Colocar o arquivo .css (exemplo: 'ONG/cadastro.css')
->>>>>>> 8b661ce1e93d94da4cac07ab1f748d858a29d7ef:view/pages/ONG/relatorios.php
+    $cssPagina = ["adm/relatorios.css"]; //Colocar o arquivo .css (exemplo: 'ONG/cadastro.css')
     require_once '../../components/header.php';
 ?>
     <main>
