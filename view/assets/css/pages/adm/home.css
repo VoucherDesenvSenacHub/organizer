@@ -387,10 +387,10 @@ th {
 
         & .sub-principal-esq {
             display: flex;
-            justify-content: start;
-            align-items: start;
+            flex-direction: column;
+            align-items: center;
             text-align: center;
-            width: 100%;
+            width: 10%;
 
             & .cards-esq {
                 display: flex;
@@ -398,7 +398,7 @@ th {
                 align-items: center;
                 flex-direction: column;
                 gap: 18px;
-                margin-left: 30px;
+                margin-left: 0px;
 
                 & h1 {
                     font-size: 1.8em;
@@ -427,7 +427,7 @@ th {
         flex-direction: column;
         /* margin-top: 6%; */
         /* margin-right: 40%; */
-        margin: 0px;
+        margin: 20px;
         width: 200px;
     }
 

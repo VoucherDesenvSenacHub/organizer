@@ -5,9 +5,54 @@ function mudaMenu() {
     hbgMenu.id = 'hamburger-menu-slide';
     btnHamburger.style.opacity = 0;
 }
-function esqueciSenha() {
+
+// Link para card direta do cadastro
+function targetPage(target, actual){
+    let cards = ['cadastro', 'atuacao', 'endereco','responsavel','dados-bancarios','criar-login'];
+    if(target>actual){
+        for(let i=actual; i<target; i++){
+            mudaPagina(cards[i], false);
+        }
+    }
+    if(target<actual){
+        for(let i=actual; i>=target; i--){
+            mudaPagina(cards[i], true);
+        }
+    }
+}
+
+// Virar páginas gerais do cadastro
+function mudaPagina(p, action) {
+    let pagina = document.getElementById(p);
+    // action ? pagina.style.display = "flex" : pagina.style.display = "none";
+    if (!action){
+        pagina.style.animation = "vira-pagina 1s forwards";
+    }else {
+        pagina.style.animation = "volta-pagina 1s forwards";
+    }
+}
+
+// Exibe e oculta senha digitada
+
+function showHide(campo, id){
+    const senha = document.getElementById(campo);
+    const icone = document.getElementById(id);
+    if(senha.type === 'password'){
+        senha.type = 'text';
+        icone.innerHTML = 'visibility_off';
+    }else {
+        senha.type = 'password';
+        icone.innerHTML = 'visibility';
+    }
+}
+
+function esqueciSenha(status) {
     let painelSenha = document.querySelector('#password-recovery');
-    painelSenha.style.display = 'flex';
+    if(status){
+        painelSenha.style.display = 'flex';
+    }else {
+        painelSenha.style.display = 'none';
+    }
 }
 function slider(){
     contador++;
