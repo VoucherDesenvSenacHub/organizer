@@ -31,19 +31,16 @@
             <img alt="Celular-Login" src="../../assets/images/pages/login_doador.png">
     </div>
 </main>
-
-
-<button onclick="abrir_popup('fundo-cadastro-popup')">Abrir Cadastro</button>
 <div id="fundo-cadastro-popup" class="popup-fundo">
-    <div class="popup">
+    <div class="container-popup" id="popup-recuperar-senha">
         <img src="../../assets/images/pages/esqueci-senha-doador.png" alt="">
         <div>
             <h2>RECUPERAR SENHA</h2>
             <p>Digite seu email abaixo para receber um link de recuperação</p>
             <form action="">
                 <div class="input-item">
-                    <label for="email">Email</label>
-                    <input id="email" type="email" placeholder="usúario@conta.com" required>
+                    <label for="recuperar-email">Email</label>
+                    <input id="recuperar-email" type="email" placeholder="usúario@conta.com" required>
                 </div>
                 <button class="btn">ENVIAR</button>
             </form>
