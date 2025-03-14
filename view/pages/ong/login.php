@@ -17,7 +17,11 @@
             <div class="form-senha">
                 <label for="senha">Senha</label><br>
                 <input type="password" id="password-corp" placeholder="**********"><br>
-                <button id="ver-senha"><img src="../../assets/images/eye.png" alt=""></button>
+                    <button id="ver-senha" type="button" onclick="showHide('password-corp', 'eyepassword')">
+                        <span class="material-symbols-outlined" id="eyepassword">
+                            visibility
+                        </span>
+                    </button>
             </div>
             <div class="form-opcoes">
                 <div id="chk-box">
@@ -25,7 +29,7 @@
                     <label for="checkbox">Manter conectado</label>
                 </div>
                 <div>
-                    <a href="#" id="esqueci-senha" onclick="esqueciSenha()">Esqueci a senha</a>
+                    <a href="#" id="esqueci-senha" onclick="esqueciSenha(true)">Esqueci a senha</a>
                 </div>
             </div>
             <div id="login-ong">
@@ -35,7 +39,7 @@
             </div>
         </form>
         <div id="cadastrar-ong">
-            <a href="cadastro.php"><span>Quer cadastrar sua ONG </span><span id="laranja"> Criar ONG</span></a>
+            <a href="cadastro.php"><span>Quer cadastrar sua ONG: </span><span id="laranja"> Criar ONG</span></a>
         </div>
     </div>
     <div class="principal-dir">
@@ -57,7 +61,10 @@
                 <label for="recovery-mail">Email</label><br>
                 <input type="email" id="recovery-email" placeholder="seuemail@conta.com">
             </div>
-            <button class="login-submit">Enviar</button>
+            <div>
+                <button class="login-cancel" onclick="esqueciSenha(false)">Cancelar</button>
+                <button class="login-submit">Enviar</button>
+            </div>
         </form>
     </div>
 </div>
