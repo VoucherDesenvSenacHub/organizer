@@ -90,8 +90,8 @@ button:hover {
     justify-content: center;
 }
 .login-submit {
-    width: 150px;
-    height: 50px;
+    width: 100px;
+    height: 40px;
     background-color: #E3B652;
     border-radius: 8px;
     font-size: 0.8em;
@@ -106,8 +106,8 @@ button:hover {
     background-color: #e8ce96;
 }
 .login-cancel {
-    width: 150px;
-    height: 50px;
+    width: 100px;
+    height: 40px;
     background-color: #f2f2f2;
     border-radius: 8px;
     font-size: 0.8em;

@@ -25,7 +25,7 @@
                     <div class="line-0"></div>
                 </div>
             </div>
-            <div id="text-progress">
+            <div class="text-progress">
                 <div class="text-detalhes">Dados<br>da ONG</div>
                 <div class="text-detalhes-draft">Descrição</div>
                 <div class="text-detalhes-draft">Endereço</div>
@@ -77,7 +77,7 @@
                 <div class="line-1"></div>
             </div>
         </div>
-        <div id="text-progress">
+        <div class="text-progress">
             <div class="text-detalhes">Dados<br>da ONG</div>
             <div class="text-detalhes">Descrição</div>
             <div class="text-detalhes-draft">Endereço</div>
@@ -156,7 +156,7 @@
                 <div class="line-2"></div>
             </div>
         </div>
-        <div id="text-progress">
+        <div class="text-progress">
             <div class="text-detalhes">Dados<br>da ONG</div>
             <div class="text-detalhes">Descrição</div>
             <div class="text-detalhes">Endereço</div>
@@ -208,7 +208,7 @@
                 <div class="line-3"></div>
             </div>
             </div>
-            <div id="text-progress">
+            <div class="text-progress">
                 <div class="text-detalhes">Dados<br>da ONG</div>
                 <div class="text-detalhes">Descrição</div>
                 <div class="text-detalhes">Endereço</div>
@@ -259,7 +259,7 @@
                 <div class="line-4"></div>
             </div>
         </div>
-        <div id="text-progress">
+        <div class="text-progress">
             <div class="text-detalhes">Dados<br>da ONG</div>
             <div class="text-detalhes">Descrição</div>
             <div class="text-detalhes">Endereço</div>
@@ -314,7 +314,7 @@
                 <div class="line-5"></div>
             </div>
         </div>
-        <div id="text-progress">
+        <div class="text-progress">
             <div class="text-detalhes">Dados<br>da ONG</div>
             <div class="text-detalhes">Descrição</div>
             <div class="text-detalhes">Endereço</div>
@@ -326,7 +326,7 @@
             <div>
                 <label for="senha-login">Senha</label><br>
                 <input type="password" id="senha-login" placeholder="**********">
-                <button id="ver-senha" type="button"onclick="showHide('senha-login', 'eyepassword')">
+                <button class="ver-senha" type="button"onclick="showHide('senha-login', 'eyepassword')">
                     <span class="material-symbols-outlined" id="eyepassword">
                         visibility
                     </span>
@@ -335,7 +335,7 @@
             <div>
                 <label for="conf-senha">Confirmar senha</label><br>
                 <input type="password" id="conf-senha" placeholder="**********">
-                <button id="ver-senha" type="button" onclick="showHide('conf-senha', 'eye-conf-password')">
+                <button class="ver-senha" type="button" onclick="showHide('conf-senha', 'eye-conf-password')">
                     <span class="material-symbols-outlined" id="eye-conf-password">
                         visibility
                     </span>
