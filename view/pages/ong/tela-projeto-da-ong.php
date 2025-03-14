@@ -27,7 +27,7 @@
                         <p class="nome-projeto">NOME DO PROJETO</p>
                         <p class="arrecadado">Arrecadado: R$ 20.000</p>
                         <progress max="100" value="20"></progres>
-                        <div>
+                        <div>   
                             
                         </div>
                     </div>
