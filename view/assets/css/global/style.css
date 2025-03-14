@@ -3,7 +3,9 @@
 @import url(../components/cores.css);
 @import url(../components/button.css);
 @import url(../components/header.css);
-@import url(../components/login-popup.css);
+@import url(login-popup.css);
+@import url(../components/popup.css);
+@import url(../components/aside.css);
 
 * {
     margin: 0;
