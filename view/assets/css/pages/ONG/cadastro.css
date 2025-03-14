@@ -340,6 +340,12 @@ h4 {
     font-size: 0.8em;
 
 }
+#senha-login::-ms-reveal {
+    display: none;
+}
+#conf-senha::-ms-reveal {
+    display: none;
+}
 
 /* Efeito vira página */
 @keyframes vira-pagina {
