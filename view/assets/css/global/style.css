@@ -5,6 +5,7 @@
 @import url(../components/header.css);
 @import url(login-popup.css);
 @import url(../components/popup.css);
+@import url(../components/aside.css);
 
 * {
     margin: 0;
