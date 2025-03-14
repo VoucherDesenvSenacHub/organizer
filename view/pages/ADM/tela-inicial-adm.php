@@ -76,7 +76,7 @@
                         <div><img class="section-icon orange" src="../../assets/images/lupa_bg.png" alt=""></div>
                         <span>ONGS (70)</span>
                     </div>
-                    <table>
+                    <table class="table-ongs">
                         <thead>
                             <tr>
                                 <th>Nome</th>
@@ -114,7 +114,7 @@
                         <div><img class="section-icon green" src="../../assets/images/globo.png" alt=""></div>
                         <span>PROJETOS (110)</span>
                     </div>
-                    <table>
+                    <table class="table-projetos">
                         <thead>
                             <tr>
                                 <th>Nome</th>
@@ -153,7 +153,7 @@
                         </div>
                         <span>DOADORES (400)</span>
                     </div>
-                    <table>
+                    <table class="table-doadores">
                         <thead>
                             <tr>
                                 <th>Nome</th>
