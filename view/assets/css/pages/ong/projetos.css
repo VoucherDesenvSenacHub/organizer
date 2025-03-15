@@ -7,7 +7,7 @@
     justify-content: space-around;
     z-index: 1;
     width: 60%;
-    margin: 120px auto;
+    margin: 40px auto;
     padding: 20px;
     background-color: #FFFFFF;
     border-radius: 8px;
@@ -360,5 +360,23 @@
 
 
 @media (max-width: 481px) {
-    
+    #principal {
+        justify-content: space-around;
+        z-index: 1;
+        width: 90%;
+        margin: 40px auto;
+        padding: 10px;
+        background-color: #FFFFFF;
+        border-radius: 8px;
+        box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.7);
+    }
+
+    .header-principal {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+    }
 }
