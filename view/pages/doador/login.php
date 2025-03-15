@@ -6,7 +6,7 @@
 <!-- COMEÇAR SEU CÓDIGO AQUI -->
 <main>
     <div id="container-login" class="container">
-        <form>
+        <form action="home.php" method="GET">
             <h1>FAÇA SEU LOGIN</h1>
             <div class="input-group">
                 <div class="input-item">
