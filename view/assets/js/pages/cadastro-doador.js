@@ -185,12 +185,14 @@ function voltar(x) {
         linha.style.width = '0%'
         bolinha[1].classList.remove('active')
         check[0].style.color = 'transparent'
+        bolinha[0].classList.add('active')
     } else if (x == 2) {
         const largura = window.innerWidth;
         move = largura > 750 ? 660 : 330
         form.style.transform = `translateX(-${move}px)`
         linha.style.width = '33%'
         bolinha[2].classList.remove('active')
+        bolinha[1].classList.add('active')
         check[1].style.color = 'transparent'
     }
 }
