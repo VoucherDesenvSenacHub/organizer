@@ -97,15 +97,17 @@
 
     <!-- tela visualiza pedido -->
     <div class="tela-visualiza-solicitacao" id="tela-visualiza-solicitacao">
+        
         <div class="card-visualiza-solicitacao">
-        <div class="logo-descricao">
-                <div><img src="../../assets/images/avatar_logo.png" alt=""></div>   
-                <div><h3>Coca Cola <br> 00.000.000/0000-00</h3></div>
-        </div>
-        <div>
+            <div class="logo-descricao">
+                <img src="../../assets/images/avatar_logo.png" alt="">  
+                <h3>Coca Cola <br> 00.000.000/0000-00</h3>
+            </div>
+            <div>
                 <div><p>Somos a Coca-Cola e acreditamos no impacto positivo que seu sistema pode gerar. Estamos interessados em estabelecer uma parceria para apoiar seus projetos e promover juntos um futuro melhor. Aguardamos ansiosamente seu retorno.</p></div>      
+            </div>
         </div>
-        </div>
+        
      </div>
 
     <!-- tela confirmação de pedido aceito -->

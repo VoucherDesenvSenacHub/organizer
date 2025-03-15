@@ -311,12 +311,56 @@
         margin-top: 10px;
     }
 
-    .logo-descricao{
-    display: flex;
-    flex-direction: column; 
-    align-items: center;
+    .card-recusa-solicitacao img{
+        width: 60px;  
+        height: 50px;
     }
 
+    .card-recusa-solicitacao h1{
+        font-size: 14px;
+    }
+    
+    .card-recusa-solicitacao p{
+        font-size: 12px;
+    }
+
+    .card-confirma-solicitacao img{
+        width: 60px;  
+        height: 50px;
+    }
+    
+    .card-confirma-solicitacao h1{
+        font-size: 14px;
+    }
+    
+    .card-confirma-solicitacao p{
+        font-size: 12px;
+    }
+
+    .logo-descricao{
+        display: flex;
+        flex-direction: column;
+        
+
+        img{
+            width: 100px;  
+            height: 100px;
+            margin-bottom: 5px;
+        }
+
+        h3{
+            font-size: 16px;
+            margin-top: 5px;
+        }
+
+        p{
+            font-size: 12px;
+        }
+    }
+
+     
+
+    
     .card-visualiza-solicitacao,
     .card-confirma-solicitacao,
     .card-recusa-solicitacao {
