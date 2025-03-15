@@ -7,7 +7,7 @@
         <nav id="nav-bar">
             <ul>
                 <li><a href="../../../index.php">Home</a></li>
-                <li><a href="#">Ongs</a></li>
+                <li><a href="../visitante/ongs.php">Ongs</a></li>
                 <li><a href="#">Projetos</a></li>
                 <li><a href="../visitante/tela-noticia.php">Notícias</a></li>
             </ul>
