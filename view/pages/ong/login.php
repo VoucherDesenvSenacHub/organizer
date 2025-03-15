@@ -12,7 +12,7 @@
         <form class="form-login">
             <div class="form-email">
                 <label for="email">Email</label><br>
-                <input type="text" id="email-corp" placeholder="usuario@conta.com"><br>
+                <input type="email" id="email-corp" placeholder="usuario@conta.com"><br>
             </div>
             <div class="form-senha">
                 <label for="senha">Senha</label><br>
@@ -34,7 +34,7 @@
             </div>
             <div id="login-ong">
 
-                <button class="login-submit"><a href="ong-logon.html">Entrar</a></button>
+                <button class="login-submit"><a href="home.php">Entrar</a></button>
 
             </div>
         </form>
