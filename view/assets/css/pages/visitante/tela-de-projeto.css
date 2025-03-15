@@ -17,7 +17,7 @@
     display: flex;
     margin: 15px auto;
     justify-content: center;
-}
+}   
 
 .text-detalhes-draft {
     color: #6e6a6a;
@@ -484,18 +484,6 @@
 
 /* Fim do Carrossel */
 
-/* .popup {
-    background-color: white;
-    border-radius: 5px;
-    display: flex;
-    padding: 40px 40px;
-    display: flex;
-    gap: 40px;
-    margin-top: 100%;
-    transition: .5s ease;
-    color: FFFFFF;
-    align-items: center;
-} */
 
 #popup-erro {
     background-color: white;
@@ -542,3 +530,5 @@
     padding: 7px;
     margin-top: 20px;
 }
+
+
