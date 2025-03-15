@@ -16,7 +16,7 @@
     --fonte: "Poppins", serif;
 }
 
-h1 {
+.titulo  h1 {
     font-size: 30px;
     font-weight: 550;
     letter-spacing: 2px;
@@ -24,177 +24,20 @@ h1 {
 
 }
 
-h2 {
+.titulo  h2 {
     font-size: 23px;
     font-weight: 420;
     letter-spacing: 2px;
     color: var(--cor-verde)
 }
 
-h3 {
+.titulo  h3 {
     font-size: 14px;
     font-weight: 450;
     letter-spacing: 2px;
     color: var(--cor-cinza);
     margin-top: 8px;
 }
-
-body {
-    background-color: var(--cor-principal);
-}
-
-header .container {
-    max-width: 1200px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 100%;
-    margin: 0 auto;
-}
-
-header .btn {
-    padding: 10px 20px;
-    border: none;
-    background-color: #E3B652;
-    width: 100px;
-    border-radius: 4px;
-    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
-    cursor: pointer;
-    font-weight: 600;
-    letter-spacing: 1px;
-    color: #1C3464;
-    transition: .3s;
-    margin:10px;
-}
-
-header .btn:hover {
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
-    background-color: #cca44d;
-}
-
-header .btn a {
-    text-decoration: none;
-    color: #1C3464;
-}
-
-header {
-    padding: 0 30px;
-    height: 60px;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    background-color: #1C3464;
-    position: sticky;
-    top: 0;
-    z-index: 999;
-}
-
-header .logo {
-    color: aliceblue;
-}
-
-header nav ul {
-    display: flex;
-    list-style: none;
-    gap: 30px;
-}
-
-header nav ul li {
-    transform: translateY(0);
-    transition: .3s;
-}
-
-header nav ul li:hover {
-    transform: translateY(-2px);
-}
-
-header nav a {
-    color: aliceblue;
-    text-decoration: none;
-    padding-block: 8px;
-    transform: translateY(0);
-    transition: .3s;
-}
-
-header nav a:hover {
-    color: #E3B652;
-}
-
-header .btn-login {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-header nav.active {
-    height: 180px;
-    transition: .3s;
-}
-
-#hamburguer {
-    border: none;
-    border-top: 4px solid #E3B652;
-    background: none;
-    border-radius: 3px;
-    display: none;
-    cursor: pointer;
-    position: relative;
-}
-
-#hamburguer::after,
-#hamburguer::before {
-    content: '';
-    margin-top: 3px;
-    width: 30px;
-    height: 4px;
-    display: block;
-    background-color: #E3B652;
-    border-radius: 3px;
-    transition: .3s;
-}
-
-#hamburguer.active {
-    border: none;
-}
-
-#hamburguer.active::after {
-    transform: rotate(45deg);
-    top: 0;
-    position: absolute;
-}
-
-#hamburguer.active::before {
-    transform: rotate(-45deg);
-}
-
-@media (max-width: 700px) {
-    header nav {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background-color: #1C3464;
-        overflow: hidden;
-        box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;
-        height: 0;
-        transition: .3s;
-        z-index: 999;
-    }
-
-    header nav ul {
-        flex-direction: column;
-        align-items: center;
-        gap: 15px;
-        padding: 15px 0;
-    }
-
-    #hamburguer {
-        display: block;
-    }
-
-    #fundo-popup #popup .img {
-        display: none;
-    }
-}
-
 #principal {
     display: flex;
     justify-content: space-around;
@@ -411,7 +254,7 @@ header nav.active {
     gap: 20px;
 }
 
-button{
+.menu button{
     width: 40px;
     height: 40px;
     border: none;
@@ -422,11 +265,11 @@ button{
     cursor: pointer;
     margin-bottom: 30px;
 }
-button:hover{
+.menu button:hover{
     filter: brightness(0.9);
 }
 
-.um{
+.menu .um {
     border-radius: 6px;
     background: var(--preto-de-vdd);
     color: var(--cor-barra);
@@ -485,9 +328,7 @@ button:hover{
 .volun{
     display: flex;
     flex-direction: column;
-    /* margin-right: 30px; */
     width: 180px;
-    /* background: red; */
 }
 
 .volun span{
