@@ -32,7 +32,7 @@ $cssPagina = ['adm/login.css']; //Colocar o arquivo .css
                 </div>
             </div>
             <div id="login-adm">
-                <button class="login-submit">Entrar</a></button>
+                <button class="login-submit"><a href="home.php">Entrar</a></button>
             </div>
         </form>
     </div>
