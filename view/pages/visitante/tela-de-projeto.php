@@ -1,6 +1,6 @@
 <?php 
     $tituloPagina = ''; // Definir o título da página
-    $cssPagina = ['ong/tela-projeto-da-ong.css']; //Colocar o arquivo .css (exemplo: 'ONG/cadastro.css')
+    $cssPagina = ['visitante/tela-de-projeto.css']; //Colocar o arquivo .css (exemplo: 'ONG/cadastro.css')
     require_once '../../components/header.php';
 ?>
 <main>
@@ -325,6 +325,6 @@
 
 
 <?php
-    $jsPagina = ['tela-projeto-da-ong.js']; //Colocar o arquivo .js (exemplo: 'cadastro.js')
+    $jsPagina = ['tela-de-projeto-visitante.js']; //Colocar o arquivo .js (exemplo: 'cadastro.js')
     require_once '../../components/footer.php';
 ?>
