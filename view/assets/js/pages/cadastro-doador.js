@@ -14,10 +14,18 @@ const form = document.getElementById('form');
 let circle_1 = document.getElementById('circle-1');
 circle_1.addEventListener('click', (event) => {
     form.style.transform = `translateX(-0px)`;
+    bolinha[0].classList.add('active');
+    linha.style.width = '0%';
+    bolinha[1].classList.remove('active');
+    bolinha[2].classList.remove('active');
 });
 
 let circle_2 = document.getElementById('circle-2');
 circle_2.addEventListener('click', (event) => {
+    bolinha[1].classList.add('active');
+    linha.style.width = '33%';
+    bolinha[0].classList.remove('active');
+    bolinha[2].classList.remove('active');
     if (window.innerWidth > 750) {
         form.style.transform = `translateX(-660px)`;
     }
@@ -29,6 +37,10 @@ circle_2.addEventListener('click', (event) => {
 
 let circle_3 = document.getElementById('circle-3');
 circle_3.addEventListener('click', (event) => {
+    bolinha[2].classList.add('active')
+    linha.style.width = '67%'
+    bolinha[0].classList.remove('active');
+    bolinha[1].classList.remove('active');
     if (window.innerWidth > 750) {
         form.style.transform = `translateX(-1320px)`;
     }
@@ -173,12 +185,14 @@ function voltar(x) {
         linha.style.width = '0%'
         bolinha[1].classList.remove('active')
         check[0].style.color = 'transparent'
+        bolinha[0].classList.add('active')
     } else if (x == 2) {
         const largura = window.innerWidth;
         move = largura > 750 ? 660 : 330
         form.style.transform = `translateX(-${move}px)`
         linha.style.width = '33%'
         bolinha[2].classList.remove('active')
+        bolinha[1].classList.add('active')
         check[1].style.color = 'transparent'
     }
 }

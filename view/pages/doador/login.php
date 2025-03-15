@@ -6,15 +6,15 @@
 <!-- COMEÇAR SEU CÓDIGO AQUI -->
 <main>
     <div id="container-login" class="container">
-        <form>
+        <form action="home.php" method="GET">
             <h1>FAÇA SEU LOGIN</h1>
             <div class="input-group">
                 <div class="input-item">
-                    <label for="email">Email</label>
+                    <label for="email">Email<span>*</span></label>
                     <input id="email" type="email" placeholder="usúario@conta.com" required>
                 </div>
                 <div class="input-item">
-                    <label for="senha">Senha</label>
+                    <label for="senha">Senha<span>*</span></label>
                     <input id="senha" type="password" placeholder="********" required>
                 </div>
                 <div class="remember-forgot">
@@ -39,7 +39,7 @@
             <p>Digite seu email abaixo para receber um link de recuperação</p>
             <form action="">
                 <div class="input-item">
-                    <label for="recuperar-email">Email</label>
+                    <label for="recuperar-email">Email<span>*</span></label>
                     <input id="recuperar-email" type="email" placeholder="usúario@conta.com" required>
                 </div>
                 <button class="btn">ENVIAR</button>

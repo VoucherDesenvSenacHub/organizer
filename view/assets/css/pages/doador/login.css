@@ -47,6 +47,12 @@ form .input-group {
     font-size: 13px;
 }
 
+.input-item label span {
+    font-size: 15px;
+    color: red;
+    font-weight: 600;
+}
+
 .input-item input {
     background-color: rgba(0, 0, 0, 0.07);
     border: none;
@@ -169,8 +175,7 @@ form span a {
     }
 
     #popup-recuperar-senha img {
-        width: 75px;
-        height: 114px;
+        display: none;
     }
 }
 

@@ -11,6 +11,7 @@
     
     <!-- CSS GLOBAL -->
     <link rel="stylesheet" href="../../assets/css/global/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined">
 
     <!-- CSS Específicos da Página -->
     <?php 
