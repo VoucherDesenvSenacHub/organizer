@@ -1,12 +1,33 @@
-#principal {
-
+/* Page container for fixed height and scrolling */
+.ONG-page-container {
   display: flex;
-  width: 60%;
-  margin: 120px auto;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  width: 100%;
+  padding: 20px;
+}
+
+.ONG-principal {
+  display: flex;
+  width: 90%; /* Ajuste para telas menores */
+  margin: 0 auto;
+  max-height: 80vh;
+  overflow-y: auto;
   padding: 20px;
   background-color: #FFFFFF;
   border-radius: 8px;
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.7);
+}
+
+@media (min-width: 768px) {
+  .ONG-principal {
+    width: 60%; /* Ajuste para telas maiores */
+  }
+}
+
+.ONG-container {
+  width: 100%;
 }
 
 /* Header */
@@ -15,6 +36,8 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 24px;
+  background-color: #FFFFFF;
+  padding: 10px 0;
 }
 
 .ONG-header h1 {
@@ -32,13 +55,13 @@
 }
 
 /* Accordion */
-.accordion {
+.ONG-accordion {
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
 
-.accordion-item {
+.ONG-accordion-item {
   border: 1px solid #e2e8f0;
   border-radius: 8px;
   overflow: hidden;
@@ -47,36 +70,36 @@
 }
 
 /* Remover o pseudo-elemento after que estava sendo usado anteriormente */
-.accordion-item::after {
+.ONG-accordion-item::after {
   display: none;
 }
 
 /* Definir bordas inferiores coloridas para todos os itens, independente de estarem ativos */
-.accordion-item[data-color="purple"] {
+.ONG-accordion-item[data-color="purple"] {
   border-bottom: 4px solid #7e22ce;
 }
 
-.accordion-item[data-color="yellow"] {
+.ONG-accordion-item[data-color="yellow"] {
   border-bottom: 4px solid #ca8a04;
 }
 
-.accordion-item[data-color="green"] {
+.ONG-accordion-item[data-color="green"] {
   border-bottom: 4px solid #16a34a;
 }
 
-.accordion-item[data-color="red"] {
+.ONG-accordion-item[data-color="red"] {
   border-bottom: 4px solid #dc2626;
 }
 
-.accordion-item[data-color="blue"] {
+.ONG-accordion-item[data-color="blue"] {
   border-bottom: 4px solid #2563eb;
 }
 
-.accordion-item[data-color="orange"] {
+.ONG-accordion-item[data-color="orange"] {
   border-bottom: 4px solid #ea580c;
 }
 
-.accordion-header {
+.ONG-accordion-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -86,16 +109,16 @@
   border-bottom: 1px solid transparent;
 }
 
-.accordion-item.active .accordion-header {
+.ONG-accordion-item.active .ONG-accordion-header {
   border-bottom-color: #e2e8f0;
 }
 
-.header-content {
+.ONG-header-content {
   display: flex;
   align-items: center;
 }
 
-.icon-container {
+.ONG-icon-container {
   width: 48px;
   height: 48px;
   border-radius: 50%;
@@ -105,7 +128,7 @@
   margin-right: 16px;
 }
 
-.icon-container i {
+.ONG-icon-container i {
   width: 24px;
   height: 24px;
 }
@@ -129,78 +152,84 @@
 .orange { background-color: #ff5900; }
 .orange i { color: #ea580c; }
 
-.accordion-header span {
+.ONG-accordion-header span {
   font-size: 18px;
   font-weight: 500;
 }
 
-.chevron {
+.ONG-chevron {
   width: 24px;
   height: 24px;
   transition: transform 0.2s ease;
 }
 
-.accordion-item.active .chevron {
+.ONG-accordion-item.active .ONG-chevron {
   transform: rotate(180deg);
 }
 
-.accordion-content {
+.ONG-accordion-content {
   padding: 0 16px;
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.5s ease, padding 0.5s ease; /* Animação mais lenta */
 }
 
-.accordion-item.active .accordion-content {
+.ONG-accordion-item.active .ONG-accordion-content {
   max-height: 500px; /* Ajuste conforme necessário */
   padding: 16px;
 }
 
 /* Form Grid */
-.form-grid {
+.ONG-form-grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 24px;
 }
 
 @media (min-width: 768px) {
-  .form-grid {
+  .ONG-form-grid {
     grid-template-columns: 1fr 1fr;
   }
 }
 
-.form-group {
+.ONG-form-group {
   display: flex;
   flex-direction: column;
 }
 
-.form-group label {
+.ONG-form-group label {
   color: #64748b;
   margin-bottom: 8px;
   font-size: 16px;
 }
 
-.input-container {
+.ONG-input-container {
   position: relative;
   border: 1px solid #e2e8f0;
   border-radius: 6px;
   background-color: white;
 }
 
-.input-with-icon {
+.ONG-input-with-icon {
   display: flex;
   align-items: center;
   padding: 8px 12px;
 }
 
-.input-with-icon i {
+.ONG-input-with-icon i {
   width: 20px;
   height: 20px;
   color: #64748b;
   margin-right: 8px;
 }
 
-.edit-btn {
+/* Prevent cursor interaction with input fields */
+.ONG-input-with-icon span {
+  pointer-events: none;
+  user-select: none;
+}
+
+.ONG-edit-btn {
   position: absolute;
   right: 8px;
   top: 50%;
@@ -211,70 +240,80 @@
   padding: 4px;
   border-radius: 4px;
   transition: background-color 0.2s ease;
+  z-index: 5;
 }
 
-.edit-btn:hover {
+.ONG-edit-btn:hover {
   background-color: #f3f4f6;
 }
 
-.edit-btn i {
+.ONG-edit-btn i {
   width: 20px;
   height: 20px;
   color: #f59e0b;
 }
 
-.textarea-container {
+.ONG-textarea-container {
   padding: 8px 12px;
 }
 
-.textarea-container textarea {
+.ONG-textarea-container textarea {
   width: 100%;
   min-height: 80px;
   border: none;
   resize: none;
   outline: none;
   font-size: 16px;
+  pointer-events: none; /* Prevent interaction unless in edit mode */
 }
 
-.textarea-container .edit-btn {
+.ONG-textarea-container .ONG-edit-btn {
   top: 16px;
   transform: none;
 }
 
-.checkbox-container {
+.ONG-checkbox-container {
   padding: 16px;
 }
 
-.checkbox-grid {
+.ONG-checkbox-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 8px;
 }
 
-.checkbox-item {
+@media (min-width: 768px) {
+  .ONG-checkbox-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.ONG-checkbox-item {
   display: flex;
   align-items: center;
   gap: 8px;
 }
 
-.checkbox-item input[type="checkbox"] {
+.ONG-checkbox-item input[type="checkbox"] {
   width: 16px;
   height: 16px;
+  pointer-events: none; /* Prevent interaction unless in edit mode */
 }
 
-.checkbox-container .edit-btn {
+.ONG-checkbox-container .ONG-edit-btn {
   top: 16px;
   transform: none;
 }
 
 /* Botão "Salvar Alteração" */
-.save-button-container {
+.ONG-save-button-container {
   display: flex;
   justify-content: center;
   margin-top: 24px;
+  padding: 10px 0;
 }
 
-.save-button {
+.ONG-save-button {
   background-color: #FFA500; /* Laranja forte */
   color: #000; /* Preto */
   border: none;
@@ -286,7 +325,7 @@
   transition: background-color 0.2s ease;
 }
 
-.save-button:hover {
+.ONG-save-button:hover {
   background-color: #e69500; /* Laranja mais escuro no hover */
 }
 
@@ -295,4 +334,5 @@
   outline: 2px solid #FFA500;
   padding: 2px;
   border-radius: 4px;
+  pointer-events: auto !important; /* Allow interaction when editing */
 }

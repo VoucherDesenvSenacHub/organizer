@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const isActive = accordionItem.classList.contains('active');
 
     // Fechar todos os itens ativos
-    document.querySelectorAll('.accordion-item').forEach(item => {
+    document.querySelectorAll('.ONG-accordion-item').forEach(item => {
       item.classList.remove('active');
     });
 
@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
     event.stopPropagation(); // Evitar que o accordion feche ao clicar no botão de edição
 
     // Obter o campo que está sendo editado
-    const inputContainer = this.closest('.input-container');
+    const inputContainer = this.closest('.ONG-input-container');
     const input = inputContainer.querySelector('span, textarea');
 
     // Tornar o campo editável
@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const editedFields = [];
 
     // Coletar todos os campos editados
-    document.querySelectorAll('.input-container span.editing, .input-container textarea.editing').forEach(input => {
+    document.querySelectorAll('.ONG-input-container span.editing, .ONG-input-container textarea.editing').forEach(input => {
       // Validação básica (campo não pode estar vazio)
       if (input.textContent.trim() === '') {
         alert('Um ou mais campos estão vazios!');
@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function () {
       }
 
       // Validação de e-mail (se o campo for um e-mail)
-      const label = input.closest('.form-group').querySelector('label').textContent.toLowerCase();
+      const label = input.closest('.ONG-form-group').querySelector('label').textContent.toLowerCase();
       if (label.includes('email')) {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(input.textContent.trim())) {
@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
       // Adicionar à lista de campos editados
       editedFields.push({
-        field: input.closest('.form-group').querySelector('label').textContent,
+        field: input.closest('.ONG-form-group').querySelector('label').textContent,
         value: input.textContent.trim()
       });
 
@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   // Adicionar evento de clique a cada header de accordion
-  const accordionHeaders = document.querySelectorAll('.accordion-header');
+  const accordionHeaders = document.querySelectorAll('.ONG-accordion-header');
   accordionHeaders.forEach(header => {
     header.addEventListener('click', function () {
       const accordionItem = this.parentElement;
@@ -96,26 +96,26 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   // Adicionar evento de clique aos botões de edição
-  const editButtons = document.querySelectorAll('.edit-btn');
+  const editButtons = document.querySelectorAll('.ONG-edit-btn');
   editButtons.forEach(button => {
     button.addEventListener('click', handleEdit);
   });
 
   // Adicionar evento de clique ao botão "Salvar Alteração"
-  const saveButton = document.querySelector('.save-button');
+  const saveButton = document.querySelector('.ONG-save-button');
   if (saveButton) {
     saveButton.addEventListener('click', saveAllChanges);
   } else {
     // Se o botão não existir, criar um
     const saveButtonContainer = document.createElement('div');
-    saveButtonContainer.className = 'save-button-container';
+    saveButtonContainer.className = 'ONG-save-button-container';
     
     const newSaveButton = document.createElement('button');
-    newSaveButton.className = 'save-button';
+    newSaveButton.className = 'ONG-save-button';
     newSaveButton.textContent = 'Salvar Alteração';
     newSaveButton.addEventListener('click', saveAllChanges);
     
     saveButtonContainer.appendChild(newSaveButton);
-    document.querySelector('.container').appendChild(saveButtonContainer);
+    document.querySelector('.ONG-container').appendChild(saveButtonContainer);
   }
 });
