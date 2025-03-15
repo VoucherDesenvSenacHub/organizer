@@ -481,3 +481,64 @@
     border-radius: 5px;
 
 }
+
+/* Fim do Carrossel */
+
+/* .popup {
+    background-color: white;
+    border-radius: 5px;
+    display: flex;
+    padding: 40px 40px;
+    display: flex;
+    gap: 40px;
+    margin-top: 100%;
+    transition: .5s ease;
+    color: FFFFFF;
+    align-items: center;
+} */
+
+#popup-erro {
+    background-color: white;
+    align-items: center;
+}
+
+#popup-erro .msg {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5px;
+    width: 300px;
+    align-items: center;
+}
+
+#popup-erro .msg .linha1 {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.2;
+    font-size:20px;
+    color: black;
+    
+
+}
+
+#popup-erro .msg p {
+    font-size: 20px;
+    color: #007AFF;
+    
+    
+}
+#popup-erro .msg a {
+    color:#007AFF;;
+}
+
+#popup-erro img {
+    width: 300px;
+   
+}
+
+.btn-maistarde {
+    background-color:#1C3464;
+    color: aliceblue;
+    border-radius: 5px;
+    width: 60%;
+    padding: 7px;
+    margin-top: 20px;
+}

@@ -5,19 +5,19 @@
 ?>
 <main>
 
-<div id="fundo-popup">
-        <div class="popup">
+<div id="erro403" class="popup-fundo">
+        <div class="container-popup" id="popup-erro">
             <div class="img">
                 <img src="../../assets/images/erro403.png" alt="Erro 403">
             </div>
             <div class="msg">
                 <p class="linha1">Para realizar essa ação,</p>
-                <p>Faça seu login</p>
-                <button class="btn-maistarde" onclick="fecharPopup()">Mais Tarde</button>
+                <p>Faça seu <a href="../doador/login.php">login</a></p>
+                <button class="btn-maistarde" onclick="fechar_popup('erro403')">Mais Tarde</button>
             </div>
         </div>
     </div>
-    <!-- Fim Popup de Erro 403 -->
+    
 
 <div id="principal">
         <div class="principal-esq">
@@ -38,13 +38,13 @@
                             <p><strong>24  </strong>Doações Recebidas</p>
                         </div>
                         <div class="btn-favoritos-compartilhar" >
-                            <button class="btn-favoritos"><img src="../../assets/images/love.png" alt=""></button>
-                            <button class="btn-compartilhar"><img src="../../assets/images/share.png" alt=""></button>
+                            <button class="btn-favoritos" onclick="abrir_popup('erro403')"><img src="../../assets/images/love.png"alt=""></button>
+                            <button class="btn-compartilhar" onclick="abrir_popup('erro403')"><img src="../../assets/images/share.png"alt=""></button>
                         </div>
                     </div>
                     <div class="btns-ajudar-projeto">
-                        <button class="btn-doacao" >Fazer uma doação</button>
-                        <button class="btn-voluntario">Tornar-se voluntário</button>
+                        <button class="btn-doacao" onclick="abrir_popup('erro403')" >Fazer uma doação</button>
+                        <button class="btn-voluntario"onclick="abrir_popup('erro403')">Tornar-se voluntário</button>
                     </div>
                 </div>
                 <div class="carousel">

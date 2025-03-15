@@ -17,7 +17,7 @@ window.addEventListener('resize', () => {
     }
 });
 
-// EFEITO POPUP
+// EFEITO POPUP 
 function abrir_popup(popupId) {
     const fundoPopup = document.getElementById(popupId);
     
@@ -33,4 +33,9 @@ function abrir_popup(popupId) {
     } else {
         console.error(`Elemento com ID "${popupId}" não encontrado.`);
     }
+}
+
+function fechar_popup(popupId) {
+    const fundoPopup = document.getElementById(popupId);
+    fundoPopup.classList.remove('ativo');
 }
