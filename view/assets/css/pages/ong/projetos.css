@@ -3,7 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Agdasima:wght@400;700&family=Comfortaa:wght@300..700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 #principal {
-    
+
     justify-content: space-around;
     z-index: 1;
     width: 60%;
@@ -14,30 +14,30 @@
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.7);
 }
 
-.header-principal{
+.header-principal {
     display: flex;
     gap: 50px;
     align-items: center;
     justify-content: space-between;
 }
 
-.header-principal{
-    h1{
+.header-principal {
+    h1 {
         color: #1C3D47;
         font-size: 1.5em;
         font-weight: 400;
     }
 }
 
-.input-buscar-projetos{
+.input-buscar-projetos {
     width: 280px;
     height: 49px;
     border-radius: 50px;
-    padding: 10px 40px 10px 10px; 
+    padding: 10px 40px 10px 10px;
     box-sizing: border-box;
 }
 
-.botao-novo-projeto{
+.botao-novo-projeto {
     background-color: #51CD32;
     color: black;
     font-size: 18px;
@@ -48,32 +48,32 @@
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-.botao-novo-projeto:hover{
+.botao-novo-projeto:hover {
     cursor: pointer;
     transition: 0.7s;
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
 }
 
-.div-input-lupa{
-    
+.div-input-lupa {
+
     position: relative;
-    width: 250,px;
+    width: 250, px;
 }
 
-.lupa-input{
+.lupa-input {
     position: absolute;
     top: 50%;
-    right: 10px; 
+    right: 10px;
     transform: translateY(-50%);
-    width: 20px; 
+    width: 20px;
     height: 20px;
 }
 
-.lupa-input:hover{
+.lupa-input:hover {
     cursor: pointer;
 }
 
-.div-card-geral{
+.div-card-geral {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -81,7 +81,7 @@
     gap: 65px;
 }
 
-.card{
+.card {
     width: 245px;
     height: 265px;
     display: flex;
@@ -92,20 +92,20 @@
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
     padding: 5px;
 
-    p{
+    p {
         font-size: 18px;
-        
+
     }
-    
+
 }
 
-.img-card{
-    width: 100%; 
+.img-card {
+    width: 100%;
     height: auto;
     align-items: center;
 }
 
-.btn-card{
+.btn-card {
     background-color: #E3B652;
     color: black;
     width: 170px;
@@ -115,7 +115,7 @@
     font-size: 18px;
 }
 
-.btn-card:hover{
+.btn-card:hover {
     cursor: pointer;
     transition: 0.7s;
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
@@ -144,7 +144,7 @@
     gap: 10px;
 }
 
-.tela-de-criacao-projeto-conteudo{
+.tela-de-criacao-projeto-conteudo {
     width: 70%;
     border-radius: 5px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
@@ -154,7 +154,7 @@
     flex-direction: column;
 }
 
-.titulo-tela-criacao{
+.titulo-tela-criacao {
     font-family: "Poppins", serif;
     font-weight: 400;
     color: #F29200;
@@ -170,8 +170,8 @@
 .div-input-lapis input {
     width: 100%;
     padding: 10px;
-    padding-left: 30px;  
-    padding-right: 30px; 
+    padding-left: 30px;
+    padding-right: 30px;
     border: 1px solid #ccc;
     border-radius: 5px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -180,11 +180,11 @@
 .div-input-lapis img {
     position: absolute;
     top: 50%;
-    transform: translateY(-50%); 
+    transform: translateY(-50%);
 }
 
 .img-perfil {
-    left: 5px; 
+    left: 5px;
     width: 20px;
     height: 20px;
 }
@@ -196,17 +196,17 @@
 }
 
 .lapis-input {
-    right: 5px; 
+    right: 5px;
     width: 20px;
     height: 20px;
 }
 
-.div-form{
+.div-form {
     display: flex;
     gap: 30px;
 }
 
-#preco{
+#preco {
     width: 80px;
     height: 25px;
     border: 1px solid #ccc;
@@ -214,7 +214,7 @@
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
-#descricaoProjeto{
+#descricaoProjeto {
     width: 100%;
     height: 200px;
     border: 1px solid #ccc;
@@ -222,7 +222,7 @@
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
-.conteudo-lado-direito{
+.conteudo-lado-direito {
     width: 30%;
     height: auto;
     justify-content: space-between;
@@ -235,37 +235,37 @@
     padding: 5px;
 }
 
-.img-tela-de-criacao{
-    width: 100%; 
+.img-tela-de-criacao {
+    width: 100%;
     height: auto;
     align-items: center;
 }
 
-.div-img-botao{
+.div-img-botao {
     flex-direction: column;
     align-items: center;
     display: flex;
     gap: 5px;
 }
 
-.div-botao-uploud{
+.div-botao-uploud {
     display: flex;
     position: relative;
-    width: 250,px;
+    width: 250, px;
 }
 
-.img-add{
+.img-add {
     position: absolute;
-    top: 50%; 
+    top: 50%;
     transform: translateY(-50%);
     text-align: center;
-    left: 10px; 
+    left: 10px;
     width: 30px;
     height: 30px;
 }
 
 
-.upload{
+.upload {
     color: black;
     font-size: 20px;
     font-family: "Agdasima", serif;
@@ -277,26 +277,26 @@
     border-style: dashed;
 }
 
-.upload:hover{
+.upload:hover {
     background-color: #ccc;
 }
 
-.div-botao-add{
+.div-botao-add {
     display: flex;
     position: relative;
-    width: 250,px;
+    width: 250, px;
 }
 
-.img-add{
+.img-add {
     position: absolute;
-    top: 50%; 
+    top: 50%;
     transform: translateY(-50%);
-    right: 10px; 
+    right: 10px;
     width: 30px;
     height: 30px;
 }
 
-.botao-salvar{
+.botao-salvar {
     font-family: "Agdasima", serif;
     background-color: #51CD32;
     color: black;
@@ -307,13 +307,13 @@
     border: none;
 }
 
-.botao-salvar:hover{
+.botao-salvar:hover {
     background-color: #47b12c;
 }
 
 /* tela confirmação de projeto criado */
 
-.tela-confirma-criacao{
+.tela-confirma-criacao {
     display: none;
     position: fixed;
     z-index: 1;
@@ -324,7 +324,7 @@
     background-color: rgba(0, 0, 0, 0.5);
 }
 
-.card-confirma-criacao{
+.card-confirma-criacao {
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -337,23 +337,28 @@
     gap: 10px;
 }
 
-.div-projeto-criado{
+.div-projeto-criado {
     display: flex;
     position: relative;
-    width: 250,px;
+    width: 250, px;
 }
 
-.titulo-projeto-criado{
+.titulo-projeto-criado {
     font-size: 25px;
     color: #188241;
 }
 
-.img-check{
+.img-check {
     width: 30px;
     height: 30px;
     position: absolute;
-    top: 50%; 
+    top: 50%;
     transform: translateY(-50%);
     right: -30px;
+
+}
+
+
+@media (max-width: 481px) {
     
 }
