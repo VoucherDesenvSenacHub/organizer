@@ -1,7 +1,7 @@
 <!-- PEGAR A BASE NO README.md -->
 
 <?php 
-    $tituloPagina = ''; // Definir o título da página
+    $tituloPagina = 'Home | Organizer'; // Definir o título da página
     $cssPagina = ['visitante/home.css']; //Colocar o arquivo .css 
     require_once '../../components/header.php';
 ?>
