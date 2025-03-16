@@ -6,6 +6,8 @@
 @import url(login-popup.css);
 @import url(../components/popup.css);
 @import url(../components/aside.css);
+@import url(../components/card-ong.css);
+@import url(../components/card-projeto.css);
 
 * {
     margin: 0;

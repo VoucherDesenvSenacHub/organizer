@@ -1,13 +1,177 @@
+body {
+    background-color: aliceblue;
+}
+
 main {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: calc(100vh - 60px);
+    /* min-height: calc(100vh - 60px); */
 }
 
 #container-ongs {
     background-color: aliceblue;
     height: fit-content;
-    padding: 30px;
+    padding: 50px 20px;
     border-radius: 10px;
+    width: 100%;
+    flex-direction: column;
+    align-items: normal;
+    gap: 40px;
 }
+
+/* Parte de Cima */
+#top-info {
+    /* width: 40%; */
+    display: flex;
+    justify-content: space-between;
+}
+
+#top-info #info {
+    display: flex;
+    flex-direction: column;
+    /* background-color: red; */
+}
+
+#top-info #info p {
+    max-width: 500px;
+}
+
+#top-info #info h1 {
+    line-height: 1;
+}
+
+#top-info form {
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: white;
+    display: flex;
+    gap: 10px;
+    height: 50px;
+    width: fit-content;
+    margin-top: 10px;
+}
+
+#top-info form .drop {
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    border-radius: 4px;
+    height: 40px;
+    overflow: hidden;
+    transition: .4s ease-in-out;
+    cursor: default;
+    background-color: white;
+    z-index: 1;
+}
+
+#top-info form ul li p {
+    cursor: default;
+}
+
+#top-info form ul li:hover {
+    background-color: rgba(227, 181, 82, 0.3);
+}
+
+#top-info form ul .drop {
+    height: 40px;
+    border-radius: 4px;
+}
+
+#top-info form ul li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+    height: 40px;
+    white-space: nowrap;
+    padding: 0 5px;
+}
+
+#top-info form ul li:first-child {
+    justify-content: space-between;
+}
+
+#top-info form ul li:first-child:hover {
+    background-color: white;
+    border-bottom: .1px solid rgba(0, 0, 0, 0.1);
+}
+
+#top-info form ul li ul {
+    /* position: absolute; */
+    top: 100%;
+}
+
+#top-info #imagem-ong {
+    max-width: 330px;
+}
+
+#top-info img {
+    width: 100%;
+}
+
+#top-info h1 {
+    color: var(--cor-principal);
+}
+
+#box-ongs {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+
+/* Filtrp: Status */
+#top-info form #esc-status {
+    width: 85px;
+}
+
+#top-info form #esc-status:hover {
+    height: calc(40px * 3);
+    width: 158px;
+}
+
+/* Filtro: Categoria */
+#top-info form #esc-categoria {
+    width: 115px;
+}
+
+#top-info form #esc-categoria:hover {
+    height: calc(40px * 7);
+    width: 154px;
+}
+
+/* Filtro: Região */
+#top-info form #esc-regiao {
+    width: 90px;
+}
+
+#top-info form #esc-regiao:hover {
+    height: calc(40px * 6);
+    width: 145px;
+}
+
+
+@media (max-width: 1204px) {
+    #box-ongs {
+        justify-content: space-evenly;
+        gap: 30px 15px;
+    }
+
+    #top-info {
+        flex-direction: column-reverse;
+        align-items: center;
+        text-align: center;
+        /* background-color: red; */
+    }
+
+    #top-info #info {
+        width: 50%;
+        align-items: center;
+    }
+}
+
+input[type="checkbox"] {
+    accent-color: var(--cor-amarelo-hover); /* Altere para a cor desejada */
+  }

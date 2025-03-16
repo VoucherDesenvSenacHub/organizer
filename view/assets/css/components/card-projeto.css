@@ -70,7 +70,7 @@
     background-color: var(--cor-azul);
     letter-spacing: 1px;
     position: absolute;
-    bottom: -35px;
+    bottom: -33px;
     transition: .3s ease;
     cursor: pointer;
     font-size: 13px;
