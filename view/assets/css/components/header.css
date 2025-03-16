@@ -17,23 +17,28 @@ header .logo {
     align-items: center;
     font-size: 11px;
     gap: 10px;
+    cursor: default;
     
-    background: linear-gradient(90deg, #f8c35c, #f67f2a);
-    background-size: 200% 200%;
+    background: linear-gradient(90deg, #f8c35c, #f67f2a, #f8c35c);
+    background-size: 200% 100%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    animation: gradiente 3s infinite linear;
+    animation: gradiente 3s infinite linear reverse;
 }
 
 @keyframes gradiente {
     0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+    100% { background-position: 200% 50%; }
 }
-
 
 header .logo img {
     width: 45px;
+    transform: rotate(0);
+    transition: 2s;
+}
+
+header .logo:hover img {
+    transform: rotate(360deg);
 }
 
 /* nav */
