@@ -2,7 +2,7 @@ header {
     padding: 0 30px;
     height: 60px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    background-color: #1C3464;
+    background-color: var(--cor-principal);
     position: sticky;
     top: 0;
     z-index: 999;

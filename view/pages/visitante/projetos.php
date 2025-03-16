@@ -1,18 +1,19 @@
 <?php 
-    $tituloPagina = '';
-    $cssPagina = ['visitante/ongs.css'];
+    $tituloPagina = 'Encontre Projetos';
+    $cssPagina = ['../global/catalogo.css'];
     require_once '../../components/header.php';
 ?>
 
-    <main>
-        <div class="container" id="container-ongs">
-            <div id="top-info">
-                <div id="info">
+<main>
+    <div class="container" id="container-catalogo">
+        <section id="top-info">
+            <div id="info">
+                <div>
                     <h1>ENCONTRE PROJETOS</h1>
                     <p>Explore projetos inspiradores e apoie causas e faça a diferença hoje mesmo.</p>
-                    <form action="projetos.php" method="GET">
+                    <form id="form-filtro" action="projetos.php" method="GET">
                         <!-- ### -->
-                         <ul class="drop" id="esc-status">
+                        <ul class="drop" id="esc-status">
                             <li>
                                 <p>Status</p>
                                 <i class="fa-solid fa-angle-down"></i>
@@ -25,8 +26,8 @@
                                 <input type="checkbox" name="concluido" id="concluido">
                                 <label for="concluido">Concluído</label>
                             </li>
-                         </ul>
-                         <ul class="drop" id="esc-categoria">
+                        </ul>
+                        <ul class="drop" id="esc-categoria">
                             <li>
                                 <p>Categoria</p>
                                 <i class="fa-solid fa-angle-down"></i>
@@ -63,8 +64,8 @@
                                 <input type="checkbox" name="direitos" id="direitos">
                                 <label for="direitos">Direitos Humanos</label>
                             </li>
-                         </ul>
-                         <ul class="drop" id="esc-regiao">
+                        </ul>
+                        <ul class="drop" id="esc-regiao">
                             <li>
                                 <p>Região</p>
                                 <i class="fa-solid fa-angle-down"></i>
@@ -89,210 +90,231 @@
                                 <input type="checkbox" name="sul" id="sul">
                                 <label for="sul">Sul</label>
                             </li>
-                         </ul>
-                         <button class="btn">Filtrar</button>
+                        </ul>
+                        <button class="btn">Filtrar</button>
                     </form>
                 </div>
-                <div id="imagem-ong">
-                    <img src="../../assets/images/pages/tela-projeto-kids.png" alt="">
-                </div>
+                <form id="form-busca" action="projetos.php" method="GET">
+                    <input type="text" name="pesquisa" placeholder="Busque um projeto" required>
+                    <button class="btn"><i class="fa-solid fa-search"></i></button>
+                </form>
             </div>
-            <div id="box-ongs">
-                <div class="card-projeto">
-                    <div class="acoes-projeto">
-                        <div class="share">
-                            <i class="fa-solid fa-share-nodes"></i>
-                        </div>
-                        <div class="like">
-                            <i class="fa-solid fa-heart"></i>
-                        </div>
-                    </div>
-                    <div class="img-projeto">250x130</div>
-                    <div class="info-projeto">
-                        <h5>Nome Projeto</h5>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, laborum et? Repellendus perferendis provident
-                            ratione deserunt alias cumque et quasi odio amet temporibus, quam obcaecati dolores. Enim quibusdam a atque.
-                        </p>
-                        <div class="barra-doacao">
-                            <span>30%</span>
-                            <div class="barra">
-                                <div class="barra-verde"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <a class="saiba-mais-projeto" href="#">Saiba Mais</a>
-                </div>
-                <div class="card-projeto">
-                    <div class="acoes-projeto">
-                        <div class="share">
-                            <i class="fa-solid fa-share-nodes"></i>
-                        </div>
-                        <div class="like">
-                            <i class="fa-solid fa-heart"></i>
-                        </div>
-                    </div>
-                    <div class="img-projeto">250x130</div>
-                    <div class="info-projeto">
-                        <h5>Nome Projeto</h5>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, laborum et? Repellendus perferendis provident
-                            ratione deserunt alias cumque et quasi odio amet temporibus, quam obcaecati dolores. Enim quibusdam a atque.
-                        </p>
-                        <div class="barra-doacao">
-                            <span>30%</span>
-                            <div class="barra">
-                                <div class="barra-verde"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <a class="saiba-mais-projeto" href="#">Saiba Mais</a>
-                </div>
-                <div class="card-projeto">
-                    <div class="acoes-projeto">
-                        <div class="share">
-                            <i class="fa-solid fa-share-nodes"></i>
-                        </div>
-                        <div class="like">
-                            <i class="fa-solid fa-heart"></i>
-                        </div>
-                    </div>
-                    <div class="img-projeto">250x130</div>
-                    <div class="info-projeto">
-                        <h5>Nome Projeto</h5>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, laborum et? Repellendus perferendis provident
-                            ratione deserunt alias cumque et quasi odio amet temporibus, quam obcaecati dolores. Enim quibusdam a atque.
-                        </p>
-                        <div class="barra-doacao">
-                            <span>30%</span>
-                            <div class="barra">
-                                <div class="barra-verde"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <a class="saiba-mais-projeto" href="#">Saiba Mais</a>
-                </div>
-                <div class="card-projeto">
-                    <div class="acoes-projeto">
-                        <div class="share">
-                            <i class="fa-solid fa-share-nodes"></i>
-                        </div>
-                        <div class="like">
-                            <i class="fa-solid fa-heart"></i>
-                        </div>
-                    </div>
-                    <div class="img-projeto">250x130</div>
-                    <div class="info-projeto">
-                        <h5>Nome Projeto</h5>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, laborum et? Repellendus perferendis provident
-                            ratione deserunt alias cumque et quasi odio amet temporibus, quam obcaecati dolores. Enim quibusdam a atque.
-                        </p>
-                        <div class="barra-doacao">
-                            <span>30%</span>
-                            <div class="barra">
-                                <div class="barra-verde"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <a class="saiba-mais-projeto" href="#">Saiba Mais</a>
-                </div>
-                <div class="card-projeto">
-                    <div class="acoes-projeto">
-                        <div class="share">
-                            <i class="fa-solid fa-share-nodes"></i>
-                        </div>
-                        <div class="like">
-                            <i class="fa-solid fa-heart"></i>
-                        </div>
-                    </div>
-                    <div class="img-projeto">250x130</div>
-                    <div class="info-projeto">
-                        <h5>Nome Projeto</h5>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, laborum et? Repellendus perferendis provident
-                            ratione deserunt alias cumque et quasi odio amet temporibus, quam obcaecati dolores. Enim quibusdam a atque.
-                        </p>
-                        <div class="barra-doacao">
-                            <span>30%</span>
-                            <div class="barra">
-                                <div class="barra-verde"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <a class="saiba-mais-projeto" href="#">Saiba Mais</a>
-                </div>
-                <div class="card-projeto">
-                    <div class="acoes-projeto">
-                        <div class="share">
-                            <i class="fa-solid fa-share-nodes"></i>
-                        </div>
-                        <div class="like">
-                            <i class="fa-solid fa-heart"></i>
-                        </div>
-                    </div>
-                    <div class="img-projeto">250x130</div>
-                    <div class="info-projeto">
-                        <h5>Nome Projeto</h5>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, laborum et? Repellendus perferendis provident
-                            ratione deserunt alias cumque et quasi odio amet temporibus, quam obcaecati dolores. Enim quibusdam a atque.
-                        </p>
-                        <div class="barra-doacao">
-                            <span>30%</span>
-                            <div class="barra">
-                                <div class="barra-verde"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <a class="saiba-mais-projeto" href="#">Saiba Mais</a>
-                </div>
-                <div class="card-projeto">
-                    <div class="acoes-projeto">
-                        <div class="share">
-                            <i class="fa-solid fa-share-nodes"></i>
-                        </div>
-                        <div class="like">
-                            <i class="fa-solid fa-heart"></i>
-                        </div>
-                    </div>
-                    <div class="img-projeto">250x130</div>
-                    <div class="info-projeto">
-                        <h5>Nome Projeto</h5>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, laborum et? Repellendus perferendis provident
-                            ratione deserunt alias cumque et quasi odio amet temporibus, quam obcaecati dolores. Enim quibusdam a atque.
-                        </p>
-                        <div class="barra-doacao">
-                            <span>30%</span>
-                            <div class="barra">
-                                <div class="barra-verde"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <a class="saiba-mais-projeto" href="#">Saiba Mais</a>
-                </div>
-                <div class="card-projeto">
-                    <div class="acoes-projeto">
-                        <div class="share">
-                            <i class="fa-solid fa-share-nodes"></i>
-                        </div>
-                        <div class="like">
-                            <i class="fa-solid fa-heart"></i>
-                        </div>
-                    </div>
-                    <div class="img-projeto">250x130</div>
-                    <div class="info-projeto">
-                        <h5>Nome Projeto</h5>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, laborum et? Repellendus perferendis provident
-                            ratione deserunt alias cumque et quasi odio amet temporibus, quam obcaecati dolores. Enim quibusdam a atque.
-                        </p>
-                        <div class="barra-doacao">
-                            <span>30%</span>
-                            <div class="barra">
-                                <div class="barra-verde"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <a class="saiba-mais-projeto" href="#">Saiba Mais</a>
-                </div>
+            <div id="imagem-top">
+                <img src="../../assets/images/pages/tela-projeto-kids.png" alt="">
             </div>
-        </div>
-    </main>
+        </section>
+        <section id="box-ongs">
+            <div class="card-projeto">
+                <div class="acoes-projeto">
+                    <div class="share">
+                        <i class="fa-solid fa-share-nodes"></i>
+                    </div>
+                    <div class="like">
+                        <i class="fa-solid fa-heart"></i>
+                    </div>
+                </div>
+                <div class="img-projeto">250x130</div>
+                <div class="info-projeto">
+                    <h5>Nome Projeto</h5>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, laborum et? Repellendus
+                        perferendis provident
+                        ratione deserunt alias cumque et quasi odio amet temporibus, quam obcaecati dolores. Enim
+                        quibusdam a atque.
+                    </p>
+                    <div class="barra-doacao">
+                        <span>30%</span>
+                        <div class="barra">
+                            <div class="barra-verde"></div>
+                        </div>
+                    </div>
+                </div>
+                <a class="saiba-mais-projeto" href="#">Saiba Mais</a>
+            </div>
+            <div class="card-projeto">
+                <div class="acoes-projeto">
+                    <div class="share">
+                        <i class="fa-solid fa-share-nodes"></i>
+                    </div>
+                    <div class="like">
+                        <i class="fa-solid fa-heart"></i>
+                    </div>
+                </div>
+                <div class="img-projeto">250x130</div>
+                <div class="info-projeto">
+                    <h5>Nome Projeto</h5>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, laborum et? Repellendus
+                        perferendis provident
+                        ratione deserunt alias cumque et quasi odio amet temporibus, quam obcaecati dolores. Enim
+                        quibusdam a atque.
+                    </p>
+                    <div class="barra-doacao">
+                        <span>30%</span>
+                        <div class="barra">
+                            <div class="barra-verde"></div>
+                        </div>
+                    </div>
+                </div>
+                <a class="saiba-mais-projeto" href="#">Saiba Mais</a>
+            </div>
+            <div class="card-projeto">
+                <div class="acoes-projeto">
+                    <div class="share">
+                        <i class="fa-solid fa-share-nodes"></i>
+                    </div>
+                    <div class="like">
+                        <i class="fa-solid fa-heart"></i>
+                    </div>
+                </div>
+                <div class="img-projeto">250x130</div>
+                <div class="info-projeto">
+                    <h5>Nome Projeto</h5>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, laborum et? Repellendus
+                        perferendis provident
+                        ratione deserunt alias cumque et quasi odio amet temporibus, quam obcaecati dolores. Enim
+                        quibusdam a atque.
+                    </p>
+                    <div class="barra-doacao">
+                        <span>30%</span>
+                        <div class="barra">
+                            <div class="barra-verde"></div>
+                        </div>
+                    </div>
+                </div>
+                <a class="saiba-mais-projeto" href="#">Saiba Mais</a>
+            </div>
+            <div class="card-projeto">
+                <div class="acoes-projeto">
+                    <div class="share">
+                        <i class="fa-solid fa-share-nodes"></i>
+                    </div>
+                    <div class="like">
+                        <i class="fa-solid fa-heart"></i>
+                    </div>
+                </div>
+                <div class="img-projeto">250x130</div>
+                <div class="info-projeto">
+                    <h5>Nome Projeto</h5>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, laborum et? Repellendus
+                        perferendis provident
+                        ratione deserunt alias cumque et quasi odio amet temporibus, quam obcaecati dolores. Enim
+                        quibusdam a atque.
+                    </p>
+                    <div class="barra-doacao">
+                        <span>30%</span>
+                        <div class="barra">
+                            <div class="barra-verde"></div>
+                        </div>
+                    </div>
+                </div>
+                <a class="saiba-mais-projeto" href="#">Saiba Mais</a>
+            </div>
+            <div class="card-projeto">
+                <div class="acoes-projeto">
+                    <div class="share">
+                        <i class="fa-solid fa-share-nodes"></i>
+                    </div>
+                    <div class="like">
+                        <i class="fa-solid fa-heart"></i>
+                    </div>
+                </div>
+                <div class="img-projeto">250x130</div>
+                <div class="info-projeto">
+                    <h5>Nome Projeto</h5>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, laborum et? Repellendus
+                        perferendis provident
+                        ratione deserunt alias cumque et quasi odio amet temporibus, quam obcaecati dolores. Enim
+                        quibusdam a atque.
+                    </p>
+                    <div class="barra-doacao">
+                        <span>30%</span>
+                        <div class="barra">
+                            <div class="barra-verde"></div>
+                        </div>
+                    </div>
+                </div>
+                <a class="saiba-mais-projeto" href="#">Saiba Mais</a>
+            </div>
+            <div class="card-projeto">
+                <div class="acoes-projeto">
+                    <div class="share">
+                        <i class="fa-solid fa-share-nodes"></i>
+                    </div>
+                    <div class="like">
+                        <i class="fa-solid fa-heart"></i>
+                    </div>
+                </div>
+                <div class="img-projeto">250x130</div>
+                <div class="info-projeto">
+                    <h5>Nome Projeto</h5>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, laborum et? Repellendus
+                        perferendis provident
+                        ratione deserunt alias cumque et quasi odio amet temporibus, quam obcaecati dolores. Enim
+                        quibusdam a atque.
+                    </p>
+                    <div class="barra-doacao">
+                        <span>30%</span>
+                        <div class="barra">
+                            <div class="barra-verde"></div>
+                        </div>
+                    </div>
+                </div>
+                <a class="saiba-mais-projeto" href="#">Saiba Mais</a>
+            </div>
+            <div class="card-projeto">
+                <div class="acoes-projeto">
+                    <div class="share">
+                        <i class="fa-solid fa-share-nodes"></i>
+                    </div>
+                    <div class="like">
+                        <i class="fa-solid fa-heart"></i>
+                    </div>
+                </div>
+                <div class="img-projeto">250x130</div>
+                <div class="info-projeto">
+                    <h5>Nome Projeto</h5>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, laborum et? Repellendus
+                        perferendis provident
+                        ratione deserunt alias cumque et quasi odio amet temporibus, quam obcaecati dolores. Enim
+                        quibusdam a atque.
+                    </p>
+                    <div class="barra-doacao">
+                        <span>30%</span>
+                        <div class="barra">
+                            <div class="barra-verde"></div>
+                        </div>
+                    </div>
+                </div>
+                <a class="saiba-mais-projeto" href="#">Saiba Mais</a>
+            </div>
+            <div class="card-projeto">
+                <div class="acoes-projeto">
+                    <div class="share">
+                        <i class="fa-solid fa-share-nodes"></i>
+                    </div>
+                    <div class="like">
+                        <i class="fa-solid fa-heart"></i>
+                    </div>
+                </div>
+                <div class="img-projeto">250x130</div>
+                <div class="info-projeto">
+                    <h5>Nome Projeto</h5>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, laborum et? Repellendus
+                        perferendis provident
+                        ratione deserunt alias cumque et quasi odio amet temporibus, quam obcaecati dolores. Enim
+                        quibusdam a atque.
+                    </p>
+                    <div class="barra-doacao">
+                        <span>30%</span>
+                        <div class="barra">
+                            <div class="barra-verde"></div>
+                        </div>
+                    </div>
+                </div>
+                <a class="saiba-mais-projeto" href="#">Saiba Mais</a>
+            </div>
+        </section>
+    </div>
+</main>
 
 <?php
     $jsPagina = [];
