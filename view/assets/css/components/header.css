@@ -21,6 +21,7 @@ header .logo {
     
     background: linear-gradient(90deg, #f8c35c, #f67f2a, #f8c35c);
     background-size: 200% 100%;
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     animation: gradiente 3s infinite linear reverse;
