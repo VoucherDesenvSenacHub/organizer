@@ -15,7 +15,7 @@
 }
 
 /* Nome e Foto da ONG */
-.perfil {
+.card-ong .perfil {
     display: flex;
     gap: 10px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
@@ -23,7 +23,7 @@
     cursor: default;
 }
 
-.perfil .logo {
+.card-ong .perfil .logo {
     width: 70px;
     height: 70px;
     background-color: rgb(48, 48, 48);
@@ -35,7 +35,7 @@
     font-weight: 600;
 }
 
-.perfil .nome p {
+.card-ong .perfil .nome p {
     color: grey;
     font-size: 13px;
 }

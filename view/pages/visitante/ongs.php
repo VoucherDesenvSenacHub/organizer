@@ -124,7 +124,7 @@
                     <p><span>9 </span>Projetos</p>
                 </div>
                 <div class="acoes-ong">
-                    <a href="#" class="saiba-mais-ong">Saiba Mais</a>
+                    <a href="perfil-ong.php" class="saiba-mais-ong">Saiba Mais</a>
                     <div class="btn-salvar">
                         <div class="share">
                             <i class="fa-solid fa-share-nodes"></i>
@@ -155,7 +155,7 @@
                     <p><span>9 </span>Projetos</p>
                 </div>
                 <div class="acoes-ong">
-                    <a href="#" class="saiba-mais-ong">Saiba Mais</a>
+                    <a href="perfil-ong.php" class="saiba-mais-ong">Saiba Mais</a>
                     <div class="btn-salvar">
                         <div class="share">
                             <i class="fa-solid fa-share-nodes"></i>
@@ -186,7 +186,7 @@
                     <p><span>9 </span>Projetos</p>
                 </div>
                 <div class="acoes-ong">
-                    <a href="#" class="saiba-mais-ong">Saiba Mais</a>
+                    <a href="perfil-ong.php" class="saiba-mais-ong">Saiba Mais</a>
                     <div class="btn-salvar">
                         <div class="share">
                             <i class="fa-solid fa-share-nodes"></i>
@@ -217,7 +217,7 @@
                     <p><span>9 </span>Projetos</p>
                 </div>
                 <div class="acoes-ong">
-                    <a href="#" class="saiba-mais-ong">Saiba Mais</a>
+                    <a href="perfil-ong.php" class="saiba-mais-ong">Saiba Mais</a>
                     <div class="btn-salvar">
                         <div class="share">
                             <i class="fa-solid fa-share-nodes"></i>
@@ -248,7 +248,7 @@
                     <p><span>9 </span>Projetos</p>
                 </div>
                 <div class="acoes-ong">
-                    <a href="#" class="saiba-mais-ong">Saiba Mais</a>
+                    <a href="perfil-ong.php" class="saiba-mais-ong">Saiba Mais</a>
                     <div class="btn-salvar">
                         <div class="share">
                             <i class="fa-solid fa-share-nodes"></i>
@@ -279,7 +279,7 @@
                     <p><span>9 </span>Projetos</p>
                 </div>
                 <div class="acoes-ong">
-                    <a href="#" class="saiba-mais-ong">Saiba Mais</a>
+                    <a href="perfil-ong.php" class="saiba-mais-ong">Saiba Mais</a>
                     <div class="btn-salvar">
                         <div class="share">
                             <i class="fa-solid fa-share-nodes"></i>
