@@ -1,16 +1,13 @@
-/* Page container for fixed height and scrolling */
 .ONG-page-container {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  min-height: 100vh;
-  width: 100%;
   padding: 20px;
 }
 
 .ONG-principal {
   display: flex;
-  width: 90%; /* Ajuste para telas menores */
+  width: 90%;
   margin: 0 auto;
   max-height: 80vh;
   overflow-y: auto;
@@ -18,11 +15,13 @@
   background-color: #FFFFFF;
   border-radius: 8px;
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.7);
+  scrollbar-width: none;
 }
+
 
 @media (min-width: 768px) {
   .ONG-principal {
-    width: 60%; /* Ajuste para telas maiores */
+    width: 60%;
   }
 }
 
@@ -30,7 +29,7 @@
   width: 100%;
 }
 
-/* Header */
+
 .ONG-header {
   display: flex;
   justify-content: space-between;
@@ -54,7 +53,6 @@
   font-size: 16px;
 }
 
-/* Accordion */
 .ONG-accordion {
   display: flex;
   flex-direction: column;
@@ -69,12 +67,10 @@
   position: relative;
 }
 
-/* Remover o pseudo-elemento after que estava sendo usado anteriormente */
 .ONG-accordion-item::after {
   display: none;
 }
 
-/* Definir bordas inferiores coloridas para todos os itens, independente de estarem ativos */
 .ONG-accordion-item[data-color="purple"] {
   border-bottom: 4px solid #7e22ce;
 }
@@ -171,15 +167,14 @@
   padding: 0 16px;
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.5s ease, padding 0.5s ease; /* Animação mais lenta */
+  transition: max-height 0.5s ease, padding 0.5s ease;
 }
 
 .ONG-accordion-item.active .ONG-accordion-content {
-  max-height: 500px; /* Ajuste conforme necessário */
+  max-height: 500px;
   padding: 16px;
 }
 
-/* Form Grid */
 .ONG-form-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -223,7 +218,7 @@
   margin-right: 8px;
 }
 
-/* Prevent cursor interaction with input fields */
+
 .ONG-input-with-icon span {
   pointer-events: none;
   user-select: none;
@@ -248,8 +243,8 @@
 }
 
 .ONG-edit-btn i {
-  width: 20px;
-  height: 20px;
+  width: 100%;
+  height: 100%;
   color: #f59e0b;
 }
 
@@ -264,7 +259,7 @@
   resize: none;
   outline: none;
   font-size: 16px;
-  pointer-events: none; /* Prevent interaction unless in edit mode */
+  pointer-events: none;
 }
 
 .ONG-textarea-container .ONG-edit-btn {
@@ -297,7 +292,7 @@
 .ONG-checkbox-item input[type="checkbox"] {
   width: 16px;
   height: 16px;
-  pointer-events: none; /* Prevent interaction unless in edit mode */
+  pointer-events: none;
 }
 
 .ONG-checkbox-container .ONG-edit-btn {
@@ -305,7 +300,6 @@
   transform: none;
 }
 
-/* Botão "Salvar Alteração" */
 .ONG-save-button-container {
   display: flex;
   justify-content: center;
@@ -314,8 +308,8 @@
 }
 
 .ONG-save-button {
-  background-color: #FFA500; /* Laranja forte */
-  color: #000; /* Preto */
+  background-color: #FFA500;
+  color: #000;
   border: none;
   padding: 12px 24px;
   border-radius: 8px;
@@ -326,13 +320,16 @@
 }
 
 .ONG-save-button:hover {
-  background-color: #e69500; /* Laranja mais escuro no hover */
+  transition: 500ms;
+  background-color: #d38900;
 }
 
 /* Estilo para campos em edição */
 .editing {
+  margin-left: 2px;
   outline: 2px solid #FFA500;
   padding: 2px;
-  border-radius: 4px;
-  pointer-events: auto !important; /* Allow interaction when editing */
+  pointer-events: auto;
+  width: 85%;
+  height: 100%;
 }
