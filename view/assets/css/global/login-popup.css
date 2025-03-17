@@ -1,0 +1,73 @@
+/* CSS do Popup que aparece ao clicar no botão "Login" */
+
+#popup-login {
+    padding: 15px 35px;
+    gap: 50px;
+}
+
+#popup-login .msg {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: space-around;
+}
+
+#popup-login .msg h1 {
+    line-height: 1.2;
+    font-size: 28px;
+    font-weight: 600;
+    color: #45BEE6;
+    width: 100%;
+}
+
+#popup-login .msg p {
+    font-size: 14px;
+}
+
+#popup-login ul {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#popup-login ul li {
+    list-style: none;
+    display: flex;
+}
+
+#popup-login ul li a {
+    color: var(--cor-principal);
+    text-decoration: none;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    padding: 10px;
+    border-radius: 5px;
+    width: 180px;
+    background-color: #E3B652;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#popup-login ul li a:hover {
+    background-color: var(--cor-amarelo-hover);
+}
+
+#popup-login img {
+    width: 200px;
+}
+
+@media (max-width: 700px) {
+    #popup-login {
+        padding: 30px;
+    }
+
+    #popup-login .img {
+        display: none;
+    }
+
+    #popup-login .msg h1 {
+        text-align: center;
+    }
+}

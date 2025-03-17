@@ -7,13 +7,13 @@
         <nav id="nav-bar">
             <ul>
                 <li><a href="../../../index.php">Home</a></li>
-                <li><a href="#">Ongs</a></li>
-                <li><a href="#">Projetos</a></li>
-                <li><a href="#">Notícias</a></li>
+                <li><a href="../visitante/ongs.php">Ongs</a></li>
+                <li><a href="../visitante/projetos.php">Projetos</a></li>
+                <li><a href="../visitante/tela-noticia.php">Notícias</a></li>
             </ul>
         </nav>
         <div class="btn-login">
-            <button class="btn" id="openPopup" onclick="loginPopup()">LOGIN</button>
+            <button class="btn" id="openPopup" onclick="abrir_popup('fundo-login-popup')">LOGIN</button>
             <button onclick="menu_mobile()" id="hamburguer"></button>
         </div>
     </div>

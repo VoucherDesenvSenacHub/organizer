@@ -18,13 +18,19 @@ window.addEventListener('resize', () => {
 });
 
 // EFEITO POPUP
-function loginPopup() {
-    const fundoPopup = document.getElementById('fundo-login-popup');
-    fundoPopup.classList.add('ativo');
+function abrir_popup(popupId) {
+    const fundoPopup = document.getElementById(popupId);
+    
+    if (fundoPopup) {
+        fundoPopup.classList.toggle('ativo');
 
-    fundoPopup.addEventListener('click', (event) => {
-        if (event.target === fundoPopup) {
-            fundoPopup.classList.remove('ativo');
-        }
-    });
+        // Fecha o popup ao clicar fora dele
+        fundoPopup.addEventListener('click', (event) => {
+            if (event.target === fundoPopup) {
+                fundoPopup.classList.remove('ativo');
+            }
+        });
+    } else {
+        console.error(`Elemento com ID "${popupId}" não encontrado.`);
+    }
 }
