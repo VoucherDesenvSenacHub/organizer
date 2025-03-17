@@ -1,13 +1,3 @@
-<style>
-    @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css');
-    @import url(../assets/css/components/card-ong.css);
-    @import url(../assets/css/global/style.css);
-</style>
-<!--***** IGNORE ESSA PARTE DE CIMA *****-->
-
-
-
-<!-- Esse é o HTML do Card da ONG -->
 <div class="card-ong">
     <div class="perfil">
         <div class="logo">
@@ -39,5 +29,3 @@
         </div>
     </div>
 </div>
-
-<!-- O CSS dele está em (assets/css/components/card-ong.css) é só importar, igual tá la em cima no <style> -->
