@@ -32,7 +32,7 @@
                 </div>
             </div>
             <div id="imagem">
-                <img src="../../assets/images/pages/perfil-ong-1.png" alt="">
+                <img src="../../assets/images/pages/perfil-ong.png" alt="">
             </div>
         </section>
         <section class="container-section">
