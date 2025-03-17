@@ -1,7 +1,7 @@
 <!-- PEGAR A BASE NO README.md -->
 
 <?php 
-    $tituloPagina = ''; // Definir o título da página
+    $tituloPagina = 'Home | Organizer'; // Definir o título da página
     $cssPagina = ['visitante/home.css']; //Colocar o arquivo .css 
     require_once '../../components/header.php';
 ?>
@@ -44,7 +44,7 @@
                             <p><span>9 </span>Projetos</p>
                         </div>
                         <div class="acoes-ong">
-                            <a href="#" class="saiba-mais-ong">Saiba Mais</a>
+                            <a href="perfil-ong.php" class="saiba-mais-ong">Saiba Mais</a>
                             <div class="btn-salvar">
                                 <div class="share">
                                     <i class="fa-solid fa-share-nodes"></i>
@@ -75,7 +75,7 @@
                             <p><span>9 </span>Projetos</p>
                         </div>
                         <div class="acoes-ong">
-                            <a href="#" class="saiba-mais-ong">Saiba Mais</a>
+                            <a href="perfil-ong.php" class="saiba-mais-ong">Saiba Mais</a>
                             <div class="btn-salvar">
                                 <div class="share">
                                     <i class="fa-solid fa-share-nodes"></i>
@@ -106,7 +106,7 @@
                             <p><span>9 </span>Projetos</p>
                         </div>
                         <div class="acoes-ong">
-                            <a href="#" class="saiba-mais-ong">Saiba Mais</a>
+                            <a href="perfil-ong.php" class="saiba-mais-ong">Saiba Mais</a>
                             <div class="btn-salvar">
                                 <div class="share">
                                     <i class="fa-solid fa-share-nodes"></i>
@@ -137,7 +137,7 @@
                             <p><span>9 </span>Projetos</p>
                         </div>
                         <div class="acoes-ong">
-                            <a href="#" class="saiba-mais-ong">Saiba Mais</a>
+                            <a href="perfil-ong.php" class="saiba-mais-ong">Saiba Mais</a>
                             <div class="btn-salvar">
                                 <div class="share">
                                     <i class="fa-solid fa-share-nodes"></i>
@@ -168,7 +168,7 @@
                             <p><span>9 </span>Projetos</p>
                         </div>
                         <div class="acoes-ong">
-                            <a href="#" class="saiba-mais-ong">Saiba Mais</a>
+                            <a href="perfil-ong.php" class="saiba-mais-ong">Saiba Mais</a>
                             <div class="btn-salvar">
                                 <div class="share">
                                     <i class="fa-solid fa-share-nodes"></i>
@@ -199,7 +199,7 @@
                             <p><span>9 </span>Projetos</p>
                         </div>
                         <div class="acoes-ong">
-                            <a href="#" class="saiba-mais-ong">Saiba Mais</a>
+                            <a href="perfil-ong.php" class="saiba-mais-ong">Saiba Mais</a>
                             <div class="btn-salvar">
                                 <div class="share">
                                     <i class="fa-solid fa-share-nodes"></i>
