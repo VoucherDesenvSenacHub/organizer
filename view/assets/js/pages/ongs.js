@@ -75,11 +75,11 @@ function popConclusao(tipo) {
     let texto = document.querySelector('#texto-conclusao');
     janela.style.display = 'block';
     if(tipo == 'edicao'){
-        icone.setAttribute('src', '../assets/images/edit-popup.png');
+        icone.setAttribute('src', '../../assets/images/edit-popup.png');
         janela.style.color = '#FFCC00'
         texto.innerHTML = 'Notícia Alterada';
     }else if(tipo == 'delete'){
-        icone.setAttribute('src', '../assets/images/delete-popup.png');
+        icone.setAttribute('src', '../../assets/images/delete-popup.png');
         janela.style.color = '#E64545'
         texto.innerHTML = 'Notícia Removida';
     }
