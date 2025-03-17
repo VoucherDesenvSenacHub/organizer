@@ -1,4 +1,34 @@
 <?php 
+    $empresas = [
+        [
+            'foto_empresa' => '../../assets/images/avatar_logo.png',
+            'cnpj' => '00.000.000/0000-00',
+            'icon_visualizar' => '../../assets/images/visualizar.png'
+        ],
+        [
+            'foto_empresa' => '../../assets/images/avatar_logo.png',
+            'cnpj' => '00.000.000/0000-00',
+            'icon_visualizar' => '../../assets/images/visualizar.png'
+        ],
+        [
+            'foto_empresa' => '../../assets/images/avatar_logo.png',
+            'cnpj' => '00.000.000/0000-00',
+            'icon_visualizar' => '../../assets/images/visualizar.png'
+        ],
+        [
+            'foto_empresa' => '../../assets/images/avatar_logo.png',
+            'cnpj' => '00.000.000/0000-00',
+            'icon_visualizar' => '../../assets/images/visualizar.png'
+        ],
+        [
+            'foto_empresa' => '../../assets/images/avatar_logo.png',
+            'cnpj' => '00.000.000/0000-00',
+            'icon_visualizar' => '../../assets/images/visualizar.png'
+        ]
+    ]
+?>
+
+<?php 
     $tituloPagina = ''; // Definir o título da página
     $cssPagina = ['adm/solicitacao-parcerias.css']; //Colocar o arquivo .css (exemplo: 'ONG/cadastro.css')
     require_once '../../components/header.php';
@@ -10,15 +40,16 @@
 
         <table class="table">
         <tbody>
+            <?php foreach ($empresas as $empresa) { ?>
             <tr class="linha-coluna">
                 <td class="logo-empresa">
-                    <img src="../../assets/images/avatar_logo.png" alt="">
+                    <img src= <?php echo $empresa['foto_empresa'] ?> alt="">
                 </td>
                 <td class="info-empresa">Coca Cola <br>
-                    00.000.000/0000-00
+                    <?php echo $empresa['cnpj'] ?>
                  </td>
                 <td>
-                    <img class="icon-visible" id="visualiza-solicitacao" src="../../assets/images/visualizar.png" alt="">
+                    <img class="icon-visible" id="visualiza-solicitacao" src="<?php echo $empresa['icon_visualizar'] ?>" alt="">
                 </td>
                 <td>
                     <button class="btn-aceitar" id="btn-aceita-solicitacao">Aceitar</button>
@@ -26,70 +57,8 @@
                     <button class="btn-recusar" id="btn-recusa-solicitacao">Recusar</button>
                 </td>
             </tr>
-            <tr class="linha-coluna">
-                <td class="logo-empresa">
-                    <img src="../../assets/images/avatar_logo.png" alt="">
-                </td>
-                <td class="info-empresa">Coca Cola <br>
-                    00.000.000/0000-00
-                 </td>
-                <td>
-                    <img class="icon-visible" id="visualiza-solicitacao" src="../../assets/images/visualizar.png" alt="">
-                </td>
-                <td>
-                    <button class="btn-aceitar" id="btn-aceita-solicitacao">Aceitar</button>
-                
-                    <button class="btn-recusar" id="btn-recusa-solicitacao">Recusar</button>
-                </td>
-            </tr>
-            <tr class="linha-coluna">
-                <td class="logo-empresa">
-                    <img src="../../assets/images/avatar_logo.png" alt="">
-                </td>
-                <td class="info-empresa">Coca Cola <br>
-                    00.000.000/0000-00
-                 </td>
-                <td>
-                    <img class="icon-visible" id="visualiza-solicitacao" src="../../assets/images/visualizar.png" alt="">
-                </td>
-                <td>
-                    <button class="btn-aceitar" id="btn-aceita-solicitacao">Aceitar</button>
-                
-                    <button class="btn-recusar" id="btn-recusa-solicitacao">Recusar</button>
-                </td>
-            </tr>
-            <tr class="linha-coluna">
-                <td class="logo-empresa">
-                    <img src="../../assets/images/avatar_logo.png" alt="">
-                </td>
-                <td class="info-empresa">Coca Cola <br>
-                    00.000.000/0000-00
-                 </td>
-                <td>
-                    <img class="icon-visible" id="visualiza-solicitacao" src="../../assets/images/visualizar.png" alt="">
-                </td>
-                <td>
-                    <button class="btn-aceitar" id="btn-aceita-solicitacao">Aceitar</button>
-                
-                    <button class="btn-recusar" id="btn-recusa-solicitacao">Recusar</button>
-                </td>
-            </tr>
-            <tr class="linha-coluna">
-                <td class="logo-empresa">
-                    <img src="../../assets/images/avatar_logo.png" alt="">
-                </td>
-                <td class="info-empresa">Coca Cola <br>
-                    00.000.000/0000-00
-                 </td>
-                <td>
-                    <img class="icon-visible" id="visualiza-solicitacao" src="../../assets/images/visualizar.png" alt="">
-                </td>
-                <td>
-                    <button class="btn-aceitar" id="btn-aceita-solicitacao">Aceitar</button>
-                
-                    <button class="btn-recusar" id="btn-recusa-solicitacao">Recusar</button>
-                </td>
-            </tr>
+           
+            <?php } ?>
         </tbody>
         </table>
     
