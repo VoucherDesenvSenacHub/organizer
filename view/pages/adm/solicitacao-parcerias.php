@@ -1,26 +1,31 @@
 <?php 
     $empresas = [
         [
+            'nome' => 'Coca Cola',
             'foto_empresa' => '../../assets/images/avatar_logo.png',
             'cnpj' => '00.000.000/0000-00',
             'icon_visualizar' => '../../assets/images/visualizar.png'
         ],
         [
+            'nome' => 'Coca Cola',
             'foto_empresa' => '../../assets/images/avatar_logo.png',
             'cnpj' => '00.000.000/0000-00',
             'icon_visualizar' => '../../assets/images/visualizar.png'
         ],
         [
+            'nome' => 'Coca Cola',
             'foto_empresa' => '../../assets/images/avatar_logo.png',
             'cnpj' => '00.000.000/0000-00',
             'icon_visualizar' => '../../assets/images/visualizar.png'
         ],
         [
+            'nome' => 'Coca Cola',
             'foto_empresa' => '../../assets/images/avatar_logo.png',
             'cnpj' => '00.000.000/0000-00',
             'icon_visualizar' => '../../assets/images/visualizar.png'
         ],
         [
+            'nome' => 'Coca Cola',
             'foto_empresa' => '../../assets/images/avatar_logo.png',
             'cnpj' => '00.000.000/0000-00',
             'icon_visualizar' => '../../assets/images/visualizar.png'
@@ -45,7 +50,7 @@
                 <td class="logo-empresa">
                     <img src= <?php echo $empresa['foto_empresa'] ?> alt="">
                 </td>
-                <td class="info-empresa">Coca Cola <br>
+                <td class="info-empresa"><?php echo $empresa['nome'] ?> <br>
                     <?php echo $empresa['cnpj'] ?>
                  </td>
                 <td>
