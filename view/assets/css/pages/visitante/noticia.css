@@ -1,33 +1,24 @@
 #principal {
-
-    z-index: 1;
-    width: 70%;
-    height: 600px;
-    overflow: hidden;
-    overflow-y: scroll;
+    max-width: 1200px;
     margin: 0 auto;
-    /* padding: 20px; */
-    background-color: white;
+    background-color:aliceblue;
     border-radius: 10px;
-    box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.7);
+    padding: 55px 0;
     flex-direction: column;
-    padding: 40px;
-    padding-top: 0;
-    margin-top: 25px;
+    display: flex;
+    gap: 15px;
 }
 
+body {
+    background-color: aliceblue;
+}
 .carousel {
     max-width: 100%;
     overflow: hidden;
-    /* box-shadow: 1px 2px 2px black; */
-    border-radius: 10px;
-    /* margin: 20px; */
-    /* width: 96%; */
-    min-height:500px;
+    border-radius: 10px;    
+    min-height:400px;
     position: relative;
-    /* background: red; */
-
-padding: 30px;}
+}
 
 .carousel-imgs {
     /* width: 500px; */
@@ -36,7 +27,7 @@ padding: 30px;}
     gap: 35px;
     position: absolute;
     animation: rolagem 10s infinite ease alternate ;
-      width: 100%;
+    width: 100%;
 
 }
 
@@ -69,8 +60,6 @@ padding: 30px;}
 .titulo{
     display: flex;
     flex-direction: column;
-    padding-left: 1%;
-    margin-bottom: 1.5em;
 }
 
 .titulo h1 {
@@ -92,10 +81,7 @@ padding: 30px;}
 
 .texto{
     display: flex;
-    padding-left: 1%;
-    margin-bottom: 2%;
-    text-indent: 10%;
-    hyphens: auto; 
+    text-indent: 10%; 
     
 }
 
@@ -108,9 +94,8 @@ padding: 30px;}
 .baixo{
     display: flex;
     flex-direction: row;
-    padding: 1%;
 }
 
-p{
+.baixo p, .texto p {
     text-align: justify;
 }
