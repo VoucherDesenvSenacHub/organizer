@@ -20,5 +20,5 @@
             </div>
         </div>
     </div>
-    <a class="saiba-mais-projeto" href="#">Saiba Mais</a>
+    <a class="saiba-mais-projeto" href="../not-found.php">Saiba Mais</a>
 </div>

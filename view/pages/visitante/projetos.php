@@ -128,7 +128,7 @@
                         </div>
                     </div>
                 </div>
-                <a class="saiba-mais-projeto" href="#">Saiba Mais</a>
+                <a class="saiba-mais-projeto" href="../not-found.php">Saiba Mais</a>
             </div>
             <div class="card-projeto">
                 <div class="acoes-projeto">
@@ -154,7 +154,7 @@
                         </div>
                     </div>
                 </div>
-                <a class="saiba-mais-projeto" href="#">Saiba Mais</a>
+                <a class="saiba-mais-projeto" href="../not-found.php">Saiba Mais</a>
             </div>
             <div class="card-projeto">
                 <div class="acoes-projeto">
@@ -180,7 +180,7 @@
                         </div>
                     </div>
                 </div>
-                <a class="saiba-mais-projeto" href="#">Saiba Mais</a>
+                <a class="saiba-mais-projeto" href="../not-found.php">Saiba Mais</a>
             </div>
             <div class="card-projeto">
                 <div class="acoes-projeto">
@@ -206,7 +206,7 @@
                         </div>
                     </div>
                 </div>
-                <a class="saiba-mais-projeto" href="#">Saiba Mais</a>
+                <a class="saiba-mais-projeto" href="../not-found.php">Saiba Mais</a>
             </div>
             <div class="card-projeto">
                 <div class="acoes-projeto">
@@ -232,7 +232,7 @@
                         </div>
                     </div>
                 </div>
-                <a class="saiba-mais-projeto" href="#">Saiba Mais</a>
+                <a class="saiba-mais-projeto" href="../not-found.php">Saiba Mais</a>
             </div>
             <div class="card-projeto">
                 <div class="acoes-projeto">
@@ -258,7 +258,7 @@
                         </div>
                     </div>
                 </div>
-                <a class="saiba-mais-projeto" href="#">Saiba Mais</a>
+                <a class="saiba-mais-projeto" href="../not-found.php">Saiba Mais</a>
             </div>
             <div class="card-projeto">
                 <div class="acoes-projeto">
@@ -284,7 +284,7 @@
                         </div>
                     </div>
                 </div>
-                <a class="saiba-mais-projeto" href="#">Saiba Mais</a>
+                <a class="saiba-mais-projeto" href="../not-found.php">Saiba Mais</a>
             </div>
             <div class="card-projeto">
                 <div class="acoes-projeto">
@@ -310,7 +310,7 @@
                         </div>
                     </div>
                 </div>
-                <a class="saiba-mais-projeto" href="#">Saiba Mais</a>
+                <a class="saiba-mais-projeto" href="../not-found.php">Saiba Mais</a>
             </div>
         </section>
         <nav id="navegacao">
