@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
+    iniciarEventos();
     document.querySelectorAll("input").forEach(input => {
         input.addEventListener("keypress", function (event) {
             if (event.key === "Enter") {
@@ -8,47 +9,75 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+
+function iniciarEventos() {
+    const form = document.getElementById('form');
+    const linha = document.getElementById('linhaAzul');
+    const bolinha = document.getElementsByClassName('item');
+    const check = document.getElementsByClassName('circle');
+    
+    let move = 0;
+    
+    document.getElementById('circle-1').addEventListener('click', () => moverPara(0));
+    document.getElementById('circle-2').addEventListener('click', () => moverPara(1));
+    document.getElementById('circle-3').addEventListener('click', () => moverPara(2));
+
+    function moverPara(indice) {
+        const deslocamento = window.innerWidth > 750 ? 660 : 330;
+        move = indice * deslocamento;
+        form.style.transform = `translateX(-${move}px)`;
+        linha.style.width = `${indice * 33}%`;
+
+        for (let i = 0; i < bolinha.length; i++) {
+            bolinha[i].classList.toggle('active', i === indice);
+            // check[i].style.color = i <= indice ? 'aliceblue' : '';
+        }
+    }
+}
+
+
+
 const form = document.getElementById('form');
 
 // Mover formulario ao clicar na bolinha
-let circle_1 = document.getElementById('circle-1');
-circle_1.addEventListener('click', (event) => {
-    form.style.transform = `translateX(-0px)`;
-    bolinha[0].classList.add('active');
-    linha.style.width = '0%';
-    bolinha[1].classList.remove('active');
-    bolinha[2].classList.remove('active');
-});
+// let circle_1 = document.getElementById('circle-1');
+// circle_1.addEventListener('click', (event) => {
+//     form.style.transform = `translateX(-0px)`;
+//     bolinha[0].classList.add('active');
+//     linha.style.width = '0%';
+//     bolinha[1].classList.remove('active');
+//     bolinha[2].classList.remove('active');
+// });
 
-let circle_2 = document.getElementById('circle-2');
-circle_2.addEventListener('click', (event) => {
-    bolinha[1].classList.add('active');
-    linha.style.width = '33%';
-    bolinha[0].classList.remove('active');
-    bolinha[2].classList.remove('active');
-    if (window.innerWidth > 750) {
-        form.style.transform = `translateX(-660px)`;
-    }
-    else {
-        form.style.transform = `translateX(-330px)`;
-    }
+// let circle_2 = document.getElementById('circle-2');
+// circle_2.addEventListener('click', (event) => {
+//     bolinha[1].classList.add('active');
+//     linha.style.width = '33%';
+//     bolinha[0].classList.remove('active');
+//     bolinha[2].classList.remove('active');
+//     if (window.innerWidth > 750) {
+//         form.style.transform = `translateX(-660px)`;
+//     }
+//     else {
+//         form.style.transform = `translateX(-330px)`;
+//     }
     
-});
+// });
 
-let circle_3 = document.getElementById('circle-3');
-circle_3.addEventListener('click', (event) => {
-    bolinha[2].classList.add('active')
-    linha.style.width = '67%'
-    bolinha[0].classList.remove('active');
-    bolinha[1].classList.remove('active');
-    if (window.innerWidth > 750) {
-        form.style.transform = `translateX(-1320px)`;
-    }
-    else {
-        form.style.transform = `translateX(-660px)`;
-    }
+// let circle_3 = document.getElementById('circle-3');
+// circle_3.addEventListener('click', (event) => {
+//     bolinha[2].classList.add('active')
+//     linha.style.width = '67%'
+//     bolinha[0].classList.remove('active');
+//     bolinha[1].classList.remove('active');
+//     if (window.innerWidth > 750) {
+//         form.style.transform = `translateX(-1320px)`;
+//     }
+//     else {
+//         form.style.transform = `translateX(-660px)`;
+//     }
     
-});
+// });
 
 
 
