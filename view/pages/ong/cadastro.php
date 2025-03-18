@@ -2,6 +2,8 @@
     $tituloPagina = 'Cadastro ONG'; // Definir o título da página
     $cssPagina = ['ong/cadastro.css']; //Colocar o arquivo .css 
     require_once '../../components/header.php';
+    $itens_progressao = ['Dados<br>da ONG', 'Descrição', 'Endereço', 'Responsável', 'Banco', 'Login'];
+
 ?>
         <!-- Fim cabeçalho -->
 
@@ -13,12 +15,15 @@
                 <h1>CADASTRO</h1>
             </div>
             <div class="nav-buttons">
-                <button type="button" class="p1" onclick="targetPage(0,0)"></button>
-                <button type="button" class="p2" onclick="targetPage(1,0)"></button>
-                <button type="button" class="p2" onclick="targetPage(2,0)"></button>
-                <button type="button" class="p2" onclick="targetPage(3,0)"></button>
-                <button type="button" class="p2" onclick="targetPage(4,0)"></button>
-                <button type="button" class="p2" onclick="targetPage(5,0)"></button>
+                <?php 
+                    $full = 0;
+                    for($i=0; $i<=5; $i++){
+                    $full >=1 ? $classe_botao = 'p2' : $classe_botao = 'p1';
+                ?>
+                <button type="button" class="<?php echo $classe_botao ?>" onclick="targetPage(<?php echo $i ?>,0)"></button>
+                <?php
+                    $full++;
+                }?>
             </div>
             <div class="progress">
                 <div class="line">
@@ -26,13 +31,18 @@
                 </div>
             </div>
             <div class="text-progress">
-                <div class="text-detalhes">Dados<br>da ONG</div>
-                <div class="text-detalhes-draft">Descrição</div>
-                <div class="text-detalhes-draft">Endereço</div>
-                <div class="text-detalhes-draft">Responsável</div>
-                <div class="text-detalhes-draft">Banco</div>
-                <div class="text-detalhes-draft">Login</div>
-            </div>
+            <?php 
+                $draft = 0;
+                $classe_item;
+                foreach($itens_progressao as $item){
+                    $draft >= 1 ? $classe_item = 'text-detalhes' : $classe_item = 'text-detalhes-draft';
+                ?>
+                <div class="<?php echo $classe_item; ?>"><?php echo $item ?></div>
+                <?php 
+                    $draft++;
+                }
+                ?>
+                </div>
             <form action="cadastrar-ong.php" method="post">
                 <div class="formulario-geral">
                     <div>
@@ -65,12 +75,15 @@
             <h1>ATUAÇÃO DA ONG</h1>
         </div>
         <div class="nav-buttons">
-            <button type="button" class="p1" onclick="targetPage(0,1)"></button>
-            <button type="button" class="p1" onclick="targetPage(1,1)"></button>
-            <button type="button" class="p2" onclick="targetPage(2,1)"></button>
-            <button type="button" class="p2" onclick="targetPage(3,1)"></button>
-            <button type="button" class="p2" onclick="targetPage(4,1)"></button>
-            <button type="button" class="p2" onclick="targetPage(5,1)"></button>
+            <?php 
+                $full = 0;
+                for($i=0; $i<=5; $i++){
+                $full >=2 ? $classe_botao = 'p2' : $classe_botao = 'p1';
+            ?>
+            <button type="button" class="<?php echo $classe_botao ?>" onclick="targetPage(<?php echo $i ?>,1)"></button>
+            <?php
+                $full++;
+            }?>
         </div>
         <div class="progress">
             <div class="line">
@@ -78,12 +91,17 @@
             </div>
         </div>
         <div class="text-progress">
-            <div class="text-detalhes">Dados<br>da ONG</div>
-            <div class="text-detalhes">Descrição</div>
-            <div class="text-detalhes-draft">Endereço</div>
-            <div class="text-detalhes-draft">Responsável</div>
-            <div class="text-detalhes-draft">Banco</div>
-            <div class="text-detalhes-draft">Login</div>
+        <?php 
+                $draft = 0;
+                $classe_item;
+                foreach($itens_progressao as $item){
+                    $draft >= 2 ? $classe_item = 'text-detalhes' : $classe_item = 'text-detalhes-draft';
+                ?>
+                <div class="<?php echo $classe_item; ?>"><?php echo $item ?></div>
+                <?php 
+                    $draft++;
+                }
+                ?>
         </div>
         <div id="form-atuacao">
             <div>
@@ -144,12 +162,15 @@
             <h1>ENDEREÇO</h1>
         </div>
         <div class="nav-buttons">
-            <button type="button" class="p1" onclick="targetPage(0,2)"></button>
-            <button type="button" class="p1" onclick="targetPage(1,2)"></button>
-            <button type="button" class="p1" onclick="targetPage(2,2)"></button>
-            <button type="button" class="p2" onclick="targetPage(3,2)"></button>
-            <button type="button" class="p2" onclick="targetPage(4,2)"></button>
-            <button type="button" class="p2" onclick="targetPage(5,2)"></button>
+            <?php 
+                $full = 0;
+                for($i=0; $i<=5; $i++){
+                $full >=3 ? $classe_botao = 'p2' : $classe_botao = 'p1';
+            ?>
+            <button type="button" class="<?php echo $classe_botao ?>" onclick="targetPage(<?php echo $i ?>,2)"></button>
+            <?php
+                $full++;
+            }?>
         </div>
         <div class="progress">
             <div class="line">
@@ -157,12 +178,17 @@
             </div>
         </div>
         <div class="text-progress">
-            <div class="text-detalhes">Dados<br>da ONG</div>
-            <div class="text-detalhes">Descrição</div>
-            <div class="text-detalhes">Endereço</div>
-            <div class="text-detalhes-draft">Responsável</div>
-            <div class="text-detalhes-draft">Banco</div>
-            <div class="text-detalhes-draft">Login</div>
+        <?php 
+                $draft = 0;
+                $classe_item;
+                foreach($itens_progressao as $item){
+                    $draft >= 3 ? $classe_item = 'text-detalhes' : $classe_item = 'text-detalhes-draft';
+                ?>
+                <div class="<?php echo $classe_item; ?>"><?php echo $item ?></div>
+                <?php 
+                    $draft++;
+                }
+                ?>
         </div>
         <div class="formulario-geral">
             <div>
@@ -196,12 +222,15 @@
             <h1>RESPONSÁVEL PELA ONG</h1>
         </div>
         <div class="nav-buttons">
-            <button type="button" class="p1" onclick="targetPage(0,3)"></button>
-            <button type="button" class="p1" onclick="targetPage(1,3)"></button>
-            <button type="button" class="p1" onclick="targetPage(2,3)"></button>
-            <button type="button" class="p1" onclick="targetPage(3,3)"></button>
-            <button type="button" class="p2" onclick="targetPage(4,3)"></button>
-            <button type="button" class="p2" onclick="targetPage(5,3)"></button>
+            <?php 
+                $full = 0;
+                for($i=0; $i<=5; $i++){
+                $full >=4 ? $classe_botao = 'p2' : $classe_botao = 'p1';
+            ?>
+            <button type="button" class="<?php echo $classe_botao ?>" onclick="targetPage(<?php echo $i ?>,3)"></button>
+            <?php
+                $full++;
+            }?>
         </div>
         <div class="progress">
             <div class="line">
@@ -209,12 +238,17 @@
             </div>
             </div>
             <div class="text-progress">
-                <div class="text-detalhes">Dados<br>da ONG</div>
-                <div class="text-detalhes">Descrição</div>
-                <div class="text-detalhes">Endereço</div>
-                <div class="text-detalhes">Responsável</div>
-                <div class="text-detalhes-draft">Banco</div>
-                <div class="text-detalhes-draft">Login</div>
+            <?php 
+                $draft = 0;
+                $classe_item;
+                foreach($itens_progressao as $item){
+                    $draft >= 4 ? $classe_item = 'text-detalhes' : $classe_item = 'text-detalhes-draft';
+                ?>
+                <div class="<?php echo $classe_item; ?>"><?php echo $item ?></div>
+                <?php 
+                    $draft++;
+                }
+                ?>
             </div>
             <div class="formulario-geral">
                 <div>
@@ -247,12 +281,15 @@
             <h1>DADOS BANCÁRIOS</h1>
         </div>
         <div class="nav-buttons">
-            <button type="button" class="p1" onclick="targetPage(0,4)"></button>
-            <button type="button" class="p1" onclick="targetPage(1,4)"></button>
-            <button type="button" class="p1" onclick="targetPage(2,4)"></button>
-            <button type="button" class="p1" onclick="targetPage(3,4)"></button>
-            <button type="button" class="p1" onclick="targetPage(4,4)"></button>
-            <button type="button" class="p2" onclick="targetPage(5,4)"></button>
+            <?php 
+                $full = 0;
+                for($i=0; $i<=5; $i++){
+                $full >=5 ? $classe_botao = 'p2' : $classe_botao = 'p1';
+            ?>
+            <button type="button" class="<?php echo $classe_botao ?>" onclick="targetPage(<?php echo $i ?>,4)"></button>
+            <?php
+                $full++;
+            }?>
         </div>
         <div class="progress">
             <div class="line">
@@ -260,12 +297,17 @@
             </div>
         </div>
         <div class="text-progress">
-            <div class="text-detalhes">Dados<br>da ONG</div>
-            <div class="text-detalhes">Descrição</div>
-            <div class="text-detalhes">Endereço</div>
-            <div class="text-detalhes">Responsável</div>
-            <div class="text-detalhes">Banco</div>
-            <div class="text-detalhes-draft">Login</div>
+        <?php 
+                $draft = 0;
+                $classe_item;
+                foreach($itens_progressao as $item){
+                    $draft >= 5 ? $classe_item = 'text-detalhes' : $classe_item = 'text-detalhes-draft';
+                ?>
+                <div class="<?php echo $classe_item; ?>"><?php echo $item ?></div>
+                <?php 
+                    $draft++;
+                }
+                ?>
         </div>
         <div class="formulario-geral">
             <div>
@@ -302,12 +344,15 @@
             <h1>CRIAR SEU LOGIN</h1>
         </div>
         <div class="nav-buttons">
-            <button type="button" class="p1" onclick="targetPage(0,5)"></button>
-            <button type="button" class="p1" onclick="targetPage(1,5)"></button>
-            <button type="button" class="p1" onclick="targetPage(2,5)"></button>
-            <button type="button" class="p1" onclick="targetPage(3,5)"></button>
-            <button type="button" class="p1" onclick="targetPage(4,5)"></button>
-            <button type="button" class="p1" onclick="targetPage(5,5)"></button>
+            <?php 
+                $full = 0;
+                for($i=0; $i<=5; $i++){
+                $full >=6 ? $classe_botao = 'p2' : $classe_botao = 'p1';
+            ?>
+            <button type="button" class="<?php echo $classe_botao ?>" onclick="targetPage(<?php echo $i ?>,5)"></button>
+            <?php
+                $full++;
+            }?>
         </div>
         <div class="progress">
             <div class="line">
@@ -315,12 +360,17 @@
             </div>
         </div>
         <div class="text-progress">
-            <div class="text-detalhes">Dados<br>da ONG</div>
-            <div class="text-detalhes">Descrição</div>
-            <div class="text-detalhes">Endereço</div>
-            <div class="text-detalhes">Responsável</div>
-            <div class="text-detalhes">Banco</div>
-            <div class="text-detalhes">Login</div>
+            <?php 
+                $draft = 0;
+                $classe_item;
+                foreach($itens_progressao as $item){
+                    $draft >= 6 ? $classe_item = 'text-detalhes' : $classe_item = 'text-detalhes-draft';
+                ?>
+                <div class="<?php echo $classe_item; ?>"><?php echo $item ?></div>
+                <?php 
+                    $draft++;
+                }
+            ?>
         </div>
         <div class="formulario-geral">
             <div>
