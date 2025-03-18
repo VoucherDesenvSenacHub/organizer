@@ -1,4 +1,34 @@
 <?php 
+    $cards = [
+        [
+            'imagem' => '../../assets/images/foto-projeto-card.png',
+            'nome' => 'Campanha Solidária',
+        ],
+        [
+            'imagem' => '../../assets/images/foto-projeto-card.png',
+            'nome' => 'Campanha Solidária',
+        ],
+        [
+            'imagem' => '../../assets/images/foto-projeto-card.png',
+            'nome' => 'Campanha Solidária',
+        ],
+        [
+            'imagem' => '../../assets/images/foto-projeto-card.png',
+            'nome' => 'Campanha Solidária',
+        ],
+        [
+            'imagem' => '../../assets/images/foto-projeto-card.png',
+            'nome' => 'Campanha Solidária',
+        ],
+        [
+            'imagem' => '../../assets/images/foto-projeto-card.png',
+            'nome' => 'Campanha Solidária',
+        ]
+    ]
+?>
+
+
+<?php 
     $tituloPagina = 'Projetos'; // Definir o título da página
     $cssPagina = ['ONG/projetos.css']; //Colocar o arquivo .css (exemplo: 'ONG/cadastro.css')
     require_once '../../components/header.php';
@@ -20,42 +50,13 @@
 
             <!-- cards -->
             <div class="div-card-geral">
+                <?php foreach ($cards as $card) { ?>
                 <div class="card">
-                    <img class="img-card" src="../../assets/images/foto-projeto-card.png" alt="">
-                    <p>Campanha Solidária</p>
+                    <img class="img-card" src=<?php echo $card['imagem'] ?> alt="">
+                    <p><?php echo $card['nome'] ?></p>
                     <a href="./visualizar-projetos.php"><button class="btn-card">Visualizar</button></a>
                 </div>
-
-                <div class="card">
-                    <img class="img-card" src="../../assets/images/foto-projeto-card.png" alt="">
-                    <p>Campanha Solidária</p>
-                    <a href="./visualizar-projetos.php"><button class="btn-card">Visualizar</button></a>
-                </div>
-
-                <div class="card">
-                    <img class="img-card" src="../../assets/images/foto-projeto-card.png" alt="">
-                    <p>Campanha Solidária</p>
-                    <a href="./visualizar-projetos.php"><button class="btn-card">Visualizar</button></a>
-                </div>
-
-                <div class="card">
-                    <img class="img-card" src="../../assets/images/foto-projeto-card.png" alt="">
-                    <p>Campanha Solidária</p>
-                    <a href="./visualizar-projetos.php"><button class="btn-card">Visualizar</button></a>
-                </div>
-
-                <div class="card">
-                    <img class="img-card" src="../../assets/images/foto-projeto-card.png" alt="">
-                    <p>Campanha Solidária</p>
-                    <a href="./visualizar-projetos.php"><button class="btn-card">Visualizar</button></a>
-                </div>
-
-                <div class="card">
-                    <img class="img-card" src="../../assets/images/foto-projeto-card.png" alt="">
-                    <p>Campanha Solidária</p>
-                    <a href="./visualizar-projetos.php"><button class="btn-card">Visualizar</button></a>
-                </div>
-            </div>
+                <?php } ?>
 
             
 
