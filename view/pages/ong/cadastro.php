@@ -3,6 +3,27 @@
     $cssPagina = ['ong/cadastro.css']; //Colocar o arquivo .css 
     require_once '../../components/header.php';
     $itens_progressao = ['Dados<br>da ONG', 'Descrição', 'Endereço', 'Responsável', 'Banco', 'Login'];
+    function botoes_navegacao($muda_classe, $card){        
+            $full = 0;
+            for($i=0; $i<=5; $i++){
+            $full >=$muda_classe ? $classe_botao = 'p2' : $classe_botao = 'p1';
+        ?>
+        <button type="button" class="<?php echo $classe_botao ?>" onclick="targetPage(<?php echo $i ?>,
+        <?php echo $card ?>)"></button>
+        <?php
+            $full++;
+        }
+    }
+    function texto_progresso($itens_progressao, $muda_classe){
+        $draft = 0;
+        foreach($itens_progressao as $item){
+            $draft >= $muda_classe ? $classe_item = 'text-detalhes-draft' : $classe_item = 'text-detalhes';
+        ?>
+        <div class="<?php echo $classe_item; ?>"><?php echo $item ?></div>
+        <?php 
+            $draft++;
+        }
+    }
 
 ?>
         <!-- Fim cabeçalho -->
@@ -15,15 +36,7 @@
                 <h1>CADASTRO</h1>
             </div>
             <div class="nav-buttons">
-                <?php 
-                    $full = 0;
-                    for($i=0; $i<=5; $i++){
-                    $full >=1 ? $classe_botao = 'p2' : $classe_botao = 'p1';
-                ?>
-                <button type="button" class="<?php echo $classe_botao ?>" onclick="targetPage(<?php echo $i ?>,0)"></button>
-                <?php
-                    $full++;
-                }?>
+                <?php botoes_navegacao(1,0)?>
             </div>
             <div class="progress">
                 <div class="line">
@@ -31,18 +44,8 @@
                 </div>
             </div>
             <div class="text-progress">
-            <?php 
-                $draft = 0;
-                $classe_item;
-                foreach($itens_progressao as $item){
-                    $draft >= 1 ? $classe_item = 'text-detalhes' : $classe_item = 'text-detalhes-draft';
-                ?>
-                <div class="<?php echo $classe_item; ?>"><?php echo $item ?></div>
-                <?php 
-                    $draft++;
-                }
-                ?>
-                </div>
+                <?php texto_progresso($itens_progressao, 1)?>
+            </div>
             <form action="cadastrar-ong.php" method="post">
                 <div class="formulario-geral">
                     <div>
@@ -75,33 +78,15 @@
             <h1>ATUAÇÃO DA ONG</h1>
         </div>
         <div class="nav-buttons">
-            <?php 
-                $full = 0;
-                for($i=0; $i<=5; $i++){
-                $full >=2 ? $classe_botao = 'p2' : $classe_botao = 'p1';
-            ?>
-            <button type="button" class="<?php echo $classe_botao ?>" onclick="targetPage(<?php echo $i ?>,1)"></button>
-            <?php
-                $full++;
-            }?>
+                <?php botoes_navegacao(2,1)?>
         </div>
         <div class="progress">
             <div class="line">
-                <div class="line-1"></div>
+                <div class="line-0"></div>
             </div>
         </div>
         <div class="text-progress">
-        <?php 
-                $draft = 0;
-                $classe_item;
-                foreach($itens_progressao as $item){
-                    $draft >= 2 ? $classe_item = 'text-detalhes' : $classe_item = 'text-detalhes-draft';
-                ?>
-                <div class="<?php echo $classe_item; ?>"><?php echo $item ?></div>
-                <?php 
-                    $draft++;
-                }
-                ?>
+            <?php texto_progresso($itens_progressao, 2)?>
         </div>
         <div id="form-atuacao">
             <div>
@@ -162,34 +147,16 @@
             <h1>ENDEREÇO</h1>
         </div>
         <div class="nav-buttons">
-            <?php 
-                $full = 0;
-                for($i=0; $i<=5; $i++){
-                $full >=3 ? $classe_botao = 'p2' : $classe_botao = 'p1';
-            ?>
-            <button type="button" class="<?php echo $classe_botao ?>" onclick="targetPage(<?php echo $i ?>,2)"></button>
-            <?php
-                $full++;
-            }?>
-        </div>
-        <div class="progress">
-            <div class="line">
-                <div class="line-2"></div>
+                <?php botoes_navegacao(3,2)?>
             </div>
-        </div>
-        <div class="text-progress">
-        <?php 
-                $draft = 0;
-                $classe_item;
-                foreach($itens_progressao as $item){
-                    $draft >= 3 ? $classe_item = 'text-detalhes' : $classe_item = 'text-detalhes-draft';
-                ?>
-                <div class="<?php echo $classe_item; ?>"><?php echo $item ?></div>
-                <?php 
-                    $draft++;
-                }
-                ?>
-        </div>
+            <div class="progress">
+                <div class="line">
+                    <div class="line-0"></div>
+                </div>
+            </div>
+            <div class="text-progress">
+                <?php texto_progresso($itens_progressao, 3)?>
+            </div>
         <div class="formulario-geral">
             <div>
                 <label for="rua">Endereço</label><br>
@@ -222,34 +189,16 @@
             <h1>RESPONSÁVEL PELA ONG</h1>
         </div>
         <div class="nav-buttons">
-            <?php 
-                $full = 0;
-                for($i=0; $i<=5; $i++){
-                $full >=4 ? $classe_botao = 'p2' : $classe_botao = 'p1';
-            ?>
-            <button type="button" class="<?php echo $classe_botao ?>" onclick="targetPage(<?php echo $i ?>,3)"></button>
-            <?php
-                $full++;
-            }?>
+            <?php botoes_navegacao(4,3)?>
         </div>
         <div class="progress">
             <div class="line">
-                <div class="line-3"></div>
+                <div class="line-0"></div>
             </div>
-            </div>
-            <div class="text-progress">
-            <?php 
-                $draft = 0;
-                $classe_item;
-                foreach($itens_progressao as $item){
-                    $draft >= 4 ? $classe_item = 'text-detalhes' : $classe_item = 'text-detalhes-draft';
-                ?>
-                <div class="<?php echo $classe_item; ?>"><?php echo $item ?></div>
-                <?php 
-                    $draft++;
-                }
-                ?>
-            </div>
+        </div>
+        <div class="text-progress">
+            <?php texto_progresso($itens_progressao, 4)?>
+        </div>
             <div class="formulario-geral">
                 <div>
                     <label for="nome">Nome</label><br>
@@ -281,33 +230,15 @@
             <h1>DADOS BANCÁRIOS</h1>
         </div>
         <div class="nav-buttons">
-            <?php 
-                $full = 0;
-                for($i=0; $i<=5; $i++){
-                $full >=5 ? $classe_botao = 'p2' : $classe_botao = 'p1';
-            ?>
-            <button type="button" class="<?php echo $classe_botao ?>" onclick="targetPage(<?php echo $i ?>,4)"></button>
-            <?php
-                $full++;
-            }?>
+            <?php botoes_navegacao(5,4)?>
         </div>
         <div class="progress">
             <div class="line">
-                <div class="line-4"></div>
+                <div class="line-0"></div>
             </div>
         </div>
         <div class="text-progress">
-        <?php 
-                $draft = 0;
-                $classe_item;
-                foreach($itens_progressao as $item){
-                    $draft >= 5 ? $classe_item = 'text-detalhes' : $classe_item = 'text-detalhes-draft';
-                ?>
-                <div class="<?php echo $classe_item; ?>"><?php echo $item ?></div>
-                <?php 
-                    $draft++;
-                }
-                ?>
+            <?php texto_progresso($itens_progressao, 5)?>
         </div>
         <div class="formulario-geral">
             <div>
@@ -344,33 +275,15 @@
             <h1>CRIAR SEU LOGIN</h1>
         </div>
         <div class="nav-buttons">
-            <?php 
-                $full = 0;
-                for($i=0; $i<=5; $i++){
-                $full >=6 ? $classe_botao = 'p2' : $classe_botao = 'p1';
-            ?>
-            <button type="button" class="<?php echo $classe_botao ?>" onclick="targetPage(<?php echo $i ?>,5)"></button>
-            <?php
-                $full++;
-            }?>
+            <?php botoes_navegacao(6,5)?>
         </div>
         <div class="progress">
             <div class="line">
-                <div class="line-5"></div>
+                <div class="line-0"></div>
             </div>
         </div>
         <div class="text-progress">
-            <?php 
-                $draft = 0;
-                $classe_item;
-                foreach($itens_progressao as $item){
-                    $draft >= 6 ? $classe_item = 'text-detalhes' : $classe_item = 'text-detalhes-draft';
-                ?>
-                <div class="<?php echo $classe_item; ?>"><?php echo $item ?></div>
-                <?php 
-                    $draft++;
-                }
-            ?>
+            <?php texto_progresso($itens_progressao, 6)?>
         </div>
         <div class="formulario-geral">
             <div>
