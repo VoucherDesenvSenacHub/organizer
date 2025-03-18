@@ -71,11 +71,21 @@
             <div id="secao-3">
                 <h3>Projetos em destaques</h3>
                 <div id="card-projeto">
-                    <div class="card">
-                        <div class="img">250x130</div>
-                        <div class="info">
+                    <div class="card-projeto">
+                        <div class="acoes-projeto">
+                            <div class="share">
+                                <i class="fa-solid fa-share-nodes"></i>
+                            </div>
+                            <div class="like">
+                                <i class="fa-solid fa-heart"></i>
+                            </div>
+                        </div>
+                        <div class="img-projeto">250x130</div>
+                        <div class="info-projeto">
                             <h5>Nome Projeto</h5>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, laborum et? Repellendus perferendis provident ratione deserunt alias cumque et quasi odio amet temporibus, quam obcaecati dolores. Enim quibusdam a atque.</p>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, laborum et? Repellendus perferendis provident
+                                    ratione deserunt alias cumque et quasi odio amet temporibus, quam obcaecati dolores. Enim quibusdam a atque.
+                            </p>
                             <div class="barra-doacao">
                                 <span>30%</span>
                                 <div class="barra">
@@ -83,13 +93,23 @@
                                 </div>
                             </div>
                         </div>
-                        <button>Saiba Mais</button>
+                        <a class="saiba-mais-projeto" href="#">Saiba Mais</a>
                     </div>
-                    <div class="card">
-                        <div class="img">250x130</div>
-                        <div class="info">
+                    <div class="card-projeto">
+                        <div class="acoes-projeto">
+                            <div class="share">
+                                <i class="fa-solid fa-share-nodes"></i>
+                            </div>
+                            <div class="like">
+                                <i class="fa-solid fa-heart"></i>
+                            </div>
+                        </div>
+                        <div class="img-projeto">250x130</div>
+                        <div class="info-projeto">
                             <h5>Nome Projeto</h5>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, laborum et? Repellendus perferendis provident ratione deserunt alias cumque et quasi odio amet temporibus, quam obcaecati dolores. Enim quibusdam a atque.</p>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, laborum et? Repellendus perferendis provident
+                                    ratione deserunt alias cumque et quasi odio amet temporibus, quam obcaecati dolores. Enim quibusdam a atque.
+                            </p>
                             <div class="barra-doacao">
                                 <span>30%</span>
                                 <div class="barra">
@@ -97,13 +117,23 @@
                                 </div>
                             </div>
                         </div>
-                        <button>Saiba Mais</button>
+                        <a class="saiba-mais-projeto" href="#">Saiba Mais</a>
                     </div>
-                    <div class="card">
-                        <div class="img">250x130</div>
-                        <div class="info">
+                    <div class="card-projeto">
+                        <div class="acoes-projeto">
+                            <div class="share">
+                                <i class="fa-solid fa-share-nodes"></i>
+                            </div>
+                            <div class="like">
+                                <i class="fa-solid fa-heart"></i>
+                            </div>
+                        </div>
+                        <div class="img-projeto">250x130</div>
+                        <div class="info-projeto">
                             <h5>Nome Projeto</h5>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, laborum et? Repellendus perferendis provident ratione deserunt alias cumque et quasi odio amet temporibus, quam obcaecati dolores. Enim quibusdam a atque.</p>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, laborum et? Repellendus perferendis provident
+                                    ratione deserunt alias cumque et quasi odio amet temporibus, quam obcaecati dolores. Enim quibusdam a atque.
+                            </p>
                             <div class="barra-doacao">
                                 <span>30%</span>
                                 <div class="barra">
@@ -111,7 +141,7 @@
                                 </div>
                             </div>
                         </div>
-                        <button>Saiba Mais</button>
+                        <a class="saiba-mais-projeto" href="#">Saiba Mais</a>
                     </div>
                 </div>
             </div>

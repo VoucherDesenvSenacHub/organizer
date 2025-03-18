@@ -1,14 +1,3 @@
-@import url(../../components/aside.css);
-
-:root {
-    --cor-principal: #1C3464;
-    --cor-principal-claro: #203866;
-    --cor-amarelo: #E3B652;
-    --cor-amarelo-hover: #cca44d;
-    --cor-azul: #45BEE6;
-    --fonte: "Poppins", serif;
-}
-
 #img-inicio img{
     width: 300px;
 }
@@ -189,95 +178,10 @@ section .container #secao-1{
     font-weight: 400;
     font-size: 20px;
 }
-#card-projeto{
+
+#card-projeto {
     display: flex;
-    gap: 20px;
-    justify-content: space-around;
-    width: 100%;
-    flex-wrap: wrap;
-}
-
-#card-projeto .card {
-    width: 250px;
-    background-color: white;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-    border-radius: 10px;
-    overflow: hidden;
-    position: relative;
-    transition: .3s;
-}
-
-#card-projeto .card:hover {
-    transform: scale(1.02);
-}
-
-#card-projeto .card .img {
-    width: 100%;
-    height: 130px;
-    background-color: rgba(0, 0, 0, .2);
-    color: grey;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#card-projeto .card .info {
-    padding: 5px 10px 20px 10px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-#card-projeto .card p {
-    font-size: 12px;
-    text-align: justify;
-    line-height: 1;
-}
-
-#card-projeto .barra-doacao {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.barra-doacao span {
-    font-size: 11px;
-    font-weight: 500;
-}
-
-.barra-doacao .barra {
-    background-color: rgba(0, 0, 0, 0.1);
-    height: 8px;
-    width: 100%;
-    border-radius: 10px;
-    overflow: hidden;
-}
-
-.barra .barra-verde {
-    width: 30%;
-    background-color: #55E18B;
-    height: 100%;
-}
-
-#card-projeto .card button {
-    width: 100%;
-    padding: 10px;
-    color: white;
-    background-color: #1C3464;
-    border: none;
-    font-size: 15px;
-    letter-spacing: 1px;
-    position: absolute;
-    bottom: -35px;
-    transition: .3s ease;
-    cursor: pointer;
-}
-#card-projeto .card button:hover {
-    background-color: #45BEE6;
-}
-
-#card-projeto .card:hover button {
-    bottom: 0;
+    justify-content: space-between;
 }
 
 @media (max-width: 800px) {
