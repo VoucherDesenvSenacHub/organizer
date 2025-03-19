@@ -18,14 +18,10 @@
         <p><span>9 </span>Projetos</p>
     </div>
     <div class="acoes-ong">
-        <a href="#" class="saiba-mais-ong">Saiba Mais</a>
+        <a href="perfil-ong.php" class="saiba-mais-ong">Saiba Mais</a>
         <div class="btn-salvar">
-            <div class="share">
-                <i class="fa-solid fa-share-nodes"></i>
-            </div>
-            <div class="like">
-                <i class="fa-solid fa-heart"></i>
-            </div>
+            <button id="share" class="fa-solid fa-share-nodes" onclick="abrir_popup('compartilhar-popup')"></button>
+            <button id="like" class="fa-solid fa-heart" onclick="abrir_popup('login-obrigatorio-popup')"></button>
         </div>
     </div>
 </div>

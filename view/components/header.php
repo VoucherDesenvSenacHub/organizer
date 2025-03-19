@@ -27,5 +27,7 @@
     <?php 
         require_once 'navbar.php'; //NAVBAR
         require_once 'login-popup.php'; //EFEITO POPUP DO LOGIN
+        require_once 'requer-login.php'; //POPUP LOGIN OBRIGATORIO
+        require_once 'compartilhar.php'; //POPUP DE COMPARTILHAR
     ?>
     
