@@ -3,26 +3,38 @@
         [
             'imagem' => '../../assets/images/foto-projeto-card.png',
             'nome' => 'Campanha Solidária',
+            'descricao' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur qui quasi accusamus ipsa
+            inventore deserunt perspiciatis unde dolorum reiciendis officia?',
         ],
         [
             'imagem' => '../../assets/images/foto-projeto-card.png',
             'nome' => 'Campanha Solidária',
+            'descricao' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur qui quasi accusamus ipsa
+            inventore deserunt perspiciatis unde dolorum reiciendis officia?',
         ],
         [
             'imagem' => '../../assets/images/foto-projeto-card.png',
             'nome' => 'Campanha Solidária',
+            'descricao' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur qui quasi accusamus ipsa
+            inventore deserunt perspiciatis unde dolorum reiciendis officia?',
         ],
         [
             'imagem' => '../../assets/images/foto-projeto-card.png',
             'nome' => 'Campanha Solidária',
+            'descricao' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur qui quasi accusamus ipsa
+            inventore deserunt perspiciatis unde dolorum reiciendis officia?',
         ],
         [
             'imagem' => '../../assets/images/foto-projeto-card.png',
             'nome' => 'Campanha Solidária',
+            'descricao' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur qui quasi accusamus ipsa
+            inventore deserunt perspiciatis unde dolorum reiciendis officia?',
         ],
         [
             'imagem' => '../../assets/images/foto-projeto-card.png',
             'nome' => 'Campanha Solidária',
+            'descricao' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur qui quasi accusamus ipsa
+            inventore deserunt perspiciatis unde dolorum reiciendis officia?',
         ]
     ]
 ?>
@@ -53,7 +65,8 @@
                 <?php foreach ($cards as $card) { ?>
                 <div class="card">
                     <img class="img-card" src=<?php echo $card['imagem'] ?> alt="">
-                    <p><?php echo $card['nome'] ?></p>
+                    <h1 class="card-text"><?php echo $card['nome'] ?></h1>
+                    <p class="card_desc"><?php echo $card['descricao'] ?></p>
                     <a href="./visualizar-projetos.php"><button class="btn-card">Visualizar</button></a>
                 </div>
                 <?php } ?>
