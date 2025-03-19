@@ -138,7 +138,7 @@
     border-radius: 5px;
     border: none;
     transition: 0.2s;
-    
+    cursor: pointer;
 }
 
 .btn-card:hover{
