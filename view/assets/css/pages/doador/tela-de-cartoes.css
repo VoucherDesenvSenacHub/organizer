@@ -1,0 +1,227 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    width: 100%;
+    z-index: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #1C3464;
+}
+h2 {
+    font-size: 1.3em;
+    font-weight: 600;
+}
+h3 {
+    font-size: 1.1em;
+    font-weight: 400;
+}
+h4 {
+    color: #5282E3;
+    padding-bottom: 10px;
+}
+.conteiner{
+    display: flex;
+}
+.principal {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 70%;
+    margin: 50px auto;
+    padding: 280px;
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.7);
+    h1 {
+        font-size: 1.5em;
+        font-weight: 400;
+        color: #5282E3;
+    }
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3f);
+    width: 100px;
+}
+/* test */
+.cartoes-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.cartao {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.cartao h2 {
+    margin: 0 0 15px 0;
+    color: #444;
+    font-size: 1.2em;
+}
+
+.numero-cartao {
+    font-family: 'Courier New', monospace;
+    font-size: 1.1em;
+    color: #666;
+    margin-bottom: 15px;
+    letter-spacing: 2px;
+}
+
+.validade {
+    font-size: 0.9em;
+    color: #888;
+}
+
+.adicionar-cartao {
+    border: 2px dashed #ccc;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 150px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.adicionar-cartao:hover {
+    border-color: #999;
+    background-color: #f8f8f8;
+}
+
+.adicionar-cartao span {
+    color: #666;
+    font-weight: bold;
+}
+/* fim do test */
+
+.card-yellow {
+    background-color: #E3B652;
+}
+.principal-esq {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: start;
+    height: 90%;
+    width: 100%;
+    text-align: center;
+}
+
+.principal-dir {
+    width: 600px;
+    height: 650px;
+}
+#painel-l1, #painel-l2, #painel-l3, #painel-l4 {
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 30px;
+}
+#painel-l2 {
+    display: flex;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    text-align: center;
+}
+#painel-l4 {
+    padding-top: 40px;
+}
+#painel-l4>h3 {
+    color: #F29200;
+}
+.info-ong {
+    border-radius: 8px;
+    box-shadow: 0px 2px 2px rgba(1, 1, 1, 0.5);
+    padding: 20px 30px;
+}
+.controle-ong {
+    background-color: #E3B652;
+    border-radius: 8px;
+    text-align: center;
+}
+#atividades {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 10px 30px;
+}
+.card-atividades {
+    display: flex;
+    border-radius: 8px;
+    box-shadow: 0px 2px 2px rgba(1, 1, 1, 0.5);
+    padding: 10px;
+    width: 45%;
+    margin-top: 20px;
+
+}
+.card-atividades p{
+    font-size: 0.8em;
+}
+.card-atividades h3 {
+    font-weight: 500;
+}
+
+/* Responsivo */
+
+@media (max-width: 481px){
+    body {
+        width: 90%;
+        font-family: 'Poppins', sans-serif;
+        background-color: #1C3464;
+        margin: 0 auto;
+    }
+    header {
+        left: 0px;
+        padding: 8px;
+        z-index: 999;
+        width: 100%;
+        justify-content: space-around;
+    }
+    
+    #header-direita {
+        display: flex;
+        padding: 5px 10px;
+        gap: 10px;
+        align-items: center;
+    }
+    #painel-l1, #painel-l2, #painel-l3, #painel-l4 {
+        display: flex;
+        justify-content: space-between;
+        padding: 0px 30px;
+    }
+    #painel-l2 {
+        flex-direction: column;
+        padding-top: 30px;
+        padding-bottom: 30px;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+    #painel-l3 {
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        gap: 20px;
+    }
+    #painel-l4 {
+        margin-top: 30px;
+        font-size: 0.8em;
+    }
+    #atividades {
+        flex-direction: column;
+        font-size: 0.7em;
+    }
+    .card-atividades {
+        display: flex;
+        border-radius: 8px;
+        box-shadow: 0px 2px 2px rgba(1, 1, 1, 0.5);
+        padding: 10px;
+        width: 100%;
+        margin-top: 20px;
+    
+    }
+}
