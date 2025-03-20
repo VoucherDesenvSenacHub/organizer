@@ -10,12 +10,8 @@
             <div id="logo-ong">
                 <img src="https://placeholder.pagebee.io/api/plain/400/250">
                 <div class="btn-salvar">
-                    <div class="share">
-                        <i class="fa-solid fa-share-nodes"></i>
-                    </div>
-                    <div class="like">
-                        <i class="fa-solid fa-heart"></i>
-                    </div>
+                    <button id="share" class="fa-solid fa-share-nodes" onclick="abrir_popup('compartilhar-popup')"></button>
+                    <button id="like" class="fa-solid fa-heart" onclick="abrir_popup('login-obrigatorio-popup')"></button>
                 </div>
             </div>
             <div id="dados-ong">
@@ -27,8 +23,8 @@
                     <p><span>9 </span>Projetos Criados</p>
                 </div>
                 <div id="acoes">
-                    <button class="btn">Fazer uma doação</button>
-                    <button class="btn" id="btn-voluntario">Ser Voluntário</button>
+                    <button class="btn" onclick="abrir_popup('login-obrigatorio-popup')">Fazer uma doação</button>
+                    <button class="btn" id="btn-voluntario" onclick="abrir_popup('login-obrigatorio-popup')">Ser Voluntário</button>
                 </div>
             </div>
             <div id="imagem">

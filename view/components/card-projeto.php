@@ -1,11 +1,7 @@
 <div class="card-projeto">
     <div class="acoes-projeto">
-        <div class="share">
-            <i class="fa-solid fa-share-nodes"></i>
-        </div>
-        <div class="like">
-            <i class="fa-solid fa-heart"></i>
-        </div>
+        <button id="share" class="fa-solid fa-share-nodes" onclick="abrir_popup('compartilhar-popup')"></button>
+        <button id="like" class="fa-solid fa-heart" onclick="abrir_popup('login-obrigatorio-popup')"></button>
     </div>
     <div class="img-projeto">250x130</div>
     <div class="info-projeto">
