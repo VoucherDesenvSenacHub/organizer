@@ -70,6 +70,13 @@ section#top-info {
     margin-top: 10px;
 }
 
+#form-filtro .ul-group {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: start;
+}
+
 #form-filtro .drop {
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
     border-radius: 4px;
@@ -226,5 +233,37 @@ section#box-ongs {
     section#box-ongs {
         justify-content: space-evenly;
         gap: 30px 15px;
+    }
+}
+
+@media (max-width: 450px) {
+    #form-filtro {
+        flex-direction: column;
+        height: 100px;
+        position: relative;
+        width: 320px;
+    }
+
+    #form-filtro button {
+        position: absolute;
+        bottom: 5px;
+        width: calc(100% - 10px);
+    }
+
+    #form-busca {
+        max-width: 320px;
+    }
+
+    #form-filtro ul li {
+        gap: 5px;
+    }
+
+    #form-filtro #esc-status:hover {
+        width: 235px;
+    }
+
+    #form-filtro #esc-categoria:hover,
+    #form-filtro #esc-regiao:hover {
+        width: 190px;
     }
 }
