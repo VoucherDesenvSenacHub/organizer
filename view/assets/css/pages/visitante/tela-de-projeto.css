@@ -6,7 +6,7 @@
     flex-wrap: wrap;
     z-index: 1;
     width: 80%;
-    margin: 120px auto;
+    margin: 60px auto;
     padding: 10px;
     background-color: #FFFFFF;
     border-radius: 8px;
@@ -126,7 +126,7 @@
         & .btn-voluntario {
             color: #FFFFFF;
             background-color: #1C3464;
-            width: 250px;
+            /* width: 250px; */
         }
     }
 
@@ -530,5 +530,48 @@
     padding: 7px;
     margin-top: 20px;
 }
-
-
+/* Responsividade mobile */
+@media (max-width: 481px) {
+    .principal-esq {
+        padding: 5px;
+    }
+    .nome-projeto {
+        font-size: 20px;
+    }
+    .info-conteiner {
+        width: 90%;
+        height: auto;
+        padding: 7px;
+    }
+    .arrecadado {
+        font-size: 15px;
+    }
+    .info-projeto{
+        justify-content: start;
+        border: 1px solid red;
+        align-items: start;
+        margin: 10px 10px;
+        padding: 5px;
+        flex-direction: column;
+        width: 80%;
+        p {
+            padding: 5px;
+            font-size: 12px;
+        }
+    }
+    .btn-favoritos-compartilhar{
+        border: 1px solid green;
+        padding-left: 10px;
+        margin-left: 10px;
+        justify-content: start;
+        align-items: start;
+        gap: 15px;
+    }
+    .btns-ajudar-projeto {
+        
+        button{
+            width: 120px;
+            font-size: 0.6rem;
+        }
+    }
+}

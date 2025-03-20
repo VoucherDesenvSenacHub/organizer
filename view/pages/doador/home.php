@@ -93,7 +93,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a class="saiba-mais-projeto" href="#">Saiba Mais</a>
+                        <a class="saiba-mais-projeto" href="tela-de-projeto.php">Saiba Mais</a>
                     </div>
                     <div class="card-projeto">
                         <div class="acoes-projeto">
