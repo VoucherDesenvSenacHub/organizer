@@ -1,0 +1,251 @@
+
+main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+body {
+    background-color: aliceblue;
+}
+
+section .container {
+    background-color: aliceblue;
+    width: 100%;  
+    max-width: 1200px; 
+    margin: 0 auto; 
+    border-radius: 5px;
+    padding: 45px 30px;
+    flex-direction: column;
+    align-items: center;
+}
+ 
+.container #noticia{
+    font-size: 50px;
+    color: var(--cor-principal);
+    text-align: center;
+    line-height: 1;
+}
+
+.caixa-noticias {
+    display: flex;
+    gap: 15px 0;
+    flex-direction: column;    
+    width: fit-content; 
+}
+
+.card img {
+    width: 150px;
+    height: 100%;
+    background-color: grey;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    border-radius: 5px;
+    
+}
+
+
+.card {
+    display: flex;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    padding: 15px;
+    width: 550px;
+    gap: 15px;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+
+}
+.bloco {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.bloco p {
+    font-size: 10px;
+    line-height: 1;
+    text-align: justify;;
+    
+
+}
+
+.card .footer p {
+    font-size: 16px;
+    color: var(--cor-amarelo);
+
+}
+
+.cards {
+    display: flex;
+    gap: 30px 0;  
+    flex-wrap: wrap;
+    /* max-width: 100%; */
+    justify-content: space-between;
+
+}   
+
+.fogo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: red;
+    & .icon {
+        box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+        font-size:25px;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    & .icon img {
+        width: 70%;
+        height:70%;
+    };
+}
+    
+
+.cards-saude {
+    
+    display: flex;
+    flex-direction: column;
+    gap: 30px 0;
+
+    
+
+}
+
+.coracao {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color:#F047FF;
+    & .icon {
+        box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+        font-size:25px;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    & .icon img {
+        width: 70%;
+        height:70%;
+    };
+}
+
+
+
+.caixote-saude {
+    display: flex;
+    gap:40px;
+    margin-top: 50px;
+    flex-wrap: wrap;    
+    justify-content: space-between;
+    width: 100%;
+}
+
+
+
+.bola {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color:#30AD1A;
+    & .icon {
+        box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+        font-size:25px;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    & .icon img {
+        width: 70%;
+        height:70%;
+    };
+}
+
+.caixote-saude .card{
+    margin-top: 20px;
+
+}
+
+.meio-ambiente {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color:#30AD1A;
+    & .icon {
+        box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+        font-size:25px;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    & .icon img {
+        width: 70%;
+        height:70%;
+    };
+}
+
+
+
+.educacao {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color:#007AFF;
+    & .icon {
+        box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+        font-size:25px;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    & .icon img {
+        width: 70%;
+        height:70%;
+    };
+}
+
+
+@media(max-width: 1175px) {
+    .cards{
+        justify-content: center;
+    }
+     .caixa-noticias {
+        max-width: 550px;
+        
+     }
+
+     .fogo {
+        margin-bottom: 10px;
+     }
+     .caixote-saude {
+        justify-content: center;
+     }
+
+
+    
+}

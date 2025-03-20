@@ -1,0 +1,170 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Mulish:ital,wght@0,200..1000;1,200..1000&family=Outfit:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Agdasima:wght@400;700&family=Comfortaa:wght@300..700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    width: 100%;
+    z-index: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #1C3464;
+}
+h2 {
+    font-size: 1.3em;
+    font-weight: 600;
+}
+h3 {
+    font-size: 1.1em;
+    font-weight: 400;
+}
+h4 {
+    color: #5282E3;
+    padding-bottom: 10px;
+}
+a {
+    text-decoration: none;
+    transition: 0.7s;
+
+}
+a:hover {
+    transition: 0.7s;
+    color: #E3B652;
+    font-weight: 700;
+}
+button:hover {
+    cursor: pointer;
+}
+#principal {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    z-index: 1;
+    width: 80%;
+    min-height: 400px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.7);
+    h1 {
+        font-size: 1.5em;
+        font-weight: 400;
+        color: #5282E3;
+    }
+}
+#painel-l1, #painel-l2, #painel-l3, #painel-l4 {
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 30px;
+}
+
+/*Cadastro de notícias */
+
+#cadastrar-nova-pub {
+    font-size: 1.3em;
+    padding: 3px 30px;
+    border: none;
+    background-color: #51CD32;
+    border-radius: 5px;
+}
+#noticias-publicadas {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+#noticias-publicadas>a{
+    text-decoration: none;
+    color: black;
+}
+.card-noticia {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin: 30px 10px;
+    gap: 10px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    max-width: 45%;
+    font-size: 0.8em;
+}
+.btn-edicao {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px;
+    gap: 20px;
+}
+.btn-edicao button {
+    border: none;
+    background-color: rgba(0, 0, 0, 0);
+}
+/* Pop Up conclusão */
+
+#pop-conclusao{
+    display: none;
+    position: absolute;
+    width: 15%;
+    text-align: center;
+    top: 40%;
+    left: 40%;
+    background-color: #efe2e2;
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 3px 3px 3px rgba(1,1,1,0.7);
+}
+
+/* Responsividade */
+@media (max-width: 481px){
+    body {
+        width: 100%;
+        font-family: 'Poppins', sans-serif;
+        background-color: #1C3464;
+        margin: 0 auto;
+    }
+    #painel-l1, #painel-l2, #painel-l3, #painel-l4 {
+        display: flex;
+        justify-content: space-between;
+        padding: 0px 30px;
+    }
+    #painel-l1 {
+        flex-direction: column;
+        padding-top: 10px;
+        gap: 20px;
+    }
+    #painel-l1 h1 {
+        font-size: 1em;
+    }
+    #principal {
+        display: flex;
+        flex-direction: column;
+        width: 80%;
+        margin: 0 auto;
+        margin-top: 20px;
+        margin-bottom: 30px;
+        padding: 10px;
+        background-color: #FFFFFF;
+        border-radius: 8px;
+    }
+    .card-noticia {
+        flex-direction: column;
+        border: 1px solid gray;
+        max-width: 90%;
+    }
+    .btn-edicao {
+        display: flex;
+        flex-direction: row;
+        gap: 50px;
+        padding-top: 30px;
+    }
+    #pop-conclusao{
+        top: 80%;
+        left: 20%;
+        width: 60%;
+
+    }
+}

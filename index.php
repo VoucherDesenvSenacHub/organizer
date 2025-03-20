@@ -1,3 +1,3 @@
 <?php
-
-echo "ola mundo";
+    header("Location: view/pages/visitante/home.php");
+?>
