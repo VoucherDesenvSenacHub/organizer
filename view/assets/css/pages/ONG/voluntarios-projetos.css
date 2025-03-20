@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Agdasima:wght@400;700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+    --fonte: "Poppins", serif;
+    --cor-principal: #1C3464;
+    --cor-principal-claro: #203866;
+    --cor-amarelo: #E3B652;
+    --cor-amarelo-hover: #e69d00;
+    --cor-azul: #45BEE6;
+    --cor-azul-hover: #289AC0;
+    --cor-azul-escuro: #007AFF;
+}
+
+#principal {
+    
+    justify-content: space-around;
+    z-index: 1;
+    width: 60%;
+    margin: 120px auto;
+    padding: 20px;
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.7);
+}
+
+.header-principal{
+    display: flex;
+    gap: 50px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header-principal h1{
+    font-family: "Poppins", serif;
+    font-size: 30px;
+    color: #F79329;
+    margin: 0;
+}
+
+.header-principal form {
+    margin: 0;
+}
+
+/* css do imput */
+.input {
+    position: relative;
+    width: 340px; 
+    height: 45px; 
+}
+
+.input input {
+    width: 100%; 
+    height: 100%; 
+    padding-right: 50px; 
+    font-size: 18px; 
+    border-radius: 50px;
+}
+
+.lupa-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.lupa-icon img {
+    width: 30px;  
+    height: 30px;
+    pointer-events: none; 
+}
+
+
+/* css dos cards */
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; 
+    justify-content: space-between;
+}
+
+.card-ong {
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    gap: 5px;
+    width: 250px;
+    height: 70px;
+    padding: 0 5px;
+    border-radius: 4px;
+}
+
+.card-ong .foto img{
+    width: 90px;
+    height: 70px;
+    background-color: var(--cor-principal);
+    color: aliceblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-ong .dados {
+    flex-grow: 1; 
+}
+
+.card-ong .dados h1 {
+    font-weight: 700;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.card-ong .dados p {
+    font-size: 10px;
+    color: green;
+    font-size: 500;
+}
