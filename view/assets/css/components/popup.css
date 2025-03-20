@@ -29,10 +29,31 @@
     margin-top: 100%;
     transition: .5s ease;
     color: aliceblue;
+    position: relative;
 }
 
 .popup-fundo.ativo .container-popup {
     margin-top: 0;
 }
 
+/* Botão X de fechar popup */
+#x-fechar {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    cursor: pointer;
+    background-color: aliceblue;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    font-weight: 700;
+    font-size: 20px;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: crimson;
+    border: none;
+    border: 2px solid brown;
+}
 

@@ -23,8 +23,8 @@
                     <p><span>9 </span>Projetos Criados</p>
                 </div>
                 <div id="acoes">
-                    <button class="btn">Fazer uma doação</button>
-                    <button class="btn" id="btn-voluntario">Ser Voluntário</button>
+                    <button class="btn" onclick="abrir_popup('login-obrigatorio-popup')">Fazer uma doação</button>
+                    <button class="btn" id="btn-voluntario" onclick="abrir_popup('login-obrigatorio-popup')">Ser Voluntário</button>
                 </div>
             </div>
             <div id="imagem">
