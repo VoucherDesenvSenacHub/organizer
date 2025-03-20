@@ -2,10 +2,6 @@
     width: 300px;
 }
 
-main {
-    padding: 70px;
-}
-
 section {
     display: flex;
     align-items: center;
@@ -31,7 +27,7 @@ section .container #secao-1{
     display: flex;
     gap: 20px;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 #secao-1 #container-esq{
@@ -97,6 +93,7 @@ section .container #secao-1{
 #boxCard {
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
     gap: 15px;
     justify-content: space-evenly;
 }

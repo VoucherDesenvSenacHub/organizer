@@ -12,23 +12,23 @@
         </div>
         <div class="aside-nav">
             <i class="fa-solid fa-coins"></i>
-            <p>Minhas doações</p>
+            <a class="link">Minhas doações</a>
             </div>
         <div class="aside-nav">
             <i class="fa-solid fa-heart"></i>
-            <p>Favoritos</p>
+            <a class="link">Favoritos</a>
         </div>
         <div class="aside-nav">
             <i class="fa-solid fa-credit-card"></i>
-            <p>Meu cartões</p>
+            <a class="link">Meu cartões</a>
         </div>
         <div class="aside-nav">
             <i class="fa-solid fa-user-group"></i>
-            <p>Participações</p>
+            <a class="link" href="participacoes.php">Participações</a>
         </div>
     </div>
     <div class="aside-nav">
-        <button onclick="abrir_popup_confirmacao('fundo-confirmacao')" id="popup-confirmacao-aside">
+        <button onclick="abrir_popup_confirmacao('fundo-confirmacao')" id="popup-confirmacao-aside" class="aside-sair">
             <i class="fa-solid fa-right-from-bracket"></i>
             Sair
         </button>
