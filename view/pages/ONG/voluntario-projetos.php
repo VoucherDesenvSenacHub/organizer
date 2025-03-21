@@ -78,33 +78,33 @@
 <?php 
     $voluntarios = [
         [
-            'img-voluntario' => '../../assets/images/foto.png',
+            'img-voluntario' => '../../assets/images/perfil-azul.png',
+            'nome' => 'João',
+            'email' => 'joao@email.com',
+            'date' => '20/03/2025'
+        ],
+        [
+            'img-voluntario' => '../../assets/images/perfil-amarelo.png',
+            'nome' => 'Marcos',
+            'email' => 'marcos@email.com',
+            'date' => '20/03/2025'
+        ],
+        [
+            'img-voluntario' => '../../assets/images/perfil-vermelho.png',
             'nome' => 'Maria',
             'email' => 'maria@email.com',
             'date' => '20/03/2025'
         ],
         [
-            'img-voluntario' => '../../assets/images/foto.png',
-            'nome' => 'Maria',
-            'email' => 'maria@email.com',
+            'img-voluntario' => '../../assets/images/perfil-cinza-claro.png',
+            'nome' => 'Juliana',
+            'email' => 'juliana@email.com',
             'date' => '20/03/2025'
         ],
         [
-            'img-voluntario' => '../../assets/images/foto.png',
-            'nome' => 'Maria',
-            'email' => 'maria@email.com',
-            'date' => '20/03/2025'
-        ],
-        [
-            'img-voluntario' => '../../assets/images/foto.png',
-            'nome' => 'Maria',
-            'email' => 'maria@email.com',
-            'date' => '20/03/2025'
-        ],
-        [
-            'img-voluntario' => '../../assets/images/foto.png',
-            'nome' => 'Maria',
-            'email' => 'maria@email.com',
+            'img-voluntario' => '../../assets/images/perfil-cinza.png',
+            'nome' => 'Pedro',
+            'email' => 'pedro@email.com',
             'date' => '20/03/2025'
         ]
     ]
@@ -174,13 +174,21 @@
                     <p><?php echo $voluntario['date'] ?></p>
                 </td>
                 <td class="btn-inativar-voluntario">
-                    <img src="../../assets/images/delete_user.png" alt="">
+                    <img class="btn-delete" src="../../assets/images/delete_user.png" alt="">
                 </td>
             </tr>
            
             <?php } ?>
         </tbody>
         </table>      
+        </div>
+</div>
+
+<!-- tela notificação de voluntario deletado -->
+<div class="tela-voluntario-delete" id="tela-voluntario-delete">
+        <div class="card-voluntario-delete">
+            <img src="../../assets/images/voluntario-delete.png" alt="">
+            <h1>Voluntário Retirado do Projeto</h1>
         </div>
 </div>
 
