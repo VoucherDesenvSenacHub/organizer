@@ -106,7 +106,7 @@
                             </tr>
                         </tbody>
                     </table>
-                    <a href="#" class="ver-todos">VER TODAS</a>
+                    <a href="ver-ong.php" class="ver-todos">VER TODAS</a>
                 </section>
         
                 <section class="section projetos">
@@ -144,7 +144,7 @@
                             </tr>
                         </tbody>
                     </table>
-                    <a href="#" class="ver-todos">VER TODOS</a>
+                    <a href="ver-projetos.php" class="ver-todos">VER TODOS</a>
                 </section>
         
                 <section class="section doadores">
@@ -179,7 +179,7 @@
                             </tr>
                         </tbody>
                     </table>
-                    <a href="#" class="ver-todos">VER TODOS</a>
+                    <a href="ver-doadores.php" class="ver-todos">VER TODOS</a>
                 </section>
             </main>
 
