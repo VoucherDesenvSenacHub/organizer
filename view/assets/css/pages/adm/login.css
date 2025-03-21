@@ -108,13 +108,17 @@ select {
     transition: 0.2s;
 }
 .login-submit a {
+    width: 225px;
+    height: 40px;
     color: white;
     text-decoration: none;
 }
 .login-submit:hover {
     background-color: var(--container-background);
-    color: var(--button);
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.368);
+    & a {
+        color: var(--button);
+    }
 }
 
 .principal-dir {
