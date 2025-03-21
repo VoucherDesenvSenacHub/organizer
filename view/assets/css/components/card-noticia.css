@@ -1,6 +1,7 @@
 .card-noticia {
     max-width: 550px;
     width: 100%;
+    height: 150px;
     /* max-height: 155px; */
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
     padding: 10px;
@@ -8,6 +9,7 @@
     display: flex;
     align-items: center;
     gap: 10px;
+    background-color: white;
 }
 
 /* Título, Descrição e Botão */
@@ -21,7 +23,7 @@
     font-weight: 600;
 }
 .card-noticia .textos p {
-    font-size: 14px;
+    font-size: 13px;
     text-align: justify;
     line-height: 1;
 }
@@ -34,7 +36,7 @@
 
 /* Imagem */
 .card-noticia .imagem-noticia {
-    width: 250px;
+    width: 300px;
     height: 100%;
     background-color: rgb(48, 48, 48);
     border-radius: 3px;
