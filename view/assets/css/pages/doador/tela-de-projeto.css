@@ -173,6 +173,7 @@
 
 
 .slide {
+    border: 1px solid blue;
     display: none;
     justify-content: center;
     align-items: center;
@@ -547,6 +548,7 @@
         margin: 10px auto;
         padding: 5px;
     }
+    
     .nome-projeto {
         font-size: 20px;
     }
@@ -618,25 +620,31 @@
         }
     }
     .doadores-projeto {
-        font-size: 1.3rem;
+        font-size: 0.9rem;
         color: #5282E3;
     }
+    .conteiner {
+        margin: 0px;
+        padding: 0px;
+    }
     .doadores {
-        padding: 8px;
+        padding: 0px;
+        gap: 0px;
         height: auto;
-        
-        }
-    .doador {
-        justify-content: space-between;
-        align-items: center;
-        width: 50px;
-        border: 1px solid red;
-        p {
-            font-size: 0.6rem;
-        }
-        & .icon-name {
-            width: 10px;
-            height: 10px;
+        .doador {
+            justify-content: space-between;
+            align-items: center;
+            max-width: 100px;
+            gap: 0px;
+            padding: 0px;
+            p {
+                font-size: 0.5rem;
+            }
+            & .icon-name {
+                width: 6px;
+                height: 6px;
+            }
         }
     }
+    
 }
