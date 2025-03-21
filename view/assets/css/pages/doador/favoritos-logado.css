@@ -35,7 +35,7 @@
     box-shadow: rgba(0, 0, 0, 0.4) 0px 3px 8px;
 }
 
-#like {
+.btn-salvar #like :hover{
     color: red;
 }
 
@@ -129,12 +129,26 @@
     line-height: 1;
 }
 
+#principal {
+    display:flex;
+    width: 1200px;
+    overflow: hidden;
+    background-color: red ;
+}
+
+
+#cards {
+    display: flex;
+    gap: 50px;
+}
+
 /* CARD DA ONG */
 .box-ongs {
     display: flex;
     gap: 30px;
     justify-content: space-between;
     flex-wrap: wrap;
+    width: 1200px;
 }
 
 @media (max-width: 1204px) {
@@ -223,3 +237,65 @@
     filter: brightness(.7);
     transform: translateY(-4px);
 }
+
+
+
+.pai-cards{
+    display: flex;
+    justify-content: center;
+    flex-wrap:wrap;
+    gap: 30px;  
+    margin: 20px;
+}
+
+.container-projetos .mae-cards{
+    display: flex;
+    justify-content: center;
+    flex-wrap:wrap;
+    gap: 30px;  
+    margin: 10px;
+    
+}
+
+
+.card-projeto .img-projeto {
+    width: 100%;
+    height: 130px;
+    background-color: rgba(0, 0, 0, .2);
+    color: grey;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Texto Resumo*/
+.card-projeto .info-projeto {
+    padding: 5px 10px 20px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.card-projeto p {
+    font-size: 6px;
+    text-align: justify;
+    line-height: 1;
+}
+
+
+.btn-paginacao {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 20px 0;
+
+    & .bts { 
+        padding: 5px 10px;
+        border: none;
+        border-radius: 5px;
+        background-color: white;
+        color: black;
+        cursor: pointer;
+    }
+}
+
