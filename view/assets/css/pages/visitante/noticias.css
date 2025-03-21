@@ -38,8 +38,14 @@ main .container h1 {
 }
 
 .sub-title h2#saude {
-    color: rgb(255, 0, 128);
+    color: #F047FF;
 }
+
+.sub-title h2#esporte {
+    color: #30AD1A;
+}
+
+/* planta, livros   007AFF */
 
 .sub-title .icon-img {
     width: 40px;
