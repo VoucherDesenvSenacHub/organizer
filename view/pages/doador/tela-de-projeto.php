@@ -1,6 +1,6 @@
 <?php 
     $tituloPagina = ''; // Definir o título da página
-    $cssPagina = ['visitante/tela-de-projeto.css']; //Colocar o arquivo .css (exemplo: 'ONG/cadastro.css')
+    $cssPagina = ['doador/tela-de-projeto.css']; //Colocar o arquivo .css (exemplo: 'ONG/cadastro.css')
     require_once '../../components/header-usuario.php';
 ?>
 <main>
@@ -322,6 +322,7 @@
                 </div>
             </ul>
         </div>
+    </div>
 
 
 <?php
