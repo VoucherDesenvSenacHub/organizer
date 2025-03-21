@@ -11,11 +11,11 @@
             <div class="input-group">
                 <div class="input-item">
                     <label for="email">Email<span>*</span></label>
-                    <input id="email" type="email" placeholder="usúario@conta.com" required>
+                    <input id="email" type="email" maxlength="64" placeholder="usúario@conta.com" required>
                 </div>
                 <div class="input-item">
                     <label for="senha">Senha<span>*</span></label>
-                    <input id="senha" type="password" placeholder="********" required>
+                    <input id="senha" type="password" maxlength="20 "placeholder="********" required>
                 </div>
                 <div class="remember-forgot">
                     <div class="remember">
@@ -33,6 +33,7 @@
 </main>
 <div id="fundo-cadastro-popup" class="popup-fundo">
     <div class="container-popup" id="popup-recuperar-senha">
+        <button id="x-fechar" class="fa-solid fa-xmark" onclick="fechar_popup('fundo-cadastro-popup')"></button>
         <img src="../../assets/images/pages/esqueci-senha-doador.png" alt="">
         <div>
             <h2>RECUPERAR SENHA</h2>
@@ -40,7 +41,7 @@
             <form action="">
                 <div class="input-item">
                     <label for="recuperar-email">Email<span>*</span></label>
-                    <input id="recuperar-email" type="email" placeholder="usúario@conta.com" required>
+                    <input id="recuperar-email" type="email" maxlength="64" placeholder="usúario@conta.com" required>
                 </div>
                 <button class="btn">ENVIAR</button>
             </form>
