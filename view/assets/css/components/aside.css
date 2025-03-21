@@ -31,9 +31,17 @@ aside .aside-nav{
     cursor: pointer;
 }
 
+aside .aside-nav .link{
+    text-decoration: none;
+    color: #fff;
+    width: 100%;
+}
+
 aside .aside-nav:hover{
     background-color: #18343c;
 }
+
+aside .aside-nav button
 
 aside .btn-fechar button{
     transform: rotate(0);
@@ -67,4 +75,5 @@ aside .meu-perfil div{
 
 .aside-sair{
     font-size: 18px;
+    width: 100%;
 }
