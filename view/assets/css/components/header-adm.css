@@ -1,15 +1,16 @@
-#header-adm #nav-bar {
-    display: flex;
-    align-items: center;
-    gap: 30px;
-}
-
 #header-adm #btns-adm {
     display: flex;
     gap: 10px;
 }
 
-#header-adm #btns-adm a {
+#header-adm #btns-adm button#conta {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+#header-adm #btns-adm a,
+#header-adm #btns-adm button#conta {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -23,12 +24,26 @@
     text-decoration: none;
     transition: .4s ease-out;
     overflow: hidden;
+    font-size: 15px;
 }
 
-#header-adm #btns-adm a span {
+#header-adm #btns-adm #hamburguer {
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    
+    border-color: aliceblue;
+}
+
+#header-adm #btns-adm #hamburguer::before,
+#header-adm #btns-adm #hamburguer::after {
+    background-color: aliceblue;
+}
+
+#header-adm #btns-adm a span,
+#header-adm #btns-adm button#conta span {
     display: none;
 }
-#header-adm #btns-adm a:hover span {
+#header-adm #btns-adm a:hover span,
+#header-adm #btns-adm button#conta:hover span {
     display: block;
 }
 
@@ -38,13 +53,10 @@
     color: var(--cor-amarelo);
 }
 
-#header-adm #btns-adm a#conta:hover {
+#header-adm #btns-adm button#conta:hover {
     width: 100px;
 }
 
-#header-adm #btns-adm a#conta:hover {
-    width: 90px;
-}
 #header-adm #btns-adm a#parceria:hover,
 #header-adm #btns-adm a#relatorio:hover {
     width: 120px;

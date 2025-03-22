@@ -21,10 +21,13 @@
                 <i class="fa-solid fa-chart-line"></i>
                 <span>Relatórios</span>
             </a>
-            <a id="conta" href="#">
+            <button id="conta">
                 <i class="fa-solid fa-user"></i>
                 <span>Conta</span>
-            </a>
+            </button>
+            <div class="btn-login">
+                <button onclick="menu_mobile()" id="hamburguer"></button>
+            </div>
         </div>
     </div>
 </header>
