@@ -4,6 +4,10 @@ const btnAtivos = document.getElementById('v-ativos');
 const telaVoluntariosAtivos = document.getElementById('tela-voluntarios-ativos');
 const btnDeleteVoluntario = document.querySelectorAll('.btn-inativar-voluntario');
 const telaVoluntariosDelete = document.getElementById('tela-voluntario-delete');
+const btnSolicitacoes = document.getElementById('v-solicitacoes');
+const telaVoluntariosSolicitacoes = document.getElementById('tela-voluntarios-solicitacoes');
+const btnVerSolicitacao = document.querySelectorAll('.btn-ver-solicitacao');
+const telaSolicitacaoVoluntario = document.getElementById('tela-solicitacao-voluntario');
 
 btnCard.forEach(card => {
     card.addEventListener('click', function () { telaAtivoPendentesVoluntario.style.display = "block"; })
@@ -17,6 +21,15 @@ btnDeleteVoluntario.forEach( card => {
     card.addEventListener('click', function () { telaVoluntariosDelete.style.display = "block"; })
 });
 
+btnSolicitacoes.onclick = function() {
+    telaVoluntariosSolicitacoes.style.display = "block";
+}
+
+btnVerSolicitacao.forEach( card => {
+    card.addEventListener('click', function () { telaSolicitacaoVoluntario.style.display = "block";
+     })
+});
+
 window.onclick = function (event) {
     if (event.target == telaAtivoPendentesVoluntario) {
         telaAtivoPendentesVoluntario.style.display = "none";
@@ -27,5 +40,10 @@ window.onclick = function (event) {
     if (event.target == telaVoluntariosDelete) {
         telaVoluntariosDelete.style.display = "none";
     }
-    
+    if (event.target == telaVoluntariosSolicitacoes) {
+        telaVoluntariosSolicitacoes.style.display = "none";
+    }
+    if (event.target == telaSolicitacaoVoluntario) {
+        telaSolicitacaoVoluntario.style.display = "none";
+    }
 }

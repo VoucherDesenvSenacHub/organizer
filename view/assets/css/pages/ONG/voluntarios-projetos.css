@@ -327,3 +327,137 @@
     color: #FF5A79;
     margin: 0;
 }
+
+/* Teela solicitações dos voluntarios */
+.tela-voluntarios-solicitacoes{
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 100px;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.card-voluntarios-solicitacoes{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    padding: 20px;
+    margin: 20px auto;
+    width: 50%;
+    border-radius: 10px;
+    gap: 10px;
+}
+
+.btn-ver-solicitacao{
+    background-color: #F29200;
+    font-family: "Poppins", serif;
+    border: none;
+    border-radius: 5px;
+    width: 140px;
+    height: 40px;
+}
+
+/* tela solicitação voluntario - mensagem e aceitar ou nao */
+.tela-solicitacao-voluntario{
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 100px;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.card-solicitacao-voluntario{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    padding: 20px;
+    margin: 20px auto;
+    width: 50%;
+    border-radius: 10px;
+    gap: 10px;
+    position: fixed; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%);
+}
+.texto-solicitacao{
+    width: 100%;
+}
+
+.texto-solicitacao textarea{
+    width: 100%;
+    height: 130px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.img-usuario-solicitacao{
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    height: 100%; 
+    gap: 10px;
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+.img-usuario-solicitacao .info {
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center; 
+}
+.img-usuario-solicitacao h1{
+    text-align: left;
+    font-size: 14px;
+}
+
+.img-usuario-solicitacao p{
+    font-size: 12px;
+    text-align: left;
+}
+.div-btns {
+    display: flex; 
+    justify-content: center;
+    
+    width: 100%; 
+}
+.div-btns button{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    font-size: 26px;
+    width: 50%;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    
+}
+.div-btns .aceitar{
+    background-color: #51CD32;
+    
+}
+.div-btns .aceitar img{
+    width: 35px;
+    height: auto;
+    
+}
+.div-btns .recusar{
+    background-color: #E64545;
+}
+.div-btns .recusar img{
+    width: 35px;
+    height: auto;
+}

@@ -150,7 +150,7 @@
                     <img src="../../assets/images/icon-voluntarios.png" alt="">
                     <h1>Ver Voluntários Ativos</h1>
                 </div>
-                <div class="v-solicitacoes">
+                <div class="v-solicitacoes" id="v-solicitacoes">
                     <img src="../../assets/images/icon-solicitacoes.png" alt="">
                     <h1>5 Solicitações</h1>
                 </div>
@@ -190,6 +190,54 @@
             <img src="../../assets/images/voluntario-delete.png" alt="">
             <h1>Voluntário Retirado do Projeto</h1>
         </div>
+</div>
+
+<!-- tela solicitações voluntarios -->
+<div class="tela-voluntarios-solicitacoes" id="tela-voluntarios-solicitacoes">
+        <div class="card-voluntarios-solicitacoes">
+        <table class="table">
+        <tbody>
+            <?php foreach ($voluntarios as $voluntario) { ?>
+            <tr class="linha-coluna">
+                <td class="logo-empresa">
+                    <img src= <?php echo $voluntario['img-voluntario'] ?> alt="">
+                    <h1><?php echo $voluntario['nome'] ?> <br> <p><?php echo $voluntario['email'] ?></p> </h1>
+                    
+                </td>
+                <td class="date">
+                    <p><?php echo $voluntario['date'] ?></p>
+                </td>
+                <td>
+                    <button class="btn-ver-solicitacao">Ver Solicitações</button>
+                </td>
+            </tr>
+           
+            <?php } ?>
+        </tbody>
+        </table>      
+        </div>
+</div>
+
+<!-- tela solicitações voluntarios mensagem para ser aceita ou recusado -->
+<div class="tela-solicitacao-voluntario" id="tela-solicitacao-voluntario">
+    <div class="card-solicitacao-voluntario">
+        <div class="texto-solicitacao">
+            <form action="">
+                <textarea name="" id="">kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk</textarea>
+            </form>
+        </div>
+        <div class="img-usuario-solicitacao">
+            <img src= <?php echo $voluntario['img-voluntario'] ?> alt="">
+            <div class="info">
+                <h1><?php echo $voluntario['nome'] ?></h1>
+                <p><?php echo $voluntario['email'] ?></p>
+            </div>
+            <div class="div-btns">
+                <button class="aceitar"><span><img src="../../assets/images/aceitar.png" alt=""></span> Aceitar</button>
+                <button class="recusar"><span><img src="../../assets/images/recusar.png" alt=""></span>Recusar</button>
+            </div>
+        </div>
+    </div>
 </div>
 
 
