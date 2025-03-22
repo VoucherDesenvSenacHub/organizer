@@ -203,16 +203,81 @@
                         <i class="fa-solid fa-handshake"></i>
                         <h3>Nossos Parceiros</h3>
                         <p>Conheça empresas e organizações que colaboram conosco para criar um impacto positivo. Veja como essas parcerias ajudam a fortalecer a nossa missão.</p>
-                        <button class="btn">Saiba Mais</button>
+                        <button class="btn" onclick="abrir_popup_empresas('body-empresas')">Saiba Mais</button>
                     </div>
                 </div>
                 <a id="scroll-home" href="#secao-1" class="fa-solid fa-arrow-up"></a>
             </div>
         </section>
     </main>
+    <div id="body-empresas">
+        <div class="container-empresas">
+            <h1 class="h1u">Conheça empresas que nos apoiam</h1>
+            <div class="grid">
+                <div class="card">
+                    <img src="../../assets/images/image 171.png" alt="Faber-Castell">
+                </div>
+                <div class="card">
+                    <img src="../../assets/images/image 170.png" alt="Nu">
+                </div>
+                <div class="card">
+                    <img src="../../assets/images/image 173.png" alt="Pedigree">
+                </div>
+                <div class="card">
+                    <img src="../../assets/images/image 172.png" alt="Cielo">
+                </div>
+                <div class="card">
+                    <img src="../../assets/images/image 174.png" alt="Coral">
+                </div>
+                <div class="card">
+                    <img src="../../assets/images/imagem_2024-07-26_200350433-removebg-preview 1.png" alt="Guaraná">
+                </div>
+            </div>
+            <div class="pagination">
+                <button class="page-btn">1</button>
+                <button class="page-btn">2</button>
+                <button class="page-btn">3</button>
+                <button class="page-btn">4</button>
+                <button class="page-btn">></button>
+            </div>
+            <div class="boton">
+                <button class="partner-btn" onclick="abrir_popup_form('body-forma')">QUERO SER PARCEIRO</button>
+            </div>
+        </div>
+        <div id="body-forma">
+            <div class="conteiner-forma">
+                <h2 class="titulo">Solicitação de Parceria</h2>
+                <form>
+                    <label class="Cnpj" for="cnpj">CNPJ</label>
+                    <input type="text" id="cnpj" placeholder="Ex: 00.000.000/0000-00">
+            
+                    <label class="mens" for="mensagem">Mensagem</label>
+                    <textarea id="mensagem" placeholder="Ex: Somos a Coca-Cola e gostaríamos de apoiar seu projeto. Aguardo retorno!"></textarea>
+                    <div class="botoes">
+                        <div>
+                            <button class="btn-voltar">VOLTAR</button>
+                        </div>
+                        <div>
+                            <button onclick="msg_enviada('body-sucess')">ENVIAR</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div id="body-sucess">
+                <div class="container-sucess">
+                    <div>
+                        <img src="../../assets/images/check-mark-icon-transparent-background-checkmark-icon-approved-symbol-confirmation-sign-design-elements-checklist-positive-thinking-sign-correct-answer-verified-badge-flat-icon-png.webp" alt="">
+                        <p>Mensagem enviada com sucesso!</p>
+                    </div>
+                    <a href="home.php">CONTINUAR</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 <?php
-    $jsPagina = []; //Colocar o arquivo .js
+    $jsPagina = ['home.js']; //Colocar o arquivo .js
     require_once '../../components/footer.php';
 ?>
 
