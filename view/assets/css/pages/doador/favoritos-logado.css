@@ -132,14 +132,16 @@
 #principal {
     display:flex;
     width: 1200px;
-    overflow: hidden;
-    background-color: red ;
+    overflow:hidden;
+    /* background-color: red ; */
 }
 
 
 #cards {
     display: flex;
-    gap: 50px;
+    gap: 80px;
+    transform: translateX(0);
+    transition: 5s;
 }
 
 /* CARD DA ONG */
@@ -240,25 +242,26 @@
 
 
 
-.pai-cards{
-    display: flex;
-    justify-content: center;
-    flex-wrap:wrap;
-    gap: 30px;  
-    margin: 20px;
+
+
+
+
+
+
+
+.card-projeto {
+    width: 250px;
+    background-color: white;
+    /* box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px; */
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    transition: .3s;
 }
 
-.container-projetos .mae-cards{
-    display: flex;
-    justify-content: center;
-    flex-wrap:wrap;
-    gap: 30px;  
-    margin: 10px;
-    
-}
-
-
-.card-projeto .img-projeto {
+/* Imagem do Projeto */
+#principal  .mae-cards .card-projeto .img-projeto {
     width: 100%;
     height: 130px;
     background-color: rgba(0, 0, 0, .2);
@@ -266,6 +269,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex: wrap;
+
 }
 
 /* Texto Resumo*/
@@ -277,11 +282,21 @@
 }
 
 .card-projeto p {
-    font-size: 6px;
+    font-size: 12px;
     text-align: justify;
     line-height: 1;
 }
+    
 
+#principal .mae-cards{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 1200px;
+    height: 130px;
+    gap: 50px;  
+}
 
 .btn-paginacao {
     display: flex;
