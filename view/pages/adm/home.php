@@ -1,10 +1,10 @@
 <?php 
     $tituloPagina = 'tela inicial'; // Definir o título da página
     $cssPagina = ['adm/home.css']; //Colocar o arquivo .css 
-    require_once '../../components/header.php';
+    require_once '../../components/header-adm.php';
 ?>
 
-    <!-- Início DIV principal -->
+<main>
     <div id="principal">
         <div class="principal-esq">
             <div class="sub-principal-esq">
@@ -185,6 +185,8 @@
 
         </div>
     </div>
+</main>
+
 <?php
     $jsPagina = []; //Colocar o arquivo .js (exemplo: 'ONG/cadastro.js')
     require_once '../../components/footer.php';
