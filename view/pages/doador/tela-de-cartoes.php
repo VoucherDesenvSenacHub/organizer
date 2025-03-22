@@ -7,7 +7,7 @@ require_once '../../components/header.php';
 <div class="conteiner">
     <div class="principal">
         <h1>MEUS CARTÕES</h1>
-        <div class="container">
+        <div class="container-white">
 
             <div class="cartoes-container">
                 <!-- Cartão 1 -->
@@ -39,7 +39,7 @@ require_once '../../components/header.php';
         </div>
     </div>
 </div>
-</div>
+
 
 
 <?php
