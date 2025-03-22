@@ -10,9 +10,13 @@
 
 #principal {
     display: flex;
+    /* flex-wrap: wrap; */
     justify-content: space-around;
     z-index: 1;
-    width: 55%;
+    width: 100%;
+    height: 100%;
+    max-height: 400px;
+    max-width: 730px;
     margin: 60px auto;
     padding: 20px 20px 20px 40px;
     background-color: #FFFFFF;
@@ -28,8 +32,8 @@
     font-weight: 500;
 }
 .principal-esq {
-    padding: 30px;
-    width: 50%;
+    /* padding: 30px; */
+    max-width: fit-content;
     /* justify-content: center; */
 }
 
@@ -103,10 +107,18 @@ select {
     margin-right: 10px;
     transition: 0.2s;
 }
+.login-submit a {
+    width: 225px;
+    height: 40px;
+    color: white;
+    text-decoration: none;
+}
 .login-submit:hover {
     background-color: var(--container-background);
-    color: var(--button);
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.368);
+    & a {
+        color: var(--button);
+    }
 }
 
 .principal-dir {
@@ -114,15 +126,14 @@ select {
     justify-content: center;
     align-items: center;
     width: 50%;
-    height: 50%;
     margin: auto;
 }
 .principal-dir>img{
-    width: 80%;
+    width: 300px;
 }
 
 
-@media (max-width: 481px){
+@media (max-width: 786px){
     
     .titulo-login {
         margin: 10px auto;
@@ -135,17 +146,18 @@ select {
     #principal {
         display: flex;
         flex-direction: column;
-        width: 90%;   
+        align-items: center;
+        max-width: fit-content;
+        max-height: fit-content;
         margin: 40px auto;
         padding: 10px;
         background-color: #FFFFFF;
         border-radius: 8px;
     }
-    .principal-esq {
-        margin: 0 auto;
-        padding: 20px 0px 0px 0px;
+    /* .principal-esq {
+        
         width: 90%;
-    }
+    } */
     .form-login {
         font-size: 1em;
         text-align: left;
@@ -192,11 +204,11 @@ select {
         display: flex;
         justify-content: center;
         align-items: center;
-        margin: auto;
+        /* margin: auto; */
     }
-    .principal-dir>img{
+    /* .principal-dir>img{
         width: 120%;
-    }
+    } */
     .form-cadastro {
         display: flex;
         flex-direction: column;
