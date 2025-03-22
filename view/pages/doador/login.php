@@ -11,7 +11,7 @@
             <div class="input-group">
                 <div class="input-item">
                     <label for="email">Email<span>*</span></label>
-                    <input id="email" type="email" maxlength="64" placeholder="usúario@conta.com" required>
+                    <input id="email" type="email" maxlength="45" placeholder="usúario@conta.com" required>
                 </div>
                 <div class="input-item">
                     <label for="senha">Senha<span>*</span></label>
@@ -38,17 +38,20 @@
         <div>
             <h2>RECUPERAR SENHA</h2>
             <p>Digite seu email abaixo para receber um link de recuperação</p>
-            <form action="">
+            <form action="" onsubmit="recuperar_conta('toast-recuperar-conta', 'fundo-cadastro-popup'); return false;">
                 <div class="input-item">
                     <label for="recuperar-email">Email<span>*</span></label>
-                    <input id="recuperar-email" type="email" maxlength="64" placeholder="usúario@conta.com" required>
+                    <input id="recuperar-email" type="email" maxlength="45" placeholder="usúario@conta.com" required>
                 </div>
                 <button class="btn">ENVIAR</button>
             </form>
         </div>
     </div>
 </div>
-
+<div id="toast-recuperar-conta" class="toast">
+    <i class="fa-regular fa-circle-check"></i>
+    Email enviado com sucesso!
+</div>
 
 <?php
     $jsPagina = [];

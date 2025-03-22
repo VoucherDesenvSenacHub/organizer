@@ -52,8 +52,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    color: crimson;
+    color: black;
     border: none;
-    border: 2px solid brown;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    transition: .3s;
 }
 
+#x-fechar:hover {
+    color: brown;
+}

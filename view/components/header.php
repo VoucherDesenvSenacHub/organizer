@@ -24,8 +24,29 @@
 </head>
 
 <body>
+    <!-- NAVBAR -->
+    <header>
+        <div class="container">
+            <div class="logo">
+            <img src="../../assets/images/global/Logo-Organizer.png">
+            <h1>Organizer</h1>
+            </div>
+            <nav id="nav-bar">
+                <ul>
+                    <li><a href="../../../index.php">Home</a></li>
+                    <li><a href="ongs.php" class="<?= (basename($_SERVER['PHP_SELF']) == 'ongs.php') ? 'active' : ''; ?>">Ongs</a></li>
+                    <li><a href="projetos.php" class="<?= (basename($_SERVER['PHP_SELF']) == 'projetos.php') ? 'active' : ''; ?>">Projetos</a></li>
+                    <li><a href="../visitante/tela-noticia.php">Notícias</a></li>
+                </ul>
+            </nav>
+            <div class="btn-login">
+                <button class="btn" id="openPopup" onclick="abrir_popup('fundo-login-popup')">LOGIN</button>
+                <button onclick="menu_mobile()" id="hamburguer"></button>
+            </div>
+        </div>
+    </header>
+    
     <?php 
-        require_once 'navbar.php'; //NAVBAR
         require_once 'login-popup.php'; //EFEITO POPUP DO LOGIN
         require_once 'requer-login.php'; //POPUP LOGIN OBRIGATORIO
         require_once 'compartilhar.php'; //POPUP DE COMPARTILHAR
