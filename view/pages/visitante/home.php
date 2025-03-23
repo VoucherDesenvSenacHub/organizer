@@ -247,7 +247,7 @@
         <div id="body-forma" class="popup-fundo">
             <div class="conteiner-forma">
                 <h2 class="titulo">Solicitação de Parceria</h2>
-                <form action="" onsubmit="mensagem_enviada('toast-mensagem-enviada', 'body-forma'); return false;">
+                <form id= "formParceiro" action="" onsubmit="mensagem_enviada('toast-mensagem-enviada', 'body-forma'); return false;">
                     <label class="Cnpj" for="cnpj">CNPJ</label>
                     <input type="text" id="cnpj" maxlength="11" placeholder="000.000.000-00" required>
             
@@ -258,7 +258,7 @@
                             <button onclick="fechar_popup('body-forma')" class="btn-voltar">VOLTAR</button>
                         </div>
                         <div>
-                            <button>ENVIAR</button>
+                            <button type="submit">ENVIAR</button>
                         </div>
                     </div>
                 </form>
@@ -268,7 +268,12 @@
         <i class="fa-regular fa-circle-check"></i>
         Mensagem enviada com sucesso!
     </div>
-
+    <script>
+        document.getElementById("formParceiro").addEventListener("submit", function(event) {
+            event.preventDefault();
+            this.reset();
+        });
+    </script>
 <?php
     $jsPagina = ['home.js']; //Colocar o arquivo .js
     require_once '../../components/footer.php';
