@@ -34,8 +34,8 @@
             <nav id="nav-bar">
                 <ul>
                     <li><a href="../../../index.php">Home</a></li>
-                    <li><a href="ongs.php" class="<?= (basename($_SERVER['PHP_SELF']) == 'ongs.php') ? 'active' : ''; ?>">Ongs</a></li>
-                    <li><a href="projetos.php" class="<?= (basename($_SERVER['PHP_SELF']) == 'projetos.php') ? 'active' : ''; ?>">Projetos</a></li>
+                    <li><a href="../visitante/ongs.php" class="<?= (basename($_SERVER['PHP_SELF']) == 'ongs.php') ? 'active' : ''; ?>">Ongs</a></li>
+                    <li><a href="../visitante/projetos.php" class="<?= (basename($_SERVER['PHP_SELF']) == 'projetos.php') ? 'active' : ''; ?>">Projetos</a></li>
                     <li><a href="../visitante/tela-noticia.php">Notícias</a></li>
                 </ul>
             </nav>
