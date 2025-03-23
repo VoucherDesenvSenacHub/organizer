@@ -5,6 +5,7 @@
 
     <!-- Arquivo JS Principal -->
     <script src="../../assets/js/global/main.js"></script>
+    <script src="../../assets/js/global/cadastro.js"></script>
 
     <!-- JS Específicos da Página -->
     <?php 
