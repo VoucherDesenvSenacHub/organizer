@@ -2,7 +2,7 @@
     position: fixed;
     top: 60px; /* Começa fora da tela */
     right: -200px;
-    max-width: 300px;
+    /* max-width: 300px; */
     background-color: rgb(255, 255, 255);
     border-left: 6px solid limegreen;
     color: rgb(0, 0, 0);
