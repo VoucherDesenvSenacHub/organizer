@@ -218,7 +218,6 @@
     background: #fff;
     padding: 40px;
     border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(204, 204, 204, 0.81);
     width: 90%;
     max-width: 700px;
   }
@@ -231,10 +230,12 @@
   }
   
   .grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
     gap: 20px;
+    display: flex;
+    flex-wrap: wrap;
     margin-bottom: 20px;
+    justify-content: center;
+    align-items: center;
   }
   
   .card {
@@ -245,6 +246,7 @@
     border: 1px solid #d4d4d4;
     border-radius: 8px;
     padding: 15px;
+    width: 150px;
     height: 100px; /* Ajuste opcional para manter tamanho uniforme */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transform: translateY(0);
@@ -256,7 +258,7 @@
   }
   
   .card img {
-    max-width: 60%;
+    max-width: 70px;
     height: auto;
   }
   
@@ -308,10 +310,31 @@
   }
 
 @media (max-width:700px) {
+  .container-empresas{
+    gap: 0px;
+  }
+  
   .pagination{
     display: flex;
-    flex-direction: column-reverse;
-    gap: 25px;
+    flex-direction: row;
+    gap: 5px;
+  }
+
+  .grid {
+    gap: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+
+  .card {
+    width: 120px;
+    height: 80px; /* Ajuste opcional para manter tamanho uniforme */
+  }
+
+  .card img {
+    max-width: 60px;
+    height: auto;
   }
 }
 
@@ -415,59 +438,11 @@
 @media (max-width:700px) {
   .conteiner-forma{
     width: 300px;
+    height: 400px;
   }
 
   .botoes button{
     padding: 12px 70px;
     font-size: 12px;
   }
-}
-
-#body-sucess {
-    z-index: 9999;
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    width: 100%;
-}
-
-#body-sucess.ativo {
-    display: flex;
-}
-
-.container-sucess{
-    background-color: #ffffff;
-    border-radius: 10px;
-    padding: 20px;
-    width: 400px;
-    height:400px ;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-}
-
-.container-sucess div{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.container-sucess img{
-    width: 150px;
-}
-
-.container-sucess a{
-    margin-top: 10px;
-    background-color: rgba(55, 203, 55, 0.997);
-    color: #fff;
-    text-decoration: none;
-    padding: 20px 40px;
-    border-radius: 10px;
 }

@@ -81,3 +81,8 @@ function recuperar_conta(toast, popup) {
     fechar_popup(popup);
     mostrar_toast(toast);
 }
+
+function mensagem_enviada(toast, popup) {
+    fechar_popup(popup);
+    mostrar_toast(toast);
+}

@@ -244,37 +244,30 @@
                 <button class="partner-btn" onclick="abrir_popup_form('body-forma')">QUERO SER PARCEIRO</button>
             </div>
         </div>
-        <div id="body-forma">
+        <div id="body-forma" class="popup-fundo">
             <div class="conteiner-forma">
                 <h2 class="titulo">Solicitação de Parceria</h2>
-                <form>
+                <form action="" onsubmit="mensagem_enviada('toast-mensagem-enviada', 'body-forma'); return false;">
                     <label class="Cnpj" for="cnpj">CNPJ</label>
-                    <input type="text" id="cnpj" placeholder="Ex: 00.000.000/0000-00">
+                    <input type="text" id="cnpj" maxlength="11" placeholder="000.000.000-00" required>
             
                     <label class="mens" for="mensagem">Mensagem</label>
-                    <textarea id="mensagem" placeholder="Ex: Somos a Coca-Cola e gostaríamos de apoiar seu projeto. Aguardo retorno!"></textarea>
+                    <textarea id="mensagem" placeholder="Ex: Somos a Coca-Cola e gostaríamos de apoiar seu projeto. Aguardo retorno!" required></textarea>
                     <div class="botoes">
                         <div>
-                            <button class="btn-voltar">VOLTAR</button>
+                            <button onclick="fechar_popup('body-forma')" class="btn-voltar">VOLTAR</button>
                         </div>
                         <div>
-                            <button onclick="msg_enviada('body-sucess')">ENVIAR</button>
+                            <button>ENVIAR</button>
                         </div>
                     </div>
                 </form>
-            </div>
-            <div id="body-sucess">
-                <div class="container-sucess">
-                    <div>
-                        <img src="../../assets/images/check-mark-icon-transparent-background-checkmark-icon-approved-symbol-confirmation-sign-design-elements-checklist-positive-thinking-sign-correct-answer-verified-badge-flat-icon-png.webp" alt="">
-                        <p>Mensagem enviada com sucesso!</p>
-                    </div>
-                    <a href="home.php">CONTINUAR</a>
-                </div>
-            </div>
         </div>
     </div>
-
+    <div id="toast-mensagem-enviada" class="toast">
+        <i class="fa-regular fa-circle-check"></i>
+        Mensagem enviada com sucesso!
+    </div>
 
 <?php
     $jsPagina = ['home.js']; //Colocar o arquivo .js
