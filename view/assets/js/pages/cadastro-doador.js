@@ -39,12 +39,12 @@ function proximo(indice) {
             return false;
         }
         check[2].classList.add('input-valid');
-        cadastrar()
+        cadastrar_doador()
         return true;
     }
 }
 
-function cadastrar() {
+function cadastrar_doador() {
     sessionStorage.setItem("cadastro_sucesso", "true");
     window.location.href = "login.php";
 }
