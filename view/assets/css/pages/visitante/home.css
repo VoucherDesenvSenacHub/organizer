@@ -1,4 +1,8 @@
-/* Importando o CSS do Card da ONG */
+#nav-bar ul li:nth-child(1) a {
+    color: var(--cor-amarelo);
+    font-weight: bold;
+}
+
 .secoes {
     padding: 0 20px;
 }

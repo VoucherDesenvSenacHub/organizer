@@ -1,10 +1,10 @@
 <?php 
     $tituloPagina = 'tela inicial'; // Definir o título da página
     $cssPagina = ['adm/home.css']; //Colocar o arquivo .css 
-    require_once '../../components/header.php';
+    require_once '../../components/header-adm.php';
 ?>
 
-    <!-- Início DIV principal -->
+<main>
     <div id="principal">
         <div class="principal-esq">
             <div class="sub-principal-esq">
@@ -106,7 +106,7 @@
                             </tr>
                         </tbody>
                     </table>
-                    <a href="ver-ong.php" class="ver-todos">VER TODAS</a>
+                    <a href="#" class="ver-todos">VER TODAS</a>
                 </section>
         
                 <section class="section projetos">
@@ -144,7 +144,7 @@
                             </tr>
                         </tbody>
                     </table>
-                    <a href="ver-projetos.php" class="ver-todos">VER TODOS</a>
+                    <a href="#" class="ver-todos">VER TODOS</a>
                 </section>
         
                 <section class="section doadores">
@@ -179,12 +179,14 @@
                             </tr>
                         </tbody>
                     </table>
-                    <a href="ver-doadores.php" class="ver-todos">VER TODOS</a>
+                    <a href="#" class="ver-todos">VER TODOS</a>
                 </section>
             </main>
 
         </div>
     </div>
+</main>
+
 <?php
     $jsPagina = []; //Colocar o arquivo .js (exemplo: 'ONG/cadastro.js')
     require_once '../../components/footer.php';

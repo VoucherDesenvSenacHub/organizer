@@ -25,30 +25,36 @@
 
 <body>
     <!-- NAVBAR -->
-    <header>
+    <header id="header-adm">
         <div class="container">
             <div class="logo">
-            <img src="../../assets/images/global/Logo-Organizer.png">
-            <h1>Organizer</h1>
+                <img src="../../assets/images/global/Logo-Organizer.png">
+                <h1>Organizer</h1>
             </div>
             <nav id="nav-bar">
                 <ul>
-                    <li><a href="../../../index.php">Home</a></li>
-                    <li><a href="ongs.php" class="<?= (basename($_SERVER['PHP_SELF']) == 'ongs.php') ? 'active' : ''; ?>">Ongs</a></li>
-                    <li><a href="projetos.php" class="<?= (basename($_SERVER['PHP_SELF']) == 'projetos.php') ? 'active' : ''; ?>">Projetos</a></li>
-                    <li><a href="../visitante/tela-noticia.php">Notícias</a></li>
+                    <li><a href="home.php">Home</a></li>
+                    <li><a href="ver-ong.php">Ongs</a></li>
+                    <li><a href="ver-projetos.php">Projetos</a></li>
+                    <li><a href="ver-doadores.php">Doadores</a></li>
                 </ul>
             </nav>
-            <div class="btn-login">
-                <button class="btn" id="openPopup" onclick="abrir_popup('fundo-login-popup')">LOGIN</button>
-                <button onclick="menu_mobile()" id="hamburguer"></button>
+            <div id="btns-adm">
+                <a id="parceria" href="#">
+                    <i class="fa-solid fa-handshake"></i>
+                    <span>Parcerias</span>
+                </a>
+                <a id="relatorio" href="#">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <span>Relatórios</span>
+                </a>
+                <button id="conta">
+                    <i class="fa-solid fa-user"></i>
+                    <span>Conta</span>
+                </button>
+                <div class="btn-login">
+                    <button onclick="menu_mobile()" id="hamburguer"></button>
+                </div>
             </div>
         </div>
     </header>
-    
-    <?php 
-        require_once 'login-popup.php'; //EFEITO POPUP DO LOGIN
-        require_once 'requer-login.php'; //POPUP LOGIN OBRIGATORIO
-        require_once 'compartilhar.php'; //POPUP DE COMPARTILHAR
-    ?>
-    
