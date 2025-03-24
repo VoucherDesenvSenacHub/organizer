@@ -26,9 +26,9 @@
                     <div class="header-conteiner">
                         <p class="nome-projeto">NOME DO PROJETO</p>
                         <p class="arrecadado">Arrecadado: R$ 20.000</p>
-                        <progress max="100" value="20"></progres>
-                        <div>   
-                            
+                        <div id="arrecadacao">
+                            <div id="meta"></div>
+                            <div id="coletado"></div>
                         </div>
                     </div>
                     <div class="info-projeto">

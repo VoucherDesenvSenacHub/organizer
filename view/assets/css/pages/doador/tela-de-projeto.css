@@ -52,7 +52,7 @@
     width: 100%;
     height: auto;
     gap: 20px;
-    /* padding: 10px; */
+    padding-bottom: 15px;
 }
 
 /* Inicio Conteúdo da pagina */
@@ -64,7 +64,7 @@
     box-shadow: 1px 2px 2px black;
     border-radius: 10px;
     padding: 30px 30px;
-    width: 700px;
+    width: 60%;
     height: 296px;
 
     & .info-projeto {
@@ -131,9 +131,26 @@
             background-color: #1F97BF;
         }
     }
-#progress-fundraiser {
-    width: 650px;
-    border-radius: 50px;
+#arrecadacao {
+    position: relative;
+    margin-top: 15px;
+    width: 100%;
+}
+#meta {
+    z-index: 10;
+    width: 100%;
+    height: 10px;
+    border-radius: 8px;
+    background-color: #ECECEC;
+}
+#coletado  {
+    z-index: 11;
+    position: relative;
+    top: -10px;
+    width: 20%;
+    height: 10px;
+    border-radius: 8px 0px 0px 8px;
+    background-color: #51CD32;
 }
 .btns-slider {
     display: flex;
@@ -173,7 +190,6 @@
 
 
 .slide {
-    border: 1px solid blue;
     display: none;
     justify-content: center;
     align-items: center;
@@ -456,8 +472,8 @@
 
 /* Inicio do Carrossel */
 .carousel {
-    width: 40%;
-    max-width: 60%;
+    width: 35%;
+    max-width: 35%;
     overflow: hidden;
     box-shadow: 1px 2px 2px black;
     border-radius: 10px;
@@ -540,7 +556,7 @@
 
 /* Responsividade mobile */
 
-@media (max-width: 700px) {
+/* @media (max-width: 481px) {
     #principal {
         margin-bottom: 20px;
     }
@@ -647,4 +663,4 @@
         }
     }
     
-}
+} */
