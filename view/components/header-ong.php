@@ -8,11 +8,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
         integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" /> 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
-
+    
     <link rel="icon" type="image/x-icon" href="../../assets/images/global/Logo-Organizer.png">
     <!-- CSS GLOBAL -->
     <link rel="stylesheet" href="../../assets/css/global/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined">
 
     <!-- CSS Específicos da Página -->
     <?php 
@@ -25,31 +25,39 @@
 </head>
 
 <body>
-    <header>
+    <!-- NAVBAR -->
+    <header id="header-ong">
         <div class="container">
-            <div class="logo">
-            <img src="../../assets/images/global/Logo-Organizer.png">
-            <h1>Organizer</h1>
+            <a href="home.php">
+                <div class="logo">
+                    <img src="../../assets/images/global/Logo-Organizer.png">
+                    <h1>Organizer</h1>
                 </div>
+            </a>
             <nav id="nav-bar">
                 <ul>
                     <li><a href="home.php">Home</a></li>
-                    <li><a href="#">Ongs</a></li>
                     <li><a href="#">Projetos</a></li>
-                    <li><a href="#">Notícias</a></li>
+                    <li><a href="#">Voluntários</a></li>
+                    <li><a href="relatorios.php">Relatórios</a></li>
                 </ul>
             </nav>
-            <!-- <div class="btn-login">
-                <button class="btn" id="openPopup" onclick="loginPopup()">LOGIN</button>
-                <button onclick="menu_mobile()" id="hamburguer"></button>
-            </div> -->
-            <button class="botao-aside" onclick="asidebar()"><i class="fa-solid fa-bars"></i></button>
+            <div id="btns-ong">
+                <button id="btn-ong-conta" onclick="ativar_classe('btn-ong-conta')">
+                    <i class="fa-solid fa-user"></i>
+                    <span>Conta</span>
+                </button>
+                <div class="dropdown">
+                    <a href="perfil.php"><button><i class="fa-solid fa-user-pen"></i>Editar Perfil</button></a>
+                    <button onclick="abrir_popup('sair-da-conta-popup')"><i class="fa-solid fa-right-from-bracket"></i>Sair</button>
+                    </div>
+                <div class="btn-login">
+                    <button onclick="menu_mobile()" id="hamburguer"></button>
+                </div>
+            </div>
         </div>
     </header>
-    <?php 
-        require_once 'aside-usuario.php'; 
-    ?>
-    <div id="sair-doador">
+    <div id="sair-ong">
         <?php 
             require_once 'sair-da-conta-popup.php'; 
         ?>

@@ -1,3 +1,8 @@
+#nav-bar ul li:nth-child(1) a {
+    color: var(--cor-amarelo);
+    font-weight: bold;
+}
+
 main {
     padding: 60px 0;
 }
