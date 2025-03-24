@@ -1,23 +1,17 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+#nav-bar ul li:nth-child(1) a {
+    color: var(--cor-amarelo);
+    font-weight: bold;
 }
-body {
-    width: 100%;
-    z-index: 0;
-    font-family: 'Poppins', sans-serif;
-    background-color: #1C3464;
-}
-h2 {
+
+#principal h2 {
     font-size: 1.3em;
     font-weight: 600;
 }
-h3 {
+#principal h3 {
     font-size: 1.1em;
     font-weight: 400;
 }
-h4 {
+#principal h4 {
     color: #5282E3;
     padding-bottom: 10px;
 }
@@ -89,20 +83,6 @@ h4 {
 /* Responsivo */
 
 @media (max-width: 481px){
-    body {
-        width: 90%;
-        font-family: 'Poppins', sans-serif;
-        background-color: #1C3464;
-        margin: 0 auto;
-    }
-    header {
-        left: 0px;
-        padding: 8px;
-        z-index: 999;
-        width: 100%;
-        justify-content: space-around;
-    }
-    
     #header-direita {
         display: flex;
         padding: 5px 10px;

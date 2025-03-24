@@ -1,7 +1,7 @@
 <?php 
     $tituloPagina = 'ONG - Logon'; // Definir o título da página
     $cssPagina = ['ong/home.css']; //Colocar o arquivo .css (exemplo: 'ONG/cadastro.css')
-    require_once '../../components/header.php';
+    require_once '../../components/header-ong.php';
 ?>
     <!-- Início DIV principal -->
     <div id="principal">
