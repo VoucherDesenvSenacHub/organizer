@@ -81,3 +81,13 @@ function recuperar_conta(toast, popup) {
     fechar_popup(popup);
     mostrar_toast(toast);
 }
+
+function mensagem_enviada(toast, popup) {
+    fechar_popup(popup);
+    mostrar_toast(toast);
+}
+
+function ativar_classe(id) {
+    let i = document.getElementById(id);
+    i.classList.toggle('active');
+}
