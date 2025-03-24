@@ -4,24 +4,38 @@
     require_once '../../components/header.php';
 ?>
         <!-- Fim cabeçalho -->
+<!-- Barra de navegação -->
 
+<div class="nav-buttons">
+    <button class="p1"></button>
+    <button class="p2"></button>
+    <button class="p2"></button>
+    <button class="p2"></button>
+    <button class="p2"></button>
+    <button class="p2"></button>
+</div>
+<div class="progress">
+    <div class="line">
+        <div class="line-0"></div>
+    </div>
+</div>
+<div class="text-progress">
+    <div class="text-detalhes">Dados<br> da ONG</div>
+    <div class="text-detalhes-draft">Descrição</div>
+    <div class="text-detalhes-draft">Endereço</div>
+    <div class="text-detalhes-draft">Responsável</div>
+    <div class="text-detalhes-draft">Banco</div>
+    <div class="text-detalhes-draft">Login</div>
+</div>
 
-    <!-- Início DIV Cadastro -->
-    <div id="cadastro">
-        <!-- <div id="cadastro-ong">
-            </div>
-            <div class="nav-buttons">
-            </div>
-            <div class="progress">
-                <div class="line">
-                    <div class="line-0"></div>
+<!-- Início DIV Cadastro -->
+<div id="cadastro">
+
+            <div class="formulario-geral">
+                <div class="titulo">
+                    <h1>CADASTRO</h1>
                 </div>
-            </div>
-            <div class="text-progress">
-            </div> -->
-            <div id="dados-1">
-                <h1 class="cabecalho-etapa">CADASTRO</h1>
-                <fo action="cadastrar-ong.php" method="post">
+                <form>
                     <div class="formulario-geral">
                         <div>
                             <label for="rSocial">Razão Social</label><br>
@@ -41,12 +55,15 @@
                         </div>
                 </div>
             <div class="btn-navegacao-first">
-                <button class="proximo" type="button" onClick="mudaPagina('cadastro', false)">Próximo</button>
+            <button class="proximo" type="button" onClick="mudaPagina('cadastro', false)">Próximo</button>
             </div>
         </div>
-    </div>
+        <!-- Fim DIV Cadastro  -->
+        
+        <!-- Início Atuação da ONG -->
         <div id="atuacao">
-            <div class="titulo-atuacao">
+        <div class="formulario-geral">
+            <div class="titulo">
                 <h1>ATUAÇÃO DA ONG</h1>
             </div>
             
@@ -56,7 +73,7 @@
                     <textarea id="descricao-ong" placeholder="Um breve resumo da sua ONG"></textarea><br>
                 </div>
                 <div id="areasDeAtuacao">
-                <p>Áreas de atuação</p>
+                    <p>Áreas de atuação</p>
                     <div class="row-checkbox">
                         <div class="opt-atuacao">
                             <input type="checkbox" id="saude" value="saude" name="saude">
@@ -100,61 +117,48 @@
                 <button class="proximo" type="button" onClick="mudaPagina('atuacao', false)">Próximo</button>
             </div>
         </div>
-    </div>
-    <!-- Fim DIV Cadastro  -->
-
-    <!-- Início Atuação da ONG -->
-    <!-- Fim Atuação da ONG -->
-    
-    <!-- Início Endereço -->
-     
-    <div id="endereco">
-        <div class="titulo-atuacao">
-            <h1>ENDEREÇO</h1>
         </div>
+        <!-- Fim Atuação da ONG -->
+          
+        
+        <!-- Início Endereço -->
+        
         <div class="formulario-geral">
-            <div>
-                <label for="rua">Endereço</label><br>
-                <input type="text" id="rua" placeholder="Ex. Rua Projetada, 199">
+            <div class="titulo">
+                <h1>ENDEREÇO</h1>
             </div>
-            <div>
-                <label for="cidade">Cidade</label><br>
-                <input type="text" id="cidade" placeholder="Campo Grande">
+            <div class="formulario-geral">
+                <div>
+                    <label for="rua">Endereço</label><br>
+                    <input type="text" id="rua" placeholder="Ex. Rua Projetada, 199">
+                </div>
+                <div>
+                    <label for="cidade">Cidade</label><br>
+                    <input type="text" id="cidade" placeholder="Campo Grande">
+                </div>
+                <div>
+                    <label for="cep">CEP</label><br>
+                    <input type="text" id="cep" placeholder="00000-000">
+                </div>
+                <div>
+                    <label for="uf">UF</label><br>
+                    <input type="text" id="uf" placeholder="Mato Grosso do Sul">
+                </div>
             </div>
-            <div>
-                <label for="cep">CEP</label><br>
-                <input type="text" id="cep" placeholder="00000-000">
-            </div>
-            <div>
-                <label for="uf">UF</label><br>
-                <input type="text" id="uf" placeholder="Mato Grosso do Sul">
+            <div class="btn-navegacao">
+                <button class="voltar" type="button" onClick="mudaPagina('atuacao', true)">Voltar</button>
+                <button class="proximo" type="button" onClick="mudaPagina('endereco', false)">Próximo</button>
             </div>
         </div>
-        <div class="btn-navegacao">
-            <button class="voltar" type="button" onClick="mudaPagina('atuacao', true)">Voltar</button>
-            <button class="proximo" type="button" onClick="mudaPagina('endereco', false)">Próximo</button>
-        </div>
-    </div>
-
+        
     <!-- Fim Endereço -->
 
     <!-- Início Responsável -->
     <div id="responsavel">
-        <div class="titulo-atuacao">
-            <h1>RESPONSÁVEL PELA ONG</h1>
-        </div>
-        <!-- <div class="nav-buttons">
-            <?php botoes_navegacao(4,3)?>
-        </div>
-        <div class="progress">
-            <div class="line">
-                <div class="line-0"></div>
+        <div class="formulario-geral">
+            <div class="titulo">
+                <h1>RESPONSÁVEL PELA ONG</h1>
             </div>
-        </div>
-        <div class="text-progress">
-            <?php texto_progresso($itens_progressao, 4)?>
-        </div> -->
-            <div class="formulario-geral">
                 <div>
                     <label for="nome">Nome</label><br>
                     <input type="text" id="nome" placeholder="Nome completo">
@@ -171,94 +175,73 @@
                     <label for="email">Email</label><br>
                     <input type="email" id="email" placeholder="usuario@conta.com">
                 </div>
-            </div>
             <div class="btn-navegacao">
                 <button class="voltar" type="button" onClick="mudaPagina('endereco', true)">Voltar</button>
                 <button class="proximo" type="button" onClick="mudaPagina('responsavel', false)">Próximo</button>
             </div>
         </div>
+    </div>
     <!-- Fim Responsável -->
 
     <!-- Início Dados bancários -->
+    <!-- <div id="dados-bancarios"> -->
     <div id="dados-bancarios">
-        <div class="titulo-atuacao">
+    <div class="formulario-geral">
+        <div class="titulo">
             <h1>DADOS BANCÁRIOS</h1>
         </div>
-        <!-- <div class="nav-buttons">
-            <?php botoes_navegacao(5,4)?>
+        <div>
+            <label for="banco">Banco</label><br>
+            <input type="text" id="banco" placeholder="Banco">
         </div>
-        <div class="progress">
-            <div class="line">
-                <div class="line-0"></div>
-            </div>
+        <div>
+            <label for="agencia">Agência</label><br>
+            <input type="text" id="agencia" placeholder="Agência">
         </div>
-        <div class="text-progress">
-            <?php texto_progresso($itens_progressao, 5)?>
-        </div> -->
-        <div class="formulario-geral">
-            <div>
-                <label for="banco">Banco</label><br>
-                <input type="text" id="banco" placeholder="Banco">
-            </div>
-            <div>
-                <label for="agencia">Agência</label><br>
-                <input type="text" id="agencia" placeholder="Agência">
-            </div>
-            <div>
-                <label for="conta">Conta</label><br>
-                <input type="tel" id="conta" placeholder="Conta">
-            </div>
-            <div>
-                <label for="tipo">Tipo</label><br>
-                <select name="tipo" id="tipo">
-                    <option value="c-corrente">Conta Corrente</option>
-                    <option value="c-poupanca">Conta Poupança</option>
-                </select>
-            </div>
+        <div>
+            <label for="conta">Conta</label><br>
+            <input type="tel" id="conta" placeholder="Conta">
         </div>
-        <div class="btn-navegacao">
-            <button class="voltar" type="button" onClick="mudaPagina('responsavel', true)">Voltar</button>
-            <button class="proximo" type="button" onClick="mudaPagina('dados-bancarios', false)">Próximo</button>
+        <div>
+            <label for="tipo">Tipo</label><br>
+            <select name="tipo" id="tipo">
+                <option value="c-corrente">Conta Corrente</option>
+                <option value="c-poupanca">Conta Poupança</option>
+            </select>
         </div>
+    <div class="btn-navegacao">
+        <button class="voltar" type="button" onClick="mudaPagina('responsavel', true)">Voltar</button>
+        <button class="proximo" type="button" onClick="mudaPagina('dados-bancarios', false)">Próximo</button>
     </div>
+</div>
+</div>
     <!-- Fim Dados bancários -->
 
     <!-- Início Criar login -->
 
+    <!-- <div id="criar-login"> -->
     <div id="criar-login">
-        <div class="titulo-atuacao">
+        <div class="formulario-geral">
+        <div class="titulo">
             <h1>CRIAR SEU LOGIN</h1>
         </div>
-        <div class="nav-buttons">
-            <?php botoes_navegacao(6,5)?>
+        <div>
+            <label for="senha-login">Senha</label><br>
+            <input type="password" id="senha-login" placeholder="**********">
+            <button class="ver-senha" type="button"onclick="showHide('senha-login', 'eyepassword')">
+                <span class="material-symbols-outlined" id="eyepassword">
+                    visibility
+                </span>
+            </button>
         </div>
-        <div class="progress">
-            <div class="line">
-                <div class="line-0"></div>
-            </div>
-        </div>
-        <div class="text-progress">
-            <?php texto_progresso($itens_progressao, 6)?>
-        </div>
-        <div class="formulario-geral">
-            <div>
-                <label for="senha-login">Senha</label><br>
-                <input type="password" id="senha-login" placeholder="**********">
-                <button class="ver-senha" type="button"onclick="showHide('senha-login', 'eyepassword')">
-                    <span class="material-symbols-outlined" id="eyepassword">
-                        visibility
-                    </span>
-                </button>
-            </div>
-            <div>
-                <label for="conf-senha">Confirmar senha</label><br>
-                <input type="password" id="conf-senha" placeholder="**********">
-                <button class="ver-senha" type="button" onclick="showHide('conf-senha', 'eye-conf-password')">
-                    <span class="material-symbols-outlined" id="eye-conf-password">
-                        visibility
-                    </span>
-                </button>
-            </div>
+        <div>
+            <label for="conf-senha">Confirmar senha</label><br>
+            <input type="password" id="conf-senha" placeholder="**********">
+            <button class="ver-senha" type="button" onclick="showHide('conf-senha', 'eye-conf-password')">
+                <span class="material-symbols-outlined" id="eye-conf-password">
+                    visibility
+                </span>
+            </button>
         </div>
         <div class="btn-navegacao">
             <button class="voltar" type="button" onClick="mudaPagina('dados-bancarios', true)">Voltar</button>
@@ -267,8 +250,10 @@
             </a>
         </div>
     </div>
-    <!-- Fim Criar login -->
+<!-- </div> -->
+<!-- Fim Criar login -->
 </form>
+</div>
     <?php
         $jsPagina = ['ongs.js']; //Colocar o arquivo .js
         require_once '../../components/footer.php';

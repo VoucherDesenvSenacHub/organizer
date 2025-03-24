@@ -13,15 +13,12 @@ h4 {
 }
 
 #cadastro {
-    position: absolute;
-    overflow: hidden;
-    top: 60px;
-    left: 20%;
     display: flex;
     justify-content: space-around;
-    z-index: 10;
     width: 50%;
-    height: 65vh;
+    height: 80vh;
+    overflow: scroll;
+    gap: 200px;
     margin: 20px auto;
     padding: 20px;
     background-color: #FFFFFF;
@@ -32,95 +29,49 @@ h4 {
         font-weight: 400;
         color: #5282E3;
     }
+}
+.titulo {
+    display: flex;
+    width: 90%;
+    padding-left: 30px;
+    padding-bottom: 100px;
+    justify-content: start;
 }
 #dados1 {
     width: 60vh;
 }
-#etapa {
-    padding-bottom: 130px;
-}
-#atuacao {
-    border: 1px solid red;
-}
+
 #endereco {
-    position: absolute;
-    top: 60px;
-    left: 20%;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    z-index: 8;
     width: 60%;
     margin: 20px auto;
     padding: 20px;
-    background-color: #FFFFFF;
-    border-radius: 8px;
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.7);
-    h1 {
-        font-size: 1.5em;
-        font-weight: 400;
-        color: #5282E3;
-    }
 }
-#responsavel {
-    position: absolute;
-    top: 60px;
-    left: 20%;
+#responsavel {    
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    z-index: 7;
     width: 60%;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #FFFFFF;
-    border-radius: 8px;
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.7);
-    h1 {
-        font-size: 1.5em;
-        font-weight: 400;
-        color: #5282E3;
-    }
+    margin: 20px 50px;
+    padding: 20px 50px;
 }
 #dados-bancarios {
-    position: absolute;
-    top: 60px;
-    left: 20%;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    z-index: 6;
     width: 60%;
-    margin: 20px auto;
+    margin: 20px 50px;
     padding: 20px;
-    background-color: #FFFFFF;
-    border-radius: 8px;
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.7);
-    h1 {
-        font-size: 1.5em;
-        font-weight: 400;
-        color: #5282E3;
-    }
 }
 #criar-login {
-    position: absolute;
-    top: 60px;
-    left: 20%;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    z-index: 5;
     width: 60%;
-    margin: 20px auto;
+    margin: 20px 50px;
     padding: 20px;
-    background-color: #FFFFFF;
-    border-radius: 8px;
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.7);
-    h1 {
-        font-size: 1.5em;
-        font-weight: 400;
-        color: #5282E3;
-    }
 }
 
 .titulo-cadastro {
@@ -142,15 +93,17 @@ h4 {
 
 .progress {
     display: flex;
+    position: relative;
+    top: 180px;
     margin: 15px auto;
+    width: 57%;
     justify-content: center;
-    img {
-        width: 70%;
-    }    
 }
 .nav-buttons {
     display: flex;
-    width: 78%;
+    position: relative;
+    top: 180px;
+    width: 45%;
     margin: 0px auto;
     justify-content: space-around;
 }
@@ -158,10 +111,14 @@ h4 {
 
 .text-progress {
     display: flex;
+    position: relative;
+    top: 180px;
+    width: 45%;
+    margin: 10px auto;
+    padding: 0px 50px;
     font-size: 0.8em;
     justify-content: space-between;
     align-items: center;
-    margin: 30px 115px 0px 115px;
 }
 .text-detalhes-draft {
     color: #6e6a6a;
@@ -235,12 +192,14 @@ h4 {
 
 .form-cadastro, .formulario-geral {
     display: flex;
+    left: 20px;
+    width: 800px;
     flex-wrap: wrap;
     justify-content: space-around;
     padding: 35px;
     gap: 40px;
     input {
-        width: 280px;
+        width: 300px;
         height: 50px;
         border-radius: 6px;
         border: none;
@@ -304,7 +263,7 @@ h4 {
 
 /* Atuação ONG */
 #form-atuacao{
-    margin-left: 90px;
+    margin-left: 0px;
     margin-top: 20px;
     margin-bottom: 20px;
 }
@@ -329,6 +288,10 @@ h4 {
     width: 130px;
     justify-content: left;
     font-size: 0.8em;
+    input {
+        width: 15px;
+        height: 15px;
+    }
 
 }
 #senha-login::-ms-reveal {
@@ -388,7 +351,6 @@ h4 {
     .titulo-atuacao {
         margin-left: 20px;
     }
-    #cadastro,
     #atuacao,
     #endereco,
     #responsavel,
