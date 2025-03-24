@@ -255,7 +255,7 @@
                     <textarea id="mensagem" placeholder="Ex: Somos a Coca-Cola e gostaríamos de apoiar seu projeto. Aguardo retorno!" required></textarea>
                     <div class="botoes">
                         <div>
-                            <button onclick="fechar_popup('body-forma')" class="btn-voltar">VOLTAR</button>
+                            <button type="button" onclick="fechar_popup('body-forma')" class="btn-voltar">VOLTAR</button>
                         </div>
                         <div>
                             <button type="submit">ENVIAR</button>
