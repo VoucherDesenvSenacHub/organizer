@@ -1,274 +1,195 @@
-
-:root {
-    --backgroud: #1C3464;
-    --container-background: #FFFFFF;
-    --title: #5282E3;
-    --input-background: #00000022;
-    --button: #E3B652;
-    --button-hover: #9747FF;
-}
-
-#principal {
-    display: flex;
-    /* flex-wrap: wrap; */
-    justify-content: space-around;
-    z-index: 1;
-    width: 100%;
-    height: 100%;
-    max-height: 400px;
-    max-width: 730px;
-    margin: 60px auto;
-    padding: 20px 20px 20px 40px;
-    background-color: #FFFFFF;
-    border-radius: 8px;
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.7);
-}
-.titulo-login {
-    margin: 10px;
-    text-align: left;
-}
-.titulo-login h1 {
-    color: #5282E3;
-    font-weight: 500;
-}
-.principal-esq {
-    /* padding: 30px; */
-    max-width: fit-content;
-    /* justify-content: center; */
-}
-
-.form-login {
-    font-size: 1.2em;
-    text-align: left;
-    margin: 20px auto;
-    padding-bottom: 10px;
-    padding-left: 10px;
-}
-.form-email>input {
-    font-size: 0.8em;
-    margin-bottom: 15px;
-    height: 40px;
-    width: 250px;
-    border: none;
-    background-color: #F2F2F2;
-    border-radius: 8px;
-    padding-left: 10px;
-    padding-right: 10px;
-}
-.form-senha>input{
-    font-size: 0.8em;
-    height: 40px;
-    width: 250px;
-    border: none;
-    background-color: #F2F2F2;
-    border-radius: 8px;
-    padding-left: 10px;
-    padding-right: 39px;
-}
-select {
-    font-size: 0.8em;
-    height: 40px;
-    width: 250px;
-    border: none;
-    background-color: #F2F2F2;
-    border-radius: 8px;
-    padding-left: 10px;
-}
-#ver-senha{
-    display: block;
-    position: relative;
-    border: none;
-    top: -33px;
-    left: 210px;
-    background-color: transparent;
-}
-.form-opcoes {
-    display: flex;
-    width: 60%;
-    justify-content: space-between;
-    font-size: 0.5em;
-    align-items: center;
-}
-#chk-box>input {
-    align-items: center;
-    width: 15px;
-    height: 15px;
-}
-.login-submit {
-    width: 225px;
-    height: 40px;
-    background-color: var(--button);
-    border-radius: 8px;
-    font-size: 0.8em;
-    font-weight: 500;
-    color: var(--container-background);
-    border: none;
-    margin-top: 20px;
-    margin-right: 10px;
-    transition: 0.2s;
-}
-.login-submit a {
-    width: 225px;
-    height: 40px;
-    color: white;
-    text-decoration: none;
-}
-.login-submit:hover {
-    background-color: var(--container-background);
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.368);
-    & a {
-        color: var(--button);
-    }
-}
-
-.principal-dir {
+main {
+    padding: 0 30px;
+    height: calc(100vh - 60px);
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 50%;
-    margin: auto;
 }
-.principal-dir>img{
+
+#container-login {
+    background-color: aliceblue;
+    padding: 30px;
+    border-radius: 10px;
+    /* transform: scale(1.3); */
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+    position: relative;
+    max-height: 400px;
+    height: 100%;
+    max-width: 730px;
+    width: 100%;
+}
+
+#container-login form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
     width: 300px;
+    transition: .3s;
 }
 
+form h1 {
+    color: var(--cor-principal);
+    font-size: 1.5em;
+}
 
-@media (max-width: 786px){
-    
-    .titulo-login {
-        margin: 10px auto;
-        width: 100%;
+form .input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.input-group .input-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-item label {
+    font-size: 13px;
+}
+
+.input-item label span {
+    font-size: 15px;
+    color: red;
+    font-weight: 600;
+}
+
+.input-item input {
+    background-color: rgba(0, 0, 0, 0.07);
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    padding: 15px;
+    transition: .3s;
+    width: 100%;
+}
+.input-item input:focus {
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+
+/* Área "Esqueci a senha" */
+form .remember-forgot {
+    display: flex;
+    font-size: 11px;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5px;
+}
+
+.remember-forgot .remember {
+    display: flex;
+    gap: 3px;
+}
+
+.remember-forgot button {
+    background: none;
+    border: none;
+    font-size: 11px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.remember-forgot button:hover {
+    color: var(--cor-azul-escuro);
+}
+
+/* Área de "Criar Conta" */
+form span {
+    font-size: 11px;
+    width: 100%;
+    text-align: center;
+    cursor: default;
+}
+
+form span a {
+    text-decoration: none;
+    color: var(--cor-azul);
+    font-weight: 600;
+    padding-block: 5px;
+    transition: .3s;
+}
+
+#container-login form span a:hover {
+    color: var(--cor-principal);
+}
+
+/*===== IMAGEM =====*/
+#container-login img {
+    width: 350px;
+}
+
+/* POPUP RECUPERAR SENHA */
+#popup-recuperar-senha {
+    background-color: aliceblue;
+    color: var(--cor-principal);
+    gap: 30px;
+    position: relative;
+}
+
+#popup-recuperar-senha img {
+    width: 150px;
+    transition: .3s ease;
+}
+
+#popup-recuperar-senha div {
+    max-width: 300px;
+    text-align: justify;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#popup-recuperar-senha div h2 {
+    font-weight: 400;
+}
+
+#popup-recuperar-senha div p {
+    font-size: 15px;
+}
+
+#popup-recuperar-senha div form {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-top: 5px;
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 700px) {
+    #container-login {
+        width: fit-content;
     }
-    .titulo-login h1 {
-        font-size: 1.6em;
-        font-weight: 500;
+    #container-login img {
+        position: absolute;
     }
-    #principal {
-        display: flex;
+
+    #container-login img {
+        width: 100px;
+        top: 8px;
+        right: 8px;
+    }
+
+    #popup-recuperar-senha {
         flex-direction: column;
         align-items: center;
-        max-width: fit-content;
-        max-height: fit-content;
-        margin: 40px auto;
-        padding: 10px;
-        background-color: #FFFFFF;
-        border-radius: 8px;
     }
-    /* .principal-esq {
+
+    #popup-recuperar-senha img {
+        display: none;
+    }
+}
+
+@media (max-width: 400px) {
+    #container-login img {
+        display: none;
+    }
+
+    #container-login form {
         
-        width: 90%;
-    } */
-    .form-login {
-        font-size: 1em;
-        text-align: left;
-        margin: 0 auto;
-        padding-left: 0px;
-        padding-top: 10px;
-        padding-bottom: 10px;
-    }
-    .form-opcoes {
-        display: flex;
-        justify-content: space-between;
-        width: 100%;
-        align-items: center;
-        font-size: 0.7em;
-        align-items: center;
-    }
-    #login-adm {
-        display: flex;
-        align-items: center;
-    }
-    .login-submit {
-        width: 190px;
-        height: 40px;
-        background-color: #E3B652;
-        border-radius: 6px;
-        font-size: 1em;
-        font-weight: 600;
-        letter-spacing: 1px;
-        color: var(--container-background);
-        border: none;
-        margin: 20px auto;
-
-    }
-    #cadastrar-ong {
-        display: flex;
-        justify-content: center;
-    }
-    #cadastrar-ong>a{
-        color: black;
-        font-size: 0.7em;
-        margin-bottom: 20px;
-    }
-    .principal-dir {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        /* margin: auto; */
-    }
-    /* .principal-dir>img{
-        width: 120%;
-    } */
-    .form-cadastro {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        padding: 35px;
-    }
-    .progress {
-        margin: 0 auto;
-    }
-    .progress>img{
-        width: 100%;
-    }
-    #text-progress {
-        display: flex;
-        font-size: 0.3em;
-        margin: 5px auto;
-    }
-    .btn-navegacao {
-        display: flex;
-        justify-content: center;
-        margin: 5px auto;
-        gap: 60px;
-    }
-    .voltar, .proximo {
-        font-family: 'Poppins', sans-serif;
-        font-weight: 500;
-        font-size: 0.5em;
-        letter-spacing: 2px;
-        border: none;
-        border-radius: 6px;
-        width: 80px;
-        height: 20px;
-    }
-    .form-esquerda>input,
-    .form-direita>input{
-        font-size: 0.7em;
-        height: 40px;
-        width: 190px;
-        border: none;
-        background-color: #F2F2F2;
-        border-radius: 8px;
-        padding-left: 10px;
-    }
-    .form-esquerda>label,
-    .form-direita>label {
-        font-size: 0.8em;
-    }
-    select {
-        font-size: 0.7em;
-        height: 40px;
-        width: 190px;
-        border: none;
-        background-color: #F2F2F2;
-        border-radius: 8px;
-        padding-left: 10px;
-    }
-    .row-checkbox {
-        display: flex;
-        justify-content: left;
-        flex-direction: column;
+        width: 65vw;
     }
 
+    /* #container-login form .remember-forgot {
+        flex-direction: column;
+    } */
 }
