@@ -275,7 +275,7 @@
         });
     </script>
 <?php
-    $jsPagina = ['home.js']; //Colocar o arquivo .js
+    $jsPagina = ['home-doador.js']; //Colocar o arquivo .js
     require_once '../../components/footer.php';
 ?>
 

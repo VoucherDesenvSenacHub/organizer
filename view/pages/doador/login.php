@@ -15,7 +15,7 @@
                 </div>
                 <div class="input-item">
                     <label for="senha">Senha<span>*</span></label>
-                    <input id="senha" type="password" maxlength="20 "placeholder="********" required>
+                    <input id="senha" type="password" maxlength="20" placeholder="********" required>
                 </div>
                 <div class="remember-forgot">
                     <div class="remember">
@@ -52,8 +52,11 @@
     <i class="fa-regular fa-circle-check"></i>
     Email enviado com sucesso!
 </div>
-
+<div id="toast-sucesso-cadastro" class="toast">
+    <i class="fa-regular fa-circle-check"></i>
+    Cadastro efetuado com sucesso!
+</div>
 <?php
-    $jsPagina = [];
+    $jsPagina = ['login-doador.js'];
     require_once '../../components/footer.php';
 ?>
