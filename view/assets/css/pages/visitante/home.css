@@ -354,7 +354,7 @@
     display: flex;
 }
 
-  .conteiner-forma{
+  .conteiner-forma {
     background-color: #1C3464;
     border-radius: 10px;
     padding: 20px;
@@ -363,33 +363,33 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   }
   
-  h2 {
+  #body-empresas h2 {
     text-align: center;
     margin-bottom: 20px;
     color: #ffffff;
     font-weight: 400;
   }
 
-  .Cnpj{
+  #body-empresas .Cnpj{
     color:#E3B652;
   }
   
-  .mens{
+  #body-empresas .mens{
     color:#E3B652;
   }
   
-  form {
+  #body-empresas form {
     display: flex;
     flex-direction: column;
   }
   
-  label {
+  #body-empresas label {
     font-size: 14px;
     margin-bottom: 5px;
   }
   
-  input,
-  textarea {
+  #body-empresas input,
+  #body-empresas textarea {
     background-color: #2d4b7a;
     border: none;
     border-radius: 5px;
@@ -399,12 +399,12 @@
     font-size: 14px;
   }
   
-  input::placeholder,
-  textarea::placeholder {
+  #body-empresas input::placeholder,
+  #body-empresas textarea::placeholder {
     color: #6C8CCA;
   }
   
-  .botoes button {
+  #body-empresas .botoes button {
     background-color: #E3B652;
     color: #000000;
     border: none;
@@ -415,18 +415,18 @@
     transition: 0.5s;
   }
   
-  button:hover {
+  #body-empresas button:hover {
     background-color: #dda439;
     top: 100px;
   }
 
-.botoes{
+  #body-empresas .botoes{
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.botoes .btn-voltar{
+#body-empresas .botoes .btn-voltar{
   text-decoration: none;
   background-color: #2d4b7a;
   padding: 10px;
@@ -441,7 +441,7 @@
     height: 400px;
   }
 
-  .botoes button{
+  #body-empresas .botoes button{
     padding: 12px 70px;
     font-size: 12px;
   }
