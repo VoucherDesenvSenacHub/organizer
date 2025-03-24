@@ -299,7 +299,7 @@
                         </div>
                     </li>
                     <li class="slide">
-                        <p class="doadores-projeto">ONG RESPONSÁVEL</p>
+                        <p class="doadores-projeto">Ong responsável</p>
                         <div class="responsaveis">
                             <div class="conteiner-responsaveis">
                                 <div class="img">

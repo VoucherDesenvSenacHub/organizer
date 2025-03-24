@@ -1,3 +1,6 @@
+body {
+    background-color: aliceblue;
+}
 
 #principal {
     display: flex;
@@ -6,8 +9,8 @@
     flex-wrap: wrap;
     z-index: 1;
     width: 80%;
-    margin: 120px auto;
-    padding: 10px;
+    height: fit-content;
+    margin: auto;
     background-color: #FFFFFF;
     border-radius: 8px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -35,7 +38,7 @@
 
 .principal-esq {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     flex-direction: column;
     width: 100%;
@@ -46,7 +49,7 @@
 
 .principal-dir {
     display: flex;
-    justify-content: start;
+    justify-content: space-around;
     align-items: start;
     flex-wrap: wrap;
     width: 100%;
@@ -290,8 +293,8 @@
 
 .responsaveis {
     display: flex;
-    justify-content: start;
-    align-items: start;
+    justify-content: center;
+    align-items: center;
     flex-wrap: wrap;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     border-radius: 10px;
@@ -562,6 +565,7 @@
     width: 60%;
     padding: 7px;
     margin-top: 20px;
+    cursor: pointer;
 }
 
 
