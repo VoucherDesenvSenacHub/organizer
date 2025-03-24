@@ -9,6 +9,7 @@
         integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" /> 
     
+    <link rel="icon" type="image/x-icon" href="../../assets/images/global/Logo-Organizer.png">
     <!-- CSS GLOBAL -->
     <link rel="stylesheet" href="../../assets/css/global/style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined">
@@ -27,10 +28,10 @@
     <!-- NAVBAR -->
     <header>
         <div class="container">
-            <div class="logo">
-            <img src="../../assets/images/global/Logo-Organizer.png">
-            <h1>Organizer</h1>
-            </div>
+            <a class="logo" href="../../../index.php">
+                <img src="../../assets/images/global/Logo-Organizer.png">
+                <h1>Organizer</h1>
+            </a>
             <nav id="nav-bar">
                 <ul>
                     <li><a href="../../../index.php">Home</a></li>
