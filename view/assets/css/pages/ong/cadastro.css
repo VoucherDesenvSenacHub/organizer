@@ -311,6 +311,11 @@ h4 {
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.3);
 }
 
+.proximo a{
+    text-decoration: none;
+    color: inherit;
+}
+
 /* Atuação ONG */
 #form-atuacao{
     margin-left: 90px;
