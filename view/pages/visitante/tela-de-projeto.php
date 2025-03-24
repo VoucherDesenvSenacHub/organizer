@@ -38,10 +38,9 @@
                             <p><strong>24  </strong>Doações Recebidas</p>
                         </div>
                         <div class="btn-favoritos-compartilhar" >
-                            <button class="btn-favoritos" onclick="abrir_popup('erro403')"><img src="../../assets/images/love.png"alt=""></button>
-                            <button class="btn-compartilhar" onclick="abrir_popup('erro403')"><img src="../../assets/images/share.png"alt=""></button>
+                            <button id="like" class="fa-solid fa-heart" onclick="abrir_popup('login-obrigatorio-popup')"></button>
+                            <button id="share" class="fa-solid fa-share-nodes" onclick="abrir_popup('compartilhar-popup')"></button>                        </div>
                         </div>
-                    </div>
                     <div class="btns-ajudar-projeto">
                         <button class="btn-doacao" onclick="abrir_popup('erro403')" >Fazer uma doação</button>
                         <button class="btn-voluntario"onclick="abrir_popup('erro403')">Tornar-se voluntário</button>
@@ -51,7 +50,7 @@
                     <div class="carousel-imgs">
                         <img src="../../assets/images/ambiental.png" alt="" class="carousel-item">
                         <img src="../../assets/images/ambiental.png"alt="" class="carousel-item">
-                        <img src="" alt="" class="carousel-item">
+                        <img src="../../assets/images/ambiental.png" alt="" class="carousel-item">
                     </div>
                 </div>
             </div>
@@ -84,7 +83,7 @@
                             reiciendis maiores dignissimos sint quidem tenetur impedit.</p>
                     </li>
                     <li class="slide">
-                        <p class="doadores-projeto">DOADORES DESTE PROJETO</p>
+                        <p class="doadores-projeto">Doadores deste projeto</p>
                         <div class="doadores">
                             <div class="doador">
                                 <div class="icon-name">
@@ -180,7 +179,7 @@
                         </div>
                     </li>
                     <li class="slide">
-                        <p class="doadores-projeto">NOSSOS APOIADORES</p>
+                        <p class="doadores-projeto">Nossos apoiadores</p>
                         <div class="voluntarios">
                             <div class="voluntario">
                                 <div class="icon-name">
@@ -300,7 +299,7 @@
                         </div>
                     </li>
                     <li class="slide">
-                        <p class="doadores-projeto">ONG RESPONSÁVEL</p>
+                        <p class="doadores-projeto">Ong responsável</p>
                         <div class="responsaveis">
                             <div class="conteiner-responsaveis">
                                 <div class="img">
@@ -313,7 +312,7 @@
                                         <p>Saúde</p>    
                                         <p>Esporte</p>
                                     </div>
-                                    <a href="php"></a><button class="btn-respondavel">
+                                    <a href="perfil-ong.php"><button class="btn-respondavel">
                                         Conhecer ONG</button></a>
                                 </div>
                             </div>

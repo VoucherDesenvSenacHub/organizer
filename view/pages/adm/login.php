@@ -1,11 +1,8 @@
 <?php
-$tituloPagina = 'Login ADM'; // Definir o título da página
-$cssPagina = ['adm/login.css']; //Colocar o arquivo .css 
+    $tituloPagina = 'Login ADM'; // Definir o título da página
+    $cssPagina = ['adm/login.css']; //Colocar o arquivo .css 
+    require_once '../../components/header.php';
 ?>
-
-<?php require_once '../../components/header.php'; ?>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
-
 
 <!-- Início DIV principal -->
 <div id="principal">
@@ -16,7 +13,7 @@ $cssPagina = ['adm/login.css']; //Colocar o arquivo .css
         <form class="form-login">
             <div class="form-email">
                 <label for="email">Email</label><br>
-                <input type="text" id="email-corp" placeholder="usuario@conta.com"><br>
+                <input type="email" id="email-corp" placeholder="usuario@conta.com"><br>
             </div>
             <div class="form-senha">
                 <label for="senha">Senha</label><br>

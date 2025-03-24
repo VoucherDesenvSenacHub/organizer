@@ -9,6 +9,8 @@
         integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" /> 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+
+    <link rel="icon" type="image/x-icon" href="../../assets/images/global/Logo-Organizer.png">
     <!-- CSS GLOBAL -->
     <link rel="stylesheet" href="../../assets/css/global/style.css">
 
@@ -23,7 +25,32 @@
 </head>
 
 <body>
+    <header>
+        <div class="container">
+            <div class="logo">
+            <img src="../../assets/images/global/Logo-Organizer.png">
+            <h1>Organizer</h1>
+                </div>
+            <nav id="nav-bar">
+                <ul>
+                    <li><a href="home.php">Home</a></li>
+                    <li><a href="#">Ongs</a></li>
+                    <li><a href="#">Projetos</a></li>
+                    <li><a href="#">Notícias</a></li>
+                </ul>
+            </nav>
+            <!-- <div class="btn-login">
+                <button class="btn" id="openPopup" onclick="loginPopup()">LOGIN</button>
+                <button onclick="menu_mobile()" id="hamburguer"></button>
+            </div> -->
+            <button class="botao-aside" onclick="asidebar()"><i class="fa-solid fa-bars"></i></button>
+        </div>
+    </header>
     <?php 
-        require_once 'navbar-usuario.php'; 
         require_once 'aside-usuario.php'; 
     ?>
+    <div id="sair-doador">
+        <?php 
+            require_once 'sair-da-conta-popup.php'; 
+        ?>
+    </div>

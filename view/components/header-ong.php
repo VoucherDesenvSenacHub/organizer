@@ -26,30 +26,39 @@
 
 <body>
     <!-- NAVBAR -->
-    <header>
+    <header id="header-ong">
         <div class="container">
-            <a class="logo" href="../../../index.php">
-                <img src="../../assets/images/global/Logo-Organizer.png">
-                <h1>Organizer</h1>
+            <a href="home.php">
+                <div class="logo">
+                    <img src="../../assets/images/global/Logo-Organizer.png">
+                    <h1>Organizer</h1>
+                </div>
             </a>
             <nav id="nav-bar">
                 <ul>
-                    <li><a href="../../../index.php">Home</a></li>
-                    <li><a href="../visitante/ongs.php" class="<?= (basename($_SERVER['PHP_SELF']) == 'ongs.php') ? 'active' : ''; ?>">Ongs</a></li>
-                    <li><a href="../visitante/projetos.php" class="<?= (basename($_SERVER['PHP_SELF']) == 'projetos.php') ? 'active' : ''; ?>">Projetos</a></li>
-                    <li><a href="../visitante/tela-noticia.php">Notícias</a></li>
+                    <li><a href="home.php">Home</a></li>
+                    <li><a href="#">Projetos</a></li>
+                    <li><a href="#">Voluntários</a></li>
+                    <li><a href="relatorios.php">Relatórios</a></li>
                 </ul>
             </nav>
-            <div class="btn-login">
-                <button class="btn" id="openPopup" onclick="abrir_popup('fundo-login-popup')">LOGIN</button>
-                <button onclick="menu_mobile()" id="hamburguer"></button>
+            <div id="btns-ong">
+                <button id="btn-ong-conta" onclick="ativar_classe('btn-ong-conta')">
+                    <i class="fa-solid fa-user"></i>
+                    <span>Conta</span>
+                </button>
+                <div class="dropdown">
+                    <a href="perfil.php"><button><i class="fa-solid fa-user-pen"></i>Editar Perfil</button></a>
+                    <button onclick="abrir_popup('sair-da-conta-popup')"><i class="fa-solid fa-right-from-bracket"></i>Sair</button>
+                    </div>
+                <div class="btn-login">
+                    <button onclick="menu_mobile()" id="hamburguer"></button>
+                </div>
             </div>
         </div>
     </header>
-    
-    <?php 
-        require_once 'login-popup.php'; //EFEITO POPUP DO LOGIN
-        require_once 'requer-login.php'; //POPUP LOGIN OBRIGATORIO
-        require_once 'compartilhar.php'; //POPUP DE COMPARTILHAR
-    ?>
-    
+    <div id="sair-ong">
+        <?php 
+            require_once 'sair-da-conta-popup.php'; 
+        ?>
+    </div>
