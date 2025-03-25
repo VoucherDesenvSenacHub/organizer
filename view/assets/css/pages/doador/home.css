@@ -173,6 +173,16 @@ section .container #secao-1{
 /* SEÇÃO 3 */
 #secao-3 {
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#secao-3 .cards{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
 }
 
 #secao-3 h3 {
