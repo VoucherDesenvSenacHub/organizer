@@ -29,8 +29,9 @@
 </div>
 
 <!-- Início DIV Cadastro -->
-<div id="cadastro">
-
+<div id="cadastro-completo">
+    <div id="container">
+        <div id="cadastro">
             <div class="formulario-geral">
                 <div class="titulo">
                     <h1>CADASTRO</h1>
@@ -53,9 +54,7 @@
                             <label for="email">Email</label><br>
                             <input type="email" id="mailOng" placeholder="usuario@conta.com">
                         </div>
-                </div>
-            <div class="btn-navegacao-first">
-            <button class="proximo" type="button" onClick="mudaPagina('cadastro', false)">Próximo</button>
+                    </div>
             </div>
         </div>
         <!-- Fim DIV Cadastro  -->
@@ -112,10 +111,7 @@
                     </div>
                 </div>
             </div>
-            <div class="btn-navegacao">
-                <button class="voltar" type="button" onClick="mudaPagina('cadastro', true)">Voltar</button>
-                <button class="proximo" type="button" onClick="mudaPagina('atuacao', false)">Próximo</button>
-            </div>
+            
         </div>
         </div>
         <!-- Fim Atuação da ONG -->
@@ -145,115 +141,106 @@
                     <input type="text" id="uf" placeholder="Mato Grosso do Sul">
                 </div>
             </div>
-            <div class="btn-navegacao">
-                <button class="voltar" type="button" onClick="mudaPagina('atuacao', true)">Voltar</button>
-                <button class="proximo" type="button" onClick="mudaPagina('endereco', false)">Próximo</button>
-            </div>
+            
         </div>
         
-    <!-- Fim Endereço -->
+        <!-- Fim Endereço -->
 
-    <!-- Início Responsável -->
-    <div id="responsavel">
+        <!-- Início Responsável -->
+        <div id="responsavel">
+            <div class="formulario-geral">
+                <div class="titulo">
+                    <h1>RESPONSÁVEL PELA ONG</h1>
+                </div>
+                    <div>
+                        <label for="nome">Nome</label><br>
+                        <input type="text" id="nome" placeholder="Nome completo">
+                    </div>
+                    <div>
+                        <label for="cpf">CPF</label><br>
+                        <input type="text" id="cpf" placeholder="000.000.000-00">
+                    </div>
+                    <div>
+                        <label for="telefone">Telefone</label><br>
+                        <input type="tel" id="telefone" placeholder="(00) 0000-0000">
+                    </div>
+                    <div>
+                        <label for="email">Email</label><br>
+                        <input type="email" id="email" placeholder="usuario@conta.com">
+                    </div>
+                
+            </div>
+        </div>
+        <!-- Fim Responsável -->
+
+        <!-- Início Dados bancários -->
+        <div id="dados-bancarios">
         <div class="formulario-geral">
             <div class="titulo">
-                <h1>RESPONSÁVEL PELA ONG</h1>
+                <h1>DADOS BANCÁRIOS</h1>
             </div>
-                <div>
-                    <label for="nome">Nome</label><br>
-                    <input type="text" id="nome" placeholder="Nome completo">
-                </div>
-                <div>
-                    <label for="cpf">CPF</label><br>
-                    <input type="text" id="cpf" placeholder="000.000.000-00">
-                </div>
-                <div>
-                    <label for="telefone">Telefone</label><br>
-                    <input type="tel" id="telefone" placeholder="(00) 0000-0000">
-                </div>
-                <div>
-                    <label for="email">Email</label><br>
-                    <input type="email" id="email" placeholder="usuario@conta.com">
-                </div>
-            <div class="btn-navegacao">
-                <button class="voltar" type="button" onClick="mudaPagina('endereco', true)">Voltar</button>
-                <button class="proximo" type="button" onClick="mudaPagina('responsavel', false)">Próximo</button>
+            <div>
+                <label for="banco">Banco</label><br>
+                <input type="text" id="banco" placeholder="Banco">
             </div>
+            <div>
+                <label for="agencia">Agência</label><br>
+                <input type="text" id="agencia" placeholder="Agência">
+            </div>
+            <div>
+                <label for="conta">Conta</label><br>
+                <input type="tel" id="conta" placeholder="Conta">
+            </div>
+            <div>
+                <label for="tipo">Tipo</label><br>
+                <select name="tipo" id="tipo">
+                    <option value="c-corrente">Conta Corrente</option>
+                    <option value="c-poupanca">Conta Poupança</option>
+                </select>
+            </div>
+        
         </div>
-    </div>
-    <!-- Fim Responsável -->
+        </div>
+        <!-- Fim Dados bancários -->
 
-    <!-- Início Dados bancários -->
-    <!-- <div id="dados-bancarios"> -->
-    <div id="dados-bancarios">
-    <div class="formulario-geral">
-        <div class="titulo">
-            <h1>DADOS BANCÁRIOS</h1>
+        <!-- Início Criar login -->
+
+        <div id="criar-login">
+            <div class="formulario-geral">
+            <div class="titulo">
+                <h1>CRIAR SEU LOGIN</h1>
+            </div>
+            <div id="senhas">
+                <div>
+                    <label for="senha-login">Senha</label><br>
+                    <input type="password" id="senha-login" placeholder="**********">
+                    <button class="ver-senha" type="button"onclick="showHide('senha-login', 'eyepassword')">
+                        <span class="material-symbols-outlined" id="eyepassword">
+                            visibility
+                        </span>
+                    </button>
+                </div>
+                <div>
+                    <label for="conf-senha">Confirmar senha</label><br>
+                    <input type="password" id="conf-senha" placeholder="**********">
+                    <button class="ver-senha" type="button" onclick="showHide('conf-senha', 'eye-conf-password')">
+                        <span class="material-symbols-outlined" id="eye-conf-password">
+                            visibility
+                        </span>
+                    </button>
+                </div>
+            </div>
         </div>
-        <div>
-            <label for="banco">Banco</label><br>
-            <input type="text" id="banco" placeholder="Banco">
-        </div>
-        <div>
-            <label for="agencia">Agência</label><br>
-            <input type="text" id="agencia" placeholder="Agência">
-        </div>
-        <div>
-            <label for="conta">Conta</label><br>
-            <input type="tel" id="conta" placeholder="Conta">
-        </div>
-        <div>
-            <label for="tipo">Tipo</label><br>
-            <select name="tipo" id="tipo">
-                <option value="c-corrente">Conta Corrente</option>
-                <option value="c-poupanca">Conta Poupança</option>
-            </select>
-        </div>
-    <div class="btn-navegacao">
-        <button class="voltar" type="button" onClick="mudaPagina('responsavel', true)">Voltar</button>
-        <button class="proximo" type="button" onClick="mudaPagina('dados-bancarios', false)">Próximo</button>
+        <!-- Fim Criar login -->
     </div>
 </div>
 </div>
-    <!-- Fim Dados bancários -->
-
-    <!-- Início Criar login -->
-
-    <!-- <div id="criar-login"> -->
-    <div id="criar-login">
-        <div class="formulario-geral">
-        <div class="titulo">
-            <h1>CRIAR SEU LOGIN</h1>
-        </div>
-        <div>
-            <label for="senha-login">Senha</label><br>
-            <input type="password" id="senha-login" placeholder="**********">
-            <button class="ver-senha" type="button"onclick="showHide('senha-login', 'eyepassword')">
-                <span class="material-symbols-outlined" id="eyepassword">
-                    visibility
-                </span>
-            </button>
-        </div>
-        <div>
-            <label for="conf-senha">Confirmar senha</label><br>
-            <input type="password" id="conf-senha" placeholder="**********">
-            <button class="ver-senha" type="button" onclick="showHide('conf-senha', 'eye-conf-password')">
-                <span class="material-symbols-outlined" id="eye-conf-password">
-                    visibility
-                </span>
-            </button>
-        </div>
-        <div class="btn-navegacao">
-            <button class="voltar" type="button" onClick="mudaPagina('dados-bancarios', true)">Voltar</button>
-            <a href="login.php">
-                <button class="proximo" type="button">Cadastrar</button>
-            </a>
-        </div>
-    </div>
-<!-- </div> -->
-<!-- Fim Criar login -->
+<div class="btn-navegacao">
+    <button class="voltar" type="button" onClick="mudaEtapaCadastro(-1)">Voltar</button>
+    <button class="proximo" type="button" onClick="mudaEtapaCadastro(1)">Próximo</button>
+</div>
 </form>
-</div>
+
     <?php
         $jsPagina = ['ongs.js']; //Colocar o arquivo .js
         require_once '../../components/footer.php';

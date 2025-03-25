@@ -11,24 +11,39 @@ h4 {
     color: #5282E3;
     padding-bottom: 10px;
 }
-
-#cadastro {
+#container {
     display: flex;
-    justify-content: space-around;
-    width: 50%;
-    height: 80vh;
-    overflow: scroll;
-    gap: 200px;
-    margin: 20px auto;
-    padding: 20px;
+    transition: 0.7s ease-in-out;
+    transform: translateX(0);
+    /* justify-content: space-around;
+    width: 60%;
+    height: 80vh; */
+    /* gap: 400px;
+    margin: 5px auto;
+    margin-bottom: 20px;
+    padding: 5px;
     background-color: #FFFFFF;
     border-radius: 8px;
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.7);
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.7); */
     h1 {
         font-size: 1.5em;
         font-weight: 400;
         color: #5282E3;
     }
+}
+#cadastro-completo{
+    display: flex;
+    justify-content: space-around;
+    width: 60%;
+    height: 80vh;
+    gap: 400px;
+    margin: 5px auto;
+    margin-bottom: 20px;
+    padding: 5px;
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.7);
+    overflow: hidden;
 }
 .titulo {
     display: flex;
@@ -37,13 +52,24 @@ h4 {
     padding-bottom: 100px;
     justify-content: start;
 }
-#dados1 {
-    width: 60vh;
+#cadastro {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    translate: 0;
+    justify-content: space-between;
+    width: 60%;
+    margin: 0px auto;
+}
+#atuacao {
+    position: relative;
+    left: 20px;
 }
 
 #endereco {
     display: flex;
     flex-direction: column;
+    position: relative;
     justify-content: space-around;
     width: 60%;
     margin: 20px auto;
@@ -52,26 +78,26 @@ h4 {
 #responsavel {    
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    position: relative;
+    justify-content: space-between;
     width: 60%;
-    margin: 20px 50px;
-    padding: 20px 50px;
+    margin-top: 5px;
 }
 #dados-bancarios {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    position: relative;
+    justify-content: space-between;
     width: 60%;
-    margin: 20px 50px;
-    padding: 20px;
+    margin-top: 5px;
 }
 #criar-login {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    position: relative;
+    justify-content: space-between;
     width: 60%;
-    margin: 20px 50px;
-    padding: 20px;
+    margin-top: 5px;
 }
 
 .titulo-cadastro {
@@ -217,6 +243,10 @@ h4 {
 }
 .btn-navegacao{
     display: flex;
+    position: fixed;
+    width: 55%;
+    bottom: 50px;
+    left: 20%;
     justify-content: space-between;
     padding: 10px 90px;
 }
@@ -227,10 +257,10 @@ h4 {
 }
 .ver-senha{
     display: block;
-    position: relative;
+    position: fixed;
     border: none;
     top: -35px;
-    left: 210px;
+    left: 260px;
 }
 .voltar, .proximo {
     font-family: 'Poppins', sans-serif;
@@ -315,6 +345,12 @@ h4 {
         display: none;
         
     }
+}
+
+#senhas {
+    display: flex;
+    padding-top: 100px;
+    gap: 50px;
 }
 @keyframes volta-pagina {
     from {

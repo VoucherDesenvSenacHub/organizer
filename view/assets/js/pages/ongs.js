@@ -1,10 +1,10 @@
-function mudaMenu() {
-    let hbgMenu = document.querySelector('#hamburger-menu');
-    let btnHamburger = document.querySelector("#botao-hamburger");
-    hbgMenu.style.display = 'flex';
-    hbgMenu.id = 'hamburger-menu-slide';
-    btnHamburger.style.opacity = 0;
-}
+// function mudaMenu() {
+//     let hbgMenu = document.querySelector('#hamburger-menu');
+//     let btnHamburger = document.querySelector("#botao-hamburger");
+//     hbgMenu.style.display = 'flex';
+//     hbgMenu.id = 'hamburger-menu-slide';
+//     btnHamburger.style.opacity = 0;
+// }
 
 // Link para card direta do cadastro
 function targetPage(target, actual){
@@ -20,17 +20,26 @@ function targetPage(target, actual){
         }
     }
 }
+// Passar etapas do cadastro
+function mudaEtapaCadastro(page){
+    const etapa = document.getElementById("container");
+    let passo = -(page)*800;
+    etapa.style.transform = `translateX(${passo}px)`;
+    let pag_atual = etapa.getBoundingClientRect();
+    alert (pag_atual.right);
+    let paginas = ['cadastro', 'atuacao', 'endereco','responsavel','dados-bancarios','criar-login'];
+    document.getElementById(paginas[page]);
 
-// Virar páginas gerais do cadastro
-function mudaPagina(p, action) {
-    let pagina = document.getElementById(p);
-    // action ? pagina.style.display = "flex" : pagina.style.display = "none";
-    if (!action){
-        pagina.style.animation = "vira-pagina 1s forwards";
-    }else {
-        pagina.style.animation = "volta-pagina 1s forwards";
-    }
 }
+// Virar páginas gerais do cadastro
+// function mudaPagina(p, action) {
+//     let pagina = document.getElementById(p);
+//     if (!action){
+//         pagina.style.animation = "vira-pagina 1s forwards";
+//     }else {
+//         pagina.style.animation = "volta-pagina 1s forwards";
+//     }
+// }
 
 // Exibe e oculta senha digitada
 
