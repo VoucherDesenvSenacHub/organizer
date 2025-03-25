@@ -307,7 +307,8 @@
         </div>
         <div class="btn-navegacao">
             <button class="voltar" type="button" onClick="mudaPagina('dados-bancarios', true)">Voltar</button>
-            <button class="proximo" type="submit">Cadastrar</button>
+            <button class="proximo"><a href="home.php">Cadastrar</a></button>
+            
         </div>
     </div>
     <!-- Fim Criar login -->
