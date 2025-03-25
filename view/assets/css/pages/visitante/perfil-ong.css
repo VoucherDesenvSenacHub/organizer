@@ -152,6 +152,7 @@ section#apresentacao {
     border-radius: 50px;
     padding:  5px 10px;
     color: var(--cor-azul-escuro);
+    background-color: #f0f0f0;
     cursor: default;
 }
 .icon-title h3 {
