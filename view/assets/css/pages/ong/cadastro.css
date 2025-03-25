@@ -16,16 +16,7 @@ h4 {
     gap: 200px;
     transition: 0.7s ease-in-out;
     transform: translateX(0);
-    /* justify-content: space-around;
-    width: 60%;
-    height: 80vh; */
-    /* gap: 400px;
-    margin: 5px auto;
-    margin-bottom: 20px;
-    padding: 5px;
-    background-color: #FFFFFF;
-    border-radius: 8px;
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.7); */
+    
     h1 {
         font-size: 1.5em;
         font-weight: 400;
@@ -222,7 +213,7 @@ h4 {
     left: 20px;
     width: 1000px;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: space-evenly;
     padding: 35px;
     gap: 40px;
     input {
