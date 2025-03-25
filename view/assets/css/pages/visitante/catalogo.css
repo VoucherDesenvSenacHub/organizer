@@ -1,3 +1,8 @@
+#nav-bar ul li a.active {
+    color: var(--cor-amarelo);
+    font-weight: bold;
+}
+
 body {
     background-color: aliceblue;
 }

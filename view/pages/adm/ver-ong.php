@@ -1,11 +1,10 @@
-<?php 
-    $tituloPagina = 'Ver ONG ADM '; // Definir o título da página
-    $cssPagina = ['adm/ver-ong.css']; //Colocar o arquivo .css 
-    require_once '../../components/header.php';
+<?php
+$tituloPagina = 'Ver ONG ADM '; // Definir o título da página
+$cssPagina = ['adm/ver-ong.css']; //Colocar o arquivo .css 
+require_once '../../components/header-adm.php';
 ?>
 
-
-    <!-- Início DIV principal -->
+<main>
     <div id="principal">
         <div class="top">
             <h1 class="top-text">TODAS AS ONGS</h1>
@@ -19,32 +18,45 @@
             <div class="card_ong">
                 <img src="../../assets/images/ong_placeholder.png" class="card_img">
                 <h1 class="card-text">ONG Todos Juntos</h1>
-                <button class="btn_card">Vizualizar</button>
+                <a href="">
+                    <button class="btn_card">Vizualizar</button>
+                </a>
+
             </div>
             <div class="card_ong">
                 <img src="../../assets/images/ong_placeholder_2.png" class="card_img">
                 <h1 class="card-text">ONG Todos Juntos</h1>
-                <button class="btn_card">Vizualizar</button>
+                <a href="">
+                    <button class="btn_card">Vizualizar</button>
+                </a>
             </div>
             <div class="card_ong">
                 <img src="../../assets/images/ong_placeholder.png" class="card_img">
                 <h1 class="card-text">ONG Todos Juntos</h1>
-                <button class="btn_card">Vizualizar</button>
+                <a href="">
+                    <button class="btn_card">Vizualizar</button>
+                </a>
             </div>
             <div class="card_ong">
                 <img src="../../assets/images/ong_placeholder_2.png" class="card_img">
                 <h1 class="card-text">ONG Todos Juntos</h1>
-                <button class="btn_card">Vizualizar</button>
+                <a href="">
+                    <button class="btn_card">Vizualizar</button>
+                </a>
             </div>
             <div class="card_ong">
                 <img src="../../assets/images/ong_placeholder.png" class="card_img">
                 <h1 class="card-text">ONG Todos Juntos</h1>
-                <button class="btn_card">Vizualizar</button>
+                <a href="">
+                    <button class="btn_card">Vizualizar</button>
+                </a>
             </div>
             <div class="card_ong">
                 <img src="../../assets/images/ong_placeholder_2.png" class="card_img">
                 <h1 class="card-text">ONG Todos Juntos</h1>
-                <button class="btn_card">Vizualizar</button>
+                <a href="">
+                    <button class="btn_card">Vizualizar</button>
+                </a>
             </div>
         </div>
         <div class="botoes">
@@ -55,8 +67,9 @@
             <button class="btn_nav">></button>
         </div>
     </div>
-    <!-- Fim DIV principal  -->
+</main>
+
 <?php
-    $jsPagina = []; //Colocar o arquivo .js (exemplo: 'ONG/cadastro.js')
-    require_once '../../components/footer.php';
+$jsPagina = []; //Colocar o arquivo .js (exemplo: 'ONG/cadastro.js')
+require_once '../../components/footer.php';
 ?>

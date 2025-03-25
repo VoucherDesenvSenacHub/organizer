@@ -20,7 +20,7 @@ section .container{
     padding-bottom: 100px;
 }
 
-.container h1{
+section .container h1{
     color: #007AFF;
     font-weight: 500;
     font-size: 30px;

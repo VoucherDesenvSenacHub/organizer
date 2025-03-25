@@ -157,7 +157,7 @@
                 <p class="email">julia@gmail.com.br</p>
             </div>
             <div>
-                <button onclick="abrir_popup_confirmacao('fundo-confirmacao')" class="logout">
+                <button onclick="abrir_popup('sair-da-conta-popup')" class="logout">
                     <span class="material-symbols-outlined">logout</span>
                     Sair
                 </button>
@@ -220,7 +220,7 @@
         </div>
         </div>
     </div>
-    <div id="fundo-confirmacao">
+    <!-- <div id="fundo-confirmacao">
         <div id="confirmacao">
             <span>Deseja mesmo sair da conta?</span>
             <div>
@@ -228,7 +228,7 @@
                 <button class="nao-sair" onclick="fechar_confirmacao()" href="">NÃO</button>
             </div>
         </div>
-    </div>
+    </div> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
     <script type="text/javascript">
@@ -239,6 +239,6 @@
     </script>
 </main>
 <?php
-    $jsPagina = ['home.js']; //Colocar o arquivo .js (exemplo: 'ONG/cadastro.js')
+    $jsPagina = ['home-doador.js']; //Colocar o arquivo .js (exemplo: 'ONG/cadastro.js')
     require_once '../../components/footer.php';
 ?>

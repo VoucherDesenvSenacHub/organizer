@@ -1,49 +1,36 @@
-<?php
-$tituloPagina = 'Login ADM'; // Definir o título da página
-$cssPagina = ['adm/login.css']; //Colocar o arquivo .css 
+<?php 
+    $tituloPagina = 'Login do Doador';
+    $cssPagina = ['adm/login.css'];
+    require_once '../../components/header.php';
 ?>
-
-<?php require_once '../../components/header.php'; ?>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
-
-
-<!-- Início DIV principal -->
-<div id="principal">
-    <div class="principal-esq">
-        <div class="titulo-login">
+<!-- COMEÇAR SEU CÓDIGO AQUI -->
+<main>
+    <div id="container-login" class="container">
+        <form action="home.php" method="GET">
             <h1>ACESSO RESTRITO</h1>
-        </div>
-        <form class="form-login">
-            <div class="form-email">
-                <label for="email">Email</label><br>
-                <input type="email" id="email-corp" placeholder="usuario@conta.com"><br>
-            </div>
-            <div class="form-senha">
-                <label for="senha">Senha</label><br>
-                <input type="password" id="password-corp" placeholder="**********"><br>
-                <button id="ver-senha"><span class="material-symbols-outlined">
-                        visibility
-                    </span></button>
-            </div>
-            <div class="form-opcoes">
-                <div id="chk-box">
-                    <input type="checkbox" id="manter-conectado">
-                    <label for="checkbox">Manter conectado</label>
+            <div class="input-group">
+                <div class="input-item">
+                    <label for="email">Email<span>*</span></label>
+                    <input id="email" type="email" maxlength="45" placeholder="usúario@conta.com" required>
+                </div>
+                <div class="input-item">
+                    <label for="senha">Senha<span>*</span></label>
+                    <input id="senha" type="password" maxlength="20" placeholder="********" required>
+                </div>
+                <div class="remember-forgot">
+                    <div class="remember">
+                        <input type="checkbox" id="lembrar">
+                        <label for="lembrar">Manter conectado</label>
+                    </div>
                 </div>
             </div>
-            <div id="login-adm">
-                <button class="login-submit"><a href="home.php">Entrar</a></button>
-            </div>
+            <button class="btn">ENTRAR</button>
         </form>
+            <img alt="Celular-Login" src="../../assets/images/login_adm.png">
     </div>
-    <div class="principal-dir">
-        <img src="../../assets/images/login_adm.png" alt="">
-    </div>
-</div>
-<!-- Fim DIV principal  -->
+</main>
 
-</div>
 <?php
-$jsPagina = []; //Colocar o arquivo .js
-require_once '../../components/footer.php';
+    $jsPagina = ['login-doador.js'];
+    require_once '../../components/footer.php';
 ?>

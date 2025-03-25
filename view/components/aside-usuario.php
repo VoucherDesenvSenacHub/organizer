@@ -28,7 +28,7 @@
         </div>
     </div>
     <div class="aside-nav">
-        <button onclick="abrir_popup_confirmacao('fundo-confirmacao')" id="popup-confirmacao-aside" class="aside-sair">
+        <button onclick="abrir_popup('sair-da-conta-popup')" id="popup-confirmacao-aside" class="aside-sair">
             <i class="fa-solid fa-right-from-bracket"></i>
             Sair
         </button>
