@@ -8,6 +8,10 @@ const btnSolicitacoes = document.getElementById('v-solicitacoes');
 const telaVoluntariosSolicitacoes = document.getElementById('tela-voluntarios-solicitacoes');
 const btnVerSolicitacao = document.querySelectorAll('.btn-ver-solicitacao');
 const telaSolicitacaoVoluntario = document.getElementById('tela-solicitacao-voluntario');
+const btnAceitar = document.getElementById('aceitar');
+const telaAceitar = document.getElementById('tela-aceitar');
+const btnRecusar = document.getElementById('recusar');
+const telaRecusar = document.getElementById('tela-recusar');
 
 btnCard.forEach(card => {
     card.addEventListener('click', function () { telaAtivoPendentesVoluntario.style.display = "block"; })
@@ -30,6 +34,14 @@ btnVerSolicitacao.forEach( card => {
      })
 });
 
+btnAceitar.onclick = function() {
+    telaAceitar.style.display = "block";
+}
+
+btnRecusar.onclick = function() {
+    telaRecusar.style.display = "block";
+}
+
 window.onclick = function (event) {
     if (event.target == telaAtivoPendentesVoluntario) {
         telaAtivoPendentesVoluntario.style.display = "none";
@@ -44,6 +56,15 @@ window.onclick = function (event) {
         telaVoluntariosSolicitacoes.style.display = "none";
     }
     if (event.target == telaSolicitacaoVoluntario) {
+        telaSolicitacaoVoluntario.style.display = "none";
+    }
+    if (event.target == telaAceitar) {
+        telaAceitar.style.display = "none";
+        telaSolicitacaoVoluntario.style.display = "none";
+        
+    }
+    if (event.target == telaRecusar) {
+        telaRecusar.style.display = "none";
         telaSolicitacaoVoluntario.style.display = "none";
     }
 }

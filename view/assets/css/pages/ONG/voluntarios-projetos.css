@@ -90,6 +90,7 @@
     height: 70px;
     padding: 0 5px;
     border-radius: 4px;
+    cursor: pointer;
 }
 
 .card-ong .foto img{
@@ -164,6 +165,7 @@
     border-radius: 8px;
     width: 200px;  
     text-align: center;
+    cursor: pointer;
 }
 
 .v-solicitacoes{
@@ -176,6 +178,7 @@
     border-radius: 8px;
     width: 200px;  
     text-align: center;
+    cursor: pointer;
 }
 
 .v-ativos img, .v-solicitacoes img {
@@ -283,6 +286,7 @@
 .btn-inativar-voluntario img{
     width: 45px;
     height: 40px;
+    cursor: pointer;
 }
 
 /* tela notificação de voluntario deletado */
@@ -360,6 +364,7 @@
     border-radius: 5px;
     width: 140px;
     height: 40px;
+    cursor: pointer;
 }
 
 /* tela solicitação voluntario - mensagem e aceitar ou nao */
@@ -404,6 +409,7 @@
 
 .img-usuario-solicitacao{
     display: flex;
+    flex-direction: column; 
     justify-content: center;
     align-items: center; 
     height: 100%; 
@@ -413,6 +419,12 @@
     border-radius: 5px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
+
+.div-img-info{
+    display: flex;
+    margin-top: 5px;
+}
+
 .img-usuario-solicitacao .info {
     display: flex;
     flex-direction: column; 
@@ -431,7 +443,7 @@
 .div-btns {
     display: flex; 
     justify-content: center;
-    
+    margin-bottom: 5px;
     width: 100%; 
 }
 .div-btns button{
@@ -447,7 +459,7 @@
 }
 .div-btns .aceitar{
     background-color: #51CD32;
-    
+    cursor: pointer;
 }
 .div-btns .aceitar img{
     width: 35px;
@@ -456,8 +468,93 @@
 }
 .div-btns .recusar{
     background-color: #E64545;
+    cursor: pointer;
 }
 .div-btns .recusar img{
     width: 35px;
     height: auto;
+}
+
+/* tela aceitar */
+.tela-aceitar{
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 100px;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.card-aceitar{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    padding: 20px;
+    margin: 20px auto;
+    width: 25%;
+    border-radius: 10px;
+    gap: 10px;
+    position: fixed; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%);
+}
+
+.card-aceitar img {
+    width: 60px; 
+    height: auto; 
+    margin-bottom: 10px;  
+}
+
+.card-aceitar h1 {
+    font-size: 32px;
+    font-family: "Comfortaa", sans-serif;
+    color: #188241;
+    margin: 0;
+}
+
+/* tela recusar */
+.tela-recusar{
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 100px;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.card-recusar{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    padding: 20px;
+    margin: 20px auto;
+    width: 25%;
+    border-radius: 10px;
+    gap: 10px;
+    position: fixed; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%);
+}
+
+.card-recusar img {
+    width: 60px; 
+    height: auto; 
+    margin-bottom: 10px;  
+}
+
+.card-recusar h1 {
+    font-size: 32px;
+    font-family: "Comfortaa", sans-serif;
+    color: #E64545;
+    margin: 0;
 }

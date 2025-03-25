@@ -223,20 +223,38 @@
     <div class="card-solicitacao-voluntario">
         <div class="texto-solicitacao">
             <form action="">
-                <textarea name="" id="">kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk</textarea>
+                <textarea name="" id="">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur qui quasi accusamus ipsa inventore deserunt perspiciatis unde dolorum reiciendis officia? Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur qui quasi accusamus ipsa </textarea>
             </form>
         </div>
         <div class="img-usuario-solicitacao">
-            <img src= <?php echo $voluntario['img-voluntario'] ?> alt="">
-            <div class="info">
-                <h1><?php echo $voluntario['nome'] ?></h1>
-                <p><?php echo $voluntario['email'] ?></p>
+            <div class="div-img-info">
+                <img src= <?php echo $voluntario['img-voluntario'] ?> alt="">
+                <div class="info">
+                    <h1><?php echo $voluntario['nome'] ?></h1>
+                    <p><?php echo $voluntario['email'] ?></p>
+                </div>
             </div>
             <div class="div-btns">
-                <button class="aceitar"><span><img src="../../assets/images/aceitar.png" alt=""></span> Aceitar</button>
-                <button class="recusar"><span><img src="../../assets/images/recusar.png" alt=""></span>Recusar</button>
+                <button class="aceitar" id="aceitar"><span><img src="../../assets/images/aceitar.png" alt=""></span> Aceitar</button>
+                <button class="recusar" id="recusar"><span><img src="../../assets/images/recusar.png" alt=""></span>Recusar</button>
             </div>
         </div>
+    </div>
+</div>
+
+<!-- tela aceitar -->
+<div class="tela-aceitar" id="tela-aceitar">
+    <div class="card-aceitar">
+        <img src="../../assets/images/aceitar-verde.png" alt="">
+        <h1>Voluntário Aceito</h1>
+    </div>
+</div>
+
+<!-- tela recusar -->
+<div class="tela-recusar" id="tela-recusar">
+    <div class="card-recusar">
+        <img src="../../assets/images/voluntario-delete.png" alt="">
+        <h1>Voluntário Negado</h1>
     </div>
 </div>
 
