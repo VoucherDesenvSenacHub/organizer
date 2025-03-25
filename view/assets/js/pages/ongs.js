@@ -21,14 +21,36 @@ function targetPage(target, actual){
     }
 }
 // Passar etapas do cadastro
+var pagina_atual = 0;
+var botao_voltar = document.querySelector(".voltar");
+botao_voltar.style.visibility = "hidden";
 function mudaEtapaCadastro(page){
     const etapa = document.getElementById("container");
-    let passo = -(page)*800;
+    const linha = document.querySelector(".line-0");
+    let texto_atual = document.getElementById("t"+(page+pagina_atual+1))
+    let botao_atual = document.getElementById("b"+(page+pagina_atual+1));
+    if(page>0){
+        botao_atual.style.backgroundColor = "#5282E3";
+        texto_atual.style.color = "#000000"
+        linha.style.width = (page+pagina_atual)*20+"%";
+    }else {
+        botao_atual = document.getElementById("b"+(page+pagina_atual+2));
+        texto_atual = document.getElementById("t"+(page+pagina_atual+2));
+        botao_atual.style.backgroundColor = "#5282e39f";
+        texto_atual.style.color = "#6e6a6a";
+        linha.style.width = (page+pagina_atual)*20+"%";
+    }
+    let passo = -(page+pagina_atual)*1200;
     etapa.style.transform = `translateX(${passo}px)`;
-    let pag_atual = etapa.getBoundingClientRect();
-    alert (pag_atual.right);
+    page>0 ? pagina_atual++ : pagina_atual--;
+    pagina_atual != 0 ? botao_voltar.style.visibility = "visible" : botao_voltar.style.visibility = "hidden";
+    if(pagina_atual == 5){
+        let proximo = document.querySelector(".proximo");
+        let confirmar = document.querySelector("#confirmacao");
+        proximo.style.display = "none";
+        confirmar.style.display = "flex";
+    }
     let paginas = ['cadastro', 'atuacao', 'endereco','responsavel','dados-bancarios','criar-login'];
-    document.getElementById(paginas[page]);
 
 }
 // Virar páginas gerais do cadastro
@@ -97,6 +119,7 @@ function popConclusao(tipo) {
     }, 3000);
 }
 
+let pagina_cadastro = 1;
 const box = document.querySelector(".fotos-slide");
 
 let contador = 0;

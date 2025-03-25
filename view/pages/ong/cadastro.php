@@ -7,12 +7,12 @@
 <!-- Barra de navegação -->
 
 <div class="nav-buttons">
-    <button class="p1"></button>
-    <button class="p2"></button>
-    <button class="p2"></button>
-    <button class="p2"></button>
-    <button class="p2"></button>
-    <button class="p2"></button>
+    <button id="b1"></button>
+    <button id="b2"></button>
+    <button id="b3"></button>
+    <button id="b4"></button>
+    <button id="b5"></button>
+    <button id="b6"></button>
 </div>
 <div class="progress">
     <div class="line">
@@ -20,12 +20,12 @@
     </div>
 </div>
 <div class="text-progress">
-    <div class="text-detalhes">Dados<br> da ONG</div>
-    <div class="text-detalhes-draft">Descrição</div>
-    <div class="text-detalhes-draft">Endereço</div>
-    <div class="text-detalhes-draft">Responsável</div>
-    <div class="text-detalhes-draft">Banco</div>
-    <div class="text-detalhes-draft">Login</div>
+    <div id="t1">Dados<br> da ONG</div>
+    <div id="t2">Descrição</div>
+    <div id="t3">Endereço</div>
+    <div id="t4">Responsável</div>
+    <div id="t5">Banco</div>
+    <div id="t6">Login</div>
 </div>
 
 <!-- Início DIV Cadastro -->
@@ -37,7 +37,7 @@
                     <h1>CADASTRO</h1>
                 </div>
                 <form>
-                    <div class="formulario-geral">
+                    <div class="formulario-dados">
                         <div>
                             <label for="rSocial">Razão Social</label><br>
                             <input type="text" id="rSocial" placeholder="Digite o nome">
@@ -123,7 +123,7 @@
             <div class="titulo">
                 <h1>ENDEREÇO</h1>
             </div>
-            <div class="formulario-geral">
+            <div class="formulario-dados">
                 <div>
                     <label for="rua">Endereço</label><br>
                     <input type="text" id="rua" placeholder="Ex. Rua Projetada, 199">
@@ -238,6 +238,9 @@
 <div class="btn-navegacao">
     <button class="voltar" type="button" onClick="mudaEtapaCadastro(-1)">Voltar</button>
     <button class="proximo" type="button" onClick="mudaEtapaCadastro(1)">Próximo</button>
+    <a id="confirmacao" href="login.php">
+                <button class="confirm" type="button">Cadastrar</button>
+            </a>
 </div>
 </form>
 

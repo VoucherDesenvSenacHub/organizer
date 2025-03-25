@@ -13,6 +13,7 @@ h4 {
 }
 #container {
     display: flex;
+    gap: 200px;
     transition: 0.7s ease-in-out;
     transform: translateX(0);
     /* justify-content: space-around;
@@ -36,8 +37,7 @@ h4 {
     justify-content: space-around;
     width: 60%;
     height: 80vh;
-    gap: 400px;
-    margin: 5px auto;
+    margin: 0px auto;
     margin-bottom: 20px;
     padding: 5px;
     background-color: #FFFFFF;
@@ -58,12 +58,12 @@ h4 {
     flex-direction: column;
     translate: 0;
     justify-content: space-between;
-    width: 60%;
+    width: 100%;
     margin: 0px auto;
 }
 #atuacao {
+    display: flex;
     position: relative;
-    left: 20px;
 }
 
 #endereco {
@@ -146,7 +146,10 @@ h4 {
     justify-content: space-between;
     align-items: center;
 }
-.text-detalhes-draft {
+#t1 {
+    color: #000000;
+}
+#t2, #t3, #t4, #t5, #t6 {
     color: #6e6a6a;
 }
 
@@ -190,21 +193,7 @@ h4 {
 .line-5{
     width: 100%;
 }
-.p1{
-    position: relative;
-    top: 30px;
-    width: 25px;
-    height: 25px;
-    z-index: 100;
-    border: none;
-    background-color: #5282E3;
-    border-radius: 50%;
-}
-.p1:hover, .p2:hover {
-    cursor: pointer;
-    
-}
-.p2 {
+#b1, #b2, #b3, #b4, #b5, #b6{
     position: relative;
     top: 30px;
     width: 25px;
@@ -214,12 +203,24 @@ h4 {
     background-color: #5282e39f;
     border-radius: 50%;
 }
+#b1:hover,
+#b2:hover,
+#b3:hover,
+#b4:hover,
+#b5:hover,
+#b6:hover{
+    cursor: pointer;
+    
+}
+#b1 {
+    background-color: #5282E3;
+}
 
 
-.form-cadastro, .formulario-geral {
+.formulario-geral, .formulario-dados {
     display: flex;
     left: 20px;
-    width: 800px;
+    width: 1000px;
     flex-wrap: wrap;
     justify-content: space-around;
     padding: 35px;
@@ -241,23 +242,29 @@ h4 {
         padding-left: 20px;
     }
 }
+/* .formulario-geral {
+    border: 1px solid red;
+} */
 .btn-navegacao{
     display: flex;
-    position: fixed;
+    position: relative;
     width: 55%;
-    bottom: 50px;
+    bottom: 100px;
     left: 20%;
     justify-content: space-between;
     padding: 10px 90px;
 }
-.btn-navegacao-first {
+#confirmacao {
+    display: none;
+}
+/* .btn-navegacao-first {
     display: flex;
     justify-content: end;
     padding: 10px 90px;
-}
+} */
 .ver-senha{
     display: block;
-    position: fixed;
+    position: relative;
     border: none;
     top: -35px;
     left: 260px;
@@ -274,17 +281,36 @@ h4 {
 }
 .voltar {
     background-color: #8f8888;
+    visibility: visible;
 }
-.proximo {
+.proximo{
     background-color: #E3B652;
     color: #FFFFFF;
+}
+.confirm {
+    position: relative;
+    z-index: 10;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 1em;
+    letter-spacing: 2px;
+    border: none;
+    border-radius: 6px;
+    width: 150px;
+    height: 38px;
+    background-color: #E3B652;
+    color: #FFFFFF;
+}
+#confirmacao {
+    display: none;
+    text-decoration: none;
 }
 .voltar:hover {
     transition: 0.7s;
     color: #FFFFFF;
     background-color: black;
 }
-.proximo:hover {
+.proximo:hover, .confirm:hover {
     transition: 0.7s;
     color: black;
     background-color: #FFFFFF;
