@@ -1,7 +1,7 @@
-<?php 
-    $tituloPagina = 'tela inicial'; // Definir o título da página
-    $cssPagina = ['adm/home.css']; //Colocar o arquivo .css 
-    require_once '../../components/header-adm.php';
+<?php
+$tituloPagina = 'tela inicial'; // Definir o título da página
+$cssPagina = ['adm/home.css']; //Colocar o arquivo .css 
+require_once '../../components/header-adm.php';
 ?>
 
 <main>
@@ -40,37 +40,37 @@
                         <div class="action-card purple">
                             <div class="card-header">Empresas</div>
                             <p class="card-description">Aprove ou recuse solicitações de parcerias de empresas</p>
-                            <button class="card-button">
+                            <a href="solicitacao-parcerias.php" class="card-button">
                                 <span class="icon">👜</span> <!-- Ícone de mala -->
                                 Ir para lista
                                 <span class="notification">6</span>
-                            </button>
+                            </a>
                         </div>
-        
+
                         <!-- Card ONGS -->
                         <div class="action-card orange">
                             <div class="card-header">ONGS</div>
                             <p class="card-description">Aprove ou recuse cadastros de ONG's novas no sistema</p>
-                            <button class="card-button">
+                            <a href="#" class="card-button">
                                 <span class="icon">🏅</span> <!-- Ícone de medalha -->
                                 Ir para lista
                                 <span class="notification">5</span>
-                            </button>
+                            </a>
                         </div>
-        
+
                         <!-- Card Inativar -->
                         <div class="action-card red">
                             <div class="card-header">Remover</div>
                             <p class="card-description">remover parceria com empresa ou Ongs</p>
-                            <button class="card-button">
+                            <a href="solicitacao-parcerias.php" class="card-button">
                                 <span class="icon">🚫</span> <!-- Ícone de bloqueio -->
                                 Ir para lista
                                 <span class="notification">9</span>
-                            </button>
+                            </a>
                         </div>
                     </div>
                 </section>
-        
+
                 <section class="section ongs">
                     <div class="section-header-o">
                         <div><img class="section-icon orange" src="../../assets/images/lupa_bg.png" alt=""></div>
@@ -106,9 +106,9 @@
                             </tr>
                         </tbody>
                     </table>
-                    <a href="#" class="ver-todos">VER TODAS</a>
+                    <a href="ver-ong.php" class="ver-todos">VER TODAS</a>
                 </section>
-        
+
                 <section class="section projetos">
                     <div class="section-header-p">
                         <div><img class="section-icon green" src="../../assets/images/globo.png" alt=""></div>
@@ -144,9 +144,9 @@
                             </tr>
                         </tbody>
                     </table>
-                    <a href="#" class="ver-todos">VER TODOS</a>
+                    <a href="ver-projetos.php" class="ver-todos">VER TODOS</a>
                 </section>
-        
+
                 <section class="section doadores">
                     <div class="section-header-d">
                         <div><img class="section-icon blue" src="../../assets/images/user.png" alt="">
@@ -179,7 +179,7 @@
                             </tr>
                         </tbody>
                     </table>
-                    <a href="#" class="ver-todos">VER TODOS</a>
+                    <a href="ver-doadores.php" class="ver-todos">VER TODOS</a>
                 </section>
             </main>
 
@@ -188,6 +188,6 @@
 </main>
 
 <?php
-    $jsPagina = []; //Colocar o arquivo .js (exemplo: 'ONG/cadastro.js')
-    require_once '../../components/footer.php';
+$jsPagina = []; //Colocar o arquivo .js (exemplo: 'ONG/cadastro.js')
+require_once '../../components/footer.php';
 ?>
