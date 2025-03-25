@@ -29,7 +29,7 @@
                 </div>
             </div>
             <div id="imagem">
-                <img src="../../assets/images/pages/perfil-projeto.png" alt="">
+                <img src="../../assets/images/pages/Innovation-rafiki.png" alt="">
             </div>
             <div id="logo-ong">
                 <img src="https://placeholder.pagebee.io/api/plain/400/250">
