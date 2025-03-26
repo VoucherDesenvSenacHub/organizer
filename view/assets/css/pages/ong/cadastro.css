@@ -48,7 +48,6 @@ h4 {
     display: flex;
     position: relative;
     flex-direction: column;
-    translate: 0;
     justify-content: space-between;
     width: 100%;
     margin: 0px auto;
@@ -365,7 +364,7 @@ h4 {
     #responsavel,
     #dados-bancarios,
     #criar-login {
-        width: 70%;
+        width: 90%;
         margin: 20px auto;
         left: 10%;
         padding: 10px;
@@ -390,14 +389,18 @@ h4 {
     #cadastro{
         padding-bottom: 40px;
     }
+    #atuacao {
+        border: 1px solid yellow;
+        padding: 0px;
+        margin: 0px;
+    }
     #endereco .btn-navegacao {
         padding-bottom: 30px;
     }
     .formulario-dados, .formulario-geral {
         justify-content: start;
         flex-direction: column;
-        width: 300px;
-        border: 1px solid red;
+        width: 350px;
         padding: 15px;
         input {
             width: 220px;
@@ -411,7 +414,13 @@ h4 {
             height: 30px;
         }
     }
+    .formulario-geral{
+        border: 1px solid red;
+        z-index: 1;
+    }
     #container {
+        display: flex;
+        justify-content: space-around;
         gap: 10px;
     }
     #cadastro-ong {
@@ -422,7 +431,7 @@ h4 {
     }
     .line {
         height: 3px;
-        top: -5px;
+        top: -8px;
         width: 125%;
     }
     .line-0{
@@ -434,11 +443,12 @@ h4 {
         top: 150px;
     }
     #b1, #b2, #b3, #b4, #b5, #b6{
-        width: 8px;
-        height: 8px;
+        width: 13px;
+        height: 13px;
     }
     .text-progress {
         font-size: 0.4em;
+        z-index: 50;
         margin: 20px 20px;
         width: 100%;
         top: 170px;
@@ -468,8 +478,9 @@ h4 {
     }
 
     /*Atuação da ONG */
-    #form-atuacao {
-        margin-left: 20px;
+    #form-atuacao{
+        margin: 0px;
+        margin-top: -10px;
     }
     .row-checkbox {
         flex-wrap: wrap;

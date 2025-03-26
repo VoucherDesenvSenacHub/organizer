@@ -144,7 +144,7 @@ let slideWidth = 0;
 var largura_cadastro = 0;
 if(tela <= 481){
     slideWidth = 200;
-    largura_cadastro = 330;
+    largura_cadastro = 380;
 }else{
     slideWidth = 1016;
     largura_cadastro = 1200;
