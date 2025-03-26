@@ -47,12 +47,12 @@
                     <h3>Doadores</h3>
                 </div>
                 <div class="mini-cards">
-                    <?php require '../../components/card-doador.php'; ?>
-                    <?php require '../../components/card-doador.php'; ?>
-                    <?php require '../../components/card-doador.php'; ?>
-                    <?php require '../../components/card-doador.php'; ?>
-                    <?php require '../../components/card-doador.php'; ?>
-                    <?php require '../../components/card-doador.php'; ?>
+                    <?php require '../../components/cards/card-doador.php'; ?>
+                    <?php require '../../components/cards/card-doador.php'; ?>
+                    <?php require '../../components/cards/card-doador.php'; ?>
+                    <?php require '../../components/cards/card-doador.php'; ?>
+                    <?php require '../../components/cards/card-doador.php'; ?>
+                    <?php require '../../components/cards/card-doador.php'; ?>
                 </div>
             </div>
             <div class="section-item">
@@ -61,12 +61,12 @@
                     <h3>Voluntários</h3>
                 </div>
                 <div class="mini-cards">
-                    <?php require '../../components/card-voluntario.php'; ?>
-                    <?php require '../../components/card-voluntario.php'; ?>
-                    <?php require '../../components/card-voluntario.php'; ?>
-                    <?php require '../../components/card-voluntario.php'; ?>
-                    <?php require '../../components/card-voluntario.php'; ?>
-                    <?php require '../../components/card-voluntario.php'; ?>
+                    <?php require '../../components/cards/card-voluntario.php'; ?>
+                    <?php require '../../components/cards/card-voluntario.php'; ?>
+                    <?php require '../../components/cards/card-voluntario.php'; ?>
+                    <?php require '../../components/cards/card-voluntario.php'; ?>
+                    <?php require '../../components/cards/card-voluntario.php'; ?>
+                    <?php require '../../components/cards/card-voluntario.php'; ?>
                 </div>
             </div>
         </section>
@@ -77,8 +77,8 @@
                     <h3>Notícias</h3>
                 </div>
                 <div class="mini-cards">
-                    <?php require '../../components/card-noticia.php'; ?>
-                    <?php require '../../components/card-noticia.php'; ?>
+                    <?php require '../../components/cards/card-noticia.php'; ?>
+                    <?php require '../../components/cards/card-noticia.php'; ?>
                 </div>
             </div>
         </section>
@@ -89,10 +89,10 @@
                     <h3>Projetos</h3>
                 </div>
                 <div class="mini-cards">
-                    <?php require '../../components/card-projeto.php'; ?>
-                    <?php require '../../components/card-projeto.php'; ?>
-                    <?php require '../../components/card-projeto.php'; ?>
-                    <?php require '../../components/card-projeto.php'; ?>
+                    <?php require '../../components/cards/card-projeto.php'; ?>
+                    <?php require '../../components/cards/card-projeto.php'; ?>
+                    <?php require '../../components/cards/card-projeto.php'; ?>
+                    <?php require '../../components/cards/card-projeto.php'; ?>
                 </div>
             </div>
         </section>

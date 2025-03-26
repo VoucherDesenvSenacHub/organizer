@@ -25,6 +25,7 @@ main {
     justify-content: space-between;
     height: 100%;
     width: 300px;
+    transition: .3s;
 }
 
 form h1 {
@@ -72,6 +73,7 @@ form .remember-forgot {
     font-size: 11px;
     justify-content: space-between;
     align-items: center;
+    gap: 5px;
 }
 
 .remember-forgot .remember {
@@ -88,7 +90,7 @@ form .remember-forgot {
 }
 
 .remember-forgot button:hover {
-    color: blue;
+    color: var(--cor-azul-escuro);
 }
 
 /* Área de "Criar Conta" */
@@ -114,7 +116,6 @@ form span a {
 /*===== IMAGEM =====*/
 #container-login img {
     width: 350px;
-    transform: rotateY(180deg);
 }
 
 /* POPUP RECUPERAR SENHA */
@@ -185,10 +186,11 @@ form span a {
     }
 
     #container-login form {
-        width: 100%;
+        
+        width: 65vw;
     }
 
-    #container-login form .remember-forgot {
+    /* #container-login form .remember-forgot {
         flex-direction: column;
-    }
+    } */
 }
