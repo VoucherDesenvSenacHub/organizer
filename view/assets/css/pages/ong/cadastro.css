@@ -14,7 +14,7 @@ h4 {
 #container {
     display: flex;
     gap: 200px;
-    transition: 0.7s ease-in-out;
+    transition: 0.9s ease-in-out;
     transform: translateX(0);
     
     h1 {
@@ -30,7 +30,8 @@ h4 {
     height: 80vh;
     margin: 0px auto;
     margin-bottom: 20px;
-    padding: 5px;
+    padding: 20px;
+    padding-left: 3%;
     background-color: #FFFFFF;
     border-radius: 8px;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.7);
@@ -40,7 +41,7 @@ h4 {
     display: flex;
     width: 90%;
     padding-left: 30px;
-    padding-bottom: 100px;
+    padding-bottom: 80px;
     justify-content: start;
 }
 #cadastro {
@@ -130,7 +131,7 @@ h4 {
     display: flex;
     position: relative;
     top: 180px;
-    width: 45%;
+    width: 47%;
     margin: 10px auto;
     padding: 0px 50px;
     font-size: 0.8em;
@@ -213,9 +214,9 @@ h4 {
     left: 20px;
     width: 1000px;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: start;
     padding: 35px;
-    gap: 40px;
+    gap: 20px;
     input {
         width: 300px;
         height: 50px;
@@ -225,7 +226,7 @@ h4 {
         padding-left: 20px;
     }
     select {
-        width: 280px;
+        width: 300px;
         height: 50px;
         border-radius: 6px;
         border: none;
@@ -233,9 +234,9 @@ h4 {
         padding-left: 20px;
     }
 }
-/* .formulario-geral {
-    border: 1px solid red;
-} */
+.formulario-dados {
+    padding-top: 10px;
+}
 .btn-navegacao{
     display: flex;
     position: relative;
@@ -248,11 +249,7 @@ h4 {
 #confirmacao {
     display: none;
 }
-/* .btn-navegacao-first {
-    display: flex;
-    justify-content: end;
-    padding: 10px 90px;
-} */
+
 .ver-senha{
     display: block;
     position: relative;
@@ -311,9 +308,8 @@ h4 {
 
 /* Atuação ONG */
 #form-atuacao{
-    margin-left: 0px;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin: 30px;
+    margin-top: -10px;
 }
 #descricao-ong {
     margin-top: 10px;
@@ -349,59 +345,18 @@ h4 {
     display: none;
 }
 
-/* Efeito vira página */
-@keyframes vira-pagina {
-    from {
-        top: 60px;
-        left: 20%;
-        display: flex;
-    }
-    to {
-        transform: rotate(-90deg);
-        top: -800px;
-        left: -600px;
-        display: none;
-        
-    }
-}
+
 
 #senhas {
     display: flex;
-    padding-top: 100px;
+    padding-top: 40px;
     gap: 50px;
-}
-@keyframes volta-pagina {
-    from {
-        top: -800px;
-        left: -600px;
-        display: none;
-        transform: rotate(-90deg);
-    }
-    to {
-        display: flex;
-        top: 60px;
-        left: 20%;
-        transform: rotate(0deg);
-    }
 }
 
 /* Responsividade */
 
 @media (max-width: 481px) {
-    @keyframes volta-pagina {
-        from {
-            top: -800px;
-            left: -600px;
-            display: none;
-            transform: rotate(-90deg);
-        }
-        to {
-            display: flex;
-            top: 60px;
-            left: 10%;
-            transform: rotate(0deg);
-        }
-    }
+    
     .titulo-atuacao {
         margin-left: 20px;
     }
@@ -421,21 +376,33 @@ h4 {
             font-size: 1.3em;
         }
     }
-    #cadastro .btn-navegacao-first {
+    #cadastro-completo{
+        width: 90%;
+        margin: 0px auto;
+        margin-bottom: 20px;
+        padding: 20px;
+        padding-left: 3%;
+        background-color: #FFFFFF;
+        border-radius: 8px;
+        box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.7);
+        overflow: hidden;
+    }
+    #cadastro{
         padding-bottom: 40px;
     }
     #endereco .btn-navegacao {
         padding-bottom: 30px;
     }
-    .form-cadastro, .formulario-geral {
-        justify-content: space-around;
+    .formulario-dados, .formulario-geral {
+        justify-content: start;
+        flex-direction: column;
+        width: 300px;
+        border: 1px solid red;
         padding: 15px;
-        gap: 20px;
         input {
             width: 220px;
             height: 30px;
             border-radius: 6px;
-            border: none;
             background-color: #e0d2d2;
             padding-left: 20px;
         }
@@ -444,6 +411,9 @@ h4 {
             height: 30px;
         }
     }
+    #container {
+        gap: 10px;
+    }
     #cadastro-ong {
         width: 100%;
     }
@@ -451,30 +421,37 @@ h4 {
         margin: 0 auto;
     }
     .line {
-        width: 70%;
-        background-color: #5282e39f;
+        height: 3px;
+        top: -5px;
+        width: 125%;
+    }
+    .line-0{
+        height: 3px;
     }
     .nav-buttons {
         display: flex;
-        width: 90%;
-        margin: 0px auto;
+        width: 85%;
+        top: 150px;
     }
-    .p1, .p2 {
-        width: 15px;
-        height: 15px;
-        top: 10px;
+    #b1, #b2, #b3, #b4, #b5, #b6{
+        width: 8px;
+        height: 8px;
     }
     .text-progress {
         font-size: 0.4em;
         margin: 20px 20px;
+        width: 100%;
+        top: 170px;
+        left: -20px;
     }
     .btn-navegacao {
-        display: flex;
         width: 90%;
-        justify-content: center;
+        justify-content: space-between;
         margin: 5px auto;
-        padding: 0px;
+        padding: 30px;
         gap: 30px;
+        bottom: 80px;
+        left: 2%;
     }
     .voltar, .proximo {
         font-weight: 300;

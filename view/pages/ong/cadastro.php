@@ -161,6 +161,7 @@
                 <div class="titulo">
                     <h1>RESPONSÁVEL PELA ONG</h1>
                 </div>
+                <div class="formulario-dados">
                     <div>
                         <label for="nome">Nome</label><br>
                         <input type="text" id="nome" placeholder="Nome completo" minlength="3" maxlength="50">
@@ -177,6 +178,7 @@
                         <label for="email">email</label><br>
                         <input type="email" id="email" placeholder="usuario@conta.com" minlength="5" maxlength="50">
                     </div>
+                </div>
                 
             </div>
         </div>
@@ -188,28 +190,30 @@
             <div class="titulo">
                 <h1>DADOS BANCÁRIOS</h1>
             </div>
-            <div>
-                <label for="banco">Banco</label><br>
-                <select name="banco" id="banco">
-                    <?php foreach($bancos as $banco) {?>
-                    <option value="<?php echo $banco ?>"><?php echo $banco ?></option>
-                    <?php } ?>
-                </select>
-            </div>
-            <div>
-                <label for="agencia">Agência</label><br>
-                <input type="text" id="agencia" placeholder="Agência" minlength="4" maxlength="6">
-            </div>
-            <div>
-                <label for="conta">Conta</label><br>
-                <input type="tel" id="conta" placeholder="Conta" minlength="3" maxlength="15">
-            </div>
-            <div>
-                <label for="tipo">Tipo</label><br>
-                <select name="tipo" id="tipo">
-                    <option value="c-corrente">Conta Corrente</option>
-                    <option value="c-poupanca">Conta Poupança</option>
-                </select>
+            <div class="formulario-dados">
+                <div>
+                    <label for="banco">Banco</label><br>
+                    <select name="banco" id="banco">
+                        <?php foreach($bancos as $banco) {?>
+                        <option value="<?php echo $banco ?>"><?php echo $banco ?></option>
+                        <?php } ?>
+                    </select>
+                </div>
+                <div>
+                    <label for="tipo">Tipo</label><br>
+                    <select name="tipo" id="tipo">
+                        <option value="c-corrente">Conta Corrente</option>
+                        <option value="c-poupanca">Conta Poupança</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="agencia">Agência</label><br>
+                    <input type="text" id="agencia" placeholder="Agência" minlength="4" maxlength="6">
+                </div>
+                <div>
+                    <label for="conta">Conta</label><br>
+                    <input type="tel" id="conta" placeholder="Conta" minlength="3" maxlength="15">
+                </div>
             </div>
         
         </div>

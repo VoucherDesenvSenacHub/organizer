@@ -31,18 +31,34 @@ function mudaEtapaCadastro(page, origin){
     origin ? progresso = page+pagina_atual : progresso = page;
     let texto_atual = document.getElementById("t"+(progresso+1));
     let botao_atual = document.getElementById("b"+(progresso+1));
-    if(page>=0 && origin === true){
+    if(page>0 && origin){
         botao_atual.style.backgroundColor = "#5282E3";
         texto_atual.style.color = "#000000"
         linha.style.width = (page+pagina_atual)*20+"%";
-    }else if(page<0 && origin === true) {
+    }else if(page<0 && origin) {
         botao_atual = document.getElementById("b"+(progresso+2));
         texto_atual = document.getElementById("t"+(progresso+2));
         botao_atual.style.backgroundColor = "#5282e39f";
         texto_atual.style.color = "#6e6a6a";
         linha.style.width = (progresso)*20+"%";
+    }else if(page>=pagina_atual && !origin){
+        for(let i = 1; i<= (page+1); i++){
+            texto_atual = document.getElementById("t"+(i));
+            botao_atual = document.getElementById("b"+(i));
+            botao_atual.style.backgroundColor = "#5282E3";
+            texto_atual.style.color = "#000000"
+            linha.style.width = (page+pagina_atual)*20+"%";
+        }
+    }else if(page<pagina_atual && !origin){
+        for(let i=(pagina_atual+1); i>page; i--){
+            botao_atual = document.getElementById("b"+(i+1));
+            texto_atual = document.getElementById("t"+(i+1));
+            botao_atual.style.backgroundColor = "#5282e39f";
+            texto_atual.style.color = "#6e6a6a";
+            linha.style.width = (i-1)*20+"%";
+        }
     }
-    let passo = -(progresso)*1200;
+    let passo = -(progresso)*largura_cadastro;
     etapa.style.transform = `translateX(${passo}px)`;
     page>0 && origin ? pagina_atual++ : pagina_atual--;
     if(page>=0 && !origin){
@@ -62,15 +78,6 @@ function mudaEtapaCadastro(page, origin){
     }
 
 }
-// Virar páginas gerais do cadastro
-// function mudaPagina(p, action) {
-//     let pagina = document.getElementById(p);
-//     if (!action){
-//         pagina.style.animation = "vira-pagina 1s forwards";
-//     }else {
-//         pagina.style.animation = "volta-pagina 1s forwards";
-//     }
-// }
 
 // Exibe e oculta senha digitada
 
@@ -134,10 +141,13 @@ const box = document.querySelector(".fotos-slide");
 let contador = 0;
 let tela = window.innerWidth;
 let slideWidth = 0;
+var largura_cadastro = 0;
 if(tela <= 481){
     slideWidth = 200;
+    largura_cadastro = 330;
 }else{
     slideWidth = 1016;
+    largura_cadastro = 1200;
 }
 setInterval (slider, 2000);
 
