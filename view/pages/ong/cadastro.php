@@ -2,17 +2,21 @@
     $tituloPagina = 'Cadastro ONG'; // Definir o título da página
     $cssPagina = ['ong/cadastro.css']; //Colocar o arquivo .css 
     require_once '../../components/header.php';
+    require_once '../../../model/Bancos.php';
+    require_once '../../../model/Estados.php';
+    
+    
 ?>
         <!-- Fim cabeçalho -->
 <!-- Barra de navegação -->
 
 <div class="nav-buttons">
-    <button id="b1"></button>
-    <button id="b2"></button>
-    <button id="b3"></button>
-    <button id="b4"></button>
-    <button id="b5"></button>
-    <button id="b6"></button>
+    <button id="b1" onClick="mudaEtapaCadastro(0, false)"></button>
+    <button id="b2" onClick="mudaEtapaCadastro(1, false)"></button>
+    <button id="b3" onClick="mudaEtapaCadastro(2, false)"></button>
+    <button id="b4" onClick="mudaEtapaCadastro(3, false)"></button>
+    <button id="b5" onClick="mudaEtapaCadastro(4, false)"></button>
+    <button id="b6" onClick="mudaEtapaCadastro(5, false)"></button>
 </div>
 <div class="progress">
     <div class="line">
@@ -40,18 +44,18 @@
                     <div class="formulario-dados">
                         <div>
                             <label for="rSocial">Razão Social</label><br>
-                            <input type="text" id="rSocial" placeholder="Digite o nome">
+                            <input type="text" id="rSocial" minlength="5" maxlength="50" placeholder="Digite o nome">
                         </div>
                         <div>
                             <label for="telefone">Telefone</label><br>
-                            <input type="text" id="foneOng" placeholder="(00) 0000-0000">
+                            <input type="number" id="foneOng" placeholder="(00) 0000-0000">
                         </div>
                         <div>
-                            <label for="cnpj">CNPJ</label><br>
+                            <label for="cnpj">cnpj</label><br>
                             <input type="text" id="cnpj" placeholder="00.000.000/0000-00">
                         </div>
                         <div>
-                            <label for="email">Email</label><br>
+                            <label for="email">email</label><br>
                             <input type="email" id="mailOng" placeholder="usuario@conta.com">
                         </div>
                     </div>
@@ -69,7 +73,7 @@
             <div id="form-atuacao">
                 <div>
                     <label for="descricao">Descrição</label><br>
-                    <textarea id="descricao-ong" placeholder="Um breve resumo da sua ONG"></textarea><br>
+                    <textarea id="descricao-ong" placeholder="Um breve resumo da sua ONG" minlength="10"></textarea><br>
                 </div>
                 <div id="areasDeAtuacao">
                     <p>Áreas de atuação</p>
@@ -126,11 +130,11 @@
             <div class="formulario-dados">
                 <div>
                     <label for="rua">Endereço</label><br>
-                    <input type="text" id="rua" placeholder="Ex. Rua Projetada, 199">
+                    <input type="text" id="rua" placeholder="Ex. Rua Projetada, 199" minlength="5" maxlength="50">
                 </div>
                 <div>
                     <label for="cidade">Cidade</label><br>
-                    <input type="text" id="cidade" placeholder="Campo Grande">
+                    <input type="text" id="cidade" placeholder="Campo Grande" minlength="3" maxlength="50">
                 </div>
                 <div>
                     <label for="cep">CEP</label><br>
@@ -138,7 +142,12 @@
                 </div>
                 <div>
                     <label for="uf">UF</label><br>
-                    <input type="text" id="uf" placeholder="Mato Grosso do Sul">
+                    <select name="uf" id="uf">
+                        <?php 
+                        foreach ($estados as $uf) {?>
+                        <option value="<?php echo $uf ?>"><?php echo $uf ?></option>
+                        <?php }?>
+                    </select>
                 </div>
             </div>
             
@@ -154,19 +163,19 @@
                 </div>
                     <div>
                         <label for="nome">Nome</label><br>
-                        <input type="text" id="nome" placeholder="Nome completo">
+                        <input type="text" id="nome" placeholder="Nome completo" minlength="3" maxlength="50">
                     </div>
                     <div>
                         <label for="cpf">CPF</label><br>
-                        <input type="text" id="cpf" placeholder="000.000.000-00">
+                        <input type="text" id="cpf" placeholder="000.000.000-00" size="11">
                     </div>
                     <div>
                         <label for="telefone">Telefone</label><br>
-                        <input type="tel" id="telefone" placeholder="(00) 0000-0000">
+                        <input type="tel" id="telefone" placeholder="(00) 0000-0000" size="11">
                     </div>
                     <div>
-                        <label for="email">Email</label><br>
-                        <input type="email" id="email" placeholder="usuario@conta.com">
+                        <label for="email">email</label><br>
+                        <input type="email" id="email" placeholder="usuario@conta.com" minlength="5" maxlength="50">
                     </div>
                 
             </div>
@@ -181,15 +190,19 @@
             </div>
             <div>
                 <label for="banco">Banco</label><br>
-                <input type="text" id="banco" placeholder="Banco">
+                <select name="banco" id="banco">
+                    <?php foreach($bancos as $banco) {?>
+                    <option value="<?php echo $banco ?>"><?php echo $banco ?></option>
+                    <?php } ?>
+                </select>
             </div>
             <div>
                 <label for="agencia">Agência</label><br>
-                <input type="text" id="agencia" placeholder="Agência">
+                <input type="text" id="agencia" placeholder="Agência" minlength="4" maxlength="6">
             </div>
             <div>
                 <label for="conta">Conta</label><br>
-                <input type="tel" id="conta" placeholder="Conta">
+                <input type="tel" id="conta" placeholder="Conta" minlength="3" maxlength="15">
             </div>
             <div>
                 <label for="tipo">Tipo</label><br>
@@ -213,7 +226,7 @@
             <div id="senhas">
                 <div>
                     <label for="senha-login">Senha</label><br>
-                    <input type="password" id="senha-login" placeholder="**********">
+                    <input type="password" id="senha-login" placeholder="**********" minlength="8" maxlength="20">
                     <button class="ver-senha" type="button"onclick="showHide('senha-login', 'eyepassword')">
                         <span class="material-symbols-outlined" id="eyepassword">
                             visibility
@@ -222,7 +235,7 @@
                 </div>
                 <div>
                     <label for="conf-senha">Confirmar senha</label><br>
-                    <input type="password" id="conf-senha" placeholder="**********">
+                    <input type="password" id="conf-senha" placeholder="**********" minlength="8" maxlength="20">
                     <button class="ver-senha" type="button" onclick="showHide('conf-senha', 'eye-conf-password')">
                         <span class="material-symbols-outlined" id="eye-conf-password">
                             visibility
@@ -236,8 +249,8 @@
 </div>
 </div>
 <div class="btn-navegacao">
-    <button class="voltar" type="button" onClick="mudaEtapaCadastro(-1)">Voltar</button>
-    <button class="proximo" type="button" onClick="mudaEtapaCadastro(1)">Próximo</button>
+    <button class="voltar" type="button" onClick="mudaEtapaCadastro(-1, true)">Voltar</button>
+    <button class="proximo" type="button" onClick="mudaEtapaCadastro(1, true)">Próximo</button>
     <a id="confirmacao" href="login.php">
                 <button class="confirm" type="button">Cadastrar</button>
             </a>

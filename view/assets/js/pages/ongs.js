@@ -24,33 +24,42 @@ function targetPage(target, actual){
 var pagina_atual = 0;
 var botao_voltar = document.querySelector(".voltar");
 botao_voltar.style.visibility = "hidden";
-function mudaEtapaCadastro(page){
+function mudaEtapaCadastro(page, origin){
     const etapa = document.getElementById("container");
     const linha = document.querySelector(".line-0");
-    let texto_atual = document.getElementById("t"+(page+pagina_atual+1))
-    let botao_atual = document.getElementById("b"+(page+pagina_atual+1));
-    if(page>0){
+    let progresso = 0;
+    origin ? progresso = page+pagina_atual : progresso = page;
+    let texto_atual = document.getElementById("t"+(progresso+1));
+    let botao_atual = document.getElementById("b"+(progresso+1));
+    if(page>=0 && origin === true){
         botao_atual.style.backgroundColor = "#5282E3";
         texto_atual.style.color = "#000000"
         linha.style.width = (page+pagina_atual)*20+"%";
-    }else {
-        botao_atual = document.getElementById("b"+(page+pagina_atual+2));
-        texto_atual = document.getElementById("t"+(page+pagina_atual+2));
+    }else if(page<0 && origin === true) {
+        botao_atual = document.getElementById("b"+(progresso+2));
+        texto_atual = document.getElementById("t"+(progresso+2));
         botao_atual.style.backgroundColor = "#5282e39f";
         texto_atual.style.color = "#6e6a6a";
-        linha.style.width = (page+pagina_atual)*20+"%";
+        linha.style.width = (progresso)*20+"%";
     }
-    let passo = -(page+pagina_atual)*1200;
+    let passo = -(progresso)*1200;
     etapa.style.transform = `translateX(${passo}px)`;
-    page>0 ? pagina_atual++ : pagina_atual--;
+    page>0 && origin ? pagina_atual++ : pagina_atual--;
+    if(page>=0 && !origin){
+        pagina_atual = page;
+    }
     pagina_atual != 0 ? botao_voltar.style.visibility = "visible" : botao_voltar.style.visibility = "hidden";
     if(pagina_atual == 5){
         let proximo = document.querySelector(".proximo");
         let confirmar = document.querySelector("#confirmacao");
-        proximo.style.display = "none";
+        proximo.style.visibility = "hidden";
         confirmar.style.display = "flex";
+    }else{
+        let proximo = document.querySelector(".proximo");
+        let confirmar = document.querySelector("#confirmacao");
+        proximo.style.visibility = "visible";
+        confirmar.style.display = "none";
     }
-    let paginas = ['cadastro', 'atuacao', 'endereco','responsavel','dados-bancarios','criar-login'];
 
 }
 // Virar páginas gerais do cadastro

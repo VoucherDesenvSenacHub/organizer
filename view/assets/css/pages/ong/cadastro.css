@@ -277,6 +277,7 @@ h4 {
 .proximo{
     background-color: #E3B652;
     color: #FFFFFF;
+    visibility: visible;
 }
 .confirm {
     position: relative;
