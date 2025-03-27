@@ -33,14 +33,19 @@ require_once '../../components/header.php';
 
                 <!-- Botão Adicionar -->
                 <div class="adicionar-cartao">
-                    <span>Adicionar cartão</span>
+                    <button onclick="abrir_popup('popup-adicionar-cartao')"><span>Adicionar cartão</span></button>
                 </div>
             </div>
+
         </div>
     </div>
 </div>
 
-
+<div class="popup-fundo" id="popup-adicionar-cartao" >
+    <div class="container-popup">
+        <h1>CARTÃO DE CREDITO</h1>
+    </div>
+</div>
 
 <?php
 $jsPagina = []; //Colocar o arquivo .js (exemplo: 'cadastro.js')
