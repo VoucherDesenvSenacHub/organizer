@@ -171,7 +171,7 @@ section#apresentacao {
     color: var(--cor-azul-escuro);
     background-color: #f0f0f0;
     cursor: default;
-    transition: .3s;
+    transition: .3s ease-out;
     cursor: pointer;
 }
 
@@ -191,20 +191,55 @@ section#apresentacao {
 /* ========== PAINEL DO PROJETO ========== */
 #painel-projeto {
     flex-direction: column;
-    /* overflow: hidden; */
+    gap: 30px;
+    overflow: hidden;
 }
 
 #principal-painel #control-painel {
     display: flex;
     gap: 10px;
-    flex-wrap: nowrap; /* Impede que os itens quebrem */
-    transform: translateX(-1150px);
+    flex-wrap: nowrap; 
+    transition: .5s ease-in;
+    /* transform: translateX(-1150px); */
 }
 
 #principal-painel #control-painel .container-painel {
-    flex: 0 0 1140px; /* Define uma largura fixa para os itens */
-    background-color: red;
+    flex: 0 0 100%;
+    height: fit-content;
 }
+
+#btns-group .icon-title.active {
+    background-color: var(--cor-azul);
+    color: var(--cor-principal);
+    border-radius: 4px;
+    padding: 5px;
+}
+
+
+/* Div Sobre */
+#data-criacao {
+    font-size: 14px;
+    color: #808080;
+    font-weight: 600;
+}
+
+#principal-painel #control-painel .container-painel h3 {
+    color: var(--cor-azul-escuro);
+}
+
+#principal-painel #control-painel .container-painel .box-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+
+
+
+
+
+
 
 
 

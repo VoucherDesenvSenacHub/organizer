@@ -1,13 +1,27 @@
 document.addEventListener('DOMContentLoaded', () => {
-    let btn = document.querySelectorAll('.icon-title');
-    const painel = document.querySelector('#control-painel');
+    let btns = document.querySelectorAll('.icon-title');
+    let container = document.querySelectorAll('.container-painel');
+    const div = document.querySelector('#control-painel');
 
-    btn.forEach((item, index) => {
+    // Definir a altura inicial do painel com o primeiro container
+    let alturaInicial = container[0].offsetHeight;
+    div.style.height = `${alturaInicial}px`; // Ajusta a altura na carga da página
+
+    // Configuração de clique nos botões
+    btns.forEach((item, index) => {
         item.addEventListener('click', () => {
-            console.log(`Botão ${index + 1} clicado!`);
+            // Remove a classe 'active' de todos os botões e containers
+            btns.forEach(i => i.classList.remove('active'));
+            container.forEach(i => i.classList.remove('active'));
 
-            // Exemplo de ação: mudar o fundo do painel
-            painel.style.backgroundColor = index % 2 === 0 ? 'blue' : 'green';
+            // Adiciona 'active' ao item clicado e ao container correspondente
+            item.classList.add('active');
+
+            // Atualiza a altura da div e o valor de 'transform' no clique
+            let altura = container[index].offsetHeight;
+            let tamanho = div.offsetWidth + 10;
+            div.style.transform = `translate(-${tamanho * index}px)`;
+            div.style.height = `${altura}px`;
         });
     });
 });

@@ -40,7 +40,7 @@
         </section>
         <section id="painel-projeto" class="container-section">
             <div id="btns-group">
-                <div class="icon-title">
+                <div class="icon-title active">
                     <img src="../../assets/images/pages/icone-sobre.png" alt="">
                     <h3>Sobre</h3>
                 </div>
@@ -59,11 +59,21 @@
             </div>
             <div id="principal-painel">
                 <div id="control-painel">
-                    <div class="container-painel">
-                        111111Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore fugit quidem sunt eum harum ducimus neque nesciunt at esse voluptas, culpa officia dolor vitae iure hic libero dolorem quo placeat.
+                    <div class="container-painel active">
+                        <span id="data-criacao">Projeto criado em: 04/08/2023</span>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati sint, quibusdam repellat saepe eos neque rerum placeat, reprehenderit amet vitae consectetur aspernatur autem optio quis eligendi unde cumque voluptatibus omnis. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, dolorum amet sapiente error dolor voluptatem delectus ratione laudantium exercitationem labore sit laborum eaque at iste cupiditate explicabo ab. Rerum, temporibus!</p>
                     </div>
                     <div class="container-painel">
-                        222222Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore fugit quidem sunt eum harum ducimus neque nesciunt at esse voluptas, culpa officia dolor vitae iure hic libero dolorem quo placeat.
+                        <h3>DOADORES DESTE PROJETO</h3>
+                        <div class="box-cards">
+                        <?php require '../../components/cards/card-doador.php'; ?>
+                        <?php require '../../components/cards/card-doador.php'; ?>
+                        <?php require '../../components/cards/card-doador.php'; ?>
+                        <?php require '../../components/cards/card-doador.php'; ?>
+                        <?php require '../../components/cards/card-doador.php'; ?>
+                        <?php require '../../components/cards/card-doador.php'; ?>
+                        <?php require '../../components/cards/card-doador.php'; ?>
+                        </div>
                     </div>
                     <div class="container-painel">
                         222222Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore fugit quidem sunt eum harum ducimus neque nesciunt at esse voluptas, culpa officia dolor vitae iure hic libero dolorem quo placeat.
