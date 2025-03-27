@@ -79,8 +79,10 @@ section{
     background-color: #E41D1D;
     color: #691021; 
 }
-.linha-coluna{
-
+.botoes{
+    display: flex;
+    margin-left: 40%;
+    flex-wrap: wrap;
 }
 .icon-visible{
     margin-top: 6px;
@@ -93,7 +95,7 @@ section{
     cursor: pointer;
 }
 
-.table .btn-aceitar, table .btn-recusar {
+/* .table .btn-aceitar, table .btn-recusar {
     padding: 8px 16px; 
     font-size: 14px;
     width: 100px;
@@ -102,7 +104,7 @@ section{
     border-radius: 5px;
     cursor: pointer;
     margin-left: 20px; 
-}
+} */
 
 /* .barra-lateral{
     background-color: #E3B652;
@@ -135,6 +137,86 @@ section{
     gap: 10px;
 }
 
+/* tela confirma solicitação */
+#tela-confirma-solicitacao{
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.card-confirma-solicitacao{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    padding: 20px;
+    margin: 20% auto;
+    width: 20%;
+    border-radius: 10px;
+    gap: 10px;
+}
+
+.card-confirma-solicitacao img{
+    width: 100px;  
+    height: 70px;
+}
+
+.card-confirma-solicitacao h1{
+    color: #5282E3;
+    text-align: center;
+}
+
+.card-confirma-solicitacao p{
+    text-align: center;
+}
+
+/* tela recusa solicitação */
+#tela-recusa-solicitacao{
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.card-recusa-solicitacao{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    padding: 20px;
+    margin: 15% auto;
+    width: 20%;
+    border-radius: 10px;
+    gap: 10px;
+}
+
+.card-recusa-solicitacao img{
+    width: 90px;  
+    height: 70px;
+}
+
+.card-recusa-solicitacao h1{
+    color: #5282E3;
+    text-align: center;
+}
+
+.card-recusa-solicitacao p{
+    text-align: center;
+}
+
+
+
 
 
 @media (max-width: 1023px) {
@@ -145,5 +227,128 @@ section{
 
     .titulo-solicitacao {
         font-size: 28px;
+    }
+    .logo-empresa img {
+        width: 50px;
+    }
+
+    .table {
+        width: 100%;
+    }
+
+    .table .btn-aceitar,
+    .table .btn-recusar {
+        width: 100%;
+        margin-left: 0;
+        margin-top: 10px;
+    }
+
+    .card-visualiza-solicitacao,
+    .card-confirma-solicitacao,
+    .card-recusa-solicitacao {
+        width: 80%;
+        margin: 20% auto;
+    }
+}
+
+/* celular */
+@media (max-width: 767px) {
+    .principal {
+        width: 90%;
+        margin: 30px auto;
+        padding: 10px;
+    }
+
+    .titulo-solicitacao {
+        font-size: 22px;
+        text-align: center;
+    }
+
+    .logo-empresa img {
+        width: 60px;
+    }
+
+    .table {
+        width: 100%;
+        padding: 0;
+    }
+
+    .table td {
+        padding: 8px;
+    }
+
+    .info-empresa{
+        font-size: 12px;
+    }
+
+    .table .logo-empresa,
+    .table .info-empresa {
+        display: flex;
+        flex-direction: column; 
+           
+    }
+
+    .table .btn-aceitar,
+    .table .btn-recusar {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .card-recusa-solicitacao img{
+        width: 60px;  
+        height: 50px;
+    }
+
+    .card-recusa-solicitacao h1{
+        font-size: 14px;
+    }
+    
+    .card-recusa-solicitacao p{
+        font-size: 12px;
+    }
+
+    .card-confirma-solicitacao img{
+        width: 60px;  
+        height: 50px;
+    }
+    
+    .card-confirma-solicitacao h1{
+        font-size: 14px;
+    }
+    
+    .card-confirma-solicitacao p{
+        font-size: 12px;
+    }
+
+    .logo-descricao{
+        display: flex;
+        flex-direction: column;
+        
+
+        img{
+            width: 100px;  
+            height: 100px;
+            margin-bottom: 5px;
+        }
+
+        h3{
+            font-size: 16px;
+            margin-top: 5px;
+        }
+
+        p{
+            font-size: 12px;
+        }
+    }
+
+     
+
+    
+    .card-visualiza-solicitacao,
+    .card-confirma-solicitacao,
+    .card-recusa-solicitacao {
+        width: 60%;
+        margin: 20% auto;
+        padding: 15px;
     }
 }

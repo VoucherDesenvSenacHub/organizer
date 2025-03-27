@@ -61,11 +61,11 @@
                         <?php echo $ong['responsavel'] ?>
                     </td>
                     <td>
-                        <img class="icon-visible" id="visualiza-solicitacao" src="<?php echo $ong['icon_visualizar'] ?>" alt="">
+                        <img class="icon-visible" id="icon-visible" src="<?php echo $ong['icon_visualizar'] ?>" alt="">
                     </td>
-                    <td>
-                        <button class="btn-aprovar" id="btn-aprova-solicitacao">Aprovar</button>
-                        <button class="btn-recusar" id="btn-recusa-solicitacao">Recusar</button>
+                    <td class="botoes">
+                        <button class="btn-aprovar" id="btn-aprovar">Aprovar</button>
+                        <button class="btn-recusar" id="btn-recusar">Recusar</button>
                     </td>
                 </tr>
 
@@ -87,14 +87,31 @@
             </div>
 
             </div>
-        </div>
-        
+
+                <!-- visualizar aprovação-->
+            <div class="tela-confirma-solicitacao" id="tela-confirma-solicitacao">
+                <div class="card-confirma-solicitacao">
+                    <div><img src="../../assets/images/parcerias.png" alt=""></div>   
+                    <div><h1>Ong aprovada</h1></di>
+                    <div><p>Um email foi enviado para informar</p></div>
+                </div>    
+            </div>
+    </div>
+    <!-- visualiza  recusa-->
+    <div class="tela-recusa-solicitacao" id="tela-recusa-solicitacao">
+                    <div class="card-recusa-solicitacao">
+                        <div><img src="../../assets/images/parceria-recusada.png" alt=""></div>   
+                        <div><h1>Parceria Recusada</h1></div>
+                        <div><p>Um email foi enviado para informar</p></div>  
+                    </div>
+    </div>
     </section>
 </main>
+             
 
 
 
 <?php
-    $jsPagina = ["ongs-a-serem-validadas.js"]; //Colocar o arquivo .js (exemplo: 'cadastro.js')
+    $jsPagina = ["ongs-a-serem-aprovadas.js"]; //Colocar o arquivo .js (exemplo: 'cadastro.js')
     require_once '../../components/footer.php';
 ?>
