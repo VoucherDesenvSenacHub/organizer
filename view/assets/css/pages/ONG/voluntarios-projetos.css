@@ -63,6 +63,7 @@
     right: 10px;
     top: 50%;
     transform: translateY(-50%);
+    cursor: pointer;
 }
 
 .lupa-icon img {
@@ -557,4 +558,148 @@
     font-family: "Comfortaa", sans-serif;
     color: #E64545;
     margin: 0;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .header-principal h1{
+        font-size: 16px;
+        margin-bottom: 5px;
+    }
+    .header-principal{
+        display: block;
+    }
+    .input {
+        margin-top: 10px;
+        width: 200px; 
+        height: 30px; 
+    }
+    .input input {
+        padding-right: 30px; 
+        font-size: 12px; 
+        border-radius: 50px;
+    }
+    .lupa-icon img {
+        width: 15px;  
+        height: 15px;
+    }
+    .card-voluntario-ativo-solicitacao{
+        width: 80%;
+        text-align: center;
+        position: fixed; 
+        top: 50%; 
+        left: 50%; 
+        transform: translate(-50%, -50%); 
+    }
+    .v-ativos{
+        background-color: #188241;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        width: 200px;  
+        text-align: center;
+        cursor: pointer;
+    }
+    .v-solicitacoes{
+        width: 150px;  
+    }
+    .v-ativos{
+        width: 150px;  
+    }
+    .card-voluntarios-ativos{
+        width: 80%;
+    }
+    .table {
+        width: 90%;
+    }
+    .logo-empresa img{
+        width: 40px;
+        height: auto;   
+    }
+    .logo-empresa h1{
+        font-size: 12px;
+    }
+    .logo-empresa p{
+        font-size: 10px;
+    }
+    .date{
+        font-size: 12px;
+    }
+    
+    .btn-inativar-voluntario img{
+        width: 30px;
+        height: auto;
+    }
+    .card-voluntario-delete{
+        width: 60%;
+    }
+    .card-voluntario-delete img {
+        width: 35px;   
+    } 
+    .card-voluntario-delete h1 {
+        font-size: 20px;
+    }
+    .card-voluntarios-solicitacoes{
+        width: 90%;
+    }
+    .btn-ver-solicitacao{
+        font-size: 12px;
+        width: 70px;
+        height: auto;
+    }
+    .card-solicitacao-voluntario{
+        width: 90%;
+    } 
+    .texto-solicitacao textarea{
+        font-size: 12px;
+    }
+    .div-img-info img{
+        width: 50px;
+        height: auto;
+    }
+    .img-usuario-solicitacao h1{
+        font-size: 12px;
+    }
+    
+    .img-usuario-solicitacao p{
+        font-size: 10px;
+    }
+    .div-btns button{
+        width: 50%;
+        height: 30px; 
+        font-size: 14px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .div-btns .aceitar img{
+        width: 20px;
+        height: auto;
+        
+    }
+    .div-btns .recusar img{
+        width: 20px;
+        height: auto;
+    }
+    .card-aceitar{
+        width: 60%;
+    }    
+    .card-aceitar img {
+        width: 35px; 
+    }
+    .card-aceitar h1 {
+        font-size: 20px;
+    }
+    .card-recusar{
+        width: 60%;
+    }    
+    .card-recusar img {
+        width: 35px; 
+    }
+    .card-recusar h1 {
+        font-size: 20px;
+    }
 }

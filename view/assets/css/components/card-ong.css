@@ -2,7 +2,8 @@
     border-radius: 5px;
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
     border-left: 5px solid var(--cor-amarelo);
-    width: 350px;
+    max-width: 350px;
+    width: 100%;
     max-height: 300px;
     background-color: white;
     transition: .3s;
@@ -124,4 +125,10 @@
 
 .btn-salvar button#like:hover {
     color: hotpink;
+}
+
+@media (max-width: 450px) {
+    .card-ong {
+        max-height: none;
+    }
 }

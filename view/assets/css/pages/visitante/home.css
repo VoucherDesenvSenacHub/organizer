@@ -1,4 +1,8 @@
-/* Importando o CSS do Card da ONG */
+#nav-bar ul li:nth-child(1) a {
+    color: var(--cor-amarelo);
+    font-weight: bold;
+}
+
 .secoes {
     padding: 0 20px;
 }
@@ -186,4 +190,259 @@
 #secao-3 #scroll-home:hover {
     filter: brightness(.7);
     transform: translateY(-4px);
+}
+
+#body-empresas{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    background-color: #00000073;
+}
+
+#body-empresas.ativo{
+    display: flex;
+}
+
+.container-empresas {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    background: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 700px;
+  }
+  
+  .h1u {
+    font-size: 22px;
+    color: #1C3464;
+    margin-bottom: 20px;
+
+  }
+  
+  .grid {
+    gap: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+    border: 1px solid #d4d4d4;
+    border-radius: 8px;
+    padding: 15px;
+    width: 150px;
+    height: 100px; /* Ajuste opcional para manter tamanho uniforme */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transform: translateY(0);
+    transition: .3s;
+
+  }
+  .card:hover{
+    transform: translateY(-5px);
+  }
+  
+  .card img {
+    max-width: 70px;
+    height: auto;
+  }
+  
+  .pagination {
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .page-btn {
+    background: #ffffff;
+    border: 1px solid #ccc;
+    padding: 8px 12px;
+    margin: 0 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.09);
+    transform: translateY(0);
+    transition: .5s;
+  }
+  
+  .page-btn:hover{
+    transform: translateY(-5px);
+  }
+  
+  .page-btn:hover {
+    background: #1C3464;
+    color: #ffffff;
+  }
+
+  .partner-btn {
+    background-color: #E3B652;
+    color:#1C3464 ;
+    border: none;
+    text-decoration: none;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  .a:hover {
+    background: #c39b43;
+  }
+
+@media (max-width:700px) {
+  .container-empresas{
+    gap: 0px;
+  }
+  
+  .pagination{
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+  }
+
+  .grid {
+    gap: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+
+  .card {
+    width: 120px;
+    height: 80px; /* Ajuste opcional para manter tamanho uniforme */
+  }
+
+  .card img {
+    max-width: 60px;
+    height: auto;
+  }
+}
+
+#body-forma {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    background-color: #00000073;
+  }
+
+#body-forma.ativo{
+    display: flex;
+}
+
+  .conteiner-forma {
+    background-color: #1C3464;
+    border-radius: 10px;
+    padding: 20px;
+    width: 600px;
+    height:330px ;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  #body-empresas h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #ffffff;
+    font-weight: 400;
+  }
+
+  #body-empresas .Cnpj{
+    color:#E3B652;
+  }
+  
+  #body-empresas .mens{
+    color:#E3B652;
+  }
+  
+  #body-empresas form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  #body-empresas label {
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+  
+  #body-empresas input,
+  #body-empresas textarea {
+    background-color: #2d4b7a;
+    border: none;
+    border-radius: 5px;
+    color: #ffffff;
+    padding: 10px;
+    margin-bottom: 15px;
+    font-size: 14px;
+  }
+  
+  #body-empresas input::placeholder,
+  #body-empresas textarea::placeholder {
+    color: #6C8CCA;
+  }
+  
+  #body-empresas .botoes button {
+    background-color: #E3B652;
+    color: #000000;
+    border: none;
+    border-radius: 5px;
+    padding: 15px 210px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.5s;
+  }
+  
+  #body-empresas button:hover {
+    background-color: #dda439;
+    top: 100px;
+  }
+
+  #body-empresas .botoes{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#body-empresas .botoes .btn-voltar{
+  text-decoration: none;
+  background-color: #2d4b7a;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 12px;
+  color: #ffffff;
+}
+
+@media (max-width:700px) {
+  .conteiner-forma{
+    width: 300px;
+    height: 400px;
+  }
+
+  #body-empresas .botoes button{
+    padding: 12px 70px;
+    font-size: 12px;
+  }
 }

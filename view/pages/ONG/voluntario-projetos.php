@@ -113,7 +113,7 @@
 <?php 
     $tituloPagina = 'Visualizar Voluntarios por Projeto'; // Definir o título da página
     $cssPagina = ['ONG/voluntarios-projetos.css']; //Colocar o arquivo .css (exemplo: 'ONG/cadastro.css')
-    require_once '../../components/header.php';
+    require_once '../../components/header-ong.php';
 ?>
 <!-- COMEÇAR SEU CÓDIGO AQUI -->
 <div id="principal">
@@ -208,7 +208,7 @@
                     <p><?php echo $voluntario['date'] ?></p>
                 </td>
                 <td>
-                    <button class="btn-ver-solicitacao">Ver Solicitações</button>
+                    <button class="btn-ver-solicitacao">Ver Solicitação</button>
                 </td>
             </tr>
            
