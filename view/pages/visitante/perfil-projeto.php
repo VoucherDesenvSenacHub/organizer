@@ -9,7 +9,6 @@
         <section id="apresentacao" class="container-section">
             <div id="dados-projeto">
                 <h1>NOME PROJETO</h1>
-                <!-- <span id="data-criacao">Criada em 12/04/2023</span> -->
                 <div id="valor-arrecadado">
                     <h3>Arrecadado: <span>R$ 30.000</span></h3>
                     <div class="barra-doacao">
@@ -31,7 +30,7 @@
             <div id="imagem">
                 <img src="../../assets/images/pages/perfil-projeto.png" alt="">
             </div>
-            <div id="logo-ong">
+            <div id="carrossel-projeto">
                 <img src="https://placeholder.pagebee.io/api/plain/400/250">
                 <div class="btn-salvar">
                     <button id="share" class="fa-solid fa-share-nodes" onclick="abrir_popup('compartilhar-popup')"></button>
@@ -39,7 +38,7 @@
                 </div>
             </div>
         </section>
-        <section class="container-section">
+        <section id="painel-projeto" class="container-section">
             <div id="btns-group">
                 <div class="icon-title">
                     <img src="../../assets/images/pages/icone-sobre.png" alt="">
@@ -58,12 +57,27 @@
                     <h3>Responsável</h3>
                 </div>
             </div>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur repellendus distinctio sunt nisi architecto nulla optio at quia perspiciatis fuga sapiente tenetur, recusandae, dolor ut praesentium animi, quo dolorem? Doloribus!
+            <div id="principal-painel">
+                <div id="control-painel">
+                    <div class="container-painel">
+                        111111Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore fugit quidem sunt eum harum ducimus neque nesciunt at esse voluptas, culpa officia dolor vitae iure hic libero dolorem quo placeat.
+                    </div>
+                    <div class="container-painel">
+                        222222Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore fugit quidem sunt eum harum ducimus neque nesciunt at esse voluptas, culpa officia dolor vitae iure hic libero dolorem quo placeat.
+                    </div>
+                    <div class="container-painel">
+                        222222Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore fugit quidem sunt eum harum ducimus neque nesciunt at esse voluptas, culpa officia dolor vitae iure hic libero dolorem quo placeat.
+                    </div>
+                    <div class="container-painel">
+                        222222Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore fugit quidem sunt eum harum ducimus neque nesciunt at esse voluptas, culpa officia dolor vitae iure hic libero dolorem quo placeat.
+                    </div>
+                </div>
+            </div>
         </section>
     </div>
 </main>
 
 <?php
-    $jsPagina = [];
+    $jsPagina = ['perfil-projeto.js'];
     require_once '../../components/footer.php';
 ?>
