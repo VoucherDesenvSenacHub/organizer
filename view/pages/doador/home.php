@@ -20,10 +20,13 @@
                     <div>
                         <h4>Visão Geral</h4>
                         <div class="visaogeral">
-                            <div class="info">
-                                <span>Minhas doações</span>
+                        <a href="favoritos-logado.php">
+                        <div class="info">
+                                <span>Minhas doações</span>''
                                 <h5>R$ 300</h5>
                             </div>
+                        </a>
+                           
                             <div class="info">
                                     <span>Participações</span>
                                     <h5>4 Projetos</h5>
