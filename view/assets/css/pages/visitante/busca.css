@@ -1,0 +1,249 @@
+.Busca-page-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
+  }
+  
+  .Busca-principal {
+    display: flex;
+    width: 90%;
+    margin: 0 auto;
+    max-height: 80vh;
+    overflow-y: auto;
+    padding: 20px;
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.7);
+    scrollbar-width: none;
+  }
+  
+  
+  @media (min-width: 768px) {
+    .Busca-principal {
+      width: 60%;
+    }
+  }
+  
+  .Busca-container {
+    width: 100%;
+  }
+  
+  .busca-container {
+    display: flex;
+    min-height: 100vh;
+  }
+  
+  .busca-container {
+    display: flex;
+    min-height: 100vh;
+  }
+  
+  /* Sidebar de filtros */
+  .busca-sidebar {
+    width: 250px;
+    padding: 24px;
+    border-right: 1px solid #e5e7eb;
+  }
+  
+  .busca-sidebar-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 16px;
+  }
+  
+  .busca-filter-group {
+    margin-bottom: 16px;
+  }
+  
+  .busca-select-wrapper {
+    position: relative;
+    width: 100%;
+  }
+  
+  select {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid #e5e7eb;
+    border-radius: 4px;
+    background-color: white;
+    font-size: 14px;
+    appearance: none;
+    cursor: pointer;
+  }
+  
+  .busca-select-arrow {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
+  
+  /* Conteúdo principal */
+  .busca-main-content {
+    flex: 1;
+    padding: 24px;
+  }
+  
+  .busca-search-container {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 24px;
+  }
+  
+  .busca-search-input {
+    flex: 1;
+    height: 56px;
+    font-size: 18px;
+    padding: 0 16px;
+    border: 1px solid #e5e7eb;
+    border-radius: 4px;
+  }
+  
+  .busca-search-button {
+    height: 56px;
+    padding: 0 32px;
+    font-size: 18px;
+    background-color: #1e3a8a;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .busca-search-button:hover {
+    background-color: #152a61;
+  }
+  
+  /* Resultados */
+  .busca-results-container {
+    width: 100%;
+  }
+  
+  .busca-results-container.busca-hidden {
+    display: none;
+  }
+  
+  .busca-results-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  
+  .busca-results-title {
+    font-size: 20px;
+    font-weight: 500;
+  }
+  
+  .busca-clear-button {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: #ef4444;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  .busca-x-icon {
+    font-size: 16px;
+  }
+  
+  .busca-results-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  /* Card de resultado */
+  .busca-result-card {
+    display: flex;
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  }
+  
+  .busca-card-image {
+    width: 120px;
+    height: 100px;
+    background-color: #d1d5db;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .busca-card-content {
+    flex: 1;
+    padding: 16px;
+    position: relative;
+  }
+  
+  .busca-card-header {
+    margin-bottom: 8px;
+  }
+  
+  .busca-card-title {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 2px;
+  }
+  
+  .busca-card-subtitle {
+    color: #f97316;
+    font-size: 14px;
+  }
+  
+  .busca-card-projects {
+    font-size: 14px;
+  }
+  
+  .busca-ong-badge {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background-color: #f97316;
+    color: white;
+    font-size: 12px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: bold;
+  }
+  
+  .busca-categories {
+    display: flex;
+    gap: 4px;
+  }
+  
+  .busca-category-tag {
+    background-color: #1e3a8a;
+    color: white;
+    font-size: 12px;
+    padding: 2px 8px;
+    border-radius: 4px;
+  }
+  
+  /* Responsividade */
+  @media (min-width: 768px) {
+    .busca-results-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .busca-container {
+      flex-direction: column;
+    }
+  
+    .busca-sidebar {
+      width: 100%;
+      border-right: none;
+      border-bottom: 1px solid #e5e7eb;
+    }
+  }
+  
+  
