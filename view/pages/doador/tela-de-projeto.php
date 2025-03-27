@@ -7,7 +7,7 @@
 
 <?php require_once '../../components/compartilhar.php'; ?>
 <main>
-<div id="erro403" class="popup-fundo">
+<!-- <div id="erro403" class="popup-fundo">
         <div class="container-popup" id="popup-erro">
             <div class="img">
                 <img src="../../assets/images/erro403.png" alt="Erro 403">
@@ -18,7 +18,7 @@
                 <button class="btn-maistarde" onclick="fechar_popup('erro403')">Mais Tarde</button>
             </div>
         </div>
-    </div>
+    </div> -->
     
 
 <div id="principal">
