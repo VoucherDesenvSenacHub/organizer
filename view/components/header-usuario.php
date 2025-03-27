@@ -39,10 +39,6 @@
                     <li><a href="#">Notícias</a></li>
                 </ul>
             </nav>
-            <!-- <div class="btn-login">
-                <button class="btn" id="openPopup" onclick="loginPopup()">LOGIN</button>
-                <button onclick="menu_mobile()" id="hamburguer"></button>
-            </div> -->
             <button class="botao-aside" onclick="asidebar()"><i class="fa-solid fa-bars"></i></button>
         </div>
     </header>

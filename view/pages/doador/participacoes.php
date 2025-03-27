@@ -97,6 +97,6 @@
 </main>
 
 <?php
-    $jsPagina = ['home.js']; //Colocar o arquivo .js (exemplo: 'cadastro.js')
+    $jsPagina = ['home-doador.js']; //Colocar o arquivo .js (exemplo: 'cadastro.js')
     require_once '../../components/footer.php';
 ?>

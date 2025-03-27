@@ -74,6 +74,8 @@ section#apresentacao {
     justify-content: space-evenly;
     flex-direction: column;
     height: 100%;
+    max-width: 375px;
+    width: 100%;
     /* flex: 1; */
 }
 
@@ -94,7 +96,7 @@ section#apresentacao {
 #dados-ong h3 {
     font-size: 20px;
     font-weight: 500;
-    color: green;
+    color: #408c5d;
 }
 #dados-ong h3 span {
     font-weight: 600;
@@ -132,11 +134,16 @@ section#apresentacao {
     height: 100%;
 }
 
+#progresso {
+    color: #606060;
+}
+
 #dados-ong p {
-    font-size: 16px;
+    font-size: 14px;
 }
 #dados-ong p span {
     font-weight: 600;
+    /* color: #408c5d; */
     color: var(--cor-azul-escuro);
 }
 
@@ -151,7 +158,7 @@ section#apresentacao {
 
 #dados-ong #acoes button {
     transform: translateY(0);
-    
+    width: 50%;
 }
 
 #dados-ong #acoes button:hover {
@@ -164,14 +171,17 @@ section#apresentacao {
 }
 
 
-/* Section: Sobre */
+/* Botões */
 #sobre {
     width: 100%;
     text-align: justify;
 }
-
+#btns-group {
+    display: flex;
+    gap: 10px;
+}
 /* Título com ícone das sessões */
-.icon-title {
+#btns-group .icon-title {
     display: flex;
     align-items: center;
     gap: 10px;
@@ -184,11 +194,18 @@ section#apresentacao {
     color: var(--cor-azul-escuro);
     background-color: #f0f0f0;
     cursor: default;
+    transition: .3s;
+    cursor: pointer;
 }
-.icon-title h3 {
+
+#btns-group .icon-title:hover {
+    background-color: #e2e2e2;
+}
+
+#btns-group .icon-title h3 {
     font-weight: 600;
 }
-.icon-title img {
+#btns-group .icon-title img {
     width: 25px;
     height: 25px;
 }
