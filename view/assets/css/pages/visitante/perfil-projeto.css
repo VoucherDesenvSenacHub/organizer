@@ -2,19 +2,6 @@ body {
     background-color: aliceblue;
 }
 
-#container-principal {
-    background-color: white;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    padding: 50px 20px;
-    flex-direction: column;
-    gap: 30px;
-}
-/* Imagem Ilustrativa */
-#imagem img {
-    max-width: 250px;
-    max-height: 250px;
-}
-
 /* Classe das Sections */
 .container-section {
     display: flex;
@@ -24,88 +11,48 @@ body {
     border-radius: 5px;
     width: 100%;
 }
-/* Divs dentro da section */
-.section-item {
-    width: 50%;
-    display: flex;
+
+#container-principal {
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    padding: 50px 20px;
     flex-direction: column;
-    gap: 20px;
+    gap: 30px;
 }
 
-
-/* Primeira section */
+/* PRIMEIRA SECTION */
 section#apresentacao {
     align-items: center;
     justify-content: space-between;
     height: 277px;
 }
 
-/* Logo */
-#logo-ong {
-    max-width: 400px;
-    max-height: 250px;
-    /* border-radius: 5px; */
-    background-color: rgb(48, 48, 48);
-    box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
-    position: relative;
-}
-
-#logo-ong img {
-    width: 100%;
-    height: 100%;
-}
-
-#logo-ong .btn-salvar  {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    width: fit-content;
-    gap: 10px;
-}
-
-#logo-ong .btn-salvar div {
-    background-color: white;    
-}
-
-/* Informações da ONG */
-#dados-ong {
+/* Informações do Projeto */
+#dados-projeto {
     display: flex;
-    /* align-items: center; */
     justify-content: space-evenly;
     flex-direction: column;
     height: 100%;
     max-width: 375px;
     width: 100%;
-    /* flex: 1; */
 }
 
 /* Nome */
-#dados-ong h1 {
+#dados-projeto h1 {
     font-size: 30px;
     color: var(--cor-principal);
     line-height: 1;
 }
 
-/* #dados-ong #data-criacao {
-    font-size: 13px;
-    color: gray;
-    font-weight: 500;
-} */
-
 /* Valor arrecadado */
-#dados-ong h3 {
+#dados-projeto #valor-arrecadado h3 {
     font-size: 20px;
     font-weight: 500;
     color: #408c5d;
 }
-#dados-ong h3 span {
+
+#valor-arrecadado h3 span {
     font-weight: 600;
-}
-/* Doações recebidas */
-#dados-ong #recebidos {
-    display: flex;
-    gap: 5px;
-    color: var(--cor-principal);
 }
 
 /* Barra de doação */
@@ -134,48 +81,78 @@ section#apresentacao {
     height: 100%;
 }
 
-#progresso {
+/* Meta, Progresso e Doação */
+#dados-projeto #progresso p {
     color: #606060;
-}
-
-#dados-ong p {
     font-size: 14px;
 }
-#dados-ong p span {
+
+#dados-projeto #progresso p span {
     font-weight: 600;
     /* color: #408c5d; */
     color: var(--cor-azul-escuro);
 }
 
 /* Botões de Doação e Voluntario */
-#dados-ong #acoes {
+#dados-projeto #acoes {
     width: 100%;
     display: flex;
-    /* flex-direction: column; */
     justify-content: space-between;
     gap: 10px;
 }
 
-#dados-ong #acoes button {
+#dados-projeto #acoes button {
     transform: translateY(0);
     width: 50%;
 }
 
-#dados-ong #acoes button:hover {
+#dados-projeto #acoes button:hover {
     transform: translateY(-4px);
 }
 
-#acoes #btn-voluntario {
+#dados-projeto #acoes #btn-voluntario {
     background-color: var(--cor-principal);
     color: aliceblue;
 }
 
-
-/* Botões */
-#sobre {
-    width: 100%;
-    text-align: justify;
+/* IMAGEM ILUSTRATIVA */
+#imagem img {
+    max-width: 250px;
+    max-height: 250px;
 }
+
+
+
+
+
+/* Logo */
+#carrossel-projeto {
+    max-width: 400px;
+    max-height: 250px;
+    /* border-radius: 5px; */
+    background-color: rgb(48, 48, 48);
+    box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
+    position: relative;
+}
+
+#carrossel-projeto img {
+    width: 100%;
+    height: 100%;
+}
+
+#carrossel-projeto .btn-salvar  {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: fit-content;
+    gap: 10px;
+}
+
+#carrossel-projeto .btn-salvar div {
+    background-color: white;    
+}
+
+/* BOTÕES DAS SESSÕES */
 #btns-group {
     display: flex;
     gap: 10px;
@@ -210,21 +187,26 @@ section#apresentacao {
     height: 25px;
 }
 
-/* Section: Doadores e Voluntarios */
-.mini-cards {
+
+/* ========== PAINEL DO PROJETO ========== */
+#painel-projeto {
+    flex-direction: column;
+    /* overflow: hidden; */
+}
+
+#principal-painel #control-painel {
     display: flex;
-    justify-content: space-around;
     gap: 10px;
-    flex-wrap: wrap;
+    flex-wrap: nowrap; /* Impede que os itens quebrem */
+    transform: translateX(-1150px);
 }
 
-#noticias {
-    width: 100%;
+#principal-painel #control-painel .container-painel {
+    flex: 0 0 1140px; /* Define uma largura fixa para os itens */
+    background-color: red;
 }
 
-#projetos {
-    width: 100%;
-}
+
 
 @media (max-width: 1050px) {
     #imagem {
