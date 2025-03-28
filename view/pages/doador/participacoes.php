@@ -2,6 +2,7 @@
     $tituloPagina = 'Participações'; // Definir o título da página
     $cssPagina = ['doador/participacoes.css']; //Colocar o arquivo .css (exemplo: 'ONG/cadastro.css')
     require_once '../../components/header-usuario.php';
+    require_once '../../components/aside-usuario.php';
 ?>
 
 <main>
@@ -95,8 +96,11 @@
         </div>
     </section>
 </main>
+</div>
+    <?php require_once '../../components/meu-perfil-doador.php'; ?>
+</div>
 
 <?php
-    $jsPagina = ['home.js']; //Colocar o arquivo .js (exemplo: 'cadastro.js')
+    $jsPagina = ['home-doador.js']; //Colocar o arquivo .js (exemplo: 'cadastro.js')
     require_once '../../components/footer.php';
 ?>
