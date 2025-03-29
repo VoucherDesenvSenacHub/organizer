@@ -121,6 +121,7 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 30px;
+    width: 100%;
 }
 
 #secao-2 h1 {
@@ -131,9 +132,10 @@
 
 #principal {
     display:flex;
-    width: 1200px;
+    /* width: 1200px; */
+    width: 100%;
     overflow:hidden;
-    /* background-color: red ; */
+    gap: 30px;
 }
 
 
@@ -147,7 +149,7 @@
 /* CARD DA ONG */
 .box-ongs {
     display: flex;
-    gap: 30px;
+    gap: 75px;
     justify-content: space-between;
     flex-wrap: wrap;
     width: 1200px;
@@ -160,6 +162,12 @@
 
     .box-ongs {
         justify-content: space-evenly;
+    }
+
+    #principal {
+        justify-content: space-around;
+        flex-direction: column;
+        width: 100%;
     }
 }
 
@@ -283,8 +291,13 @@
     flex-wrap: wrap;
     align-items: center;
     width: 1200px;
-    height: 130px;
+    height: 100%;
     gap: 50px;  
+}
+
+.box-ongs  {
+    justify-content: center;
+
 }
 
 .btn-paginacao {
@@ -302,4 +315,3 @@
         cursor: pointer;
     }
 }
-

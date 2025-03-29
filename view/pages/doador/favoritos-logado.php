@@ -179,7 +179,17 @@
                         </div>
                     </div>
                 </div>
+                <div class="btn-paginacao"> 
+                    <button class="bts">1</button>
+                    <button class="bts">2</button>
+                    <button class="bts">3</button>
+                    <button class="bts">4</button>
+                    <button class="bts">></button>
                 </div>
+            
+                </div>
+                
+                
                 <div class="mae-cards">
     
 

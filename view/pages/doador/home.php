@@ -22,7 +22,7 @@
                         <div class="visaogeral">
                         <a href="favoritos-logado.php">
                         <div class="info">
-                                <span>Minhas doações</span>''
+                                <span>Minhas doações</span>
                                 <h5>R$ 300</h5>
                             </div>
                         </a>
