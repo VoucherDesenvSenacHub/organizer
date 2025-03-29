@@ -182,6 +182,7 @@ body{
     border-radius: 8px;
     box-shadow: 5px 5px 5px rgb(0, 0, 0, 0.7);
     padding: 10px;
+    gap: 20px;
 
 
 
@@ -192,19 +193,19 @@ body{
     text-align: left;
     width: 100%;
     font-weight: 500;
-    margin-left: 20px;
+    margin-left: 50px;
 }
 
 .card{
     background: #FFFFFF;
     display:flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     width: 95%;
-    height: 100px;
+    height: 120px;
     /* margin: 200px auto; */
     border-radius: 5px;
-    box-shadow: 0 3px 7px #00000096;
+    box-shadow: 0 2px 7px #00000096;
     padding: 8px;
    
 }
@@ -235,7 +236,8 @@ body{
     width: 130px;
     background-color: #1C3464;
     color: #FFFFFF;
-    margin-right: 10px;
+    margin-right: 20px;
+    margin-top: 20px;
     border: none;
     border-radius: 3px;
     font-family: "Poppins", serif ; 
@@ -247,7 +249,7 @@ body{
 .cardes {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items:center;
     width: 100%;
     justify-content: space-between;
     gap: 20px;
@@ -314,16 +316,16 @@ body{
     margin-left: 60px;
 }
 .info_top{
+    text-align: left;
     display: flex;
     flex-direction: column;
     justify-content: left;
-    /* gap: 5px; */
+    gap: 5px;
     width: 100%;
-    /* margin-left: 50px; */
-    font-size: 1.3em;
-
+    font-size: 1.3;
+    margin-right: 50px;
         p{
-            margin-left: 20px;
+            margin-left: 50px;
         }
 }
 
@@ -344,6 +346,8 @@ p span{
     );
     float: left;
 }
+
+
 
 
 

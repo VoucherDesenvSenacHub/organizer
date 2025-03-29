@@ -11,7 +11,7 @@
         <div class="cardes">
             <div class="card">
                 <div class="card_esq">
-                    <img class="pleaceholder" src="imgs/fotopleaceholder.png" alt="">
+                    <img class="pleaceholder" src="../../assets/images/ong_placeholder_2.png" alt="">
                     <div class="info">
                         <h2>Projeto A</h2>
                         <p>Doado: R$100</p>
@@ -22,7 +22,7 @@
             </div>
             <div class="card">
                 <div class="card_esq">
-                    <img class="pleaceholder" src="imgs/fotopleaceholder.png" alt="">
+                    <img class="pleaceholder" src="../../assets/images/ong_placeholder_2.png" alt="">
                     <div class="info">
                         <h2 style="color: #007AFF">Projeto B</h2>
                         <p>Doado: R$200</p>
@@ -33,7 +33,7 @@
             </div>
             <div class="card">
                 <div class="card_esq">
-                    <img class="pleaceholder" src="imgs/fotopleaceholder.png" alt="">
+                    <img class="pleaceholder" src="../../assets/images/ong_placeholder_2.png" alt="">
                     <div class="info">
                         <h2 style="color: #FCC21B;">Projeto C</h2>
                         <p>Doado: R$50</p>

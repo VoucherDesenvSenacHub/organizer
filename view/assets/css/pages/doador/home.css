@@ -482,3 +482,8 @@ label {
     font-size: 20px;
     width: 100%;
 }
+
+.btn-info{
+    text-decoration: none;
+    color: #0E4658;
+}
