@@ -34,9 +34,9 @@
             <nav id="nav-bar">
                 <ul>
                     <li><a href="home.php">Home</a></li>
-                    <li><a href="#">Ongs</a></li>
-                    <li><a href="#">Projetos</a></li>
-                    <li><a href="#">Notícias</a></li>
+                    <li><a href="ongs.php" class="<?= (basename($_SERVER['PHP_SELF']) == 'ongs.php') ? 'active' : ''; ?>">Ongs</a></li>
+                    <li><a href="projetos.php" class="<?= (basename($_SERVER['PHP_SELF']) == 'projetos.php') ? 'active' : ''; ?>">Projetos</a></li>
+                    <li><a href="tela-noticia.php">Notícias</a></li>
                 </ul>
             </nav>
             <button class="botao-aside" onclick="asidebar()"><i class="fa-solid fa-bars"></i></button>
