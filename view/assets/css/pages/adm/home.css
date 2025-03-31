@@ -1,9 +1,18 @@
+#nav-bar ul li:nth-child(1) a {
+    color: var(--cor-amarelo);
+    font-weight: bold;
+}
+
+main {
+    padding: 60px 0;
+}
+
 #principal {
     display: flex;
     justify-content: space-around;
     width: 70%;
     height: 580px;
-    margin: 40px auto;
+    margin: 0 auto;
     background-color: #FFFFFF;
     border-radius: 8px;
 }
@@ -260,7 +269,10 @@
     margin: 0 1rem 1rem 1rem;
     /* Margem para o botão não encostar nas bordas */
     cursor: pointer;
+    text-decoration: none;
+    font-size: 0.8em;
     transition: background-color 0.3s ease, transform 0.3s ease;
+
 }
 
 .card-button:hover {

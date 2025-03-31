@@ -1,0 +1,276 @@
+/* CSS DAS TELAS DE ONG E PROJETO (NAVBAR) */
+
+#nav-bar ul li a.active {
+    color: var(--cor-amarelo);
+    font-weight: bold;
+}
+
+body {
+    background-color: aliceblue;
+}
+
+main {
+    padding: 0 20px;
+}
+
+#container-catalogo {
+    background-color: aliceblue;
+    height: fit-content;
+    padding: 50px 0;
+    border-radius: 10px;
+    width: 100%;
+    flex-direction: column;
+    align-items: normal;
+    gap: 40px;
+}
+
+/* Sessão de Cima */
+section#top-info {
+    display: flex;
+    justify-content: space-between;
+}
+
+#top-info #info {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#info div {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Imagem */
+#top-info #imagem-top {
+    max-width: 330px;
+    height: 300px;
+}
+
+#imagem-top img {
+    width: 100%;
+}
+
+/* Área do título, texto e filtro */
+#top-info #info h1 {
+    color: var(--cor-principal);
+    font-size: 32px;
+    line-height: 1;
+}
+
+#top-info #info p {
+    max-width: 416px;
+    text-align: justify;
+}
+
+/* Filtro */
+#form-filtro {
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: white;
+    display: flex;
+    gap: 10px;
+    height: 50px;
+    width: fit-content;
+    margin-top: 10px;
+}
+
+#form-filtro .ul-group {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: start;
+}
+
+#form-filtro .drop {
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    border-radius: 4px;
+    height: 40px;
+    overflow: hidden;
+    transition: .4s ease-in-out;
+    cursor: default;
+    background-color: white;
+    z-index: 1;
+}
+
+#form-filtro ul li:first-child {
+    justify-content: space-between;
+}
+
+/* Itens do drop */
+#form-filtro ul li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+    height: 40px;
+    white-space: nowrap;
+    padding: 0 5px;
+}
+
+#form-filtro input[type="checkbox"] {
+    accent-color: var(--cor-amarelo-hover);
+}
+
+#form-filtro ul li:hover {
+    background-color: rgba(227, 181, 82, 0.3);
+}
+
+#form-filtro ul li:first-child:hover {
+    background-color: white;
+}
+
+#form-filtro ul li:nth-child(2){
+    border-top: .1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Filtro: Status */
+#form-filtro #esc-status {
+    width: 85px;
+}
+#form-filtro #esc-status:hover {
+    height: calc(40px * 3);
+    width: 158px;
+}
+
+/* Filtro: Categoria */
+#form-filtro #esc-categoria {
+    width: 115px;
+}
+#form-filtro #esc-categoria:hover {
+    height: calc(40px * 7);
+    width: 154px;
+}
+
+/* Filtro: Região */
+#form-filtro #esc-regiao {
+    width: 90px;
+}
+#form-filtro #esc-regiao:hover {
+    height: calc(40px * 6);
+    width: 145px;
+}
+
+/* Área barra de pesquisa */
+#form-busca {
+    display: flex;
+    align-items: center;
+    max-width: 416px;
+    width: 100%;
+}
+
+#form-busca  input {
+    background-color: white;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    border: none;
+    outline: none;
+    border-radius: 4px 24px 24px 4px;
+    padding: 15px 65px 15px 15px;
+    transition: .3s;
+    width: 100%;
+}
+
+#form-busca  .btn {
+    font-size: 20px;
+    padding: 0;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-left: -50px;
+}
+
+/* Sessão de Baixo: Áreas dos cards */
+section#box-ongs {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+/* Botões de navegação */
+#navegacao {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+#navegacao a {
+    text-decoration: none;
+    color: var(--cor-principal);
+    background-color: white;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+}
+
+#navegacao a:hover {
+    filter: brightness(.9);
+}
+
+#navegacao a.active {
+    background-color: var(--cor-amarelo);
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 1200px) {
+    section#top-info {
+        flex-direction: column-reverse;
+        align-items: center;
+        text-align: center;
+    }
+
+    #top-info #info {
+        align-items: center;
+    }
+
+    #info div {
+        align-items: center;
+    }
+
+    #top-info #info p {
+        text-align: center;
+    }
+
+    section#box-ongs {
+        justify-content: space-evenly;
+        gap: 30px 15px;
+    }
+}
+
+@media (max-width: 450px) {
+    #form-filtro {
+        flex-direction: column;
+        height: 100px;
+        position: relative;
+        width: 320px;
+    }
+
+    #form-filtro button {
+        position: absolute;
+        bottom: 5px;
+        width: calc(100% - 10px);
+    }
+
+    #form-busca {
+        max-width: 320px;
+    }
+
+    #form-filtro ul li {
+        gap: 5px;
+    }
+
+    #form-filtro #esc-status:hover {
+        width: 235px;
+    }
+
+    #form-filtro #esc-categoria:hover,
+    #form-filtro #esc-regiao:hover {
+        width: 190px;
+    }
+}

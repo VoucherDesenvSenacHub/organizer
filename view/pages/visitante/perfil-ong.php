@@ -1,6 +1,6 @@
 <?php 
     $tituloPagina = 'Perfil da ONG | Organizer';
-    $cssPagina = ['visitante/perfil-ong.css'];
+    $cssPagina = ['shared/perfil-ong.css'];
     require_once '../../components/header.php';
 ?>
 
@@ -23,8 +23,8 @@
                     <p><span>9 </span>Projetos Criados</p>
                 </div>
                 <div id="acoes">
-                    <button class="btn">Fazer uma doação</button>
-                    <button class="btn" id="btn-voluntario">Ser Voluntário</button>
+                    <button class="btn" onclick="abrir_popup('login-obrigatorio-popup')">Fazer uma doação</button>
+                    <button class="btn" id="btn-voluntario" onclick="abrir_popup('login-obrigatorio-popup')">Ser Voluntário</button>
                 </div>
             </div>
             <div id="imagem">
@@ -47,12 +47,12 @@
                     <h3>Doadores</h3>
                 </div>
                 <div class="mini-cards">
-                    <?php require '../../components/card-doador.php'; ?>
-                    <?php require '../../components/card-doador.php'; ?>
-                    <?php require '../../components/card-doador.php'; ?>
-                    <?php require '../../components/card-doador.php'; ?>
-                    <?php require '../../components/card-doador.php'; ?>
-                    <?php require '../../components/card-doador.php'; ?>
+                    <?php require '../../components/cards/card-doador.php'; ?>
+                    <?php require '../../components/cards/card-doador.php'; ?>
+                    <?php require '../../components/cards/card-doador.php'; ?>
+                    <?php require '../../components/cards/card-doador.php'; ?>
+                    <?php require '../../components/cards/card-doador.php'; ?>
+                    <?php require '../../components/cards/card-doador.php'; ?>
                 </div>
             </div>
             <div class="section-item">
@@ -61,12 +61,12 @@
                     <h3>Voluntários</h3>
                 </div>
                 <div class="mini-cards">
-                    <?php require '../../components/card-voluntario.php'; ?>
-                    <?php require '../../components/card-voluntario.php'; ?>
-                    <?php require '../../components/card-voluntario.php'; ?>
-                    <?php require '../../components/card-voluntario.php'; ?>
-                    <?php require '../../components/card-voluntario.php'; ?>
-                    <?php require '../../components/card-voluntario.php'; ?>
+                    <?php require '../../components/cards/card-voluntario.php'; ?>
+                    <?php require '../../components/cards/card-voluntario.php'; ?>
+                    <?php require '../../components/cards/card-voluntario.php'; ?>
+                    <?php require '../../components/cards/card-voluntario.php'; ?>
+                    <?php require '../../components/cards/card-voluntario.php'; ?>
+                    <?php require '../../components/cards/card-voluntario.php'; ?>
                 </div>
             </div>
         </section>
@@ -77,8 +77,8 @@
                     <h3>Notícias</h3>
                 </div>
                 <div class="mini-cards">
-                    <?php require '../../components/card-noticia.php'; ?>
-                    <?php require '../../components/card-noticia.php'; ?>
+                    <?php require '../../components/cards/card-noticia.php'; ?>
+                    <?php require '../../components/cards/card-noticia.php'; ?>
                 </div>
             </div>
         </section>
@@ -89,10 +89,10 @@
                     <h3>Projetos</h3>
                 </div>
                 <div class="mini-cards">
-                    <?php require '../../components/card-projeto.php'; ?>
-                    <?php require '../../components/card-projeto.php'; ?>
-                    <?php require '../../components/card-projeto.php'; ?>
-                    <?php require '../../components/card-projeto.php'; ?>
+                    <?php require '../../components/cards/card-projeto.php'; ?>
+                    <?php require '../../components/cards/card-projeto.php'; ?>
+                    <?php require '../../components/cards/card-projeto.php'; ?>
+                    <?php require '../../components/cards/card-projeto.php'; ?>
                 </div>
             </div>
         </section>

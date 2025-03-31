@@ -9,6 +9,8 @@
         integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" /> 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+
+    <link rel="icon" type="image/x-icon" href="../../assets/images/global/Logo-Organizer.png">
     <!-- CSS GLOBAL -->
     <link rel="stylesheet" href="../../assets/css/global/style.css">
 
@@ -23,7 +25,32 @@
 </head>
 
 <body>
+    <header>
+        <div class="container">
+            <div class="logo">
+            <img src="../../assets/images/global/Logo-Organizer.png">
+            <h1>Organizer</h1>
+                </div>
+            <nav id="nav-bar">
+                <ul>
+                    <li><a href="home.php">Home</a></li>
+                    <li><a href="ongs.php" class="<?= (basename($_SERVER['PHP_SELF']) == 'ongs.php') ? 'active' : ''; ?>">Ongs</a></li>
+                    <li><a href="projetos.php" class="<?= (basename($_SERVER['PHP_SELF']) == 'projetos.php') ? 'active' : ''; ?>">Projetos</a></li>
+                    <li><a href="noticias.php">Notícias</a></li>
+                </ul>
+            </nav>
+            <button class="botao-aside" onclick="asidebar()"><i class="fa-solid fa-bars"></i></button>
+        </div>
+    </header>
     <?php 
-        require_once 'navbar-usuario.php'; 
         require_once 'aside-usuario.php'; 
+        require_once 'compartilhar.php';
+        require_once 'fazer-doacao.php';//POPUP DE DOAÇÃO
+        require_once 'ser-voluntario.php';//POPUP DE SR VOLUNTÁRIO
     ?>
+    <div id="sair-doador">
+        <?php 
+            require_once 'sair-da-conta-popup.php'; 
+        ?>
+    </div>
+    <script src="../../assets/js/pages/home-doador.js"></script>

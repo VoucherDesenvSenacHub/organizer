@@ -1,3 +1,7 @@
+#nav-bar ul li:nth-child(3) a {
+    color: var(--cor-amarelo);
+    font-weight: bold;
+}
 
 :root {
     --backgroud: #1C3464;
@@ -8,13 +12,17 @@
     --button-hover: #9747FF;
 }
 
+main {
+    padding: 60px 0;
+}
+
 #principal {
     display: flex;
     flex-direction: column;
     align-items: center;
     z-index: 1;
     width: 55%;
-    margin: 60px auto;
+    margin: 0 auto;
     padding: 20px;
     background-color: #FFFFFF;
     border-radius: 8px;
