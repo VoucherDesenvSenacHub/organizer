@@ -1,6 +1,6 @@
 <?php 
     $tituloPagina = 'Descubra ONGS';
-    $cssPagina = ['visitante/catalogo.css'];
+    $cssPagina = ['shared/catalogo.css'];
     require_once '../../components/header.php';
 ?>
 

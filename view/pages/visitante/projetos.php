@@ -1,6 +1,6 @@
 <?php 
     $tituloPagina = 'Encontre Projetos';
-    $cssPagina = ['visitante/catalogo.css'];
+    $cssPagina = ['shared/catalogo.css'];
     require_once '../../components/header.php';
 ?>
 
@@ -124,7 +124,7 @@
                         </div>
                     </div>
                 </div>
-                <a class="saiba-mais-projeto" href="tela-de-projeto.php">Saiba Mais</a>
+                <a class="saiba-mais-projeto" href="perfil-projeto.php">Saiba Mais</a>
             </div>
             <div class="card-projeto">
                 <div class="acoes-projeto">
@@ -144,7 +144,7 @@
                         </div>
                     </div>
                 </div>
-                <a class="saiba-mais-projeto" href="tela-de-projeto.php">Saiba Mais</a>
+                <a class="saiba-mais-projeto" href="perfil-projeto.php">Saiba Mais</a>
             </div>
             <div class="card-projeto">
                 <div class="acoes-projeto">
@@ -164,7 +164,7 @@
                         </div>
                     </div>
                 </div>
-                <a class="saiba-mais-projeto" href="tela-de-projeto.php">Saiba Mais</a>
+                <a class="saiba-mais-projeto" href="perfil-projeto.php">Saiba Mais</a>
             </div>
             <div class="card-projeto">
                 <div class="acoes-projeto">
@@ -184,7 +184,7 @@
                         </div>
                     </div>
                 </div>
-                <a class="saiba-mais-projeto" href="tela-de-projeto.php">Saiba Mais</a>
+                <a class="saiba-mais-projeto" href="perfil-projeto.php">Saiba Mais</a>
             </div>
             <div class="card-projeto">
                 <div class="acoes-projeto">
@@ -204,7 +204,7 @@
                         </div>
                     </div>
                 </div>
-                <a class="saiba-mais-projeto" href="tela-de-projeto.php">Saiba Mais</a>
+                <a class="saiba-mais-projeto" href="perfil-projeto.php">Saiba Mais</a>
             </div>
             <div class="card-projeto">
                 <div class="acoes-projeto">
@@ -224,7 +224,7 @@
                         </div>
                     </div>
                 </div>
-                <a class="saiba-mais-projeto" href="tela-de-projeto.php">Saiba Mais</a>
+                <a class="saiba-mais-projeto" href="perfil-projeto.php">Saiba Mais</a>
             </div>
             <div class="card-projeto">
                 <div class="acoes-projeto">
@@ -244,7 +244,7 @@
                         </div>
                     </div>
                 </div>
-                <a class="saiba-mais-projeto" href="tela-de-projeto.php">Saiba Mais</a>
+                <a class="saiba-mais-projeto" href="perfil-projeto.php">Saiba Mais</a>
             </div>
             <div class="card-projeto">
                 <div class="acoes-projeto">
@@ -264,7 +264,7 @@
                         </div>
                     </div>
                 </div>
-                <a class="saiba-mais-projeto" href="tela-de-projeto.php">Saiba Mais</a>
+                <a class="saiba-mais-projeto" href="perfil-projeto.php">Saiba Mais</a>
             </div>
         </section>
         <nav id="navegacao">

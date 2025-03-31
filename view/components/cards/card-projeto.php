@@ -16,5 +16,5 @@
             </div>
         </div>
     </div>
-    <a class="saiba-mais-projeto" href="tela-de-projeto.php">Saiba Mais</a>
+    <a class="saiba-mais-projeto" href="perfil-projeto.php">Saiba Mais</a>
 </div>

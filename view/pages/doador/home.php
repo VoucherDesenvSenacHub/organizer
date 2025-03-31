@@ -3,7 +3,6 @@
     $tituloPagina = 'Home'; // Definir o título da página
     $cssPagina = ['doador/home.css']; //Colocar o arquivo .css (exemplo: 'ONG/cadastro.css')
     require_once '../../components/header-usuario.php';
-    require_once '../../components/aside-usuario.php';
 ?>
 
 
@@ -91,7 +90,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a class="saiba-mais-projeto" href="tela-de-projeto.php">Saiba Mais</a>
+                        <a class="saiba-mais-projeto" href="perfil-projeto.php">Saiba Mais</a>
                     </div>
                     <div class="card-projeto">
                         <div class="acoes-projeto">
@@ -111,7 +110,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a class="saiba-mais-projeto" href="tela-de-projeto.php">Saiba Mais</a>
+                        <a class="saiba-mais-projeto" href="perfil-projeto.php">Saiba Mais</a>
                     </div>
                     <div class="card-projeto">
                         <div class="acoes-projeto">
@@ -131,7 +130,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a class="saiba-mais-projeto" href="tela-de-projeto.php">Saiba Mais</a>
+                        <a class="saiba-mais-projeto" href="perfil-projeto.php">Saiba Mais</a>
                     </div>
                 </div>
             </div>

@@ -15,7 +15,7 @@
     display: flex;
 }
 
-.container-meu-perfil {
+#meu-perfil .container-meu-perfil {
     display: flex;
     background: white;
     width: 800px;
@@ -24,13 +24,13 @@
     overflow: hidden;
 }
 
-.imge{
+#meu-perfil .imge{
     width: 20px;
 }
 
 
 /* Barra lateral */
-.sidebar {
+#meu-perfil .sidebar {
     background: #ffffff;
     width: 250px;
     padding: 20px;
@@ -41,28 +41,28 @@
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.16);
 }
 
-.profile {
+#meu-perfil .profile {
     text-align: center;
 }
 
-.profile img {
+#meu-perfil .profile img {
     width: 100px;
     height: 100px;
     border-radius: 50%;
     border: 3px solid #ddd;
 }
 
-.username {
+#meu-perfil .username {
     font-size: 24px;
     margin: 10px 0;
 }
 
-.email {
+#meu-perfil .email {
     font-size: 16px;
     color: #66666692;
 }
 
-.logout {
+#meu-perfil .logout {
     display: flex;
     align-items: center;
     margin-top: 310px;
@@ -77,38 +77,38 @@
     font-size: 24px;
 }
 
-.logout span{
+#meu-perfil .logout span{
     padding-right: 20px;
 }
 
-.logout:hover {
+#meu-perfil .logout:hover {
     background: #c0392b;
 }
 
 /* Conteúdo principal */
-.main-content {
+#meu-perfil .main-content {
     flex: 1px;
     padding: 20px;
     
 }
-.info-se{
+#meu-perfil .info-se{
     box-shadow: 0 3px 7px rgba(0, 0, 0, 0.401);
     border-radius: 5px;
     padding: 15px;
 
 }
 
-h2 {
+#meu-perfil h2 {
     color: #007bff;
     margin-bottom: 15px;
 }
-.infose {
+#meu-perfil .infose {
     box-shadow: 0 3px 7px rgba(60, 60, 60, 0.401);
     margin-bottom: 10px;
     padding: 15px;
 }
 
-.info-grid {
+#meu-perfil .info-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 15px;
@@ -116,22 +116,22 @@ h2 {
     /* box-shadow: 0 3px 7px rgba(0, 0, 0, 0.401); */
 }
 
-.info {
+#meu-perfil .info {
     margin-bottom: 42px;
     
 }
-.infon{
+#meu-perfil .infon{
     width:50%;
     margin-bottom: 30px;
 }
 
-label {
+#meu-perfil label {
     display: block;
     font-size: 18px;
     margin-bottom: 5px;
 }
 
-.input-box {
+#meu-perfil .input-box {
     background: #f9f9f9;
     padding: 10px;
     border-radius: 5px;
@@ -140,7 +140,7 @@ label {
     border: 1px solid #ededed;
 
 }
-.input-email {
+#meu-perfil .input-email {
     background: #f9f9f9;
     padding: 10px;
     border-radius: 5px;
@@ -149,7 +149,7 @@ label {
     border: 1px solid #ededed;
     width: 50%;
 }
-.input-email input {
+#meu-perfil .input-email input {
     border: none;
     background: transparent;
     width: 100%;
@@ -158,12 +158,12 @@ label {
     cursor: default;
 }
 
-.input-box span {
+#meu-perfil .input-box span {
     font-size: 16px;
     margin-right: 10px;
 }
 
-.input-box input {
+#meu-perfil .input-box input {
     border: none;
     background: transparent;
     width: 100%;
@@ -173,7 +173,7 @@ label {
 }
 
 /* Botão de alterar senha */
-.change-password {
+#meu-perfil .change-password {
     width: 50%;
     padding: 10px;
     background: #f4f4f4;
@@ -186,6 +186,6 @@ label {
     color: black;
 }
 
-.change-password:hover {
+#meu-perfil .change-password:hover {
     background: #d3d3d3e6;
 }
