@@ -36,7 +36,7 @@
                     <li><a href="home.php">Home</a></li>
                     <li><a href="ongs.php" class="<?= (basename($_SERVER['PHP_SELF']) == 'ongs.php') ? 'active' : ''; ?>">Ongs</a></li>
                     <li><a href="projetos.php" class="<?= (basename($_SERVER['PHP_SELF']) == 'projetos.php') ? 'active' : ''; ?>">Projetos</a></li>
-                    <li><a href="tela-noticia.php">Notícias</a></li>
+                    <li><a href="noticias.php">Notícias</a></li>
                 </ul>
             </nav>
             <button class="botao-aside" onclick="asidebar()"><i class="fa-solid fa-bars"></i></button>
@@ -44,9 +44,13 @@
     </header>
     <?php 
         require_once 'aside-usuario.php'; 
+        require_once 'compartilhar.php';
+        require_once 'fazer-doacao.php';//POPUP DE DOAÇÃO
+        require_once 'ser-voluntario.php';//POPUP DE SR VOLUNTÁRIO
     ?>
     <div id="sair-doador">
         <?php 
             require_once 'sair-da-conta-popup.php'; 
         ?>
     </div>
+    <script src="../../assets/js/pages/home-doador.js"></script>

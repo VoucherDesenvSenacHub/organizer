@@ -1,7 +1,7 @@
 <?php 
     $tituloPagina = 'Perfil do Projeto | Organizer';
     $cssPagina = ['shared/perfil-projeto.css'];
-    require_once '../../components/header.php';
+    require_once '../../components/header-usuario.php';
 ?>
 
 <main>
@@ -23,8 +23,8 @@
                     <p><span>24</span> Doações Recebidas</p>
                 </div>
                 <div id="acoes">
-                    <button class="btn" id="btn-doacao" onclick="abrir_popup('login-obrigatorio-popup')">Fazer uma doação</button>
-                    <button class="btn" id="btn-voluntario" onclick="abrir_popup('login-obrigatorio-popup')">Ser Voluntário</button>
+                    <button class="btn" id="btn-doacao" onclick="abrir_popup('doacao-popup')">Fazer uma doação</button>
+                    <button class="btn" id="btn-voluntario" onclick="abrir_popup('ser-voluntario-popup')">Ser Voluntário</button>
                 </div>
             </div>
             <div id="imagem-ilustrativa">
@@ -58,7 +58,7 @@
                     </div>
                 </div>
             </div>
-            <section id="painel-projeto" class="container-section">
+        <section id="painel-projeto" class="container-section">
             <div id="btns-group">
                 <div class="icon-title active">
                     <img src="../../assets/images/pages/icone-sobre.png" alt="">

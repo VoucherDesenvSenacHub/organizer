@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    let btns = document.querySelectorAll('.icon-title');
+    let btns = document.querySelectorAll('#btns-group .icon-title');
     let container = document.querySelectorAll('.container-painel');
     const div = document.querySelector('#control-painel');
 
@@ -25,3 +25,39 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+
+// CARROSSEL
+
+//Carousel//
+
+let currentIndex = 0;
+const items = document.querySelectorAll('.carousel-item');
+const totalItems = items.length;
+
+function changeSlide() {
+    currentIndex = (currentIndex + 1) % totalItems;
+    const offset = -currentIndex * 410;
+
+    document.querySelector('#carousel-imgs').style.transform = `translateX(${offset}px)`;
+}
+
+setInterval(changeSlide, 2500);
+
+// Abrir carrossel grande
+document.getElementById("carousel-imgs").addEventListener("click", function() {
+    abrir_popup('carousel-popup');
+});
+
+let Indexbig = 0;
+const itemsBig = document.querySelectorAll('.carousel-item-big');
+const totalItemsBig = itemsBig.length;
+
+function changeSlideBig() {
+    Indexbig = (Indexbig + 1) % totalItemsBig;
+    const offset = -Indexbig * 610;
+
+    document.querySelector('#carousel-big-imgs').style.transform = `translateX(${offset}px)`;
+}
+
+setInterval(changeSlideBig, 2500);
