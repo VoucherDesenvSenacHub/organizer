@@ -25,6 +25,7 @@
 }
 
 #quant-doacao .icon-title {
+    width: 39px;
     display: flex;
     align-items: center;
     gap: 10px;
@@ -33,7 +34,7 @@
     height: 39px;
     justify-content: center;
     border-radius: 3px;
-    padding:  5px 10px;
+    padding:  5px;
     color: var(--cor-principal);
     background-color: #fff;
     cursor: default;
@@ -48,6 +49,7 @@
 
 #quant-doacao .icon-title h3 {
     font-weight: 600;
+    white-space: nowrap;
 }
 #quant-doacao .icon-title img {
     width: 30px;
@@ -109,4 +111,10 @@
 
 #doacao-popup form .btn {
     background-color: #51CD32;
+}
+
+@media (max-width: 440px) {
+    #doacao-popup .container-popup {
+        padding: 30px 10px;
+    }
 }

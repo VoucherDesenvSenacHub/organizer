@@ -55,6 +55,11 @@ section .container h1 {
     text-align: center;
     gap: 2px;
     cursor: pointer;
+    transition: 0.3s;
+}
+
+.line .item:hover {
+    transform: scale(1.05);
 }
 
 .line .item.active .circle {

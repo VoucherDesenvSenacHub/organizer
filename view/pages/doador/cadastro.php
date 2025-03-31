@@ -72,7 +72,7 @@
                         <span class="visor"></span>
                     </div>
                     <div class="btnNextBack">
-                        <button class="btn btnVoltar" type="button" onclick="moverPara(0, 33)">Voltar</button>
+                        <button class="btn btnVoltar" type="button" onclick="moverPara(0, 33.3)">Voltar</button>
                         <button class="btn" type="button" onclick="return proximo(2)">Próximo</button>
                     </div>
                 </div>
@@ -97,7 +97,7 @@
                         <input type="text" disabled>
                     </div>
                     <div class="btnNextBack">
-                        <button class="btn btnVoltar" type="button" onclick="moverPara(1, 33)">Voltar</button>
+                        <button class="btn btnVoltar" type="button" onclick="moverPara(1, 33.3)">Voltar</button>
                         <button class="btn" onclick="return proximo(3)">CADASTRAR</button>
                     </div>
                 </div>

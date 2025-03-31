@@ -45,9 +45,11 @@ function changeSlide() {
 setInterval(changeSlide, 2500);
 
 // Abrir carrossel grande
-document.getElementById("carousel-imgs").addEventListener("click", function() {
-    abrir_popup('carousel-popup');
-});
+if (window.innerWidth > 700) {
+    document.getElementById("carousel-imgs").addEventListener("click", function() {
+        abrir_popup('carousel-popup');
+    });
+}
 
 let Indexbig = 0;
 const itemsBig = document.querySelectorAll('.carousel-item-big');

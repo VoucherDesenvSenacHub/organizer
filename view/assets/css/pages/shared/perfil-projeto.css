@@ -169,8 +169,8 @@ section#apresentacao {
 
 /* Carrossel pequeno */
 #carousel {
-    max-width: 400px;
-    max-height: 250px;
+    width: 400px;
+    height: 250px;
 }
 
 /* Carrossel grande */
@@ -184,8 +184,8 @@ section#apresentacao {
 }
 
 #carousel-big {
-    max-width: 600px;
-    max-height: 375px;
+    width: 600px;
+    height: 375px;
 }
 
 
@@ -313,5 +313,15 @@ section#apresentacao {
 
     #dados-projeto #acoes button {
         width: 100%;
+    }
+
+    #carousel {
+        transform: scale(0.8);
+    }
+}
+
+@media (max-width: 455px) {
+    #container-principal {
+        padding: 50px 4px;
     }
 }

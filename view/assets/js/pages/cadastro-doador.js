@@ -1,4 +1,4 @@
-iniciarEventos(33)
+iniciarEventos(33.3)
 
 function proximo(indice) {
     const input = document.querySelectorAll('.inputBox > input');
@@ -14,7 +14,7 @@ function proximo(indice) {
             return false;
         }
         check[0].classList.add('input-valid')
-        moverPara(indice, 33);
+        moverPara(indice, 33.3);
     }
     else if (indice == 2) {
         if (
@@ -27,7 +27,7 @@ function proximo(indice) {
             return false;
         }
         check[1].classList.add('input-valid');
-        moverPara(indice, 33);
+        moverPara(indice, 33.3);
     }
     else if (indice == 3) {
         if (
