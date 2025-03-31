@@ -55,7 +55,19 @@ section{
     
 }
 
-.table .btn-aprovar, table .btn-recusar {
+.table .btn-aprovar {
+    padding: 8px 16px; 
+    font-size: 14px;
+    width: 100px;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 20px; 
+}
+
+
+.table .btn-recusar {
     padding: 8px 16px; 
     font-size: 14px;
     width: 100px;
@@ -236,12 +248,12 @@ section{
         width: 100%;
     }
 
-    .table .btn-aceitar,
+    /* .table .btn-aceitar,
     .table .btn-recusar {
         width: 100%;
         margin-left: 0;
         margin-top: 10px;
-    }
+    } */
 
     .card-visualiza-solicitacao,
     .card-confirma-solicitacao,
@@ -288,11 +300,18 @@ section{
            
     }
 
-    .table .btn-aceitar,
+    .table .btn-aprovar,
     .table .btn-recusar {
         width: 100%;
         margin-top: 10px;
     }
+
+
+  .botoes{
+    display: flex;
+    margin-left: 40%;
+    flex-wrap: wrap;
+}
 
     .card-recusa-solicitacao img{
         width: 60px;  

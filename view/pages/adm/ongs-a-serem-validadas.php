@@ -91,7 +91,7 @@
                 <!-- visualizar aprovação-->
             <div class="tela-confirma-solicitacao" id="tela-confirma-solicitacao">
                 <div class="card-confirma-solicitacao">
-                    <div><img src="../../assets/images/parcerias.png" alt=""></div>   
+                    <div><img src="../../assets/images/envelope-verde.svg" alt=""></div>   
                     <div><h1>Ong aprovada</h1></di>
                     <div><p>Um email foi enviado para informar</p></div>
                 </div>    
@@ -100,8 +100,8 @@
     <!-- visualiza  recusa-->
     <div class="tela-recusa-solicitacao" id="tela-recusa-solicitacao">
                     <div class="card-recusa-solicitacao">
-                        <div><img src="../../assets/images/parceria-recusada.png" alt=""></div>   
-                        <div><h1>Parceria Recusada</h1></div>
+                        <div><img src="../../assets/images/envelope-vermelho.svg" alt=""></div>   
+                        <div><h1>Ong recusada</h1></div>
                         <div><p>Um email foi enviado para informar</p></div>  
                     </div>
     </div>
