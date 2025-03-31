@@ -12,6 +12,8 @@ section {
     align-items: center;
     justify-content: center;
     min-height: calc(100vh - 60px);
+    background-color: aliceblue;
+    
 }
 
 section .container{
@@ -20,10 +22,11 @@ section .container{
     align-items: start;
     background-color: white;
     border-radius: 12px;
+    border: none;   
     width: 1200px;
     height: fit-content;
     padding: 40px;
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px;
+    /* box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px; */
     gap: 30px;
 }
 
@@ -35,10 +38,14 @@ section .container #secao-1{
     justify-content: space-around;
 }
 
-#secao-1 #container-esq{
+#secao-1 #container-esq {
     display: flex;
     flex-direction: column;
     gap: 20px;
+}
+
+#secao-1 #container-esq a {
+    text-decoration: none;
 }
 
 #secao-1 #container-esq .visaogeral{
@@ -182,7 +189,9 @@ section .container #secao-1{
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    gap: 30px;
+    gap: 80px;
+    
+    
 }
 
 #secao-3 h3 {
