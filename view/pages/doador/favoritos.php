@@ -1,6 +1,6 @@
 <?php 
-    $tituloPagina = 'Home | Organizer'; // Definir o título da página
-    $cssPagina = ['doador/favoritos-logado.css']; //Colocar o arquivo .css 
+    $tituloPagina = 'Favoritos | Organizer'; // Definir o título da página
+    $cssPagina = ['doador/favoritos.css']; //Colocar o arquivo .css 
     require_once '../../components/header-usuario.php';
 ?>
 <main>
@@ -211,7 +211,7 @@
                 </div>
             </div>
         </div>
-            <a class="saiba-mais-projeto" href="tela-de-projeto.php">Saiba Mais</a>
+            <a class="saiba-mais-projeto" href="perfil-projeto.php">Saiba Mais</a>
     </div>
 
         <div class="card-projeto">
@@ -232,7 +232,7 @@
                         </div>
                     </div>
                  </div>
-            <a class="saiba-mais-projeto" href="tela-de-projeto.php">Saiba Mais</a>
+            <a class="saiba-mais-projeto" href="perfil-projeto.php">Saiba Mais</a>
         </div>
 
         <div class="card-projeto">
@@ -253,7 +253,7 @@
                             </div>
                     </div>
                 </div>
-            <a class="saiba-mais-projeto" href="tela-de-projeto.php">Saiba Mais</a>
+            <a class="saiba-mais-projeto" href="perfil-projeto.php">Saiba Mais</a>
 
         
         </div>
@@ -278,7 +278,7 @@
                             </div>
                         </div>
                 </div>
-            <a class="saiba-mais-projeto" href="tela-de-projeto.php">Saiba Mais</a>
+            <a class="saiba-mais-projeto" href="perfil-projeto.php">Saiba Mais</a>
         </div>
 
         <div class="card-projeto">
@@ -299,7 +299,7 @@
                         </div>
                     </div>
                  </div>
-            <a class="saiba-mais-projeto" href="tela-de-projeto.php">Saiba Mais</a>
+            <a class="saiba-mais-projeto" href="perfil-projeto.php">Saiba Mais</a>
         </div>
 
         <div class="card-projeto">
@@ -320,7 +320,7 @@
                             </div>
                     </div>
                 </div>
-            <a class="saiba-mais-projeto" href="tela-de-projeto.php">Saiba Mais</a>
+            <a class="saiba-mais-projeto" href="perfil-projeto.php">Saiba Mais</a>
         </div>
 
         <div class="card-projeto">
@@ -341,7 +341,7 @@
                             </div>
                     </div>
                 </div>
-            <a class="saiba-mais-projeto" href="tela-de-projeto.php">Saiba Mais</a>
+            <a class="saiba-mais-projeto" href="perfil-projeto.php">Saiba Mais</a>
         </div>
 
         <div class="card-projeto">
@@ -362,7 +362,7 @@
                             </div>
                     </div>
                 </div>
-            <a class="saiba-mais-projeto" href="tela-de-projeto.php">Saiba Mais</a>
+            <a class="saiba-mais-projeto" href="perfil-projeto.php">Saiba Mais</a>
         </div>
         
         <div class="btn-paginacao"> 
@@ -391,6 +391,6 @@
 </main> 
 
 <?php
-    $jsPagina = ['favoritos-logado.js', 'home-doador.js']; //Colocar o arquivo .js
+    $jsPagina = ['favoritos.js']; //Colocar o arquivo .js
     require_once '../../components/footer.php';
 ?>

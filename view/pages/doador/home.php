@@ -3,7 +3,6 @@
     $tituloPagina = 'Home'; // Definir o título da página
     $cssPagina = ['doador/home.css']; //Colocar o arquivo .css (exemplo: 'ONG/cadastro.css')
     require_once '../../components/header-usuario.php';
-    require_once '../../components/aside-usuario.php';
 ?>
 
 
@@ -20,8 +19,8 @@
                     <div>
                         <h4>Visão Geral</h4>
                         <div class="visaogeral">
-                        <a href="favoritos-logado.php">
-                        <div class="info">
+                        <a href="#">
+                            <div class="info">
                                 <span>Minhas doações</span>
                                 <h5>R$ 300</h5>
                             </div>
@@ -94,7 +93,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a class="saiba-mais-projeto" href="tela-de-projeto.php">Saiba Mais</a>
+                        <a class="saiba-mais-projeto" href="perfil-projeto.php">Saiba Mais</a>
                     </div>
                     <div class="card-projeto">
                         <div class="acoes-projeto">
@@ -114,7 +113,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a class="saiba-mais-projeto" href="tela-de-projeto.php">Saiba Mais</a>
+                        <a class="saiba-mais-projeto" href="perfil-projeto.php">Saiba Mais</a>
                     </div>
                     <div class="card-projeto">
                         <div class="acoes-projeto">
@@ -134,7 +133,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a class="saiba-mais-projeto" href="tela-de-projeto.php">Saiba Mais</a>
+                        <a class="saiba-mais-projeto" href="perfil-projeto.php">Saiba Mais</a>
                     </div>
                 </div>
             </div>

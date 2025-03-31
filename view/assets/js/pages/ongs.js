@@ -1,10 +1,10 @@
-function mudaMenu() {
-    let hbgMenu = document.querySelector('#hamburger-menu');
-    let btnHamburger = document.querySelector("#botao-hamburger");
-    hbgMenu.style.display = 'flex';
-    hbgMenu.id = 'hamburger-menu-slide';
-    btnHamburger.style.opacity = 0;
-}
+// function mudaMenu() {
+//     let hbgMenu = document.querySelector('#hamburger-menu');
+//     let btnHamburger = document.querySelector("#botao-hamburger");
+//     hbgMenu.style.display = 'flex';
+//     hbgMenu.id = 'hamburger-menu-slide';
+//     btnHamburger.style.opacity = 0;
+// }
 
 // Link para card direta do cadastro
 function targetPage(target, actual){
@@ -20,16 +20,63 @@ function targetPage(target, actual){
         }
     }
 }
-
-// Virar páginas gerais do cadastro
-function mudaPagina(p, action) {
-    let pagina = document.getElementById(p);
-    // action ? pagina.style.display = "flex" : pagina.style.display = "none";
-    if (!action){
-        pagina.style.animation = "vira-pagina 1s forwards";
-    }else {
-        pagina.style.animation = "volta-pagina 1s forwards";
+// Passar etapas do cadastro
+var pagina_atual = 0;
+var botao_voltar = document.querySelector(".voltar");
+botao_voltar.style.visibility = "hidden";
+function mudaEtapaCadastro(page, origin){
+    const etapa = document.getElementById("container");
+    const linha = document.querySelector(".line-0");
+    let progresso = 0;
+    origin ? progresso = page+pagina_atual : progresso = page;
+    let texto_atual = document.getElementById("t"+(progresso+1));
+    let botao_atual = document.getElementById("b"+(progresso+1));
+    if(page>0 && origin){
+        botao_atual.style.backgroundColor = "#5282E3";
+        texto_atual.style.color = "#000000"
+        linha.style.width = (page+pagina_atual)*20+"%";
+    }else if(page<0 && origin) {
+        botao_atual = document.getElementById("b"+(progresso+2));
+        texto_atual = document.getElementById("t"+(progresso+2));
+        botao_atual.style.backgroundColor = "#5282e39f";
+        texto_atual.style.color = "#6e6a6a";
+        linha.style.width = (progresso)*20+"%";
+    }else if(page>=pagina_atual && !origin){
+        for(let i = 1; i<= (page+1); i++){
+            texto_atual = document.getElementById("t"+(i));
+            botao_atual = document.getElementById("b"+(i));
+            botao_atual.style.backgroundColor = "#5282E3";
+            texto_atual.style.color = "#000000"
+            linha.style.width = (page+pagina_atual)*20+"%";
+        }
+    }else if(page<pagina_atual && !origin){
+        for(let i=(pagina_atual+1); i>page; i--){
+            botao_atual = document.getElementById("b"+(i+1));
+            texto_atual = document.getElementById("t"+(i+1));
+            botao_atual.style.backgroundColor = "#5282e39f";
+            texto_atual.style.color = "#6e6a6a";
+            linha.style.width = (i-1)*20+"%";
+        }
     }
+    let passo = -(progresso)*largura_cadastro;
+    etapa.style.transform = `translateX(${passo}px)`;
+    page>0 && origin ? pagina_atual++ : pagina_atual--;
+    if(page>=0 && !origin){
+        pagina_atual = page;
+    }
+    pagina_atual != 0 ? botao_voltar.style.visibility = "visible" : botao_voltar.style.visibility = "hidden";
+    if(pagina_atual == 5){
+        let proximo = document.querySelector(".proximo");
+        let confirmar = document.querySelector("#confirmacao");
+        proximo.style.visibility = "hidden";
+        confirmar.style.display = "flex";
+    }else{
+        let proximo = document.querySelector(".proximo");
+        let confirmar = document.querySelector("#confirmacao");
+        proximo.style.visibility = "visible";
+        confirmar.style.display = "none";
+    }
+
 }
 
 // Exibe e oculta senha digitada
@@ -88,15 +135,19 @@ function popConclusao(tipo) {
     }, 3000);
 }
 
+let pagina_cadastro = 1;
 const box = document.querySelector(".fotos-slide");
 
 let contador = 0;
 let tela = window.innerWidth;
 let slideWidth = 0;
+var largura_cadastro = 0;
 if(tela <= 481){
     slideWidth = 200;
+    largura_cadastro = 380;
 }else{
     slideWidth = 1016;
+    largura_cadastro = 1200;
 }
 setInterval (slider, 2000);
 
