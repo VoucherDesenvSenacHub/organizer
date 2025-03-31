@@ -26,7 +26,7 @@
                 </div>
             </div>
             <button class="btn">ENTRAR</button>
-            <span>Não tem uma conta? <a href="cadastro.php">Criar Conta</a></span>
+            <span>Quer cadastrar sua ONG? <a href="cadastro.php">Criar ONG</a></span>
         </form>
             <img alt="Celular-Login" src="../../assets/images/figura-principal.png">
     </div>

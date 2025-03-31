@@ -37,7 +37,7 @@
                     <li><a href="../../../index.php">Home</a></li>
                     <li><a href="../visitante/ongs.php" class="<?= (basename($_SERVER['PHP_SELF']) == 'ongs.php') ? 'active' : ''; ?>">Ongs</a></li>
                     <li><a href="../visitante/projetos.php" class="<?= (basename($_SERVER['PHP_SELF']) == 'projetos.php') ? 'active' : ''; ?>">Projetos</a></li>
-                    <li><a href="../visitante/tela-noticia.php">Notícias</a></li>
+                    <li><a href="../visitante/noticias.php">Notícias</a></li>
                 </ul>
             </nav>
             <div class="btn-login">

@@ -1,3 +1,5 @@
+/* CSS DAS TELAS DE ONG E PROJETO (NAVBAR) */
+
 #nav-bar ul li a.active {
     color: var(--cor-amarelo);
     font-weight: bold;
