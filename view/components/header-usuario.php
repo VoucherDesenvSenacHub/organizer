@@ -51,7 +51,6 @@
     <div id="sair-doador">
         <?php 
             require_once 'sair-da-conta-popup.php'; 
-            require_once 'compartilhar.php'; //POPUP DE COMPARTILHAR
         ?>
     </div>
     <script src="../../assets/js/pages/home-doador.js"></script>
