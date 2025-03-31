@@ -130,7 +130,7 @@
     <?php foreach ($cards as $card) { ?>
     <div class="card-ong">
         <div class="foto">
-            <img src=<?php echo $card['foto-empresa'] ?>alt="">
+            <img src=<?php echo $card['foto-empresa'] ?> alt="">
         </div>
         <div class="dados">
             <h4><?php echo $card['nome'] ?></h4>
