@@ -6,6 +6,14 @@ function menu_mobile() {
     hamburguer.classList.toggle('active');
 }
 
+function clicar() {
+    let animacao = document.getElementById ("download")
+    animacao.style.display = 'flex'
+    setTimeout(function() {
+        animacao.style.display = 'none'
+      }, 2500);
+}
+
 window.addEventListener('resize', () => {
     const nav_bar = document.getElementById('nav-bar');
     const hamburguer = document.getElementById('hamburguer');
