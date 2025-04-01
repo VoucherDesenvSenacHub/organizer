@@ -1,3 +1,8 @@
+/* CSS DA TELA DE PERFIL DA ONG */
+
+@import url(../doador/fazer-doacao.css);
+@import url(../doador/ser-voluntario.css);
+
 body {
     background-color: aliceblue;
 }
@@ -92,7 +97,7 @@ section#apresentacao {
 #dados-ong h3 {
     font-size: 20px;
     font-weight: 500;
-    color: green;
+    color: var(--cor-verde);
 }
 #dados-ong h3 span {
     font-weight: 600;
@@ -108,7 +113,7 @@ section#apresentacao {
 }
 #dados-ong p span {
     font-weight: 600;
-    color: var(--cor-azul-escuro);
+    color: var(--cor-verde-escuro);
 }
 
 /* Botões de Doação e Voluntario */
@@ -132,6 +137,15 @@ section#apresentacao {
     background-color: var(--cor-principal);
     color: aliceblue;
 }
+/* Botões dos popup */
+#doacao-popup form .btn {
+    background-color: var(--cor-amarelo);
+}
+
+#ser-voluntario-popup .container-popup form button {
+    background-color: var(--cor-principal);
+    color: aliceblue;
+}
 
 
 /* Section: Sobre */
@@ -152,6 +166,7 @@ section#apresentacao {
     border-radius: 50px;
     padding:  5px 10px;
     color: var(--cor-azul-escuro);
+    background-color: #f0f0f0;
     cursor: default;
 }
 .icon-title h3 {

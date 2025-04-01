@@ -33,7 +33,7 @@
                 <p>PROJETOS</p>
             </div>
             <div class="controle-ong">
-                <a href="voluntarios.php"><img src="../../assets/images/favorite.gif" alt=""></a>
+                <a href="voluntario-projetos.php"><img src="../../assets/images/favorite.gif" alt=""></a>
                 <P>VOLUNTÁRIOS</P>
             </div>
             <div class="controle-ong">

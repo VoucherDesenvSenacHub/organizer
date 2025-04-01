@@ -37,8 +37,8 @@
             <nav id="nav-bar">
                 <ul>
                     <li><a href="home.php">Home</a></li>
-                    <li><a href="#">Projetos</a></li>
-                    <li><a href="#">Voluntários</a></li>
+                    <li><a href="projetos.php">Projetos</a></li>
+                    <li><a href="voluntario-projetos.php">Voluntários</a></li>
                     <li><a href="relatorios.php">Relatórios</a></li>
                 </ul>
             </nav>

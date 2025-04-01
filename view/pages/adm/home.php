@@ -59,15 +59,15 @@ require_once '../../components/header-adm.php';
                         </div>
 
                         <!-- Card Inativar -->
-                        <div class="action-card red">
+                        <!-- <div class="action-card red">
                             <div class="card-header">Remover</div>
                             <p class="card-description">remover parceria com empresa ou Ongs</p>
                             <a href="solicitacao-parcerias.php" class="card-button">
-                                <span class="icon">🚫</span> <!-- Ícone de bloqueio -->
+                                <span class="icon">🚫</span> 
                                 Ir para lista
                                 <span class="notification">9</span>
                             </a>
-                        </div>
+                        </div> -->
                     </div>
                 </section>
 
