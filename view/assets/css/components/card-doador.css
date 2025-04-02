@@ -37,3 +37,12 @@
     font-weight: 500;
     font-size: 14px;
 }
+
+@media (max-width: 400px) {
+    .card-doador {
+        flex-direction: column;
+        height: fit-content;
+        width: fit-content;
+        padding: 5px;
+    }
+}

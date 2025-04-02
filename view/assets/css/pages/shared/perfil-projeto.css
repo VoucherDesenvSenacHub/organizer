@@ -324,4 +324,8 @@ section#apresentacao {
     #container-principal {
         padding: 50px 4px;
     }
+
+    .container-section {
+        padding: 5px;
+    }
 }
