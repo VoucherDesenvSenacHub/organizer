@@ -401,6 +401,10 @@
         height: 30px;
     }
     .tela-de-criacao-projeto-fundo {
+        position: absolute;
+        top: 20%;
+        right: 50px;
+        left: 50px;
         width: 60%;
         display: block;
         height: 400px; 
@@ -504,4 +508,46 @@
         width: 190px;
         height: 30px;
     }
+    /* tela confirmação de projeto criado */
+
+.tela-confirma-criacao{
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.card-confirma-criacao{
+    position: absolute;
+    top: 50%; 
+    transform: translateY(-50%);
+    right: 50px; 
+    left: 50px;
+    width: 60%;
+}
+
+.div-projeto-criado{
+    display: flex;
+    position: relative;
+    width: 250,px;
+}
+
+.titulo-projeto-criado{
+    font-size: 25px;
+    color: #188241;
+}
+
+.img-check{
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 50%; 
+    transform: translateY(-50%);
+    right: -30px;
+    
+}
 }

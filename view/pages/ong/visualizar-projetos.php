@@ -9,7 +9,7 @@
                 <div class="info-projeto-editar">
                     <div class="info-projeto">
                         <h1>Campanha Solidária</h1>
-                        <img src="../../assets/images/Meta.png" alt="">
+                        <img class="img-meta" src="../../assets/images/Meta.png" alt="">
                         <p>Meta: <b>R$ 100.000</b> </p>
                         <p>Status: Em progresso <b>(20% alcançado)</b></p>
                         <p><b>24</b> Doações Recebidas</p>
