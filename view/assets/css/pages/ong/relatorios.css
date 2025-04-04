@@ -121,3 +121,9 @@
         margin: 1%;
     }
 }
+
+@media (max-width: 400px) {
+    .card1{
+        width: 420px;
+    }
+}
