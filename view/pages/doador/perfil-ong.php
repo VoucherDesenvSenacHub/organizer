@@ -1,8 +1,7 @@
 <?php 
     $tituloPagina = 'Perfil da ONG | Organizer';
-    $cssPagina = ['visitante/perfil-ong.css'];
+    $cssPagina = ['shared/perfil-ong.css'];
     require_once '../../components/header-usuario.php';
-    require_once '../../components/aside-usuario.php';
 ?>
 
 <?php require_once '../../components/compartilhar.php'; ?>
@@ -25,8 +24,8 @@
                     <p><span>9 </span>Projetos Criados</p>
                 </div>
                 <div id="acoes">
-                    <button class="btn" onclick="abrir_popup('login-obrigatorio-popup')">Fazer uma doação</button>
-                    <button class="btn" id="btn-voluntario" onclick="abrir_popup('login-obrigatorio-popup')">Ser Voluntário</button>
+                    <button class="btn" onclick="abrir_popup('doacao-popup')">Fazer uma doação</button>
+                    <button class="btn" id="btn-voluntario" onclick="abrir_popup('ser-voluntario-popup')">Ser Voluntário</button>
                 </div>
             </div>
             <div id="imagem">

@@ -1,8 +1,7 @@
 <?php 
     $tituloPagina = 'Descubra ONGS';
-    $cssPagina = ['visitante/catalogo.css'];
+    $cssPagina = ['shared/catalogo.css'];
     require_once '../../components/header-usuario.php';
-    require_once '../../components/aside-usuario.php';
 ?>
 
 <?php require_once '../../components/compartilhar.php'; ?>

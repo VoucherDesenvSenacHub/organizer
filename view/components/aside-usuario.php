@@ -16,7 +16,7 @@
             </div>
         <div class="aside-nav">
             <i class="fa-solid fa-heart"></i>
-            <a class="link">Favoritos</a>
+            <a class="link" href="favoritos.php">Favoritos</a>
         </div>
         <div class="aside-nav">
             <i class="fa-solid fa-credit-card"></i>

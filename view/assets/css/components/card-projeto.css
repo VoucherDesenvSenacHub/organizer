@@ -41,12 +41,12 @@
     gap: 8px;
 }
 
-.barra-doacao span {
+.card-projeto .barra-doacao span {
     font-size: 11px;
     font-weight: 500;
 }
 
-.barra-doacao .barra {
+.card-projeto .barra-doacao .barra {
     background-color: rgba(0, 0, 0, 0.1);
     height: 8px;
     width: 100%;
@@ -54,7 +54,7 @@
     overflow: hidden;
 }
 
-.barra .barra-verde {
+.card-projeto .barra .barra-verde {
     width: 30%;
     background-color: #55E18B;
     height: 100%;

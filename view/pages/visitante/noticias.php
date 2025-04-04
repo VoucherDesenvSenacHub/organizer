@@ -1,8 +1,7 @@
 <?php 
     $tituloPagina = 'Noticias'; // Definir o título da página
-    $cssPagina = ['visitante/noticias.css']; //Colocar o arquivo .css 
-    require_once '../../components/header-usuario.php';
-    require_once '../../components/aside-usuario.php';
+    $cssPagina = ['shared/noticias.css']; //Colocar o arquivo .css 
+    require_once '../../components/header.php';
 ?>
 <main>
     <div class="container">
@@ -23,7 +22,7 @@
                         </p>
                         <div class="acoes">
                             <p>Por : Ong Tal</p>
-                            <a href="noticia.php"><button class="btn">Leia Mais</button></a>
+                            <a href="perfil-noticia.php"><button class="btn">Leia Mais</button></a>
                         </div>
                     </div>
                     <div class="imagem-noticia">
@@ -38,7 +37,7 @@
                         </p>
                         <div class="acoes">
                             <p>Por : Ong Tal</p>
-                            <a href="noticia.php"><button class="btn">Leia Mais</button></a>
+                            <a href="perfil-noticia.php"><button class="btn">Leia Mais</button></a>
                         </div>
                     </div>
                     <div class="imagem-noticia">
@@ -53,7 +52,7 @@
                         </p>
                         <div class="acoes">
                             <p>Por : Ong Tal</p>
-                            <a href="noticia.php"><button class="btn">Leia Mais</button></a>
+                            <a href="perfil-noticia.php"><button class="btn">Leia Mais</button></a>
                         </div>
                     </div>
                     <div class="imagem-noticia">
@@ -68,7 +67,7 @@
                         </p>
                         <div class="acoes">
                             <p>Por : Ong Tal</p>
-                            <a href="noticia.php"><button class="btn">Leia Mais</button></a>
+                            <a href="perfil-noticia.php"><button class="btn">Leia Mais</button></a>
                         </div>
                     </div>
                     <div class="imagem-noticia">
@@ -94,7 +93,7 @@
                             </p>
                             <div class="acoes">
                                 <p>Por : Ong Tal</p>
-                                <a href="noticia.php"><button class="btn">Leia Mais</button></a>
+                                <a href="perfil-noticia.php"><button class="btn">Leia Mais</button></a>
                             </div>
                         </div>
                         <div class="imagem-noticia">
@@ -109,7 +108,7 @@
                             </p>
                             <div class="acoes">
                                 <p>Por : Ong Tal</p>
-                                <a href="noticia.php"><button class="btn">Leia Mais</button></a>
+                                <a href="perfil-noticia.php"><button class="btn">Leia Mais</button></a>
                             </div>
                         </div>
                         <div class="imagem-noticia">
@@ -134,7 +133,7 @@
                             </p>
                             <div class="acoes">
                                 <p>Por : Ong Tal</p>
-                                <a href="noticia.php"><button class="btn">Leia Mais</button></a>
+                                <a href="perfil-noticia.php"><button class="btn">Leia Mais</button></a>
                             </div>
                         </div>
                         <div class="imagem-noticia">
@@ -149,7 +148,7 @@
                             </p>
                             <div class="acoes">
                                 <p>Por : Ong Tal</p>
-                                <a href="noticia.php"><button class="btn">Leia Mais</button></a>
+                                <a href="perfil-noticia.php"><button class="btn">Leia Mais</button></a>
                             </div>
                         </div>
                         <div class="imagem-noticia">
@@ -159,11 +158,8 @@
                 </div>
             </div>
         </div>
-        </div>
-            <?php require_once '../../components/meu-perfil-doador.php'; ?>
-        </div>
 </main>
 <?php
-    $jsPagina = ['home-doador.js']; //Colocar o arquivo .js
+    $jsPagina = ['']; //Colocar o arquivo .js
     require_once '../../components/footer.php';
 ?>

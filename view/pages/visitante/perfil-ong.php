@@ -1,6 +1,6 @@
 <?php 
     $tituloPagina = 'Perfil da ONG | Organizer';
-    $cssPagina = ['visitante/perfil-ong.css'];
+    $cssPagina = ['shared/perfil-ong.css'];
     require_once '../../components/header.php';
 ?>
 

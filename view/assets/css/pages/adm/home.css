@@ -191,12 +191,13 @@ main {
 
 .cards-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
     padding: 1rem;
 }
 
 .action-card {
+    width: 100%;
     border: 1px solid #e0e0e0;
     border-radius: 8px;
     padding: 0;
