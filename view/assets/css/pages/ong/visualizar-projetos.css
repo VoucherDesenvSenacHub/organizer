@@ -240,6 +240,130 @@
     flex-direction: column;
     
 }
+.div-input-lapis {
+    position: relative;
+    width: 100%;
+}
+
+.div-input-lapis input {
+    width: 100%;
+    padding: 10px;
+    padding-left: 30px;  
+    padding-right: 30px; 
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.div-input-lapis img {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%); 
+}
+
+.img-perfil {
+    left: 5px; 
+    width: 20px;
+    height: 20px;
+}
+
+.img-cifrao {
+    left: 5px;
+    width: 20px;
+    height: 20px;
+}
+
+.lapis-input {
+    right: 5px; 
+    width: 20px;
+    height: 20px;
+}
+
+.div-form{
+    display: flex;
+    gap: 30px;
+}
+#descricaoProjeto{
+    width: 100%;
+    height: 200px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+.conteudo-lado-direito{
+    width: 30%;
+    height: auto;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    display: flex;
+    gap: 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
+    padding: 5px;
+}
+
+.img-tela-de-criacao{
+    width: 100%; 
+    height: auto;
+    align-items: center;
+}
+
+.div-img-botao{
+    flex-direction: column;
+    align-items: center;
+    display: flex;
+    gap: 5px;
+}
+
+.div-botao-uploud{
+    display: flex;
+    position: relative;
+    width: 250,px;
+}
+
+.img-add{
+    position: absolute;
+    top: 50%; 
+    transform: translateY(-50%);
+    text-align: center;
+    left: 10px; 
+    width: 30px;
+    height: 30px;
+}
+
+
+.upload{
+    color: black;
+    font-size: 20px;
+    font-family: "Agdasima", serif;
+    color: #F29200;
+    width: 190px;
+    height: 40px;
+    border-radius: 5px;
+    border-color: #F29200;
+    border-style: dashed;
+}
+
+.upload:hover{
+    background-color: #ccc;
+}
+
+.div-botao-add{
+    display: flex;
+    position: relative;
+    width: 250,px;
+}
+
+.img-add{
+    position: absolute;
+    top: 50%; 
+    transform: translateY(-50%);
+    right: 10px; 
+    width: 30px;
+    height: 30px;
+}
+
 
 .img-editar{
     width: 30px;
@@ -321,6 +445,21 @@
     transform: translateY(-50%);
     right: -30px;
     
+}
+
+.btn-card{
+    background-color: #E3B652;
+    color: black;
+    width: 170px;
+    height: 45px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+}
+.btn-card:hover{
+    cursor: pointer;
+    transition: 0.7s;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 /* tela para inativar Projeto */
@@ -549,4 +688,158 @@
         width: 100%;
         height: 100px;
     }
+    /* tela editar */
+.tela-de-edicao-projeto-fundo {
+    position: absolute;
+    top: 10%;
+    right: 60px;
+    left: 30px;
+    width: 80%;
+    display: block;
+    height: 400px; 
+    overflow-y: auto; 
+    padding: 20px;
+    box-sizing: border-box
+}
+.tela-de-edicao-projeto-conteudo{
+    width: 100%;
+    gap: 20px;
+}
+.titulo-tela-criacao{
+    font-size: 18px;
+    text-align: center;
+}
+.div-form label{
+    font-size: 14px;
+}
+.div-input-lapis {
+    position: relative;
+    width: 100%;
+}
+.div-input-lapis input {
+    width: 100%;
+    height: 30px;
+    font-size: 12px;
+}
+.img-perfil {
+    left: 5px; 
+    width: 15px;
+    height: 15px;
+}
+.img-cifrao {
+    left: 5px;
+    width: 15px;
+    height: 15px;
+}
+.lapis-input {
+    right: 5px; 
+    width: 15px;
+    height: 15px;
+}
+.div-form{
+    display: block;
+    gap: 30px;
+}
+.preco{
+    font-size: 14px;
+}
+.div-input-lapis label{
+    font-size: 14px;
+}
+.conteudo-lado-direito{
+    width: 100%;
+    margin-top: 10px;
+}
+
+.img-add{
+    width: 10px;
+    height: 10px;
+}
+
+
+.upload{
+    font-size: 16px;
+    width: 190px;
+    height: 30px;
+}
+
+.img-add{
+    position: absolute;
+    top: 50%; 
+    transform: translateY(-50%);
+    right: 10px; 
+    width: 30px;
+    height: 30px;
+}
+
+
+.img-editar{
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 50%; 
+    transform: translateY(-50%);
+    right: 5px;
+}
+.botao-salvar-alteracao{
+    font-size: 18px;
+    width: 190px;
+    height: 30px;
+}
+/* tela de confirmação edição */
+.card-confirma-edicao{
+    position: absolute;
+    top: 20%;
+    left: 30px;
+    width: 80%;
+}
+
+.titulo-projeto-editado{
+    font-size: 18px;
+    color: #188241;
+}
+
+.img-check{
+    width: 20px;
+    height: 20px;    
+}
+
+.btn-card{
+    font-size: 16px;
+    width: 160px;
+    height: 30px;
+}
+/* tela inativar */
+.tela-inativa-projeto-fundo {
+    width: 80%;
+}
+.titulo-tela-criacao{
+    font-size: 18px;
+}
+.quadro h2 {
+    font-size: 16px;
+}
+.opcoes li {
+    font-size: 14px;
+}
+.btn-inativa{
+    font-size: 16px;
+    width: 160px;
+    height: 30px;
+}
+/* tela confirma inativação */
+.card-confirma-inativacao{
+    position: absolute;
+    top: 20%;
+    left: 30px;
+    width: 80%;
+}
+.img-lixeira{
+    width: 30px;
+    height: 30px;
+}
+
+.titulo-confirma-inativacao{
+    font-size: 16px;  
+}
 }

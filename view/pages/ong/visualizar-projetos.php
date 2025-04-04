@@ -77,7 +77,7 @@
 
                     
                 <div>
-                    <label for="preco">Preços</label><br>
+                    <label class="preco" for="preco">Preços</label><br>
 
                     <select id="preco">
                     <option value="preco">Preços</option>
@@ -122,7 +122,7 @@
             <h2 class="titulo-projeto-editado">Projeto Alterado</h2>
             <img class="img-check" src="../../assets/images/Check.png" alt="">
             </div>
-            <a href="visualizar-projetos.html">
+            <a href="visualizar-projetos.php">
             <button class="btn-card"> Visualizar</button>
             </a>        
         </div>
