@@ -9,7 +9,7 @@
                 <div class="info-projeto-editar">
                     <div class="info-projeto">
                         <h1>Campanha Solidária</h1>
-                        <img src="../../assets/images/Meta.png" alt="">
+                        <img class="img-meta" src="../../assets/images/Meta.png" alt="">
                         <p>Meta: <b>R$ 100.000</b> </p>
                         <p>Status: Em progresso <b>(20% alcançado)</b></p>
                         <p><b>24</b> Doações Recebidas</p>
@@ -77,7 +77,7 @@
 
                     
                 <div>
-                    <label for="preco">Preços</label><br>
+                    <label class="preco" for="preco">Preços</label><br>
 
                     <select id="preco">
                     <option value="preco">Preços</option>
@@ -122,7 +122,7 @@
             <h2 class="titulo-projeto-editado">Projeto Alterado</h2>
             <img class="img-check" src="../../assets/images/Check.png" alt="">
             </div>
-            <a href="visualizar-projetos.html">
+            <a href="visualizar-projetos.php">
             <button class="btn-card"> Visualizar</button>
             </a>        
         </div>
