@@ -1,11 +1,3 @@
-// function mudaMenu() {
-//     let hbgMenu = document.querySelector('#hamburger-menu');
-//     let btnHamburger = document.querySelector("#botao-hamburger");
-//     hbgMenu.style.display = 'flex';
-//     hbgMenu.id = 'hamburger-menu-slide';
-//     btnHamburger.style.opacity = 0;
-// }
-
 // Link para card direta do cadastro
 function targetPage(target, actual){
     let cards = ['cadastro', 'atuacao', 'endereco','responsavel','dados-bancarios','criar-login'];
@@ -137,8 +129,7 @@ function popConclusao(tipo) {
 
 let pagina_cadastro = 1;
 const box = document.querySelector(".fotos-slide");
-
-let contador = 0;
+var contador = 0;
 let tela = window.innerWidth;
 let slideWidth = 0;
 var largura_cadastro = 0;
