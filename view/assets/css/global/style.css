@@ -30,6 +30,7 @@
 
 body {
     background-color: var(--cor-principal);
+    color: var(--cor-principal);
 }
 
 /* Classe de uma div principal, para alinhar no meio*/
