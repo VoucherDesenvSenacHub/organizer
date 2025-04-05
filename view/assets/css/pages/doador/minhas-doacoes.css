@@ -380,6 +380,81 @@ p span {
     animation: animacao 1s ease;
 }
 
+@media (max-width: 1024px) {
+    #principal {
+        width: 90%;
+        margin: 100px auto;
+        padding: 20px;
+    }
+
+    .card {
+        flex-direction: column;
+        align-items: flex-start;
+        height: auto;
+        padding: 15px;
+        gap: 10px;
+    }
+
+    .btn_comprovante {
+        width: 100%;
+        margin: 10px 0 0 0;
+    }
+
+    .grafico {
+        flex-direction: column;
+        align-items: center;
+        margin-right: 0;
+        gap: 20px;
+    }
+
+    .legenda_grafico {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .caixas_grafico, .legendas {
+        margin-top: 0;
+        margin-left: 0;
+        width: 100%;
+        align-items: center;
+    }
+
+    .info_top {
+        font-size: 1rem;
+        margin-right: 0;
+    }
+
+    .teste {
+        width: 300px;
+        height: 300px;
+    }
+
+    #download {
+        top: 75px;
+        right: 10px;
+        max-width: 90%;
+    }
+}
+
+@media (max-width: 600px) {
+    .teste {
+        width: 200px;
+        height: 200px;
+    }
+
+    .btn {
+        width: 100%;
+        padding: 12px 0;
+    }
+
+    header .btn-login {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
+}
+
 
 
 
