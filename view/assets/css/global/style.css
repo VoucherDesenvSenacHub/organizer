@@ -9,6 +9,14 @@
 @import url(../components/card-doador.css);
 @import url(../components/card-voluntario.css);
 @import url(../components/card-noticia.css);
+@import url(../components/requer-login.css);
+@import url(../components/compartilhar.css);
+@import url(../components/sair-conta-popup.css);
+@import url(../components/header-adm.css);
+@import url(../components/header-ong.css);
+@import url(../components/toast.css);
+@import url(../components/meu-perfil-doador.css);
+@import url(../components/input-radio.css);
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 

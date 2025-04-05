@@ -24,11 +24,11 @@
                     <p>Login</p>
                 </div>
             </div>
-            <form id="form">
+            <form id="form" action="login.php" method="POST">
                 <div class="formBox">
                     <div class="inputBox">
                         <label for="nome">Nome Completo<span>*</span></label>
-                        <input id="nome" type="text" placeholder="Seu Nome">
+                        <input id="nome" type="text" maxlength="100" placeholder="Seu Nome">
                         <span class="visor"></span>
                     </div>
                     <div class="inputBox">
@@ -53,7 +53,7 @@
                 <div class="formBox">
                     <div class="inputBox">
                         <label for="nome_cartao">Titular do Cartão<span>*</span></label>
-                        <input id="nome_cartao" type="text" placeholder="Nome Completo">
+                        <input id="nome_cartao" type="text" maxlength="100" placeholder="Nome Completo">
                         <span class="visor"></span>
                     </div>
                     <div class="inputBox">
@@ -72,24 +72,24 @@
                         <span class="visor"></span>
                     </div>
                     <div class="btnNextBack">
-                        <button class="btn btnVoltar" type="button" onclick="voltar(1)">Voltar</button>
+                        <button class="btn btnVoltar" type="button" onclick="moverPara(0, 33.3)">Voltar</button>
                         <button class="btn" type="button" onclick="return proximo(2)">Próximo</button>
                     </div>
                 </div>
                 <div class="formBox">
                     <div class="inputBox" id="BoxG">
                         <label for="email">Email<span>*</span></label>
-                        <input id="email" type="email" placeholder="usúario@conta.com">
+                        <input id="email" type="email" maxlength="45" placeholder="usúario@conta.com">
                         <span class="visor"></span>
                     </div>
                     <div class="inputBox">
                         <label for="senha">Senha<span>*</span></label>
-                        <input id="senha" type="password" placeholder="********">
+                        <input id="senha" type="password" maxlength="20" placeholder="********">
                         <span class="visor"></span>
                     </div>
                     <div class="inputBox">
                         <label for="confirm_senha">Confirmar Senha<span>*</span></label>
-                        <input id="confirm_senha" type="password" placeholder="********">
+                        <input id="confirm_senha" type="password" maxlength="20" placeholder="********">
                         <span class="visor"></span>
                     </div>
                     <div class="inputBox" id="mobileInput">
@@ -97,7 +97,7 @@
                         <input type="text" disabled>
                     </div>
                     <div class="btnNextBack">
-                        <button class="btn btnVoltar" type="button" onclick="voltar(2)">Voltar</button>
+                        <button class="btn btnVoltar" type="button" onclick="moverPara(1, 33.3)">Voltar</button>
                         <button class="btn" onclick="return proximo(3)">CADASTRAR</button>
                     </div>
                 </div>
@@ -111,6 +111,7 @@
     $("#telefone").mask("(00) 0 0000-0000");
     $("#cpf").mask("000.000.000-00");
     $("#num_cartao").mask("0000 0000 0000 0000");
+    $("#code_cartao").mask("000");
 </script>
 <?php
     $jsPagina = ['cadastro-doador.js'];

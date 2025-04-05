@@ -1,9 +1,18 @@
+#nav-bar ul li:nth-child(1) a {
+    color: var(--cor-amarelo);
+    font-weight: bold;
+}
+
+main {
+    padding: 60px 0;
+}
+
 #principal {
     display: flex;
     justify-content: space-around;
     width: 70%;
     height: 580px;
-    margin: 40px auto;
+    margin: 0 auto;
     background-color: #FFFFFF;
     border-radius: 8px;
 }
@@ -182,12 +191,13 @@
 
 .cards-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
     padding: 1rem;
 }
 
 .action-card {
+    width: 100%;
     border: 1px solid #e0e0e0;
     border-radius: 8px;
     padding: 0;
@@ -260,7 +270,10 @@
     margin: 0 1rem 1rem 1rem;
     /* Margem para o botão não encostar nas bordas */
     cursor: pointer;
+    text-decoration: none;
+    font-size: 0.8em;
     transition: background-color 0.3s ease, transform 0.3s ease;
+
 }
 
 .card-button:hover {

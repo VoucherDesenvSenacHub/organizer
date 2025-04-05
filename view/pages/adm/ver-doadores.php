@@ -1,10 +1,9 @@
 <?php
-$tituloPagina = 'Doadores ADM'; // Definir o título da página
-$cssPagina = ['adm/ver-doadores.css']; //Colocar o arquivo .css 
+    $tituloPagina = 'Doadores ADM'; // Definir o título da página
+    $cssPagina = ['adm/ver-doadores.css']; //Colocar o arquivo .css 
+    require_once '../../components/header-adm.php';
 ?>
 
-<?php require_once '../../components/header.php'; ?>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
 
 
 <div id="block-popup">
@@ -31,109 +30,107 @@ $cssPagina = ['adm/ver-doadores.css']; //Colocar o arquivo .css
 </div>
 
 
-<!-- Início DIV principal -->
-<div id="principal">
-    <div class="top">
-        <h1 class="top-text">DOADORES</h1>
-        <div class="buscar">
-            <input type="text" id="buscar" placeholder="Buscar">
-            <img src="../../assets/images/search_img.png" class="search_img">
+<main>
+    <div id="principal">
+        <div class="top">
+            <h1 class="top-text">DOADORES</h1>
+            <div class="buscar">
+                <input type="text" id="buscar" placeholder="Buscar">
+                <img src="../../assets/images/search_img.png" class="search_img">
+            </div>
+        </div>
+
+        <div class="doadores">
+            <div class="card_doador">
+                <div class="card-esq">
+                    <img class="perfil_img" src="../../assets/images/Perfil-doadores.png">
+                    <div class="info_doador">
+                        <h2 class="nome_doador">João</h2>
+                        <p class="email_doador">joaozin@gmail.com</p>
+                    </div>
+                </div>
+                <div class="card-dir">
+                    <p class="email_doador">28/08/2024</p>
+                    <button onclick="blockpopup()" class="btn_delete_user">
+                        <img class="img_delete_user" src="../../assets/images/delete_user.png">
+                    </button>
+                </div>
+            </div>
+
+            <div class="card_doador">
+                <div class="card-esq">
+                    <img class="perfil_img" src="../../assets/images/Perfil-doadores.png">
+                    <div class="info_doador">
+                        <h2 class="nome_doador">João</h2>
+                        <p class="email_doador">joaozin@gmail.com</p>
+                    </div>
+                </div>
+                <div class="card-dir">
+                    <p class="email_doador">28/08/2024</p>
+                    <button onclick="blockpopup()" class="btn_delete_user">
+                        <img class="img_delete_user" src="../../assets/images/delete_user.png">
+                    </button>
+                </div>
+            </div>
+
+            <div class="card_doador">
+                <div class="card-esq">
+                    <img class="perfil_img" src="../../assets/images/Perfil-doadores.png">
+                    <div class="info_doador">
+                        <h2 class="nome_doador">João</h2>
+                        <p class="email_doador">joaozin@gmail.com</p>
+                    </div>
+                </div>
+                <div class="card-dir">
+                    <p class="email_doador">28/08/2024</p>
+                    <button onclick="blockpopup()" class="btn_delete_user">
+                        <img class="img_delete_user" src="../../assets/images/delete_user.png">
+                    </button>
+                </div>
+            </div>
+
+            <div class="card_doador">
+                <div class="card-esq">
+                    <img class="perfil_img" src="../../assets/images/Perfil-doadores.png">
+                    <div class="info_doador">
+                        <h2 class="nome_doador">João</h2>
+                        <p class="email_doador">joaozin@gmail.com</p>
+                    </div>
+                </div>
+                <div class="card-dir">
+                    <p class="email_doador">28/08/2024</p>
+                    <button onclick="blockpopup()" class="btn_delete_user">
+                        <img class="img_delete_user" src="../../assets/images/delete_user.png">
+                    </button>
+                </div>
+            </div>
+
+            <div class="card_doador">
+                <div class="card-esq">
+                    <img class="perfil_img" src="../../assets/images/Perfil-doadores.png">
+                    <div class="info_doador">
+                        <h2 class="nome_doador">João</h2>
+                        <p class="email_doador">joaozin@gmail.com</p>
+                    </div>
+                </div>
+                <div class="card-dir">
+                    <p class="email_doador">28/08/2024</p>
+                    <button onclick="blockpopup()" class="btn_delete_user">
+                        <img class="img_delete_user" src="../../assets/images/delete_user.png">
+                    </button>
+                </div>
+            </div>
+
+        </div>
+        <div class="botoes">
+            <button class="btn_nav1">1</button>
+            <button class="btn_nav">2</button>
+            <button class="btn_nav">3</button>
+            <button class="btn_nav">4</button>
+            <button class="btn_nav">></button>
         </div>
     </div>
-
-    <div class="doadores">
-        <div class="card_doador">
-            <div class="card-esq">
-                <img class="perfil_img" src="../../assets/images/Perfil-doadores.png">
-                <div class="info_doador">
-                    <h2 class="nome_doador">João</h2>
-                    <p class="email_doador">joaozin@gmail.com</p>
-                </div>
-            </div>
-            <div class="card-dir">
-                <p class="email_doador">28/08/2024</p>
-                <button onclick="blockpopup()" class="btn_delete_user">
-                    <img class="img_delete_user" src="../../assets/images/delete_user.png">
-                </button>
-            </div>
-        </div>
-
-        <div class="card_doador">
-            <div class="card-esq">
-                <img class="perfil_img" src="../../assets/images/Perfil-doadores.png">
-                <div class="info_doador">
-                    <h2 class="nome_doador">João</h2>
-                    <p class="email_doador">joaozin@gmail.com</p>
-                </div>
-            </div>
-            <div class="card-dir">
-                <p class="email_doador">28/08/2024</p>
-                <button onclick="blockpopup()" class="btn_delete_user">
-                    <img class="img_delete_user" src="../../assets/images/delete_user.png">
-                </button>
-            </div>
-        </div>
-
-        <div class="card_doador">
-            <div class="card-esq">
-                <img class="perfil_img" src="../../assets/images/Perfil-doadores.png">
-                <div class="info_doador">
-                    <h2 class="nome_doador">João</h2>
-                    <p class="email_doador">joaozin@gmail.com</p>
-                </div>
-            </div>
-            <div class="card-dir">
-                <p class="email_doador">28/08/2024</p>
-                <button onclick="blockpopup()" class="btn_delete_user">
-                    <img class="img_delete_user" src="../../assets/images/delete_user.png">
-                </button>
-            </div>
-        </div>
-
-        <div class="card_doador">
-            <div class="card-esq">
-                <img class="perfil_img" src="../../assets/images/Perfil-doadores.png">
-                <div class="info_doador">
-                    <h2 class="nome_doador">João</h2>
-                    <p class="email_doador">joaozin@gmail.com</p>
-                </div>
-            </div>
-            <div class="card-dir">
-                <p class="email_doador">28/08/2024</p>
-                <button onclick="blockpopup()" class="btn_delete_user">
-                    <img class="img_delete_user" src="../../assets/images/delete_user.png">
-                </button>
-            </div>
-        </div>
-
-        <div class="card_doador">
-            <div class="card-esq">
-                <img class="perfil_img" src="../../assets/images/Perfil-doadores.png">
-                <div class="info_doador">
-                    <h2 class="nome_doador">João</h2>
-                    <p class="email_doador">joaozin@gmail.com</p>
-                </div>
-            </div>
-            <div class="card-dir">
-                <p class="email_doador">28/08/2024</p>
-                <button onclick="blockpopup()" class="btn_delete_user">
-                    <img class="img_delete_user" src="../../assets/images/delete_user.png">
-                </button>
-            </div>
-        </div>
-
-    </div>
-    <div class="botoes">
-        <button class="btn_nav1">1</button>
-        <button class="btn_nav">2</button>
-        <button class="btn_nav">3</button>
-        <button class="btn_nav">4</button>
-        <button class="btn_nav">></button>
-    </div>
-</div>
-<!-- Fim DIV principal  -->
-<script src="../assets-telas-adm/js/main.js"></script>
-
+</main>
 
 <?php
 $jsPagina = ['ver-doadores-adm.js']; //Colocar o arquivo .js

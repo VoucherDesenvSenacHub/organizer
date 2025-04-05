@@ -9,6 +9,7 @@
         integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" /> 
     
+    <link rel="icon" type="image/x-icon" href="../../assets/images/global/Logo-Organizer.png">
     <!-- CSS GLOBAL -->
     <link rel="stylesheet" href="../../assets/css/global/style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined">
@@ -24,8 +25,31 @@
 </head>
 
 <body>
+    <!-- NAVBAR -->
+    <header>
+        <div class="container">
+            <a class="logo" href="../../../index.php">
+                <img src="../../assets/images/global/Logo-Organizer.png">
+                <h1>Organizer</h1>
+            </a>
+            <nav id="nav-bar">
+                <ul>
+                    <li><a href="../../../index.php">Home</a></li>
+                    <li><a href="../visitante/ongs.php" class="<?= (basename($_SERVER['PHP_SELF']) == 'ongs.php') ? 'active' : ''; ?>">Ongs</a></li>
+                    <li><a href="../visitante/projetos.php" class="<?= (basename($_SERVER['PHP_SELF']) == 'projetos.php') ? 'active' : ''; ?>">Projetos</a></li>
+                    <li><a href="../visitante/noticias.php">Notícias</a></li>
+                </ul>
+            </nav>
+            <div class="btn-login">
+                <button class="btn" id="openPopup" onclick="abrir_popup('fundo-login-popup')">LOGIN</button>
+                <button onclick="menu_mobile()" id="hamburguer"></button>
+            </div>
+        </div>
+    </header>
+    
     <?php 
-        require_once 'navbar.php'; //NAVBAR
         require_once 'login-popup.php'; //EFEITO POPUP DO LOGIN
+        require_once 'requer-login.php'; //POPUP LOGIN OBRIGATORIO
+        require_once 'compartilhar.php'; //POPUP DE COMPARTILHAR
     ?>
     

@@ -1,7 +1,7 @@
 <?php 
     $tituloPagina = 'Relatórios'; // Definir o título da página
     $cssPagina = ["ong/relatorios.css"]; //Colocar o arquivo .css (exemplo: 'ONG/cadastro.css')
-    require_once '../../components/header.php';
+    require_once '../../components/header-ong.php';
 ?>
     <main>
         <div id="principal">

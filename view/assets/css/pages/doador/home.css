@@ -1,9 +1,10 @@
-#img-inicio img{
-    width: 300px;
+#nav-bar ul li:nth-child(1) a {
+    color: var(--cor-amarelo);
+    font-weight: bold;
 }
 
-main {
-    padding: 70px;
+#img-inicio img{
+    width: 300px;
 }
 
 section {
@@ -11,6 +12,8 @@ section {
     align-items: center;
     justify-content: center;
     min-height: calc(100vh - 60px);
+    background-color: aliceblue;
+    
 }
 
 section .container{
@@ -19,10 +22,11 @@ section .container{
     align-items: start;
     background-color: white;
     border-radius: 12px;
-    width: fit-content;
+    border: none;   
+    width: 1200px;
     height: fit-content;
     padding: 40px;
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px;
+    /* box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px; */
     gap: 30px;
 }
 
@@ -31,13 +35,17 @@ section .container #secao-1{
     display: flex;
     gap: 20px;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
-#secao-1 #container-esq{
+#secao-1 #container-esq {
     display: flex;
     flex-direction: column;
     gap: 20px;
+}
+
+#secao-1 #container-esq a {
+    text-decoration: none;
 }
 
 #secao-1 #container-esq .visaogeral{
@@ -97,6 +105,7 @@ section .container #secao-1{
 #boxCard {
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
     gap: 15px;
     justify-content: space-evenly;
 }
@@ -171,6 +180,18 @@ section .container #secao-1{
 /* SEÇÃO 3 */
 #secao-3 {
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#secao-3 .cards{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 80px;
+    
+    
 }
 
 #secao-3 h3 {
@@ -213,260 +234,4 @@ section .container #secao-1{
     h3 {
         text-align: center;
     }
-}
-
-#meu-perfil {
-    display: none;
-    background-color: rgba(0, 0, 0, 0.5);
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 999;
-    width: 100%;
-    height: 100%;
-    justify-content: center;
-    align-items: center;
-}
-
-#meu-perfil.ativo{
-    display: flex;
-}
-
-.container-meu-perfil {
-    display: flex;
-    background: white;
-    width: 800px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.348);
-    overflow: hidden;
-}
-
-.imge{
-    width: 20px;
-}
-
-
-/* Barra lateral */
-.sidebar {
-    background: #ffffff;
-    width: 250px;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border-right: 12px  #ffffff;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.16);
-}
-
-.profile {
-    text-align: center;
-}
-
-.profile img {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    border: 3px solid #ddd;
-}
-
-.username {
-    font-size: 24px;
-    margin: 10px 0;
-}
-
-.email {
-    font-size: 16px;
-    color: #66666692;
-}
-
-.logout {
-    display: flex;
-    align-items: center;
-    margin-top: 310px;
-    padding: 10px;
-    width: 220px;
-    height: 50px;
-    background: #e74c3c;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 24px;
-}
-
-.logout span{
-    padding-right: 20px;
-}
-
-.logout:hover {
-    background: #c0392b;
-}
-
-/* Conteúdo principal */
-.main-content {
-    flex: 1px;
-    padding: 20px;
-    
-}
-.info-se{
-    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.401);
-    border-radius: 5px;
-    padding: 15px;
-
-}
-
-h2 {
-    color: #007bff;
-    margin-bottom: 15px;
-}
-.infose {
-    box-shadow: 0 3px 7px rgba(60, 60, 60, 0.401);
-    margin-bottom: 10px;
-    padding: 15px;
-}
-
-.info-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
-    border-radius: 3px;
-    /* box-shadow: 0 3px 7px rgba(0, 0, 0, 0.401); */
-}
-
-.info {
-    margin-bottom: 42px;
-    
-}
-.infon{
-    width:50%;
-    margin-bottom: 30px;
-}
-
-label {
-    display: block;
-    font-size: 18px;
-    margin-bottom: 5px;
-}
-
-.input-box {
-    background: #f9f9f9;
-    padding: 10px;
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
-    border: 1px solid #ededed;
-
-}
-.input-email {
-    background: #f9f9f9;
-    padding: 10px;
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
-    border: 1px solid #ededed;
-    width: 50%;
-}
-.input-email input {
-    border: none;
-    background: transparent;
-    width: 100%;
-    font-size: 16px;
-    outline: none;
-    cursor: default;
-}
-
-.input-box span {
-    font-size: 16px;
-    margin-right: 10px;
-}
-
-.input-box input {
-    border: none;
-    background: transparent;
-    width: 100%;
-    font-size: 16px;
-    outline: none;
-    cursor: default;
-}
-
-/* Botão de alterar senha */
-.change-password {
-    width: 50%;
-    padding: 10px;
-    background: #f4f4f4;
-    border: none;
-    display: flex;
-    justify-content: center;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    color: black;
-}
-
-.change-password:hover {
-    background: #d3d3d3e6;
-}
-
-#fundo-confirmacao{
-    background-color: rgba(0, 0, 0, 0.5);
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    z-index: 999;
-    top: 0;
-    left: 0;
-}
-
-#confirmacao{
-    display: flex;
-    background-color: #fff;
-    padding: 50px;
-    border-radius: 5px;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-}
-
-#fundo-confirmacao.ativo{
-    display: flex;
-}
-
-#confirmacao div{
-    display: flex;
-    gap: 15px;
-}
-
-#confirmacao div .nao-sair, .sair{
-    width: 80px;
-    padding: 8px 0;
-    font-size: 20px;
-    border-radius: 5px;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-}
-
-#confirmacao div .nao-sair{
-    background-color: rgba(255, 0, 0, 0.86);
-}
-
-#confirmacao div .nao-sair:hover{
-    background-color: rgb(207, 30, 30);
-}
-
-#confirmacao div .sair{
-    background-color: rgba(55, 203, 55, 0.997);
-}
-
-#confirmacao div .sair:hover{
-    background-color: rgba(46, 146, 46, 0.997);
-}
-
-#popup-confirmacao-aside{
-    font-size: 20px;
-    width: 100%;
 }

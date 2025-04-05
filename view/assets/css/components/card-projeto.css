@@ -41,12 +41,12 @@
     gap: 8px;
 }
 
-.barra-doacao span {
+.card-projeto .barra-doacao span {
     font-size: 11px;
     font-weight: 500;
 }
 
-.barra-doacao .barra {
+.card-projeto .barra-doacao .barra {
     background-color: rgba(0, 0, 0, 0.1);
     height: 8px;
     width: 100%;
@@ -54,7 +54,7 @@
     overflow: hidden;
 }
 
-.barra .barra-verde {
+.card-projeto .barra .barra-verde {
     width: 30%;
     background-color: #55E18B;
     height: 100%;
@@ -84,51 +84,48 @@
 }
 
 /* SALVAR E COMPARTILHAR PROJETO */
-.acoes-projeto {
+.card-projeto .acoes-projeto {
     display: flex;
-    gap: 10px;
     align-items: center;
+    gap: 10px;
     font-size: 18px;
     position: absolute;
     top: 5px;
     right: 5px;
 }
 
-.acoes-projeto div {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.card-projeto .acoes-projeto button {
+    background: none;
+    border: none;
     width: 28px;
     height: 28px;
-    border-radius: 50%;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 50%;
     background-color: white;
-}
-
-.acoes-projeto div i {
     color: #c2c2c2;
+    font-size: 18px;
     cursor: pointer;
     transition: .3s;
 }
 
-.acoes-projeto .share {
+.card-projeto .acoes-projeto #share {
     visibility: hidden;
     transform: translateX(5px);
     opacity: 0;
     transition: .3s;
 }
 
-.card-projeto:hover .acoes-projeto .share {
+.card-projeto:hover .acoes-projeto #share {
     visibility: visible;
     transform: translateX(0);
     opacity: 1;
     transition: .3s;
 }
 
-.acoes-projeto .like i:hover {
-    color: hotpink;
+.card-projeto .acoes-projeto button#share:hover {
+    color: #45BEE6;
 }
 
-.acoes-projeto .share i:hover {
-    color: #45BEE6;
+.card-projeto .acoes-projeto button#like:hover {
+    color: hotpink;
 }
