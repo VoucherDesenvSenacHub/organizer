@@ -17,14 +17,14 @@
 
     .titulo {
         margin-left: 27px;
+        margin-bottom: 20px;
     }
 
     .cards {
         display: flex;
         flex-wrap: wrap;
-        justify-content: start;
+        justify-content: center;
         gap: 30px;
-        margin-left: 27px;
     }
 
     .icon {
@@ -54,6 +54,10 @@
         font-size: 20px;
     }
 
+    .card1 img{
+        width: 100%;
+    }
+
     .sub {
         margin-top: 15px;
 
@@ -76,16 +80,15 @@
     }
 
     #download p{
-        font-size: 18px;
+        font-size: 12px;
         color: black;
     }
 
     #download {
         display: flex;
         align-items: center;
-        gap: 10px;
+        gap: 20px;
         box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-        width: fit-content;
         padding: 20px;
         position: fixed;
         right: 76px;
@@ -112,18 +115,51 @@
     justify-content: center;
 
     p{
-        font-size: 12px;
+        font-size: 18px;
         color: rgba(0, 0, 0, 0.605);
         margin-right: 2%;
     }
 
     img{
+        width: 8px !important;
         margin: 1%;
     }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 450px) {
     .card1{
-        width: 420px;
+        color: rgb(0, 0, 0);
+        width: 120px;
+        font-size: 14px;
+    }
+
+    .card1 img{
+        width: 120px;
+    }
+
+    #principal .titulo{
+        font-size: 25px;
+    }
+
+    .icon{
+        font-size: 14px;
+    }
+
+    .quadrado2 p{
+        font-size: 12px;
+    }
+
+    #download{
+        padding: 10px;
+    }
+
+    #download p{
+        font-size: 12px;
+        right: 0;
+        color: black;
+    }
+
+    #download img{
+        width: 20px;
     }
 }
