@@ -1,133 +1,249 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // ============ Configuração dos Popups ============
-    const popupExcluir = document.getElementById('popup-excluir-cartao');
-    const popupSucesso = document.getElementById('popup-exclusao-sucesso');
-    
-    // ============ Lógica dos Cartões ============
-    const cartoes = document.querySelectorAll('.cartao');
-    
-    cartoes.forEach(cartao => {
-        cartao.addEventListener('click', function(e) {
-            popupExcluir.dataset.cartaoSelecionado = this.dataset.cartaoId;
-            popupExcluir.style.display = 'flex';
-            e.stopPropagation();
-        });
-    });
+    console.log('Script iniciado - verificando elementos...');
 
-    // ============ Botões dos Popups ============
-    document.getElementById('btnNo')?.addEventListener('click', function() {
-        popupExcluir.style.display = 'none';
-    });
+    // Variável para armazenar o cartão selecionado para exclusão
+    let cartaoSelecionado = null;
 
-    document.getElementById('btnYes')?.addEventListener('click', function() {
-        const cartaoId = popupExcluir.dataset.cartaoSelecionado;
-        popupExcluir.style.display = 'none';
-        popupSucesso.style.display = 'flex';
-    });
+    // ==================== FUNÇÕES PRINCIPAIS ====================
+    function abrirPopup(id) {
+        const popup = document.getElementById(id);
+        if (popup) {
+            popup.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+            console.log(`Popup ${id} aberto com sucesso`);
+            return true;
+        } else {
+            console.error(`Popup com ID "${id}" não encontrado!`);
+            return false;
+        }
+    }
 
-    document.getElementById('btnBack')?.addEventListener('click', function() {
-        popupSucesso.style.display = 'none';
-    });
-
-    // ============ Fechar Popups ao Clicar Fora ============
-    [popupExcluir, popupSucesso].forEach(popup => {
-        popup.addEventListener('click', function(e) {
-            if (e.target === this) {
-                this.style.display = 'none';
+    function fecharPopup(id) {
+        const popup = document.getElementById(id);
+        if (popup) {
+            popup.style.display = 'none';
+            document.body.style.overflow = 'auto';
+            if (id === 'popup-adicionar-cartao') {
+                resetarFormulario();
             }
+        }
+    }
+
+    function resetarFormulario() {
+        // Limpa campos
+        document.querySelectorAll('#popup-adicionar-cartao input').forEach(input => {
+            input.value = '';
+            input.style.borderColor = '';
+        });
+        
+        // Reseta o botão
+        const addButton = document.getElementById('addButton');
+        if (addButton) {
+            addButton.disabled = false;
+            addButton.classList.remove('loading', 'success');
+            addButton.querySelector('.button-text').style.opacity = '1';
+            addButton.querySelector('.loader').style.display = 'none';
+            addButton.querySelector('.checkmark').style.display = 'none';
+        }
+    }
+
+    // ==================== CONFIGURAÇÃO DE EVENTOS ====================
+    
+    // 1. Botão que abre o popup de adicionar cartão
+    const btnAbrir = document.querySelector('.adicionar-cartao');
+    if (btnAbrir) {
+        btnAbrir.addEventListener('click', function(e) {
+            e.preventDefault();
+            abrirPopup('popup-adicionar-cartao');
+        });
+    } else {
+        console.error('Botão "Adicionar cartão" não encontrado!');
+    }
+
+    // 2. Configuração dos eventos de clique nos cartões
+    document.querySelectorAll('.cartao').forEach(cartao => {
+        cartao.addEventListener('click', function(e) {
+            e.stopPropagation();
+            cartaoSelecionado = this;
+            abrirPopup('popup-excluir-cartao');
         });
     });
 
-    // ============ Lógica Aprimorada do Botão Adicionar ============
+    // 3. Botão de submit do formulário de adicionar cartão
     const addButton = document.getElementById('addButton');
     if (addButton) {
         addButton.addEventListener('click', async function(e) {
             e.preventDefault();
             
+            // Elementos do botão
             const button = this;
             const buttonText = button.querySelector('.button-text');
             const loader = button.querySelector('.loader');
             const checkmark = button.querySelector('.checkmark');
             
-            // Validação dos campos do formulário
-            const cardNumber = document.querySelector('.card-number').value;
-            const cardDate = document.querySelector('input[placeholder="MM/AA"]').value;
-            const cardCVV = document.querySelector('.cvv').value;
-            const cardName = document.querySelector('input[placeholder="Nome Completo"]').value;
+            // Validação dos campos
+            const campos = {
+                numero: document.querySelector('.card-number'),
+                data: document.querySelector('input[placeholder="MM/AA"]'),
+                cvv: document.querySelector('.cvv'),
+                nome: document.querySelector('input[placeholder="Nome Completo"]')
+            };
             
-            if (!cardNumber || !cardDate || !cardCVV || !cardName) {
-                alert('Por favor, preencha todos os campos!');
+            let valido = true;
+            Object.values(campos).forEach(campo => {
+                if (!campo.value.trim()) {
+                    campo.style.borderColor = '#ff3860';
+                    valido = false;
+                } else {
+                    campo.style.borderColor = '';
+                }
+            });
+            
+            if (!valido) {
+                alert('Por favor, preencha todos os campos corretamente!');
                 return;
             }
             
             // Estado de carregamento
             button.disabled = true;
-            buttonText.classList.add('hidden');
-            loader.classList.remove('hidden');
+            button.classList.add('loading');
+            buttonText.style.opacity = '0';
+            loader.style.display = 'block';
             
             try {
-                // Simulação de requisição (substitua por sua API real)
+                // Simulação de requisição (substitua por chamada real à API)
                 await new Promise(resolve => setTimeout(resolve, 2000));
                 
-                // Sucesso - Mostrar checkmark
-                loader.classList.add('hidden');
-                checkmark.classList.remove('hidden');
+                // Sucesso - mostra animação
+                button.classList.remove('loading');
+                loader.style.display = 'none';
+                checkmark.style.display = 'block';
                 button.classList.add('success');
                 
-                // Reset após 2 segundos
+                // Força a animação do checkmark
                 setTimeout(() => {
-                    checkmark.classList.add('hidden');
-                    buttonText.classList.remove('hidden');
-                    button.classList.remove('success');
-                    button.disabled = false;
-                    
-                    // Fechar popup e recarregar cartões (opcional)
+                    const circle = checkmark.querySelector('.checkmark-circle');
+                    const check = checkmark.querySelector('.checkmark-check');
+                    circle.style.animation = 'checkmark-circle 0.6s ease forwards';
+                    check.style.animation = 'checkmark-check 0.3s ease 0.6s forwards';
+                }, 10);
+                
+                // Fecha o popup após 2 segundos
+                setTimeout(() => {
                     fecharPopup('popup-adicionar-cartao');
-                    // location.reload(); // Se precisar recarregar a página
                 }, 2000);
                 
             } catch (error) {
-                // Tratamento de erro
-                console.error('Erro ao adicionar cartão:', error);
-                loader.classList.add('hidden');
-                buttonText.classList.remove('hidden');
+                console.error('Erro no processo:', error);
+                button.classList.remove('loading');
+                loader.style.display = 'none';
+                buttonText.style.opacity = '1';
                 button.disabled = false;
-                alert('Erro ao adicionar cartão. Tente novamente.');
+                alert('Erro ao processar. Tente novamente.');
             }
         });
     }
+
+    // 4. Configuração dos botões de exclusão
+    document.querySelector('.btn-no')?.addEventListener('click', function() {
+        fecharPopup('popup-excluir-cartao');
+        cartaoSelecionado = null;
+    });
+
+    document.querySelector('.btn-yes')?.addEventListener('click', function() {
+        if (cartaoSelecionado) {
+            // Animação de exclusão
+            cartaoSelecionado.style.transform = 'scale(0.9)';
+            cartaoSelecionado.style.opacity = '0';
+            
+            // Remove o cartão após a animação
+            setTimeout(() => {
+                cartaoSelecionado.remove();
+                fecharPopup('popup-excluir-cartao');
+                abrirPopup('popup-exclusao-sucesso');
+                cartaoSelecionado = null;
+            }, 300);
+        }
+    });
+
+    document.querySelector('.btn-back')?.addEventListener('click', function() {
+        fecharPopup('popup-exclusao-sucesso');
+    });
+
+    // Fechar popups ao clicar fora
+    document.querySelectorAll('.popup-fundo').forEach(popup => {
+        popup.addEventListener('click', function(e) {
+            if (e.target === this || e.target.classList.contains('popup-overlay')) {
+                fecharPopup(this.id);
+                cartaoSelecionado = null;
+            }
+        });
+    });
 });
 
-// Funções auxiliares
-function abrir_popup(id) {
-    document.getElementById(id).style.display = 'flex';
-}
+document.addEventListener('DOMContentLoaded', function() {
+    // Variável para armazenar o cartão selecionado
+    let cartaoSelecionado = null;
 
-function fecharPopup(id) {
-    document.getElementById(id).style.display = 'none';
-}
+    // Função para abrir popup
+    function abrirPopup(id) {
+        const popup = document.getElementById(id);
+        if (popup) {
+            popup.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+    }
 
-function confirmarExclusao() {
-    const popupExcluir = document.getElementById('popup-excluir-cartao');
-    const popupSucesso = document.getElementById('popup-exclusao-sucesso');
-    
-    // Simulação de exclusão (substitua por sua lógica real)
-    const cartaoId = popupExcluir.dataset.cartaoSelecionado;
-    document.querySelector(`.cartao[data-cartao-id="${cartaoId}"]`)?.remove();
-    
-    popupExcluir.style.display = 'none';
-    popupSucesso.style.display = 'flex';
-}
+    // Função para fechar popup
+    function fecharPopup(id) {
+        const popup = document.getElementById(id);
+        if (popup) {
+            popup.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+    }
 
-const response = await fetch('sua-api-aqui', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-        numero: cardNumber,
-        validade: cardDate,
-        cvv: cardCVV,
-        titular: cardName
-    })
+    // Configuração dos eventos de clique nos cartões
+    document.querySelectorAll('.cartao').forEach(cartao => {
+        cartao.addEventListener('click', function(e) {
+            e.stopPropagation();
+            cartaoSelecionado = this;
+            abrirPopup('popup-excluir-cartao');
+        });
+    });
+
+    // Configuração do botão "SIM" para exclusão
+    document.querySelector('.btn-yes')?.addEventListener('click', function() {
+        if (cartaoSelecionado) {
+            // Animação de exclusão
+            cartaoSelecionado.style.transform = 'scale(0.95)';
+            cartaoSelecionado.style.opacity = '0';
+            
+            // Remove o cartão após a animação e mostra o popup de sucesso
+            setTimeout(() => {
+                cartaoSelecionado.remove();
+                fecharPopup('popup-excluir-cartao');
+                abrirPopup('popup-exclusao-sucesso'); // MOSTRA O POPUP DE SUCESSO
+            }, 300);
+        }
+    });
+
+    // Configuração do botão "NÃO"
+    document.querySelector('.btn-no')?.addEventListener('click', function() {
+        fecharPopup('popup-excluir-cartao');
+    });
+
+    // Configuração do botão "VOLTAR"
+    document.querySelector('.btn-back')?.addEventListener('click', function() {
+        fecharPopup('popup-exclusao-sucesso');
+    });
+
+    // Fechar popups ao clicar fora
+    document.querySelectorAll('.popup-fundo').forEach(popup => {
+        popup.addEventListener('click', function(e) {
+            if (e.target === this) {
+                fecharPopup(this.id);
+            }
+        });
+    });
 });
-
-if (!response.ok) throw new Error('Falha ao adicionar cartão');

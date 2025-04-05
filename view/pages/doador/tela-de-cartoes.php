@@ -3,6 +3,11 @@ $tituloPagina = 'Meus cartões'; // Definir o título da página
 $cssPagina = ["doador/tela-de-cartoes.css"]; //Colocar o arquivo .css (exemplo: 'ONG/cadastro.css')
 require_once '../../components/header.php';
 ?>
+<script>
+    console.log('Script carregado! Verificando elementos...');
+    console.log('Popup existe?', !!document.getElementById('popup-adicionar-cartao'));
+    console.log('Botão existe?', !!document.getElementById('addButton'));
+</script>
 
 <body>
 
@@ -15,21 +20,21 @@ require_once '../../components/header.php';
 
                 <div class="cartoes-container">
                     <!-- Cartão 1 -->
-                    <div class="cartao" data-cartao-id="1">
+                    <div onclick="abrir_popup('popup-excluir-cartao')" class="cartao" data-cartao-id="1">
                         <h2>Cartão</h2>
                         <div class="numero-cartao">***** ***** ***** 7501</div>
                         <div class="validade">Data de validade 02/31</div>
                     </div>
 
                     <!-- Cartão 2 -->
-                    <div class="cartao" data-cartao-id="2">
+                    <div onclick="abrir_popup('popup-excluir-cartao')" class="cartao" data-cartao-id="2">
                         <h2>Cartão</h2>
                         <div class="numero-cartao">***** ***** ***** 9503</div>
                         <div class="validade">Data de validade 05/25</div>
                     </div>
 
                     <!-- Cartão 3 -->
-                    <div class="cartao" data-cartao-id="3">
+                    <div onclick="abrir_popup('popup-excluir-cartao')" class="cartao" data-cartao-id="3">
                         <h2>Cartão</h2>
                         <div class="numero-cartao">***** ***** ***** 8523</div>
                         <div class="validade">Data de validade 01/27</div>
@@ -73,8 +78,8 @@ require_once '../../components/header.php';
             <div>
                 <button class="add-button" id="addButton">
                     <span class="button-text">ADICIONAR</span>
-                    <div class="loader hidden"></div>
-                    <svg class="checkmark hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                    <div class="loader"></div>
+                    <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
                         <circle class="checkmark-circle" cx="26" cy="26" r="25" fill="none" />
                         <path class="checkmark-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
                     </svg>
@@ -83,28 +88,29 @@ require_once '../../components/header.php';
         </div>
     </div>
 
+
+    <!-- Popup de Confirmação de Exclusão -->
     <div class="popup-fundo" id="popup-excluir-cartao">
         <div class="popup-overlay">
             <div class="popup-container">
                 <div class="popup-content">
                     <h2>EXCLUIR ESSE CARTÃO?</h2>
                     <div class="button-container">
-                        <button class="btn btn-no" onclick="fecharPopup('popup-excluir-cartao')">NÃO</button>
-                        <button class="btn btn-yes" onclick="confirmarExclusao()">SIM</button>
+                        <button class="btn btn-no">NÃO</button>
+                        <button class="btn btn-yes">SIM</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="popup-fundo" id="popup-exclusao-sucesso" style="display: none;">
-        <div class="popup-overlay">
-            <div class="popup-container">
-                <div class="popup-content">
-                    <h2>CARTÃO EXCLUIDO</h2>
-                    <div class="button-container">
-                        <button class="btn btn-back" onclick="fecharPopup('popup-exclusao-sucesso')">VOLTAR</button>
-                    </div>
+    <!-- Popup de Confirmação de Sucesso -->
+    <div class="popup-fundo" id="popup-exclusao-sucesso">
+        <div class="popup-container">
+            <div class="popup-content">
+                <h2>CARTÃO EXCLUIDO</h2>
+                <div class="button-container">
+                    <button class="btn btn-back">VOLTAR</button>
                 </div>
             </div>
         </div>

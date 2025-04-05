@@ -254,7 +254,8 @@ h1 {
   }
 
   /* checkmark */
-  .add-button {
+/* Estilos do botão com animação */
+.add-button {
     position: relative;
     width: 100%;
     background: #1C3464;
@@ -264,17 +265,26 @@ h1 {
     border-radius: 8px;
     font-size: 1.1em;
     cursor: pointer;
-    transition: background 0.3s;
+    transition: all 0.3s;
     overflow: hidden;
     height: 50px;
-  }
-  
-  .button-text {
+}
+
+.add-button:hover {
+    background: #0056b3;
+}
+
+.add-button:disabled {
+    background: #1C3464 !important;
+    cursor: not-allowed;
+}
+
+.button-text {
     display: inline-block;
-    transition: opacity 0.3s;
-  }
-  
-  .loader {
+    transition: all 0.3s;
+}
+
+.loader {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -284,89 +294,313 @@ h1 {
     border: 3px solid rgba(255, 255, 255, 0.3);
     border-radius: 50%;
     border-top-color: white;
-    animation: spin 1s ease-in-out infinite;
-  }
-  
-  .checkmark {
+    animation: spin 1s linear infinite;
+    display: none;
+}
+
+.checkmark {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 30px;
     height: 30px;
-  }
-  
-  .checkmark-circle {
+    display: none;
+}
+
+.checkmark-circle {
     stroke: white;
     stroke-width: 2;
     stroke-dasharray: 166;
     stroke-dashoffset: 166;
-    animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
-  }
-  
-  .checkmark-check {
+}
+
+.checkmark-check {
     stroke: white;
     stroke-width: 2;
     stroke-dasharray: 48;
     stroke-dashoffset: 48;
-    animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.6s forwards;
-  }
-  
-  .hidden {
-    display: none;
-  }
-  
-  @keyframes spin {
-    to { transform: translate(-50%, -50%) rotate(360deg); }
-  }
-  
-  @keyframes stroke {
-    100% {
-      stroke-dashoffset: 0;
-    }
-  }
-  
-  .success {
-    background: #28a745 !important;
 }
 
-/* ANIMAÇÕES MELHORADAS */
+.hidden {
+    display: none;
+}
+
+.success {
+    background-color: #28a745 !important;
+}
+
+/* ANIMAÇÕES */
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+@keyframes checkmark-circle {
+    0% { stroke-dashoffset: 166; }
+    100% { stroke-dashoffset: 0; }
+}
+
+@keyframes checkmark-check {
+    0% { stroke-dashoffset: 48; }
+    100% { stroke-dashoffset: 0; }
+}
+
+/* ESTILOS DO BOTÃO */
+.add-button {
+    position: relative;
+    overflow: hidden;
+}
+
+.loader {
+    display: none;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.checkmark {
+    display: none;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.checkmark-circle {
+    stroke: white;
+    stroke-width: 2;
+    stroke-dasharray: 166;
+    stroke-dashoffset: 166;
+}
+
+.checkmark-check {
+    stroke: white;
+    stroke-width: 2;
+    stroke-dasharray: 48;
+    stroke-dashoffset: 48;
+}
+
+.success {
+    background-color: #28a745 !important;
+}
+
+/* ==================== POPUP ==================== */
+.popup-fundo {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.credit-card-popup {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+/* ==================== ANIMAÇÕES ==================== */
+/* Loader (spinner) */
+.loader {
+    display: none;
+    width: 24px;
+    height: 24px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Checkmark */
+.checkmark {
+    display: none;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.checkmark-circle {
+    stroke: white;
+    stroke-width: 2;
+    stroke-dasharray: 166;
+    stroke-dashoffset: 166;
+}
+
+.checkmark-check {
+    stroke: white;
+    stroke-width: 2;
+    stroke-dasharray: 48;
+    stroke-dashoffset: 48;
+}
+
+/* Efeito de pulsação durante o carregamento */
+.add-button.loading {
+    animation: pulse 1.5s infinite;
+    position: relative;
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7); }
+    70% { box-shadow: 0 0 0 12px rgba(255, 255, 255, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
+}
+
 @keyframes spin {
     0% { transform: translate(-50%, -50%) rotate(0deg); }
     100% { transform: translate(-50%, -50%) rotate(360deg); }
 }
 
-@keyframes checkmark-anim {
-    0% { stroke-dashoffset: 30; }
-    100% { stroke-dashoffset: 0; }
-}
-
-@keyframes checkmark-circle-anim {
+@keyframes checkmark-circle {
     0% { stroke-dashoffset: 166; }
     100% { stroke-dashoffset: 0; }
 }
 
-/* ESTADOS DO BOTÃO */
-.add-button:disabled {
-    background: #1C3464 !important;
-    cursor: not-allowed;
-    opacity: 0.8;
+@keyframes checkmark-check {
+    0% { stroke-dashoffset: 48; }
+    100% { stroke-dashoffset: 0; }
 }
 
-.success .checkmark-circle {
-    animation: checkmark-circle-anim 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
-}
-
-.success .checkmark-check {
-    animation: checkmark-anim 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.6s forwards;
-}
-
-/* TRANSITIONS */
-.button-text, .loader, .checkmark {
+/* ==================== BOTÃO ==================== */
+.add-button {
+    position: relative;
+    overflow: hidden;
     transition: all 0.3s ease;
+    height: 50px;
+}
+
+.add-button.success {
+    background-color: #28a745 !important;
+}
+
+.button-text {
+    transition: opacity 0.3s ease;
+}
+
+/* ==================== VALIDAÇÃO ==================== */
+input.error {
+    border-color: #ff3860 !important;
+    animation: shake 0.5s;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-5px); }
+    40%, 80% { transform: translateX(5px); }
 }
 /* fim checkmark */
 /* fim do adicionar cartão */
+/* Estilos para os popups de exclusão */
+.popup-overlay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+}
+
+.popup-container {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    animation: fadeIn 0.3s ease-out;
+}
+
+.popup-content h2 {
+    color: #1C3464;
+    margin-bottom: 25px;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.btn {
+    padding: 12px 30px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+}
+
+.btn-no {
+    background-color: #f1f1f1;
+    color: #333;
+}
+
+.btn-no:hover {
+    background-color: #e0e0e0;
+    transform: translateY(-2px);
+}
+
+.btn-yes {
+    background-color: #ff4d4d;
+    color: white;
+}
+
+.btn-yes:hover {
+    background-color: #ff3333;
+    transform: translateY(-2px);
+}
+
+.btn-back {
+    background-color: #1C3464;
+    color: white;
+    width: 100%;
+}
+
+.btn-back:hover {
+    background-color: #142a4e;
+    transform: translateY(-2px);
+}
+
+/* Animação para o popup */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Transição para os cartões */
+.cartao {
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
 
 /* fim do test */
 /* Responsivo */
