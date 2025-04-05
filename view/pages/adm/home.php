@@ -51,7 +51,7 @@ require_once '../../components/header-adm.php';
                         <div class="action-card orange">
                             <div class="card-header">ONGS</div>
                             <p class="card-description">Aprove ou recuse cadastros de ONG's novas no sistema</p>
-                            <a href="#" class="card-button">
+                            <a href="ongs-a-serem-validadas.php" class="card-button">
                                 <span class="icon">🏅</span> <!-- Ícone de medalha -->
                                 Ir para lista
                                 <span class="notification">5</span>
