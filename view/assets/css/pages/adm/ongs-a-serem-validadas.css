@@ -1,6 +1,20 @@
-@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined");
+section{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding:10px 0;
 
-.principal{
+}
+/* .principal{
+    background-color: white;
+    border-radius: 10px;
+    display:flex;
+    width: 1200px;
+    height: 100vh;
+} */
+
+.principal {
     
     justify-content: space-around;
     z-index: 1;
@@ -9,30 +23,15 @@
     padding: 20px;
     background-color: #FFFFFF;
     border-radius: 8px;
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.7);
+    box-shadow: 5px 5px 5px rgba(75, 75, 75, 0.938);
 }
 
-.titulo-solicitacao{
-    width: 90%; 
-    margin: 0 auto;
-    text-align: left; 
-    margin-bottom: 10px; 
-    font-size: 35px; 
-    color: #5282E3;
-    font-weight: normal;
-}
-
-.titulo-solicitacao .negrito {
-    font-weight: bold; 
-}
-
-.table{
+.table {
     width: 90%;
     margin: auto;
     border-color: rgb(175, 175, 175);
     border-collapse: separate;
     border-spacing: 0 10px;
-    
 
     th, td {
         padding: 0.5rem;
@@ -52,26 +51,51 @@
 
 .table tr{
     border-radius: 5px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 8px 0 rgba(79, 79, 79, 0.3);
     
 }
 
-.table td:last-child{
-    text-align: right; 
-    
+.table .btn-aprovar {
+    padding: 8px 16px; 
+    font-size: 14px;
+    width: 100px;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 20px; 
 }
 
-.logo-empresa img{
-    width: 60px;
-    height: auto;
-    
+
+.table .btn-recusar {
+    padding: 8px 16px; 
+    font-size: 14px;
+    width: 100px;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 20px; 
 }
 
-.info-empresa{
+.info-ong{
     text-align: left;
-    
 }
 
+.btn-aprovar{
+    background-color: #51CD32;
+    color: #094A22;
+}
+
+.btn-recusar{
+    background-color: #E41D1D;
+    color: #691021; 
+}
+.botoes{
+    display: flex;
+    margin-left: 40%;
+    flex-wrap: wrap;
+}
 .icon-visible{
     margin-top: 6px;
     padding: 5px;
@@ -83,7 +107,7 @@
     cursor: pointer;
 }
 
-.table .btn-aceitar, table .btn-recusar{
+/* .table .btn-aceitar, table .btn-recusar {
     padding: 8px 16px; 
     font-size: 14px;
     width: 100px;
@@ -92,24 +116,41 @@
     border-radius: 5px;
     cursor: pointer;
     margin-left: 20px; 
+} */
+
+/* .barra-lateral{
+    background-color: #E3B652;
+} */
+.tela-visualiza-solicitacao{
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
-.btn-aceitar{
-    background-color: #51CD32;
-    color: #094A22;
-    
-
+.card-visualiza-solicitacao{
+    /* display: flex; */
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    padding: 20px;
+    margin: 15% auto;
+    width: 30%;
+    border-radius: 10px;
+    gap: 10px;
 }
-
-.btn-recusar{
-    background-color: #E41D1D;
-    color: #691021;
-   
+.logo-descricao{
+    display: flex;
+    gap: 10px;
 }
-
 
 /* tela confirma solicitação */
-.tela-confirma-solicitacao{
+#tela-confirma-solicitacao{
     display: none;
     position: fixed;
     z-index: 1;
@@ -147,12 +188,11 @@
     text-align: center;
 }
 
-/* css card recusa solicitação */
-
-.tela-recusa-solicitacao{
+/* tela recusa solicitação */
+#tela-recusa-solicitacao{
     display: none;
     position: fixed;
-    z-index: 1;
+    z-index: 999;
     left: 0;
     top: 0;
     width: 100%;
@@ -187,55 +227,11 @@
     text-align: center;
 }
 
-/* css tela visualiza confirmação */
-
-.tela-visualiza-solicitacao{
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-}
-
-.card-visualiza-solicitacao{
-    /* display: flex; */
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    background-color: white;
-    padding: 20px;
-    margin: 15% auto;
-    width: 30%;
-    border-radius: 10px;
-    gap: 10px;
-}
-
-.logo-descricao{
-    display: flex;
-    gap: 10px;
-}
 
 
-.card-visualiza-solicitacao img{
-    
-    width: 150px;  
-    height: 150px;
-}
-
-.card-visualiza-solicitacao h3{
-    margin-top: 20px;
-    text-align: left;
-}
-
-.card-visualiza-solicitacao p{
-    text-align: left;
-}
 
 
-@media (max-width: 1023px){
+@media (max-width: 1023px) {
     .principal {
         width: 80%;
         margin: 50px auto;
@@ -244,7 +240,6 @@
     .titulo-solicitacao {
         font-size: 28px;
     }
-
     .logo-empresa img {
         width: 50px;
     }
@@ -253,12 +248,12 @@
         width: 100%;
     }
 
-    .table .btn-aceitar,
+    /* .table .btn-aceitar,
     .table .btn-recusar {
         width: 100%;
         margin-left: 0;
         margin-top: 10px;
-    }
+    } */
 
     .card-visualiza-solicitacao,
     .card-confirma-solicitacao,
@@ -305,11 +300,18 @@
            
     }
 
-    .table .btn-aceitar,
+    .table .btn-aprovar,
     .table .btn-recusar {
         width: 100%;
         margin-top: 10px;
     }
+
+
+  .botoes{
+    display: flex;
+    margin-left: 40%;
+    flex-wrap: wrap;
+}
 
     .card-recusa-solicitacao img{
         width: 60px;  
