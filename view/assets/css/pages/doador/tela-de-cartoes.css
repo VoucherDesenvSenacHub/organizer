@@ -105,7 +105,8 @@ h1 {
     width: 40%;
     color: white;
     position: relative;
-    transition: all 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transform-origin: center;
 }
 .cartao:hover {
     transform:scale(110%)
@@ -549,8 +550,6 @@ input.error {
 }
 
 .btn {
-    padding: 12px 30px;
-    border: none;
     border-radius: 5px;
     cursor: pointer;
     font-weight: 600;

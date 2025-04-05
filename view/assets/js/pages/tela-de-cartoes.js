@@ -160,7 +160,8 @@ document.addEventListener('DOMContentLoaded', function() {
             setTimeout(() => {
                 cartaoSelecionado.remove();
                 fecharPopup('popup-excluir-cartao');
-                abrirPopup('popup-exclusao-sucesso');
+                mostrar_toast('exclusao-sucesso')
+                // abrirPopup('popup-exclusao-sucesso');
                 cartaoSelecionado = null;
             }, 300);
         }

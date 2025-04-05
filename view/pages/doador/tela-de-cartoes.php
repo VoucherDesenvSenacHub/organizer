@@ -3,11 +3,6 @@ $tituloPagina = 'Meus cartões'; // Definir o título da página
 $cssPagina = ["doador/tela-de-cartoes.css"]; //Colocar o arquivo .css (exemplo: 'ONG/cadastro.css')
 require_once '../../components/header.php';
 ?>
-<script>
-    console.log('Script carregado! Verificando elementos...');
-    console.log('Popup existe?', !!document.getElementById('popup-adicionar-cartao'));
-    console.log('Botão existe?', !!document.getElementById('addButton'));
-</script>
 
 <body>
 
@@ -88,7 +83,10 @@ require_once '../../components/header.php';
         </div>
     </div>
 
-
+    <div id="exclusao-sucesso" class="toast">
+        <i class="fa-regular fa-circle-check"></i>
+        Cartão excluido com sucesso!
+    </div>
     <!-- Popup de Confirmação de Exclusão -->
     <div class="popup-fundo" id="popup-excluir-cartao">
         <div class="popup-overlay">
