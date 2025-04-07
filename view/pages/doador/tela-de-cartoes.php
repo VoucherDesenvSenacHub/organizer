@@ -1,7 +1,7 @@
 <?php
 $tituloPagina = 'Meus cartões'; // Definir o título da página
 $cssPagina = ["doador/tela-de-cartoes.css"]; //Colocar o arquivo .css (exemplo: 'ONG/cadastro.css')
-require_once '../../components/header.php';
+require_once '../../components/header-usuario.php';
 ?>
 
 <body>

@@ -146,20 +146,25 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // 4. Configuração dos botões de exclusão
     document.querySelector('.btn-no')?.addEventListener('click', function() {
+        const popup_excluir = document.getElementById('popup-excluir-cartao');
+        popup_excluir.classList.remove('ativo');
         fecharPopup('popup-excluir-cartao');
         cartaoSelecionado = null;
     });
 
     document.querySelector('.btn-yes')?.addEventListener('click', function() {
+
         if (cartaoSelecionado) {
             // Animação de exclusão
             cartaoSelecionado.style.transform = 'scale(0.9)';
             cartaoSelecionado.style.opacity = '0';
             
+            const popup_excluir = document.getElementById('popup-excluir-cartao');
             // Remove o cartão após a animação
             setTimeout(() => {
                 cartaoSelecionado.remove();
                 fecharPopup('popup-excluir-cartao');
+                popup_excluir.classList.remove('ativo');
                 mostrar_toast('exclusao-sucesso')
                 // abrirPopup('popup-exclusao-sucesso');
                 cartaoSelecionado = null;
@@ -187,47 +192,47 @@ document.addEventListener('DOMContentLoaded', function() {
     let cartaoSelecionado = null;
 
     // Função para abrir popup
-    function abrirPopup(id) {
-        const popup = document.getElementById(id);
-        if (popup) {
-            popup.style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-        }
-    }
+    // function abrirPopup(id) {
+    //     const popup = document.getElementById(id);
+    //     if (popup) {
+    //         popup.style.display = 'flex';
+    //         // document.body.style.overflow = 'hidden';
+    //     }
+    // }
 
     // Função para fechar popup
-    function fecharPopup(id) {
-        const popup = document.getElementById(id);
-        if (popup) {
-            popup.style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
-    }
+    // function fecharPopup(id) {
+    //     const popup = document.getElementById(id);
+    //     if (popup) {
+    //         popup.style.display = 'none';
+    //         // document.body.style.overflow = 'auto';
+    //     }
+    // }
 
     // Configuração dos eventos de clique nos cartões
-    document.querySelectorAll('.cartao').forEach(cartao => {
-        cartao.addEventListener('click', function(e) {
-            e.stopPropagation();
-            cartaoSelecionado = this;
-            abrirPopup('popup-excluir-cartao');
-        });
-    });
+    // document.querySelectorAll('.cartao').forEach(cartao => {
+    //     cartao.addEventListener('click', function(e) {
+    //         e.stopPropagation();
+    //         cartaoSelecionado = this;
+    //         abrirPopup('popup-excluir-cartao');
+    //     });
+    // });
 
     // Configuração do botão "SIM" para exclusão
-    document.querySelector('.btn-yes')?.addEventListener('click', function() {
-        if (cartaoSelecionado) {
-            // Animação de exclusão
-            cartaoSelecionado.style.transform = 'scale(0.95)';
-            cartaoSelecionado.style.opacity = '0';
+    // document.querySelector('.btn-yes')?.addEventListener('click', function() {
+    //     if (cartaoSelecionado) {
+    //         // Animação de exclusão
+    //         cartaoSelecionado.style.transform = 'scale(0.95)';
+    //         cartaoSelecionado.style.opacity = '0';
             
-            // Remove o cartão após a animação e mostra o popup de sucesso
-            setTimeout(() => {
-                cartaoSelecionado.remove();
-                fecharPopup('popup-excluir-cartao');
-                abrirPopup('popup-exclusao-sucesso'); // MOSTRA O POPUP DE SUCESSO
-            }, 300);
-        }
-    });
+    //         // Remove o cartão após a animação e mostra o popup de sucesso
+    //         setTimeout(() => {
+    //             cartaoSelecionado.remove();
+    //             fecharPopup('popup-excluir-cartao');
+    //             abrirPopup('popup-exclusao-sucesso'); // MOSTRA O POPUP DE SUCESSO
+    //         }, 300);
+    //     }
+    // });
 
     // Configuração do botão "NÃO"
     document.querySelector('.btn-no')?.addEventListener('click', function() {
