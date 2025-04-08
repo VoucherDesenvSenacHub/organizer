@@ -33,6 +33,8 @@
     align-items: center;
     justify-content: center;
     gap: 15px;
+    background-color: #FFCC00;
+    color: #912B2B;
 }
 
 #editar-projeto-popup .container-popup .box-edit button i {
