@@ -2,34 +2,39 @@
     color: var(--cor-amarelo);
     font-weight: bold;
 }
-
+body{
+    background-color: aliceblue;
+}
 #principal h2 {
     font-size: 1.3em;
     font-weight: 600;
+    color: var(--cor-principal);
 }
 #principal h3 {
     font-size: 1.1em;
     font-weight: 400;
+    columns: var(--cor-principal);  
 }
 #principal h4 {
-    color: #5282E3;
+    color: var(--cor-principal);
     padding-bottom: 10px;
+    font-size: 1.5em;   
 }
 #principal {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     width: 80%;
-    margin: 20px auto;
-    padding: 20px;
+    margin: auto;
     background-color: #FFFFFF;
-    border-radius: 8px;
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.7);
+    padding: 50px 30px;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    border-radius: 5px;
     h1 {
-        font-size: 1.5em;
-        font-weight: 400;
-        color: #5282E3;
-    }
+        font-size: 32px;
+        letter-spacing: 1px;
+        color: var(--cor-principal);
+    }   
 }
 #painel-l1, #painel-l2, #painel-l3, #painel-l4 {
     display: flex;
@@ -54,10 +59,25 @@
     padding: 20px 30px;
 }
 .controle-ong {
-    background-color: #E3B652;
+    background-color: var(--cor-amarelo-hover);
+    
     border-radius: 8px;
     text-align: center;
+    color: var(--cor-principal);
+    font-weight: 600;
+    padding: 20px;
+    
 }
+
+.controle-ong img {
+    width: 100px;
+    
+}
+
+/* #painel-l3 .controle-ong:nth-child(even) {
+    background-color: var(--cor-amarelo-hover);
+} */
+
 #atividades {
     display: flex;
     justify-content: space-between;
@@ -105,6 +125,7 @@
         flex-wrap: wrap;
         justify-content: space-evenly;
         gap: 20px;
+        padding: 10px;
     }
     #painel-l4 {
         margin-top: 30px;

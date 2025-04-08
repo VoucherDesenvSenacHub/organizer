@@ -3,8 +3,10 @@
     $cssPagina = ['ong/home.css']; //Colocar o arquivo .css (exemplo: 'ONG/cadastro.css')
     require_once '../../components/header-ong.php';
 ?>
-    <!-- Início DIV principal -->
+    <!-- Início DIV principal -->  
     <div id="principal">
+    
+    
         <div id="painel-l1">
             <h1>BEM VINDO</h1>
             <h3>PAINEL</h3>
@@ -29,7 +31,7 @@
                 <p>NOTÍCIAS</p>
             </div>
             <div class="controle-ong">
-                <a href="projetos.php"><img src="../../assets/images/sphere.gif" alt=""></a>
+                <a href="projetos.php"><img src="../../assets/images/globe-roxo.gif" alt=""></a>
                 <p>PROJETOS</p>
             </div>
             <div class="controle-ong">
@@ -80,5 +82,6 @@
         $jsPagina = ['ongs.js']; //Colocar o arquivo .js
         require_once '../../components/footer.php';
     ?>
+
 </body> 
 </html>
