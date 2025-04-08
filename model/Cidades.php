@@ -1,7 +1,5 @@
 <?php
 
-$cidades = $_GET['uflista'];
-
 $AC = [
     "Acrelândia",
     "Assis Brasil",
