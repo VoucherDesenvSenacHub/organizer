@@ -115,7 +115,7 @@ require_once '../../components/header.php';
 
 <div class="popup-fundo" id="editar-projeto-popup">
     <div class="container-popup">
-        <button id="x-fechar" class="fa-solid fa-xmark" onclick="fechar_popup('fundo-login-popup')"></button>
+        <button id="x-fechar" class="fa-solid fa-xmark" onclick="fechar_popup('editar-projeto-popup')"></button>
         <div class="box-edit">
             <h1>EDITAR PROJETO</h1>
             <form action="perfil-projeto.php">

@@ -15,6 +15,7 @@
     color: var(--cor-principal);
     padding: 15px;
     gap: 20px;
+    flex-direction: column;
 }
 
 #editar-projeto-popup .container-popup .box-edit {
