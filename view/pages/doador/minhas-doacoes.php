@@ -1,0 +1,81 @@
+<?php
+$tituloPagina = 'Minhas Doações';
+$cssPagina = ['doador/minhas-doacoes.css'];
+require_once '../../components/header-usuario.php';
+?>
+
+<!-- Div Principal -->
+<div id="principal">
+    <h1>Minhas Doações</h1>
+    <div class="cardes">
+        <div class="card">
+            <div class="card_esq">
+                <img class="pleaceholder" src="imgs/fotopleaceholder.png" alt="">
+                <div class="info">
+                    <h2>Projeto A</h2>
+                    <p>Doado: R$100</p>
+                    <p>Data:28/03/2024</p>
+                </div>
+            </div>
+            <button class="btn_comprovante">Comprovante</button>
+        </div>
+        <div class="card">
+            <div class="card_esq">
+                <img class="pleaceholder" src="imgs/fotopleaceholder.png" alt="">
+                <div class="info">
+                    <h2 style="color: #007AFF">Projeto B</h2>
+                    <p>Doado: R$200</p>
+                    <p>Data:08/07/2023</p>
+                </div>
+            </div>
+            <button class="btn_comprovante">Comprovante</button>
+        </div>
+        <div class="card">
+            <div class="card_esq">
+                <img class="pleaceholder" src="imgs/fotopleaceholder.png" alt="">
+                <div class="info">
+                    <h2 style="color: #FCC21B;">Projeto C</h2>
+                    <p>Doado: R$50</p>
+                    <p>Data:12/03/2023</p>
+                </div>
+            </div>
+            <button class="btn_comprovante">Comprovante</button>
+        </div>
+    </div>
+    <div class="info_top">
+        <h1>RESUMO GERAL</h1>
+        <p>Total doado: <span> R$350</span></p>
+
+    </div>
+
+    <div class="legenda_grafico">
+        <div class="caixas_grafico">
+            <div class="row-grafico">
+                <div class="caixa_grafico1"></div>
+                <p>Projeto A</p>
+            </div>
+            <div class="row-grafico">
+                <div class="caixa_grafico2">
+                </div> <P>Projeto B</P>
+            </div>
+            <div class="row-grafico">
+                <div class="caixa_grafico3"></div>
+                <p>Projeto C</p>
+            </div>
+        </div>
+        <!-- <div class="legendas">
+            <p>Projeto A</p>
+            <P>Projeto B</P>
+            <p>Projeto C</p>
+        </div> -->
+        <div class="grafico">
+            <div class="teste"></div>
+        </div>
+
+    </div>
+
+</div>
+<?php
+$jsPagina = ['login-doador.js'];
+require_once '../../components/footer.php';
+?>

@@ -12,7 +12,7 @@
         </div>
         <div class="aside-nav">
             <i class="fa-solid fa-coins"></i>
-            <a class="link">Minhas doações</a>
+            <a class="link"  href="minhas-doacoes.php">Minhas doações</a>
             </div>
         <div class="aside-nav">
             <i class="fa-solid fa-heart"></i>
