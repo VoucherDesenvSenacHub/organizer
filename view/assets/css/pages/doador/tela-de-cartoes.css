@@ -54,7 +54,7 @@ h4 {
     width: 100px;
 }
 
-/* test */
+/* CSS da tela de cartões */
 
 .cartoes-container {
     display: flex;
@@ -186,6 +186,7 @@ h1 {
     opacity: 1; /* Define a opacidade do botão */
     border: none; /* Remove a borda */
     color: inherit;
+    font-size: 1.1em;
     background-color: #ffffff;
 }
 
@@ -200,6 +201,10 @@ h1 {
   
   .input-group {
     margin-bottom: 20px;
+  }
+
+  .input-group,input {
+    color: #666;
   }
   
   label {
@@ -237,24 +242,11 @@ h1 {
   .cvv {
     max-width: 80px;
   }
-  
-  .add-button {
-    width: 100%;
-    background: #1C3464;
-    color: white;
-    border: none;
-    padding: 15px;
-    border-radius: 8px;
-    font-size: 1.1em;
-    cursor: pointer;
-    transition: background 0.3s;
-  }
-  
+
   .add-button:hover {
     background: #0056b3;
   }
 
-  /* checkmark */
 /* Estilos do botão com animação */
 .add-button {
     position: relative;
@@ -299,33 +291,6 @@ h1 {
     display: none;
 }
 
-.checkmark {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 30px;
-    height: 30px;
-    display: none;
-}
-
-.checkmark-circle {
-    stroke: white;
-    stroke-width: 2;
-    stroke-dasharray: 166;
-    stroke-dashoffset: 166;
-}
-
-.checkmark-check {
-    stroke: white;
-    stroke-width: 2;
-    stroke-dasharray: 48;
-    stroke-dashoffset: 48;
-}
-
-.hidden {
-    display: none;
-}
 
 .success {
     background-color: #28a745 !important;
@@ -366,48 +331,7 @@ h1 {
     transform: translate(-50%, -50%);
 }
 
-.checkmark {
-    display: none;
-    width: 30px;
-    height: 30px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.checkmark-circle {
-    stroke: white;
-    stroke-width: 2;
-    stroke-dasharray: 166;
-    stroke-dashoffset: 166;
-}
-
-.checkmark-check {
-    stroke: white;
-    stroke-width: 2;
-    stroke-dasharray: 48;
-    stroke-dashoffset: 48;
-}
-
-.success {
-    background-color: #28a745 !important;
-}
-
 /* ==================== POPUP ==================== */
-/* .popup-fundo {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.5);
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-} */
-
 .credit-card-popup {
     background: white;
     padding: 30px;
@@ -513,17 +437,8 @@ input.error {
     40%, 80% { transform: translateX(5px); }
 }
 /* fim checkmark */
-/* fim do adicionar cartão */
-/* Estilos para os popups de exclusão */
-/* .popup-overlay {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    padding: 20px;
-} */
 
+/* Estilos para os popups de exclusão */
 .popup-container {
     background: white;
     padding: 30px;
@@ -548,14 +463,6 @@ input.error {
     gap: 15px;
     margin-top: 20px;
 }
-
-/* .btn {
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    font-size: 1rem;
-} */
 
 .btn-no {
     background-color: #f1f1f1;
@@ -599,72 +506,7 @@ input.error {
     transition: all 0.3s ease;
     cursor: pointer;
 }
-/* fim do test */
 /* Responsivo */
+@media (min-width: 576px) { 
 
-@media (max-width: 481px) {
-    body {
-        width: 90%;
-        font-family: 'Poppins', sans-serif;
-        background-color: #1C3464;
-        margin: 0 auto;
-    }
-
-    header {
-        left: 0px;
-        padding: 8px;
-        z-index: 999;
-        width: 100%;
-        justify-content: space-around;
-    }
-
-    #header-direita {
-        display: flex;
-        padding: 5px 10px;
-        gap: 10px;
-        align-items: center;
-    }
-
-    #painel-l1,
-    #painel-l2,
-    #painel-l3,
-    #painel-l4 {
-        display: flex;
-        justify-content: space-between;
-        padding: 0px 30px;
-    }
-
-    #painel-l2 {
-        flex-direction: column;
-        padding-top: 30px;
-        padding-bottom: 30px;
-        margin-bottom: 20px;
-        text-align: center;
-    }
-
-    #painel-l3 {
-        flex-wrap: wrap;
-        justify-content: space-evenly;
-        gap: 20px;
-    }
-
-    #painel-l4 {
-        margin-top: 30px;
-        font-size: 0.8em;
-    }
-
-    #atividades {
-        flex-direction: column;
-        font-size: 0.7em;
-    }
-
-    .card-atividades {
-        display: flex;
-        border-radius: 8px;
-        box-shadow: 0px 2px 2px rgba(1, 1, 1, 0.5);
-        padding: 10px;
-        width: 100%;
-        margin-top: 20px;
-
-    }
 }

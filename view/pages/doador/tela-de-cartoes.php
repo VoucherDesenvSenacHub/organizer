@@ -56,8 +56,8 @@ require_once '../../components/header-usuario.php';
 
             <div class="row">
                 <div class="input-group">
-                    <label>Validade</label>
-                    <input type="text" placeholder="MM/AA">
+                    <label for="" >Validade</label>
+                    <input type="date" placeholder="MM/AA">
                 </div>
 
                 <div class="input-group">
@@ -67,8 +67,8 @@ require_once '../../components/header-usuario.php';
             </div>
 
             <div class="input-group">
-                <label>Titular do cartão</label>
-                <input type="text" placeholder="Nome Completo">
+                <label for="name" >Titular do cartão</label>
+                <input type="name" placeholder="Nome Completo">
             </div>
             <div>
                 <button class="add-button" id="addButton">
