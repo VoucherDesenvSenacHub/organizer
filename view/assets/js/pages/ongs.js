@@ -127,6 +127,11 @@ function popConclusao(tipo) {
     }, 3000);
 }
 
+function buscaUf(){
+    var uflista = document.getElementById("uf").value;
+    window.location.href = "../../../model/Cidades.php?uflista=" + encodeURIComponent(uflista);
+}
+
 let pagina_cadastro = 1;
 const box = document.querySelector(".fotos-slide");
 var contador = 0;

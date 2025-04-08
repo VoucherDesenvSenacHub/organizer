@@ -4,6 +4,7 @@
     require_once '../../components/header.php';
     require_once '../../../model/Bancos.php';
     require_once '../../../model/Estados.php';
+    require_once '../../../model/Cidades.php';
     
     
 ?>
@@ -133,21 +134,27 @@
                     <input type="text" id="rua" placeholder="Ex. Rua Projetada, 199" minlength="5" maxlength="50">
                 </div>
                 <div>
-                    <label for="cidade">Cidade</label><br>
-                    <input type="text" id="cidade" placeholder="Campo Grande" minlength="3" maxlength="50">
+                    <label for="uf">UF</label><br>
+                    <select name="uf" id="uf" oninput="buscaUf()">
+                        <?php 
+                        foreach ($estados as $uf) {?>
+                        <option value="<?php echo $uf[0] ?>"><?php echo $uf[0]. " - " .$uf[1] ?></option>
+                        <?php }?>
+                    </select>
+                    
                 </div>
                 <div>
                     <label for="cep">CEP</label><br>
                     <input type="text" id="cep" placeholder="00000-000">
                 </div>
                 <div>
-                    <label for="uf">UF</label><br>
-                    <select name="uf" id="uf">
-                        <?php 
-                        foreach ($estados as $uf) {?>
-                        <option value="<?php echo $uf ?>"><?php echo $uf ?></option>
-                        <?php }?>
-                    </select>
+                <label for="cidade">Cidade</label><br>
+                <select name="cidade" id="cidade">
+                    <?php
+                    foreach ($cidades as $cidade) {?>
+                    <option value="<?php echo $cidade ?>"><?php echo $cidade ?></option>
+                    <?php } ?>
+                </select>
                 </div>
             </div>
             
