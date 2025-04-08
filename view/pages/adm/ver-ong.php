@@ -18,7 +18,7 @@ require_once '../../components/header-adm.php';
             <div class="card_ong">
                 <img src="../../assets/images/ong_placeholder.png" class="card_img">
                 <h1 class="card-text">ONG Todos Juntos</h1>
-                <a href="">
+                <a href="perfil-ong.php">
                     <button class="btn_card">Vizualizar</button>
                 </a>
 
@@ -26,35 +26,35 @@ require_once '../../components/header-adm.php';
             <div class="card_ong">
                 <img src="../../assets/images/ong_placeholder_2.png" class="card_img">
                 <h1 class="card-text">ONG Todos Juntos</h1>
-                <a href="">
+                <a href="perfil-ong.php">
                     <button class="btn_card">Vizualizar</button>
                 </a>
             </div>
             <div class="card_ong">
                 <img src="../../assets/images/ong_placeholder.png" class="card_img">
                 <h1 class="card-text">ONG Todos Juntos</h1>
-                <a href="">
+                <a href="perfil-ong.php">
                     <button class="btn_card">Vizualizar</button>
                 </a>
             </div>
             <div class="card_ong">
                 <img src="../../assets/images/ong_placeholder_2.png" class="card_img">
                 <h1 class="card-text">ONG Todos Juntos</h1>
-                <a href="">
+                <a href="perfil-ong.php">
                     <button class="btn_card">Vizualizar</button>
                 </a>
             </div>
             <div class="card_ong">
                 <img src="../../assets/images/ong_placeholder.png" class="card_img">
                 <h1 class="card-text">ONG Todos Juntos</h1>
-                <a href="">
+                <a href="perfil-ong.php">
                     <button class="btn_card">Vizualizar</button>
                 </a>
             </div>
             <div class="card_ong">
                 <img src="../../assets/images/ong_placeholder_2.png" class="card_img">
                 <h1 class="card-text">ONG Todos Juntos</h1>
-                <a href="">
+                <a href="perfil-ong.php">
                     <button class="btn_card">Vizualizar</button>
                 </a>
             </div>
