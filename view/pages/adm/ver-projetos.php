@@ -1,7 +1,7 @@
 <?php
-    $tituloPagina = 'Ver Projetos ADM'; // Definir o título da página
-    $cssPagina = ['adm/ver-projetos.css']; //Colocar o arquivo .css 
-    require_once '../../components/header-adm.php';
+$tituloPagina = 'Ver Projetos ADM'; // Definir o título da página
+$cssPagina = ['adm/ver-projetos.css']; //Colocar o arquivo .css 
+require_once '../../components/header-adm.php';
 ?>
 
 <!-- Início DIV principal -->
@@ -23,7 +23,10 @@
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur qui quasi accusamus ipsa
                     inventore deserunt perspiciatis unde dolorum reiciendis officia?
                 </p>
-                <button class="btn_card">Vizualizar</button>
+                <a href="projeto-ong.php">
+                    <button class="btn_card">Vizualizar</button>
+                </a>
+
             </div>
             <div class="card_projeto">
                 <img src="../../assets/images/ong_placeholder_2.png" class="card_img">
@@ -32,7 +35,9 @@
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur qui quasi accusamus ipsa
                     inventore deserunt perspiciatis unde dolorum reiciendis officia?
                 </p>
-                <button class="btn_card">Vizualizar</button>
+                <a href="projeto-ong.php">
+                    <button class="btn_card">Vizualizar</button>
+                </a>
             </div>
             <div class="card_projeto">
                 <img src="../../assets/images/projeto_placeholder.png" class="card_img">
@@ -41,7 +46,9 @@
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur qui quasi accusamus ipsa
                     inventore deserunt perspiciatis unde dolorum reiciendis officia?
                 </p>
-                <button class="btn_card">Vizualizar</button>
+                <a href="projeto-ong.php">
+                    <button class="btn_card">Vizualizar</button>
+                </a>
             </div>
             <div class="card_projeto">
                 <img src="../../assets/images/ong_placeholder_2.png" class="card_img">
@@ -50,7 +57,9 @@
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur qui quasi accusamus ipsa
                     inventore deserunt perspiciatis unde dolorum reiciendis officia?
                 </p>
-                <button class="btn_card">Vizualizar</button>
+                <a href="projeto-ong.php">
+                    <button class="btn_card">Vizualizar</button>
+                </a>
             </div>
             <div class="card_projeto">
                 <img src="../../assets/images/projeto_placeholder.png" class="card_img">
@@ -59,7 +68,9 @@
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur qui quasi accusamus ipsa
                     inventore deserunt perspiciatis unde dolorum reiciendis officia?
                 </p>
-                <button class="btn_card">Vizualizar</button>
+                <a href="projeto-ong.php">
+                    <button class="btn_card">Vizualizar</button>
+                </a>
             </div>
             <div class="card_projeto">
                 <img src="../../assets/images/ong_placeholder_2.png" class="card_img">
@@ -68,7 +79,9 @@
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur qui quasi accusamus ipsa
                     inventore deserunt perspiciatis unde dolorum reiciendis officia?
                 </p>
-                <button class="btn_card">Vizualizar</button>
+                <a href="projeto-ong.php">
+                    <button class="btn_card">Vizualizar</button>
+                </a>
             </div>
         </div>
         <div class="botoes">
@@ -81,6 +94,6 @@
     </div>
 </main>
 <?php
-    $jsPagina = []; //Colocar o arquivo .js
-    require_once '../../components/footer.php';
+$jsPagina = []; //Colocar o arquivo .js
+require_once '../../components/footer.php';
 ?>
