@@ -137,7 +137,7 @@ require_once '../../components/header.php';
             <div class="box-edit">
                 <div class="input-box">
                     <label for="fotos">Upload de Fotos<span>*</span></label>
-                    <input id="fotos" type="file" required>
+                    <input id="fotos" type="file" name="fotos[]" multiple required>
                 </div>
                 <button class="btn">SALVAR ALTERAÇÃO <i class="fa-solid fa-floppy-disk"></i></button>
             </div>

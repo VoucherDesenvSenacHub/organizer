@@ -63,3 +63,11 @@ function changeSlideBig() {
 }
 
 setInterval(changeSlideBig, 2500);
+
+// UPLOAD DE FOTOS NO CADASTRO - (SÓ PODE ENVIAR 5 IMAGENS)
+document.getElementById('fotos').addEventListener('change', function () {
+    if (this.files.length > 5) {
+      alert('Você só pode enviar no máximo 5 arquivos!');
+      this.value = ''; 
+    }
+  });
