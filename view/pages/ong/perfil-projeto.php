@@ -116,9 +116,9 @@ require_once '../../components/header.php';
 <div class="popup-fundo" id="editar-projeto-popup">
     <div class="container-popup">
         <button id="x-fechar" class="fa-solid fa-xmark" onclick="fechar_popup('editar-projeto-popup')"></button>
-        <div class="box-edit">
-            <h1>EDITAR PROJETO</h1>
-            <form action="perfil-projeto.php">
+        <form action="perfil-projeto.php">
+            <div class="box-edit">
+                <h1>EDITAR PROJETO</h1>
                 <div class="input-group">
                     <div class="input-box">
                         <label for="nome">Nome<span>*</span></label>
@@ -131,17 +131,17 @@ require_once '../../components/header.php';
                 </div>
                 <div class="input-box">
                     <label for="descricao">Sobre<span>*</span></label>
-                    <textarea name="descricao" id="descricao" rows="6"></textarea>
+                    <textarea name="descricao" id="descricao" rows="6" required></textarea>
                 </div>
-            </form>
-        </div>
-        <div class="box-edit">
-            <div class="input-box">
-                <label for="fotos">Upload de Fotos<span>*</span></label>
-                <input id="fotos" type="file" required>
             </div>
-            <button class="btn">SALVAR ALTERAÇÃO <i class="fa-solid fa-floppy-disk"></i></button>
-        </div>
+            <div class="box-edit">
+                <div class="input-box">
+                    <label for="fotos">Upload de Fotos<span>*</span></label>
+                    <input id="fotos" type="file" required>
+                </div>
+                <button class="btn">SALVAR ALTERAÇÃO <i class="fa-solid fa-floppy-disk"></i></button>
+            </div>
+        </form>
     </div>
 </div>
 

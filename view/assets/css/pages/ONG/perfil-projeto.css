@@ -1,31 +1,34 @@
 @import url(../shared/perfil-projeto.css);
 
-#dados-projeto #acoes #btn-inativar {
-    background-color: var(--cor-vermelho);
-    color: #912B2B;
-}
+/* Botões de Editar e Inativar */
 #dados-projeto #acoes #btn-editar {
     background-color: #FFCC00;
     color: #912B2B;
 }
 
-/* POPUP */
+#dados-projeto #acoes #btn-inativar {
+    background-color: var(--cor-vermelho);
+    color: #912B2B;
+}
+
+/* POPUP DE EDITAR*/
+#editar-projeto-popup {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
 #editar-projeto-popup .container-popup {
     background-color: aliceblue;
     color: var(--cor-principal);
-    padding: 15px;
     gap: 20px;
-    flex-direction: column;
 }
 
 #editar-projeto-popup .container-popup .box-edit {
     background-color: white;
     padding: 10px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
-    border-radius: 10px;
+    border-radius: 3px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
 }
 
 #editar-projeto-popup .container-popup .box-edit button {
@@ -36,10 +39,17 @@
     gap: 15px;
     background-color: #FFCC00;
     color: #912B2B;
+    margin-top: 20px;
 }
 
 #editar-projeto-popup .container-popup .box-edit button i {
     font-size: 20px;
+}
+
+#editar-projeto-popup .container-popup form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 #editar-projeto-popup .container-popup h1 {
@@ -49,7 +59,7 @@
 
 form .input-group {
     display: flex;
-    gap: 15px;
+    gap: 10px;
 }
 
 .input-group .input-box:first-child {
@@ -85,4 +95,14 @@ form .input-group {
 .input-box input:focus,
 .input-box textarea:focus {
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+
+@media (max-width: 700px) {
+    form .input-group {
+        flex-direction: column;
+    }
+
+    .input-group .input-box:first-child {
+        width: 100%;
+    }
 }
