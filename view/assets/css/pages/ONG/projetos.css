@@ -6,7 +6,7 @@
     
     justify-content: space-around;
     z-index: 1;
-    width: 60%;
+    width: 80%;
     margin: 120px auto;
     padding: 20px;
     background-color: #FFFFFF;
@@ -26,12 +26,13 @@
         color: #1C3D47;
         font-size: 1.5em;
         font-weight: 400;
+        margin-left: 30px;
     }
 }
 
 .input-buscar-projetos{
     width: 280px;
-    height: 49px;
+    height: 40px;
     border-radius: 50px;
     padding: 10px 40px 10px 10px; 
     box-sizing: border-box;
@@ -46,6 +47,7 @@
     border-radius: 5px;
     border: none;
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+    margin-right: 30px;
 }
 
 .botao-novo-projeto:hover{
@@ -78,7 +80,7 @@
     flex-wrap: wrap;
     justify-content: center;
     padding-top: 20px;
-    gap: 65px;
+    gap: 40px;
 }
 
 .card{
@@ -358,9 +360,25 @@
     
 }
 
+@media (max-width: 1103px) {
+   
+    .header-principal{
+        display: flex;
+        /* justify-content: center; */
+        flex-direction: column;
+        gap: 10px;
+    }
+    .div-input-lupa input {
+        width: 250px; 
+        height: 30px; 
+
+    }
+}
+
 @media (max-width: 768px) {
     .header-principal h1{
         font-size: 18px;
+        margin-left: 0;
     }
     .header-principal{
         display: flex;
@@ -384,18 +402,6 @@
         height: 15px;
     }
     .botao-novo-projeto {
-        font-size: 16px;
-        width: 160px;
-        height: 30px;
-    }
-    .card{
-        p{
-            font-size: 16px;
-        }
-        width: 225px;
-        height: 225px;
-    }
-    .btn-card{
         font-size: 16px;
         width: 160px;
         height: 30px;
