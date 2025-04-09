@@ -2,6 +2,7 @@
     $tituloPagina = 'Perfil do Projeto | Organizer';
     $cssPagina = ['shared/perfil-projeto.css'];
     require_once '../../components/header-usuario.php';
+    
 ?>
 
 <main>
@@ -132,6 +133,7 @@
             </div>
         </section>
     </div>
+        <?php require_once '../../components/doacao-pix.php'; ?>
 </main>
 
 <?php
