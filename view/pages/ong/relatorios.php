@@ -23,7 +23,7 @@
 
                         <div class="quadrado">
                             <img src="../../assets/images/SquareFill.png" alt="">
-                            <p>voluntarios</p>
+                            <p>Voluntarios</p>
                         </div>
 
                     </div>
