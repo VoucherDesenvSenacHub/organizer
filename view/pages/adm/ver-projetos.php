@@ -16,72 +16,85 @@ require_once '../../components/header-adm.php';
         </div>
 
         <div class="projetos">
-            <div class="card_projeto">
-                <img src="../../assets/images/projeto_placeholder.png" class="card_img">
-                <h1 class="card-text">Campanha Solidária</h1>
-                <p class="card_desc">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur qui quasi accusamus ipsa
-                    inventore deserunt perspiciatis unde dolorum reiciendis officia?
-                </p>
-                <a href="projeto-ong.php">
-                    <button class="btn_card">Vizualizar</button>
-                </a>
-
+        <div class="card-projeto">
+                <div class="img-projeto">250x130</div>
+                <div class="info-projeto">
+                    <h5>Nome Projeto</h5>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, laborum et? Repellendus perferendis provident
+                        ratione deserunt alias cumque et quasi odio amet temporibus, quam obcaecati dolores. Enim quibusdam a atque.
+                    </p>
+                </div>
+                <a class="saiba-mais-projeto" href="visualizar-projetos.php">Visualizar</a>
             </div>
-            <div class="card_projeto">
-                <img src="../../assets/images/ong_placeholder_2.png" class="card_img">
-                <h1 class="card-text">Projeto 2</h1>
-                <p class="card_desc">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur qui quasi accusamus ipsa
-                    inventore deserunt perspiciatis unde dolorum reiciendis officia?
-                </p>
-                <a href="projeto-ong.php">
-                    <button class="btn_card">Vizualizar</button>
-                </a>
+            <div class="card-projeto">
+                <div class="img-projeto">250x130</div>
+                <div class="info-projeto">
+                    <h5>Nome Projeto</h5>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, laborum et? Repellendus perferendis provident
+                        ratione deserunt alias cumque et quasi odio amet temporibus, quam obcaecati dolores. Enim quibusdam a atque.
+                    </p>
+                </div>
+                <a class="saiba-mais-projeto" href="visualizar-projetos.php">Visualizar</a>
             </div>
-            <div class="card_projeto">
-                <img src="../../assets/images/projeto_placeholder.png" class="card_img">
-                <h1 class="card-text">Campanha Solidária</h1>
-                <p class="card_desc">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur qui quasi accusamus ipsa
-                    inventore deserunt perspiciatis unde dolorum reiciendis officia?
-                </p>
-                <a href="projeto-ong.php">
-                    <button class="btn_card">Vizualizar</button>
-                </a>
+            <div class="card-projeto">
+                <div class="img-projeto">250x130</div>
+                <div class="info-projeto">
+                    <h5>Nome Projeto</h5>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, laborum et? Repellendus perferendis provident
+                        ratione deserunt alias cumque et quasi odio amet temporibus, quam obcaecati dolores. Enim quibusdam a atque.
+                    </p>
+                </div>
+                <a class="saiba-mais-projeto" href="visualizar-projetos.php">Visualizar</a>
             </div>
-            <div class="card_projeto">
-                <img src="../../assets/images/ong_placeholder_2.png" class="card_img">
-                <h1 class="card-text">Projeto 2</h1>
-                <p class="card_desc">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur qui quasi accusamus ipsa
-                    inventore deserunt perspiciatis unde dolorum reiciendis officia?
-                </p>
-                <a href="projeto-ong.php">
-                    <button class="btn_card">Vizualizar</button>
-                </a>
+            <div class="card-projeto">
+                <div class="img-projeto">250x130</div>
+                <div class="info-projeto">
+                    <h5>Nome Projeto</h5>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, laborum et? Repellendus perferendis provident
+                        ratione deserunt alias cumque et quasi odio amet temporibus, quam obcaecati dolores. Enim quibusdam a atque.
+                    </p>
+                </div>
+                <a class="saiba-mais-projeto" href="visualizar-projetos.php">Visualizar</a>
             </div>
-            <div class="card_projeto">
-                <img src="../../assets/images/projeto_placeholder.png" class="card_img">
-                <h1 class="card-text">Campanha Solidária</h1>
-                <p class="card_desc">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur qui quasi accusamus ipsa
-                    inventore deserunt perspiciatis unde dolorum reiciendis officia?
-                </p>
-                <a href="projeto-ong.php">
-                    <button class="btn_card">Vizualizar</button>
-                </a>
+            <div class="card-projeto">
+                <div class="img-projeto">250x130</div>
+                <div class="info-projeto">
+                    <h5>Nome Projeto</h5>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, laborum et? Repellendus perferendis provident
+                        ratione deserunt alias cumque et quasi odio amet temporibus, quam obcaecati dolores. Enim quibusdam a atque.
+                    </p>
+                </div>
+                <a class="saiba-mais-projeto" href="visualizar-projetos.php">Visualizar</a>
             </div>
-            <div class="card_projeto">
-                <img src="../../assets/images/ong_placeholder_2.png" class="card_img">
-                <h1 class="card-text">Projeto 2</h1>
-                <p class="card_desc">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur qui quasi accusamus ipsa
-                    inventore deserunt perspiciatis unde dolorum reiciendis officia?
-                </p>
-                <a href="projeto-ong.php">
-                    <button class="btn_card">Vizualizar</button>
-                </a>
+            <div class="card-projeto">
+                <div class="img-projeto">250x130</div>
+                <div class="info-projeto">
+                    <h5>Nome Projeto</h5>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, laborum et? Repellendus perferendis provident
+                        ratione deserunt alias cumque et quasi odio amet temporibus, quam obcaecati dolores. Enim quibusdam a atque.
+                    </p>
+                </div>
+                <a class="saiba-mais-projeto" href="visualizar-projetos.php">Visualizar</a>
+            </div>
+            <div class="card-projeto">
+                <div class="img-projeto">250x130</div>
+                <div class="info-projeto">
+                    <h5>Nome Projeto</h5>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, laborum et? Repellendus perferendis provident
+                        ratione deserunt alias cumque et quasi odio amet temporibus, quam obcaecati dolores. Enim quibusdam a atque.
+                    </p>
+                </div>
+                <a class="saiba-mais-projeto" href="visualizar-projetos.php">Visualizar</a>
+            </div>
+            <div class="card-projeto">
+                <div class="img-projeto">250x130</div>
+                <div class="info-projeto">
+                    <h5>Nome Projeto</h5>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, laborum et? Repellendus perferendis provident
+                        ratione deserunt alias cumque et quasi odio amet temporibus, quam obcaecati dolores. Enim quibusdam a atque.
+                    </p>
+                </div>
+                <a class="saiba-mais-projeto" href="visualizar-projetos.php">Visualizar</a>
             </div>
         </div>
         <div class="botoes">
