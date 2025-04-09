@@ -27,23 +27,23 @@
         </div>
         <div id="painel-l3">
             <div class="controle-ong">
-                <a href="noticias-logon.php"><img src="../../assets/images/notices.gif" alt=""></a>
+                <a href="noticias-logon.php"><img src="../../assets/images/noticias-azul.gif" alt=""></a>
                 <p>NOTÍCIAS</p>
             </div>
             <div class="controle-ong">
-                <a href="projetos.php"><img src="../../assets/images/globe-roxo.gif" alt=""></a>
+                <a href="projetos.php"><img src="../../assets/images/globe-azul.gif" alt=""></a>
                 <p>PROJETOS</p>
             </div>
             <div class="controle-ong">
-                <a href="voluntario-projetos.php"><img src="../../assets/images/favorite.gif" alt=""></a>
+                <a href="voluntario-projetos.php"><img src="../../assets/images/voluntarios-azul.gif" alt=""></a>
                 <P>VOLUNTÁRIOS</P>
             </div>
             <div class="controle-ong">
-                <a href="perfil.php"><img src="../../assets/images/perfil.gif" alt=""></a>
+                <a href="perfil.php"><img src="../../assets/images/avatar-azul.gif" alt=""></a>
                 <p>PERFIL</p>
             </div>
             <div class="controle-ong">
-                <a href="relatorios.php"><img src="../../assets/images/relatorios.gif" alt=""></a>
+                <a href="relatorios.php"><img src="../../assets/images/documentos-azul.gif" alt=""></a>
                 <p>RELATÓRIOS</p>
             </div>
         </div>
