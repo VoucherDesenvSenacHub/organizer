@@ -129,7 +129,8 @@ function popConclusao(tipo) {
 
 function buscaUf(){
     var uflista = document.getElementById("uf").value;
-    window.location.href = "../../../model/Cidades.php?uflista=" + encodeURIComponent(uflista);
+    alert(uflista);
+    // window.location.href = "../../../model/Cidades.php?uflista=" + encodeURIComponent(uflista);
 }
 
 let pagina_cadastro = 1;

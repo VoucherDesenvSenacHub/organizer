@@ -74,7 +74,7 @@
     to {opacity: 1;}
 }
 
-#pagina-edicao {
+#pagina-edicao{
     display: none;
     margin: 0 auto;
     justify-content: space-around;
@@ -84,6 +84,16 @@
     left: 15%;
     animation: editar-noticia 1.5s forwards;
     width: 70%;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0px 2px 2px rgba(1, 1, 1, 0.5);
+}
+#pagina-criacao {
+    display: flex;
+    margin: 30px auto;
+    justify-content: space-between;
+    background-color: #FFFFFF;
+    width: 90%;
     border-radius: 8px;
     padding: 10px;
     box-shadow: 0px 2px 2px rgba(1, 1, 1, 0.5);
@@ -135,8 +145,8 @@
 #edicao-direita>button, #upload-fotos>button{
     display: flex;
     align-items: center;
-    padding: 5px;
-    gap: 5px;
+    padding: 10px;
+    gap: 10px;
     width: 90%;
     height: 50px;
     border-radius: 8px;
@@ -148,6 +158,7 @@
     background-color: #FFFFFF;
     border: 2px dashed #F29200;
     color: #F29200;
+    justify-content: space-around;
 }
 #edicao-direita>button {
     background-color: #F29200;
@@ -220,6 +231,10 @@
         flex-direction: column;
         width: 80%;
         left: 10%;
+    }
+    #pagina-criacao {
+        flex-direction: column;
+        width: 80%;
     }
     #linha1-edicao {
         flex-direction: column;

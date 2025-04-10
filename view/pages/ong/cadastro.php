@@ -151,7 +151,7 @@
                 <label for="cidade">Cidade</label><br>
                 <select name="cidade" id="cidade">
                     <?php
-                    foreach ($cidades as $cidade) {?>
+                    foreach ($MS as $cidade) {?>
                     <option value="<?php echo $cidade ?>"><?php echo $cidade ?></option>
                     <?php } ?>
                 </select>

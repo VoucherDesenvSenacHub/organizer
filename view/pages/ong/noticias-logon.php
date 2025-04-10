@@ -10,7 +10,9 @@
     <div id="principal">
         <div id="painel-l1">
             <h1>SUAS NOTÍCIAS PUBLICADAS</h1>
-            <button id="cadastrar-nova-pub">Nova Notícia</button>
+            <form action="noticias-criacao.php">
+                <button id="cadastrar-nova-pub">Nova Notícia</button>
+            </form>
         </div>
         <div id="noticias-publicadas">
             <div class="card-noticia">
