@@ -1,78 +1,73 @@
-<div class="fundo-popup" id="cartao-popup" style="display: none;">
-    <div class="container-cartao">
-        <h2>CARTÃO DE CRÉDITO</h2>
-        <input type="text" placeholder="0000 0000 0000 0000">
-        <div class="row-cartao">
-            <input type="text" placeholder="MM/AA">
-            <input type="text" placeholder="CVV">
+<?php
+$cssPagina = ["doador/tela-de-cartoes.css"]; //Colocar o arquivo .css (exemplo: 'ONG/cadastro.css')
+?>
+
+<div class="popup-fundo" id="cartao-popup">
+        <div class="credit-card-popup">
+            <h2>CARTÃO DE CRÉDITO</h2>
+
+            <div class="input-group">
+                <label>Número do Cartão</label>
+                <input type="text" placeholder="0000 0000 0000 0000" class="card-number">
+            </div>
+
+            <div class="row">
+                <div class="input-group">
+                    <label for="" >Validade</label>
+                    <input type="date" placeholder="MM/AA">
+                </div>
+
+                <div class="input-group">
+                    <label>CVV</label>
+                    <input type="text" placeholder="CVV" class="cvv">
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label for="name" >Titular do cartão</label>
+                <input type="name" placeholder="Nome Completo">
+            </div>
+            <div>
+                <button class="add-button" id="addButton">
+                    <span class="button-text">ADICIONAR</span>
+                    <div class="loader"></div>
+                    <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                        <circle class="checkmark-circle" cx="26" cy="26" r="25" fill="none" />
+                        <path class="checkmark-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
+                    </svg>
+                </button>
+            </div>
         </div>
-        <input type="text" placeholder="Nome Completo">
-
-        <button class="btn-confirmar" onclick="copiar_link('toast-credito')">CONFIRMAR COMPRA</button>
     </div>
-    <div id="toast-credito" class="toast">
-    <i class="fa-regular fa-circle-check"></i>
-    Sua Compra foi realizada com sucesso!
-</div>
 
-</div>
+    <div id="exclusao-sucesso" class="toast">
+        <i class="fa-regular fa-circle-check"></i>
+        Cartão excluido com sucesso!
+    </div>
+    <!-- Popup de Confirmação de Exclusão -->
+    <div class="popup-fundo" id="popup-excluir-cartao">
+        <div class="popup-overlay">
+            <div class="popup-container">
+                <div class="popup-content">
+                    <h2>EXCLUIR ESSE CARTÃO?</h2>
+                    <div class="button-container">
+                        <button class="btn btn-no">NÃO</button>
+                        <button class="btn btn-yes">SIM</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-<style>
-.container-cartao {
-    background: white;
-    padding: 70px 40px;
-    border-radius: 16px;
-    max-width: 450px;
-    width: 100%;
-    text-align: center;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-    font-family: 'Arial', sans-serif;
-}
+    <!-- Popup de Confirmação de Sucesso -->
+    <div class="popup-fundo" id="popup-exclusao-sucesso">
+        <div class="popup-container">
+            <div class="popup-content">
+                <h2>CARTÃO EXCLUIDO</h2>
+                <div class="button-container">
+                    <button class="btn btn-back">VOLTAR</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
-.container-cartao h2 {
-    color: #007bff;
-    font-size: 24px;
-    margin-bottom: 35px;
-    letter-spacing: 1px;
-    font-weight: 500;
-}
-
-.container-cartao input {
-    width: 100%;
-    padding: 14px;
-    margin-bottom: 18px;
-    border: none;
-    background-color: #f1f1f1;
-    border-radius: 10px;
-    font-size: 16px;
-    color: #333;
-}
-
-.row-cartao {
-    display: flex;
-    gap: 12px;
-}
-
-.row-cartao input {
-    flex: 1;
-    margin-bottom: 18px; /* mantém o espaçamento igual aos outros inputs */
-}
-
-.btn-confirmar {
-    background-color: #1a2b57;
-    color: white;
-    padding: 14px 0;
-    border: none;
-    border-radius: 10px;
-    font-weight: bold;
-    font-size: 16px;
-    width: 100%;
-    cursor: pointer;
-    transition: 0.3s ease;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-}
-
-.btn-confirmar:hover {
-    opacity: 0.9;
-}
-</style>

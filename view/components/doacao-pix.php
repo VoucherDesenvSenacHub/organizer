@@ -77,33 +77,3 @@
 
 </style>
 
-<!-- SCRIPT FUNCIONAL -->
-<script>
-function copiar_link(toastId) {
-    const linkPix = "chavepix@exemplo.com"; // Substitua pela sua chave Pix
-    navigator.clipboard.writeText(linkPix).then(() => {
-        const toast = document.getElementById(toastId);
-        toast.style.display = "flex";
-        setTimeout(() => {
-            toast.style.display = "none";
-        }, 3000);
-    });
-}
-
-function fechar_popup(id) {
-    const el = document.getElementById(id);
-    if (el) el.style.display = "none";
-}
-
-document.getElementById("btn-continuar").addEventListener("click", function () {
-    const metodoSelecionado = document.querySelector('input[name="radio"]:checked').value;
-
-});
-window.addEventListener('click', function (e) {
-    const popup = document.getElementById('pix-popup');
-    const container = document.querySelector('.container-popup-pix');
-    if (e.target === popup) {
-      popup.style.display = 'none';
-    }
-  });
-</script>
