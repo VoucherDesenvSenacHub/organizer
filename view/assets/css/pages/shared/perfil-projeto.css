@@ -112,7 +112,7 @@ section#apresentacao {
 }
 
 #dados-projeto #acoes button:hover {
-    transform: translateY(-4px);
+    transform: translateY(-3px);
 }
 
 #dados-projeto #acoes #btn-doacao {
