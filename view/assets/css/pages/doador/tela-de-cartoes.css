@@ -6,8 +6,15 @@ body {
     width: 100%;
     font-family: 'Poppins', sans-serif;
 }
+.cartao h2 img {
+    width: 70%; 
+    height: auto;
+}
 
 h2 {
+    display: flex;
+    align-items: center;
+    margin: 0;
     font-size: 1.3em;
     font-weight: 600;
 }
@@ -41,9 +48,10 @@ h4 {
     h1 {
         display: flex;
         justify-content: left;
-        margin: 20px;
+        margin-top: 10px;
         font-size: 2em;
         font-weight: 400;
+        margin-left: 10%;
         color: #007AFF;
     }
 }
@@ -102,7 +110,8 @@ h1 {
     border-radius: 10px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     min-height: 150px;
-    width: 40%;
+    width: 45%;
+    height: 200px;
     color: white;
     position: relative;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -140,23 +149,35 @@ h1 {
 .validade {
     font-size: 0.9em;
     opacity: 0.9;
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    font-size: 14px;
 }
 
 .adicionar-cartao {
+    display: flex;
     border: 2px dashed #007AFF;
     border-radius: 10px;
     padding: 40px 20px;
     text-align: center;
+    justify-content: center;
     /* margin-top: 20px; */
     margin: 15px;
     cursor: pointer;
-    width: 40%;
+    width: 45%;
     transition: all 0.3s ease;
     background: #ffffff;
 
     span {
         color: #5282E3;
+        font-size: 20px
     };
+}
+
+.img-add{
+    width: 30%;
+    height: auto;
 }
 
 .adicionar-cartao:hover {
@@ -165,9 +186,49 @@ h1 {
     background-color: #ffffff;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 742px) {
+    .principal{
+        width: 60%;
+        height: auto;
+        h1{
+            text-align: center;
+            font-size: 30px;
+        }
+    }
     .colunas-container {
         flex-direction: column;
+    }
+    
+    .cartoes-container{
+        display: block;
+
+    }
+    .cartao{
+        width: 100%;
+        height: auto;
+        margin-left: 5px;
+        margin-right: 5px;
+        margin: 0;
+        margin-bottom: 5px;
+    }
+    .adicionar-cartao{
+        width: 100%;
+        height: auto;
+        margin-left: 5px;
+        margin-right: 5px;
+        margin: 0;
+        margin-bottom: 5px;
+    }
+    .validade{
+        margin-top: auto;
+    }
+}
+@media (max-width: 742px) {
+    .principal{
+        width: 80%;
+    }
+    .row{
+        display: block;
     }
 }
 
@@ -508,5 +569,6 @@ input.error {
 }
 /* Responsivo */
 @media (min-width: 576px) { 
-
+    
+    
 }
