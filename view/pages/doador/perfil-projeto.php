@@ -134,6 +134,8 @@
         </section>
     </div>
         <?php require_once '../../components/doacao-pix.php'; ?>
+        <?php require_once '../../components/doacao-boleto.php'; ?>
+        <?php require_once '../../components/doacao-cartao.php'; ?>
 </main>
 
 <?php

@@ -37,7 +37,48 @@
                     <span>CARTÃO</span>
                 </label>
             </div>
-            <button class="btn">CONTINUAR</button>
+            <button  type="button" class="btn" id="btn-continuar" >CONTINUAR</button>
         </form>
     </div>
 </div>
+<script>
+function copiar_link(toastId, texto = '') {
+    navigator.clipboard.writeText(texto).then(() => {
+        const toast = document.getElementById(toastId);
+        toast.style.display = "flex";
+        setTimeout(() => {
+            toast.style.display = "none";
+        }, 3000);
+    });
+}
+
+function fechar_popup(id) {
+    const el = document.getElementById(id);
+    if (el) el.style.display = "none";
+}
+
+document.getElementById("btn-continuar").addEventListener("click", function () {
+    const metodoSelecionado = document.querySelector('input[name="radio"]:checked').value;
+
+    fechar_popup("doacao-popup");
+
+    if (metodoSelecionado === "pix") {
+        document.getElementById("pix-popup").style.display = "flex";
+    } else if (metodoSelecionado === "boleto") {
+        document.getElementById("boleto-popup").style.display = "flex";
+    } else if (metodoSelecionado === "cartao") {
+        document.getElementById("cartao-popup").style.display = "flex";
+    }
+});
+
+// Fechar ao clicar fora
+window.addEventListener('click', function (e) {
+    ['pix-popup', 'boleto-popup', 'cartao-popup'].forEach(id => {
+        const popup = document.getElementById(id);
+        const container = popup.querySelector('.container-popup-pix') || popup.querySelector('.container-boleto') || popup.querySelector('.container-cartao');
+        if (e.target === popup) {
+            popup.style.display = 'none';
+        }
+    });
+});
+</script>

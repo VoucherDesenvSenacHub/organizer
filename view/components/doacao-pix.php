@@ -1,23 +1,26 @@
-<div class="fundo-popup" id="pix-popup">
+<div class="fundo-popup" id="pix-popup" style="display: none;">
     <div class="container-popup-pix">
-        <button id="x-fechar" class="fa-solid fa-xmark" onclick="fechar_popup('pix-popup')"></button>
         <div class="pix-esquerda">
             <span class="titulo-pix">Escaneie o QR Code</span>
-            <p>Para pagar com Pix.</p>
+            <p class="pagar-pix">Para pagar com Pix.</p>
             <div>
                 <img src="../../assets/images/image186.png" alt="QR Code" width="200px">
                 <br>
-                <button class="copiar-e-colar">PIX COPIA E COLA</button>
+                <button class="copiar-e-colar" onclick="copiar_link('toast-pix')">PIX COPIA E COLA</button>
             </div>
-        </div>
-        <div class="pix-direita">
-            <img src="../../assets/images/Coins-amico1.png" alt="Moedas" width="300px">
         </div>
     </div>
 </div>
 
+<!-- Toast Pix -->
+<div id="toast-pix" class="toast">
+    <i class="fa-regular fa-circle-check"></i>
+    Pix copiado com sucesso!
+</div>
+
+<!-- ESTILOS -->
 <style>
-    .fundo-popup {
+.fundo-popup {
     position: fixed;
     top: 0;
     left: 0;
@@ -27,7 +30,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 999;
+    z-index: 1000;
 }
 
 .container-popup-pix {
@@ -39,19 +42,7 @@
     gap: 3px;
     position: relative;
     max-width: 700px;
-    width: 90%;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-}
-
-#x-fechar {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    background: none;
-    border: none;
-    font-size: 20px;
-    cursor: pointer;
-    color: #555;
 }
 
 .pix-esquerda {
@@ -66,8 +57,8 @@
     margin-bottom: 5px;
 }
 
-.pix-esquerda p {
-    margin-top: 0;
+.pagar-pix {
+    font-size: 20px;
     color: #333;
     margin-bottom: 20px;
 }
@@ -83,8 +74,36 @@
     cursor: pointer;
 }
 
-.pix-direita {
-    flex: 1;
-    text-align: center;
-}
+
 </style>
+
+<!-- SCRIPT FUNCIONAL -->
+<script>
+function copiar_link(toastId) {
+    const linkPix = "chavepix@exemplo.com"; // Substitua pela sua chave Pix
+    navigator.clipboard.writeText(linkPix).then(() => {
+        const toast = document.getElementById(toastId);
+        toast.style.display = "flex";
+        setTimeout(() => {
+            toast.style.display = "none";
+        }, 3000);
+    });
+}
+
+function fechar_popup(id) {
+    const el = document.getElementById(id);
+    if (el) el.style.display = "none";
+}
+
+document.getElementById("btn-continuar").addEventListener("click", function () {
+    const metodoSelecionado = document.querySelector('input[name="radio"]:checked').value;
+
+});
+window.addEventListener('click', function (e) {
+    const popup = document.getElementById('pix-popup');
+    const container = document.querySelector('.container-popup-pix');
+    if (e.target === popup) {
+      popup.style.display = 'none';
+    }
+  });
+</script>
