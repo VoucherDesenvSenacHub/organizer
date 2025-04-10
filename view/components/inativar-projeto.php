@@ -37,7 +37,7 @@
                     <label for="motivo">Motivo<span>*</span></label>
                     <textarea name="motivo" id="motivo" rows="6" required></textarea>
                 </div>
-                <button class="btn">SALVAR ALTERAÇÃO <i class="fa-solid fa-floppy-disk"></i></button>
+                <button class="btn">INATIVAR O PROJETO <i class="fa-solid fa-floppy-disk"></i></button>
             </div>
         </form>
     </div>
