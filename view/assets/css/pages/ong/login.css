@@ -1,5 +1,8 @@
 @import url(../../global/login.css);
 
+body {
+    background-color: aliceblue;
+}
 form #span-cadastro a {
     color: var(--cor-amarelo);
 }

@@ -23,6 +23,9 @@ h4 {
         color: #5282E3;
     }
 }
+body {
+    background-color: aliceblue;
+}
 #cadastro-completo{
     display: flex;
     justify-content: space-around;

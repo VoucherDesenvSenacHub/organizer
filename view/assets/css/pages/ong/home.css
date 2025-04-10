@@ -2,7 +2,9 @@
     color: var(--cor-amarelo);
     font-weight: bold;
 }
-
+body {
+    background-color: aliceblue;
+}
 #principal h2 {
     font-size: 1.3em;
     font-weight: 600;
