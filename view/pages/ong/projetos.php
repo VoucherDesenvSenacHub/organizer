@@ -14,177 +14,138 @@ require_once '../../components/header-ong.php';
             <img class="lupa-input" src="../../assets/images/lupa-cinza.png" alt="">
         </div>
         <div>
-            <button class="botao-novo-projeto" id="novoProjetoBtn">Novo Projeto</button>
+            <button class="botao-novo-projeto" onclick="abrir_popup('editar-projeto-popup')">NOVO PROJETO</button>
         </div>
     </div>
 
     <!-- cards -->
     <div class="div-card-geral">
-            <div class="card-projeto">
-                <div class="img-projeto">250x130</div>
-                <div class="info-projeto">
-                    <h5>Nome Projeto</h5>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, laborum et? Repellendus perferendis provident
-                        ratione deserunt alias cumque et quasi odio amet temporibus, quam obcaecati dolores. Enim quibusdam a atque.
-                    </p>
-                </div>
-                <a class="saiba-mais-projeto" href="visualizar-projetos.php">Visualizar</a>
+        <div class="card-projeto">
+            <div class="img-projeto">250x130</div>
+            <div class="info-projeto">
+                <h5>Nome Projeto</h5>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, laborum et? Repellendus perferendis provident
+                    ratione deserunt alias cumque et quasi odio amet temporibus, quam obcaecati dolores. Enim quibusdam a atque.
+                </p>
             </div>
-
-            <div class="card-projeto">
-                <div class="img-projeto">250x130</div>
-                <div class="info-projeto">
-                    <h5>Nome Projeto</h5>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, laborum et? Repellendus perferendis provident
-                        ratione deserunt alias cumque et quasi odio amet temporibus, quam obcaecati dolores. Enim quibusdam a atque.
-                    </p>
-                </div>
-                <a class="saiba-mais-projeto" href="visualizar-projetos.php">Visualizar</a>
-            </div>
-
-            <div class="card-projeto">
-                <div class="img-projeto">250x130</div>
-                <div class="info-projeto">
-                    <h5>Nome Projeto</h5>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, laborum et? Repellendus perferendis provident
-                        ratione deserunt alias cumque et quasi odio amet temporibus, quam obcaecati dolores. Enim quibusdam a atque.
-                    </p>
-                </div>
-                <a class="saiba-mais-projeto" href="visualizar-projetos.php">Visualizar</a>
-            </div>
-
-            <div class="card-projeto">
-                <div class="img-projeto">250x130</div>
-                <div class="info-projeto">
-                    <h5>Nome Projeto</h5>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, laborum et? Repellendus perferendis provident
-                        ratione deserunt alias cumque et quasi odio amet temporibus, quam obcaecati dolores. Enim quibusdam a atque.
-                    </p>
-                </div>
-                <a class="saiba-mais-projeto" href="visualizar-projetos.php">Visualizar</a>
-            </div>
-
-            <div class="card-projeto">
-                <div class="img-projeto">250x130</div>
-                <div class="info-projeto">
-                    <h5>Nome Projeto</h5>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, laborum et? Repellendus perferendis provident
-                        ratione deserunt alias cumque et quasi odio amet temporibus, quam obcaecati dolores. Enim quibusdam a atque.
-                    </p>
-                </div>
-                <a class="saiba-mais-projeto" href="visualizar-projetos.php">Visualizar</a>
-            </div>
-
-            <div class="card-projeto">
-                <div class="img-projeto">250x130</div>
-                <div class="info-projeto">
-                    <h5>Nome Projeto</h5>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, laborum et? Repellendus perferendis provident
-                        ratione deserunt alias cumque et quasi odio amet temporibus, quam obcaecati dolores. Enim quibusdam a atque.
-                    </p>
-                </div>
-                <a class="saiba-mais-projeto" href="visualizar-projetos.php">Visualizar</a>
-            </div>
-
-            <div class="card-projeto">
-                <div class="img-projeto">250x130</div>
-                <div class="info-projeto">
-                    <h5>Nome Projeto</h5>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, laborum et? Repellendus perferendis provident
-                        ratione deserunt alias cumque et quasi odio amet temporibus, quam obcaecati dolores. Enim quibusdam a atque.
-                    </p>
-                </div>
-                <a class="saiba-mais-projeto" href="visualizar-projetos.php">Visualizar</a>
-            </div>
-
-            <div class="card-projeto">
-                <div class="img-projeto">250x130</div>
-                <div class="info-projeto">
-                    <h5>Nome Projeto</h5>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, laborum et? Repellendus perferendis provident
-                        ratione deserunt alias cumque et quasi odio amet temporibus, quam obcaecati dolores. Enim quibusdam a atque.
-                    </p>
-                </div>
-                <a class="saiba-mais-projeto" href="visualizar-projetos.php">Visualizar</a>
-            </div>
-    </div>
-
-
-
-</div>
-
-<!-- tela para Novo Projeto -->
-<div id="tela-de-criacao-projeto" class="tela-de-criacao-projeto">
-    <div class="tela-de-criacao-projeto-fundo">
-        <div class="tela-de-criacao-projeto-conteudo">
-
-
-            <div>
-                <h2 class="titulo-tela-criacao">Novo Projeto</h2>
-
-                <div class="div-form">
-
-
-                    <div>
-                        <label for="nomeProjeto">Nome</label><br>
-                        <div class="div-input-lapis">
-                            <img class="img-perfil" src="../../assets/images/img-perfil-input.png" alt="">
-                            <input type="text" id="nomeProjeto" placeholder="Novo Projeto">
-                            <img class="lapis-input" src="../../assets/images/lapis.png" alt="">
-                        </div>
-                    </div>
-
-                    <div>
-                        <label for="metaProjeto">Meta de Doações</label><br>
-                        <div class="div-input-lapis">
-                            <img class="img-cifrao" src="../../assets/images/cifrao.png" alt="">
-                            <input type="text" id="metaProjeto" placeholder="R$00,00">
-                            <img class="lapis-input" src="../../assets/images/lapis.png" alt="">
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-
-            <div>
-                <label for="preco">Preços</label><br>
-
-                <select id="preco">
-                    <option value="preco">Preços</option>
-                    <option value="10,00">10,00</option>
-                    <option value="20,00">20,00</option>
-                    <option value="30,00">30,00</option>
-                    <option value="50,00">50,00</option>
-                </select>
-            </div>
-
-            <div class="div-input-lapis">
-                <label for="descricaoProjeto">Descrição</label><br>
-                <textarea id="descricaoProjeto" name="descricaoProjeto"></textarea><br>
-                <img class="lapis-input" src="../../assets/images/lapis.png" alt="">
-            </div>
-
-
+            <a class="saiba-mais-projeto" href="perfil-projeto.php">Visualizar</a>
         </div>
 
-        <div class="conteudo-lado-direito">
-            <div class="div-img-botao">
-                <img class="img-tela-de-criacao" src="../../assets/images/foto-projeto-card.png" alt="">
-                <div class="div-botao-uploud">
-                    <img class="img-add" src="../../assets/images/icon-upload.png" alt="">
-                    <button class="upload">Upload de Fotos</button>
-                </div>
+        <div class="card-projeto">
+            <div class="img-projeto">250x130</div>
+            <div class="info-projeto">
+                <h5>Nome Projeto</h5>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, laborum et? Repellendus perferendis provident
+                    ratione deserunt alias cumque et quasi odio amet temporibus, quam obcaecati dolores. Enim quibusdam a atque.
+                </p>
             </div>
-            <div class="div-botao-add">
-                <button class="botao-salvar" id="salvarprojeto">Salvar Projeto</button>
-                <img class="img-add" id="salvarprojeto" src="../../assets/images/add.png" alt="">
-            </div>
+            <a class="saiba-mais-projeto" href="perfil-projeto.php">Visualizar</a>
         </div>
 
-    </div>
+        <div class="card-projeto">
+            <div class="img-projeto">250x130</div>
+            <div class="info-projeto">
+                <h5>Nome Projeto</h5>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, laborum et? Repellendus perferendis provident
+                    ratione deserunt alias cumque et quasi odio amet temporibus, quam obcaecati dolores. Enim quibusdam a atque.
+                </p>
+            </div>
+            <a class="saiba-mais-projeto" href="perfil-projeto.php">Visualizar</a>
+        </div>
 
+        <div class="card-projeto">
+            <div class="img-projeto">250x130</div>
+            <div class="info-projeto">
+                <h5>Nome Projeto</h5>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, laborum et? Repellendus perferendis provident
+                    ratione deserunt alias cumque et quasi odio amet temporibus, quam obcaecati dolores. Enim quibusdam a atque.
+                </p>
+            </div>
+            <a class="saiba-mais-projeto" href="perfil-projeto.php">Visualizar</a>
+        </div>
+
+        <div class="card-projeto">
+            <div class="img-projeto">250x130</div>
+            <div class="info-projeto">
+                <h5>Nome Projeto</h5>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, laborum et? Repellendus perferendis provident
+                    ratione deserunt alias cumque et quasi odio amet temporibus, quam obcaecati dolores. Enim quibusdam a atque.
+                </p>
+            </div>
+            <a class="saiba-mais-projeto" href="perfil-projeto.php">Visualizar</a>
+        </div>
+
+        <div class="card-projeto">
+            <div class="img-projeto">250x130</div>
+            <div class="info-projeto">
+                <h5>Nome Projeto</h5>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, laborum et? Repellendus perferendis provident
+                    ratione deserunt alias cumque et quasi odio amet temporibus, quam obcaecati dolores. Enim quibusdam a atque.
+                </p>
+            </div>
+            <a class="saiba-mais-projeto" href="perfil-projeto.php">Visualizar</a>
+        </div>
+
+        <div class="card-projeto">
+            <div class="img-projeto">250x130</div>
+            <div class="info-projeto">
+                <h5>Nome Projeto</h5>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, laborum et? Repellendus perferendis provident
+                    ratione deserunt alias cumque et quasi odio amet temporibus, quam obcaecati dolores. Enim quibusdam a atque.
+                </p>
+            </div>
+            <a class="saiba-mais-projeto" href="perfil-projeto.php">Visualizar</a>
+        </div>
+
+        <div class="card-projeto">
+            <div class="img-projeto">250x130</div>
+            <div class="info-projeto">
+                <h5>Nome Projeto</h5>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, laborum et? Repellendus perferendis provident
+                    ratione deserunt alias cumque et quasi odio amet temporibus, quam obcaecati dolores. Enim quibusdam a atque.
+                </p>
+            </div>
+            <a class="saiba-mais-projeto" href="perfil-projeto.php">Visualizar</a>
+        </div>
+    </div>
 </div>
+
+<!-- POPUP DE NOVO PROJETO -->
+<div class="popup-fundo" id="editar-projeto-popup">
+    <div class="container-popup">
+        <button id="x-fechar" class="fa-solid fa-xmark" onclick="fechar_popup('editar-projeto-popup')"></button>
+        <form action="perfil-projeto.php">
+            <div class="box-edit">
+                <h1>NOVO PROJETO</h1>
+                <div class="input-group">
+                    <div class="input-box">
+                        <label for="nome">Nome<span>*</span></label>
+                        <input id="nome" type="text" maxlength="45" required>
+                    </div>
+                    <div class="input-box">
+                        <label for="meta">Meta de Doação<span>*</span></label>
+                        <input id="meta" type="number" placeholder="R$" required>
+                    </div>
+                </div>
+                <div class="input-box">
+                    <label for="descricao">Sobre<span>*</span></label>
+                    <textarea name="descricao" id="descricao" rows="6" required></textarea>
+                </div>
+            </div>
+            <div class="box-edit">
+                <div class="input-box">
+                    <div class="qt-img">
+                        <label for="fotos">Upload de Fotos<span>*</span></label>
+                        <p id="qt-img">0/5</p>
+                    </div>
+                    <input id="fotos" type="file" name="fotos[]" multiple required>
+                </div>
+                <button class="btn">CRIAR PROJETO <i class="fa-solid fa-floppy-disk"></i></button>
+            </div>
+        </form>
+    </div>
+</div>
+
 
 <!-- tela confirmação de projeto criado -->
 <div class="tela-confirma-criacao" id="tela-confirma-criacao">
@@ -193,11 +154,11 @@ require_once '../../components/header-ong.php';
             <h2 class="titulo-projeto-criado">Projeto Criado</h2>
             <img class="img-check" src="../../assets/images/Check.png" alt="">
         </div>
-        <button href="visualizar-projetos.php" class="btn-card">Visualizar</button>
+        <button href="perfil-projeto.php" class="btn-card">Visualizar</button>
     </div>
 </div>
 
 <?php
-$jsPagina = ['projetos-ong.js']; //Colocar o arquivo .js (exemplo: 'cadastro.js')
+$jsPagina = ['projetos-ong.js'];
 require_once '../../components/footer.php';
 ?>

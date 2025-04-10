@@ -31,6 +31,25 @@
 body {
     background-color: var(--cor-principal);
     color: var(--cor-principal);
+    scrollbar-color: #06c;
+}
+
+/* Barra de Rolagem */
+body::-webkit-scrollbar {
+    width: 8px;
+}
+body::-webkit-scrollbar-track {
+    background: azure;
+}
+body::-webkit-scrollbar-thumb {
+    background: linear-gradient(90deg, #f8c35c, #f67f2a, #f8c35c);
+    background-size: 200% 100%;
+    border-radius: 20px;
+    animation: gradiente-scroll 3s infinite linear reverse;
+}
+@keyframes gradiente-scroll {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 200% 50%; }
 }
 
 /* Classe de uma div principal, para alinhar no meio*/
