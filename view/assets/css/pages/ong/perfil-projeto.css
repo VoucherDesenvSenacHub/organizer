@@ -12,3 +12,18 @@
     background-color: var(--cor-vermelho);
     color: #912B2B;
 }
+
+#compartilhar-popup {
+    padding: 10px;
+}
+
+@media (max-width: 480px) {
+    #editar-projeto-popup,
+    #inativar-projeto-popup {
+        padding: 3px;
+    }
+
+    .popup-fundo.ativo .container-popup  {
+        padding: 30px 10px;
+    }
+}
