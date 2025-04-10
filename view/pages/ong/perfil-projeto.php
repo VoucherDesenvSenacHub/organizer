@@ -1,7 +1,9 @@
 <?php
 $tituloPagina = 'Perfil do Projeto | Organizer';
 $cssPagina = ['ong/perfil-projeto.css'];
-require_once '../../components/header.php';
+require_once '../../components/header-usuario.php';
+require '../../components/editar-projeto.php';
+require '../../components/inativar-projeto.php';
 ?>
 
 <main>
@@ -24,7 +26,7 @@ require_once '../../components/header.php';
                 </div>
                 <div id="acoes">
                     <button class="btn" id="btn-editar" onclick="abrir_popup('editar-projeto-popup')"><i class="fa-solid fa-pen-to-square"></i> Editar</button>
-                    <button class="btn" id="btn-inativar" onclick="abrir_popup('')"><i class="fa-solid fa-trash-can"></i> Inativar</button>
+                    <button class="btn" id="btn-inativar" onclick="abrir_popup('inativar-projeto-popup')"><i class="fa-solid fa-trash-can"></i> Inativar</button>
                 </div>
             </div>
             <div id="imagem-ilustrativa">
@@ -112,38 +114,6 @@ require_once '../../components/header.php';
         </section>
     </div>
 </main>
-
-<div class="popup-fundo" id="editar-projeto-popup">
-    <div class="container-popup">
-        <button id="x-fechar" class="fa-solid fa-xmark" onclick="fechar_popup('editar-projeto-popup')"></button>
-        <form action="perfil-projeto.php">
-            <div class="box-edit">
-                <h1>EDITAR PROJETO</h1>
-                <div class="input-group">
-                    <div class="input-box">
-                        <label for="nome">Nome<span>*</span></label>
-                        <input id="nome" type="text" maxlength="45" required>
-                    </div>
-                    <div class="input-box">
-                        <label for="meta">Meta de Doação<span>*</span></label>
-                        <input id="meta" type="number" placeholder="R$" required>
-                    </div>
-                </div>
-                <div class="input-box">
-                    <label for="descricao">Sobre<span>*</span></label>
-                    <textarea name="descricao" id="descricao" rows="6" required></textarea>
-                </div>
-            </div>
-            <div class="box-edit">
-                <div class="input-box">
-                    <label for="fotos">Upload de Fotos<span>*</span></label>
-                    <input id="fotos" type="file" name="fotos[]" multiple required>
-                </div>
-                <button class="btn">SALVAR ALTERAÇÃO <i class="fa-solid fa-floppy-disk"></i></button>
-            </div>
-        </form>
-    </div>
-</div>
 
 <?php
 $jsPagina = ['perfil-projeto.js'];
