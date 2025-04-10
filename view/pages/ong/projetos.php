@@ -20,41 +20,93 @@ require_once '../../components/header-ong.php';
 
     <!-- cards -->
     <div class="div-card-geral">
-        <div class="card">
-            <img class="img-card" src="../../assets/images/foto-projeto-card.png" alt="">
-            <p>Campanha Solidária</p>
-            <a href="./visualizar-projetos.php"><button class="btn-card">Visualizar</button></a>
-        </div>
+            <div class="card-projeto">
+                <div class="img-projeto">250x130</div>
+                <div class="info-projeto">
+                    <h5>Nome Projeto</h5>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, laborum et? Repellendus perferendis provident
+                        ratione deserunt alias cumque et quasi odio amet temporibus, quam obcaecati dolores. Enim quibusdam a atque.
+                    </p>
+                </div>
+                <a class="saiba-mais-projeto" href="visualizar-projetos.php">Visualizar</a>
+            </div>
 
-        <div class="card">
-            <img class="img-card" src="../../assets/images/foto-projeto-card.png" alt="">
-            <p>Campanha Solidária</p>
-            <a href="./visualizar-projetos.php"><button class="btn-card">Visualizar</button></a>
-        </div>
+            <div class="card-projeto">
+                <div class="img-projeto">250x130</div>
+                <div class="info-projeto">
+                    <h5>Nome Projeto</h5>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, laborum et? Repellendus perferendis provident
+                        ratione deserunt alias cumque et quasi odio amet temporibus, quam obcaecati dolores. Enim quibusdam a atque.
+                    </p>
+                </div>
+                <a class="saiba-mais-projeto" href="visualizar-projetos.php">Visualizar</a>
+            </div>
 
-        <div class="card">
-            <img class="img-card" src="../../assets/images/foto-projeto-card.png" alt="">
-            <p>Campanha Solidária</p>
-            <a href="./visualizar-projetos.php"><button class="btn-card">Visualizar</button></a>
-        </div>
+            <div class="card-projeto">
+                <div class="img-projeto">250x130</div>
+                <div class="info-projeto">
+                    <h5>Nome Projeto</h5>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, laborum et? Repellendus perferendis provident
+                        ratione deserunt alias cumque et quasi odio amet temporibus, quam obcaecati dolores. Enim quibusdam a atque.
+                    </p>
+                </div>
+                <a class="saiba-mais-projeto" href="visualizar-projetos.php">Visualizar</a>
+            </div>
 
-        <div class="card">
-            <img class="img-card" src="../../assets/images/foto-projeto-card.png" alt="">
-            <p>Campanha Solidária</p>
-            <a href="./visualizar-projetos.php"><button class="btn-card">Visualizar</button></a>
-        </div>
+            <div class="card-projeto">
+                <div class="img-projeto">250x130</div>
+                <div class="info-projeto">
+                    <h5>Nome Projeto</h5>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, laborum et? Repellendus perferendis provident
+                        ratione deserunt alias cumque et quasi odio amet temporibus, quam obcaecati dolores. Enim quibusdam a atque.
+                    </p>
+                </div>
+                <a class="saiba-mais-projeto" href="visualizar-projetos.php">Visualizar</a>
+            </div>
 
-        <div class="card">
-            <img class="img-card" src="../../assets/images/foto-projeto-card.png" alt="">
-            <p>Campanha Solidária</p>
-            <a href="./visualizar-projetos.php"><button class="btn-card">Visualizar</button></a>
-        </div>
+            <div class="card-projeto">
+                <div class="img-projeto">250x130</div>
+                <div class="info-projeto">
+                    <h5>Nome Projeto</h5>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, laborum et? Repellendus perferendis provident
+                        ratione deserunt alias cumque et quasi odio amet temporibus, quam obcaecati dolores. Enim quibusdam a atque.
+                    </p>
+                </div>
+                <a class="saiba-mais-projeto" href="visualizar-projetos.php">Visualizar</a>
+            </div>
 
-        <div class="card">
-            <img class="img-card" src="../../assets/images/foto-projeto-card.png" alt="">
-            <p>Campanha Solidária</p>
-            <a href="./visualizar-projetos.php"><button class="btn-card">Visualizar</button></a>
-        </div>
+            <div class="card-projeto">
+                <div class="img-projeto">250x130</div>
+                <div class="info-projeto">
+                    <h5>Nome Projeto</h5>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, laborum et? Repellendus perferendis provident
+                        ratione deserunt alias cumque et quasi odio amet temporibus, quam obcaecati dolores. Enim quibusdam a atque.
+                    </p>
+                </div>
+                <a class="saiba-mais-projeto" href="visualizar-projetos.php">Visualizar</a>
+            </div>
+
+            <div class="card-projeto">
+                <div class="img-projeto">250x130</div>
+                <div class="info-projeto">
+                    <h5>Nome Projeto</h5>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, laborum et? Repellendus perferendis provident
+                        ratione deserunt alias cumque et quasi odio amet temporibus, quam obcaecati dolores. Enim quibusdam a atque.
+                    </p>
+                </div>
+                <a class="saiba-mais-projeto" href="visualizar-projetos.php">Visualizar</a>
+            </div>
+
+            <div class="card-projeto">
+                <div class="img-projeto">250x130</div>
+                <div class="info-projeto">
+                    <h5>Nome Projeto</h5>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, laborum et? Repellendus perferendis provident
+                        ratione deserunt alias cumque et quasi odio amet temporibus, quam obcaecati dolores. Enim quibusdam a atque.
+                    </p>
+                </div>
+                <a class="saiba-mais-projeto" href="visualizar-projetos.php">Visualizar</a>
+            </div>
     </div>
 
 
@@ -141,7 +193,7 @@ require_once '../../components/header-ong.php';
             <h2 class="titulo-projeto-criado">Projeto Criado</h2>
             <img class="img-check" src="../../assets/images/Check.png" alt="">
         </div>
-        <button href="./visualizar-projetos.php" class="btn-card">Visualizar</button>
+        <button href="visualizar-projetos.php" class="btn-card">Visualizar</button>
     </div>
 </div>
 
