@@ -117,6 +117,7 @@
 }
 #edicao-esquerda form textarea {
     border-radius: 8px;
+    width: 90%;
     border: none;
     margin-left: 10px;
     box-shadow: 3px 3px 3px rgba(1,1,1,0.7);

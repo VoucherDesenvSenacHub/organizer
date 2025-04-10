@@ -12,6 +12,45 @@ function targetPage(target, actual){
         }
     }
 }
+
+// Buscar CEP
+function buscarCEP(cep) {
+    $.ajax({
+        url: `https://viacep.com.br/ws/${cep}/json/`,
+        method: 'GET',
+        success: function(response) {
+            // Verifica se a resposta contém erro
+            if (response.erro) {
+                $('#resultado').hide(); // Esconde o resultado se houver erro
+                alert("CEP não encontrado.");
+            } else {
+                // Exibe os dados do CEP na tela
+                $('#rua').text(response.logradouro);
+                $('#bairro').text(response.bairro);
+                $('#cidade').text(response.localidade);
+                $('#uf').text(response.uf);
+                $('#resultado').show(); // Exibe a área de resultado
+            }
+        },
+        error: function() {
+            alert('Erro ao buscar o CEP. Tente novamente.');
+        }
+    });
+}
+
+// Evento para detectar a digitação do CEP
+// $('#cep').on('input', function() {
+//     const cep = $(this).val();
+
+//     // Só faz a busca se o CEP tiver 8 caracteres
+//     if (cep.length === 8) {
+//         buscarCEP(cep);
+//     } else {
+//         $('#resultado').hide(); // Esconde o resultado se o CEP não estiver completo
+//     }
+// });
+
+
 // Passar etapas do cadastro
 var pagina_atual = 0;
 var botao_voltar = document.querySelector(".voltar");
