@@ -247,6 +247,10 @@ section#apresentacao {
     height: fit-content;
 }
 
+#principal-painel #control-painel .container-painel p {
+    text-align: justify;
+}
+
 #btns-group .icon-title.active {
     background-color: var(--cor-principal);
     color: aliceblue;

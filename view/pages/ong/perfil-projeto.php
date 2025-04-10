@@ -4,6 +4,7 @@ $cssPagina = ['ong/perfil-projeto.css'];
 require_once '../../components/header-ong.php';
 require '../../components/editar-projeto.php';
 require '../../components/inativar-projeto.php';
+require '../../components/compartilhar.php';
 ?>
 
 <main>
@@ -40,7 +41,7 @@ require '../../components/inativar-projeto.php';
                 </div>
                 <div class="btn-salvar">
                     <button id="share" class="fa-solid fa-share-nodes" onclick="abrir_popup('compartilhar-popup')"></button>
-                    <button id="like" class="fa-solid fa-heart" onclick="abrir_popup('login-obrigatorio-popup')"></button>
+                    <!-- <button id="like" class="fa-solid fa-heart" onclick="abrir_popup('login-obrigatorio-popup')"></button> -->
                 </div>
             </div>
         </section>
@@ -55,7 +56,7 @@ require '../../components/inativar-projeto.php';
                     </div>
                     <div class="btn-salvar">
                         <button id="share" class="fa-solid fa-share-nodes" onclick="abrir_popup('compartilhar-popup')"></button>
-                        <button id="like" class="fa-solid fa-heart" onclick="abrir_popup('login-obrigatorio-popup')"></button>
+                        <!-- <button id="like" class="fa-solid fa-heart" onclick="abrir_popup('login-obrigatorio-popup')"></button> -->
                     </div>
                 </div>
             </div>
