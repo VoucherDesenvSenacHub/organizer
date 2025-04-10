@@ -1,7 +1,7 @@
 <?php
 $tituloPagina = 'Perfil do Projeto | Organizer';
 $cssPagina = ['ong/perfil-projeto.css'];
-require_once '../../components/header-usuario.php';
+require_once '../../components/header-ong.php';
 require '../../components/editar-projeto.php';
 require '../../components/inativar-projeto.php';
 ?>
