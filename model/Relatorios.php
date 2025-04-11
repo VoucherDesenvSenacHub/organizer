@@ -22,4 +22,20 @@ $doacoesMensais = [
     ["Dezembro", 720]
 ];
 
+$doacoesPorProjeto = [
+    ["Projeto A", 504],
+    ["Projeto B", 300],
+    ["Projeto C", 400],
+    ["Projeto D", 1402],
+    ["Projeto E", 439]
+];
+
+$doacoesVoluntarios = [
+    ["Projeto A",85,21],
+    ["Projeto B",64,29],
+    ["Projeto C",27,36],
+    ["Projeto D",13,40],
+    ["Projeto E",34,62]
+];
+
 ?>
