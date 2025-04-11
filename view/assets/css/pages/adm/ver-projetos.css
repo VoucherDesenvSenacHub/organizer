@@ -21,7 +21,7 @@ main {
     flex-direction: column;
     align-items: center;
     z-index: 1;
-    width: 55%;
+    width: 80%;
     margin: 0 auto;
     padding: 20px;
     background-color: #FFFFFF;
@@ -30,12 +30,15 @@ main {
 
 }
 
+
+
 .buscar {
     position: relative;
     /* float: right; */
     border: solid 3px #00000084;
-    width: 50%;
+    width: 25%;
     height: 33px;
+    margin-right: 55px;
     border-radius: 50px;
     flex-wrap: wrap;
 }
@@ -76,6 +79,8 @@ main {
     justify-content: space-between;
     margin-top: 30px;
     width: 90%;
+    gap: 10px;
+    padding-bottom: 30px;
     /* height: 800px; */
 }
 
@@ -136,6 +141,7 @@ main {
     font-size: 1.5em;
     color: var(--backgroud);
     font-weight: 500;
+    margin-left: 55px;
 }
 .card_img {
     width: 200px;
@@ -196,10 +202,15 @@ main {
         display: flex;
         flex-direction: column;
         align-items: center;
+
+        h1{
+            margin-left: 0;
+        }
     }
 
     .buscar {
-        width: 90%;
+        margin-right: 0;
+        width: 70%;
     }
 
     .search_img {

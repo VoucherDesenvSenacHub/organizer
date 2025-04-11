@@ -1,8 +1,9 @@
-<?php 
-    $tituloPagina = 'Perfil do Projeto | Organizer';
-    $cssPagina = ['shared/perfil-projeto.css', 'doador/modo-de-pagamento.css'];
-    require_once '../../components/header-usuario.php';
-    
+<?php
+$tituloPagina = 'Perfil do Projeto | Organizer';
+$cssPagina = ['ong/perfil-projeto.css'];
+require_once '../../components/header-ong.php';
+require '../../components/editar-projeto.php';
+require '../../components/inativar-projeto.php';
 ?>
 
 <main>
@@ -24,8 +25,8 @@
                     <p><span>24</span> Doações Recebidas</p>
                 </div>
                 <div id="acoes">
-                    <button class="btn" id="btn-doacao" onclick="abrir_popup('doacao-popup')">Fazer uma doação</button>
-                    <button class="btn" id="btn-voluntario" onclick="abrir_popup('ser-voluntario-popup')">Ser Voluntário</button>
+                    <button class="btn" id="btn-editar" onclick="abrir_popup('editar-projeto-popup')"><i class="fa-solid fa-pen-to-square"></i> Editar</button>
+                    <button class="btn" id="btn-inativar" onclick="abrir_popup('inativar-projeto-popup')"><i class="fa-solid fa-trash-can"></i> Inativar</button>
                 </div>
             </div>
             <div id="imagem-ilustrativa">
@@ -43,22 +44,22 @@
                 </div>
             </div>
         </section>
-            <div class="popup-fundo" id="carousel-popup">
-                <div class="container-popup">
-                    <button id="x-fechar" class="fa-solid fa-xmark" onclick="fechar_popup('carousel-popup')"></button>
-                    <div id="carousel-big" class="carousel">
-                        <div id="carousel-big-imgs" class="carousel-imgs">
-                            <img src="https://placeholder.pagebee.io/api/plain/600/375" class="carousel-item-big">
-                            <img src="https://placeholder.pagebee.io/api/plain/600/375" class="carousel-item-big">
-                            <img src="https://placeholder.pagebee.io/api/plain/600/375" class="carousel-item-big">
-                        </div>
-                        <div class="btn-salvar">
-                            <button id="share" class="fa-solid fa-share-nodes" onclick="abrir_popup('compartilhar-popup')"></button>
-                            <button id="like" class="fa-solid fa-heart" onclick="abrir_popup('login-obrigatorio-popup')"></button>
-                        </div>
+        <div class="popup-fundo" id="carousel-popup">
+            <div class="container-popup">
+                <button id="x-fechar" class="fa-solid fa-xmark" onclick="fechar_popup('carousel-popup')"></button>
+                <div id="carousel-big" class="carousel">
+                    <div id="carousel-big-imgs" class="carousel-imgs">
+                        <img src="https://placeholder.pagebee.io/api/plain/600/375" class="carousel-item-big">
+                        <img src="https://placeholder.pagebee.io/api/plain/600/375" class="carousel-item-big">
+                        <img src="https://placeholder.pagebee.io/api/plain/600/375" class="carousel-item-big">
+                    </div>
+                    <div class="btn-salvar">
+                        <button id="share" class="fa-solid fa-share-nodes" onclick="abrir_popup('compartilhar-popup')"></button>
+                        <button id="like" class="fa-solid fa-heart" onclick="abrir_popup('login-obrigatorio-popup')"></button>
                     </div>
                 </div>
             </div>
+        </div>
         <section id="painel-projeto" class="container-section">
             <div id="btns-group">
                 <div class="icon-title active">
@@ -73,10 +74,10 @@
                     <img src="../../assets/images/pages/icone-abraco.png" alt="">
                     <h3>Voluntários</h3>
                 </div>
-                <div class="icon-title">
+                <!-- <div class="icon-title">
                     <img src="../../assets/images/pages/icone-medalha.png" alt="">
                     <h3>Responsável</h3>
-                </div>
+                </div> -->
             </div>
             <div id="principal-painel">
                 <div id="control-painel">
@@ -98,35 +99,14 @@
                     </div>
                     <div class="container-painel area-doador-voluntario">
                         <h3>VOLUNTÁRIOS DESTE PROJETO</h3>
-                            <div class="box-cards">
-                                <?php require '../../components/cards/card-voluntario.php'; ?>
-                                <?php require '../../components/cards/card-voluntario.php'; ?>
-                                <?php require '../../components/cards/card-voluntario.php'; ?>
-                                <?php require '../../components/cards/card-voluntario.php'; ?>
-                                <?php require '../../components/cards/card-voluntario.php'; ?>
-                                <?php require '../../components/cards/card-voluntario.php'; ?>
-                                <?php require '../../components/cards/card-voluntario.php'; ?>
-                            </div>
-                        </div>
-                    <div class="container-painel area-doador-voluntario">
-                        <h3>ONG RESPONSÁVEL</h3>
-                        <div class="card-ong">
-                            <div class="perfil">
-                                <div class="logo">
-                                    <p>Logo</p>
-                                </div>
-                                <div class="nome">
-                                    <h2>Nome da ONG</h2>
-                                    <p>Área de Atuação</p>
-                                </div>
-                            </div>
-                            <div class="acoes-ong">
-                                <a href="perfil-ong.php" class="saiba-mais-ong">Conhecer ONG</a>
-                                <div class="btn-salvar">
-                                    <button id="share" class="fa-solid fa-share-nodes" onclick="abrir_popup('compartilhar-popup')"></button>
-                                    <button id="like" class="fa-solid fa-heart" onclick="abrir_popup('login-obrigatorio-popup')"></button>
-                                </div>
-                            </div>
+                        <div class="box-cards">
+                            <?php require '../../components/cards/card-voluntario.php'; ?>
+                            <?php require '../../components/cards/card-voluntario.php'; ?>
+                            <?php require '../../components/cards/card-voluntario.php'; ?>
+                            <?php require '../../components/cards/card-voluntario.php'; ?>
+                            <?php require '../../components/cards/card-voluntario.php'; ?>
+                            <?php require '../../components/cards/card-voluntario.php'; ?>
+                            <?php require '../../components/cards/card-voluntario.php'; ?>
                         </div>
                     </div>
                 </div>
@@ -136,7 +116,6 @@
 </main>
 
 <?php
-    $jsPagina = ['perfil-projeto.js'];
-
-    require_once '../../components/footer.php';
+$jsPagina = ['perfil-projeto.js'];
+require_once '../../components/footer.php';
 ?>

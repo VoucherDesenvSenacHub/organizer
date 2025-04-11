@@ -1,0 +1,211 @@
+/* css do pix */
+
+
+.fundo-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.container-popup-pix {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    position: relative;
+    max-width: 700px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.pix-esquerda {
+    flex: 1;
+}
+
+.titulo-pix {
+    color: #0056D2;
+    font-size: 20px;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.pagar-pix {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.copiar-e-colar {
+    margin-top: 15px;
+    background-color: #002d80;
+    color: white;
+    border: none;
+    padding: 10px 38px;
+    border-radius: 2px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+/* css do boleto */
+
+.container-boleto {
+    background-color: white;
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+    max-width: 500px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    font-family: 'Arial', sans-serif;
+}
+
+.container-boleto h2 {
+    font-size: 20px;
+    color: #0047BB;
+    font-weight: 600;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.container-boleto img {
+    margin: 20px 0;
+    max-width: 100%;
+    height: auto;
+}
+
+.container-boleto p {
+    font-size: 16px;
+    color: #1d2c4c;
+    margin: 10px 0 20px;
+    line-height: 1.4;
+}
+
+.botoes-boleto {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.botoes-boleto button {
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.btn-salvar {
+    background-color: #002d80;
+    color: white;
+    border: none;
+}
+
+.btn-copiar {
+    background-color: white;
+    border: 2px solid #002d80;
+    color: #002d80;
+}
+
+.btn-salvar:hover,
+.btn-copiar:hover {
+    opacity: 0.9;
+}
+
+/* css do cartão */
+
+/* Fundo escuro semi-transparente */
+.fundo-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* Container do popup */
+.container-cartao {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 471px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+}
+
+/* Título */
+.container-cartao h2 {
+    text-align: center;
+    color: #0056D2;
+    font-size: 20px;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Agrupamento de inputs */
+.input-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    margin-bottom: 3px;
+    color: #333;
+    font-size: 14px;
+}
+
+/* Campos de input */
+.input-group input {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #f1f1f1;
+    font-size: 14px;
+    
+}
+
+/* Linha com dois campos lado a lado */
+.row {
+    display: flex;
+    gap: 10px;
+}
+
+/* Botão de confirmar */
+.confirm-button {
+    width: 100%;
+    background-color: #1C2C5B;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.confirm-button:hover {
+    background-color: #0f1e42;
+}
