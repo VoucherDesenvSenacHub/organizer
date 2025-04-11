@@ -1,8 +1,9 @@
 <?php
 $tituloPagina = 'Minhas Doações';
 $cssPagina = ['doador/minhas-doacoes.css'];
-require_once '../../components/header.php';
+require_once '../../components/header-usuario.php';
 ?>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <main>
     <!-- Div Principal -->
@@ -18,7 +19,7 @@ require_once '../../components/header.php';
                         <p>Data:28/03/2024</p>
                     </div>
                 </div>
-                <button  class="btn_comprovante" onclick="clicar()">Comprovante</button>
+                <button class="btn_comprovante" onclick="clicar()">Comprovante</button>
             </div>
             <div class="card">
                 <div class="card_esq">
@@ -29,7 +30,7 @@ require_once '../../components/header.php';
                         <p>Data:08/07/2023</p>
                     </div>
                 </div>
-                <button  class="btn_comprovante" onclick="clicar()">Comprovante</button>
+                <button class="btn_comprovante" onclick="clicar()">Comprovante</button>
             </div>
             <div class="card">
                 <div class="card_esq">
@@ -40,36 +41,45 @@ require_once '../../components/header.php';
                         <p>Data:12/03/2023</p>
                     </div>
                 </div>
-                <button  class="btn_comprovante" onclick="clicar()">Comprovante</button>
+                <button class="btn_comprovante" onclick="clicar()">Comprovante</button>
             </div>
         </div>
         <div class="info_top">
             <h1>RESUMO GERAL</h1>
             <p>Total doado: <span> R$350</span></p>
 
+            <div class="chart-container">
+                <div class="pie-wrapper">
+                    <div class="slice a">
+                        <div class="tooltip">Projeto A: R$ 105</div>
+                    </div>
+                    <div class="slice b">
+                        <div class="tooltip">Projeto B: R$ 52,50</div>
+                    </div>
+                    <div class="slice c">
+                        <div class="tooltip">Projeto C: R$ 192,50</div>
+                    </div>
+                </div>
+
+                <div class="legend">
+                    <div class="legend-item">
+                        <div class="color-box color-a"></div> Projeto A
+                    </div>
+                    <div class="legend-item">
+                        <div class="color-box color-b"></div> Projeto B
+                    </div>
+                    <div class="legend-item">
+                        <div class="color-box color-c"></div> Projeto C
+                    </div>
+                </div>
+            </div>
         </div>
 
-
-        <div class="legenda_grafico">
-            <div class="caixas_grafico">
-                <div class="caixa_grafico1"></div>
-                <div class="caixa_grafico2"></div>
-                <div class="caixa_grafico3"></div>
-            </div>
-            <div class="legendas">
-                <p>Projeto A</p>
-                <P>Projeto B</P>
-                <p>Projeto C</p>
-            </div>
-            <div class="grafico">
-                <div class="teste"></div>
-            </div>
-
-        </div>
-        <div id="download">
-            <img src="../../assets/images/icon.png" alt="">
-            <p>Download Iniciado</p>
-        </div>
+    </div>
+    <div id="download">
+        <img src="../../assets/images/icon.png" alt="">
+        <p>Download Iniciado</p>
+    </div>
     </div>
 </main>
 <?php

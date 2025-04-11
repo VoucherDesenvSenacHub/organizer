@@ -9,16 +9,6 @@
     --button-hover: #9747FF;
 }
 
-header .container {
-    max-width: 1200px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 100%;
-    margin: 0 auto;
-}
-
-
 /* CLASSE BOTÃO */
 .btn {
     padding: 10px 20px;
@@ -41,58 +31,6 @@ header .container {
 .btn a {
     text-decoration: none;
     color: #1C3464;
-}
-
-header {
-    padding: 0 30px;
-    height: 60px;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    background-color: #1C3464;
-    position: sticky;
-    top: 0;
-    z-index: 999;
-}
-
-header .logo {
-    color: aliceblue;
-}
-
-header nav ul {
-    display: flex;
-    list-style: none;
-    gap: 30px;
-}
-
-header nav ul li {
-    transform: translateY(0);
-    transition: .3s;
-}
-
-header nav ul li:hover {
-    transform: translateY(-2px);
-}
-
-header nav a {
-    color: aliceblue;
-    text-decoration: none;
-    padding-block: 8px;
-    transform: translateY(0);
-    transition: .3s;
-}
-
-header nav a:hover {
-    color: #E3B652;
-}
-
-header .btn-login {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-header nav.active {
-    height: 180px;
-    transition: .3s;
 }
 
 #hamburguer {
@@ -131,34 +69,12 @@ header nav.active {
     transform: rotate(-45deg);
 }
 
-@media (max-width: 700px) {
-    header nav {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background-color: #1C3464;
-        overflow: hidden;
-        box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;
-        height: 0;
-        transition: .3s;
-        z-index: 999;
-    }
+#hamburguer {
+    display: block;
+}
 
-    header nav ul {
-        flex-direction: column;
-        align-items: center;
-        gap: 15px;
-        padding: 15px 0;
-    }
-
-    #hamburguer {
-        display: block;
-    }
-
-    #fundo-popup #popup .img {
-        display: none;
-    }
+#fundo-popup #popup .img {
+    display: none;
 }
 
 /* div */
@@ -400,14 +316,8 @@ p span {
         margin: 10px 0 0 0;
     }
 
-    .grafico {
-        flex-direction: column;
-        align-items: center;
-        margin-right: 0;
-        gap: 20px;
-    }
 
-    .legenda_grafico {
+    /* .legenda_grafico {
         flex-direction: column;
         align-items: center;
         gap: 20px;
@@ -418,9 +328,8 @@ p span {
         margin-left: 0;
         width: 100%;
         align-items: center;
-    }
-
-    .info_top {
+    } */
+    */ .info_top {
         font-size: 1rem;
         margin-right: 0;
     }
@@ -447,14 +356,109 @@ p span {
         width: 100%;
         padding: 12px 0;
     }
-
-    header .btn-login {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 10px;
-    }
 }
 
+body {
+    font-family: Arial, sans-serif;
+    padding: 40px;
+  }
+
+  h1 {
+    color: #007bff;
+    margin-bottom: 0;
+  }
+
+  h2 {
+    font-weight: normal;
+    margin-top: 5px;
+  }
+
+  .chart-container {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-top: 40px;
+  }
+
+  .pie-wrapper {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+
+  .slice {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    clip-path: circle(50%);
+  }
+
+  .slice:hover .tooltip {
+    opacity: 1;
+    transform: translate(-50%, -110%);
+  }
+
+  .tooltip {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background: rgba(0, 0, 0, 0.75);
+    color: #fff;
+    padding: 6px 10px;
+    font-size: 14px;
+    border-radius: 6px;
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    transform: translate(-50%, -80%);
+    transition: all 0.2s ease;
+  }
+
+  .slice.a {
+    background: conic-gradient(
+      #FF6384 0% 30%, transparent 30% 100%
+    );
+  }
+
+  .slice.b {
+    background: conic-gradient(
+      transparent 0% 30%,
+      #007bff 30% 45%, transparent 45% 100%
+    );
+  }
+
+  .slice.c {
+    background: conic-gradient(
+      transparent 0% 45%,
+      #fbc02d 45% 100%
+    );
+  }
+
+  .legend {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+  }
+
+  .color-box {
+    width: 16px;
+    height: 16px;
+    border-radius: 4px;
+  }
+
+  .color-a { background-color: #FF6384; }
+  .color-b { background-color: #007bff; }
+  .color-c { background-color: #fbc02d; }
 
 
 
