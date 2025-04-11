@@ -12,7 +12,7 @@ require_once '../../components/header-ong.php';
 require '../../components/editar-projeto.php';
 require '../../components/inativar-projeto.php';
 ?>
-
+<?php echo editarProjeto($projeto->nome, $projeto->sobre, $projeto->meta, $projeto->resumo); ?>
 <main>
     <div class="container" id="container-principal">
         <section id="apresentacao" class="container-section">
@@ -90,7 +90,7 @@ require '../../components/inativar-projeto.php';
                 <div id="control-painel">
                     <div class="container-painel active">
                         <span id="data-criacao">Projeto criado em: 04/08/2023</span>
-                        <p><?= $projeto->descricao?></p>
+                        <p><?= $projeto->sobre?></p>
                     </div>
                     <div class="container-painel area-doador-voluntario">
                         <h3>DOADORES DESTE PROJETO</h3>
