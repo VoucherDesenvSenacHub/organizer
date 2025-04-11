@@ -1,21 +1,14 @@
-section{
+section {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding:10px 0;
+    padding: 10px 0;
 
 }
-/* .principal{
-    background-color: white;
-    border-radius: 10px;
-    display:flex;
-    width: 1200px;
-    height: 100vh;
-} */
 
 .principal {
-    
+
     justify-content: space-around;
     z-index: 1;
     width: 60%;
@@ -33,12 +26,13 @@ section{
     border-collapse: separate;
     border-spacing: 0 10px;
 
-    th, td {
+    th,
+    td {
         padding: 0.5rem;
         text-align: left;
     }
 
-    tbody{
+    tbody {
         border-collapse: separate;
         gap: 20px;
     }
@@ -49,54 +43,57 @@ section{
     }
 }
 
-.table tr{
+.table tr {
     border-radius: 5px;
     box-shadow: 0 4px 8px 0 rgba(79, 79, 79, 0.3);
-    
+
 }
 
 .table .btn-aprovar {
-    padding: 8px 16px; 
+    padding: 8px 16px;
     font-size: 14px;
     width: 100px;
     height: 40px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    margin-left: 20px; 
+    margin-left: 20px;
 }
 
 
 .table .btn-recusar {
-    padding: 8px 16px; 
+    padding: 8px 16px;
     font-size: 14px;
     width: 100px;
     height: 40px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    margin-left: 20px; 
+    margin-left: 20px;
 }
 
-.info-ong{
+.info-ong {
     text-align: left;
 }
 
-.btn-aprovar{
+.btn-aprovar {
     background-color: #51CD32;
     color: #094A22;
 }
 
-.btn-recusar{
+.btn-recusar {
     background-color: #E41D1D;
-    color: #691021; 
+    color: #691021;
 }
-.botoes{
+
+.botoes {
     display: flex;
     margin-left: 40%;
     flex-wrap: wrap;
+    /* margin: 0; */
 }
-.icon-visible{
+
+.icon-visible {
     margin-top: 6px;
     padding: 5px;
     background-color: #E3B652;
@@ -105,23 +102,10 @@ section{
     border: none;
     border-radius: 5px;
     cursor: pointer;
+
 }
 
-/* .table .btn-aceitar, table .btn-recusar {
-    padding: 8px 16px; 
-    font-size: 14px;
-    width: 100px;
-    height: 40px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-left: 20px; 
-} */
-
-/* .barra-lateral{
-    background-color: #E3B652;
-} */
-.tela-visualiza-solicitacao{
+.tela-visualiza-solicitacao {
     display: none;
     position: fixed;
     z-index: 1;
@@ -132,8 +116,7 @@ section{
     background-color: rgba(0, 0, 0, 0.5);
 }
 
-.card-visualiza-solicitacao{
-    /* display: flex; */
+.card-visualiza-solicitacao {
     justify-content: center;
     flex-direction: column;
     align-items: center;
@@ -144,13 +127,14 @@ section{
     border-radius: 10px;
     gap: 10px;
 }
-.logo-descricao{
+
+.logo-descricao {
     display: flex;
     gap: 10px;
 }
 
 /* tela confirma solicitação */
-#tela-confirma-solicitacao{
+#tela-confirma-solicitacao {
     display: none;
     position: fixed;
     z-index: 1;
@@ -161,7 +145,7 @@ section{
     background-color: rgba(0, 0, 0, 0.5);
 }
 
-.card-confirma-solicitacao{
+.card-confirma-solicitacao {
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -174,22 +158,22 @@ section{
     gap: 10px;
 }
 
-.card-confirma-solicitacao img{
-    width: 100px;  
+.card-confirma-solicitacao img {
+    width: 100px;
     height: 70px;
 }
 
-.card-confirma-solicitacao h1{
+.card-confirma-solicitacao h1 {
     color: #5282E3;
     text-align: center;
 }
 
-.card-confirma-solicitacao p{
+.card-confirma-solicitacao p {
     text-align: center;
 }
 
 /* tela recusa solicitação */
-#tela-recusa-solicitacao{
+#tela-recusa-solicitacao {
     display: none;
     position: fixed;
     z-index: 999;
@@ -200,7 +184,7 @@ section{
     background-color: rgba(0, 0, 0, 0.5);
 }
 
-.card-recusa-solicitacao{
+.card-recusa-solicitacao {
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -213,23 +197,19 @@ section{
     gap: 10px;
 }
 
-.card-recusa-solicitacao img{
-    width: 90px;  
+.card-recusa-solicitacao img {
+    width: 90px;
     height: 70px;
 }
 
-.card-recusa-solicitacao h1{
+.card-recusa-solicitacao h1 {
     color: #5282E3;
     text-align: center;
 }
 
-.card-recusa-solicitacao p{
+.card-recusa-solicitacao p {
     text-align: center;
 }
-
-
-
-
 
 @media (max-width: 1023px) {
     .principal {
@@ -237,9 +217,12 @@ section{
         margin: 50px auto;
     }
 
+
+
     .titulo-solicitacao {
         font-size: 28px;
     }
+
     .logo-empresa img {
         width: 50px;
     }
@@ -266,9 +249,8 @@ section{
 /* celular */
 @media (max-width: 767px) {
     .principal {
-        width: 90%;
-        margin: 30px auto;
-        padding: 10px;
+        width: 100%;
+        padding: none;
     }
 
     .titulo-solicitacao {
@@ -283,21 +265,23 @@ section{
     .table {
         width: 100%;
         padding: 0;
+        display: flex;
+        flex-wrap: wrap;
     }
 
     .table td {
         padding: 8px;
     }
 
-    .info-empresa{
+    .info-empresa {
         font-size: 12px;
     }
 
     .table .logo-empresa,
     .table .info-empresa {
         display: flex;
-        flex-direction: column; 
-           
+        flex-direction: column;
+
     }
 
     .table .btn-aprovar,
@@ -307,62 +291,62 @@ section{
     }
 
 
-  .botoes{
-    display: flex;
-    margin-left: 40%;
-    flex-wrap: wrap;
-}
+    .botoes {
+        display: flex;
+        /* margin-left: 40%; */
+        flex-wrap: wrap;
+        justify-content: center;
+        margin: 0;
 
-    .card-recusa-solicitacao img{
-        width: 60px;  
+    }
+
+    .card-recusa-solicitacao img {
+        width: 60px;
         height: 50px;
     }
 
-    .card-recusa-solicitacao h1{
+    .card-recusa-solicitacao h1 {
         font-size: 14px;
     }
-    
-    .card-recusa-solicitacao p{
+
+    .card-recusa-solicitacao p {
         font-size: 12px;
     }
 
-    .card-confirma-solicitacao img{
-        width: 60px;  
+    .card-confirma-solicitacao img {
+        width: 60px;
         height: 50px;
     }
-    
-    .card-confirma-solicitacao h1{
+
+    .card-confirma-solicitacao h1 {
         font-size: 14px;
     }
-    
-    .card-confirma-solicitacao p{
+
+    .card-confirma-solicitacao p {
         font-size: 12px;
     }
 
-    .logo-descricao{
+    .logo-descricao {
         display: flex;
         flex-direction: column;
-        
 
-        img{
-            width: 100px;  
+
+        img {
+            width: 100px;
             height: 100px;
             margin-bottom: 5px;
         }
 
-        h3{
+        h3 {
             font-size: 16px;
             margin-top: 5px;
         }
 
-        p{
+        p {
             font-size: 12px;
         }
     }
 
-     
-
-    
     .card-visualiza-solicitacao,
     .card-confirma-solicitacao,
     .card-recusa-solicitacao {
