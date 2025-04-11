@@ -76,6 +76,7 @@
     cursor: pointer;
     font-size: 13px;
 }
+
 .card-projeto .saiba-mais-projeto:hover {
     background-color: var(--cor-azul-hover);
 }
@@ -109,24 +110,24 @@
     transition: .3s;
 }
 
-.card-projeto .acoes-projeto #share {
+.card-projeto .acoes-projeto .btn-share {
     visibility: hidden;
     transform: translateX(5px);
     opacity: 0;
     transition: .3s;
 }
 
-.card-projeto:hover .acoes-projeto #share {
+.card-projeto:hover .acoes-projeto .btn-share {
     visibility: visible;
     transform: translateX(0);
     opacity: 1;
     transition: .3s;
 }
 
-.card-projeto .acoes-projeto button#share:hover {
+.card-projeto .acoes-projeto button.btn-share:hover {
     color: #45BEE6;
 }
 
-.card-projeto .acoes-projeto button#like:hover {
+.card-projeto .acoes-projeto button.btn-like:hover {
     color: hotpink;
 }

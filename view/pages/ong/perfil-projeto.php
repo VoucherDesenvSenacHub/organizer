@@ -1,4 +1,11 @@
 <?php
+    require_once __DIR__ . "\..\..\..\model\ProjetoModel.php";
+    $projetoModel = new Projeto();
+    if ($_SERVER['REQUEST_METHOD']  == 'GET') {
+        $id = $_GET['id'];
+        $projeto = $projetoModel->buscarId($id);
+    }
+
 $tituloPagina = 'Perfil do Projeto | Organizer';
 $cssPagina = ['ong/perfil-projeto.css'];
 require_once '../../components/header-ong.php';
@@ -10,7 +17,7 @@ require '../../components/inativar-projeto.php';
     <div class="container" id="container-principal">
         <section id="apresentacao" class="container-section">
             <div id="dados-projeto">
-                <h1>NOME PROJETO</h1>
+                <h1><?= $projeto->nome?></h1>
                 <div id="valor-arrecadado">
                     <h3>Arrecadado: <span>R$ 30.000</span></h3>
                     <div class="barra-doacao">
@@ -20,7 +27,7 @@ require '../../components/inativar-projeto.php';
                     </div>
                 </div>
                 <div id="progresso">
-                    <p>Meta: <span>R$ 100.000</span></p>
+                    <p>Meta: <span>R$ <?= $projeto->meta?></span></p>
                     <p>Status: Em progresso <span>(30% alcançado)</span></p>
                     <p><span>24</span> Doações Recebidas</p>
                 </div>
@@ -83,7 +90,7 @@ require '../../components/inativar-projeto.php';
                 <div id="control-painel">
                     <div class="container-painel active">
                         <span id="data-criacao">Projeto criado em: 04/08/2023</span>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati sint, quibusdam repellat saepe eos neque rerum placeat, reprehenderit amet vitae consectetur aspernatur autem optio quis eligendi unde cumque voluptatibus omnis. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, dolorum amet sapiente error dolor voluptatem delectus ratione laudantium exercitationem labore sit laborum eaque at iste cupiditate explicabo ab. Rerum, temporibus!</p>
+                        <p><?= $projeto->descricao?></p>
                     </div>
                     <div class="container-painel area-doador-voluntario">
                         <h3>DOADORES DESTE PROJETO</h3>

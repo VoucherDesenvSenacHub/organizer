@@ -1,9 +1,15 @@
 <?php
-$tituloPagina = 'Projetos'; // Definir o título da página
-$cssPagina = ['ong/projetos.css']; //Colocar o arquivo .css (exemplo: 'ONG/cadastro.css')
+require_once __DIR__ . "\..\..\..\model\ProjetoModel.php";
+require '../../components/cards/card-projeto.php';
+
+$projetoModel = new Projeto();
+$lista = $projetoModel->listar();
+
+$tituloPagina = 'Projetos';
+$cssPagina = ['ong/projetos.css'];
 require_once '../../components/header-ong.php';
 ?>
-<!-- COMEÇAR SEU CÓDIGO AQUI -->
+
 <div id="principal">
     <div class="header-principal">
         <div>
@@ -20,93 +26,9 @@ require_once '../../components/header-ong.php';
 
     <!-- cards -->
     <div class="div-card-geral">
-        <div class="card-projeto">
-            <div class="img-projeto">250x130</div>
-            <div class="info-projeto">
-                <h5>Nome Projeto</h5>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, laborum et? Repellendus perferendis provident
-                    ratione deserunt alias cumque et quasi odio amet temporibus, quam obcaecati dolores. Enim quibusdam a atque.
-                </p>
-            </div>
-            <a class="saiba-mais-projeto" href="perfil-projeto.php">Visualizar</a>
-        </div>
-
-        <div class="card-projeto">
-            <div class="img-projeto">250x130</div>
-            <div class="info-projeto">
-                <h5>Nome Projeto</h5>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, laborum et? Repellendus perferendis provident
-                    ratione deserunt alias cumque et quasi odio amet temporibus, quam obcaecati dolores. Enim quibusdam a atque.
-                </p>
-            </div>
-            <a class="saiba-mais-projeto" href="perfil-projeto.php">Visualizar</a>
-        </div>
-
-        <div class="card-projeto">
-            <div class="img-projeto">250x130</div>
-            <div class="info-projeto">
-                <h5>Nome Projeto</h5>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, laborum et? Repellendus perferendis provident
-                    ratione deserunt alias cumque et quasi odio amet temporibus, quam obcaecati dolores. Enim quibusdam a atque.
-                </p>
-            </div>
-            <a class="saiba-mais-projeto" href="perfil-projeto.php">Visualizar</a>
-        </div>
-
-        <div class="card-projeto">
-            <div class="img-projeto">250x130</div>
-            <div class="info-projeto">
-                <h5>Nome Projeto</h5>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, laborum et? Repellendus perferendis provident
-                    ratione deserunt alias cumque et quasi odio amet temporibus, quam obcaecati dolores. Enim quibusdam a atque.
-                </p>
-            </div>
-            <a class="saiba-mais-projeto" href="perfil-projeto.php">Visualizar</a>
-        </div>
-
-        <div class="card-projeto">
-            <div class="img-projeto">250x130</div>
-            <div class="info-projeto">
-                <h5>Nome Projeto</h5>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, laborum et? Repellendus perferendis provident
-                    ratione deserunt alias cumque et quasi odio amet temporibus, quam obcaecati dolores. Enim quibusdam a atque.
-                </p>
-            </div>
-            <a class="saiba-mais-projeto" href="perfil-projeto.php">Visualizar</a>
-        </div>
-
-        <div class="card-projeto">
-            <div class="img-projeto">250x130</div>
-            <div class="info-projeto">
-                <h5>Nome Projeto</h5>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, laborum et? Repellendus perferendis provident
-                    ratione deserunt alias cumque et quasi odio amet temporibus, quam obcaecati dolores. Enim quibusdam a atque.
-                </p>
-            </div>
-            <a class="saiba-mais-projeto" href="perfil-projeto.php">Visualizar</a>
-        </div>
-
-        <div class="card-projeto">
-            <div class="img-projeto">250x130</div>
-            <div class="info-projeto">
-                <h5>Nome Projeto</h5>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, laborum et? Repellendus perferendis provident
-                    ratione deserunt alias cumque et quasi odio amet temporibus, quam obcaecati dolores. Enim quibusdam a atque.
-                </p>
-            </div>
-            <a class="saiba-mais-projeto" href="perfil-projeto.php">Visualizar</a>
-        </div>
-
-        <div class="card-projeto">
-            <div class="img-projeto">250x130</div>
-            <div class="info-projeto">
-                <h5>Nome Projeto</h5>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, laborum et? Repellendus perferendis provident
-                    ratione deserunt alias cumque et quasi odio amet temporibus, quam obcaecati dolores. Enim quibusdam a atque.
-                </p>
-            </div>
-            <a class="saiba-mais-projeto" href="perfil-projeto.php">Visualizar</a>
-        </div>
+        <?php foreach ($lista as $i) { ?>
+            <?= mostrarCardProjeto($i->codproj, $i->nome, $i->descricao) ?>
+        <?php } ?>
     </div>
 </div>
 
