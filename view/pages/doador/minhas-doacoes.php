@@ -48,39 +48,25 @@ require_once '../../components/header-usuario.php';
             <h1>RESUMO GERAL</h1>
             <p>Total doado: <span> R$350</span></p>
 
-            <div class="chart-container">
-                <div class="pie-wrapper">
-                    <div class="slice a">
-                        <div class="tooltip">Projeto A: R$ 105</div>
-                    </div>
-                    <div class="slice b">
-                        <div class="tooltip">Projeto B: R$ 52,50</div>
-                    </div>
-                    <div class="slice c">
-                        <div class="tooltip">Projeto C: R$ 192,50</div>
-                    </div>
-                </div>
+            <div style="display: flex; align-items: center; gap: 40px; margin-top: 30px;">
+    <canvas id="graficoDoacoes" width="300" height="300"></canvas>
 
-                <div class="legend">
-                    <div class="legend-item">
-                        <div class="color-box color-a"></div> Projeto A
-                    </div>
-                    <div class="legend-item">
-                        <div class="color-box color-b"></div> Projeto B
-                    </div>
-                    <div class="legend-item">
-                        <div class="color-box color-c"></div> Projeto C
-                    </div>
-                </div>
-            </div>
+    <div class="legenda-custom">
+      <div class="item">
+        <span class="cor" style="background-color: #FF6384;"></span> Projeto A
+      </div>
+      <div class="item">
+        <span class="cor" style="background-color: #007bff;"></span> Projeto B
+      </div>
+      <div class="item">
+        <span class="cor" style="background-color: #fbc02d;"></span> Projeto C
+      </div>
+    </div>
         </div>
-
-    </div>
-    <div id="download">
-        <img src="../../assets/images/icon.png" alt="">
-        <p>Download Iniciado</p>
-    </div>
-    </div>
+        <div id="download">
+            <img src="../../assets/images/icon.png" alt="">
+            <p>Download Iniciado</p>
+        </div>
 </main>
 <?php
 $jsPagina = ['minhas-doacoes.js'];

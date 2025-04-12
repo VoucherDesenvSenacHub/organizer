@@ -358,107 +358,42 @@ p span {
     }
 }
 
-body {
-    font-family: Arial, sans-serif;
-    padding: 40px;
-  }
+    .grafico-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 40px;
+        margin-top: 300px;
+        flex-wrap: wrap;
+    }
 
-  h1 {
-    color: #007bff;
-    margin-bottom: 0;
-  }
+    #graficoDoacoes {
+        display: flex;
+        align-items:center;
+        width: 400px !important;
+        height: 400px !important;
+    }
 
-  h2 {
-    font-weight: normal;
-    margin-top: 5px;
-  }
+    .legenda-custom {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        font-size: 16px;
+    }
 
-  .chart-container {
-    display: flex;
-    align-items: center;
-    gap: 30px;
-    margin-top: 40px;
-  }
+    .legenda-custom .item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
 
-  .pie-wrapper {
-    position: relative;
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    overflow: hidden;
-  }
+    .legenda-custom .cor {
+        width: 16px;
+        height: 16px;
+        border-radius: 4px;
+    }
 
-  .slice {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    clip-path: circle(50%);
-  }
-
-  .slice:hover .tooltip {
-    opacity: 1;
-    transform: translate(-50%, -110%);
-  }
-
-  .tooltip {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    background: rgba(0, 0, 0, 0.75);
-    color: #fff;
-    padding: 6px 10px;
-    font-size: 14px;
-    border-radius: 6px;
-    white-space: nowrap;
-    pointer-events: none;
-    opacity: 0;
-    transform: translate(-50%, -80%);
-    transition: all 0.2s ease;
-  }
-
-  .slice.a {
-    background: conic-gradient(
-      #FF6384 0% 30%, transparent 30% 100%
-    );
-  }
-
-  .slice.b {
-    background: conic-gradient(
-      transparent 0% 30%,
-      #007bff 30% 45%, transparent 45% 100%
-    );
-  }
-
-  .slice.c {
-    background: conic-gradient(
-      transparent 0% 45%,
-      #fbc02d 45% 100%
-    );
-  }
-
-  .legend {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .legend-item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 16px;
-  }
-
-  .color-box {
-    width: 16px;
-    height: 16px;
-    border-radius: 4px;
-  }
-
-  .color-a { background-color: #FF6384; }
-  .color-b { background-color: #007bff; }
-  .color-c { background-color: #fbc02d; }
+  
 
 
 

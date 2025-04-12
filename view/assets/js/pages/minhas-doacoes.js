@@ -7,11 +7,11 @@ function menu_mobile() {
 }
 
 function clicar() {
-    let animacao = document.getElementById ("download")
+    let animacao = document.getElementById("download")
     animacao.style.display = 'flex'
-    setTimeout(function() {
+    setTimeout(function () {
         animacao.style.display = 'none'
-      }, 2500);
+    }, 2500);
 }
 
 window.addEventListener('resize', () => {
@@ -21,4 +21,26 @@ window.addEventListener('resize', () => {
         nav_bar.classList.remove('active');
         hamburguer.classList.remove('active');
     }
+});
+window.addEventListener('load', function () {
+    const ctx = document.getElementById('graficoDoacoes').getContext('2d');
+    new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: ['Projeto A', 'Projeto B', 'Projeto C'],
+            datasets: [{
+                data: [100, 100, 150], // valores
+                backgroundColor: ['#FF6384', '#007bff', '#fbc02d'],
+                borderWidth: 4
+            }]
+        },
+        options: {
+            responsive: false, // fixar o tamanho
+            plugins: {
+                legend: {
+                    display: false // usamos legenda custom
+                }
+            }
+        }
+    });
 });
