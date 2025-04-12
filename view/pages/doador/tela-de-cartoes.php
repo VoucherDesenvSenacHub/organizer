@@ -16,28 +16,29 @@ require_once '../../components/header-usuario.php';
                 <div class="cartoes-container">
                     <!-- Cartão 1 -->
                     <div onclick="abrir_popup('popup-excluir-cartao')" class="cartao" data-cartao-id="1">
-                        <h2>Cartão</h2>
+                        <h2><span><img src="../../assets/images/cartao-amarelo.png" alt=""></span>Cartão</h2>
                         <div class="numero-cartao">***** ***** ***** 7501</div>
                         <div class="validade">Data de validade 02/31</div>
                     </div>
 
                     <!-- Cartão 2 -->
                     <div onclick="abrir_popup('popup-excluir-cartao')" class="cartao" data-cartao-id="2">
-                        <h2>Cartão</h2>
+                    <h2><span><img src="../../assets/images/cartao-roxo.png" alt=""></span>Cartão</h2>
                         <div class="numero-cartao">***** ***** ***** 9503</div>
                         <div class="validade">Data de validade 05/25</div>
                     </div>
 
                     <!-- Cartão 3 -->
                     <div onclick="abrir_popup('popup-excluir-cartao')" class="cartao" data-cartao-id="3">
-                        <h2>Cartão</h2>
+                        <h2><span><img src="../../assets/images/cartao-vermelho.png" alt=""></span>Cartão</h2>
                         <div class="numero-cartao">***** ***** ***** 8523</div>
                         <div class="validade">Data de validade 01/27</div>
                     </div>
 
                     <!-- Botão Adicionar (mantenha como está) -->
                     <div onclick="abrir_popup('popup-adicionar-cartao')" class="adicionar-cartao">
-                        <button><span>Adicionar cartão</span></button>
+                        <img class="img-add" src="../../assets/images/add-cartao.png" alt="">
+                        <button><span>Adicionar cartão</span></button>                        
                     </div>
                 </div>
 
