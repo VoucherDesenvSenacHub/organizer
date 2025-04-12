@@ -358,48 +358,50 @@ p span {
     }
 }
 
-    .grafico-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 40px;
-        margin-top: 300px;
-        flex-wrap: wrap;
-    }
 
-    #graficoDoacoes {
-        display: flex;
-        align-items:center;
-        width: 400px !important;
-        height: 400px !important;
-    }
 
-    .legenda-custom {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        font-size: 16px;
-    }
+.grafico-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
 
-    .legenda-custom .item {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-    }
 
-    .legenda-custom .cor {
-        width: 16px;
-        height: 16px;
-        border-radius: 4px;
-    }
 
-  
+#graficoDoacoes {
+    width: 400px !important;
+    height: 400px !important;
+}
+
+.legenda-custom {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 16px;
+}
+
+.legenda-custom .item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.legenda-custom .cor {
+    width: 16px;
+    height: 16px;
 
 
 
 
 
-/* <!-- div pai de todos -->
+
+
+
+
+
+    /* <!-- div pai de todos -->
 <div style="width: 300px; height: 170px; display:flex; justify-content: space-evenly; background-color: red; flex-direction: column;">
     <div style="display: flex;">
         <!-- div do quadrado -->
