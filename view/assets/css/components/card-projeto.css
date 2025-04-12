@@ -136,3 +136,14 @@
 .card-projeto .acoes-projeto button.btn-like:hover {
     color: hotpink;
 }
+
+
+/* TIPOS DE CARD */
+.card-projeto.tp-ong {
+    height: auto;
+}
+
+.card-projeto.tp-ong .acoes-projeto,
+.card-projeto.tp-ong .barra-doacao {
+    display: none;
+}

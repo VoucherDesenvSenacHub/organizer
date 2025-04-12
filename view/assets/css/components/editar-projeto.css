@@ -4,15 +4,16 @@
 }
 
 #editar-projeto-popup .container-popup {
-    background-color: aliceblue;
+    padding: 20px;
+    background-color: white;
     color: var(--cor-principal);
     gap: 20px;
 }
 
 #editar-projeto-popup .container-popup .box-edit {
-    background-color: white;
+    /* background-color: white; */
     padding: 10px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
+    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3); */
     border-radius: 3px;
     display: flex;
     flex-direction: column;

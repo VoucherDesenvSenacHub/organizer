@@ -1,4 +1,9 @@
 <?php
+require_once __DIR__ . "\..\..\..\model\ProjetoModel.php";
+require '../../components/cards/card-projeto.php';
+$projetoModel = new Projeto();
+$lista = $projetoModel->listar();
+
 $tituloPagina = 'Encontre Projetos';
 $cssPagina = ['shared/catalogo.css'];
 require_once '../../components/header.php';
@@ -106,14 +111,10 @@ require_once '../../components/header.php';
             </div>
         </section>
         <section id="box-ongs">
-            <?php require '../../components/cards/card-projeto.php'; ?>
-            <?php require '../../components/cards/card-projeto.php'; ?>
-            <?php require '../../components/cards/card-projeto.php'; ?>
-            <?php require '../../components/cards/card-projeto.php'; ?>
-            <?php require '../../components/cards/card-projeto.php'; ?>
-            <?php require '../../components/cards/card-projeto.php'; ?>
-            <?php require '../../components/cards/card-projeto.php'; ?>
-            <?php require '../../components/cards/card-projeto.php'; ?>
+            <!-- LISTAR CARDS PROJETOS -->
+            <?php foreach ($lista as $i) { ?>
+                <?= mostrarCardProjeto($i->codproj, $i->nome, $i->resumo, 'doador') ?>
+            <?php } ?>
         </section>
         <nav id="navegacao">
             <a class="active" href="#">1</a>

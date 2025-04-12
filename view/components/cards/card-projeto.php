@@ -1,6 +1,16 @@
 <?php 
-function mostrarCardProjeto($id, $nome, $descricao) {
-    return "<div class='card-projeto'>
+function mostrarCardProjeto($id, $nome, $descricao, $tipo) {
+    switch ($tipo) {
+        case "ong":
+            $class = "tp-ong";
+            break;
+        default:
+            $class = "tp-doador";
+            break;
+    }
+
+
+    return "<div class='card-projeto $class'>
         <div class='acoes-projeto'>
             <button class='btn-share fa-solid fa-share-nodes' onclick='abrir_popup(\"compartilhar-popup\")'></button>
             <button class='btn-like fa-solid fa-heart' onclick='abrir_popup(\"login-obrigatorio-popup\")'></button>

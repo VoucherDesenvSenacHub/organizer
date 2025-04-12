@@ -27,7 +27,7 @@ require_once '../../components/header-ong.php';
     <!-- cards -->
     <div class="div-card-geral">
         <?php foreach ($lista as $i) { ?>
-            <?= mostrarCardProjeto($i->codproj, $i->nome, $i->resumo) ?>
+            <?= mostrarCardProjeto($i->codproj, $i->nome, $i->resumo, 'ong') ?>
         <?php } ?>
     </div>
 </div>

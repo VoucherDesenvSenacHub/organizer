@@ -7,7 +7,7 @@
 
     $host = 'turntable.proxy.rlwy.net';
     $port = 14796;
-    $dbname = 'railway';
+    $dbname = 'organizer';
     $user = 'root';
     $password = 'ABfifqyKxrpFnVSdyjIUOAQKKHjgZkct'; 
     

@@ -7,31 +7,34 @@ create table cadprojeto (
 	nome varchar(50) not null,
 	resumo varchar(190) not null,
 	sobre text not null,
-	meta decimal(10,2) not null,
+	meta decimal(10, 2) not null,
+	data timestamp default current_timestamp,
 	primary key (codproj)
 );
 
-INSERT INTO cadprojeto (nome, resumo, sobre, meta) VALUES
-('Projeto Esperança', 
-'Arrecadação de alimentos para famílias em situação de vulnerabilidade social.', 
-'O Projeto Esperança é uma iniciativa solidária que busca atender famílias carentes com a distribuição mensal de cestas básicas. Através de parcerias com mercados e voluntários, o projeto consegue arrecadar, montar e entregar os kits diretamente às residências dos beneficiados, garantindo que a ajuda chegue a quem realmente precisa.', 
-5000.00),
-('Educar para o Futuro', 
-'Reforço escolar gratuito para crianças de 7 a 14 anos em comunidades carentes.', 
-'O projeto oferece aulas de reforço escolar em matemática, português e ciências, além de atividades lúdicas e culturais. Com professores voluntários, visa diminuir a evasão escolar e melhorar o desempenho dos alunos. O foco é transformar o futuro dessas crianças por meio da educação de qualidade e da atenção individualizada.', 
-8000.00),
-('Saúde em Movimento', 
-'Atendimento médico itinerante em regiões rurais e de difícil acesso.', 
-'O projeto leva equipes médicas voluntárias até comunidades rurais isoladas, oferecendo serviços de atendimento clínico, vacinação, exames preventivos e orientações de saúde. A ação acontece mensalmente e busca garantir o acesso básico à saúde para populações que enfrentam barreiras geográficas e sociais.', 
-12000.00),
-('Conectando Vidas', 
-'Doação de computadores e tablets para escolas públicas sem estrutura tecnológica.', 
-'Conectando Vidas combate a exclusão digital promovendo a inclusão tecnológica em escolas públicas. Através da arrecadação de equipamentos novos ou usados e do apoio de empresas parceiras, o projeto monta laboratórios de informática, capacita professores e estimula o uso pedagógico da tecnologia em sala de aula.', 
-15000.00),
-('Verde Urbano', 
-'Reflorestamento de áreas urbanas degradadas com participação comunitária.', 
-'O Verde Urbano incentiva o plantio de árvores e a revitalização de espaços públicos abandonados em centros urbanos. Com a participação de moradores, escolas e ONGs, o projeto transforma terrenos ociosos em áreas verdes, promovendo o bem-estar, a biodiversidade e o engajamento social em prol do meio ambiente.', 
-7000.00);
+INSERT INTO cadprojeto (nome, resumo, sobre, meta)
+VALUES
+(   'Projeto Água Limpa',
+    'Iniciativa para instalar sistemas de purificação em comunidades carentes, promovendo acesso contínuo à água potável e redução de doenças.',
+    'O Projeto Água Limpa visa impactar positivamente centenas de famílias em regiões remotas, com instalação de filtros, campanhas de conscientização e capacitação local para manutenção. A proposta inclui parcerias com ONGs, voluntários da saúde e engenheiros ambientais para garantir a sustentabilidade do projeto ao longo dos anos.',
+    150000),
+(   'Educa Digital',
+    'Plataforma educacional gratuita que oferece acesso a cursos online, videoaulas e materiais didáticos para estudantes de baixa renda em áreas remotas.',
+    'Educa Digital surge como uma solução inovadora para diminuir a desigualdade educacional no Brasil. Com suporte offline, parcerias com universidades e foco em conteúdos alinhados à BNCC, o projeto oferece formação contínua para estudantes e professores. A meta é alcançar 20 mil estudantes em 12 meses com suporte integral e avaliações periódicas.',
+    180000),
+(   'Refloresta Já',
+    'Campanha de reflorestamento em áreas urbanas e rurais, envolvendo escolas, empresas e voluntários em ações sustentáveis de longo prazo.',
+    'O Refloresta Já propõe plantar mais de 50 mil árvores nativas em áreas desmatadas, além de realizar ações educativas em escolas públicas sobre a importância da biodiversidade. O projeto contempla também capacitação de agentes ambientais e monitoramento via drones para garantir o sucesso das mudas plantadas nos dois primeiros anos.',
+    170500),
+(   'Tech Jovem',
+    'Capacitação tecnológica para jovens de periferia com cursos de programação, robótica, empreendedorismo digital e desenvolvimento de soft skills.',
+    'Tech Jovem oferece cursos gratuitos e presenciais com instrutores qualificados, laboratórios móveis e acesso a internet de qualidade. Além da parte técnica, os participantes recebem mentoria de carreira, auxílio transporte e inserção em hackathons e eventos tecnológicos, incentivando o protagonismo e geração de renda.',
+    162300),
+(   'Saúde na Estrada',
+    'Unidades móveis de atendimento médico em regiões de difícil acesso, com exames básicos, vacinação, atendimento psicológico e acompanhamento nutricional.',
+    'Com foco em comunidades rurais isoladas, o projeto Saúde na Estrada levará atendimento completo por meio de vans adaptadas com equipamentos médicos e equipe multidisciplinar. A ação será contínua por 18 meses e pretende beneficiar mais de 10 mil pessoas com atendimento humanizado e encaminhamento para tratamento complementar.',
+    135700);
+
 
 
 select * from cadprojeto;

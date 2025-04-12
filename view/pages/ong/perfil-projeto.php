@@ -27,7 +27,7 @@ require '../../components/inativar-projeto.php';
                     </div>
                 </div>
                 <div id="progresso">
-                    <p>Meta: <span>R$ <?= $projeto->meta?></span></p>
+                    <p>Meta: <span>R$ <?= number_format($projeto->meta, 0, ',', '.'); ?></span></p>
                     <p>Status: Em progresso <span>(30% alcançado)</span></p>
                     <p><span>24</span> Doações Recebidas</p>
                 </div>
@@ -89,7 +89,7 @@ require '../../components/inativar-projeto.php';
             <div id="principal-painel">
                 <div id="control-painel">
                     <div class="container-painel active">
-                        <span id="data-criacao">Projeto criado em: 04/08/2023</span>
+                        <span id="data-criacao">Projeto criado em: <?= date('d/m/Y', strtotime($projeto->data)); ?></span>
                         <p><?= $projeto->sobre?></p>
                     </div>
                     <div class="container-painel area-doador-voluntario">
