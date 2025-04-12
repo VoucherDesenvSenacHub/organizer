@@ -17,10 +17,10 @@ body {
 }
 
 #principal {
-    
     justify-content: space-around;
     z-index: 1;
     width: 80%;
+    height: 100%;
     margin: auto;
     padding: 20px;
     background-color: #FFFFFF;
@@ -80,15 +80,64 @@ body {
 
 
 /* css dos cards */
-
 .cards-container {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px; 
+    gap: 20px;
     justify-content: space-between;
 }
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+}
+.div-card-geral {
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 20px;
+    gap: 20px 15px;
+}
 
-.card-projeto {
+.card {
+    width: 245px;
+    height: 265px;
+    display: flex;
+    flex-direction: column;
+    background-color: red;
+    align-items: center;
+    gap: 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
+    padding: 5px;
+
+    p {
+        font-size: 18px;
+    }
+}
+
+.img-card {
+    width: 100%;
+    height: auto;
+    align-items: center;
+}
+
+.btn-card {
+    background-color: #E3B652;
+    color: black;
+    width: 170px;
+    height: 45px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+}
+
+.btn-card:hover {
+    cursor: pointer;
+    transition: 0.7s;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+}
+/* fim card */
+
+/* .card-projeto {
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
     display: flex;
     align-items: center;
@@ -102,38 +151,44 @@ body {
     border-bottom: var(--cor-amarelo) 5px solid;
     border-left: none;
 }
-
-.card-projeto .foto img{
-    width: 90px;
-    height: 70px;
-    background-color: var(--cor-principal);
-    color: aliceblue;
+**/ */
+.card-projeto {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    gap: 10px;
 }
-
 .card-projeto .dados {
     flex-grow: 1; 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0 10px;
 }
 
 .card-projeto .dados h1 {
+    display: flex;
     font-weight: 700;
-    font-size: 16px;
+    font-size: 20px;
+    gap: 10px;
     margin-bottom: 5px;
 }
 
 .card-projeto .dados .quant-voluntarios {
-    font-size: 10px;
+    display: flex;
+    gap: 10px;
+    font-size: 13px;;
     color: #188241;
     font-size: 500;
 }
 
 .card-projeto .dados .quant-solicitacao {
-    font-size: 10px;
+    display: flex;
+    gap : 10px;
+    font-size: 13px;
     color: #FF5A79;
     font-size: 500;
-} 
+    
+
+}  
 
 /* tela botao visualizar voluntarios ativos e solicitações */
 .tela-voluntario-ativo-solicitacao{
