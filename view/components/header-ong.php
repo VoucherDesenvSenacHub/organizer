@@ -59,6 +59,7 @@
     </header>
     <div id="sair-ong">
         <?php 
-            require_once 'sair-da-conta-popup.php'; 
+            require_once 'sair-da-conta-popup.php';
+            require_once 'compartilhar.php';
         ?>
     </div>

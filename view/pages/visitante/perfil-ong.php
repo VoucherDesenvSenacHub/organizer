@@ -1,7 +1,16 @@
 <?php 
+    //CONFIGURAÇÕES DA PÁGINA
     $tituloPagina = 'Perfil da ONG | Organizer';
     $cssPagina = ['shared/perfil-ong.css'];
     require_once '../../components/header.php';
+
+    //IMPORTS
+    require_once __DIR__ . '/../../../model/ProjetoModel.php';
+    require_once __DIR__ . '/../../components/cards/card-projeto.php';
+
+    //CARREGA CARDS DE PROJETOS
+    $projetoModel = new Projeto();
+    $lista = $projetoModel->listar();
 ?>
 
 <main>
@@ -89,10 +98,9 @@
                     <h3>Projetos</h3>
                 </div>
                 <div class="mini-cards">
-                    <?php require '../../components/cards/card-projeto.php'; ?>
-                    <?php require '../../components/cards/card-projeto.php'; ?>
-                    <?php require '../../components/cards/card-projeto.php'; ?>
-                    <?php require '../../components/cards/card-projeto.php'; ?>
+                    <?php foreach($lista as $i) {
+                        echo mostrarCardProjeto($i->codproj, $i->nome, $i->resumo, '');
+                    } ?>
                 </div>
             </div>
         </section>

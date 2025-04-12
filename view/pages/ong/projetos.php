@@ -32,20 +32,20 @@ $lista = $projetoModel->listar();
         <div>
             <h1>PROJETOS DA SUA ONG</h1>
         </div>
-        <div class="div-input-lupa">
-            <input class="input-buscar-projetos" type="text" id="buscar" placeholder="Buscar"><br>
-            <img class="lupa-input" src="../../assets/images/lupa-cinza.png" alt="">
-        </div>
+        <form id="form-busca" action="projetos.php" method="GET">
+            <input type="text" name="pesquisa" placeholder="Busque um projeto" required>
+            <button class="btn"><i class="fa-solid fa-search"></i></button>
+        </form>
         <div>
-            <button class="botao-novo-projeto" onclick="abrir_popup('editar-projeto-popup')">NOVO PROJETO</button>
+            <button class="botao-novo-projeto" onclick="abrir_popup('editar-projeto-popup')">NOVO PROJETO +</button>
         </div>
     </div>
 
     <!-- CARDS DE PROJETOS -->
     <div class="div-card-geral">
-        <?php foreach ($lista as $i): ?>
-            <?= mostrarCardProjeto($i->codproj, $i->nome, $i->resumo, 'ong') ?>
-        <?php endforeach; ?>
+        <?php foreach ($lista as $i) {
+            echo mostrarCardProjeto($i->codproj, $i->nome, $i->resumo, 'ong');
+        } ?>
     </div>
 </div>
 

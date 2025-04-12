@@ -5,6 +5,11 @@
     color: var(--cor-principal);
 }
 
+#nav-bar ul li:nth-child(2) a {
+    color: var(--cor-amarelo);
+    font-weight: bold;
+}
+
 body {
     background-color: aliceblue;
 }
@@ -26,12 +31,11 @@ body {
     justify-content: space-between;
 }
 
-.header-principal {
-    h1 {
-        color: var(--cor-principal);
-        font-size: 1.5em;
-        font-weight: 600;
-    }
+.header-principal h1 {
+    color: var(--cor-principal);
+    font-size: 1.5em;
+    font-weight: 600;
+    text-align: center;
 }
 
 .input-buscar-projetos {
@@ -62,22 +66,31 @@ body {
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
 }
 
-.div-input-lupa {
-    position: relative;
-    width: 250px; /* Corrigido erro de vírgula */
+#form-busca {
+    display: flex;
+    align-items: center;
+    max-width: 350px;
+    width: 100%;
 }
 
-.lupa-input {
-    position: absolute;
-    top: 50%;
-    right: 10px;
-    transform: translateY(-50%);
-    width: 20px;
-    height: 20px;
+#form-busca input {
+    background-color: white;
+    border: none;
+    outline: none;
+    border-radius: 24px;
+    padding: 10px 65px 10px 15px;
+    transition: .3s;
+    width: 100%;
+    border: solid 1px var(--cor-principal);
 }
 
-.lupa-input:hover {
-    cursor: pointer;
+#form-busca .btn {
+    font-size: 20px;
+    padding: 0;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    margin-left: -42px;
 }
 
 .div-card-geral {
@@ -98,10 +111,10 @@ body {
     border-radius: 5px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
     padding: 5px;
+}
 
-    p {
-        font-size: 18px;
-    }
+.card p {
+    font-size: 18px;
 }
 
 .img-card {
@@ -126,219 +139,8 @@ body {
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
 }
 
-/* tela confirmação de projeto criado */
-
-.tela-confirma-criacao {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-}
-
-.card-confirma-criacao {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    background-color: white;
-    padding: 20px;
-    margin: 15% auto;
-    width: 20%;
-    border-radius: 10px;
-    gap: 10px;
-}
-
-.div-projeto-criado {
-    display: flex;
-    position: relative;
-    width: 250px; /* Corrigido vírgula */
-}
-
-.titulo-projeto-criado {
-    font-size: 25px;
-    color: #188241;
-}
-
-.img-check {
-    width: 30px;
-    height: 30px;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    right: -30px;
-}
-
 @media (max-width: 750px) {
     .header-principal {
         flex-direction: column;
     }
 }
- 
-/* 
-@media (max-width: 768px) {
-    .div-input-lupa img {
-        right: 15px;
-        width: 15px;
-        height: 15px;
-    }
-
-    .botao-novo-projeto {
-        font-size: 16px;
-        width: 160px;
-        height: 30px;
-    }
-
-    .tela-de-criacao-projeto-fundo {
-        position: absolute;
-        top: 20%;
-        right: 50px;
-        left: 50px;
-        width: 60%;
-        display: block;
-        height: 400px;
-        overflow-y: auto;
-        padding: 20px;
-        box-sizing: border-box
-    }
-
-    .tela-de-criacao-projeto-conteudo {
-        width: 100%;
-        gap: 20px;
-    }
-
-    .titulo-tela-criacao {
-        font-size: 22px;
-        text-align: center;
-    }
-
-    .div-form {
-        flex-direction: column;
-        gap: 10px;
-    }
-
-
-    .div-input-lapis {
-        width: 100%;
-    }
-
-    .div-input-lapis input {
-        width: 100%;
-        height: 30px;
-
-    }
-
-    .div-input-lapis img {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-    }
-
-    .img-perfil {
-        left: 5px;
-        width: 15px;
-        height: 15px;
-    }
-
-    .img-cifrao {
-        left: 5px;
-        width: 15px;
-        height: 15px;
-    }
-
-    .lapis-input {
-        right: 5px;
-        width: 15px;
-        height: 15px;
-    }
-
-
-    .conteudo-lado-direito {
-        width: 100%;
-        margin-top: 10px;
-    }
-
-
-    .div-botao-uploud {
-        display: flex;
-        position: relative;
-        width: 250, px;
-    }
-
-    .img-add {
-        width: 10px;
-        height: 10px;
-    }
-
-
-    .upload {
-        font-size: 16px;
-        width: 190px;
-        height: 30px;
-    }
-
-    .div-botao-add {
-        display: flex;
-        position: relative;
-        width: 250, px;
-    }
-
-    .img-add {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        right: 10px;
-        width: 30px;
-        height: 30px;
-    }
-
-    .botao-salvar {
-        font-size: 16px;
-        width: 190px;
-        height: 30px;
-    }
-
-    .tela-confirma-criacao {
-        display: none;
-        position: fixed;
-        z-index: 1;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.5);
-    }
-
-    .card-confirma-criacao {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        right: 50px;
-        left: 50px;
-        width: 60%;
-    }
-
-    .div-projeto-criado {
-        display: flex;
-        position: relative;
-        width: 250, px;
-    }
-
-    .titulo-projeto-criado {
-        font-size: 25px;
-        color: #188241;
-    }
-
-    .img-check {
-        width: 30px;
-        height: 30px;
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        right: -30px;
-
-    }
-} */

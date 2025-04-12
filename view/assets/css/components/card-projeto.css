@@ -143,7 +143,7 @@
     height: auto;
 }
 
-.card-projeto.tp-ong .acoes-projeto,
+.card-projeto.tp-ong .acoes-projeto .btn-like,
 .card-projeto.tp-ong .barra-doacao {
     display: none;
 }

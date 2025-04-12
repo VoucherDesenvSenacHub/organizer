@@ -1,6 +1,7 @@
 /* POPUP DE EDITAR*/
 #inativar-projeto-popup {
     background-color: rgba(0, 0, 0, 0.1);
+    padding: 8px;
 }
 
 #inativar-projeto-popup .container-popup {

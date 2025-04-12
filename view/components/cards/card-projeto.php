@@ -1,5 +1,5 @@
 <?php 
-function mostrarCardProjeto($id, $nome, $descricao, $tipo) {
+function mostrarCardProjeto($id, $nome, $resumo, $tipo) {
     switch ($tipo) {
         case "ong":
             $class = "tp-ong";
@@ -18,7 +18,7 @@ function mostrarCardProjeto($id, $nome, $descricao, $tipo) {
         <div class='img-projeto'>250x130</div>
         <div class='info-projeto'>
             <h5>$nome</h5>
-            <p>$descricao</p>
+            <p>$resumo</p>
             <div class='barra-doacao'>
                 <span>30%</span>
                 <div class='barra'>
