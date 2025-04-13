@@ -73,7 +73,7 @@ function mostrar_toast(id) {
     setTimeout(() => {
         toast.style.right = "-300px";
         toast.style.opacity = "0";
-    }, 2000);
+    }, 3000);
 }
 
 // Recuperar senha dos login

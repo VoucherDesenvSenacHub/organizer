@@ -1,17 +1,10 @@
-@import url(../components/cores.css);
+@import url(cores.css);
+@import url(../components/cards/cards.css);
+@import url(../components/popup/popup.css);
+
 @import url(../components/button.css);
 @import url(../components/header.css);
-@import url(login-popup.css);
-@import url(../components/popup.css);
 @import url(../components/aside.css);
-@import url(../components/card-ong.css);
-@import url(../components/card-projeto.css);
-@import url(../components/card-doador.css);
-@import url(../components/card-voluntario.css);
-@import url(../components/card-noticia.css);
-@import url(../components/requer-login.css);
-@import url(../components/compartilhar.css);
-@import url(../components/sair-conta-popup.css);
 @import url(../components/header-adm.css);
 @import url(../components/header-ong.css);
 @import url(../components/toast.css);
@@ -32,6 +25,10 @@ body {
     background-color: var(--cor-principal);
     color: var(--cor-principal);
     scrollbar-color: #06c;
+}
+
+h1 {
+    line-height: 1;
 }
 
 /* Barra de Rolagem */

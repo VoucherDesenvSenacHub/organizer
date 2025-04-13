@@ -108,8 +108,8 @@
         <section id="box-ongs">
             <div class="card-projeto">
                 <div class="acoes-projeto">
-                    <button id="share" class="fa-solid fa-share-nodes" onclick="abrir_popup('compartilhar-popup')"></button>
-                    <button id="like" class="fa-solid fa-heart" onclick="abrir_popup('login-obrigatorio-popup')"></button>
+                    <button class="btn-share fa-solid fa-share-nodes" onclick="abrir_popup('compartilhar-popup')"></button>
+                    <button class="btn-like fa-solid fa-heart" onclick="abrir_popup('login-obrigatorio-popup')"></button>
                 </div>
                 <div class="img-projeto">250x130</div>
                 <div class="info-projeto">
@@ -128,8 +128,8 @@
             </div>
             <div class="card-projeto">
                 <div class="acoes-projeto">
-                    <button id="share" class="fa-solid fa-share-nodes" onclick="abrir_popup('compartilhar-popup')"></button>
-                    <button id="like" class="fa-solid fa-heart" onclick="abrir_popup('login-obrigatorio-popup')"></button>
+                    <button class="btn-share fa-solid fa-share-nodes" onclick="abrir_popup('compartilhar-popup')"></button>
+                    <button class="btn-like fa-solid fa-heart" onclick="abrir_popup('login-obrigatorio-popup')"></button>
                 </div>
                 <div class="img-projeto">250x130</div>
                 <div class="info-projeto">
@@ -148,8 +148,8 @@
             </div>
             <div class="card-projeto">
                 <div class="acoes-projeto">
-                    <button id="share" class="fa-solid fa-share-nodes" onclick="abrir_popup('compartilhar-popup')"></button>
-                    <button id="like" class="fa-solid fa-heart" onclick="abrir_popup('login-obrigatorio-popup')"></button>
+                    <button class="btn-share fa-solid fa-share-nodes" onclick="abrir_popup('compartilhar-popup')"></button>
+                    <button class="btn-like fa-solid fa-heart" onclick="abrir_popup('login-obrigatorio-popup')"></button>
                 </div>
                 <div class="img-projeto">250x130</div>
                 <div class="info-projeto">
@@ -168,8 +168,8 @@
             </div>
             <div class="card-projeto">
                 <div class="acoes-projeto">
-                    <button id="share" class="fa-solid fa-share-nodes" onclick="abrir_popup('compartilhar-popup')"></button>
-                    <button id="like" class="fa-solid fa-heart" onclick="abrir_popup('login-obrigatorio-popup')"></button>
+                    <button class="btn-share fa-solid fa-share-nodes" onclick="abrir_popup('compartilhar-popup')"></button>
+                    <button class="btn-like fa-solid fa-heart" onclick="abrir_popup('login-obrigatorio-popup')"></button>
                 </div>
                 <div class="img-projeto">250x130</div>
                 <div class="info-projeto">
@@ -188,8 +188,8 @@
             </div>
             <div class="card-projeto">
                 <div class="acoes-projeto">
-                    <button id="share" class="fa-solid fa-share-nodes" onclick="abrir_popup('compartilhar-popup')"></button>
-                    <button id="like" class="fa-solid fa-heart" onclick="abrir_popup('login-obrigatorio-popup')"></button>
+                    <button class="btn-share fa-solid fa-share-nodes" onclick="abrir_popup('compartilhar-popup')"></button>
+                    <button class="btn-like fa-solid fa-heart" onclick="abrir_popup('login-obrigatorio-popup')"></button>
                 </div>
                 <div class="img-projeto">250x130</div>
                 <div class="info-projeto">
@@ -208,8 +208,8 @@
             </div>
             <div class="card-projeto">
                 <div class="acoes-projeto">
-                    <button id="share" class="fa-solid fa-share-nodes" onclick="abrir_popup('compartilhar-popup')"></button>
-                    <button id="like" class="fa-solid fa-heart" onclick="abrir_popup('login-obrigatorio-popup')"></button>
+                    <button class="btn-share fa-solid fa-share-nodes" onclick="abrir_popup('compartilhar-popup')"></button>
+                    <button class="btn-like fa-solid fa-heart" onclick="abrir_popup('login-obrigatorio-popup')"></button>
                 </div>
                 <div class="img-projeto">250x130</div>
                 <div class="info-projeto">
@@ -228,8 +228,8 @@
             </div>
             <div class="card-projeto">
                 <div class="acoes-projeto">
-                    <button id="share" class="fa-solid fa-share-nodes" onclick="abrir_popup('compartilhar-popup')"></button>
-                    <button id="like" class="fa-solid fa-heart" onclick="abrir_popup('login-obrigatorio-popup')"></button>
+                    <button class="btn-share fa-solid fa-share-nodes" onclick="abrir_popup('compartilhar-popup')"></button>
+                    <button class="btn-like fa-solid fa-heart" onclick="abrir_popup('login-obrigatorio-popup')"></button>
                 </div>
                 <div class="img-projeto">250x130</div>
                 <div class="info-projeto">
@@ -248,8 +248,8 @@
             </div>
             <div class="card-projeto">
                 <div class="acoes-projeto">
-                    <button id="share" class="fa-solid fa-share-nodes" onclick="abrir_popup('compartilhar-popup')"></button>
-                    <button id="like" class="fa-solid fa-heart" onclick="abrir_popup('login-obrigatorio-popup')"></button>
+                    <button class="btn-share fa-solid fa-share-nodes" onclick="abrir_popup('compartilhar-popup')"></button>
+                    <button class="btn-like fa-solid fa-heart" onclick="abrir_popup('login-obrigatorio-popup')"></button>
                 </div>
                 <div class="img-projeto">250x130</div>
                 <div class="info-projeto">

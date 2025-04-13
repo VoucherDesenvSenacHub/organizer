@@ -1,10 +1,8 @@
-<?php 
+<?php
     $tituloPagina = 'Descubra ONGS';
     $cssPagina = ['shared/catalogo.css'];
     require_once '../../components/header-usuario.php';
 ?>
-
-<?php require_once '../../components/compartilhar.php'; ?>
 <main>
     <div class="container" id="container-catalogo">
         <section id="top-info">
@@ -129,8 +127,10 @@
                 <div class="acoes-ong">
                     <a href="perfil-ong.php" class="saiba-mais-ong">Saiba Mais</a>
                     <div class="btn-salvar">
-                        <button id="share" class="fa-solid fa-share-nodes" onclick="abrir_popup('compartilhar-popup')"></button>
-                        <button id="like" class="fa-solid fa-heart" onclick="abrir_popup('login-obrigatorio-popup')"></button>
+                        <button id="share" class="fa-solid fa-share-nodes"
+                            onclick="abrir_popup('compartilhar-popup')"></button>
+                        <button id="like" class="fa-solid fa-heart"
+                            onclick="abrir_popup('login-obrigatorio-popup')"></button>
                     </div>
                 </div>
             </div>
@@ -156,8 +156,10 @@
                 <div class="acoes-ong">
                     <a href="perfil-ong.php" class="saiba-mais-ong">Saiba Mais</a>
                     <div class="btn-salvar">
-                        <button id="share" class="fa-solid fa-share-nodes" onclick="abrir_popup('compartilhar-popup')"></button>
-                        <button id="like" class="fa-solid fa-heart" onclick="abrir_popup('login-obrigatorio-popup')"></button>
+                        <button id="share" class="fa-solid fa-share-nodes"
+                            onclick="abrir_popup('compartilhar-popup')"></button>
+                        <button id="like" class="fa-solid fa-heart"
+                            onclick="abrir_popup('login-obrigatorio-popup')"></button>
                     </div>
                 </div>
             </div>
@@ -183,8 +185,10 @@
                 <div class="acoes-ong">
                     <a href="perfil-ong.php" class="saiba-mais-ong">Saiba Mais</a>
                     <div class="btn-salvar">
-                        <button id="share" class="fa-solid fa-share-nodes" onclick="abrir_popup('compartilhar-popup')"></button>
-                        <button id="like" class="fa-solid fa-heart" onclick="abrir_popup('login-obrigatorio-popup')"></button>
+                        <button id="share" class="fa-solid fa-share-nodes"
+                            onclick="abrir_popup('compartilhar-popup')"></button>
+                        <button id="like" class="fa-solid fa-heart"
+                            onclick="abrir_popup('login-obrigatorio-popup')"></button>
                     </div>
                 </div>
             </div>
@@ -210,8 +214,10 @@
                 <div class="acoes-ong">
                     <a href="perfil-ong.php" class="saiba-mais-ong">Saiba Mais</a>
                     <div class="btn-salvar">
-                        <button id="share" class="fa-solid fa-share-nodes" onclick="abrir_popup('compartilhar-popup')"></button>
-                        <button id="like" class="fa-solid fa-heart" onclick="abrir_popup('login-obrigatorio-popup')"></button>
+                        <button id="share" class="fa-solid fa-share-nodes"
+                            onclick="abrir_popup('compartilhar-popup')"></button>
+                        <button id="like" class="fa-solid fa-heart"
+                            onclick="abrir_popup('login-obrigatorio-popup')"></button>
                     </div>
                 </div>
             </div>
@@ -237,8 +243,10 @@
                 <div class="acoes-ong">
                     <a href="perfil-ong.php" class="saiba-mais-ong">Saiba Mais</a>
                     <div class="btn-salvar">
-                        <button id="share" class="fa-solid fa-share-nodes" onclick="abrir_popup('compartilhar-popup')"></button>
-                        <button id="like" class="fa-solid fa-heart" onclick="abrir_popup('login-obrigatorio-popup')"></button>
+                        <button id="share" class="fa-solid fa-share-nodes"
+                            onclick="abrir_popup('compartilhar-popup')"></button>
+                        <button id="like" class="fa-solid fa-heart"
+                            onclick="abrir_popup('login-obrigatorio-popup')"></button>
                     </div>
                 </div>
             </div>
@@ -264,11 +272,13 @@
                 <div class="acoes-ong">
                     <a href="perfil-ong.php" class="saiba-mais-ong">Saiba Mais</a>
                     <div class="btn-salvar">
-                        <button id="share" class="fa-solid fa-share-nodes" onclick="abrir_popup('compartilhar-popup')"></button>
-                        <button id="like" class="fa-solid fa-heart" onclick="abrir_popup('login-obrigatorio-popup')"></button>
+                        <button id="share" class="fa-solid fa-share-nodes"
+                            onclick="abrir_popup('compartilhar-popup')"></button>
+                        <button id="like" class="fa-solid fa-heart"
+                            onclick="abrir_popup('login-obrigatorio-popup')"></button>
                     </div>
                 </div>
-            </div> 
+            </div>
         </section>
         <nav id="navegacao">
             <a class="active" href="#">1</a>
@@ -281,7 +291,7 @@
     </div>
 </main>
 </div>
-    <?php require_once '../../components/meu-perfil-doador.php'; ?>
+<?php require_once '../../components/meu-perfil-doador.php'; ?>
 </div>
 <?php
     $jsPagina = ['home-doador.js'];

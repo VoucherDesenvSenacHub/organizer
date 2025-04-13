@@ -1,6 +1,6 @@
 <div class="popup-fundo" id="compartilhar-popup">
     <div class="container-popup">
-        <button id="x-fechar" class="fa-solid fa-xmark" onclick="fechar_popup('compartilhar-popup')"></button>
+        <button class="btn-fechar-popup fa-solid fa-xmark" onclick="fechar_popup('compartilhar-popup')"></button>
         <!-- <div class="img">
             <img src="../../assets/images/pages/requer-login.png">
         </div> -->
