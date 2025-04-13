@@ -1,17 +1,3 @@
--- ORGANIZER
-create database organizer;
-use organizer;
-
-create table cadprojeto (
-	codproj int auto_increment,
-	nome varchar(50) not null,
-	resumo varchar(190) not null,
-	sobre text not null,
-	meta decimal(10, 2) not null,
-	data timestamp default current_timestamp,
-	primary key (codproj)
-);
-
 INSERT INTO cadprojeto (nome, resumo, sobre, meta)
 VALUES
 (   'Projeto Água Limpa',
@@ -34,7 +20,5 @@ VALUES
     'Unidades móveis de atendimento médico em regiões de difícil acesso, com exames básicos, vacinação, atendimento psicológico e acompanhamento nutricional.',
     'Com foco em comunidades rurais isoladas, o projeto Saúde na Estrada levará atendimento completo por meio de vans adaptadas com equipamentos médicos e equipe multidisciplinar. A ação será contínua por 18 meses e pretende beneficiar mais de 10 mil pessoas com atendimento humanizado e encaminhamento para tratamento complementar.',
     135700);
-
-
 
 select * from cadprojeto;
