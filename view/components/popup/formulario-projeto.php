@@ -7,7 +7,7 @@ function exibirFormularioProjeto($id, $nome, $sobre, $meta, $resumo)
     return "
     <div class='popup-fundo' id='editar-projeto-popup'>
         <div class='container-popup'>
-            <button id='x-fechar' class='fa-solid fa-xmark' onclick='fechar_popup(\"editar-projeto-popup\")'></button>
+            <button class='btn-fechar-popup fa-solid fa-xmark' onclick='fechar_popup(\"editar-projeto-popup\")'></button>
             <form action='perfil-projeto.php' method='POST'>
                 <input type='hidden' name='id' value='$id'>
                 <div class='box-edit'>

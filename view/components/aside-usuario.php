@@ -20,7 +20,7 @@
         </div>
         <div class="aside-nav">
             <i class="fa-solid fa-credit-card"></i>
-            <a class="link">Meu cartões</a>
+            <a class="link" href="tela-de-cartoes.php">Meu cartões</a>
         </div>
         <div class="aside-nav">
             <i class="fa-solid fa-user-group"></i>

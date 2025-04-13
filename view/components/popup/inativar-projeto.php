@@ -1,6 +1,6 @@
 <div class="popup-fundo" id="inativar-projeto-popup">
     <div class="container-popup">
-        <button id="x-fechar" class="fa-solid fa-xmark" onclick="fechar_popup('inativar-projeto-popup')"></button>
+        <button class="btn-fechar-popup fa-solid fa-xmark" onclick="fechar_popup('inativar-projeto-popup')"></button>
         <form action="perfil-projeto.php">
             <div class="box-edit">
                 <h1>INFORME O MOTIVO DE INATIVAR ESSE PROJETO</h1>

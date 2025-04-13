@@ -7,7 +7,7 @@ require_once __DIR__ . '/../../components/header-ong.php';
 //IMPORTS
 require_once __DIR__ . '/../../../model/ProjetoModel.php';
 require_once __DIR__ . '/../../components/cards/card-projeto.php';
-require_once __DIR__ . '/../../components/formulario-projeto.php';
+require_once __DIR__ . '/../../components/popup/formulario-projeto.php';
 
 //CARREGA CARDS DE PROJETOS
 $projetoModel = new Projeto();

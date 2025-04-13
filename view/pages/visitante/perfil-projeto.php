@@ -52,17 +52,17 @@
         </section>
             <div class="popup-fundo" id="carousel-popup">
                 <div class="container-popup">
-                    <button id="x-fechar" class="fa-solid fa-xmark" onclick="fechar_popup('carousel-popup')"></button>
+                    <button class="btn-fechar-popup fa-solid fa-xmark" onclick="fechar_popup('carousel-popup')"></button>
                     <div id="carousel-big" class="carousel">
                         <div id="carousel-big-imgs" class="carousel-imgs">
                             <img src="https://placeholder.pagebee.io/api/plain/600/375" class="carousel-item-big">
                             <img src="https://placeholder.pagebee.io/api/plain/600/375" class="carousel-item-big">
                             <img src="https://placeholder.pagebee.io/api/plain/600/375" class="carousel-item-big">
                         </div>
-                        <div class="btn-salvar">
+                        <!-- <div class="btn-salvar">
                             <button id="share" class="fa-solid fa-share-nodes" onclick="abrir_popup('compartilhar-popup')"></button>
                             <button id="like" class="fa-solid fa-heart" onclick="abrir_popup('login-obrigatorio-popup')"></button>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>

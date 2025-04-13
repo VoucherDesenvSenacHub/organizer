@@ -1,6 +1,6 @@
 <div class="popup-fundo" id="doacao-popup">
     <div class="container-popup">
-        <button id="x-fechar" class="fa-solid fa-xmark" onclick="fechar_popup('doacao-popup')"></button>
+        <button class="btn-fechar-popup fa-solid fa-xmark" onclick="fechar_popup('doacao-popup')"></button>
         <h1>QUANTO VOCÊ DESEJA DOAR?</h1>
         <form action="#">
             <h4>Valores</h4>
