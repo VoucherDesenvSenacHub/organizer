@@ -10,7 +10,7 @@ require_once '../../components/header-usuario.php';
             <div id="secao-1">
                 <div id="container-esq">
                     <div>
-                        <h1>Olá Júlia</h1>
+                        <h1>Olá <?= $_SESSION['doador_nome'] ?></h1>
                         <p>Explore os projetos e as últimas novidades</p>
                     </div>
                     <div>

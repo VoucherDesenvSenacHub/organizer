@@ -1,21 +1,33 @@
 <?php 
+ob_start();
     $tituloPagina = 'Login do Doador';
     $cssPagina = ['doador/login.css'];
     require_once '../../components/header.php';
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $email = $_POST['email'];
+        $senha = $_POST['senha'];
+
+        require_once __DIR__ . '/../../../model/DoadorModel.php';
+        $doadorModel = new Doador();
+
+        $doadorModel->login($email, $senha);
+    }
+ob_end_flush();
 ?>
 <!-- COMEÇAR SEU CÓDIGO AQUI -->
 <main>
     <div id="container-login" class="container">
-        <form action="home.php" method="GET">
+        <form action="login.php" method="POST">
             <h1>FAÇA SEU LOGIN</h1>
             <div class="input-group">
                 <div class="input-item">
                     <label for="email">Email<span>*</span></label>
-                    <input id="email" type="email" maxlength="45" placeholder="usúario@conta.com" required>
+                    <input id="email" name="email" type="email" maxlength="45" placeholder="usúario@conta.com" required>
                 </div>
                 <div class="input-item">
                     <label for="senha">Senha<span>*</span></label>
-                    <input id="senha" type="password" minlength="8" maxlength="20" placeholder="********" required>
+                    <input id="senha" name="senha" type="password" minlength="8" maxlength="20" placeholder="********" required>
                 </div>
                 <div class="remember-forgot">
                     <div class="remember">
@@ -55,6 +67,14 @@
 <div id="toast-sucesso-cadastro" class="toast">
     <i class="fa-regular fa-circle-check"></i>
     Cadastro efetuado com sucesso!
+</div>
+<div id="toast-login-erro" class="toast erro">
+    <i class="fa-solid fa-triangle-exclamation"></i>
+    Email ou Senha Inválida!
+</div>
+<div id="toast-login" class="toast erro">
+    <i class="fa-solid fa-triangle-exclamation"></i>
+    Login necessário para continuar!
 </div>
 <?php
     $jsPagina = ['login-doador.js'];

@@ -6,7 +6,7 @@
         <div class="meu-perfil">
             <img src="../../assets/images/meu-perfill.png" alt="">
             <div>
-                <span>Olá, Julia</span>
+                <span>Olá, <?= $_SESSION['doador_nome'] ?></span>
                 <button class="open-popup" onclick="abrir_popup_confirmacao('meu-perfil')" id="meu-perfil-popup">Meu perfil ></button>
             </div>
         </div>

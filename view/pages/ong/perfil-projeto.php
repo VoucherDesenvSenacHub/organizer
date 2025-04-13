@@ -31,13 +31,6 @@
     require_once '../../components/popup/inativar-projeto.php';
 
     //FORMULÁRIO PARA EDITAR PROJETO (popup)
-    echo exibirFormularioProjeto(
-        $id,
-        $projeto->nome,
-        $projeto->sobre,
-        $projeto->meta,
-        $projeto->resumo
-    );
 ?>
 
 <div id="toast-projeto" class="toast">

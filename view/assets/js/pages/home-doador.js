@@ -1,3 +1,20 @@
+function getQueryParam(param) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(param);
+}
+
+function verificarMensagem() {
+    const mensagem = getQueryParam('msg');
+
+    if (mensagem === 'volte') {
+        mostrar_toast("toast-volte-sempre");
+    }
+}
+
+window.onload = function () {
+    verificarMensagem();
+};
+
 function asidebar(){
     let aside = document.getElementById("aside");
     aside.style.right= "0px"

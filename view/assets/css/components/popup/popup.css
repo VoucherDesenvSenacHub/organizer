@@ -60,7 +60,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    color: black;
+    color: var(--cor-principal);
     border: none;
     border: 1px solid rgba(0, 0, 0, 0.1);
     transition: .3s;

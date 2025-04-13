@@ -1,3 +1,4 @@
+<?php require_once '../../../controller/verificarLoginDoador.php'; ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 

@@ -1,6 +1,5 @@
 <?php
 require_once __DIR__ . "\..\..\..\model\ProjetoModel.php";
-require '../../components/cards/card-projeto.php';
 $projetoModel = new Projeto();
 $lista = $projetoModel->listar();
 
@@ -112,9 +111,9 @@ require_once '../../components/header.php';
         </section>
         <section id="box-ongs">
             <!-- LISTAR CARDS PROJETOS -->
-            <?php foreach ($lista as $i) { ?>
-                <?= mostrarCardProjeto($i->codproj, $i->nome, $i->resumo, 'doador') ?>
-            <?php } ?>
+            <?php foreach ($lista as $projeto) {
+                require '../../components/cards/card-projeto.php';
+            } ?>
         </section>
         <nav id="navegacao">
             <a class="active" href="#">1</a>

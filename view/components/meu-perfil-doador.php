@@ -4,7 +4,7 @@
         <div class="sidebar">
             <div class="profile">
                 <img src="../../assets/images/Foto.png" alt="Foto de Perfil">
-                <p class="username">Julia</p>
+                <p class="username"><?= $_SESSION['doador_nome'] ?></p>
                 <p class="email">julia@gmail.com.br</p>
             </div>
             <div>
@@ -24,7 +24,7 @@
                             <label for="nome">Nome</label>
                             <div class="input-box">
                                 <span class="material-symbols-outlined">person</span>
-                                <input type="text" id="nome" value="Julia" disabled>
+                                <input type="text" id="nome" value="<?= $_SESSION['doador_nome'] ?>" disabled>
                             </div>
                         </div>
                         <div class="info">

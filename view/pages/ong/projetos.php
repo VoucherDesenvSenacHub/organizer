@@ -1,22 +1,26 @@
 <?php
-//CONFIGURAÇÕES DA PÁGINA
-$tituloPagina = 'Projetos';
-$cssPagina = ['ong/projetos.css'];
-require_once __DIR__ . '/../../components/header-ong.php';
+    //CONFIGURAÇÕES DA PÁGINA
+    $tituloPagina = 'Projetos';
+    $cssPagina = ['ong/projetos.css'];
+    require_once __DIR__ . '/../../components/header-ong.php';
 
-//IMPORTS
-require_once __DIR__ . '/../../../model/ProjetoModel.php';
-require_once __DIR__ . '/../../components/cards/card-projeto.php';
-require_once __DIR__ . '/../../components/popup/formulario-projeto.php';
+    //IMPORTS
+    require_once __DIR__ . '/../../../model/ProjetoModel.php';
 
-//CARREGA CARDS DE PROJETOS
-$projetoModel = new Projeto();
-$lista = $projetoModel->listar();
+    //CARREGA CARDS DE PROJETOS
+    $projetoModel = new Projeto();
+    $lista = $projetoModel->listar();
+
+    //FORMULÁRIO DE CRIAÇÃO DE PROJETO (popup)
+    $projeto = (object) [
+        'codproj' => '',
+        'nome' => '',
+        'meta' => '',
+        'resumo' => '',
+        'sobre' => ''
+    ];
+    require_once __DIR__ . '/../../components/popup/formulario-projeto.php';
 ?>
-
-<!--FORMULÁRIO DE CRIAÇÃO DE PROJETO (popup)-->
-<?= exibirFormularioProjeto('', '', '', '', '') ?>
-
 <div id="toast-projeto" class="toast">
     <i class="fa-regular fa-circle-check"></i>
     Projeto Criado com Sucesso!
@@ -43,13 +47,14 @@ $lista = $projetoModel->listar();
 
     <!-- CARDS DE PROJETOS -->
     <div class="div-card-geral">
-        <?php foreach ($lista as $i) {
-            echo mostrarCardProjeto($i->codproj, $i->nome, $i->resumo, 'ong');
+        <?php $class = 'tp-ong'; ?>
+        <?php foreach ($lista as $projeto) {
+            require '../../components/cards/card-projeto.php';
         } ?>
     </div>
 </div>
 
 <?php
-$jsPagina = ['projetos-ong.js'];
-require_once __DIR__ . '/../../components/footer.php';
+    $jsPagina = ['projetos-ong.js'];
+    require_once __DIR__ . '/../../components/footer.php';
 ?>

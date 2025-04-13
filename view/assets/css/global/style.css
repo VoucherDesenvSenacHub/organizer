@@ -27,6 +27,10 @@ body {
     scrollbar-color: #06c;
 }
 
+h1 {
+    line-height: 1;
+}
+
 /* Barra de Rolagem */
 body::-webkit-scrollbar {
     width: 8px;
