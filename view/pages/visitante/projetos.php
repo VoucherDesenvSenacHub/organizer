@@ -116,7 +116,7 @@ if ($_SERVER['REQUEST_METHOD'] = 'GET' && isset($_GET['pesquisa'])) {
             </div>
         </section>
         <?php if (isset($_GET['pesquisa'])) {
-            echo count($lista) . " > Projetos Encontrados";
+            echo "<p class='qnt-busca'><i class='fa-solid fa-search'></i> " . count($lista) . " Projetos Encontrados</p>";
         } ?>
 
         <section id="box-ongs">

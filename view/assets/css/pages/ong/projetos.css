@@ -38,6 +38,11 @@ body {
     text-align: center;
 }
 
+#qnt-busca {
+    text-align: center;
+    padding-top: 30px;
+}
+
 .input-buscar-projetos {
     width: 100%;
     height: 40px;

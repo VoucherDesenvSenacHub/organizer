@@ -181,6 +181,10 @@ section#top-info {
     margin-left: -50px;
 }
 
+.qnt-busca {
+    text-align: center;
+}
+
 /* Sessão de Baixo: Áreas dos cards */
 section#box-ongs {
     display: flex;
