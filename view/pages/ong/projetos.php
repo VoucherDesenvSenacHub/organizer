@@ -11,6 +11,12 @@
     $projetoModel = new Projeto();
     $lista = $projetoModel->listar();
 
+    //PESQUISAR PROJETO
+    if ($_SERVER['REQUEST_METHOD'] = 'GET' && isset($_GET['pesquisa'])) {
+        $pesquisa = $_GET['pesquisa'];
+        $lista = $projetoModel->buscarNome($pesquisa);
+    }
+
     //FORMULÁRIO DE CRIAÇÃO DE PROJETO (popup)
     $projeto = (object) [
         'codproj' => '',
@@ -37,14 +43,16 @@
             <h1>PROJETOS DA SUA ONG</h1>
         </div>
         <form id="form-busca" action="projetos.php" method="GET">
-            <input type="text" name="pesquisa" placeholder="Busque um projeto" required>
+            <input type="text" name="pesquisa" placeholder="Busque um projeto">
             <button class="btn"><i class="fa-solid fa-search"></i></button>
         </form>
         <div>
             <button class="botao-novo-projeto" onclick="abrir_popup('editar-projeto-popup')">NOVO PROJETO +</button>
         </div>
     </div>
-
+    <?php if (isset($_GET['pesquisa'])) {
+            echo count($lista) . " > Projetos Encontrados";
+        } ?>
     <!-- CARDS DE PROJETOS -->
     <div class="div-card-geral">
         <?php $class = 'tp-ong'; ?>
