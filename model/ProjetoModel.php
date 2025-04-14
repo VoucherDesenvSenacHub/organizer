@@ -26,6 +26,16 @@
             return $stmt->fetch(); 
         }
 
+        function buscarNome($nome) {
+            $query = "SELECT * FROM $this->tabela WHERE nome LIKE :nome";
+            $stmt = $this->pdo->prepare($query);
+            $stmt->bindValue(':nome', "%{$nome}%", PDO::PARAM_STR);
+            $stmt->execute();
+            $stmt->setFetchMode(PDO::FETCH_CLASS, __CLASS__);
+            return $stmt->fetchAll();
+        }
+        
+
         function editar($id, $nome, $resumo, $sobre, $meta) {
             try {
                 $query = "UPDATE $this->tabela

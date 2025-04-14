@@ -1,11 +1,17 @@
 <?php
+$tituloPagina = 'Encontre Projetos';
+$cssPagina = ['shared/catalogo.css'];
+require_once '../../components/header.php';
+
 require_once __DIR__ . "\..\..\..\model\ProjetoModel.php";
 $projetoModel = new Projeto();
 $lista = $projetoModel->listar();
 
-$tituloPagina = 'Encontre Projetos';
-$cssPagina = ['shared/catalogo.css'];
-require_once '../../components/header.php';
+if ($_SERVER['REQUEST_METHOD'] = 'GET' && isset($_GET['pesquisa'])) {
+    $pesquisa = $_GET['pesquisa'];
+    $lista = $projetoModel->buscarNome($pesquisa);
+}
+
 ?>
 
 <main>
@@ -101,7 +107,7 @@ require_once '../../components/header.php';
                     </form>
                 </div>
                 <form id="form-busca" action="projetos.php" method="GET">
-                    <input type="text" name="pesquisa" placeholder="Busque um projeto" required>
+                    <input type="text" name="pesquisa" placeholder="Busque um projeto">
                     <button class="btn"><i class="fa-solid fa-search"></i></button>
                 </form>
             </div>
@@ -109,6 +115,10 @@ require_once '../../components/header.php';
                 <img src="../../assets/images/pages/tela-projeto-kids.png" alt="">
             </div>
         </section>
+        <?php if (isset($_GET['pesquisa'])) {
+            echo "<p class='qnt-busca'><i class='fa-solid fa-search'></i> " . count($lista) . " Projetos Encontrados</p>";
+        } ?>
+
         <section id="box-ongs">
             <!-- LISTAR CARDS PROJETOS -->
             <?php foreach ($lista as $projeto) {
