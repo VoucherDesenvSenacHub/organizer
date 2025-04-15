@@ -1,10 +1,12 @@
 /* POPUP DE EDITAR*/
 #inativar-projeto-popup {
     background-color: rgba(0, 0, 0, 0.1);
+    padding: 8px;
 }
 
 #inativar-projeto-popup .container-popup {
-    background-color: aliceblue;
+    padding: 20px;
+    background-color: white;
     color: var(--cor-principal);
 }
 
@@ -15,9 +17,9 @@
 }
 
 #inativar-projeto-popup .box-edit {
-    background-color: white;
-    padding: 10px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
+    /* background-color: white; */
+    /* padding: 10px; */
+    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3); */
     border-radius: 3px;
     display: flex;
     flex-direction: column;
@@ -26,6 +28,8 @@
 #inativar-projeto-popup h1 {
     font-size: 20px;
     text-align: center;
+    width: 100%;
+    margin-bottom: 15px
 }
 
 #inativar-projeto-popup .group-check {
@@ -90,7 +94,7 @@
     justify-content: center;
     gap: 15px;
     background-color: var(--cor-vermelho);
-    color: #912B2B;
+    /* color: #912B2B; */
     margin-top: 20px;
 }
 

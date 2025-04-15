@@ -1,3 +1,10 @@
+@import url(escolher-login.css);
+@import url(login-obrigatorio.css);
+@import url(compartilhar.css);
+@import url(formulario-projeto.css);
+@import url(inativar-projeto.css);
+@import url(logoff.css);
+
 .popup-fundo {
     position: fixed;
     top: 0;
@@ -25,7 +32,7 @@
     border-radius: 10px;
     display: flex;
     gap: 10px;
-    padding: 30px;
+    padding: 20px;
     margin-top: 100%;
     transition: .5s ease;
     color: aliceblue;
@@ -38,10 +45,10 @@
 }
 
 /* Botão X de fechar popup */
-#x-fechar {
+.btn-fechar-popup {
     position: absolute;
-    top: 5px;
-    right: 5px;
+    top: -11px;
+    right: -11px;
     cursor: pointer;
     background-color: aliceblue;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
@@ -53,12 +60,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    color: black;
+    color: var(--cor-principal);
     border: none;
     border: 1px solid rgba(0, 0, 0, 0.1);
     transition: .3s;
 }
 
-#x-fechar:hover {
+.btn-fechar-popup:hover {
     color: brown;
 }

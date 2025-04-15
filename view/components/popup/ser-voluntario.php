@@ -1,6 +1,6 @@
 <div class="popup-fundo" id="ser-voluntario-popup">
     <div class="container-popup">
-        <button id="x-fechar" class="fa-solid fa-xmark" onclick="fechar_popup('ser-voluntario-popup')"></button>
+        <button class="btn-fechar-popup fa-solid fa-xmark" onclick="fechar_popup('ser-voluntario-popup')"></button>
         <h1>DESEJA SE TORNAR UM VOLUNTÁRIO?</h1>
         <h4>Envie uma solicitação para a ONG</h4>
         <form action="#">
