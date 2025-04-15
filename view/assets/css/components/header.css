@@ -118,6 +118,10 @@ header nav.active {
 }
 
 @media (max-width: 700px) {
+    header {
+        padding: 0 10px;
+    }
+
     header nav {
         position: absolute;
         top: 100%;
