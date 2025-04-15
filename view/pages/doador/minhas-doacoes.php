@@ -47,26 +47,34 @@ require_once '../../components/header-usuario.php';
         <div class="info_top">
             <h1>RESUMO GERAL</h1>
             <p>Total doado: <span> R$350</span></p>
-            
-            <div class="grafico-container">
-                <div class="legenda-custom">
-                    <span class="cor" style="background-color: #FF6384;"></span> Projeto A
+
+            <div class="grafico-container" style="display: flex; gap: 40px; align-items: flex-start;">
+                <!-- Legenda em coluna -->
+                <div class="legenda-custom ">
+                    <div class="item">
+                        <span class="cor" style="background-color: #FF6384;"></span> Projeto A
+                    </div>
+                    <div class="item">
+                        <span class="cor" style="background-color: #007bff;"></span> Projeto B
+                    </div>
+                    <div class="item">
+                        <span class="cor" style="background-color: #fbc02d;"></span> Projeto C
+                    </div>
                 </div>
-                <div class="legenda-custom">
-                    <span class="cor" style="background-color: #007bff;"></span> Projeto B
+
+                <!-- Gráfico -->
+                <div>
+                    <canvas id="graficoDoacoes" width="300" height="300"></canvas>
                 </div>
-                <div class="legenda-custom">
-                    <span class="cor" style="background-color: #fbc02d;"></span> Projeto C
-                </div>
-                <div class="legenda-custom">
-                <canvas id="graficoDoacoes" width="300" height="300"></canvas>
-                </div>
+
+                <!-- Download -->
                 <div id="download">
                     <img src="../../assets/images/icon.png" alt="">
                     <p>Download Iniciado</p>
                 </div>
-                </main>
-                <?php
+            </div>
+</main>
+<?php
 $jsPagina = ['minhas-doacoes.js'];
 require_once '../../components/footer.php';
 ?>
