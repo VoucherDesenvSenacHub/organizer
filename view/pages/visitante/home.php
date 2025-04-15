@@ -8,7 +8,7 @@ require_once '../../components/header.php';
 <!-- COMEÇAR SEU CÓDIGO AQUI -->
 <div id="toast-volte-sempre" class="toast">
     <i class="fa-regular fa-circle-check"></i>
-    Tchau, até mais tarde 🫡
+    Tchau, até mais tarde
 </div>
 <main>
     <section class="secoes" id="secao-1">
@@ -301,7 +301,3 @@ require_once '../../components/header.php';
     $jsPagina = ['home-doador.js']; //Colocar o arquivo .js
     require_once '../../components/footer.php';
     ?>
-
-
-
-    <!-- PEGAR A BASE NO README.md -->

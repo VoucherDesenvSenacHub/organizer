@@ -63,7 +63,4 @@ class Doador
         header('Location: login.php?msg=logerro');
         exit;
     }
-
-
 }
-?>
