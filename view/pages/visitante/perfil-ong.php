@@ -6,7 +6,6 @@
 
     //IMPORTS
     require_once __DIR__ . '/../../../model/ProjetoModel.php';
-    require_once __DIR__ . '/../../components/cards/card-projeto.php';
 
     //CARREGA CARDS DE PROJETOS
     $projetoModel = new Projeto();
@@ -98,8 +97,8 @@
                     <h3>Projetos</h3>
                 </div>
                 <div class="mini-cards">
-                    <?php foreach($lista as $i) {
-                        echo mostrarCardProjeto($i->codproj, $i->nome, $i->resumo, '');
+                    <?php foreach($lista as $projeto) {
+                        require '../../components/cards/card-projeto.php';
                     } ?>
                 </div>
             </div>
