@@ -23,7 +23,7 @@ main {
     align-items: center;
     flex-direction: column;
     text-align: center;
-    padding: 50px;
+    /* padding: 50px; */
     width: 100%;
     height: 580px;
     overflow: hidden;
@@ -56,13 +56,13 @@ main {
     display: block;
     flex-direction: column;
     margin-top: 6%;
-    margin-right: 40%;
+    margin-right: 30%;
     width: 200px;
 }
 
 .principal-dir img {
     margin-left: 50%;
-    height: 400px;
+    width: 240%;
 }
 
 .sub-principal-esq h1 {
@@ -377,10 +377,10 @@ th {
     border-color: #29b6f6;
 }
 
-@media (max-width: 481px) {
+@media (max-width: 700px) {
     #principal {
         width: 90%;
-        margin: 40px auto;
+        /* margin: 40px auto; */
         display: flex;
         flex-direction: column;
         align-items: center;
