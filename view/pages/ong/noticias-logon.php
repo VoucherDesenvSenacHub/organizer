@@ -3,14 +3,15 @@
     $cssPagina = ['ong/noticias-logon.css']; //Colocar o arquivo .css 
     require_once '../../components/header-ong.php';
 ?>
-<!-- Fim cabeçalho -->
-
-
+    
     <!-- Início DIV principal -->
     <div id="principal">
         <div id="painel-l1">
             <h1>SUAS NOTÍCIAS PUBLICADAS</h1>
-            <button id="cadastrar-nova-pub">Nova Notícia</button>
+
+                <div>   
+                    <button class="botao-nova-noticia" onclick="abrir_popup('editar-noticia-popup')">NOVA NOTÍCIA +</button>
+                </div>
         </div>
         <div id="noticias-publicadas">
             <div class="card-noticia">

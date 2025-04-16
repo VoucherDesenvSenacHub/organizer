@@ -9,7 +9,7 @@ body {
     width: 100%;
     z-index: 0;
     font-family: 'Poppins', sans-serif;
-    background-color: #1C3464;
+    background-color: aliceblue;
 }
 h2 {
     font-size: 1.3em;
@@ -43,15 +43,15 @@ button:hover {
     z-index: 1;
     width: 80%;
     min-height: 400px;
-    margin: 40px auto;
-    padding: 20px;
+    margin:auto;
+    padding: 50px;
     background-color: #FFFFFF;
     border-radius: 8px;
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.7);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;;
     h1 {
-        font-size: 1.5em;
-        font-weight: 400;
-        color: #5282E3;
+        font-size: 32px;
+        letter-spacing: 1px;
+        color:#F79329;
     }
 }
 #painel-l1, #painel-l2, #painel-l3, #painel-l4 {
@@ -62,12 +62,23 @@ button:hover {
 
 /*Cadastro de notícias */
 
-#cadastrar-nova-pub {
-    font-size: 1.3em;
-    padding: 3px 30px;
-    border: none;
+.botao-nova-noticia {
     background-color: #51CD32;
+    color: var(--cor-principal);
+    font-size: 15px;
+    font-weight: 600;
+    width: 210px;
+    height: 40px;
     border-radius: 5px;
+    border: none;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+    transform: translateY(0);
+    transition: .3s;
+}
+.botao-nova-noticia:hover {
+    transform: translateY(-5px);
+    transition: .3s;
+    cursor: pointer;
 }
 #noticias-publicadas {
     display: flex;
@@ -154,6 +165,8 @@ button:hover {
         flex-direction: column;
         border: 1px solid gray;
         max-width: 90%;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
+        
     }
     .btn-edicao {
         display: flex;

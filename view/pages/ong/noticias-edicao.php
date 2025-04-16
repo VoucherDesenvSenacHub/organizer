@@ -22,10 +22,10 @@
                 <h1 class="h1-pb">SOS Rio Grande do Sul</h1>
                 <h2 class="h2-pb">Publicado em 29 de agosto de 2024</h2>
             </div>
-            <div class="botoes-edicao">
+            <!-- <div class="botoes-edicao">
                 <button id="editar-noticia" onclick="editarNoticia()">Editar<img src="../../assets/images/editar.png" alt="" ></button>
                 <button id="deletar-noticia" onclick="popConclusao('delete')">Excluir<img src="../../assets/images/delete-noticia.png" alt=""></button>
-            </div>
+            </div> -->
         </div>
         <div id="texto-noticia">
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus convallis molestie commodo. 
@@ -45,7 +45,7 @@
     <!-- Fim DIV principal  -->
 
     <!-- DIV Pop-up Edição -->
-    <div id="pagina-edicao">
+    <!-- <div id="pagina-edicao">
         <div id="edicao-esquerda">
             <h1>EDITAR NOTÍCIA</h1>
             <form>
@@ -73,8 +73,7 @@
             <button onclick="popConclusao('edicao')">Salvar alteração <img src="../../assets/images/editar.png" alt=""></button>
         </div>
     </div>
-    <!-- Fim da Pop-up edição -->
-
+    Fim da Pop-up edição -->
     
     <!-- Pop-up conclusão -->
     <div id="pop-conclusao">
