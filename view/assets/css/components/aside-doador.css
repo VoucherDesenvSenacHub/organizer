@@ -24,9 +24,6 @@
 }
 
 /* Botão de abrir aside */
-#aside-doador #btn-aside {
-    position: fixed;
-}
 
 #aside-doador #btn-aside,
 #aside-doador #btn-sair {
@@ -40,7 +37,15 @@
     overflow: hidden;
 }
 
-#aside-doador #btn-aside:hover,
+#aside-doador #btn-aside {
+    position: fixed;
+    background-color: var(--cor-azul);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 #aside-doador #btn-sair:hover {
     background-color: rgba(0, 0, 0, 0.2);
 }
@@ -49,7 +54,7 @@
     transform: rotate(0);
     transition: .4s;
     font-size: 17px;
-    color: var(--cor-principal);
+    color: aliceblue;
 }
 
 #aside-doador #btn-aside.active i {
