@@ -2,6 +2,7 @@
     $tituloPagina = 'Editar Notícias'; // Definir o título da página
     $cssPagina = ['ong/noticias-logon.css']; //Colocar o arquivo .css 
     require_once '../../components/header-ong.php';
+    require_once '../../components/popup/formulario-noticia.php';
 ?>
     
     <!-- Início DIV principal -->
