@@ -54,6 +54,11 @@
     <?php
         require_once '../../components/popup/compartilhar.php'; //POPUP DE COMPARTILHAR
     ?>
+    <div id="sair-doador">
+        <?php
+        require_once 'popup/logoff.php';
+        ?>
+    </div>
     <main id="main-doador">
         <div class="container">
             <?php require_once '../../components/aside-doador.php'; ?>

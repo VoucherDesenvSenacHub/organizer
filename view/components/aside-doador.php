@@ -9,7 +9,7 @@
             <a href="#" title="Participações"><i class="fa-solid fa-user-group"></i><span>Participações</span></a>
         </nav>
     </div>
-    <button id="btn-sair" title="Sair">
+    <button id="btn-sair" title="Sair" onclick="abrir_popup('sair-da-conta-popup')">
         <i class="fa-solid fa-right-from-bracket"></i>
         <span>Sair</span>
     </button>

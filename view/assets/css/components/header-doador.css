@@ -19,7 +19,7 @@ header #img-doador img {
 }
 
 /* CONTROLE DO ASIDE E CONTEUDO */
-#main-doador .container {
+#main-doador > .container {
     position: relative;
     min-height: calc(100vh - 60px);
     background-color: white;

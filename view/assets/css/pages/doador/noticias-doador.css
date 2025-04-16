@@ -1,0 +1,30 @@
+@import url(../shared/noticias.css);
+
+main {
+    padding: 0;
+}
+
+main .container {
+    flex-direction: row;
+}
+
+.tela-noticia {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.tela-noticia h1 {
+    font-size: 32px !important;
+    text-align: left !important;
+}
+
+.tela-noticia .card-noticia {
+    /* flex: 1; */
+    max-width: 510px;
+    gap: 30px;
+}
+
+.caixa-noticias {
+    background-color: #f8f8fd;
+}

@@ -13,10 +13,10 @@
     background-color: white;
     color: var(--cor-principal);
     border-radius: 0 25px 25px 0;
-    box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px, rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
+    box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
     transition: .4s ease-out;
     overflow: hidden;
-    z-index: 1;
+    z-index: 2;
 }
 
 #aside-doador.active {
@@ -49,7 +49,7 @@
     transform: rotate(0);
     transition: .4s;
     font-size: 17px;
-    color: var(--cor-azul-escuro);
+    color: var(--cor-principal);
 }
 
 #aside-doador #btn-aside.active i {
@@ -68,7 +68,7 @@
 #aside-doador #area-topo a {
     height: 45px;
     width: 45px;
-    transition: .3s;
+    transition: .4s;
 }
 
 #aside-doador.active #area-topo a {
@@ -111,7 +111,7 @@
     display: flex;
     align-items: center;
     gap: 20px;
-    padding: 0 12px;
+    padding: 0 13px;
     position: fixed;
     bottom: 15px;
     color: var(--cor-principal);
