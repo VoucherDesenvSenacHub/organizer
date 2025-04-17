@@ -193,6 +193,10 @@ section#apresentacao {
     width: 100%;
 }
 
+#projetos .mini-cards {
+    gap: 25px 10px;
+}
+
 @media (max-width: 1050px) {
     #imagem {
         display: none;
