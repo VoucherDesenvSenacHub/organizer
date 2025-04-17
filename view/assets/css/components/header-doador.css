@@ -41,7 +41,7 @@ header #img-doador img {
 
 @media (max-width: 700px) {
     .container #container-conteudo {
-        padding: 30px 10px;
+        padding: 50px 10px;
         /* margin-left: 50px; */
     }
 }
