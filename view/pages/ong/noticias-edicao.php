@@ -2,7 +2,18 @@
     $tituloPagina = 'Editar Notícias'; // Definir o título da página
     $cssPagina = ['ong/noticias-edicao.css']; //Colocar o arquivo .css 
     require_once '../../components/header-ong.php';
+
+    $noticia = (object) [
+        'codnot' => '',
+        'titulo' => '',
+        'subtitulo' => '',
+        'texto' => '',
+        'subtexto' => ''
+    ];
+    $acao = 'EDITAR NOTICIA';
+    require_once '../../components/popup/formulario-noticia.php';
 ?>
+
         <!-- Fim cabeçalho -->
 
 
@@ -22,10 +33,17 @@
                 <h1 class="h1-pb">SOS Rio Grande do Sul</h1>
                 <h2 class="h2-pb">Publicado em 29 de agosto de 2024</h2>
             </div>
-            <!-- <div class="botoes-edicao">
-                <button id="editar-noticia" onclick="editarNoticia()">Editar<img src="../../assets/images/editar.png" alt="" ></button>
-                <button id="deletar-noticia" onclick="popConclusao('delete')">Excluir<img src="../../assets/images/delete-noticia.png" alt=""></button>
+
+            <div> 
+            <!-- <div>   
+                <button class="botao-nova-noticia" onclick="abrir_popup('editar-noticia-popup')">Editar</button>
+                <button class="botao-nova-noticia" onclick="popConclusao('')">Excluir</button>
             </div> -->
+            </div>
+            <div class="botoes-edicao">
+                <button id="editar-noticia" onclick="abrir_popup('editar-noticia-popup')">Editar<img src="../../assets/images/editar.png" alt="" ></button>
+                <button id="deletar-noticia" onclick="popConclusao('delete')">Excluir<img src="../../assets/images/delete-noticia.png" alt=""></button>
+            </div>
         </div>
         <div id="texto-noticia">
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus convallis molestie commodo. 
@@ -44,36 +62,6 @@
     </div>
     <!-- Fim DIV principal  -->
 
-    <!-- DIV Pop-up Edição -->
-    <!-- <div id="pagina-edicao">
-        <div id="edicao-esquerda">
-            <h1>EDITAR NOTÍCIA</h1>
-            <form>
-                <div id="linha1-edicao">
-                    <div>
-                        <label for="titulo-noticia">Título</label><br>
-                        <input type="text" id="titulo-noticia" placeholder="Título">
-                    </div>
-                    <div>
-                        <label for="subtitulo-noticia">Subítulo</label><br>
-                        <input type="text" id="subtitulo-noticia" placeholder="Subtítulo">
-                    </div>
-                </div>
-                <label for="texto1">Texto 1</label><br>
-                <textarea name="texto1" id="texto1" cols="60" rows="10"></textarea><br>
-                <label for="texto2">Texto 2</label><br>
-                <textarea name="texto2" id="texto2" cols="60" rows="10"></textarea><br>
-            </form>
-        </div>
-        <div id="edicao-direita">
-            <div id="upload-fotos">
-                <img src="../../assets/images/avatar.png" alt="" width="90%">
-                <button><img src="../../assets/images/icon-upload.png" alt="">Upload de fotos</button>
-            </div>
-            <button onclick="popConclusao('edicao')">Salvar alteração <img src="../../assets/images/editar.png" alt=""></button>
-        </div>
-    </div>
-    Fim da Pop-up edição -->
     
     <!-- Pop-up conclusão -->
     <div id="pop-conclusao">

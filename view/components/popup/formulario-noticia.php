@@ -1,5 +1,5 @@
 <?php
-$acao = ($noticia->codnot) ? 'EDITAR NOTICIA' : 'NOVA NOTICIA';
+// $acao = ($noticia->codnot) ? 'EDITAR NOTICIA' : 'NOVA NOTICIA';
 $btn_text = ($noticia->codnot) ? 'SALVAR ALTERAÇÃO' : 'CRIAR NOTICIA';
 // $meta = (int)$meta;
 ?>

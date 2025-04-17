@@ -9,6 +9,7 @@
         'texto' => '',
         'subtexto' => ''
     ];
+    $acao = 'NOVA NOTICIA';
     require_once '../../components/popup/formulario-noticia.php';
 ?>
     
