@@ -1,7 +1,7 @@
 <?php
 $tituloPagina = 'Favoritos | Organizer'; // Definir o título da página
 $cssPagina = ['doador/favoritos.css']; //Colocar o arquivo .css 
-require_once '../../components/header-usuario.php';
+require_once '../../components/header-doador.php';
 ?>
 <main>
 
@@ -423,16 +423,8 @@ require_once '../../components/header-usuario.php';
                             <button class="bts">4</button>
                             <button class="bts">></button>
                         </div>
-
-
                     </div>
-
-
-
-
                 </div>
-
-
             </div>
         </div>
 
@@ -443,5 +435,5 @@ require_once '../../components/header-usuario.php';
 
 <?php
 $jsPagina = ['favoritos.js']; //Colocar o arquivo .js
-require_once '../../components/footer.php';
+require_once '../../components/footer-doador.php';
 ?>

@@ -31,7 +31,7 @@ h4 {
 
 .conteiner {
     display: flex;
-    background-color: #1C3464;  
+    /* background-color: #1C3464;   */
 }
 
 .principal {
@@ -40,10 +40,10 @@ h4 {
     justify-content: space-evenly;
     width: 70%;
     height: 600px;
-    margin: 50px auto;
+    margin: 0 auto;
     background-color: #FFFFFF;
     border-radius: 8px;
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.7);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 
     h1 {
         display: flex;
@@ -118,7 +118,8 @@ h1 {
     transform-origin: center;
 }
 .cartao:hover {
-    transform:scale(110%)
+    transform:scale(102%);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 /* Cores específicas para cada cartão */
@@ -181,9 +182,10 @@ h1 {
 }
 
 .adicionar-cartao:hover {
-    transform: scale(110%);
+    transform: scale(102%);
     border-color: #007AFF;
     background-color: #ffffff;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 @media (max-width: 742px) {

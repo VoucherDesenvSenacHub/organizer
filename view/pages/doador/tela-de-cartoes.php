@@ -1,7 +1,7 @@
 <?php
 $tituloPagina = 'Meus cartões'; // Definir o título da página
 $cssPagina = ["doador/tela-de-cartoes.css"]; //Colocar o arquivo .css (exemplo: 'ONG/cadastro.css')
-require_once '../../components/header-usuario.php';
+require_once '../../components/header-doador.php';
 ?>
 
 <body>
@@ -117,5 +117,5 @@ require_once '../../components/header-usuario.php';
 </body>
 <?php
 $jsPagina = ['tela-de-cartoes.js']; //Colocar o arquivo .js (exemplo: 'cadastro.js')
-require_once '../../components/footer.php';
+require_once '../../components/footer-doador.php';
 ?>
