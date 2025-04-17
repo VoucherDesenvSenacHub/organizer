@@ -27,4 +27,17 @@ main .container {
 
 .caixa-noticias {
     background-color: #f8f8fd;
+    width: 100%;
+}
+
+@media (max-width: 750px) {
+    .tela-noticia h1 {
+        text-align: center !important;
+    }
+}
+
+@media (max-width: 800px) {
+    .group-caixa {
+        flex-wrap: wrap;
+    }
 }

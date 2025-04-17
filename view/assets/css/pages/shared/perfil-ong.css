@@ -10,7 +10,7 @@ body {
 #container-principal {
     background-color: white;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    padding: 50px 20px;
+    padding: 50px 10px;
     flex-direction: column;
     gap: 30px;
 }
@@ -243,5 +243,9 @@ section#apresentacao {
     .icon-title {
         width: 100%;
         text-align: center;
+    }
+
+    #dados-ong p {
+        font-size: 14px;
     }
 }

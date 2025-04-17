@@ -155,7 +155,7 @@ section#apresentacao {
     background-size: cover; */
 }
 
-.carousel .btn-salvar  {
+.carousel .btn-salvar {
     position: absolute;
     top: 10px;
     right: 10px;
@@ -164,7 +164,7 @@ section#apresentacao {
 }
 
 .carousel .btn-salvar div {
-    background-color: white;    
+    background-color: white;
 }
 
 /* Carrossel pequeno */
@@ -195,6 +195,7 @@ section#apresentacao {
     flex-wrap: wrap;
     gap: 10px;
 }
+
 /* Título com ícone das sessões */
 #btns-group .icon-title {
     display: flex;
@@ -205,7 +206,7 @@ section#apresentacao {
     height: 39px;
     justify-content: center;
     border-radius: 50px;
-    padding:  5px 10px;
+    padding: 5px 10px;
     color: var(--cor-azul-escuro);
     background-color: #f0f0f0;
     cursor: default;
@@ -221,6 +222,7 @@ section#apresentacao {
 #btns-group .icon-title h3 {
     font-weight: 500;
 }
+
 #btns-group .icon-title img {
     width: 25px;
     height: 25px;
@@ -237,7 +239,7 @@ section#apresentacao {
 #principal-painel #control-painel {
     display: flex;
     gap: 10px;
-    flex-wrap: nowrap; 
+    flex-wrap: nowrap;
     transition: .5s ease-in;
     /* transform: translateX(-1150px); */
 }
@@ -245,6 +247,10 @@ section#apresentacao {
 #principal-painel #control-painel .container-painel {
     flex: 0 0 100%;
     height: fit-content;
+}
+
+#principal-painel #control-painel .container-painel p {
+    text-align: justify;
 }
 
 #btns-group .icon-title.active {

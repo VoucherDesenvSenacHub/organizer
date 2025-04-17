@@ -46,8 +46,14 @@ header #img-doador img {
     }
 }
 
-@media (max-width: 400px) {
+/* @media (max-width: 400px) {
     .container #container-conteudo {
         margin-left: 50px;
+    }
+} */
+
+@media (max-width: 500px) {
+    .container #container-conteudo {
+        margin-left: 0;
     }
 }

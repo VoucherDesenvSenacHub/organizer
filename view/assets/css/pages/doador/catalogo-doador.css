@@ -13,13 +13,13 @@ section#box-ongs {
     gap: 30px 10px;
 }
 
-@media (max-width: 500px) {
+/* @media (max-width: 500px) {
     #form-filtro {
         flex-direction: column;
         height: 100px;
         position: relative;
         width: 290px;
-    }
+    } */
 
     /* #form-filtro button {
         position: absolute;
@@ -27,13 +27,13 @@ section#box-ongs {
         width: calc(100% - 10px);
     } */
 
-    #form-busca {
+    /* #form-busca {
         max-width: 290px;
     }
 
     #form-filtro ul {
         flex: 1;
-    }
+    } */
 
     /* #form-filtro #esc-status:hover {
         width: 235px;
@@ -43,4 +43,4 @@ section#box-ongs {
     #form-filtro #esc-regiao:hover {
         width: 190px;
     } */
-}
+/* } */
