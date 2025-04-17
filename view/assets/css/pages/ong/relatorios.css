@@ -2,15 +2,18 @@
     color: var(--cor-amarelo);
     font-weight: bold;
 }
+body {
+    background-color: aliceblue;
 
+}
 #principal {
     display: flex;
     justify-content: start;
     flex-direction: column;
     width: 90%;
-    margin: 60px auto;
+    margin:auto;
     border-radius: 8px;
-    padding: 30px 15px;
+    padding: 45px 15px;
     background-color: white;
     color: orange;
     font-size: 35px;
