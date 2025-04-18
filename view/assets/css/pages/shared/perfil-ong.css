@@ -83,7 +83,7 @@ section#apresentacao {
 
 /* Nome */
 #dados-ong h1 {
-    font-size: 44px;
+    font-size: 32px;
     color: var(--cor-principal);
     line-height: 1;
 }
@@ -95,7 +95,7 @@ section#apresentacao {
 }
 /* Valor arrecadado */
 #dados-ong h3 {
-    font-size: 20px;
+    font-size: 17px;
     font-weight: 500;
     color: var(--cor-verde);
 }

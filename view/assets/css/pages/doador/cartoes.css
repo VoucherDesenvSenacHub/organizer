@@ -1,4 +1,8 @@
 /* ======= Estrutura Principal ======= */
+body {
+    background-color: aliceblue;
+}
+
 .principal {
     display: flex;
     flex-direction: column;
