@@ -5,7 +5,7 @@
             <a href="#" title="Doações"><i class="fa-solid fa-coins"></i><span>Doações</span>
             </a>
             <a href="favoritos.php" title="Favoritos"><i class="fa-solid fa-heart"></i><span>Favoritos</span></a>
-            <a href="tela-de-cartoes.php" title="Cartões"><i class="fa-solid fa-credit-card"></i><span>Cartões</span></a>
+            <a href="cartoes.php" title="Cartões"><i class="fa-solid fa-credit-card"></i><span>Cartões</span></a>
             <a href="#" title="Participações"><i class="fa-solid fa-user-group"></i><span>Participações</span></a>
         </nav>
     </div>

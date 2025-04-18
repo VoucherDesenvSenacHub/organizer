@@ -7,7 +7,7 @@ require_once '../../components/header-doador.php';
 
     <section class="secoes" id="secao-2">
         <div class="container">
-            <h1>MEUS FAVORITOS</h1>
+            <h1>FAVORITOS</h1>
             <div id="buttons">
                 <button id="btn-ong" onclick="trocarAba(0)">ONGS</button>
                 <button id="btn-projeto" onclick="trocarAba(1)">PROJETOS</button>

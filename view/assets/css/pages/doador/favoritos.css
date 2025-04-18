@@ -92,3 +92,9 @@
     flex: 0 0 100%;
     height: fit-content;
 }
+
+@media (max-width: 830px) {
+    #secao-2 .container {
+        align-items: center;
+    }
+}

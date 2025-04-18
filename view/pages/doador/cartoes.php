@@ -1,6 +1,6 @@
 <?php
-$tituloPagina = 'Meus cartões'; // Definir o título da página
-$cssPagina = ["doador/tela-de-cartoes.css"]; //Colocar o arquivo .css (exemplo: 'ONG/cadastro.css')
+$tituloPagina = 'Cartões | Organizer'; // Definir o título da página
+$cssPagina = ["doador/cartoes.css"]; //Colocar o arquivo .css (exemplo: 'ONG/cadastro.css')
 require_once '../../components/header-doador.php';
 ?>
 
@@ -16,21 +16,21 @@ require_once '../../components/header-doador.php';
                 <div class="cartoes-container">
                     <!-- Cartão 1 -->
                     <div onclick="abrir_popup('popup-excluir-cartao')" class="cartao" data-cartao-id="1">
-                        <h2><span><img src="../../assets/images/cartao-amarelo.png" alt=""></span>Cartão</h2>
+                        <div class="nome-cartao"><i class="fa-solid fa-credit-card"></i><h3>Cartão</h3></div>
                         <div class="numero-cartao">***** ***** ***** 7501</div>
                         <div class="validade">Data de validade 02/31</div>
                     </div>
 
                     <!-- Cartão 2 -->
                     <div onclick="abrir_popup('popup-excluir-cartao')" class="cartao" data-cartao-id="2">
-                    <h2><span><img src="../../assets/images/cartao-roxo.png" alt=""></span>Cartão</h2>
+                        <div class="nome-cartao"><i class="fa-solid fa-credit-card"></i><h3>Cartão</h3></div>
                         <div class="numero-cartao">***** ***** ***** 9503</div>
                         <div class="validade">Data de validade 05/25</div>
                     </div>
 
                     <!-- Cartão 3 -->
                     <div onclick="abrir_popup('popup-excluir-cartao')" class="cartao" data-cartao-id="3">
-                        <h2><span><img src="../../assets/images/cartao-vermelho.png" alt=""></span>Cartão</h2>
+                        <div class="nome-cartao"><i class="fa-solid fa-credit-card"></i><h3>Cartão</h3></div>
                         <div class="numero-cartao">***** ***** ***** 8523</div>
                         <div class="validade">Data de validade 01/27</div>
                     </div>
@@ -38,7 +38,7 @@ require_once '../../components/header-doador.php';
                     <!-- Botão Adicionar (mantenha como está) -->
                     <div onclick="abrir_popup('popup-adicionar-cartao')" class="adicionar-cartao">
                         <img class="img-add" src="../../assets/images/add-cartao.png" alt="">
-                        <button><span>Adicionar cartão</span></button>                        
+                        <button><span>Adicionar cartão</span></button>
                     </div>
                 </div>
 
@@ -57,7 +57,7 @@ require_once '../../components/header-doador.php';
 
             <div class="row">
                 <div class="input-group">
-                    <label for="" >Validade</label>
+                    <label for="">Validade</label>
                     <input type="date" placeholder="MM/AA">
                 </div>
 
@@ -68,7 +68,7 @@ require_once '../../components/header-doador.php';
             </div>
 
             <div class="input-group">
-                <label for="name" >Titular do cartão</label>
+                <label for="name">Titular do cartão</label>
                 <input type="name" placeholder="Nome Completo">
             </div>
             <div>
@@ -116,6 +116,6 @@ require_once '../../components/header-doador.php';
     </div>
 </body>
 <?php
-$jsPagina = ['tela-de-cartoes.js']; //Colocar o arquivo .js (exemplo: 'cadastro.js')
+$jsPagina = ['cartoes.js']; //Colocar o arquivo .js (exemplo: 'cadastro.js')
 require_once '../../components/footer-doador.php';
 ?>
