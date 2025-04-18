@@ -26,13 +26,14 @@ header #img-doador img {
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     justify-content: normal;
     align-items: normal;
+    padding-left: 65px;
 }
 
 .container #container-conteudo {
     padding: 30px;
     padding-top: 50px;
     width: 100%;
-    margin-left: 65px;
+    /* margin-left: 65px; */
     display: flex;
     flex-direction: column;
     gap: 30px;
@@ -53,7 +54,11 @@ header #img-doador img {
 } */
 
 @media (max-width: 500px) {
-    .container #container-conteudo {
+    /* .container #container-conteudo {
         margin-left: 0;
+    } */
+
+    #main-doador > .container {
+        padding-left: 0;
     }
 }

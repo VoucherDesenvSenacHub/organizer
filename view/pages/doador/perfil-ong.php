@@ -1,7 +1,7 @@
 <?php
 $tituloPagina = 'Perfil da ONG | Organizer';
-$cssPagina = ['shared/perfil-ong.css'];
-require_once '../../components/header-usuario.php';
+$cssPagina = ['shared/perfil-ong.css', 'doador/perfil-ong-projeto-doador.css'];
+require_once '../../components/header-doador.php';
 
 //IMPORTS
 require_once __DIR__ . '/../../../model/ProjetoModel.php';
@@ -113,5 +113,5 @@ $lista = $projetoModel->listar();
 
 <?php
 $jsPagina = [];
-require_once '../../components/footer.php';
+require_once '../../components/footer-doador.php';
 ?>

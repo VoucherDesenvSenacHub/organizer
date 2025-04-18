@@ -1,7 +1,7 @@
 <?php
 $tituloPagina = 'Perfil do Projeto | Organizer';
-$cssPagina = ['shared/perfil-projeto.css'];
-require_once '../../components/header-usuario.php';
+$cssPagina = ['shared/perfil-projeto.css', 'doador/perfil-ong-projeto-doador.css'];
+require_once '../../components/header-doador.php';
 
 require_once '../../../model/ProjetoModel.php';
 $projetoModel = new Projeto();
@@ -144,5 +144,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['id'])) {
 
 <?php
 $jsPagina = ['perfil-projeto.js'];
-require_once '../../components/footer.php';
+require_once '../../components/footer-doador.php';
 ?>

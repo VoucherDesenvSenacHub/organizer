@@ -1,0 +1,14 @@
+#container-principal {
+    padding: 0;
+    box-shadow: none;
+}
+
+.container #container-conteudo {
+    padding-inline: 20px;
+}
+
+@media (max-width: 455px) {
+    .container #container-conteudo {
+        padding-inline: 5px;
+    }
+}

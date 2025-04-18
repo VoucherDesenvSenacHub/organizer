@@ -53,6 +53,8 @@
     </header>
     <?php
         require_once '../../components/popup/compartilhar.php'; //POPUP DE COMPARTILHAR
+        require_once '../../components/popup/fazer-doacao.php'; //POPUP DE FAZER UMA DOAÇÃO
+        require_once '../../components/popup/ser-voluntario.php'; //POPUP DE SER VOLUNTARIO
     ?>
     <div id="sair-doador">
         <?php
