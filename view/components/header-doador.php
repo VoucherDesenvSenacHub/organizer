@@ -33,7 +33,7 @@
             </div>
             <nav id="nav-bar">
                 <ul>
-                    <li><a href="novo-home.php">Home</a></li>
+                    <li><a href="home.php">Home</a></li>
                     <li><a href="ongs.php" class="<?= (basename($_SERVER['PHP_SELF']) == 'ongs.php') ? 'active' : ''; ?>">Ongs</a></li>
                     <li><a href="projetos.php" class="<?= (basename($_SERVER['PHP_SELF']) == 'projetos.php') ? 'active' : ''; ?>">Projetos</a></li>
                     <li><a href="noticias.php">Notícias</a></li>

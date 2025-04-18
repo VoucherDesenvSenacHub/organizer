@@ -191,3 +191,15 @@
         box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
     }
 }
+
+#sair-doador #sair-da-conta-popup h1 {
+    color: var(--cor-azul);
+}
+
+#sair-doador #sair-da-conta-popup a {
+    border-color: var(--cor-azul);
+}
+
+#sair-doador #sair-da-conta-popup .btns-sair button {
+    background-color: var(--cor-azul);
+}

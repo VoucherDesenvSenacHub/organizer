@@ -54,7 +54,7 @@ class Doador
                 $_SESSION['doador_id'] = $conta['coddoador'];
                 $_SESSION['doador_nome'] = $conta['nome'];
 
-                header('Location: novo-home.php');
+                header('Location: home.php');
                 exit;
             }
         }
