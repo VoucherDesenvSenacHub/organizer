@@ -50,24 +50,24 @@ require_once '../../components/header-doador.php';
         <div class="credit-card-popup">
             <h2>CARTÃO DE CRÉDITO</h2>
 
-            <div class="input-group">
+            <div class="input-grupo">
                 <label>Número do Cartão</label>
                 <input type="text" placeholder="0000 0000 0000 0000" class="card-number">
             </div>
 
             <div class="row">
-                <div class="input-group">
+                <div class="input-grupo">
                     <label for="">Validade</label>
                     <input type="date" placeholder="MM/AA">
                 </div>
 
-                <div class="input-group">
+                <div class="input-grupo">
                     <label>CVV</label>
                     <input type="text" placeholder="CVV" class="cvv">
                 </div>
             </div>
 
-            <div class="input-group">
+            <div class="input-grupo">
                 <label for="name">Titular do cartão</label>
                 <input type="name" placeholder="Nome Completo">
             </div>

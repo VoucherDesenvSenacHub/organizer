@@ -3,6 +3,10 @@ body {
     background-color: aliceblue;
 }
 
+#aside-doador #area-topo a:nth-child(3) {
+    color: var(--cor-azul-escuro);
+}
+
 .principal {
     display: flex;
     flex-direction: column;
@@ -139,22 +143,22 @@ body {
     font-family: Arial, sans-serif;
 }
 
-.input-group {
+.input-grupo {
     margin-bottom: 20px;
 }
 
-.input-group, input {
+.input-grupo, input {
     color: #666;
 }
 
-label {
+.conteiner label {
     display: block;
     font-size: 0.9em;
     color: #666;
     margin-bottom: 5px;
 }
 
-input {
+.conteiner input {
     width: 100%;
     padding: 12px;
     border: 1px solid #ddd;
@@ -162,7 +166,7 @@ input {
     font-size: 1em;
 }
 
-input::placeholder {
+.conteiner input::placeholder {
     color: #999;
 }
 
@@ -172,11 +176,11 @@ input::placeholder {
     gap: 0px 20px;
 }
 
-.row .input-group:first-child {
+.row .input-grupo:first-child {
     flex: 2;
 }
 
-.row .input-group:last-child {
+.row .input-grupo:last-child {
     flex: 1;
 }
 
@@ -257,7 +261,7 @@ input::placeholder {
 }
 
 /* Validação */
-input.error {
+.conteiner input.error {
     border-color: #ff3860 !important;
     animation: shake 0.5s;
 }

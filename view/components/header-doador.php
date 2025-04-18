@@ -44,7 +44,7 @@
                 <button onclick="menu_mobile()" id="hamburguer"></button>
             </div> -->
             <div id="doador-nav">
-                <button id="img-doador">
+                <button id="img-doador" onclick="abrir_popup('perfil-doador-popup')">
                     <img src="../../assets/images/pages/perfil_julia.png" alt="">
                 </button>
                 <button onclick="menu_mobile()" id="hamburguer"></button>
@@ -55,6 +55,7 @@
         require_once '../../components/popup/compartilhar.php'; //POPUP DE COMPARTILHAR
         require_once '../../components/popup/fazer-doacao.php'; //POPUP DE FAZER UMA DOAÇÃO
         require_once '../../components/popup/ser-voluntario.php'; //POPUP DE SER VOLUNTARIO
+        require_once '../../components/popup/perfil-doador.php'; //POPUP DE VER O PERFIL
     ?>
     <div id="sair-doador">
         <?php

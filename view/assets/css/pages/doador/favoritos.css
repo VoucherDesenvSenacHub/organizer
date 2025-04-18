@@ -2,6 +2,10 @@ body {
     background-color: aliceblue;
 }
 
+#aside-doador #area-topo a:nth-child(2) {
+    color: var(--cor-azul-escuro);
+}
+
 #container-conteudo {
     overflow: hidden;
 }

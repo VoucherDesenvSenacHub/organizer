@@ -63,4 +63,13 @@ class Doador
         header('Location: login.php?msg=logerro');
         exit;
     }
+
+    function buscar_perfil($id) {
+        $query = "SELECT * FROM $this->tabela WHERE coddoador = :id";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+        $stmt->setFetchMode(PDO::FETCH_CLASS, __CLASS__);
+        return $stmt->fetch();
+    }
 }
