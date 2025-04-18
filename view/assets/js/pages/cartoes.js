@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const popup = document.getElementById(id);
         if (popup) {
             popup.style.display = 'flex';
-            document.body.style.overflow = 'hidden';
+            // document.body.style.overflow = 'hidden';
             console.log(`Popup ${id} aberto com sucesso`);
             return true;
         } else {
@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const popup = document.getElementById(id);
         if (popup) {
             popup.style.display = 'none';
-            document.body.style.overflow = 'auto';
+            // document.body.style.overflow = 'auto';
             if (id === 'popup-adicionar-cartao') {
                 resetarFormulario();
             }
@@ -177,14 +177,14 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Fechar popups ao clicar fora
-    document.querySelectorAll('.popup-fundo').forEach(popup => {
+    document.querySelectorAll('.popup-fundo.popup-cartao').forEach(popup => {
         popup.addEventListener('click', function(e) {
             if (e.target === this || e.target.classList.contains('popup-overlay')) {
                 fecharPopup(this.id);
                 cartaoSelecionado = null;
             }
         });
-    });
+    });    
 });
 
 document.addEventListener('DOMContentLoaded', function() {

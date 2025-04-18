@@ -147,18 +147,18 @@ body {
     margin-bottom: 20px;
 }
 
-.input-grupo, input {
+.input-grupo, .credit-card-popup input {
     color: #666;
 }
 
-.conteiner label {
+.credit-card-popup label {
     display: block;
     font-size: 0.9em;
     color: #666;
     margin-bottom: 5px;
 }
 
-.conteiner input {
+.credit-card-popup input {
     width: 100%;
     padding: 12px;
     border: 1px solid #ddd;
@@ -166,7 +166,7 @@ body {
     font-size: 1em;
 }
 
-.conteiner input::placeholder {
+.credit-card-popup input::placeholder {
     color: #999;
 }
 
