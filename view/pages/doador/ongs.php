@@ -1,7 +1,7 @@
 <?php
-    $tituloPagina = 'Descubra ONGS';
-    $cssPagina = ['shared/catalogo.css'];
-    require_once '../../components/header-usuario.php';
+$tituloPagina = 'Descubra ONGS';
+$cssPagina = ['doador/catalogo-doador.css'];
+require_once '../../components/header-doador.php';
 ?>
 <main>
     <div class="container" id="container-catalogo">
@@ -290,10 +290,7 @@
         </nav>
     </div>
 </main>
-</div>
-<?php require_once '../../components/meu-perfil-doador.php'; ?>
-</div>
 <?php
-    $jsPagina = ['home-doador.js'];
-    require_once '../../components/footer.php';
+$jsPagina = [];
+require_once '../../components/footer-doador.php';
 ?>
