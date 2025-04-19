@@ -1,0 +1,72 @@
+#nova-senha-doador-popup {
+    background-color: rgba(0, 0, 0, 0.2);
+    padding-inline: 15px;
+}
+
+#nova-senha-doador-popup .container-popup {
+    background-color: rgb(255, 255, 255);
+    color: var(--cor-principal);
+    flex-direction: column;
+}
+
+#nova-senha-doador-popup h1 {
+    font-size: 18px;
+    letter-spacing: 1px;
+    color: var(--cor-azul-escuro);
+}
+
+#nova-senha-doador-popup p {
+    font-size: 15px;
+    margin-block: 10px;
+}
+
+#nova-senha-doador-popup .input-group {
+    display: flex;
+    gap: 10px;
+}
+
+#nova-senha-doador-popup .input-box {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    /* background-color: red; */
+}
+
+#nova-senha-doador-popup .input-box label {
+    font-size: 13px;
+    /* color: rgba(28, 52, 100, 0.8); */
+    font-weight: 500;
+}
+
+#nova-senha-doador-popup .input-box input {
+    padding: 8px;
+    padding-left: 30px;
+    border: none;
+    outline: none;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+}
+
+#nova-senha-doador-popup .input-box i {
+    position: absolute;
+    top: 52%;
+    left: 7px;
+    color: rgba(28, 52, 100, 0.5);
+}
+
+#nova-senha-doador-popup .btn {
+    width: 100%;
+    margin-top: 15px;
+}
+
+@media (max-width: 465px) {
+    #nova-senha-doador-popup .container-popup {
+        width: 100%;
+    }
+
+    #nova-senha-doador-popup .input-group {
+        flex-direction: column;
+    }
+    
+}

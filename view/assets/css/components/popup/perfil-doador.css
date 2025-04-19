@@ -1,5 +1,6 @@
 #perfil-doador-popup {
     background-color: rgba(0, 0, 0, 0.2);
+    padding: 15px;
 }
 
 #perfil-doador-popup .container-popup {
@@ -17,12 +18,19 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    align-items: center;
     text-align: center;
+    /* max-width: 245px; */
+    word-wrap: break-word;
 }
 
 #perfil-doador-popup #left img {
     width: 150px;
     height: 150px;
+}
+
+#perfil-doador-popup #left p {
+    max-width: 245px;
 }
 
 #perfil-doador-popup #left .btn {
@@ -112,5 +120,13 @@
     #perfil-doador-popup .container-popup {
         flex-direction: column;
         padding: 5px;
+    }
+
+    #perfil-doador-popup .box {
+        padding: 5px;
+    }
+
+    #perfil-doador-popup #right .input-group {
+        gap: 5px;
     }
 }

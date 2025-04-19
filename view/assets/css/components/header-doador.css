@@ -12,6 +12,14 @@ header #img-doador {
     cursor: pointer;
     background: none;
     border: none;
+    transform: translateY(0);
+    transition: .3s;
+    border-radius: 50%;
+}
+
+header #img-doador:hover {
+    transform: translateY(-2px);
+    box-shadow: rgba(49, 214, 255, 0.35) 0px 5px 15px;
 }
 
 header #img-doador img {

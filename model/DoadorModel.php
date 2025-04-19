@@ -52,7 +52,6 @@ class Doador
                 // Iniciar sessão e guardar dados do doador
                 session_start();
                 $_SESSION['doador_id'] = $conta['coddoador'];
-                $_SESSION['doador_nome'] = $conta['nome'];
 
                 header('Location: home.php');
                 exit;
@@ -71,5 +70,44 @@ class Doador
         $stmt->execute();
         $stmt->setFetchMode(PDO::FETCH_CLASS, __CLASS__);
         return $stmt->fetch();
+    }
+
+    function update($id, $nome, $telefone, $cpf, $data, $email) {
+        try {
+            $query = "UPDATE $this->tabela 
+                      SET nome = :nome, telefone = :telefone, cpf = :cpf, data_nascimento = :data, email = :email
+                      WHERE coddoador = :id";
+            $stmt = $this->pdo->prepare($query);
+            $stmt->bindParam(':id', $id);
+            $stmt->bindParam(':nome', $nome);
+            $stmt->bindParam(':telefone', $telefone);
+            $stmt->bindParam(':cpf', $cpf);
+            $stmt->bindParam(':data', $data);
+            $stmt->bindParam(':email', $email);
+            $stmt->execute();
+            if ($stmt->rowCount() > 0) {
+                return true;
+            }
+        } catch (PDOException $e) {
+            return false;
+        }
+    }
+
+    function updatesenha($id, $senha) {
+        try {
+            $hashSenha = password_hash($senha, PASSWORD_DEFAULT);
+            $query = "UPDATE $this->tabela 
+                      SET senha = :senha
+                      WHERE coddoador = :id";
+            $stmt = $this->pdo->prepare($query);
+            $stmt->bindParam(':id', $id);
+            $stmt->bindParam(':senha', $hashSenha);
+            $stmt->execute();
+            if ($stmt->rowCount() > 0) {
+                return true;
+            }
+        } catch (PDOException $e) {
+            return false;
+        }
     }
 }

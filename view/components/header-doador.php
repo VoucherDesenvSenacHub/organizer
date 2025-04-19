@@ -22,6 +22,9 @@
         }
     }
     ?>
+
+    <!-- Chamar o arquivo de toast antes de tudo -->
+    <script src="../../assets/js/global/toast.js"></script>
 </head>
 
 <body>
@@ -44,7 +47,7 @@
                 <button onclick="menu_mobile()" id="hamburguer"></button>
             </div> -->
             <div id="doador-nav">
-                <button id="img-doador" onclick="abrir_popup('perfil-doador-popup')">
+                <button id="img-doador" onclick="abrir_popup('perfil-doador-popup')" title="Meu Perfil">
                     <img src="../../assets/images/pages/perfil_julia.png" alt="">
                 </button>
                 <button onclick="menu_mobile()" id="hamburguer"></button>
@@ -56,6 +59,7 @@
         require_once '../../components/popup/fazer-doacao.php'; //POPUP DE FAZER UMA DOAÇÃO
         require_once '../../components/popup/ser-voluntario.php'; //POPUP DE SER VOLUNTARIO
         require_once '../../components/popup/perfil-doador.php'; //POPUP DE VER O PERFIL
+        require_once '../../components/popup/nova-senha-doador.php'; //POPUP ALTERAR A SENHA
     ?>
     <div id="sair-doador">
         <?php
