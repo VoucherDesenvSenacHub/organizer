@@ -1,23 +1,19 @@
 <?php
 $tituloPagina = 'Favoritos | Organizer'; // Definir o título da página
 $cssPagina = ['doador/favoritos.css']; //Colocar o arquivo .css 
-require_once '../../components/header-usuario.php';
+require_once '../../components/header-doador.php';
 ?>
 <main>
 
     <section class="secoes" id="secao-2">
         <div class="container">
-            <h1>MEUS FAVORITOS</h1>
-
+            <h1>FAVORITOS</h1>
             <div id="buttons">
-                <button class="rs" onclick="ongs()">ONGS<img src="../../assets/images/medalha-icon.png" alt=""></button>
-                <button class="rs" onclick="projetos()">PROJETO<img src="../../assets/images/medalha-icon.png"
-                        alt=""></button>
+                <button id="btn-ong" onclick="trocarAba(0)">ONGS</button>
+                <button id="btn-projeto" onclick="trocarAba(1)">PROJETOS</button>
             </div>
-
             <div id="principal">
-                <div id="cards">
-
+                <div id="control-box">
                     <div class="box-ongs">
                         <div class="card-ong">
                             <div class="perfil">
@@ -199,19 +195,128 @@ require_once '../../components/header-usuario.php';
                                 </div>
                             </div>
                         </div>
-                        <div class="btn-paginacao">
-                            <button class="bts">1</button>
-                            <button class="bts">2</button>
-                            <button class="bts">3</button>
-                            <button class="bts">4</button>
-                            <button class="bts">></button>
+                        <div class="card-ong">
+                            <div class="perfil">
+                                <div class="logo">
+                                    <p>Logo</p>
+                                </div>
+                                <div class="nome">
+                                    <h2>Nome da ONG</h2>
+                                    <p>Área de Atuação</p>
+                                </div>
+                            </div>
+                            <div class="descricao">
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati qui odio,
+                                    dignissimos
+                                    alias ut, nesciunt deserunt maiores at adipisci modi dolor inventore suscipit quas
+                                    quis
+                                    cumque minus nobis, ipsum delectus!</p>
+                            </div>
+                            <div class="doacao">
+                                <p><span>150 </span>Doações</p>
+                                <p><span>9 </span>Projetos</p>
+                            </div>
+                            <div class="acoes-ong">
+                                <a href="perfil-ong.php" class="saiba-mais-ong">Saiba Mais</a>
+                                <div class="btn-salvar">
+                                    <button id="share" class="fa-solid fa-share-nodes"
+                                        onclick="abrir_popup('compartilhar-popup')"></button>
+                                    <button id="like" class="fa-solid fa-heart"></button>
+                                </div>
+                            </div>
                         </div>
-
+                        <div class="card-ong">
+                            <div class="perfil">
+                                <div class="logo">
+                                    <p>Logo</p>
+                                </div>
+                                <div class="nome">
+                                    <h2>Nome da ONG</h2>
+                                    <p>Área de Atuação</p>
+                                </div>
+                            </div>
+                            <div class="descricao">
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati qui odio,
+                                    dignissimos
+                                    alias ut, nesciunt deserunt maiores at adipisci modi dolor inventore suscipit quas
+                                    quis
+                                    cumque minus nobis, ipsum delectus!</p>
+                            </div>
+                            <div class="doacao">
+                                <p><span>150 </span>Doações</p>
+                                <p><span>9 </span>Projetos</p>
+                            </div>
+                            <div class="acoes-ong">
+                                <a href="perfil-ong.php" class="saiba-mais-ong">Saiba Mais</a>
+                                <div class="btn-salvar">
+                                    <button id="share" class="fa-solid fa-share-nodes"
+                                        onclick="abrir_popup('compartilhar-popup')"></button>
+                                    <button id="like" class="fa-solid fa-heart"></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-ong">
+                            <div class="perfil">
+                                <div class="logo">
+                                    <p>Logo</p>
+                                </div>
+                                <div class="nome">
+                                    <h2>Nome da ONG</h2>
+                                    <p>Área de Atuação</p>
+                                </div>
+                            </div>
+                            <div class="descricao">
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati qui odio,
+                                    dignissimos
+                                    alias ut, nesciunt deserunt maiores at adipisci modi dolor inventore suscipit quas
+                                    quis
+                                    cumque minus nobis, ipsum delectus!</p>
+                            </div>
+                            <div class="doacao">
+                                <p><span>150 </span>Doações</p>
+                                <p><span>9 </span>Projetos</p>
+                            </div>
+                            <div class="acoes-ong">
+                                <a href="perfil-ong.php" class="saiba-mais-ong">Saiba Mais</a>
+                                <div class="btn-salvar">
+                                    <button id="share" class="fa-solid fa-share-nodes"
+                                        onclick="abrir_popup('compartilhar-popup')"></button>
+                                    <button id="like" class="fa-solid fa-heart"></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-ong">
+                            <div class="perfil">
+                                <div class="logo">
+                                    <p>Logo</p>
+                                </div>
+                                <div class="nome">
+                                    <h2>Nome da ONG</h2>
+                                    <p>Área de Atuação</p>
+                                </div>
+                            </div>
+                            <div class="descricao">
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati qui odio,
+                                    dignissimos
+                                    alias ut, nesciunt deserunt maiores at adipisci modi dolor inventore suscipit quas
+                                    quis
+                                    cumque minus nobis, ipsum delectus!</p>
+                            </div>
+                            <div class="doacao">
+                                <p><span>150 </span>Doações</p>
+                                <p><span>9 </span>Projetos</p>
+                            </div>
+                            <div class="acoes-ong">
+                                <a href="perfil-ong.php" class="saiba-mais-ong">Saiba Mais</a>
+                                <div class="btn-salvar">
+                                    <button id="share" class="fa-solid fa-share-nodes"
+                                        onclick="abrir_popup('compartilhar-popup')"></button>
+                                    <button id="like" class="fa-solid fa-heart"></button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-
-                    <div class="mae-cards">
-
-
+                    <div class="box-ongs">
                         <div class="card-projeto">
                             <div class="acoes-projeto">
                                 <button class="btn-share fa-solid fa-share-nodes"
@@ -415,24 +520,8 @@ require_once '../../components/header-usuario.php';
                             </div>
                             <a class="saiba-mais-projeto" href="perfil-projeto.php">Saiba Mais</a>
                         </div>
-
-                        <div class="btn-paginacao">
-                            <button class="bts">1</button>
-                            <button class="bts">2</button>
-                            <button class="bts">3</button>
-                            <button class="bts">4</button>
-                            <button class="bts">></button>
-                        </div>
-
-
                     </div>
-
-
-
-
                 </div>
-
-
             </div>
         </div>
 
@@ -443,5 +532,5 @@ require_once '../../components/header-usuario.php';
 
 <?php
 $jsPagina = ['favoritos.js']; //Colocar o arquivo .js
-require_once '../../components/footer.php';
+require_once '../../components/footer-doador.php';
 ?>

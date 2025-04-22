@@ -1,7 +1,7 @@
 <?php
 $tituloPagina = 'Encontre Projetos';
-$cssPagina = ['shared/catalogo.css'];
-require_once '../../components/header-usuario.php';
+$cssPagina = ['doador/catalogo-doador.css'];
+require_once '../../components/header-doador.php';
 
 require_once __DIR__ . "\..\..\..\model\ProjetoModel.php";
 $projetoModel = new Projeto();
@@ -156,6 +156,6 @@ if ($_SERVER['REQUEST_METHOD'] = 'GET' && isset($_GET['pesquisa'])) {
 </div>
 
 <?php
-$jsPagina = ['home-doador.js'];
-require_once '../../components/footer.php';
+$jsPagina = [];
+require_once '../../components/footer-doador.php';
 ?>

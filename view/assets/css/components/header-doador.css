@@ -1,0 +1,72 @@
+header #doador-nav {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+header #img-doador {
+    width: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background: none;
+    border: none;
+    transform: translateY(0);
+    transition: .3s;
+    border-radius: 50%;
+}
+
+header #img-doador:hover {
+    transform: translateY(-2px);
+    box-shadow: rgba(49, 214, 255, 0.35) 0px 5px 15px;
+}
+
+header #img-doador img {
+    width: 100%;
+}
+
+/* CONTROLE DO ASIDE E CONTEUDO */
+#main-doador > .container {
+    position: relative;
+    min-height: calc(100vh - 60px);
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    justify-content: normal;
+    align-items: normal;
+    padding-left: 65px;
+}
+
+.container #container-conteudo {
+    padding: 30px;
+    padding-top: 50px;
+    width: 100%;
+    /* margin-left: 65px; */
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+
+@media (max-width: 700px) {
+    .container #container-conteudo {
+        padding: 50px 10px;
+        /* margin-left: 50px; */
+    }
+}
+
+/* @media (max-width: 400px) {
+    .container #container-conteudo {
+        margin-left: 50px;
+    }
+} */
+
+@media (max-width: 500px) {
+    /* .container #container-conteudo {
+        margin-left: 0;
+    } */
+
+    #main-doador > .container {
+        padding-left: 0;
+    }
+}
