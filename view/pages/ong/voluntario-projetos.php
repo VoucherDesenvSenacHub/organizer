@@ -1,78 +1,32 @@
 <?php
-$cards = [
-    [
+
+$nomesProjetos = [
+    'Projeto Esperança',
+    'Mãos Unidas',
+    'Ação do Bem',
+    'Voluntários em Ação',
+    'Transformar Vidas',
+    'Coração Solidário',
+    'Gente Que Ajuda',
+    'Mudar o Mundo',
+    'Rede do Amor',
+    'Força Voluntária',
+    'Amigos do Bem',
+    'Unidos por Todos'
+];
+
+$cards = [];
+
+foreach ($nomesProjetos as $nome) {
+    $cards[] = [
         'foto-empresa' => '../../assets/images/projeto_placeholder.png',
-        'nome' => 'C. Solidaria',
-        'quant-voluntarios' => '14 Voluntários ativos',
-        'quant-solicitacao' => '5 Solicitações'
-    ],
-    [
-        'foto-empresa' => '../../assets/images/projeto_placeholder.png',
-        'nome' => 'C. Solidaria',
-        'quant-voluntarios' => '14 Voluntários ativos',
-        'quant-solicitacao' => '5 Solicitações'
-    ],
-    [
-        'foto-empresa' => '../../assets/images/projeto_placeholder.png',
-        'nome' => 'C. Solidaria',
-        'quant-voluntarios' => '14 Voluntários ativos',
-        'quant-solicitacao' => '5 Solicitações'
-    ],
-    [
-        'foto-empresa' => '../../assets/images/projeto_placeholder.png',
-        'nome' => 'C. Solidaria',
-        'quant-voluntarios' => '14 Voluntários ativos',
-        'quant-solicitacao' => '5 Solicitações'
-    ],
-    [
-        'foto-empresa' => '../../assets/images/projeto_placeholder.png',
-        'nome' => 'C. Solidaria',
-        'quant-voluntarios' => '14 Voluntários ativos',
-        'quant-solicitacao' => '5 Solicitações'
-    ],
-    [
-        'foto-empresa' => '../../assets/images/projeto_placeholder.png',
-        'nome' => 'C. Solidaria',
-        'quant-voluntarios' => '14 Voluntários ativos',
-        'quant-solicitacao' => '5 Solicitações'
-    ],
-    [
-        'foto-empresa' => '../../assets/images/projeto_placeholder.png',
-        'nome' => 'C. Solidaria',
-        'quant-voluntarios' => '14 Voluntários ativos',
-        'quant-solicitacao' => '5 Solicitações'
-    ],
-    [
-        'foto-empresa' => '../../assets/images/projeto_placeholder.png',
-        'nome' => 'C. Solidaria',
-        'quant-voluntarios' => '14 Voluntários ativos',
-        'quant-solicitacao' => '5 Solicitações'
-    ],
-    [
-        'foto-empresa' => '../../assets/images/projeto_placeholder.png',
-        'nome' => 'C. Solidaria',
-        'quant-voluntarios' => '14 Voluntários ativos',
-        'quant-solicitacao' => '5 Solicitações'
-    ],
-    [
-        'foto-empresa' => '../../assets/images/projeto_placeholder.png',
-        'nome' => 'C. Solidaria',
-        'quant-voluntarios' => '14 Voluntários ativos',
-        'quant-solicitacao' => '5 Solicitações'
-    ],
-    [
-        'foto-empresa' => '../../assets/images/projeto_placeholder.png',
-        'nome' => 'C. Solidaria',
-        'quant-voluntarios' => '14 Voluntários ativos',
-        'quant-solicitacao' => '5 Solicitações'
-    ],
-    [
-        'foto-empresa' => '../../assets/images/projeto_placeholder.png',
-        'nome' => 'C. Solidaria',
-        'quant-voluntarios' => '14 Voluntários ativos',
-        'quant-solicitacao' => '5 Solicitações'
-    ]
-]
+        'nome' => $nome,
+        'quant-voluntarios' => rand(5, 50) . ' Ativos',
+        'quant-solicitacao' => rand(1, 20) . ' Solicitações'
+    ];
+}
+
+?>
     ?>
 
 <?php

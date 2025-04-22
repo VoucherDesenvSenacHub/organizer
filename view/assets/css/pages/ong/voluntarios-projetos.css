@@ -20,7 +20,6 @@ body {
     justify-content: space-around;
     z-index: 1;
     width: 80%;
-    height: 100%;
     margin: auto;
     padding: 20px;
     background-color: #FFFFFF;
@@ -85,6 +84,11 @@ body {
     flex-wrap: wrap;
     gap: 20px;
     justify-content: space-between;
+
+    & .card-projeto {
+        height: fit-content;
+        display: flex;
+    }
 }
 .cards {
     display: flex;
@@ -151,24 +155,17 @@ body {
     border-bottom: var(--cor-amarelo) 5px solid;
     border-left: none;
 }
-**/ */
-.card-projeto {
-    display: flex;
-    gap: 10px;
-}
+**/ 
+
 .card-projeto .dados {
-    flex-grow: 1; 
     display: flex;
-    flex-direction: column;
     justify-content: space-between;
-    padding: 0 10px;
+    padding: 10px;
+    flex-wrap: wrap;
 }
 
-.card-projeto .dados h1 {
-    display: flex;
-    font-weight: 700;
-    font-size: 20px;
-    gap: 10px;
+.card-projeto .dados h4  {
+    width: 100%;
     margin-bottom: 5px;
 }
 
@@ -177,7 +174,7 @@ body {
     gap: 10px;
     font-size: 13px;;
     color: #188241;
-    font-size: 500;
+
 }
 
 .card-projeto .dados .quant-solicitacao {
@@ -185,7 +182,7 @@ body {
     gap : 10px;
     font-size: 13px;
     color: #FF5A79;
-    font-size: 500;
+
     
 
 }  
