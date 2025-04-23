@@ -8,7 +8,7 @@
             <div class="titulo">
                 <h1>RELATÓRIOS</h1> 
             </div>
-    
+
             <div class="cards">
                 <div class="card1">
                     <div class="icon">
@@ -62,11 +62,6 @@
                         <p>Voluntários</p>
                     </div>
                 </div>
-            </div>
-
-            <div id="download">
-                <img src="../../assets/images/icon.png" alt="">
-                <p>Download Iniciado</p>
             </div>
 
         </div>
