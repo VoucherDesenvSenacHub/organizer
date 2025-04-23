@@ -10,24 +10,28 @@ body {
     display: flex;
     justify-content: start;
     flex-direction: column;
-    width: 90%;
+    max-width: 1220px;
     margin:auto;
     border-radius: 8px;
     padding: 45px 15px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     background-color: white;
-    color: orange;
     font-size: 35px;
 
     .titulo {
         margin-left: 27px;
         margin-bottom: 20px;
-    }
+        font-size: 16px;
+        letter-spacing: 1px;
+        color: #F79329;
+    }   
 
     .cards {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
         gap: 30px;
+        height: fit-content;
     }
 
     .icon {
@@ -52,17 +56,18 @@ body {
         border-radius: 10px;
         box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.2);
         padding: 20px;
-        width: 620px;
+        width: 500px;
         text-align: left;
         font-size: 20px;
+        
     }
 
     .card1 img{
-        width: 100%;
+        width: 80%;
     }
 
     .sub {
-        margin-top: 15px;
+        /* margin-top: 15px; */
 
         .quadrado{
             display: flex;

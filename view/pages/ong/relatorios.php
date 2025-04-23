@@ -6,9 +6,9 @@
     <main>
         <div id="principal">
             <div class="titulo">
-                RELATÓRIOS
+                <h1>RELATÓRIOS</h1> 
             </div>
-
+    
             <div class="cards">
                 <div class="card1">
                     <div class="icon">

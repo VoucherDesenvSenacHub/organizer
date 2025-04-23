@@ -27,8 +27,6 @@ foreach ($nomesProjetos as $nome) {
 }
 
 ?>
-    ?>
-
 <?php
 $voluntarios = [
     [
