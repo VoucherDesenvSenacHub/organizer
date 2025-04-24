@@ -153,14 +153,10 @@
 }
 .grafico-linhas{
     display: flex;
-    width: 35%;
-    justify-content: space-around;
-    align-items: end;
-    text-align: center;
     margin: 0px 30px;
     padding-left: 10px;
+    padding-top: 26px;
     z-index: 10;
-    bottom: 45px;
     position: absolute;
 }
 .barra{

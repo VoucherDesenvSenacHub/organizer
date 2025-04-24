@@ -73,10 +73,10 @@
                         </div>
                     </div>
                     <div class="grafico-linhas">
-                        <svg width="700" height="280">
+                        <svg width="550" height="280">
                         <?php
                             $x1 = 20;
-                            $x2 = $x1+39;
+                            $x2 = $x1+45;
                             for($i = 0; $i < sizeof($doacoesMensais); $i++){
                             $localPonto = 280 - (280 * $doacoesMensais[$i][1]/960);
                             if($i == sizeof($doacoesMensais)-1){
@@ -90,8 +90,8 @@
                                 <circle r="4" cx="<?=$x1?>" cy="<?=$localPonto?>" fill="blue"/>
                                 
                                 <?php
-                                    $x1 += 39;
-                                    $x2 += 39;
+                                    $x1 += 45;
+                                    $x2 += 45;
                                 }
                                 ?>
                         </svg>
@@ -105,14 +105,18 @@
                         <?php }?>
                     </div>
                 </div>
+            <!-- Fim doações Mensais -->
+
+            <!-- Início doações por projeto -->
 
                 <div class="card1">
                     <div class="icon">
                         Doações por projeto
                         <button onclick="clicar()"><img src="../../assets/images/icon-download-report.png" alt=""></button>
                     </div>
-                    <img src="../../assets//images/pie-graph.png" alt="" id="pie-graph">
+                    <!-- <img src="../../assets//images/pie-graph.png" alt="" id="pie-graph"> -->
                 </div>
+            <!-- Fim doações por projeto -->
 
                 <div class="card1">
                     <div class="icon">
