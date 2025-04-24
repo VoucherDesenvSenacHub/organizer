@@ -3,24 +3,23 @@ $voluntarios = [
     ["Projeto A", 21],
     ["Projeto B", 29],
     ["Projeto C", 36],
-    ["Projeto D", 40],
-    ["Projeto E", 62],
-    ["Projeto F", 95]
+    ["Projeto D", 48],
+    ["Projeto E", 62]
 ];
 
 $doacoesMensais = [
-    ["Janeiro", 220],
-    ["Fevereiro", 240],
-    ["Março", 250],
-    ["Abril", 230],
-    ["Maio", 200],
-    ["Junho", 350],
-    ["Julho", 960],
-    ["Agosto", 470],
-    ["Setembro", 300],
-    ["Outubro", 485],
-    ["Novembro", 740],
-    ["Dezembro", 720]
+    ["Jan", 220],
+    ["Fev", 240],
+    ["Mar", 250],
+    ["Abr", 230],
+    ["Mai", 200],
+    ["Jun", 350],
+    ["Jul", 960],
+    ["Ago", 470],
+    ["Set", 300],
+    ["Out", 485],
+    ["Nov", 740],
+    ["Dez", 720]
 ];
 
 $doacoesPorProjeto = [

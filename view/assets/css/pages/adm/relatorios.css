@@ -47,6 +47,7 @@
         box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.2);
         padding: 20px;
         width: 620px;
+        height: 400px;
         text-align: left;
         font-size: 20px;
     }
@@ -145,15 +146,33 @@
     padding-left: 10px;
     z-index: 10;
     position: absolute;
-    bottom: 200px;
+    bottom: 185px;
     p{
         font-size: 0.6em;
     }
+}
+.grafico-linhas{
+    display: flex;
+    width: 35%;
+    justify-content: space-around;
+    align-items: end;
+    text-align: center;
+    margin: 0px 30px;
+    padding-left: 10px;
+    z-index: 10;
+    position: absolute;
 }
 .barra{
     width: 10%;
     background-color: rgb(141, 217, 255);
 
+}
+.ponto{
+    position: relative;
+    width: 8px;
+    height: 8px;
+    background-color: blue;
+    border-radius: 50%;
 }
 @keyframes animacao {
     0% {
@@ -179,4 +198,45 @@
     img{
         margin: 1%;
     }
+}
+
+/* Responsividade Mobile */
+
+@media (max-width: 481px){
+    main {
+        width: 95%;
+    }
+    #principal {
+        margin: 10px auto;
+        .cards {
+            flex-direction: column;
+            margin: 5px 10px;
+        }
+        .card1 {
+            width: 100%;
+        }
+        .titulo {
+            font-size: 0.7em;
+        }
+        .grade {
+            .linha {
+                height: 30px;
+            }
+        }
+        .icon {
+            font-size: 0.5em;
+            img{
+                width: 50%;
+            }
+        }
+        .grafico {
+            p{
+                font-size: 0.7em;
+            }
+        }
+        .eixo-y{
+            height: 140px;
+        }
+    }
+
 }

@@ -11,6 +11,7 @@
             </div>
 
             <div class="cards">
+            <!-- Início voluntários por projeto -->
                 <div class="card1">
                     <div class="icon">
                     Voluntários por Projeto
@@ -34,7 +35,7 @@
                     </div>
                     <div class="barras-verticais">
                         <?php foreach($voluntarios as $vol){
-                        $altura = $vol[1] * 200 / 100?>
+                        $altura = $vol[1] * 280 / 100?>
                         <div class="barra" style="height: <?php echo ($altura)?>px;">
                             <p><?= $vol[1]?></p>
                         </div>
@@ -47,27 +48,49 @@
                         </div>
                         <?php }?>
                     </div>
-
-                    <!-- <div class="sub">
-                        
-                        <img src="../../assets/images/graph-vol-proj.png" alt="">
-
-                        <div class="quadrado">
-                            <img src="../../assets/images/SquareFill.png" alt="">
-                            <p>voluntarios</p>
-                        </div>
-
-                    </div> -->
                 </div>
-
+            <!-- Fim voluntários por Projeto -->
+            
+            <!-- Início doações Mensais -->
                 <div class="card1">
                     <div class="icon">
                         Doações Mensais
                         <button onclick="clicar()"><img src="../../assets/images/icon-download-report.png" alt=""></button>
                     </div>
-                    <img src="../../assets/images/grafico2.png" alt="">
-                    <div class="sub">
-                        <img src="../../assets/images/Legends2.png" alt="">
+                    <div class="grafico">
+                        <div class="eixo-y">
+                            <p>960</p>
+                            <p>720</p>
+                            <p>480</p>
+                            <p>240</p>
+                            <p>0</p>
+                        </div>
+                        <div class="grade">
+                            <div class="linha"></div>
+                            <div class="linha"></div>
+                            <div class="linha"></div>
+                            <div class="linha"></div>
+                        </div>
+                    </div>
+                    <div class="grafico-linhas">
+                        <?php foreach($doacoesMensais as $ponto){
+                            $localPonto = ($ponto[1] /5) - 135;
+                            ?>
+                            <div class="ponto" style="bottom: <?php echo $localPonto . 'px;'?>">
+                                <svg width="200" height="200" >
+                                    <line x1="0" y1="<?=$localPonto?>" x2="100" y2="100" style="stroke: blue; stroke-width: 2;"/>
+                                </svg>
+                            </div>
+                            
+                        <?php } ?>
+
+                    </div>
+                    <div class="rodape-grafico">
+                        <?php foreach($doacoesMensais as $mes){?>
+                        <div>
+                            <p><?php echo($mes[0]);?> </p>
+                        </div>
+                        <?php }?>
                     </div>
                 </div>
 
