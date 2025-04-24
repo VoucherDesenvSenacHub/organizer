@@ -73,16 +73,28 @@
                         </div>
                     </div>
                     <div class="grafico-linhas">
-                        <?php foreach($doacoesMensais as $ponto){
-                            $localPonto = ($ponto[1] /5) - 135;
+                        <svg width="700" height="280">
+                        <?php
+                            $x1 = 20;
+                            $x2 = $x1+39;
+                            for($i = 0; $i < sizeof($doacoesMensais); $i++){
+                            $localPonto = 280 - (280 * $doacoesMensais[$i][1]/960);
+                            if($i == sizeof($doacoesMensais)-1){
+                                $localPonto2 = $localPonto;
+                                $x2 = $x1;
+                            }else{
+                                $localPonto2 = 280 - (280 * $doacoesMensais[$i+1][1]/960);
+                            }
                             ?>
-                            <div class="ponto" style="bottom: <?php echo $localPonto . 'px;'?>">
-                                <svg width="200" height="200" >
-                                    <line x1="0" y1="<?=$localPonto?>" x2="100" y2="100" style="stroke: blue; stroke-width: 2;"/>
-                                </svg>
-                            </div>
-                            
-                        <?php } ?>
+                                <line x1="<?=$x1?>" y1="<?=$localPonto?>" x2="<?=$x2?>" y2="<?=$localPonto2?>" style="stroke: blue; stroke-width: 2;"/>
+                                <circle r="4" cx="<?=$x1?>" cy="<?=$localPonto?>" fill="blue"/>
+                                
+                                <?php
+                                    $x1 += 39;
+                                    $x2 += 39;
+                                }
+                                ?>
+                        </svg>
 
                     </div>
                     <div class="rodape-grafico">
