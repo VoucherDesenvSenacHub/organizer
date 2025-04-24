@@ -1,9 +1,9 @@
 #principal {
     max-width: 1200px;
     margin: 0 auto;
-    background-color:aliceblue;
+    background-color: aliceblue;
     border-radius: 10px;
-    padding: 55px 0;
+    padding: 55px 15px; /* antes: 55px 0; adicionado padding lateral */
     flex-direction: column;
     display: flex;
     gap: 15px;
@@ -11,53 +11,40 @@
 
 body {
     background-color: aliceblue;
+    margin: 0;
+    padding: 0;
 }
+
 .carousel {
     max-width: 100%;
     overflow: hidden;
     border-radius: 10px;    
-    min-height:400px;
+    min-height: 400px;
     position: relative;
 }
 
 .carousel-imgs {
-    /* width: 500px; */
     display: flex;
     transition: transform 1s ease-in-out;
     gap: 35px;
     position: absolute;
-    animation: rolagem 10s infinite ease alternate ;
+    animation: rolagem 10s infinite ease alternate;
     width: 100%;
-
 }
 
-@keyframes  rolagem {
-    0%{
-        transform: translateX(0);
-    }
-
-    33%{
-        transform: translateX(-1045px);
-    }
-
-    66%{
-        transform: translateX(-2090px);
-    }
-
-    100%{
-        transform: translateX(-3130px);
-    }
+@keyframes rolagem {
+    0%   { transform: translateX(0); }
+    33%  { transform: translateX(-1160px); }
+    66%  { transform: translateX(-2320px); }
+    100% { transform: translateX(-3480px); }
 }
 
 .carousel-item {
-    
-    max-width: 1000px;
-    /* height: 500%; */
+    max-width: 100%;
     border-radius: 5px;
-    
 }
 
-.titulo{
+.titulo {
     display: flex;
     flex-direction: column;
 }
@@ -65,53 +52,103 @@ body {
 .titulo h1 {
     font-weight: 600;
     letter-spacing: 2px;
+    font-size: 32px;
 }
 
-.titulo p{
+.titulo p {
     color: grey;
     letter-spacing: 1px;
+    font-size: 16px;
 }
 
-.titulo h3{
+.titulo h3 {
     color: #5282E3;
     font-size: 15px;
     font-weight: 600;
-    /* background: red; */
 }
 
-.texto{
+.texto {
     display: flex;
-    text-indent: 10%; 
-    
+    text-indent: 10%;
 }
 
-.subtitulo{
+.subtitulo {
     display: flex;
     flex-direction: column;
     padding-left: 3%;
 }
 
-.baixo{
+.baixo {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 .baixo p, .texto p {
     text-align: justify;
+    font-size: 16px;
+    line-height: 1.5;
 }
 
+/* Responsividade para telas pequenas */
 @media (max-width: 700px) {
     .baixo {
         display: block;
+    }
 
-        img{
-            width: 90%;
-        }
+    .baixo img {
+        width: 100%;
+        height: auto;
     }
-    .carousel { 
-        min-height:300px;
+
+    .carousel {
+        min-height: 300px;
     }
+
     .titulo h1 {
-        font-size: 28px;
+        font-size: 24px;
+    }
+
+    .titulo p {
+        font-size: 14px;
+    }
+
+    /* .subtitulo {
+
+    } */
+
+    .baixo p, .texto p {
+        font-size: 14px;
+    }
+}
+
+/* Melhorias específicas para Galaxy S8+ (360px de largura) */
+@media (max-width: 400px) {
+    #principal {
+        padding: 35px 10px;
+    }
+
+    .titulo h1 {
+        font-size: 22px;
+    }
+
+    .carousel {
+        min-height: 200px;
+    }
+
+    .texto {
+        text-indent: 0;
+    }
+
+    .baixo p, .texto p {
+        font-size: 13px;
+    }
+
+    @keyframes rolagem {
+        0%   { transform: translateX(0); }
+        33%  { transform: translateX(-375px); }
+        66% { transform: translateX(-750px); }
+        100% { transform: translateX(-1123px); }
     }
 }
