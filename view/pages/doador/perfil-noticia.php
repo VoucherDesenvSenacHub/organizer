@@ -1,7 +1,7 @@
 <?php 
     $tituloPagina = 'Leia Mais'; // Definir o título da página
     $cssPagina = ['shared/perfil-noticia.css']; //Colocar o arquivo .css 
-    require_once '../../components/header-usuario.php';
+    require_once '../../components/header-doador.php';
 ?>  
     <div id="principal">
         <div class="carousel">
