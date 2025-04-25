@@ -2,6 +2,11 @@
 $tituloPagina = 'Ver Projetos ADM'; // Definir o título da página
 $cssPagina = ['adm/ver-projetos.css']; //Colocar o arquivo .css 
 require_once '../../components/header-adm.php';
+
+require_once '../../../model/ProjetoModel.php';
+
+$projetoModel = new Projeto();
+$projetos = $projetoModel->listar();
 ?>
 
 <!-- Início DIV principal -->
@@ -16,86 +21,13 @@ require_once '../../components/header-adm.php';
         </div>
 
         <div class="projetos">
-        <div class="card-projeto">
-                <div class="img-projeto">250x130</div>
-                <div class="info-projeto">
-                    <h5>Nome Projeto</h5>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, laborum et? Repellendus perferendis provident
-                        ratione deserunt alias cumque et quasi odio amet temporibus, quam obcaecati dolores. Enim quibusdam a atque.
-                    </p>
-                </div>
-                <a class="saiba-mais-projeto" href="visualizar-projetos.php">Visualizar</a>
-            </div>
-            <div class="card-projeto">
-                <div class="img-projeto">250x130</div>
-                <div class="info-projeto">
-                    <h5>Nome Projeto</h5>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, laborum et? Repellendus perferendis provident
-                        ratione deserunt alias cumque et quasi odio amet temporibus, quam obcaecati dolores. Enim quibusdam a atque.
-                    </p>
-                </div>
-                <a class="saiba-mais-projeto" href="visualizar-projetos.php">Visualizar</a>
-            </div>
-            <div class="card-projeto">
-                <div class="img-projeto">250x130</div>
-                <div class="info-projeto">
-                    <h5>Nome Projeto</h5>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, laborum et? Repellendus perferendis provident
-                        ratione deserunt alias cumque et quasi odio amet temporibus, quam obcaecati dolores. Enim quibusdam a atque.
-                    </p>
-                </div>
-                <a class="saiba-mais-projeto" href="visualizar-projetos.php">Visualizar</a>
-            </div>
-            <div class="card-projeto">
-                <div class="img-projeto">250x130</div>
-                <div class="info-projeto">
-                    <h5>Nome Projeto</h5>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, laborum et? Repellendus perferendis provident
-                        ratione deserunt alias cumque et quasi odio amet temporibus, quam obcaecati dolores. Enim quibusdam a atque.
-                    </p>
-                </div>
-                <a class="saiba-mais-projeto" href="visualizar-projetos.php">Visualizar</a>
-            </div>
-            <div class="card-projeto">
-                <div class="img-projeto">250x130</div>
-                <div class="info-projeto">
-                    <h5>Nome Projeto</h5>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, laborum et? Repellendus perferendis provident
-                        ratione deserunt alias cumque et quasi odio amet temporibus, quam obcaecati dolores. Enim quibusdam a atque.
-                    </p>
-                </div>
-                <a class="saiba-mais-projeto" href="visualizar-projetos.php">Visualizar</a>
-            </div>
-            <div class="card-projeto">
-                <div class="img-projeto">250x130</div>
-                <div class="info-projeto">
-                    <h5>Nome Projeto</h5>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, laborum et? Repellendus perferendis provident
-                        ratione deserunt alias cumque et quasi odio amet temporibus, quam obcaecati dolores. Enim quibusdam a atque.
-                    </p>
-                </div>
-                <a class="saiba-mais-projeto" href="visualizar-projetos.php">Visualizar</a>
-            </div>
-            <div class="card-projeto">
-                <div class="img-projeto">250x130</div>
-                <div class="info-projeto">
-                    <h5>Nome Projeto</h5>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, laborum et? Repellendus perferendis provident
-                        ratione deserunt alias cumque et quasi odio amet temporibus, quam obcaecati dolores. Enim quibusdam a atque.
-                    </p>
-                </div>
-                <a class="saiba-mais-projeto" href="visualizar-projetos.php">Visualizar</a>
-            </div>
-            <div class="card-projeto">
-                <div class="img-projeto">250x130</div>
-                <div class="info-projeto">
-                    <h5>Nome Projeto</h5>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, laborum et? Repellendus perferendis provident
-                        ratione deserunt alias cumque et quasi odio amet temporibus, quam obcaecati dolores. Enim quibusdam a atque.
-                    </p>
-                </div>
-                <a class="saiba-mais-projeto" href="visualizar-projetos.php">Visualizar</a>
-            </div>
+            <?php
+            foreach ($projetos as $projeto) {
+                require '../../components/cards/card-projeto.php';
+
+            }
+            ?>
+ 
         </div>
         <div class="botoes">
             <button class="btn_nav1">1</button>

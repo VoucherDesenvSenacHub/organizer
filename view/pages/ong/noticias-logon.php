@@ -2,15 +2,25 @@
     $tituloPagina = 'Editar Notícias'; // Definir o título da página
     $cssPagina = ['ong/noticias-logon.css']; //Colocar o arquivo .css 
     require_once '../../components/header-ong.php';
+    $noticia = (object) [
+        'codnot' => '',
+        'titulo' => '',
+        'subtitulo' => '',
+        'texto' => '',
+        'subtexto' => ''
+    ];
+    $acao = 'NOVA NOTICIA';
+    require_once '../../components/popup/formulario-noticia.php';
 ?>
-<!-- Fim cabeçalho -->
-
-
+    
     <!-- Início DIV principal -->
     <div id="principal">
         <div id="painel-l1">
             <h1>SUAS NOTÍCIAS PUBLICADAS</h1>
-            <button id="cadastrar-nova-pub">Nova Notícia</button>
+
+                <div>   
+                    <button class="botao-nova-noticia" onclick="abrir_popup('editar-noticia-popup')">NOVA NOTÍCIA +</button>
+                </div>
         </div>
         <div id="noticias-publicadas">
             <div class="card-noticia">

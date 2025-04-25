@@ -25,7 +25,7 @@ body{
     flex-direction: column;
     justify-content: space-around;
     width: 80%;
-    margin: auto;
+    margin: auto; 
     background-color: #FFFFFF;
     padding: 50px 30px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
@@ -33,7 +33,7 @@ body{
     h1 {
         font-size: 32px;
         letter-spacing: 1px;
-        color: var(--cor-principal);
+        color:#F79329;
     }   
 }
 #painel-l1, #painel-l2, #painel-l3, #painel-l4 {
