@@ -1,150 +1,119 @@
-#nav-bar ul li:nth-child(1) a {
-    color: var(--cor-amarelo);
-    font-weight: bold;
-}
-body{
+body {
     background-color: aliceblue;
 }
-#principal h2 {
-    font-size: 1.3em;
-    font-weight: 600;
-    color: var(--cor-principal);
-}
-#principal h3 {
-    font-size: 1.1em;
-    font-weight: 400;
-    columns: var(--cor-principal);  
-}
-#principal h4 {
-    color: var(--cor-principal);
-    padding-bottom: 10px;
-    font-size: 1.5em;   
-}
-#principal {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    width: 80%;
-    margin: auto; 
-    background-color: #FFFFFF;
-    padding: 50px 30px;
+
+main.container {
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    border-radius: 5px;
-    h1 {
-        font-size: 32px;
-        letter-spacing: 1px;
-        color:#F79329;
-    }   
+    background-color: white;
+    padding: 50px 30px;
+    flex-direction: column;
+    align-items: start;
+    gap: 40px;
 }
-#painel-l1, #painel-l2, #painel-l3, #painel-l4 {
+
+#title {
     display: flex;
     justify-content: space-between;
-    padding: 0px 30px;
-}
-#painel-l2 {
-    display: flex;
-    padding-top: 30px;
-    padding-bottom: 30px;
-    text-align: center;
-}
-#painel-l4 {
-    padding-top: 40px;
-}
-#painel-l4>h3 {
-    color: #F29200;
-}
-.info-ong {
-    border-radius: 8px;
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-    padding: 20px 30px;
-}
-.controle-ong {
-    background-color: var(--cor-amarelo-hover);
-    
-    border-radius: 8px;
-    text-align: center;
-    color: var(--cor-principal);
-    font-weight: 600;
-    padding: 20px;
-    
+    align-items: center;
+    width: 100%;
 }
 
-.controle-ong img {
-    width: 100px;
-    
-}
-
-/* #painel-l3 .controle-ong:nth-child(even) {
-    background-color: var(--cor-amarelo-hover);
-} */
-    
-#atividades {
+#resumo {
     display: flex;
-    justify-content: space-around;
+    gap: 10px;
+    width: 100%;
     flex-wrap: wrap;
-    margin: 10px 30px;
-    
 }
-.card-atividades {
+
+#resumo .resumo-item {
     display: flex;
-    flex: wrap;
-    border-radius: 8px;
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-    padding: 10px;
-    width: 45%;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    border-radius: 4px;
     gap: 20px;
-    margin-top: 20px;
-
-}
-.card-atividades p{
-    font-size: 0.8em;
-}
-.card-atividades h3 {
-    font-weight: 500;
+    background-color: #eee;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    flex: 1 1 230px;
 }
 
-/* Responsivo */
+#resumo .resumo-item h3 {
+    display: flex;
+    flex-direction: column;
+    font-size: 24px;
+}
 
-@media (max-width: 481px){
-    #header-direita {
-        display: flex;
-        padding: 5px 10px;
-        gap: 10px;
-        align-items: center;
-    }
-    #painel-l1, #painel-l2, #painel-l3, #painel-l4 {
-        display: flex;
-        justify-content: space-between;
-        padding: 0px 30px;
-    }
-    #painel-l2 {
-        flex-direction: column;
-        padding-top: 30px;
-        padding-bottom: 30px;
-        margin-bottom: 20px;
-        text-align: center;
-    }
-    #painel-l3 {
-        flex-wrap: wrap;
-        justify-content: space-evenly;
-        gap: 20px;
-        padding: 10px;
-    }
-    #painel-l4 {
-        margin-top: 30px;
-        font-size: 0.8em;
-    }
-    #atividades {
-        flex-direction: column;
-        font-size: 0.7em;
-    }
-    .card-atividades {
-        display: flex;
-        border-radius: 8px;
-        box-shadow: 0px 2px 2px rgba(1, 1, 1, 0.5);
-        padding: 10px;
-        width: 100%;
-        margin-top: 20px;
-    
+#resumo .resumo-item h3 span {
+    font-size: 13px;
+    letter-spacing: 1px;
+    color: rgba(28, 52, 100, 0.6);
+
+}
+
+#resumo .resumo-item i {
+    font-size: 32px;
+    color: var(--cor-amarelo);
+}
+
+/* Sessão: Navegação */
+#nav-home {
+    display: flex;
+    gap: 15px;
+    justify-content: space-between;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+#nav-home a {
+    text-decoration: none;
+    color: var(--cor-principal);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--cor-amarelo-hover);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;   
+    border-radius: 4px;
+    padding: 20px 10px;
+    flex: 1;
+}
+
+#nav-home a img {
+    width: 80px;
+}
+
+#nav-home a span {
+    font-size: 15px;
+    font-weight: 600;
+}
+
+/* Sessão: Atividades */
+#atividades {
+    width: 100%;
+}
+
+#atividades > h4 {
+    font-size: 14px;
+    color: var(--cor-amarelo-hover);
+}
+
+#atividades #cards {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 5px;
+}
+
+#atividades .icon.tp-doacao img {
+    width: 80%;
+}
+
+#atividades .card-acoes .icon {
+    background: none;
+    box-shadow: none;
+}
+
+@media (max-width: 600px) {
+    main.container {
+        padding: 50px 10px;
     }
 }
