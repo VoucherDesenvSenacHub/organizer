@@ -73,7 +73,7 @@
                         </div>
                     </div>
                     <div class="grafico-linhas">
-                        <svg width="550" height="280">
+                        <svg width="550" height="280" style="z-index: 100;">
                         <?php
                             $x1 = 20;
                             $x2 = $x1+45;
@@ -114,6 +114,14 @@
                         Doações por projeto
                         <button onclick="clicar()"><img src="../../assets/images/icon-download-report.png" alt=""></button>
                     </div>
+                    <div>
+                        <svg width="600" height="300">
+                            <path style="stroke: #000; fill: none;" d="M0,0 c150,0 300,150 300,300
+                            
+                            "/>
+                            <circle cx="300" cy="150" r="145" style="stroke: #000; fill: none;"/>
+                        </svg>
+                    </div>
                     <!-- <img src="../../assets//images/pie-graph.png" alt="" id="pie-graph"> -->
                 </div>
             <!-- Fim doações por projeto -->
@@ -122,6 +130,7 @@
                     <div class="icon">
                         Doações/Voluntários por Projeto
                         <button onclick="clicar()"><img src="../../assets/images/icon-download-report.png" alt=""></button>
+                        
                     </div>
                     <img src="../../assets/images/volunt-doac-relat.png" alt="">
 
