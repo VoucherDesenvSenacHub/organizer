@@ -1,6 +1,6 @@
 <?php 
     $tituloPagina = 'Editar Notícias'; // Definir o título da página
-    $cssPagina = ['ong/noticias-edicao.css']; //Colocar o arquivo .css 
+    $cssPagina = ['ong/perfil-noticia.css']; //Colocar o arquivo .css 
     require_once '../../components/header-ong.php';
 
     $noticia = (object) [

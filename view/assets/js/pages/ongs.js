@@ -1,11 +1,3 @@
-// function mudaMenu() {
-//     let hbgMenu = document.querySelector('#hamburger-menu');
-//     let btnHamburger = document.querySelector("#botao-hamburger");
-//     hbgMenu.style.display = 'flex';
-//     hbgMenu.id = 'hamburger-menu-slide';
-//     btnHamburger.style.opacity = 0;
-// }
-
 // Link para card direta do cadastro
 function targetPage(target, actual){
     let cards = ['cadastro', 'atuacao', 'endereco','responsavel','dados-bancarios','criar-login'];
@@ -20,6 +12,45 @@ function targetPage(target, actual){
         }
     }
 }
+
+// Buscar CEP
+function buscarCEP(cep) {
+    $.ajax({
+        url: `https://viacep.com.br/ws/${cep}/json/`,
+        method: 'GET',
+        success: function(response) {
+            // Verifica se a resposta contém erro
+            if (response.erro) {
+                $('#resultado').hide(); // Esconde o resultado se houver erro
+                alert("CEP não encontrado.");
+            } else {
+                // Exibe os dados do CEP na tela
+                $('#rua').text(response.logradouro);
+                $('#bairro').text(response.bairro);
+                $('#cidade').text(response.localidade);
+                $('#uf').text(response.uf);
+                $('#resultado').show(); // Exibe a área de resultado
+            }
+        },
+        error: function() {
+            alert('Erro ao buscar o CEP. Tente novamente.');
+        }
+    });
+}
+
+// Evento para detectar a digitação do CEP
+// $('#cep').on('input', function() {
+//     const cep = $(this).val();
+
+//     // Só faz a busca se o CEP tiver 8 caracteres
+//     if (cep.length === 8) {
+//         buscarCEP(cep);
+//     } else {
+//         $('#resultado').hide(); // Esconde o resultado se o CEP não estiver completo
+//     }
+// });
+
+
 // Passar etapas do cadastro
 var pagina_atual = 0;
 var botao_voltar = document.querySelector(".voltar");
@@ -135,10 +166,15 @@ function popConclusao(tipo) {
     }, 3000);
 }
 
+function buscaUf(){
+    var uflista = document.getElementById("uf").value;
+    alert(uflista);
+    // window.location.href = "../../../model/Cidades.php?uflista=" + encodeURIComponent(uflista);
+}
+
 let pagina_cadastro = 1;
 const box = document.querySelector(".fotos-slide");
-
-let contador = 0;
+var contador = 0;
 let tela = window.innerWidth;
 let slideWidth = 0;
 var largura_cadastro = 0;
