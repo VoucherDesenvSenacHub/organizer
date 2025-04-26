@@ -23,11 +23,11 @@ require_once '../../components/header-ong.php';
         </div>
     </div>
     <nav id="nav-home">
-        <a href="#"><img src="../../assets/images/icons/gif-noticia.gif" alt=""><span>NOTÍCIAS</span></a>
-        <a href="#"><img src="../../assets/images/icons/gif-projeto.gif" alt=""><span>PROJETOS</span></a>
-        <a href="#"><img src="../../assets/images/icons/gif-perfil.gif" alt=""><span>PERFIL</span></a>
-        <a href="#"><img src="../../assets/images/icons/gif-voluntario.gif" alt=""><span>VOLUNTÁRIOS</span></a>
-        <a href="#"><img src="../../assets/images/icons/gif-relatorio.gif" alt=""><span>RELATÓRIOS</span></a>
+        <a href="noticias-logon.php"><img src="../../assets/images/icons/gif-noticia.gif" alt=""><span>NOTÍCIAS</span></a>
+        <a href="projetos.php"><img src="../../assets/images/icons/gif-projeto.gif" alt=""><span>PROJETOS</span></a>
+        <a href="perfil.php"><img src="../../assets/images/icons/gif-perfil.gif" alt=""><span>PERFIL</span></a>
+        <a href="voluntarios-projetos.php"><img src="../../assets/images/icons/gif-voluntario.gif" alt=""><span>VOLUNTÁRIOS</span></a>
+        <a href="relatorios.php"><img src="../../assets/images/icons/gif-relatorio.gif" alt=""><span>RELATÓRIOS</span></a>
     </nav>
     <div id="atividades">
         <h4>SUAS ATIVIDADES RECENTES</h4>
