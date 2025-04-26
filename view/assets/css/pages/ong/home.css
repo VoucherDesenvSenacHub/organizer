@@ -1,128 +1,119 @@
-#nav-bar ul li:nth-child(1) a {
-    color: var(--cor-amarelo);
-    font-weight: bold;
-}
 body {
     background-color: aliceblue;
 }
-#principal h2 {
-    font-size: 1.3em;
-    font-weight: 600;
+
+main.container {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    background-color: white;
+    padding: 50px 30px;
+    flex-direction: column;
+    align-items: start;
+    gap: 40px;
 }
-#principal h3 {
-    font-size: 1.1em;
-    font-weight: 400;
+
+#title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
 }
-#principal h4 {
-    color: #5282E3;
-    padding-bottom: 10px;
+
+#resumo {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    flex-wrap: wrap;
 }
-#principal {
+
+#resumo .resumo-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    border-radius: 4px;
+    gap: 20px;
+    background-color: #eee;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    flex: 1 1 230px;
+}
+
+#resumo .resumo-item h3 {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
-    width: 80%;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #FFFFFF;
-    border-radius: 8px;
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.7);
-    h1 {
-        font-size: 1.5em;
-        font-weight: 400;
-        color: #5282E3;
-    }
+    font-size: 24px;
 }
-#painel-l1, #painel-l2, #painel-l3, #painel-l4 {
+
+#resumo .resumo-item h3 span {
+    font-size: 13px;
+    letter-spacing: 1px;
+    color: rgba(28, 52, 100, 0.6);
+
+}
+
+#resumo .resumo-item i {
+    font-size: 32px;
+    color: var(--cor-amarelo);
+}
+
+/* Sessão: Navegação */
+#nav-home {
     display: flex;
+    gap: 15px;
     justify-content: space-between;
-    padding: 0px 30px;
-}
-#painel-l2 {
-    display: flex;
-    padding-top: 30px;
-    padding-bottom: 30px;
-    text-align: center;
-}
-#painel-l4 {
-    padding-top: 40px;
-}
-#painel-l4>h3 {
-    color: #F29200;
-}
-.info-ong {
-    border-radius: 8px;
-    box-shadow: 0px 2px 2px rgba(1, 1, 1, 0.5);
-    padding: 20px 30px;
-}
-.controle-ong {
-    background-color: #E3B652;
-    border-radius: 8px;
-    text-align: center;
-}
-#atividades {
-    display: flex;
-    justify-content: space-between;
+    width: 100%;
     flex-wrap: wrap;
-    margin: 10px 30px;
 }
-.card-atividades {
+
+#nav-home a {
+    text-decoration: none;
+    color: var(--cor-principal);
     display: flex;
-    border-radius: 8px;
-    box-shadow: 0px 2px 2px rgba(1, 1, 1, 0.5);
-    padding: 10px;
-    width: 45%;
-    margin-top: 20px;
-
-}
-.card-atividades p{
-    font-size: 0.8em;
-}
-.card-atividades h3 {
-    font-weight: 500;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--cor-amarelo-hover);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;   
+    border-radius: 4px;
+    padding: 20px 10px;
+    flex: 1;
 }
 
-/* Responsivo */
+#nav-home a img {
+    width: 80px;
+}
 
-@media (max-width: 481px){
-    #header-direita {
-        display: flex;
-        padding: 5px 10px;
-        gap: 10px;
-        align-items: center;
-    }
-    #painel-l1, #painel-l2, #painel-l3, #painel-l4 {
-        display: flex;
-        justify-content: space-between;
-        padding: 0px 30px;
-    }
-    #painel-l2 {
-        flex-direction: column;
-        padding-top: 30px;
-        padding-bottom: 30px;
-        margin-bottom: 20px;
-        text-align: center;
-    }
-    #painel-l3 {
-        flex-wrap: wrap;
-        justify-content: space-evenly;
-        gap: 20px;
-    }
-    #painel-l4 {
-        margin-top: 30px;
-        font-size: 0.8em;
-    }
-    #atividades {
-        flex-direction: column;
-        font-size: 0.7em;
-    }
-    .card-atividades {
-        display: flex;
-        border-radius: 8px;
-        box-shadow: 0px 2px 2px rgba(1, 1, 1, 0.5);
-        padding: 10px;
-        width: 100%;
-        margin-top: 20px;
-    
+#nav-home a span {
+    font-size: 15px;
+    font-weight: 600;
+}
+
+/* Sessão: Atividades */
+#atividades {
+    width: 100%;
+}
+
+#atividades > h4 {
+    font-size: 14px;
+    color: var(--cor-amarelo-hover);
+}
+
+#atividades #cards {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 5px;
+}
+
+#atividades .icon.tp-doacao img {
+    width: 80%;
+}
+
+#atividades .card-acoes .icon {
+    background: none;
+    box-shadow: none;
+}
+
+@media (max-width: 600px) {
+    main.container {
+        padding: 50px 10px;
     }
 }

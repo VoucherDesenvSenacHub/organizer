@@ -1,7 +1,12 @@
 <?php
-    $tituloPagina = 'Ver Projetos ADM'; // Definir o título da página
-    $cssPagina = ['adm/ver-projetos.css']; //Colocar o arquivo .css 
-    require_once '../../components/header-adm.php';
+$tituloPagina = 'Ver Projetos ADM'; // Definir o título da página
+$cssPagina = ['adm/ver-projetos.css']; //Colocar o arquivo .css 
+require_once '../../components/header-adm.php';
+
+require_once '../../../model/ProjetoModel.php';
+
+$projetoModel = new Projeto();
+$projetos = $projetoModel->listar();
 ?>
 
 <!-- Início DIV principal -->
@@ -16,60 +21,13 @@
         </div>
 
         <div class="projetos">
-            <div class="card_projeto">
-                <img src="../../assets/images/projeto_placeholder.png" class="card_img">
-                <h1 class="card-text">Campanha Solidária</h1>
-                <p class="card_desc">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur qui quasi accusamus ipsa
-                    inventore deserunt perspiciatis unde dolorum reiciendis officia?
-                </p>
-                <button class="btn_card">Vizualizar</button>
-            </div>
-            <div class="card_projeto">
-                <img src="../../assets/images/ong_placeholder_2.png" class="card_img">
-                <h1 class="card-text">Projeto 2</h1>
-                <p class="card_desc">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur qui quasi accusamus ipsa
-                    inventore deserunt perspiciatis unde dolorum reiciendis officia?
-                </p>
-                <button class="btn_card">Vizualizar</button>
-            </div>
-            <div class="card_projeto">
-                <img src="../../assets/images/projeto_placeholder.png" class="card_img">
-                <h1 class="card-text">Campanha Solidária</h1>
-                <p class="card_desc">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur qui quasi accusamus ipsa
-                    inventore deserunt perspiciatis unde dolorum reiciendis officia?
-                </p>
-                <button class="btn_card">Vizualizar</button>
-            </div>
-            <div class="card_projeto">
-                <img src="../../assets/images/ong_placeholder_2.png" class="card_img">
-                <h1 class="card-text">Projeto 2</h1>
-                <p class="card_desc">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur qui quasi accusamus ipsa
-                    inventore deserunt perspiciatis unde dolorum reiciendis officia?
-                </p>
-                <button class="btn_card">Vizualizar</button>
-            </div>
-            <div class="card_projeto">
-                <img src="../../assets/images/projeto_placeholder.png" class="card_img">
-                <h1 class="card-text">Campanha Solidária</h1>
-                <p class="card_desc">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur qui quasi accusamus ipsa
-                    inventore deserunt perspiciatis unde dolorum reiciendis officia?
-                </p>
-                <button class="btn_card">Vizualizar</button>
-            </div>
-            <div class="card_projeto">
-                <img src="../../assets/images/ong_placeholder_2.png" class="card_img">
-                <h1 class="card-text">Projeto 2</h1>
-                <p class="card_desc">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur qui quasi accusamus ipsa
-                    inventore deserunt perspiciatis unde dolorum reiciendis officia?
-                </p>
-                <button class="btn_card">Vizualizar</button>
-            </div>
+            <?php
+            foreach ($projetos as $projeto) {
+                require '../../components/cards/card-projeto.php';
+
+            }
+            ?>
+ 
         </div>
         <div class="botoes">
             <button class="btn_nav1">1</button>
@@ -81,6 +39,6 @@
     </div>
 </main>
 <?php
-    $jsPagina = []; //Colocar o arquivo .js
-    require_once '../../components/footer.php';
+$jsPagina = []; //Colocar o arquivo .js
+require_once '../../components/footer.php';
 ?>

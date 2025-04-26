@@ -1,0 +1,15 @@
+:root {
+    --fonte: "Poppins", serif;
+    --cor-principal: #1C3464;
+    --cor-principal-claro: #203866;
+    --cor-amarelo: #E3B652;
+    --cor-amarelo-hover: #e69d00;
+    --cor-azul: #45BEE6;
+    --cor-azul-hover: #289AC0;
+    --cor-azul-escuro: #007AFF;
+    --cor-roxo-adm: #9747FF;
+    --cor-verde: #30AD1A;
+    --cor-verde-escuro: #2c721a;
+    --cor-verde-barra: #51CD32;
+    --cor-vermelho: #ff4d4d;
+}

@@ -2,29 +2,36 @@
     color: var(--cor-amarelo);
     font-weight: bold;
 }
+body {
+    background-color: aliceblue;
 
+}
 #principal {
     display: flex;
     justify-content: start;
     flex-direction: column;
-    width: 90%;
-    margin: 60px auto;
+    max-width: 1220px;
+    margin:auto;
     border-radius: 8px;
-    padding: 30px 15px;
+    padding: 45px 15px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     background-color: white;
-    color: orange;
     font-size: 35px;
 
     .titulo {
         margin-left: 27px;
-    }
+        margin-bottom: 20px;
+        font-size: 16px;
+        letter-spacing: 1px;
+        color: #F79329;
+    }   
 
     .cards {
         display: flex;
         flex-wrap: wrap;
-        justify-content: start;
+        justify-content: center;
         gap: 30px;
-        margin-left: 27px;
+        height: fit-content;
     }
 
     .icon {
@@ -49,13 +56,18 @@
         border-radius: 10px;
         box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.2);
         padding: 20px;
-        width: 620px;
+        width: 500px;
         text-align: left;
         font-size: 20px;
+        
+    }
+
+    .card1 img{
+        width: 80%;
     }
 
     .sub {
-        margin-top: 15px;
+        /* margin-top: 15px; */
 
         .quadrado{
             display: flex;
@@ -76,16 +88,15 @@
     }
 
     #download p{
-        font-size: 18px;
+        font-size: 12px;
         color: black;
     }
 
     #download {
         display: flex;
         align-items: center;
-        gap: 10px;
+        gap: 20px;
         box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-        width: fit-content;
         padding: 20px;
         position: fixed;
         right: 76px;
@@ -112,12 +123,51 @@
     justify-content: center;
 
     p{
-        font-size: 12px;
+        font-size: 18px;
         color: rgba(0, 0, 0, 0.605);
         margin-right: 2%;
     }
 
     img{
+        width: 8px !important;
         margin: 1%;
+    }
+}
+
+@media (max-width: 450px) {
+    .card1{
+        color: rgb(0, 0, 0);
+        width: 120px;
+        font-size: 14px;
+    }
+
+    .card1 img{
+        width: 120px;
+    }
+
+    #principal .titulo{
+        font-size: 25px;
+    }
+
+    .icon{
+        font-size: 14px;
+    }
+
+    .quadrado2 p{
+        font-size: 12px;
+    }
+
+    #download{
+        padding: 10px;
+    }
+
+    #download p{
+        font-size: 12px;
+        right: 0;
+        color: black;
+    }
+
+    #download img{
+        width: 20px;
     }
 }

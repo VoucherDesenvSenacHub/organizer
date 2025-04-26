@@ -1,0 +1,205 @@
+#aside-doador {
+    position: absolute;
+    left: 0;
+    /* top: 60px; */
+    width: 65px;
+    flex-shrink: 0;
+    min-height: calc(100vh - 60px);
+    height: 100%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: rgba(255, 255, 255, 0.95);
+    color: var(--cor-principal);
+    border-radius: 0 25px 25px 0;
+    box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
+    transition: .4s ease-out;
+    overflow: hidden;
+    z-index: 2;
+}
+
+#aside-doador.active {
+    width: 200px;
+}
+
+/* Botão de abrir aside */
+
+#aside-doador #btn-aside,
+#aside-doador #btn-sair {
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 45px;
+    height: 45px;
+    border-radius: 4px;
+    transition: .4s ease-out;
+    overflow: hidden;
+}
+
+#aside-doador #btn-aside {
+    position: fixed;
+    background-color: var(--cor-azul);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#aside-doador #btn-sair:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+#aside-doador #btn-aside i {
+    transform: rotate(0);
+    transition: .4s;
+    font-size: 17px;
+    color: aliceblue;
+}
+
+#aside-doador #btn-aside.active i {
+    transform: rotate(-180deg);
+}
+
+#aside-doador #btn-aside.active {
+    transform: translateX(135px);
+}
+
+#aside-doador #area-topo {
+    display: flex;
+    position: fixed;
+}
+
+#aside-doador #area-topo a {
+    height: 45px;
+    width: 45px;
+    transition: .4s;
+}
+
+#aside-doador.active #area-topo a {
+    width: 180px;
+}
+
+/* Navegação */
+#aside-doador nav {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    margin-top: 50px;
+}
+
+#aside-doador a {
+    text-decoration: none;
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    color: var(--cor-principal);
+    padding: 10px;
+    padding-left: 14px;
+    border-radius: 4px;
+    transition: .3s;
+    font-size: 15px
+}
+
+#aside-doador a:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+#aside-doador a i {
+    font-size: 17px;
+}
+
+#aside-doador #btn-sair {
+    overflow: hidden;
+    background: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 0 13px;
+    position: fixed;
+    bottom: 15px;
+    color: var(--cor-principal);
+    width: 45px;
+}
+
+#aside-doador #btn-sair i {
+    font-size: 20px;
+}
+
+#aside-doador #btn-sair span {
+    font-size: 15px;
+}
+
+#aside-doador.active #btn-sair {
+    width: 180px;
+}
+
+/* @media (max-width: 400px) {
+    #aside-doador {
+        width: 50px;
+        padding: 5px;
+    }
+
+    #aside-doador a {
+        padding-left: 10.5px;
+    }
+
+
+    #aside-doador #area-topo a {
+        width: 40px;
+    }
+
+    #aside-doador #btn-aside {
+        width: 40px;
+        height: 40px;
+    }
+
+    #aside-doador #btn-sair {
+        padding: 0 10px;
+        width: 40px;
+    }
+
+    #aside-doador.active #btn-sair,
+    #aside-doador.active #area-topo a {
+        width: 189px;
+    }
+} */
+
+@media (max-width: 500px) {
+    #aside-doador {
+        left: -65px;
+    }
+
+    #aside-doador.active {
+        left: 0;
+    }
+
+    #aside-doador #btn-aside {
+        transform: translateX(55px);
+    }
+
+    #aside-doador #btn-aside i {
+        background-color: var(--cor-azul);
+        padding: 10px;
+        border-radius: 50%;
+    }
+
+    #aside-doador:not(.active) #btn-aside {
+        border-radius: 0 50px 50px 0;
+        background-color: white;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    }
+}
+
+#sair-doador #sair-da-conta-popup h1 {
+    color: var(--cor-azul);
+}
+
+#sair-doador #sair-da-conta-popup a {
+    border-color: var(--cor-azul);
+}
+
+#sair-doador #sair-da-conta-popup .btns-sair button {
+    background-color: var(--cor-azul);
+}

@@ -1,18 +1,26 @@
-<?php 
-    $tituloPagina = 'Perfil da ONG | Organizer';
-    $cssPagina = ['shared/perfil-ong.css'];
-    require_once '../../components/header-usuario.php';
+<?php
+$tituloPagina = 'Perfil da ONG | Organizer';
+$cssPagina = ['shared/perfil-ong.css', 'doador/perfil-ong-projeto-doador.css'];
+require_once '../../components/header-doador.php';
+
+//IMPORTS
+require_once __DIR__ . '/../../../model/ProjetoModel.php';
+
+//CARREGA CARDS DE PROJETOS
+$projetoModel = new Projeto();
+$lista = $projetoModel->listar();
 ?>
 
-<?php require_once '../../components/compartilhar.php'; ?>
 <main>
     <div class="container" id="container-principal">
         <section id="apresentacao" class="container-section">
             <div id="logo-ong">
                 <img src="https://placeholder.pagebee.io/api/plain/400/250">
                 <div class="btn-salvar">
-                    <button id="share" class="fa-solid fa-share-nodes" onclick="abrir_popup('compartilhar-popup')"></button>
-                    <button id="like" class="fa-solid fa-heart" onclick="abrir_popup('login-obrigatorio-popup')"></button>
+                    <button id="share" class="fa-solid fa-share-nodes"
+                        onclick="abrir_popup('compartilhar-popup')"></button>
+                    <button id="like" class="fa-solid fa-heart"
+                        onclick="abrir_popup('login-obrigatorio-popup')"></button>
                 </div>
             </div>
             <div id="dados-ong">
@@ -25,7 +33,8 @@
                 </div>
                 <div id="acoes">
                     <button class="btn" onclick="abrir_popup('doacao-popup')">Fazer uma doação</button>
-                    <button class="btn" id="btn-voluntario" onclick="abrir_popup('ser-voluntario-popup')">Ser Voluntário</button>
+                    <button class="btn" id="btn-voluntario" onclick="abrir_popup('ser-voluntario-popup')">Ser
+                        Voluntário</button>
                 </div>
             </div>
             <div id="imagem">
@@ -38,7 +47,11 @@
                     <img src="../../assets/images/pages/icone-sobre.png" alt="">
                     <h3>Sobre</h3>
                 </div>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit doloremque odio, optio adipisci voluptatibus est consequuntur non id soluta officiis dolorum possimus nemo quaerat incidunt accusantium omnis eaque voluptate dignissimos? Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum quis libero iste esse pariatur laudantium. Aliquam minima, incidunt quae ex dolorum voluptas quia animi explicabo facere ad dolores autem ipsam.</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit doloremque odio, optio adipisci
+                    voluptatibus est consequuntur non id soluta officiis dolorum possimus nemo quaerat incidunt
+                    accusantium omnis eaque voluptate dignissimos? Lorem ipsum dolor sit amet consectetur adipisicing
+                    elit. Laborum quis libero iste esse pariatur laudantium. Aliquam minima, incidunt quae ex dolorum
+                    voluptas quia animi explicabo facere ad dolores autem ipsam.</p>
             </div>
         </section>
         <section class="container-section" id="apoiadores">
@@ -90,20 +103,15 @@
                     <h3>Projetos</h3>
                 </div>
                 <div class="mini-cards">
-                    <?php require '../../components/cards/card-projeto.php'; ?>
-                    <?php require '../../components/cards/card-projeto.php'; ?>
-                    <?php require '../../components/cards/card-projeto.php'; ?>
-                    <?php require '../../components/cards/card-projeto.php'; ?>
+                    <?php foreach($lista as $projeto) {
+                        require '../../components/cards/card-projeto.php';
+                    }?>
                 </div>
-            </div>
         </section>
     </div>
 </main>
-</div>
-    <?php require_once '../../components/meu-perfil-doador.php'; ?>
-</div>
 
 <?php
-    $jsPagina = ['home-doador.js'];
-    require_once '../../components/footer.php';
+$jsPagina = [];
+require_once '../../components/footer-doador.php';
 ?>

@@ -1,22 +1,19 @@
-@import url(../components/cores.css);
+@import url(cores.css);
+@import url(../components/cards/cards.css);
+@import url(../components/popup/popup.css);
+
 @import url(../components/button.css);
 @import url(../components/header.css);
-@import url(login-popup.css);
-@import url(../components/popup.css);
-@import url(../components/aside.css);
-@import url(../components/card-ong.css);
-@import url(../components/card-projeto.css);
-@import url(../components/card-doador.css);
-@import url(../components/card-voluntario.css);
-@import url(../components/card-noticia.css);
-@import url(../components/requer-login.css);
-@import url(../components/compartilhar.css);
-@import url(../components/sair-conta-popup.css);
+/* @import url(../components/aside.css);Tirar depois */
 @import url(../components/header-adm.css);
 @import url(../components/header-ong.css);
 @import url(../components/toast.css);
 @import url(../components/meu-perfil-doador.css);
 @import url(../components/input-radio.css);
+
+/* Novo Doador */
+@import url(../components/aside-doador.css);
+@import url(../components/header-doador.css);
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
@@ -30,6 +27,30 @@
 
 body {
     background-color: var(--cor-principal);
+    color: var(--cor-principal);
+    scrollbar-color: #06c;
+}
+
+h1 {
+    line-height: 1;
+}
+
+/* Barra de Rolagem */
+body::-webkit-scrollbar {
+    width: 8px;
+}
+body::-webkit-scrollbar-track {
+    background: azure;
+}
+body::-webkit-scrollbar-thumb {
+    background: linear-gradient(90deg, #f8c35c, #f67f2a, #f8c35c);
+    background-size: 200% 100%;
+    border-radius: 20px;
+    animation: gradiente-scroll 3s infinite linear reverse;
+}
+@keyframes gradiente-scroll {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 200% 50%; }
 }
 
 /* Classe de uma div principal, para alinhar no meio*/
