@@ -3,8 +3,6 @@ $tituloPagina = 'Minhas Doações';
 $cssPagina = ['doador/minhas-doacoes.css'];
 require_once '../../components/header-usuario.php';
 ?>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
 <main>
     <!-- Div Principal -->
     <div id="principal">
@@ -48,31 +46,18 @@ require_once '../../components/header-usuario.php';
             <h1>RESUMO GERAL</h1>
             <p>Total doado: <span> R$350</span></p>
 
-            <div class="grafico-container" style="display: flex; gap: 40px; align-items: flex-start;">
-                <!-- Legenda em coluna -->
-                <div class="legenda-custom ">
-                    <div class="item">
-                        <span class="cor" style="background-color: #FF6384;"></span> Projeto A
-                    </div>
-                    <div class="item">
-                        <span class="cor" style="background-color: #007bff;"></span> Projeto B
-                    </div>
-                    <div class="item">
-                        <span class="cor" style="background-color: #fbc02d;"></span> Projeto C
-                    </div>
-                </div>
-
-                <!-- Gráfico -->
-                <div>
-                    <canvas id="graficoDoacoes" width="300" height="300"></canvas>
-                </div>
-
-                <!-- Download -->
-                <div id="download">
-                    <img src="../../assets/images/icon.png" alt="">
-                    <p>Download Iniciado</p>
-                </div>
+            <div class="chart-container">
+                <div class="chart" id="chart"></div>
+                <div class="tooltip" id="tooltip"></div>
+                <div class="legend" id="legend"></div>
             </div>
+
+            <!-- Download -->
+            <div id="download">
+                <img src="../../assets/images/icon.png" alt="">
+                <p>Download Iniciado</p>
+            </div>
+        </div>
 </main>
 <?php
 $jsPagina = ['minhas-doacoes.js'];
