@@ -83,6 +83,7 @@ body {
     color: var(--cor-principal);
     font-size: 32px;
     line-height: 1;
+    margin-right: 10px;
 }
 
 .card-text {

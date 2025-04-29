@@ -107,6 +107,7 @@ body {
     color: var(--cor-principal);
     font-size: 32px;
     line-height: 1;
+    margin-right: 10px;
 }
 
 .btn_delete_user {
@@ -202,7 +203,10 @@ body {
 @media (max-width: 500px) {
     .card_doador {
         flex-direction: column;
+        gap: 0px;
+        max-width: fit-content;
         }
+        
     #form-busca {
         max-width: 320px;
     }
