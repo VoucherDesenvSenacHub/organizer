@@ -37,11 +37,6 @@ body {
     background-color: aliceblue;
 }
 
-/* main {
-    padding: 0 20px;
-    background-color: aliceblue;
-} */
-
 #principal {
     display: flex;
     flex-direction: column;
@@ -100,6 +95,7 @@ body {
     font-size: 32px;
     line-height: 1;
 }
+
 
 
 /* Botões de navegação */
@@ -167,7 +163,6 @@ section#box-ongs {
 
 /* RESPONSIVIDADE */
 @media (max-width: 1200px) {
-
     section#box-ongs {
         justify-content: space-evenly;
         gap: 30px 15px;

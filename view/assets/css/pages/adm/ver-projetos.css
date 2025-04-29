@@ -12,8 +12,9 @@
     --button-hover: #9747FF;
 }
 
-main {
-    padding: 60px 0;
+body {
+    padding: 50px auto;
+    background-color: aliceblue;
 }
 
 #principal {
@@ -22,66 +23,41 @@ main {
     align-items: center;
     z-index: 1;
     width: 80%;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #FFFFFF;
-    border-radius: 8px;
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.7);
-
+    margin: 60px auto;
+    /* padding: 20px; */
+    background-color: aliceblue;
+    border-radius: 10px;
+}
+/* Área barra de pesquisa */
+#form-busca {
+    display: flex;
+    align-items: center;
+    max-width: 416px;
+    width: 100%;
 }
 
-
-
-.buscar {
-    position: relative;
-    /* float: right; */
-    border: solid 3px #00000084;
-    width: 25%;
-    height: 33px;
-    margin-right: 55px;
-    border-radius: 50px;
-    flex-wrap: wrap;
-}
-
-#buscar {
-    float: left;
-    background-color: transparent;
-    padding-left: 20px;
-    font-size: 1.1em;
-    width: 90%;
-    height: 30px;
-    border: none;
-    margin-top: 0px;
-    flex-wrap: wrap;
-}
-
-#buscar:focus {
-    float: left;
-    background-color: transparent;
-    padding-left: 20px;
+#form-busca input {
+    background-color: white;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
     border: none;
     outline: none;
+    border-radius: 4px 24px 24px 4px;
+    padding: 15px 65px 15px 15px;
+    transition: .3s;
+    width: 100%;
 }
 
-.search_img {
-    position: absolute;
-    float: right;
-    right: 0%;
-    margin: 3px 15px 0px 0px;
-    /* position: absolute; */
-    height: 24px;
-
+#form-busca .btn {
+    font-size: 20px;
+    padding: 0;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-left: -50px;
 }
 
-.projetos {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin-top: 30px;
-    width: 90%;
-    gap: 10px;
-    padding-bottom: 30px;
-    /* height: 800px; */
+.qnt-busca {
+    text-align: center;
 }
 
 .card_projeto {
@@ -102,6 +78,11 @@ main {
     display: flex;
     justify-content: space-between;
     width: 100%;
+}
+.top-text {
+    color: var(--cor-principal);
+    font-size: 32px;
+    line-height: 1;
 }
 
 .card-text {
@@ -136,91 +117,81 @@ main {
     color: var(--button);
     box-shadow: 0 0 7px #0000004c;
 }
-
-.top-text {
-    font-size: 1.5em;
-    color: var(--backgroud);
-    font-weight: 500;
-    margin-left: 55px;
-}
 .card_img {
     width: 200px;
     border-radius: 2px;
     /* margin-top: 5px; */
 }
 
-.botoes {
+/* Sessão de Baixo: Áreas dos cards */
+section#box-ongs {
     display: flex;
     justify-content: space-between;
-    gap: 13px;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+    /* width: 90%; */
+    padding-bottom: 30px;
+}
+/* Botões de navegação */
+#navegacao {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
 }
 
-.btn_nav {
-    background-color: var(--container-background);
-    border: solid 1px #0000004c;
-    border: none;
+#navegacao a {
+    text-decoration: none;
+    color: var(--cor-principal);
+    background-color: white;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
     border-radius: 4px;
-    font-family: "Poppins", serif;
-    font-weight: 500;
-    box-shadow: 0px 3px 3px #00000078;
-    width: 32px;
-    height: 30px;
-    transition: 0.3s;
-}
-.btn_nav1 {
-    background-color: black;
-    color: white;
-    border: solid 1px #0000004c;
-    border: none;
-    border-radius: 4px;
-    font-family: "Poppins", serif;
-    font-weight: 500;
-    box-shadow: 0px 3px 3px #00000078;
-    width: 32px;
-    height: 30px;
-    transition: 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
 }
 
-.btn_nav:hover {
-    background-color: black;
-    color: white;
+#navegacao a:hover {
+    filter: brightness(.9);
+}
+
+#navegacao a.active {
+    background-color: var(--cor-amarelo);
+}
+
+
+/* RESPONSIVIDADE */
+@media (max-width: 1200px) {
+    section#box-ongs {
+        justify-content: space-evenly;
+        gap: 30px 15px;
+    }
 }
 
 @media (max-width: 700px) {
-    
     #principal {
         margin: 40px auto;
         display: flex;
         flex-direction: column;
         width: 90%;
         padding: 13px;
-        background-color: #FFFFFF;
-        border-radius: 8px;
     }
 
     .top {
         display: flex;
         flex-direction: column;
         align-items: center;
-
-        h1{
-            margin-left: 0;
-        }
     }
 
-    .buscar {
-        margin-right: 0;
-        width: 70%;
+    .top-text {
+        margin-bottom: 20px;
     }
 
-    .search_img {
-        position: absolute;
-        right: 0%;
-    }
-
-    .projetos {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+}
+@media (max-width: 450px) {
+    #form-busca {
+        max-width: 320px;
     }
 }
