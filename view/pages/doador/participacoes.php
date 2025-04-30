@@ -1,7 +1,7 @@
 <?php 
     $tituloPagina = 'Participações'; // Definir o título da página
     $cssPagina = ['doador/participacoes.css']; //Colocar o arquivo .css (exemplo: 'ONG/cadastro.css')
-    require_once '../../components/header-usuario.php';
+    require_once '../../components/header-doador.php';
 ?>
 
 <main>
