@@ -40,6 +40,10 @@ body {
     box-shadow: 0 0 5px #00000093;
     border-radius: 5px;
     gap: 30px;
+    transition: ease 0.2s;
+}
+.card_doador:hover {
+    filter: brightness(0.8);
 }
 .perfil_img {
     height: 54px;
@@ -322,6 +326,7 @@ body {
 
 #ipopup .btn-sim {
     background-color: #51CD32;
+    color: white;
     border: none;
     width: 80px;
     height: 35px;
@@ -329,6 +334,7 @@ body {
 }
 #ipopup .btn-nao {
     background-color: #E41D1D;
+    color: white;
     border: none;
     width: 80px;
     height: 35px;

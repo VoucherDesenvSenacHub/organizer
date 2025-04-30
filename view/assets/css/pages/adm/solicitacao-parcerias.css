@@ -1,76 +1,92 @@
 @import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined");
-
-.principal{
-    
-    justify-content: space-around;
+body {
+    padding: 50px auto;
+    background-color: aliceblue;
+}
+.principal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     z-index: 1;
-    width: 60%;
-    margin: 120px auto;
-    padding: 20px;
-    background-color: #FFFFFF;
-    border-radius: 8px;
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.7);
+    width: 80%;
+    margin: 60px auto;
+    /* padding: 20px; */
+    background-color: aliceblue;
+    border-radius: 10px;
 }
 
 .titulo-solicitacao{
-    width: 90%; 
-    margin: 0 auto;
-    text-align: left; 
-    margin-bottom: 10px; 
-    font-size: 35px; 
-    color: #5282E3;
-    font-weight: normal;
+    color: var(--cor-principal);
+    font-size: 32px;
+    line-height: 1;
+    margin-right: 10px;
 }
 
-.titulo-solicitacao .negrito {
+.top {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+/* .titulo-solicitacao .negrito {
     font-weight: bold; 
+} */
+
+
+.solicitacoes {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    margin-top: 30px;
+    padding-bottom: 30px;
+    gap: 30px;
 }
-
-.table{
-    width: 90%;
-    margin: auto;
-    border-color: rgb(175, 175, 175);
-    border-collapse: separate;
-    border-spacing: 0 10px;
-    
-
-    th, td {
-        padding: 0.5rem;
-        text-align: left;
-    }
-
-    tbody{
-        border-collapse: separate;
-        gap: 20px;
-    }
-
-
-    tbody tr:hover {
-        background-color: rgb(175, 175, 175);
-    }
-}
-
-.table tr{
+.card_empresa {
+    border-left: solid 8px #9747FF;
+    padding: 5px 19px 5px 19px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex: 1;
+    height: fit-content;
+    background-color: white;
+    box-shadow: 0 0 5px #00000093;
     border-radius: 5px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
-    
+    gap: 30px;
+    transition: ease 0.2s;
+}
+.card_empresa:hover {
+    filter: brightness(0.8);
+}
+.perfil_img {
+    height: 54px;
+}
+.nome_empresa {
+    font-weight: 500;
+    font-size: 1.3em;
+    margin: 0px;
+    padding: 0px;
+    height: 27px;
+}
+.cnpj_empresa {
+    font-size: 0.8em;
+    color:#0000007f;
+    margin: 0px;
+    padding: 0px;
+}
+.info_empresa {
+    /* margin-right: 19%; */
+    margin-left: 18px;
+}
+.card-esq {
+    display: flex;
+}
+.card-dir {
+    display: flex;
+    align-items: center;
+    gap: 30px;
 }
 
-.table td:last-child{
-    text-align: right; 
-    
-}
 
-.logo-empresa img{
-    width: 60px;
-    height: auto;
-    
-}
-
-.info-empresa{
-    text-align: left;
-    
-}
 
 .icon-visible{
     margin-top: 6px;
@@ -83,28 +99,30 @@
     cursor: pointer;
 }
 
-.table .btn-aceitar, table .btn-recusar{
+
+
+.btn-aceitar{
+    background-color: #52cc33;
     padding: 8px 16px; 
     font-size: 14px;
-    width: 100px;
+    /* width: 100px; */
     height: 40px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    margin-left: 20px; 
-}
-
-.btn-aceitar{
-    background-color: #51CD32;
-    color: #094A22;
-    
-
+    margin-left: 5px; 
 }
 
 .btn-recusar{
     background-color: #E41D1D;
-    color: #691021;
-   
+    padding: 8px 16px; 
+    font-size: 14px;
+    /* width: 100px; */
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    /* margin-left: 5px;  */
 }
 
 
