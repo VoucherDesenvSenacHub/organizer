@@ -150,11 +150,14 @@
         font-size: 0.6em;
     }
 } */
-.grafico-linhas, .grafico{
+.grafico-linhas, .graficos{
     display: flex;
     padding-top: 40px;
     position: absolute;
     font-size: 0.7em;
+}
+.graficos {
+    font-size: 0.5em;
 }
 .barra{
     width: 10%;

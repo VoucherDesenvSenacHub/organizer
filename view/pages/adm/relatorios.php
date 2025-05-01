@@ -18,30 +18,33 @@
                         <button onclick="clicar()"><img src="../../assets/images/icon-download-report.png" alt=""></button>
                     </div>
                     <div class="graficos">
-                        <svg style = "width: 600px; height: 320px; background: #9a9a9a; opacity: 0.3;">
+                        <svg style = "width: 600px; height: 320px;">
                             <?php
                                 $indices = [100, 75, 50, 25, 0];
                                 $mi = 0;
+                                // Traça as linhas horizontais e índices
                                 for($i = 1; $i <=293; $i+=73){?>
-                                <line x1="40" y1="<?= $i ?>" x2="600" y2="<?= $i ?>" style="stroke: black; stroke-dasharray: 4 "/> <!-- Traça as linhas horizontais -->
-                                <text x="0" y="<?= $i+15 ?>"><?=$indices[$mi]?></text>
+                                <line x1="40" y1="<?= $i ?>" x2="600" y2="<?= $i ?>" style="stroke: black; stroke-dasharray: 4 "/> 
+                                <text x="0" y="<?= $i+15 ?>" textlenght="7"><?=$indices[$mi]?></text>
                             <?php
                                 $mi++;
                                 };
                                 ?>
+                                <!-- Traça as linhas verticais extremas da esquerda e direita -->
                             <line x1="40" y1="0" x2="40" y2="290" style="stroke: black; stroke-dasharray: 4 "/>
                             <line x1="599" y1="0" x2="599" y2="290" style="stroke: black; stroke-dasharray: 4 "/>
                                 <?php
-                                    $pontoX = 40;
                                     $divisoes = (540/sizeof($voluntarios));
+                                    $pontoX = 40+($divisoes/2); //Posição inicial do gráfico
                                     for($i = 0; $i<sizeof($voluntarios); $i++){
-                                        $pontoY = 290 - (($voluntarios[$i][1]*290)/100);?>
+                                        $pontoY = 290 - (($voluntarios[$i][1]*290)/100); //Calcula a altura da barra vertical?> 
                             <line x1="<?=$pontoX?>" y1="290"
                             x2="<?=$pontoX?>"y2 ="<?=$pontoY?>"
-                            style="stroke: blue; stroke-width: 40px"/>
-                            <text x="<?=$pontoX?>" y="320"><?=$voluntarios[$i][0]?></text>
+                            style="stroke: #8DD9FF; stroke-width: 40px"/>
+                            <text x="<?=$pontoX-($divisoes/2)+15?>" y="320"><?=$voluntarios[$i][0]?></text>
+                            <text x="<?=$pontoX-5?>" y="<?=$pontoY-3?>"><?=$voluntarios[$i][1]?></text>
                                 <?php
-                                    $pontoX = $pontoX+($pontoX*$divisoes);
+                                    $pontoX = $pontoX+$divisoes;
                                 }?>
                         
                         </svg>
@@ -85,8 +88,9 @@
                                 $localPonto2 = 293 - (293 * $doacoesMensais[$i+1][1]/960);
                             }
                             ?>
-                                <line x1="<?=$x1?>" y1="<?=$localPonto?>" x2="<?=$x2?>" y2="<?=$localPonto2?>" style="stroke: blue; stroke-width: 2;"/>
-                                <circle r="4" cx="<?=$x1?>" cy="<?=$localPonto?>" fill="blue"/>
+                                <line x1="<?=$x1?>" y1="<?=$localPonto?>" x2="<?=$x2?>" y2="<?=$localPonto2?>"
+                                style="stroke: #007AFF; stroke-width: 2;"/>
+                                <circle r="4" cx="<?=$x1?>" cy="<?=$localPonto?>" fill="#007AFF"/>
                                 
                                 <?php
                                     $x1 += 46.66;
