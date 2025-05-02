@@ -150,7 +150,7 @@
         font-size: 0.6em;
     }
 } */
-.grafico-linhas, .graficos{
+.grafico-linhas, .graficos, .grafico-horizontal{
     display: flex;
     padding-top: 40px;
     position: absolute;
@@ -183,6 +183,7 @@
 .quadrado2{
     display: flex;
     align-items: center;
+    margin-top: 315px;
     flex-direction: row;
     justify-content: center;
 
