@@ -30,10 +30,12 @@
 <body>
     <header>
         <div class="container">
-            <div class="logo">
-                <img src="../../assets/images/global/Logo-Organizer.png">
-                <h1>Organizer</h1>
-            </div>
+            <a href="home.php">
+                <div class="logo">
+                    <img src="../../assets/images/global/Logo-Organizer.png">
+                    <h1>Organizer</h1>
+                </div>
+            </a>
             <nav id="nav-bar">
                 <ul>
                     <li><a href="home.php">Home</a></li>
@@ -55,11 +57,11 @@
         </div>
     </header>
     <?php
-        require_once '../../components/popup/compartilhar.php'; //POPUP DE COMPARTILHAR
-        require_once '../../components/popup/fazer-doacao.php'; //POPUP DE FAZER UMA DOAÇÃO
-        require_once '../../components/popup/ser-voluntario.php'; //POPUP DE SER VOLUNTARIO
-        require_once '../../components/popup/perfil-doador.php'; //POPUP DE VER O PERFIL
-        require_once '../../components/popup/nova-senha-doador.php'; //POPUP ALTERAR A SENHA
+    require_once '../../components/popup/compartilhar.php'; //POPUP DE COMPARTILHAR
+    require_once '../../components/popup/fazer-doacao.php'; //POPUP DE FAZER UMA DOAÇÃO
+    require_once '../../components/popup/ser-voluntario.php'; //POPUP DE SER VOLUNTARIO
+    require_once '../../components/popup/perfil-doador.php'; //POPUP DE VER O PERFIL
+    require_once '../../components/popup/nova-senha-doador.php'; //POPUP ALTERAR A SENHA
     ?>
     <div id="sair-doador">
         <?php
