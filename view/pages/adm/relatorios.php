@@ -102,7 +102,7 @@
                 </div>
             <!-- Fim doações Mensais -->
 
-            <!-- Início doações por projeto -->
+            <!-- Início doações por projeto - Gráfico "PIE" -->
 
                 <div class="card1">
                     <div class="icon">
@@ -121,6 +121,7 @@
                 </div>
             <!-- Fim doações por projeto -->
 
+            <!-- Início doações voluntários por projeto -->
                 <div class="card1">
                     <div class="icon">
                         Doações/Voluntários por Projeto
@@ -170,6 +171,7 @@
                     </div>
                 </div>
             </div>
+        <!-- Fim doações voluntários por projeto -->
 
             <div id="download">
                 <img src="../../assets/images/icon.png" alt="">
