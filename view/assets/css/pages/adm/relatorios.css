@@ -29,6 +29,7 @@
         justify-content: space-between;
         align-items: center;
         margin-bottom: 10px;
+        z-index: 999;
 
         button {
             border: none;

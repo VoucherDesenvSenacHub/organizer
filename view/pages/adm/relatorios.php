@@ -2,6 +2,8 @@
     $tituloPagina = 'Relatórios'; // Definir o título da página
     $cssPagina = ["adm/relatorios.css"]; //Colocar o arquivo .css (exemplo: 'ONG/cadastro.css')
     require_once '../../components/header-adm.php';
+    require_once '../../components/graphics/vertical-bars.php';
+    require_once '../../components/graphics/line-graphic.php';
     require_once '../../../model/Relatorios.php';
 ?>
     <main>
@@ -18,36 +20,9 @@
                         <button onclick="clicar()"><img src="../../assets/images/icon-download-report.png" alt=""></button>
                     </div>
                     <div class="graficos">
-                        <svg style = "width: 600px; height: 320px;">
-                            <?php
-                                $indices = [100, 75, 50, 25, 0];
-                                $mi = 0;
-                                // Traça as linhas horizontais e índices
-                                for($i = 1; $i <=293; $i+=73){?>
-                                <line x1="40" y1="<?= $i ?>" x2="600" y2="<?= $i ?>" style="stroke: black; stroke-dasharray: 4 "/> 
-                                <text x="0" y="<?= $i+15 ?>" textlenght="7"><?=$indices[$mi]?></text>
-                            <?php
-                                $mi++;
-                                };
-                                ?>
-                                <!-- Traça as linhas verticais extremas da esquerda e direita -->
-                            <line x1="40" y1="0" x2="40" y2="290" style="stroke: black; stroke-dasharray: 4 "/>
-                            <line x1="599" y1="0" x2="599" y2="290" style="stroke: black; stroke-dasharray: 4 "/>
-                                <?php
-                                    $divisoes = (540/sizeof($voluntarios));
-                                    $pontoX = 40+($divisoes/2); //Posição inicial do gráfico
-                                    for($i = 0; $i<sizeof($voluntarios); $i++){
-                                        $pontoY = 290 - (($voluntarios[$i][1]*290)/100); //Calcula a altura da barra vertical?> 
-                            <line x1="<?=$pontoX?>" y1="290"
-                            x2="<?=$pontoX?>"y2 ="<?=$pontoY?>"
-                            style="stroke: #8DD9FF; stroke-width: 40px"/>
-                            <text x="<?=$pontoX-($divisoes/2)+15?>" y="320"><?=$voluntarios[$i][0]?></text>
-                            <text x="<?=$pontoX-5?>" y="<?=$pontoY-3?>"><?=$voluntarios[$i][1]?></text>
-                                <?php
-                                    $pontoX = $pontoX+$divisoes;
-                                }?>
-                        
-                        </svg>
+                        <?php 
+                            echo graficoBarrasVerticais([100, 75, 50, 25, 0], 600, 320, $voluntarios);
+                        ?>
                     </div>
                 </div>
             <!-- Fim voluntários por Projeto -->
@@ -59,13 +34,14 @@
                         <button onclick="clicar()"><img src="../../assets/images/icon-download-report.png" alt=""></button>
                     </div>
                     <div class="grafico-linhas">
+                        <?php echo graficoLinhas([960, 720, 480, 240, 0], 600, 320, $doacoesMensais)?>
                         <svg style = "width: 600px; height: 320px">
                             <?php
                                 $indices = [960, 720, 480, 240, 0];
                                 $mi = 0;
                                 for($i = 1; $i <=293; $i+=73){?>
                                 <line x1="40" y1="<?= $i ?>" x2="600" y2="<?= $i ?>" style="stroke: black; stroke-dasharray: 4 "/> <!-- Traça as linhas horizontais -->
-                                <text x="0" y="<?= $i+15 ?>"><?=$indices[$mi]?></text>
+                                <text x="0" y="<?= $i+10 ?>"><?=$indices[$mi]?></text>
                             <?php
                                 $mi++;
                                 };
@@ -136,7 +112,7 @@
                                 $centroLinha = 30;
                                 foreach($doacoesVoluntarios as $dv) {
                                     $lDoacao=($dv[1]*500)/100+70;
-                                    $lVoluntario=($dv[2]*500)/100;
+                                    $lVoluntario=($dv[2]*500)/100+70;
                             ?>
                             <text x="1" y="<?=$centroLinha?>"><?=$dv[0]?></text>
                             <!-- Linha Doações  -->
