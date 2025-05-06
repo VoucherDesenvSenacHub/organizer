@@ -9,7 +9,7 @@
 
     //CARREGA CARDS DE PROJETOS
     $projetoModel = new Projeto();
-    $lista = $projetoModel->listar();
+    $lista = $projetoModel->listar(); 
 ?>
 
 <main>
