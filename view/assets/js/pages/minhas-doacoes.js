@@ -23,6 +23,8 @@ window.addEventListener('resize', () => {
     }
 });
 
+// inicio gráfico
+
 function formatarCor(cor, fallback = "#ccc") {
     const el = document.createElement("div");
     el.style.color = "";
@@ -32,7 +34,7 @@ function formatarCor(cor, fallback = "#ccc") {
 
   const porcentagens = [25, 15, 60]; // Soma 100%
   const nomes = ['PROJETO A', 'PROJETO B', 'PROJETO C'];
-  const coresOriginais = ['#007AFF', '#FF5A79', '#FCC21B']; // Novas cores
+  const coresOriginais = ['#FF5A79', '#007AFF', '#FCC21B']; // Novas cores
 
   const cores = coresOriginais.map(cor => formatarCor(cor));
 
