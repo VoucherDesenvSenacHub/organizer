@@ -32,9 +32,10 @@ body {
 }
 
 .header-principal h1 {
-    color: var(--cor-principal);
-    font-size: 1.5em;
-    font-weight: 600;
+    color:#F79329;  
+    font-size: 30px;
+    font-weight: 700;
+    padding: 10px;
     text-align: center;
 }
 

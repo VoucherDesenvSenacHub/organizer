@@ -38,7 +38,7 @@
                 <ul>
                     <li><a href="home.php">Home</a></li>
                     <li><a href="projetos.php">Projetos</a></li>
-                    <li><a href="voluntario-projetos.php">Voluntários</a></li>
+                    <li><a href="voluntarios.php">Voluntários</a></li>
                     <li><a href="relatorios.php">Relatórios</a></li>
                 </ul>
             </nav>
