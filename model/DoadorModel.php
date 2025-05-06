@@ -110,4 +110,11 @@ class Doador
             return false;
         }
     }
+
+    function calcularIdade($dataNascimento) {
+        $dataNascimento = new DateTime($dataNascimento);
+        $hoje = new DateTime();
+        $idade = $hoje->diff($dataNascimento)->y;
+        return $idade;
+    }
 }
