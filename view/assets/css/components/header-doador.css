@@ -1,3 +1,7 @@
+header a {
+    text-decoration: none;
+}
+
 header #doador-nav {
     display: flex;
     align-items: center;

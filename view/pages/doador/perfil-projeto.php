@@ -10,6 +10,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['id'])) {
     $id = $_GET['id'];
     $projeto = $projetoModel->buscarId($id);
 }
+
+if (!isset($_GET['id']) || !$projeto){
+    echo '<h1> Projeto Não encontrado! </h1>';
+    exit();
+    
+}
 ?>
 
 <main>
