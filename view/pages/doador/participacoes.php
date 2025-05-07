@@ -9,13 +9,8 @@
         <div class="container">
             <div id="secao-1">
                 <h1>SUAS PARTICIPAÇÕES</h1>
-                <!-- <div class="quadrado-verde">
-                    <p>Participações</p>
-                    <span>4 Projetos</span>
-                </div> -->
                 <div class="cards-participacao">
                     <div class="cards-projeto">
-                        <h2>Projetos</h2>
                         <div class="card-participacao">
                             <img src="../../assets/images/projeto-sem-foto.png" alt="Imagem do projeto">
                             <div class="info-card">
@@ -54,49 +49,6 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="card-participacao">
-                            <img src="../../assets/images/projeto-sem-foto.png" alt="Imagem do projeto">
-                            <div class="info-card">
-                                <div class="info-cima">
-                                    <div>
-                                        <h3 class="titulo-projeto">Nome do Projeto</h3>
-                                        <p class="projeto">Projeto</p>
-                                    </div>
-                                    <p class="ong-responsavel">Ong Responsável</p>
-                                </div>
-                                <div class="info-baixo">
-                                    <ul>
-                                        <li>Saúde</li>
-                                        <li>Ambiente</li>
-                                        <li>Esporte</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-participacao">
-                            <img src="../../assets/images/projeto-sem-foto.png" alt="Imagem do projeto">
-                            <div class="info-card">
-                                <div class="info-cima">
-                                    <div>
-                                        <h3 class="titulo-projeto">Nome do Projeto</h3>
-                                        <p class="projeto">Projeto</p>
-                                    </div>
-                                    <p class="ong-responsavel">Ong Responsável</p>
-                                </div>
-                                <div class="info-baixo">
-                                    <ul>
-                                        <li>Saúde</li>
-                                        <li>Ambiente</li>
-                                        <li>Esporte</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="cards-ongs">
-                        <h2>Ongs</h2>
                         <div class="card-participacao">
                             <img src="../../assets/images/projeto-sem-foto.png" alt="Imagem do projeto">
                             <div class="info-card">
@@ -136,8 +88,47 @@
                             </div>
                         </div>
                     </div>
-
-                    <div class="cards-ongs">
+                </div>
+                <div class="cards-participacao">
+                    <div class="cards-projeto">
+                        <div class="card-participacao">
+                            <img src="../../assets/images/projeto-sem-foto.png" alt="Imagem do projeto">
+                            <div class="info-card">
+                                <div class="info-cima">
+                                    <div>
+                                        <h3 class="titulo-projeto">Nome do Projeto</h3>
+                                        <p class="projeto">Projeto</p>
+                                    </div>
+                                    <p class="ong-responsavel">Ong Responsável</p>
+                                </div>
+                                <div class="info-baixo">
+                                    <ul>
+                                        <li>Saúde</li>
+                                        <li>Ambiente</li>
+                                        <li>Esporte</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-participacao">
+                            <img src="../../assets/images/projeto-sem-foto.png" alt="Imagem do projeto">
+                            <div class="info-card">
+                                <div class="info-cima">
+                                    <div>
+                                        <h3 class="titulo-projeto">Nome do Projeto</h3>
+                                        <p class="projeto">Projeto</p>
+                                    </div>
+                                    <p class="ong-responsavel">Ong Responsável</p>
+                                </div>
+                                <div class="info-baixo">
+                                    <ul>
+                                        <li>Saúde</li>
+                                        <li>Ambiente</li>
+                                        <li>Esporte</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
                         <div class="card-participacao">
                             <img src="../../assets/images/projeto-sem-foto.png" alt="Imagem do projeto">
                             <div class="info-card">
@@ -177,17 +168,11 @@
                             </div>
                         </div>
                     </div>
-
-
-
                 </div>
             </div>
         </div>
     </section>
 </main>
-</div>
-    <?php require_once '../../components/meu-perfil-doador.php'; ?>
-</div>
 
 <?php
     $jsPagina = ['home-doador.js']; //Colocar o arquivo .js (exemplo: 'cadastro.js')

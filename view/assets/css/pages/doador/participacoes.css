@@ -67,7 +67,7 @@ section .container h1{
 
 .cards-projeto{
     display: flex;
-    gap: 20px;
+    gap: 6px;
     flex-wrap: wrap;
     justify-content: space-between;
 }
@@ -103,7 +103,7 @@ section .container h1{
 
 .card-participacao img{
     border-radius: 7px 0 0 7px;
-    width: 40%;
+    width: 32%;
 }
 
 .card-participacao .info-cima div{
