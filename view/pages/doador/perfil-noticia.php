@@ -44,9 +44,7 @@
             </div>
         </div>
     </div>
-    </div>
-        <?php require_once '../../components/meu-perfil-doador.php'; ?>
-    </div>
+    
 
 
 <?php
