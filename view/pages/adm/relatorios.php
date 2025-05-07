@@ -34,46 +34,8 @@
                         <button onclick="clicar()"><img src="../../assets/images/icon-download-report.png" alt=""></button>
                     </div>
                     <div class="grafico-linhas">
-                        <?php echo graficoLinhas([960, 720, 480, 240, 0], 600, 320, $doacoesMensais)?>
-                        <svg style = "width: 600px; height: 320px">
-                            <?php
-                                $indices = [960, 720, 480, 240, 0];
-                                $mi = 0;
-                                for($i = 1; $i <=293; $i+=73){?>
-                                <line x1="40" y1="<?= $i ?>" x2="600" y2="<?= $i ?>" style="stroke: black; stroke-dasharray: 4 "/> <!-- Traça as linhas horizontais -->
-                                <text x="0" y="<?= $i+10 ?>"><?=$indices[$mi]?></text>
-                            <?php
-                                $mi++;
-                                };
-                            for($i = 0; $i < sizeof($doacoesMensais); $i++){
-                                $localTexto = ($i*46.66)+40;                                
-                                ?>
-                            <text x="<?= $localTexto ?>" y="315" textlenght="7"><?=$doacoesMensais[$i][0] ?></text>
-                            <line x1="<?= $localTexto ?>" y1="1" x2="<?= $localTexto ?>" y2="293" style="stroke: black; stroke-dasharray: 4 "/>
-                            <?php }?>
-                            <line x1="599" y1="1" x2="599" y2="293" style="stroke: black; stroke-dasharray: 4 "/>
-                        <?php
-                            $x1 = 60;
-                            $x2 = $x1+46.66;
-                            for($i = 0; $i < sizeof($doacoesMensais); $i++){
-                            $localPonto = 293 - (293 * $doacoesMensais[$i][1]/960);
-                            if($i == sizeof($doacoesMensais)-1){
-                                $localPonto2 = $localPonto;
-                                $x2 = $x1;
-                            }else{
-                                $localPonto2 = 293 - (293 * $doacoesMensais[$i+1][1]/960);
-                            }
-                            ?>
-                                <line x1="<?=$x1?>" y1="<?=$localPonto?>" x2="<?=$x2?>" y2="<?=$localPonto2?>"
-                                style="stroke: #007AFF; stroke-width: 2;"/>
-                                <circle r="4" cx="<?=$x1?>" cy="<?=$localPonto?>" fill="#007AFF"/>
-                                
-                                <?php
-                                    $x1 += 46.66;
-                                    $x2 += 46.66;
-                                }
-                                ?>
-                        </svg>
+                    <?php echo graficoLinhas([960, 720, 480, 240, 0], 600, 320, $doacoesMensais)?>                        
+                        
                     </div>
                 </div>
             <!-- Fim doações Mensais -->
