@@ -29,6 +29,13 @@ section .container h1{
     width: 100%;
 }
 
+section .container h3{
+    color:var(--cor--principal);
+    font-weight: 600;
+    line-height: 1;
+    width: 100%;
+}
+
 #secao-1{
     width: 80%;
     display: flex;
