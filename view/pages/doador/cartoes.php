@@ -52,7 +52,7 @@ require_once '../../components/header-doador.php';
 
             <div class="input-grupo">
                 <label>Número do Cartão</label>
-                <input type="text" placeholder="0000 0000 0000 0000" class="card-number">
+                <input id="number-cartao" type="text" placeholder="0000 0000 0000 0000" class="card-number">
             </div>
 
             <div class="row">
@@ -63,22 +63,22 @@ require_once '../../components/header-doador.php';
 
                 <div class="input-grupo">
                     <label>CVV</label>
-                    <input type="text" placeholder="CVV" class="cvv">
+                    <input  id="CVV"type="text" placeholder="CVV" class="cvv">
                 </div>
             </div>
 
             <div class="input-grupo">
                 <label for="name">Titular do cartão</label>
-                <input type="name" placeholder="Nome Completo">
+                <input type="text" placeholder="Nome Completo" maxlength="200" onkeypress="return /[a-z\s]/i.test(event.key)">
             </div>
             <div>
                 <button class="add-button" id="addButton">
                     <span class="button-text">ADICIONAR</span>
                     <div class="loader"></div>
-                    <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
-                        <circle class="checkmark-circle" cx="26" cy="26" r="25" fill="none" />
-                        <path class="checkmark-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
-                    </svg>
+                        <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                            <circle class="checkmark-circle" cx="26" cy="26" r="25" fill="none" />
+                            <path class="checkmark-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
+                        </svg>
                 </button>
             </div>
         </div>
@@ -115,6 +115,13 @@ require_once '../../components/header-doador.php';
         </div>
     </div>
 </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
+<script type="text/javascript">
+
+    $("#number-cartao").mask("0000 0000 0000 0000");
+    $("#CVV").mask("000");
+</script>
 <?php
 $jsPagina = ['cartoes.js']; //Colocar o arquivo .js (exemplo: 'cadastro.js')
 require_once '../../components/footer-doador.php';
