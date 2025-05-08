@@ -50,7 +50,7 @@
                         <button onclick="clicar()"><img src="../../assets/images/icon-download-report.png" alt=""></button>
                     </div>
                     <div class="grafico-pizza">
-                        <?php echo graficoPizza($doacoesPorProjeto, 600, 320)?>
+                        <?php echo graficoPizza(600, 320, $doacoesPorProjeto)?>
                     </div>
                     <!-- <img src="../../assets//images/pie-graph.png" alt="" id="pie-graph"> -->
                 </div>
