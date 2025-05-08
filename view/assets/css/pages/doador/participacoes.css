@@ -1,3 +1,7 @@
+body{
+    background-color: aliceblue;
+}
+
 section {
     display: flex;
     justify-content: center;
@@ -8,23 +12,28 @@ section {
 section .container{
     display: flex;
     flex-direction: column;
-    align-items: center;
+    justify-content: left;
     background-color: white;
     border-radius: 12px;
     width: 1200px;
-    padding: 40px;
     min-height: 100vh;
     height: fit-content;
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px;
     gap: 30px;
     padding-bottom: 100px;
 }
 
 section .container h1{
-    color: #007AFF;
-    font-weight: 500;
-    font-size: 30px;
-    text-align: center;
+    color:var(--cor--principal);
+    font-size: 32px;
+    line-height: 1;
+    width: 100%;
+}
+
+section .container h3{
+    color:var(--cor--principal);
+    font-weight: 600;
+    line-height: 1;
+    width: 100%;
 }
 
 #secao-1{
@@ -34,9 +43,11 @@ section .container h1{
     justify-content: center;
     flex-direction: column;
     gap: 30px;
+    
 }
 
-.quadrado-verde{
+
+/* .quadrado-verde{
     padding: 30px 0;
     background-color: #31AD1B;
     border-radius: 7px;
@@ -57,15 +68,25 @@ section .container h1{
 .quadrado-verde span{
     font-size: 30px;
     font-weight: 300;
+} */
+
+
+
+.cards-projeto{
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 .cards-participacao{
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    flex-direction: row;
+    justify-content: left;
     align-items: center;
-    width: 100%;
-    gap: 30px;
+    /* width: 100%; */
+    gap: 20px;
 }
 
 .card-participacao{
@@ -89,7 +110,7 @@ section .container h1{
 
 .card-participacao img{
     border-radius: 7px 0 0 7px;
-    width: 40%;
+    width: 32%;
 }
 
 .card-participacao .info-cima div{

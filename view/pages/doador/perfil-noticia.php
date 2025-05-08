@@ -44,13 +44,8 @@
             </div>
         </div>
     </div>
-    
-
 
 <?php
     $jsPagina = ['noticia.js', 'home-doador.js']; //Colocar o arquivo .js
     require_once '../../components/footer.php';
 ?>
-
-
-
