@@ -1,4 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const inputTexto = document.querySelector('#input-value input[type="number"]');
+    const radioOutroValor = document.querySelector('#input-value input[type="radio"]');
+
+    inputTexto.addEventListener('focus', () => {
+        radioOutroValor.checked = true;
+        // opcional: disparar evento de change, se precisar
+        radioOutroValor.dispatchEvent(new Event('change'));
+    });
+
     let btns = document.querySelectorAll('#btns-group .icon-title');
     let container = document.querySelectorAll('.container-painel');
     const div = document.querySelector('#control-painel');
@@ -91,6 +100,9 @@ function verificarMensagem() {
     }
     else if (mensagem === 'erro') {
         mostrar_toast("toast-projeto-erro");
+    }
+    else if (mensagem === 'doacao') {
+        mostrar_toast("toast-doacao-sucesso");
     }
 }
 
