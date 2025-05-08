@@ -11,6 +11,7 @@
     --button: #E3B652;
     --button-hover: #9747FF;
 }
+
 .card-ong {
     border-radius: 5px;
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
@@ -22,6 +23,7 @@
     color: var(--cor-principal);
     transition: .3s;
 }
+
 .card-ong .acoes-ong {
     display: flex;
     justify-content: center;
@@ -29,15 +31,10 @@
     border-top: 1px solid rgba(0, 0, 0, 0.1);
     gap: 10px;
 }
-/* main {
-    padding: 60px 0;
-} */
-/* body {
-    background-color: aliceblue;
-} */
 
-main {
-    padding: 0 20px;
+body {
+    padding: 50px auto;
+    background-color: aliceblue;
 }
 
 #principal {
@@ -47,52 +44,41 @@ main {
     z-index: 1;
     width: 80%;
     margin: 60px auto;
-    padding: 20px;
-    background-color: #FFFFFF;
-    border-radius: 8px;
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.7);
-
+    /* padding: 20px; */
+    background-color: aliceblue;
+    border-radius: 10px;
 }
 
-.buscar {
-    position: relative;
-    /* float: right; */
-    border: solid 3px #00000084;
-    width: 25%;
-    height: 33px;
-    margin-right: 55px;
-    border-radius: 50px;
-    flex-wrap: wrap;
+/* Área barra de pesquisa */
+#form-busca {
+    display: flex;
+    align-items: center;
+    max-width: 416px;
+    width: 100%;
 }
 
-#buscar {
-    float: left;
-    background-color: transparent;
-    padding-left: 20px;
-    font-size: 1.1em;
-    width: 90%;
-    height: 30px;
-    border: none;
-    margin-top: 0px;
-    flex-wrap: wrap;
-}
-
-#buscar:focus {
-    float: left;
-    background-color: transparent;
-    padding-left: 20px;
+#form-busca input {
+    background-color: white;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
     border: none;
     outline: none;
+    border-radius: 4px 24px 24px 4px;
+    padding: 15px 65px 15px 15px;
+    transition: .3s;
+    width: 100%;
 }
 
-.search_img {
-    position: absolute;
-    float: right;
-    right: 0%;
-    margin: 3px 15px 0px 0px;
-    /* position: absolute; */
-    height: 24px;
+#form-busca .btn {
+    font-size: 20px;
+    padding: 0;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-left: -50px;
+}
 
+.qnt-busca {
+    text-align: center;
 }
 
 
@@ -104,91 +90,13 @@ main {
 
 
 .top-text {
-    font-size: 1.5em;
-    color: var(--backgroud);
-    font-weight: 500;
+    color: var(--cor-principal);
+    font-size: 32px;
+    line-height: 1;
+    margin-right: 10px;
 }
 
 
-.botoes {
-    display: flex;
-    justify-content: space-between;
-    gap: 13px;
-}
-
-.btn_nav {
-    background-color: var(--container-background);
-    border: solid 1px #0000004c;
-    border: none;
-    border-radius: 4px;
-    font-family: "Poppins", serif;
-    font-weight: 500;
-    box-shadow: 0px 3px 3px #00000078;
-    width: 32px;
-    height: 30px;
-    transition: 0.3s;
-}
-
-.btn_nav:hover {
-    background-color: black;
-    color: white;
-}
-
-.btn_nav1 {
-    background-color: black;
-    border: solid 1px #0000004c;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    font-family: "Poppins", serif;
-    font-weight: 500;
-    box-shadow: 0px 3px 3px #00000078;
-    width: 32px;
-    height: 30px;
-    transition: 0.3s;
-}
-
-@media (max-width: 700px) {
-    #principal {
-        margin: 40px auto;
-        display: flex;
-        flex-direction: column;
-        width: 90%;
-        padding: 13px;
-        background-color: #FFFFFF;
-        border-radius: 8px;
-    }
-
-    .top {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .buscar {
-        margin: 0px;
-        width: 70%;
-    }
-
-    .search_img {
-        position: absolute;
-        right: 0%;
-    }
-
-}
-
-
-
-/* Sessão de Baixo: Áreas dos cards */
-section#box-ongs {
-    display: flex;
-    justify-content: space-between;
-    gap: 30px;
-    flex-wrap: wrap;
-    margin-top: 30px;
-    /* width: 90%; */
-    padding-bottom: 30px;
-}
 
 /* Botões de navegação */
 #navegacao {
@@ -218,26 +126,43 @@ section#box-ongs {
     background-color: var(--cor-amarelo);
 }
 
+
+@media (max-width: 700px) {
+    #principal {
+        margin: 40px auto;
+        display: flex;
+        flex-direction: column;
+        width: 90%;
+        padding: 13px;
+    }
+
+    .top {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .top-text {
+        margin-bottom: 20px;
+    }
+
+}
+
+
+
+/* Sessão de Baixo: Áreas dos cards */
+section#box-ongs {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+    /* width: 90%; */
+    padding-bottom: 30px;
+}
+
 /* RESPONSIVIDADE */
 @media (max-width: 1200px) {
-    section#top-info {
-        flex-direction: column-reverse;
-        align-items: center;
-        text-align: center;
-    }
-
-    #top-info #info {
-        align-items: center;
-    }
-
-    #info div {
-        align-items: center;
-    }
-
-    #top-info #info p {
-        text-align: center;
-    }
-
     section#box-ongs {
         justify-content: space-evenly;
         gap: 30px 15px;
@@ -245,33 +170,7 @@ section#box-ongs {
 }
 
 @media (max-width: 450px) {
-    #form-filtro {
-        flex-direction: column;
-        height: 100px;
-        position: relative;
-        width: 320px;
-    }
-
-    #form-filtro button {
-        position: absolute;
-        bottom: 5px;
-        width: calc(100% - 10px);
-    }
-
     #form-busca {
         max-width: 320px;
-    }
-
-    #form-filtro ul li {
-        gap: 5px;
-    }
-
-    #form-filtro #esc-status:hover {
-        width: 235px;
-    }
-
-    #form-filtro #esc-categoria:hover,
-    #form-filtro #esc-regiao:hover {
-        width: 190px;
     }
 }
