@@ -43,7 +43,7 @@
         $divisoesHorizontais = (($width-60)/sizeof($dados));
         $pontoX = 40+($divisoesHorizontais/2); //Posição inicial do gráfico
         for($i = 0; $i<sizeof($dados); $i++){
-            $pontoY = $alturaUtil-(($dados[$i][1]*$alturaUtil)/100); //Calcula a altura da barra vertical? 
+            $pontoY = $alturaUtil-(($dados[$i][1]*$alturaUtil)/$indices[0]); //Calcula a altura da barra vertical? 
             $pontoTextoBase = $pontoX-($divisoesHorizontais/2)+15;
             $xTextoTopo = $pontoX-5;
             $yTextoTopo = $pontoY-3;
