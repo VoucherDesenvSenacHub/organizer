@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] = 'GET' && isset($_GET['pesquisa'])) {
         <section id="box-ongs">
             <!-- LISTAR CARDS PROJETOS -->
             <?php foreach ($lista as $projeto) {
-                require '../../components/cards/card-projeto.php';
+                require '../../components/cards/card-projeto-adm.php';
             } ?>
         </section>
         <nav id="navegacao">
