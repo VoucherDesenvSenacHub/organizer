@@ -10,7 +10,7 @@
  */
 
  function graficoPizza($width, $height, $dados){
-    $colors = ['#391df5', '#FFAE4C', '#3CC3DF', '#aedd2b', '#8979FF', '#FF928A', '#537FF1', '#FFFF00', '#DC143C', '#008000'];
+    $colors = ['#391df5', '#FFAE4C', '#3CC3DF', '#aedd2b', '#8979FF', '#FF928A', '#537FF1', '#FFFF00', '#DC143C', '#008000', '#xxff00', 'ff66ff'];
     $totalArrecadado = 0;
     $alturaUtil = $height-20; //Define margens de altura para o gráfico
     $divisoes = (int)($alturaUtil/(sizeof($dados))); // Calcula a separação para uso na escrita das legendas
@@ -46,7 +46,7 @@
         }
             $arco = $percentual*$perimetro/100; // Calcula o comprimento da circunferência de acordo com o valor arrecadado
 
-            // cria os gráficos de circunferência
+            // Cria os gráficos de circunferência
 
             $grafico = $grafico."
             <circle cx='$cx' cy='$cy' r='$raio' fill='transparent' stroke='$colors[$i]'
@@ -54,8 +54,10 @@
             ";
 
             // Cria as legendas
-            $leg = $dados[$i][0].' - R$ '.$dados[$i][1];
-            $yIcone = $yLegendas-10;
+            
+            $cabecalho = "<text x='70' y='30'>Total arrecadado R$ $totalArrecadado</text>";
+            $leg = $dados[$i][0].' - R$ '.$dados[$i][1]; // Variável com texto de cada legenda
+            $yIcone = $yLegendas-10; // Define o eixo Y onde será desenhado o retângulo/ícone da legenda
             $legenda = $legenda."
             <rect width='20' height='12' x='30' y='$yIcone' fill='$colors[$i]'/>
             <text x='70' y='$yLegendas'>$leg</text>
@@ -66,6 +68,7 @@
 
     return "
     <svg style = 'width: $width; height: $height;'>
+    $cabecalho
     $grafico
     $legenda
     </svg>
