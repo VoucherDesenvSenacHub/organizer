@@ -3,9 +3,9 @@ $voluntarios = [
     ["Projeto A", 21],
     ["Projeto B", 29],
     ["Projeto C", 36],
-    ["Projeto D", 48],
-    ["Projeto E", 62],
-    ["Projeto F", 90]
+    ["Projeto D", 62],
+    ["Projeto E", 48],
+    ['Projeto F', 75]
 ];
 
 $doacoesMensais = [

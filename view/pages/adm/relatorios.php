@@ -5,6 +5,7 @@
     require_once '../../components/graphics/vertical-bars.php';
     require_once '../../components/graphics/line-graphic.php';
     require_once '../../components/graphics/horizontal-double-bars.php';
+    require_once '../../components/graphics/pie-graph.php';
     require_once '../../../model/Relatorios.php';
 ?>
     <main>
@@ -48,7 +49,10 @@
                         Doações por projeto
                         <button onclick="clicar()"><img src="../../assets/images/icon-download-report.png" alt=""></button>
                     </div>
-                    <img src="../../assets//images/pie-graph.png" alt="" id="pie-graph">
+                    <div class="grafico-pizza">
+                        <?php echo graficoPizza(600, 320, $doacoesPorProjeto)?>
+                    </div>
+                    <!-- <img src="../../assets//images/pie-graph.png" alt="" id="pie-graph"> -->
                 </div>
             <!-- Fim doações por projeto -->
 
