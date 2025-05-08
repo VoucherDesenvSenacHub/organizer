@@ -120,7 +120,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 checkmark.style.display = 'block';
                 button.classList.add('success');
                 
-                // Força a animação do checkmark
+            // Força a animação do checkmark
                 setTimeout(() => {
                     const circle = checkmark.querySelector('.checkmark-circle');
                     const check = checkmark.querySelector('.checkmark-check');
