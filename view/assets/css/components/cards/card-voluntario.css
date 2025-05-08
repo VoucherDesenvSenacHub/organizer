@@ -1,0 +1,48 @@
+.card-voluntario {
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    max-width: 180px;
+    height: 50px;
+    padding: 0 5px;
+    border-radius: 4px;
+}
+
+.card-voluntario .foto {
+    width: 40px;
+    height: 40px;
+    background-color: var(--cor-principal);
+    border-radius: 50%;
+    color: aliceblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-voluntario .dados h4 {
+    font-weight: 400;
+    font-size: 17px;
+}
+
+.card-voluntario .dados p {
+    font-size: 13px;
+    color: green;
+    font-size: 500;
+}
+
+@media (max-width: 400px) {
+    .card-voluntario {
+        flex-direction: column;
+        width: fit-content;
+        height: fit-content;
+        padding: 5px;
+        gap: 0px;
+    }
+
+    .card-voluntario .dados {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}

@@ -1,7 +1,17 @@
-<?php 
-    $tituloPagina = 'Encontre Projetos';
-    $cssPagina = ['shared/catalogo.css'];
-    require_once '../../components/header.php';
+<?php
+$tituloPagina = 'Encontre Projetos';
+$cssPagina = ['shared/catalogo.css'];
+require_once '../../components/header.php';
+
+require_once __DIR__ . "\..\..\..\model\ProjetoModel.php";
+$projetoModel = new Projeto();
+$lista = $projetoModel->listar();
+
+if ($_SERVER['REQUEST_METHOD'] = 'GET' && isset($_GET['pesquisa'])) {
+    $pesquisa = $_GET['pesquisa'];
+    $lista = $projetoModel->buscarNome($pesquisa);
+}
+
 ?>
 
 <main>
@@ -97,7 +107,7 @@
                     </form>
                 </div>
                 <form id="form-busca" action="projetos.php" method="GET">
-                    <input type="text" name="pesquisa" placeholder="Busque um projeto" required>
+                    <input type="text" name="pesquisa" placeholder="Busque um projeto">
                     <button class="btn"><i class="fa-solid fa-search"></i></button>
                 </form>
             </div>
@@ -105,167 +115,17 @@
                 <img src="../../assets/images/pages/tela-projeto-kids.png" alt="">
             </div>
         </section>
+        <?php if (isset($_GET['pesquisa'])) {
+            echo "<p class='qnt-busca'><i class='fa-solid fa-search'></i> " . count($lista) . " Projetos Encontrados</p>";
+        } ?>
+
         <section id="box-ongs">
-            <div class="card-projeto">
-                <div class="acoes-projeto">
-                    <button id="share" class="fa-solid fa-share-nodes" onclick="abrir_popup('compartilhar-popup')"></button>
-                    <button id="like" class="fa-solid fa-heart" onclick="abrir_popup('login-obrigatorio-popup')"></button>
-                </div>
-                <div class="img-projeto">250x130</div>
-                <div class="info-projeto">
-                    <h5>Nome Projeto</h5>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, laborum et? Repellendus perferendis provident
-                        ratione deserunt alias cumque et quasi odio amet temporibus, quam obcaecati dolores. Enim quibusdam a atque.
-                    </p>
-                    <div class="barra-doacao">
-                        <span>30%</span>
-                        <div class="barra">
-                            <div class="barra-verde"></div>
-                        </div>
-                    </div>
-                </div>
-                <a class="saiba-mais-projeto" href="perfil-projeto.php">Saiba Mais</a>
-            </div>
-            <div class="card-projeto">
-                <div class="acoes-projeto">
-                    <button id="share" class="fa-solid fa-share-nodes" onclick="abrir_popup('compartilhar-popup')"></button>
-                    <button id="like" class="fa-solid fa-heart" onclick="abrir_popup('login-obrigatorio-popup')"></button>
-                </div>
-                <div class="img-projeto">250x130</div>
-                <div class="info-projeto">
-                    <h5>Nome Projeto</h5>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, laborum et? Repellendus perferendis provident
-                        ratione deserunt alias cumque et quasi odio amet temporibus, quam obcaecati dolores. Enim quibusdam a atque.
-                    </p>
-                    <div class="barra-doacao">
-                        <span>30%</span>
-                        <div class="barra">
-                            <div class="barra-verde"></div>
-                        </div>
-                    </div>
-                </div>
-                <a class="saiba-mais-projeto" href="perfil-projeto.php">Saiba Mais</a>
-            </div>
-            <div class="card-projeto">
-                <div class="acoes-projeto">
-                    <button id="share" class="fa-solid fa-share-nodes" onclick="abrir_popup('compartilhar-popup')"></button>
-                    <button id="like" class="fa-solid fa-heart" onclick="abrir_popup('login-obrigatorio-popup')"></button>
-                </div>
-                <div class="img-projeto">250x130</div>
-                <div class="info-projeto">
-                    <h5>Nome Projeto</h5>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, laborum et? Repellendus perferendis provident
-                        ratione deserunt alias cumque et quasi odio amet temporibus, quam obcaecati dolores. Enim quibusdam a atque.
-                    </p>
-                    <div class="barra-doacao">
-                        <span>30%</span>
-                        <div class="barra">
-                            <div class="barra-verde"></div>
-                        </div>
-                    </div>
-                </div>
-                <a class="saiba-mais-projeto" href="perfil-projeto.php">Saiba Mais</a>
-            </div>
-            <div class="card-projeto">
-                <div class="acoes-projeto">
-                    <button id="share" class="fa-solid fa-share-nodes" onclick="abrir_popup('compartilhar-popup')"></button>
-                    <button id="like" class="fa-solid fa-heart" onclick="abrir_popup('login-obrigatorio-popup')"></button>
-                </div>
-                <div class="img-projeto">250x130</div>
-                <div class="info-projeto">
-                    <h5>Nome Projeto</h5>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, laborum et? Repellendus perferendis provident
-                        ratione deserunt alias cumque et quasi odio amet temporibus, quam obcaecati dolores. Enim quibusdam a atque.
-                    </p>
-                    <div class="barra-doacao">
-                        <span>30%</span>
-                        <div class="barra">
-                            <div class="barra-verde"></div>
-                        </div>
-                    </div>
-                </div>
-                <a class="saiba-mais-projeto" href="perfil-projeto.php">Saiba Mais</a>
-            </div>
-            <div class="card-projeto">
-                <div class="acoes-projeto">
-                    <button id="share" class="fa-solid fa-share-nodes" onclick="abrir_popup('compartilhar-popup')"></button>
-                    <button id="like" class="fa-solid fa-heart" onclick="abrir_popup('login-obrigatorio-popup')"></button>
-                </div>
-                <div class="img-projeto">250x130</div>
-                <div class="info-projeto">
-                    <h5>Nome Projeto</h5>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, laborum et? Repellendus perferendis provident
-                        ratione deserunt alias cumque et quasi odio amet temporibus, quam obcaecati dolores. Enim quibusdam a atque.
-                    </p>
-                    <div class="barra-doacao">
-                        <span>30%</span>
-                        <div class="barra">
-                            <div class="barra-verde"></div>
-                        </div>
-                    </div>
-                </div>
-                <a class="saiba-mais-projeto" href="perfil-projeto.php">Saiba Mais</a>
-            </div>
-            <div class="card-projeto">
-                <div class="acoes-projeto">
-                    <button id="share" class="fa-solid fa-share-nodes" onclick="abrir_popup('compartilhar-popup')"></button>
-                    <button id="like" class="fa-solid fa-heart" onclick="abrir_popup('login-obrigatorio-popup')"></button>
-                </div>
-                <div class="img-projeto">250x130</div>
-                <div class="info-projeto">
-                    <h5>Nome Projeto</h5>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, laborum et? Repellendus perferendis provident
-                        ratione deserunt alias cumque et quasi odio amet temporibus, quam obcaecati dolores. Enim quibusdam a atque.
-                    </p>
-                    <div class="barra-doacao">
-                        <span>30%</span>
-                        <div class="barra">
-                            <div class="barra-verde"></div>
-                        </div>
-                    </div>
-                </div>
-                <a class="saiba-mais-projeto" href="perfil-projeto.php">Saiba Mais</a>
-            </div>
-            <div class="card-projeto">
-                <div class="acoes-projeto">
-                    <button id="share" class="fa-solid fa-share-nodes" onclick="abrir_popup('compartilhar-popup')"></button>
-                    <button id="like" class="fa-solid fa-heart" onclick="abrir_popup('login-obrigatorio-popup')"></button>
-                </div>
-                <div class="img-projeto">250x130</div>
-                <div class="info-projeto">
-                    <h5>Nome Projeto</h5>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, laborum et? Repellendus perferendis provident
-                        ratione deserunt alias cumque et quasi odio amet temporibus, quam obcaecati dolores. Enim quibusdam a atque.
-                    </p>
-                    <div class="barra-doacao">
-                        <span>30%</span>
-                        <div class="barra">
-                            <div class="barra-verde"></div>
-                        </div>
-                    </div>
-                </div>
-                <a class="saiba-mais-projeto" href="perfil-projeto.php">Saiba Mais</a>
-            </div>
-            <div class="card-projeto">
-                <div class="acoes-projeto">
-                    <button id="share" class="fa-solid fa-share-nodes" onclick="abrir_popup('compartilhar-popup')"></button>
-                    <button id="like" class="fa-solid fa-heart" onclick="abrir_popup('login-obrigatorio-popup')"></button>
-                </div>
-                <div class="img-projeto">250x130</div>
-                <div class="info-projeto">
-                    <h5>Nome Projeto</h5>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, laborum et? Repellendus perferendis provident
-                        ratione deserunt alias cumque et quasi odio amet temporibus, quam obcaecati dolores. Enim quibusdam a atque.
-                    </p>
-                    <div class="barra-doacao">
-                        <span>30%</span>
-                        <div class="barra">
-                            <div class="barra-verde"></div>
-                        </div>
-                    </div>
-                </div>
-                <a class="saiba-mais-projeto" href="perfil-projeto.php">Saiba Mais</a>
-            </div>
+            <!-- LISTAR CARDS PROJETOS -->
+            <?php foreach ($lista as $projeto) {
+                $valor_projeto = $projetoModel->buscarValor($projeto->codproj);
+                $barra = round(($valor_projeto / $projeto->meta) * 100);
+                require '../../components/cards/card-projeto.php';
+            } ?>
         </section>
         <nav id="navegacao">
             <a class="active" href="#">1</a>
@@ -279,6 +139,6 @@
 </main>
 
 <?php
-    $jsPagina = [];
-    require_once '../../components/footer.php';
+$jsPagina = [];
+require_once '../../components/footer.php';
 ?>
