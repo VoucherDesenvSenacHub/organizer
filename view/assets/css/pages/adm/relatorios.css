@@ -29,6 +29,7 @@
         justify-content: space-between;
         align-items: center;
         margin-bottom: 10px;
+        z-index: 999;
 
         button {
             border: none;
@@ -40,13 +41,14 @@
     .card1 {
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: start;
         background-color: white;
         color: black;
         border-radius: 10px;
         box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.2);
         padding: 20px;
-        width: 620px;
+        width: 48%;
+        height: 400px;
         text-align: left;
         font-size: 20px;
     }
@@ -93,6 +95,83 @@
         animation: animacao 1s ease;
     }  
 }
+
+/* .grade{
+    margin: 5px auto;
+    z-index: 8;
+    width: 100%;
+    height: 100%;
+    border: 1px solid black;
+    border-style: dashed;
+    .linha {
+        height: 25%;
+        width: 100%;
+        border: 1px solid black;
+        border-style: dashed;
+    }
+}
+.grafico {
+    display: flex;
+    position: relative;
+    justify-content: space-around;
+    width: 100%;
+    height: 80%;
+    p {
+        font-size: 0.8em;
+    }
+}
+.rodape-grafico{
+    display: flex;
+    margin: 5px 30px;
+    padding-left: 10px;
+    justify-content: space-between;
+    p{
+        font-size: 0.7em;
+    }
+}
+.eixo-y{
+    display: flex;
+    padding-right: 10px;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+.barras-verticais {
+    display: flex;
+    width: 35%;
+    justify-content: space-between;
+    align-items: end;
+    text-align: center;
+    margin: 0px 30px;
+    padding-left: 10px;
+    z-index: 10;
+    position: absolute;
+    bottom: 160px;
+    p{
+        font-size: 0.6em;
+    }
+} */
+.grafico-linhas, .graficos, .grafico-horizontal{
+    display: flex;
+    padding-top: 40px;
+    position: absolute;
+    font-size: 0.7em;
+}
+.graficos {
+    font-size: 0.5em;
+}
+.barra{
+    width: 10%;
+    background-color: rgb(141, 217, 255);
+
+}
+.ponto{
+    position: relative;
+    width: 8px;
+    height: 8px;
+    background-color: blue;
+    border-radius: 50%;
+}
 @keyframes animacao {
     0% {
         top: 100%;
@@ -105,6 +184,7 @@
 .quadrado2{
     display: flex;
     align-items: center;
+    margin-top: 315px;
     flex-direction: row;
     justify-content: center;
 
@@ -117,4 +197,45 @@
     img{
         margin: 1%;
     }
+}
+
+/* Responsividade Mobile */
+
+@media (max-width: 481px){
+    main {
+        width: 95%;
+    }
+    #principal {
+        margin: 10px auto;
+        .cards {
+            flex-direction: column;
+            margin: 5px 10px;
+        }
+        .card1 {
+            width: 100%;
+        }
+        .titulo {
+            font-size: 0.7em;
+        }
+        .grade {
+            .linha {
+                height: 30px;
+            }
+        }
+        .icon {
+            font-size: 0.5em;
+            img{
+                width: 50%;
+            }
+        }
+        .grafico {
+            p{
+                font-size: 0.7em;
+            }
+        }
+        .eixo-y{
+            height: 140px;
+        }
+    }
+
 }
