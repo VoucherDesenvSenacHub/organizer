@@ -5,7 +5,6 @@
     require_once '../../../model/Bancos.php';
     require_once '../../../model/Estados.php';
     require_once '../../../model/Cidades.php';
-    require_once '../../../model/Cidades.php';
     
     
 ?>
@@ -138,21 +137,21 @@
                     <label for="cidade">Cidade</label><br>
                     <input list="cidade">
                     <datalist id="cidade">
-                        <?php foreach($cidades_ms as $cidade){?>
+                        <?php foreach ($cidades_ms as $cidade) { ?>
                             <option value="<?php echo $cidade ?>">
-                        <?php }?>
+                            <?php } ?>
                     </datalist>
-                    </div>
+                </div>
                 <div>
                     <label for="cep">CEP</label><br>
                     <input type="text" id="cep" placeholder="00000-000">
                 </div>
                 <div>
-                <label for="cidade">Cidade</label><br>
+                <label for="cidade">UF</label><br>
                 <select name="cidade" id="cidade">
                     <?php
-                    foreach ($MS as $cidade) {?>
-                    <option value="<?php echo $cidade ?>"><?php echo $cidade ?></option>
+                    foreach ($estados as $uf) {?>
+                    <option value="<?php echo $uf ?>"><?php echo $uf ?></option>
                     <?php } ?>
                 </select>
                 </div>
