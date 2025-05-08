@@ -1,10 +1,10 @@
-<?php 
-    $tituloPagina = 'Noticias'; // Definir o título da página
-    $cssPagina = ['shared/noticias.css']; //Colocar o arquivo .css 
-    require_once '../../components/header-usuario.php';
+<?php
+$tituloPagina = 'Noticias'; // Definir o título da página
+$cssPagina = ['doador/noticias-doador.css']; //Colocar o arquivo .css 
+require_once '../../components/header-doador.php';
 ?>
-<main>
-    <div class="container">
+<main id="tela-noticia">
+    <div class="tela-noticia">
         <h1>NOTÍCIAS</h1>
         <div class="caixa-noticias">
             <div class="sub-title">
@@ -158,11 +158,9 @@
                 </div>
             </div>
         </div>
-        </div>
-            <?php require_once '../../components/meu-perfil-doador.php'; ?>
-        </div>
+    </div>
 </main>
 <?php
-    $jsPagina = ['home-doador.js']; //Colocar o arquivo .js
-    require_once '../../components/footer.php';
+$jsPagina = []; //Colocar o arquivo .js
+require_once '../../components/footer-doador.php';
 ?>

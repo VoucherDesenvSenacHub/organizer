@@ -12,16 +12,20 @@
     --cor-azul-escuro: #007AFF;
 }
 
+body {
+    background-color:aliceblue;
+}
+
 #principal {
-    
     justify-content: space-around;
     z-index: 1;
-    width: 60%;
-    margin: 120px auto;
+    width: 80%;
+    margin: auto;
     padding: 20px;
     background-color: #FFFFFF;
-    border-radius: 8px;
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.7);
+    border-radius: 3px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    ;
 }
 
 .header-principal{
@@ -29,6 +33,7 @@
     gap: 50px;
     align-items: center;
     justify-content: space-between;
+    margin: 20px;
 }
 
 .header-principal h1{
@@ -77,54 +82,110 @@
 .cards-container {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px; 
+    gap: 20px;
     justify-content: space-between;
+
+    & .card-projeto {
+        height: fit-content;
+        display: flex;
+    }
+}
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+}
+.div-card-geral {
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 20px;
+    gap: 20px 15px;
 }
 
-.card-ong {
+.card {
+    width: 245px;
+    height: 265px;
+    display: flex;
+    flex-direction: column;
+    background-color: red;
+    align-items: center;
+    gap: 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
+    padding: 5px;
+
+    p {
+        font-size: 18px;
+    }
+}
+
+.img-card {
+    width: 100%;
+    height: auto;
+    align-items: center;
+}
+
+.btn-card {
+    background-color: #E3B652;
+    color: black;
+    width: 170px;
+    height: 45px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+}
+
+.btn-card:hover {
+    cursor: pointer;
+    transition: 0.7s;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+}
+/* fim card */
+
+/* .card-projeto {
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
     display: flex;
     align-items: center;
     margin-top: 20px;
     gap: 5px;
     width: 250px;
-    height: 70px;
+    height: 120px;
     padding: 0 5px;
     border-radius: 4px;
     cursor: pointer;
+    border-bottom: var(--cor-amarelo) 5px solid;
+    border-left: none;
 }
+**/ 
 
-.card-ong .foto img{
-    width: 90px;
-    height: 70px;
-    background-color: var(--cor-principal);
-    color: aliceblue;
+.card-projeto .dados {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    flex-wrap: wrap;
 }
 
-.card-ong .dados {
-    flex-grow: 1; 
-}
-
-.card-ong .dados h1 {
-    font-weight: 700;
-    font-size: 16px;
+.card-projeto .dados h4  {
+    width: 100%;
     margin-bottom: 5px;
 }
 
-.card-ong .dados .quant-voluntarios {
-    font-size: 10px;
+.card-projeto .dados .quant-voluntarios {
+    display: flex;
+    gap: 10px;
+    font-size: 13px;;
     color: #188241;
-    font-size: 500;
+
 }
 
-.card-ong .dados .quant-solicitacao {
-    font-size: 10px;
+.card-projeto .dados .quant-solicitacao {
+    display: flex;
+    gap : 10px;
+    font-size: 13px;
     color: #FF5A79;
-    font-size: 500;
-}
+
+    
+
+}  
 
 /* tela botao visualizar voluntarios ativos e solicitações */
 .tela-voluntario-ativo-solicitacao{
@@ -677,7 +738,7 @@
     }
     .div-btns .aceitar img{
         width: 20px;
-        height: auto;
+        height: auto;   
         
     }
     .div-btns .recusar img{

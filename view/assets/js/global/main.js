@@ -73,7 +73,7 @@ function mostrar_toast(id) {
     setTimeout(() => {
         toast.style.right = "-300px";
         toast.style.opacity = "0";
-    }, 2000);
+    }, 3000);
 }
 
 // Recuperar senha dos login
@@ -90,4 +90,13 @@ function mensagem_enviada(toast, popup) {
 function ativar_classe(id) {
     let i = document.getElementById(id);
     i.classList.toggle('active');
+}
+
+
+// ============================ DOADOR ===============================
+function abrir_aside_doador() {
+    let aside = document.getElementById('aside-doador');
+    let btn_aside = document.getElementById('btn-aside');
+    aside.classList.toggle('active');
+    btn_aside.classList.toggle('active');
 }
