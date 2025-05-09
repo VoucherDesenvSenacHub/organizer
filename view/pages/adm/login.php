@@ -15,7 +15,7 @@
                 </div>
                 <div class="input-item">
                     <label for="senha">Senha<span>*</span></label>
-                    <input id="senha" type="password" maxlength="20" placeholder="********" required>
+                    <input id="senha" type="password" minlength="8" maxlength="20" placeholder="********" required>
                 </div>
                 <div class="remember-forgot">
                     <div class="remember">

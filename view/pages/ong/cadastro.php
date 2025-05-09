@@ -137,23 +137,23 @@
                     <label for="cidade">Cidade</label><br>
                     <input list="cidade">
                     <datalist id="cidade">
-                        <?php foreach($cidades_ms as $cidade){?>
+                        <?php foreach ($cidades_ms as $cidade) { ?>
                             <option value="<?php echo $cidade ?>">
-                        <?php }?>
+                            <?php } ?>
                     </datalist>
-                    </div>
+                </div>
                 <div>
                     <label for="cep">CEP</label><br>
                     <input type="text" id="cep" placeholder="00000-000">
                 </div>
                 <div>
-                    <label for="uf">UF</label><br>
-                    <select name="uf" id="uf">
-                        <?php 
-                        foreach ($estados as $uf) {?>
-                        <option value="<?php echo $uf ?>"><?php echo $uf ?></option>
-                        <?php }?>
-                    </select>
+                <label for="cidade">UF</label><br>
+                <select name="cidade" id="cidade">
+                    <?php
+                    foreach ($estados as $uf) {?>
+                    <option value="<?php echo $uf ?>"><?php echo $uf ?></option>
+                    <?php } ?>
+                </select>
                 </div>
             </div>
             

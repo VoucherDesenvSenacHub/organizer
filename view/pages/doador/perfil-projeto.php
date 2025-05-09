@@ -1,26 +1,66 @@
-<?php 
-    $tituloPagina = 'Perfil do Projeto | Organizer';
-    $cssPagina = ['shared/perfil-projeto.css'];
-    require_once '../../components/header-usuario.php';
+<?php
+ob_start();
+$tituloPagina = 'Perfil do Projeto | Organizer';
+$cssPagina = ['shared/perfil-projeto.css', 'doador/perfil-ong-projeto-doador.css'];
+require_once '../../components/header-doador.php';
+
+require_once '../../../model/ProjetoModel.php';
+$projetoModel = new Projeto();
+
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+    $projeto = $projetoModel->buscarId($id);
+    $valor_projeto = $projetoModel->buscarValor($id);
+    $qntdoadores = $projetoModel->contarDoadores($id);
+    $barra = round(($valor_projeto / $projeto->meta) * 100);
+}
+
+if (!isset($_GET['id']) || !$projeto){
+    echo '<h1> Projeto Não encontrado! </h1>';
+    exit();
+    
+}
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $valor = $_POST['valor'];
+    if ($valor == 'outro') {
+        $valor = $_POST['outro-valor'];
+    }
+    $doacao = $projetoModel->doacao($projeto->codproj, $valor, $_SESSION['doador_id']);
+    if ($doacao > 0) {
+        header("Location: perfil-projeto.php?id=$id&msg=doacao");
+        exit;
+    }
+}
+ob_end_flush();
 ?>
+<div id="toast-doacao-sucesso" class="toast">
+    <i class="fa-regular fa-circle-check"></i>
+    Doação Realizada Com Sucesso!
+</div>
+<?php if (isset($_GET['msg']) && $_GET['msg'] == 'doacao'): ?>
+    <script>
+        exibir_toast('toast-doacao-sucesso')
+    </script>
+<?php endif; ?>
 
 <main>
     <div class="container" id="container-principal">
         <section id="apresentacao" class="container-section">
             <div id="dados-projeto">
-                <h1>NOME PROJETO</h1>
+                <h1><?= $projeto->nome ?></h1>
                 <div id="valor-arrecadado">
-                    <h3>Arrecadado: <span>R$ 30.000</span></h3>
+                    <h3>Arrecadado: <span>R$ <?= number_format($valor_projeto, 0, ',', '.'); ?></span></h3>
                     <div class="barra-doacao">
                         <div class="barra">
-                            <div class="barra-verde"></div>
+                            <div class="barra-verde" style="width: <?= $barra ?>%;"></div>
                         </div>
                     </div>
                 </div>
                 <div id="progresso">
-                    <p>Meta: <span>R$ 100.000</span></p>
-                    <p>Status: Em progresso <span>(30% alcançado)</span></p>
-                    <p><span>24</span> Doações Recebidas</p>
+                    <p>Meta: <span>R$ <?= number_format($projeto->meta, 0, ',', '.'); ?></span></p>
+                    <p>Status: Em progresso <span>(<?= $barra ?>% alcançado)</span></p>
+                    <p><span><?= $qntdoadores ?></span> Doações Recebidas</p>
                 </div>
                 <div id="acoes">
                     <button class="btn" id="btn-doacao" onclick="abrir_popup('doacao-popup')">Fazer uma doação</button>
@@ -42,22 +82,22 @@
                 </div>
             </div>
         </section>
-            <div class="popup-fundo" id="carousel-popup">
-                <div class="container-popup">
-                    <button id="x-fechar" class="fa-solid fa-xmark" onclick="fechar_popup('carousel-popup')"></button>
-                    <div id="carousel-big" class="carousel">
-                        <div id="carousel-big-imgs" class="carousel-imgs">
-                            <img src="https://placeholder.pagebee.io/api/plain/600/375" class="carousel-item-big">
-                            <img src="https://placeholder.pagebee.io/api/plain/600/375" class="carousel-item-big">
-                            <img src="https://placeholder.pagebee.io/api/plain/600/375" class="carousel-item-big">
-                        </div>
-                        <div class="btn-salvar">
+        <div class="popup-fundo" id="carousel-popup">
+            <div class="container-popup">
+                <button class="btn-fechar-popup fa-solid fa-xmark" onclick="fechar_popup('carousel-popup')"></button>
+                <div id="carousel-big" class="carousel">
+                    <div id="carousel-big-imgs" class="carousel-imgs">
+                        <img src="https://placeholder.pagebee.io/api/plain/600/375" class="carousel-item-big">
+                        <img src="https://placeholder.pagebee.io/api/plain/600/375" class="carousel-item-big">
+                        <img src="https://placeholder.pagebee.io/api/plain/600/375" class="carousel-item-big">
+                    </div>
+                    <!-- <div class="btn-salvar">
                             <button id="share" class="fa-solid fa-share-nodes" onclick="abrir_popup('compartilhar-popup')"></button>
                             <button id="like" class="fa-solid fa-heart" onclick="abrir_popup('login-obrigatorio-popup')"></button>
-                        </div>
-                    </div>
+                        </div> -->
                 </div>
             </div>
+        </div>
         <section id="painel-projeto" class="container-section">
             <div id="btns-group">
                 <div class="icon-title active">
@@ -80,8 +120,8 @@
             <div id="principal-painel">
                 <div id="control-painel">
                     <div class="container-painel active">
-                        <span id="data-criacao">Projeto criado em: 04/08/2023</span>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati sint, quibusdam repellat saepe eos neque rerum placeat, reprehenderit amet vitae consectetur aspernatur autem optio quis eligendi unde cumque voluptatibus omnis. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, dolorum amet sapiente error dolor voluptatem delectus ratione laudantium exercitationem labore sit laborum eaque at iste cupiditate explicabo ab. Rerum, temporibus!</p>
+                        <span id="data-criacao">Projeto criado em: <?= date('d/m/Y', strtotime($projeto->data)); ?></span>
+                        <p><?= $projeto->sobre ?></p>
                     </div>
                     <div class="container-painel area-doador-voluntario">
                         <h3>DOADORES DESTE PROJETO</h3>
@@ -97,16 +137,16 @@
                     </div>
                     <div class="container-painel area-doador-voluntario">
                         <h3>VOLUNTÁRIOS DESTE PROJETO</h3>
-                            <div class="box-cards">
-                                <?php require '../../components/cards/card-voluntario.php'; ?>
-                                <?php require '../../components/cards/card-voluntario.php'; ?>
-                                <?php require '../../components/cards/card-voluntario.php'; ?>
-                                <?php require '../../components/cards/card-voluntario.php'; ?>
-                                <?php require '../../components/cards/card-voluntario.php'; ?>
-                                <?php require '../../components/cards/card-voluntario.php'; ?>
-                                <?php require '../../components/cards/card-voluntario.php'; ?>
-                            </div>
+                        <div class="box-cards">
+                            <?php require '../../components/cards/card-voluntario.php'; ?>
+                            <?php require '../../components/cards/card-voluntario.php'; ?>
+                            <?php require '../../components/cards/card-voluntario.php'; ?>
+                            <?php require '../../components/cards/card-voluntario.php'; ?>
+                            <?php require '../../components/cards/card-voluntario.php'; ?>
+                            <?php require '../../components/cards/card-voluntario.php'; ?>
+                            <?php require '../../components/cards/card-voluntario.php'; ?>
                         </div>
+                    </div>
                     <div class="container-painel area-doador-voluntario">
                         <h3>ONG RESPONSÁVEL</h3>
                         <div class="card-ong">
@@ -135,6 +175,6 @@
 </main>
 
 <?php
-    $jsPagina = ['perfil-projeto.js'];
-    require_once '../../components/footer.php';
+$jsPagina = ['perfil-projeto.js'];
+require_once '../../components/footer-doador.php';
 ?>

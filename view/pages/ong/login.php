@@ -15,7 +15,7 @@
                 </div>
                 <div class="input-item">
                     <label for="senha">Senha<span>*</span></label>
-                    <input id="senha" type="password" maxlength="20" placeholder="********" required>
+                    <input id="senha" type="password" minlength="8" maxlength="20" placeholder="********" required>
                 </div>
                 <div class="remember-forgot">
                     <div class="remember">
@@ -33,7 +33,7 @@
 </main>
 <div id="fundo-cadastro-popup" class="popup-fundo">
     <div class="container-popup" id="popup-recuperar-senha">
-        <button id="x-fechar" class="fa-solid fa-xmark" onclick="fechar_popup('fundo-cadastro-popup')"></button>
+        <button class="btn-fechar-popup fa-solid fa-xmark" onclick="fechar_popup('fundo-cadastro-popup')"></button>
         <img src="../../assets/images/pages/esqueci-senha-doador.png" alt="">
         <div>
             <h2>RECUPERAR SENHA</h2>

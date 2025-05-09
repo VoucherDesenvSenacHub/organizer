@@ -1,9 +1,27 @@
 <?php 
+ob_start();
     $tituloPagina = 'Cadastro do Doador';
     $cssPagina = ['doador/cadastro.css'];
     require_once '../../components/header.php';
+
+    require_once __DIR__ . '/../../../model/DoadorModel.php';
+    $doadorModel = new Doador();
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $nome = $_POST['nome'];
+        $telefone = $_POST['telefone'];
+        $cpf = $_POST['cpf'];
+        $data = $_POST['data_nascimento'];
+        $email = $_POST['email'];
+        $senha = $_POST['senha'];
+        $doadorModel->cadastro($nome, $telefone, $cpf, $data, $email, $senha);
+    }
+ob_end_flush();
+
 ?>
-<!-- COMEÇAR SEU CÓDIGO AQUI -->
+<div id="toast-cadastro-erro" class="toast erro">
+    <i class="fa-solid fa-triangle-exclamation"></i>
+    Falha ao realizar cadastro!
+</div>
 <main>
     <section>
         <div class="container">
@@ -24,26 +42,26 @@
                     <p>Login</p>
                 </div>
             </div>
-            <form id="form" action="login.php" method="POST">
+            <form id="form" action="cadastro.php" method="POST">
                 <div class="formBox">
                     <div class="inputBox">
                         <label for="nome">Nome Completo<span>*</span></label>
-                        <input id="nome" type="text" maxlength="100" placeholder="Seu Nome">
+                        <input id="nome" name="nome" type="text" maxlength="100" placeholder="Seu Nome">
                         <span class="visor"></span>
                     </div>
                     <div class="inputBox">
                         <label for="telefone">Telefone<span>*</span></label>
-                        <input id="telefone" type="text" placeholder="(67) 9 0000-0000">
+                        <input id="telefone" name="telefone" type="text" placeholder="(67) 9 0000-0000">
                         <span class="visor"></span>
                     </div>
                     <div class="inputBox">
                         <label for="cpf">CPF<span>*</span></label>
-                        <input id="cpf" type="text" placeholder="000.000.000-00">
+                        <input id="cpf" name="cpf" type="text" placeholder="000.000.000-00">
                         <span class="visor"></span>
                     </div>
                     <div class="inputBox">
                         <label for="data">Data de Nascimento<span>*</span></label>
-                        <input id="data" type="date" placeholder="DD/MM/AA">
+                        <input id="data" name="data_nascimento" type="date" placeholder="DD/MM/AA">
                         <span class="visor"></span>
                     </div>
                     <div class="btnNext">
@@ -52,22 +70,22 @@
                 </div>
                 <div class="formBox">
                     <div class="inputBox">
-                        <label for="nome_cartao">Titular do Cartão<span>*</span></label>
+                        <label for="nome_cartao">Titular do Cartão<span></span></label>
                         <input id="nome_cartao" type="text" maxlength="100" placeholder="Nome Completo">
                         <span class="visor"></span>
                     </div>
                     <div class="inputBox">
-                        <label for="num_cartao">Número do Cartão<span>*</span></label>
+                        <label for="num_cartao">Número do Cartão<span></span></label>
                         <input id="num_cartao" type="text" placeholder="0000 0000 0000 0000">
                         <span class="visor"></span>
                     </div>
                     <div class="inputBox">
-                        <label for="data_cartao">Data de Validade<span>*</span></label>
+                        <label for="data_cartao">Data de Validade<span></span></label>
                         <input id="data_cartao" type="date" placeholder="MM/AA">
                         <span class="visor"></span>
                     </div>
                     <div class="inputBox">
-                        <label for="code_cartao">Código de Segurança<span>*</span></label>
+                        <label for="code_cartao">Código de Segurança<span></span></label>
                         <input id="code_cartao" type="number" placeholder="CVV">
                         <span class="visor"></span>
                     </div>
@@ -79,12 +97,12 @@
                 <div class="formBox">
                     <div class="inputBox" id="BoxG">
                         <label for="email">Email<span>*</span></label>
-                        <input id="email" type="email" maxlength="45" placeholder="usúario@conta.com">
+                        <input id="email" name="email" type="email" maxlength="45" placeholder="usúario@conta.com">
                         <span class="visor"></span>
                     </div>
                     <div class="inputBox">
                         <label for="senha">Senha<span>*</span></label>
-                        <input id="senha" type="password" maxlength="20" placeholder="********">
+                        <input id="senha"name="senha" type="password" maxlength="20" placeholder="********">
                         <span class="visor"></span>
                     </div>
                     <div class="inputBox">
@@ -98,7 +116,7 @@
                     </div>
                     <div class="btnNextBack">
                         <button class="btn btnVoltar" type="button" onclick="moverPara(1, 33.3)">Voltar</button>
-                        <button class="btn" onclick="return proximo(3)">CADASTRAR</button>
+                        <button class="btn" type="submit" onclick="return proximo(3)">CADASTRAR</button>
                     </div>
                 </div>
             </form>

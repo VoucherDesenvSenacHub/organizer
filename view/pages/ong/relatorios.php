@@ -6,7 +6,7 @@
     <main>
         <div id="principal">
             <div class="titulo">
-                RELATÓRIOS
+                <h1>RELATÓRIOS</h1> 
             </div>
 
             <div class="cards">
@@ -62,11 +62,6 @@
                         <p>Voluntários</p>
                     </div>
                 </div>
-            </div>
-
-            <div id="download">
-                <img src="../../assets/images/icon.png" alt="">
-                <p>Download Iniciado</p>
             </div>
 
         </div>

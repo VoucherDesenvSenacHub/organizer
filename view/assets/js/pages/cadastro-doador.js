@@ -17,15 +17,16 @@ function proximo(indice) {
         moverPara(indice, 33.3);
     }
     else if (indice == 2) {
-        if (
-            !validarCampo(input[4], 4, 'Digite o nome do titular.', 5) ||
-            !validarCampo(input[5], 5, 'Insira um número válido.', 19) ||
-            !validarCampo(input[6], 6, 'Insira uma data.') ||
-            !validarCampo(input[7], 7, 'Digite o CVV corretamente', 3)
-        ) {
-            check[1].classList.remove('input-valid');
-            return false;
-        }
+        // SE FOR OBRIGATORIO CADASTRAR O CARTÃO USAR:
+        // if (
+        //     !validarCampo(input[4], 4, 'Digite o nome do titular.', 5) ||
+        //     !validarCampo(input[5], 5, 'Insira um número válido.', 19) ||
+        //     !validarCampo(input[6], 6, 'Insira uma data.') ||
+        //     !validarCampo(input[7], 7, 'Digite o CVV corretamente', 3)
+        // ) {
+        //     check[1].classList.remove('input-valid');
+        //     return false;
+        // }
         check[1].classList.add('input-valid');
         moverPara(indice, 33.3);
     }
@@ -39,12 +40,37 @@ function proximo(indice) {
             return false;
         }
         check[2].classList.add('input-valid');
-        cadastrar_doador()
+        // cadastrar_doador()
         return true;
     }
 }
 
-function cadastrar_doador() {
-    sessionStorage.setItem("cadastro_sucesso", "true");
-    window.location.href = "login.php";
+$("#form").submit(function(event) {
+    // Remover máscara dos campos antes de enviar
+    $("#telefone").unmask();
+    $("#cpf").unmask();
+    $("#num_cartao").unmask();
+    $("#code_cartao").unmask();
+});
+
+function getQueryParam(param) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(param);
 }
+
+function verificarMensagem() {
+    const mensagem = getQueryParam('cadastro');
+
+    if (mensagem === 'erro') {
+        mostrar_toast("toast-cadastro-erro");
+    }
+}
+
+window.onload = function () {
+    verificarMensagem();
+};
+
+// function cadastrar_doador() {
+//     sessionStorage.setItem("cadastro_sucesso", "true");
+//     window.location.href = "login.php";
+// }

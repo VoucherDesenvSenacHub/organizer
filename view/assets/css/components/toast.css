@@ -22,3 +22,11 @@
     color: limegreen;
     font-size: 20px
 }
+
+.toast.erro {
+    border-left: 6px solid var(--cor-vermelho);
+}
+
+.toast.erro i {
+    color: var(--cor-vermelho);
+}

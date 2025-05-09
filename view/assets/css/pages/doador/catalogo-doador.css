@@ -1,0 +1,46 @@
+@import url(../shared/catalogo.css);
+
+main {
+    padding: 0;
+}
+
+#container-catalogo {
+    background: none;    
+    padding: 0;
+}
+
+section#box-ongs {
+    gap: 30px 10px;
+}
+
+/* @media (max-width: 500px) {
+    #form-filtro {
+        flex-direction: column;
+        height: 100px;
+        position: relative;
+        width: 290px;
+    } */
+
+    /* #form-filtro button {
+        position: absolute;
+        bottom: 5px;
+        width: calc(100% - 10px);
+    } */
+
+    /* #form-busca {
+        max-width: 290px;
+    }
+
+    #form-filtro ul {
+        flex: 1;
+    } */
+
+    /* #form-filtro #esc-status:hover {
+        width: 235px;
+    }
+
+    #form-filtro #esc-categoria:hover,
+    #form-filtro #esc-regiao:hover {
+        width: 190px;
+    } */
+/* } */

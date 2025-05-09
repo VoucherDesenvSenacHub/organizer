@@ -1,5 +1,5 @@
-<?php 
-
+<?php
+ 
 $estados = [
         "AC - Acre",
         "AL - Alagoas",
