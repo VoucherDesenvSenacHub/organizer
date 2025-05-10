@@ -7,8 +7,16 @@
     require_once '../../components/graphics/horizontal-double-bars.php';
     require_once '../../components/graphics/pie-graph.php';
     require_once '../../../model/Relatorios.php';
+    if($_SERVER['REQUEST_METHOD'] === 'POST'){
+        $largura = $_POST['largura'];
+        $altura = $_POST['altura'];
+    }
 ?>
     <main>
+        <form action="relatorios.php" method="POST" id="capturar-tamanho-tela">
+            <input type="hidden" name="largura" id="largura">
+            <input type="hidden" name="altura" id="altura">
+        </form>
         <div id="principal">
             <div class="titulo">
                 RELATÓRIOS
@@ -23,7 +31,7 @@
                     </div>
                     <div class="graficos">
                         <?php 
-                            echo graficoBarrasVerticais([100, 75, 50, 25, 0], 600, 320, $voluntarios);
+                            echo graficoBarrasVerticais([100, 75, 50, 25, 0], $largura, $altura, $voluntarios);
                         ?>
                     </div>
                 </div>
@@ -36,7 +44,7 @@
                         <button onclick="clicar()"><img src="../../assets/images/icon-download-report.png" alt=""></button>
                     </div>
                     <div class="grafico-linhas">
-                    <?php echo graficoLinhas([960, 720, 480, 240, 0], 600, 320, $doacoesMensais)?>                        
+                    <?php echo graficoLinhas([960, 720, 480, 240, 0], $largura, $altura, $doacoesMensais)?>                        
                         
                     </div>
                 </div>
@@ -50,7 +58,7 @@
                         <button onclick="clicar()"><img src="../../assets/images/icon-download-report.png" alt=""></button>
                     </div>
                     <div class="grafico-pizza">
-                        <?php echo graficoPizza(600, 320, $doacoesPorProjeto)?>
+                        <?php echo graficoPizza($largura, $altura, $doacoesPorProjeto)?>
                     </div>
                     <!-- <img src="../../assets//images/pie-graph.png" alt="" id="pie-graph"> -->
                 </div>
@@ -64,7 +72,7 @@
                         
                     </div>
                     <div class="grafico-horizontal">
-                        <?php echo graficoHorizontalDuplo(600, 320, $doacoesVoluntarios)?>
+                        <?php echo graficoHorizontalDuplo($largura, $altura, $doacoesVoluntarios)?>
                         
                     </div>
                     <div class="quadrado2">

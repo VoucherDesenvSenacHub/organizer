@@ -149,7 +149,7 @@
 
 /* Responsividade Mobile */
 
-@media (max-width: 481px){
+@media (max-width: 700px){
     main {
         width: 95%;
     }

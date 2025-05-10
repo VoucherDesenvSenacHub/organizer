@@ -42,6 +42,7 @@
 
         $divisoesHorizontais = (($width-60)/sizeof($dados));
         $pontoX = 40+($divisoesHorizontais/2); //Posição inicial do gráfico
+        $larguraBarra = $width * 0.065;
         for($i = 0; $i<sizeof($dados); $i++){
             $pontoY = $alturaUtil-(($dados[$i][1]*$alturaUtil)/$indices[0]); //Calcula a altura da barra vertical? 
             $pontoTextoBase = $pontoX-($divisoesHorizontais/2)+15;
@@ -52,7 +53,7 @@
             $barrasVerticais = $barrasVerticais."
             <line x1='$pontoX' y1='$alturaUtil'
             x2='$pontoX'y2 ='$pontoY'
-            style='stroke: #8DD9FF; stroke-width: 40px'/>
+            style='stroke: #8DD9FF; stroke-width: $larguraBarra'/>
             <text x='$pontoTextoBase' y='$height'>$projeto</text>
             <text x='$xTextoTopo' y='$yTextoTopo'>$valorBarra</text>            
             ";
