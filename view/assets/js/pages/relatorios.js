@@ -17,8 +17,8 @@ function tamanhoGraficos() {
   let width = 600;
   let height = 320;
   if(tela < 700){
-    width = 200;
-    height = 150;
+    width = 250;
+    height = 180;
   }else{
     width = 600;
     height = 320;
@@ -28,6 +28,7 @@ function tamanhoGraficos() {
   largura.value = width;
   altura.value = height;
   document.getElementById("capturar-tamanho-tela").submit();
+  contador++;
 }
 
 window.onload = tamanhoGraficos();
