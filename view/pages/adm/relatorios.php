@@ -6,17 +6,25 @@
     require_once '../../components/graphics/line-graphic.php';
     require_once '../../components/graphics/horizontal-double-bars.php';
     require_once '../../components/graphics/pie-graph.php';
+    // require_once '../../components/graphics/calcula-graficos.php';
     require_once '../../../model/Relatorios.php';
+    $load = false;
+    echo $load;
     if($_SERVER['REQUEST_METHOD'] === 'POST'){
         $largura = $_POST['largura'];
         $altura = $_POST['altura'];
+        $load = true;
     }
+    
 ?>
     <main>
         <form action="relatorios.php" method="POST" id="capturar-tamanho-tela">
             <input type="hidden" name="largura" id="largura">
             <input type="hidden" name="altura" id="altura">
         </form>
+        <script>
+            var load = "<?php echo $load; ?>";
+        </script>
         <div id="principal">
             <div class="titulo">
                 RELATÓRIOS

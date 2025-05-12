@@ -25,10 +25,13 @@ function tamanhoGraficos() {
   }
   let largura = document.getElementById("largura");
   let altura = document.getElementById("altura");
+  load = true;
   largura.value = width;
   altura.value = height;
   document.getElementById("capturar-tamanho-tela").submit();
   contador++;
 }
 
-window.onload = tamanhoGraficos();
+if(!load){
+  tamanhoGraficos();
+}
