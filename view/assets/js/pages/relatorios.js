@@ -23,6 +23,8 @@ function tamanhoGraficos() {
     width = 600;
     height = 320;
   }
+  console.log(width);
+  console.log(height);
   let largura = document.getElementById("largura");
   let altura = document.getElementById("altura");
   load = true;

@@ -24,6 +24,8 @@
         </form>
         <script>
             var load = "<?php echo $load; ?>";
+            consoloe.log(width);
+            console.log(height);
         </script>
         <div id="principal">
             <div class="titulo">
