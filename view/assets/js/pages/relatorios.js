@@ -13,6 +13,7 @@ function loginPopup() {
 }
 
 function tamanhoGraficos() {
+  load = true;
   let width = 600;
   let height = 320;
   if(tela < 700){
@@ -28,8 +29,10 @@ function tamanhoGraficos() {
   altura.value = height;
   document.getElementById("capturar-tamanho-tela").submit();
 }
-
 var tela = window.innerWidth;
+if(!load){
+  tamanhoGraficos();
+}
 window.addEventListener('resize', function(){
   tela = window.innerWidth;
   tamanhoGraficos();

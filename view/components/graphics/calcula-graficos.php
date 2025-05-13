@@ -8,13 +8,17 @@
  * 
  */
 
- function calculaGraficos(){
-
+ function calculaGraficos($load){
+    
     return "
     <form action='relatorios.php' method='POST' id='capturar-tamanho-tela'>
         <input type='hidden' name='largura' id='largura'>
         <input type='hidden' name='altura' id='altura'>
+
     </form>
+    <script>
+        var load = '$load';
+    </script>
     ";
  }
 

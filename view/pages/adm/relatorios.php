@@ -9,7 +9,6 @@
     require_once '../../components/graphics/calcula-graficos.php';
     require_once '../../../model/Relatorios.php';
     $load = false;
-    echo $load;
     if($_SERVER['REQUEST_METHOD'] === 'POST'){
         $largura = $_POST['largura'];
         $altura = $_POST['altura'];
@@ -18,7 +17,7 @@
     
 ?>
     <main>
-        <?php echo calculaGraficos(); ?>
+        <?php echo calculaGraficos($load); ?>
         <div id="principal">
             <div class="titulo">
                 RELATÓRIOS
