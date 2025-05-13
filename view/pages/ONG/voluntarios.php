@@ -87,7 +87,7 @@ require_once '../../components/header-ong.php';
                     <div class="img-projeto">250x130
                         <img src="" alt="">
                     </div>
-                    <!-- <a class="saiba-mais-projeto" href=""></a> -->
+                    <a class="saiba-mais-projeto" href=""></a>
                     <div class="dados">
                         <h4><?php echo $card['nome'] ?></h4>
                         <p class="quant-voluntarios"><?php echo $card['quant-voluntarios'] ?></p>
