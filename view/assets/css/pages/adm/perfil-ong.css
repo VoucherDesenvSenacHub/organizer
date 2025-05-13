@@ -6,7 +6,7 @@
     /* color: #912B2B; */
 }
 
-#dados-ong #acoes  #btn-voluntario {
+#dados-ong #acoes  #btn-inativar {
     background-color: var(--cor-vermelho);
     /* background-color: var(--cor-vermelho); */
     color: var(--cor-principal);
