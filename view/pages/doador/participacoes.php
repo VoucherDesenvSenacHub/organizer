@@ -2,6 +2,7 @@
     $tituloPagina = 'Participações'; // Definir o título da página
     $cssPagina = ['doador/participacoes.css']; //Colocar o arquivo .css (exemplo: 'ONG/cadastro.css')
     require_once '../../components/header-doador.php';
+    require_once __DIR__ . "\..\..\..\model\ProjetoModel.php";
 ?>
 
 <main>
@@ -10,6 +11,7 @@
             <div id="secao-1">
                 <h1>SUAS PARTICIPAÇÕES</h1>
                 <h3>Projetos</h3>
+                <a href="perfil-projeto.php">
                 <div class="cards-participacao">
                     <div class="cards-projeto">
                         <div class="card-participacao">
@@ -31,6 +33,8 @@
                                 </div>
                             </div>
                         </div>
+                        </a>
+                        <a href="perfil-projeto.php">
                         <div class="card-participacao">
                             <img src="../../assets/images/projeto-sem-foto.png" alt="Imagem do projeto">
                             <div class="info-card">
@@ -50,6 +54,8 @@
                                 </div>
                             </div>
                         </div>
+                        </a>
+                        <a href="perfil-projeto.php">
                         <div class="card-participacao">
                             <img src="../../assets/images/projeto-sem-foto.png" alt="Imagem do projeto">
                             <div class="info-card">
@@ -69,6 +75,8 @@
                                 </div>
                             </div>
                         </div>
+                        </a>
+                        <a href="perfil-projeto.php">
                         <div class="card-participacao">
                             <img src="../../assets/images/projeto-sem-foto.png" alt="Imagem do projeto">
                             <div class="info-card">
@@ -90,7 +98,9 @@
                         </div>
                     </div>
                 </div>
+                </a>
                 <h3>Ongs</h3>
+                <a href="perfil-ong.php">
                 <div class="cards-participacao">
                     <div class="cards-projeto">
                         <div class="card-participacao">
@@ -112,6 +122,8 @@
                                 </div>
                             </div>
                         </div>
+                        </a>
+                        <a href="perfil-ong.php">
                         <div class="card-participacao">
                             <img src="../../assets/images/projeto-sem-foto.png" alt="Imagem do projeto">
                             <div class="info-card">
@@ -131,6 +143,8 @@
                                 </div>
                             </div>
                         </div>
+                        </a>
+                        <a href="perfil-ong.php">
                         <div class="card-participacao">
                             <img src="../../assets/images/projeto-sem-foto.png" alt="Imagem do projeto">
                             <div class="info-card">
@@ -150,6 +164,8 @@
                                 </div>
                             </div>
                         </div>
+                        </a>
+                        <a href="perfil-ong.php">
                         <div class="card-participacao">
                             <img src="../../assets/images/projeto-sem-foto.png" alt="Imagem do projeto">
                             <div class="info-card">
@@ -169,6 +185,7 @@
                                 </div>
                             </div>
                         </div>
+                        </a>
                     </div>
                 </div>
             </div>
