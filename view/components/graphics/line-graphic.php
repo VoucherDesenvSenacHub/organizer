@@ -16,15 +16,16 @@
   
     function graficoLinhas($indices, $width, $height, $dados){
         $mi=0;
-        $alturaUtil = $height-27;
+        $height > 200 ? $alturaUtil = $height-27 : $alturaUtil = $height-15; // Calcula a altura útil para vetorização do gráfico
         $linhasHorizontais = '';
         $barrasVerticais = '';
+        $xFinal = $width-80;
         $divisoes = (int)($alturaUtil/(sizeof($indices)-1));
             
         //Desenha linhas horizontais de referência do gráfico e escreve os índices do eixo Y
 
         for($i = 1; $i <=$alturaUtil; $i+=$divisoes){
-            $iText = $i+10;
+            $width >150?$iText = $i+10 : $iText = $i+3;
             $linhasHorizontais = $linhasHorizontais."
                 <line x1='40' y1='$i' x2='$width' y2='$i' style='stroke: black; stroke-dasharray: 4 '/>
                 <text x='0' y='$iText'>$indices[$mi]</text>        
@@ -70,7 +71,7 @@
         $linhasHorizontais
         $barrasVerticais
         $graficoLinhas
-        <line x1='$width' y1='1' x2='$width' y2='$alturaUtil' style='stroke: black; stroke-dasharray: 4 '/>
+        <line x1='$xFinal' y1='1' x2='$xFinal' y2='$alturaUtil' style='stroke: black; stroke-dasharray: 4 '/>
         </svg>
         ";
     }

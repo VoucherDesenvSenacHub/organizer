@@ -1,9 +1,21 @@
 <?php 
-if($_SERVER['REQUEST_METHOD'] === 'POST'){
-        $largura = $_POST['largura'];
-        $altura = $_POST['altura'];
-        echo "Calculei</br>";
-        echo "Largura: ". $largura."</br>";
-        echo "Altura: ". $altura."</br>";
-        // return header ('location: ..\..\pages\adm\relatorios.php');
-    }
+
+// Cálculo das medidas dos gráficos para responsividade
+
+/**
+ * 
+ * Componente que renderiza um formuláro para transferência de variáveis referentes ao tamanho dos gráficos
+ * 
+ */
+
+ function calculaGraficos(){
+
+    return "
+    <form action='relatorios.php' method='POST' id='capturar-tamanho-tela'>
+        <input type='hidden' name='largura' id='largura'>
+        <input type='hidden' name='altura' id='altura'>
+    </form>
+    ";
+ }
+
+

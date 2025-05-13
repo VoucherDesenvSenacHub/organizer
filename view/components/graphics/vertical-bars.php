@@ -19,14 +19,15 @@
         // Traça as linhas horizontais e índices
 
         $mi=0;
-        $alturaUtil = $height-27;
+        $alturaUtil = $height-10; // Define a altura útil para renderização do gráfico
         $linhasHorizontais = '';
         $barrasVerticais = '';
-        $divisoes = (int)($alturaUtil/(sizeof($indices)-1));
+        $divisoes = (int)($alturaUtil/(sizeof($indices)-1)); // Calcula a altura das divisões baseada na altura útil
+        $width > 200 ? $x1Dash = 40 : $x1Dash = 10;
         for($i = 1; $i <=$alturaUtil; $i+=$divisoes){
             $iText = $i+7;
             $linhasHorizontais = $linhasHorizontais."
-            <line x1='40' y1='$i' x2='$width' y2='$i' style='stroke: black; stroke-dasharray: 4 '/>
+            <line x1='$x1Dash' y1='$i' x2='$width' y2='$i' style='stroke: black; stroke-dasharray: 4 '/>
             <text x='0' y='$iText' textlenght='7'>$indices[$mi]</text>";
             $mi++;
         }
@@ -34,7 +35,7 @@
         // Traça as linhas verticais extremas da esquerda e direita
         
         $linhasVerticais = "        
-        <line x1='40' y1='0' x2='40' y2='$alturaUtil' style='stroke: black; stroke-dasharray: 4 '/>
+        <line x1='$x1Dash' y1='0' x2='$x1Dash' y2='$alturaUtil' style='stroke: black; stroke-dasharray: 4 '/>
         <line x1='599' y1='0' x2='599' y2='$alturaUtil' style='stroke: black; stroke-dasharray: 4 '/>
         ";
 

@@ -13,27 +13,24 @@ function loginPopup() {
 }
 
 function tamanhoGraficos() {
-  let tela = window.innerWidth;
   let width = 600;
   let height = 320;
   if(tela < 700){
-    width = 250;
-    height = 180;
+    width = 200;
+    height = 150;
   }else{
     width = 600;
     height = 320;
   }
-  console.log(width);
-  console.log(height);
   let largura = document.getElementById("largura");
   let altura = document.getElementById("altura");
-  load = true;
   largura.value = width;
   altura.value = height;
   document.getElementById("capturar-tamanho-tela").submit();
-  contador++;
 }
 
-if(!load){
+var tela = window.innerWidth;
+window.addEventListener('resize', function(){
+  tela = window.innerWidth;
   tamanhoGraficos();
-}
+})
