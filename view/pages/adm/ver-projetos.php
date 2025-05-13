@@ -29,7 +29,9 @@ if ($_SERVER['REQUEST_METHOD'] = 'GET' && isset($_GET['pesquisa'])) {
 
         <section id="box-ongs">
             <!-- LISTAR CARDS PROJETOS -->
-            <?php foreach ($lista as $projeto) {
+            <?php
+             foreach ($lista as $projeto) {
+                $class = 'tp-ong';
                 require '../../components/cards/card-projeto.php';
             } ?>
         </section>
