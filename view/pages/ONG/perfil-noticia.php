@@ -37,7 +37,7 @@ require_once '../../components/popup/formulario-noticia.php';
 
         <div class="botoes-edicao">
             <button id="editar-noticia" onclick="abrir_popup('editar-noticia-popup')">Editar<img
-                    src="../../assets/images/editarr.png" class="lapis-editar" alt=""></button>
+                    src="" class="fa-solid fa-pen-to-square lapis-editar" alt=""></button>
             <button id="deletar-noticia" onclick="popConclusao('delete')">Excluir<img
                     src="../../assets/images/delete-noticia.png" alt=""></button>
         </div>

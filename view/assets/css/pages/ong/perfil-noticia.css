@@ -2,7 +2,6 @@
 
 /* Página de edição de notícias */
 
-
 body {
     background-color: aliceblue;
     margin: 0;
@@ -214,11 +213,6 @@ body {
 }
 #editar-noticia {
     background-color: #FFCC00;
-}
-
-.lapis-editar{
-    display: flex;
-
 }
 
 #deletar-noticia {
