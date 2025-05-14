@@ -19,7 +19,7 @@
         $height > 200 ? $alturaUtil = $height-27 : $alturaUtil = $height-15; // Calcula a altura útil para vetorização do gráfico
         $linhasHorizontais = '';
         $barrasVerticais = '';
-        $xFinal = $width-80;
+        $xFinal = $width-1;
         $divisoes = (int)($alturaUtil/(sizeof($indices)-1));
             
         //Desenha linhas horizontais de referência do gráfico e escreve os índices do eixo Y
