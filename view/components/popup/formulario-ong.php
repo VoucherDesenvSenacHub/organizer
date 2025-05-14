@@ -1,6 +1,6 @@
 <?php
-$acao = ($projeto->codproj) ? 'EDITAR ONG' : 'NOVA ONG';
-$btn_text = ($projeto->codproj) ? 'SALVAR ALTERAÇÃO' : 'CRIAR ONG';
+$acao = ($projeto->codproj) ? 'EDITAR ONG' : 'ONG';
+$btn_text = ($projeto->codproj) ? 'SALVAR ALTERAÇÃO' : 'EDITAR ONGQ';
 // $meta = (int)$meta;
 ?>
 <div class="popup-fundo" id="editar-projeto-popup">
