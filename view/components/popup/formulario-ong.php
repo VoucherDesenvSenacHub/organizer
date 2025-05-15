@@ -1,6 +1,6 @@
 <?php
 $acao = ($projeto->codproj) ? 'EDITAR ONG' : 'ONG';
-$btn_text = ($projeto->codproj) ? 'SALVAR ALTERAÇÃO' : 'EDITAR ONGQ';
+$btn_text = ($projeto->codproj) ? 'SALVAR ALTERAÇÃO' : 'EDITAR ONG';
 // $meta = (int)$meta;
 ?>
 <div class="popup-fundo" id="editar-projeto-popup">
@@ -38,7 +38,7 @@ $btn_text = ($projeto->codproj) ? 'SALVAR ALTERAÇÃO' : 'EDITAR ONGQ';
                     </div>
                     <input id="fotos" type="file" name="fotos[]" multiple>
                 </div>
-                <button class="btn"><?= $btn_text ?> <i class="fa-solid fa-floppy-disk"></i></button>
+                <button class="btn"><?= $btn_text ?> <i class="confirmacao-ong"></i></button>
             </div>
         </form>
     </div>
