@@ -10,3 +10,6 @@ create table cadnoticias (
 	data timestamp default current_timestamp,
 	primary key (codnot)
 );
+
+select * from cadnoticias;
+
