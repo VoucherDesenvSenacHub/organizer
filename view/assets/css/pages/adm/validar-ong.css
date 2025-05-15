@@ -1,0 +1,60 @@
+body {
+    background-color: aliceblue;
+}
+
+main.container {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    background-color: white;
+    padding: 50px 30px;
+    flex-direction: column;
+    align-items: start;
+    gap: 40px;
+}
+
+.dados-ong {
+    width: 100%;
+}
+
+.dados-ong fieldset {
+    width: 100%;
+    /* text-align: center; */
+    border: none;
+    border-top: 1px solid var(--cor-principal);
+}
+
+.dados-ong fieldset legend {
+    color: var(--cor-principal);
+    /* padding-inline: 5px; */
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+/* Formulário */
+.dados-ong .form {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    padding-left: 20px;
+}
+
+.dados-ong .form label {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 200px;
+    position: relative;
+}
+
+.dados-ong .form label input {
+    outline: none;
+    padding: 10px;
+}
+
+.dados-ong .form label span {
+    position: absolute;
+    top: -10px;
+    left: 5px;
+    background-color: white;
+    padding-inline: 4px;
+    font-weight: 600;
+    font-size: 13px;
+}
