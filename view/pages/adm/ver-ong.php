@@ -8,10 +8,10 @@ require_once '../../components/header-adm.php';
     <div id="principal">
         <div class="top">
             <h1 class="top-text">TODAS AS ONGS</h1>
-            <div class="buscar">
-                <input type="text" id="buscar" placeholder="Buscar">
-                <img src="../../assets/images/search_img.png" class="search_img">
-            </div>
+            <form id="form-busca" action="ongs.php" method="GET">
+                <input type="text" name="pesquisa" placeholder="Busque uma ONG" required>
+                <button class="btn"><i class="fa-solid fa-search"></i></button>
+            </form>
         </div>
 
         <section id="box-ongs">
@@ -36,7 +36,7 @@ require_once '../../components/header-adm.php';
                 </div>
                 <div class="acoes-ong">
                     <a href="perfil-ong.php" class="saiba-mais-ong">Saiba Mais</a>
-                    
+
                 </div>
             </div>
             <div class="card-ong">
@@ -60,7 +60,7 @@ require_once '../../components/header-adm.php';
                 </div>
                 <div class="acoes-ong">
                     <a href="perfil-ong.php" class="saiba-mais-ong">Saiba Mais</a>
-                    
+
                 </div>
             </div>
             <div class="card-ong">
@@ -84,7 +84,7 @@ require_once '../../components/header-adm.php';
                 </div>
                 <div class="acoes-ong">
                     <a href="perfil-ong.php" class="saiba-mais-ong">Saiba Mais</a>
-                    
+
                 </div>
             </div>
             <div class="card-ong">
@@ -108,7 +108,7 @@ require_once '../../components/header-adm.php';
                 </div>
                 <div class="acoes-ong">
                     <a href="perfil-ong.php" class="saiba-mais-ong">Saiba Mais</a>
-                    
+
                 </div>
             </div>
             <div class="card-ong">
@@ -132,7 +132,7 @@ require_once '../../components/header-adm.php';
                 </div>
                 <div class="acoes-ong">
                     <a href="perfil-ong.php" class="saiba-mais-ong">Saiba Mais</a>
-                    
+
                 </div>
             </div>
             <div class="card-ong">
@@ -156,17 +156,18 @@ require_once '../../components/header-adm.php';
                 </div>
                 <div class="acoes-ong">
                     <a href="perfil-ong.php" class="saiba-mais-ong">Saiba Mais</a>
-                    
+
                 </div>
             </div>
         </section>
-        <div class="botoes">
-            <button class="btn_nav1">1</button>
-            <button class="btn_nav">2</button>
-            <button class="btn_nav">3</button>
-            <button class="btn_nav">4</button>
-            <button class="btn_nav">></button>
-        </div>
+        <nav id="navegacao">
+            <a class="active" href="#">1</a>
+            <a href="#">2</a>
+            <a href="#">3</a>
+            <a href="#">4</a>
+            <a href="#">5</a>
+            <a href="#">></a>
+        </nav>
     </div>
 </main>
 

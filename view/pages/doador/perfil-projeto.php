@@ -1,4 +1,5 @@
 <?php
+ob_start();
 $tituloPagina = 'Perfil do Projeto | Organizer';
 $cssPagina = ['shared/perfil-projeto.css', 'doador/perfil-ong-projeto-doador.css'];
 require_once '../../components/header-doador.php';
@@ -6,9 +7,12 @@ require_once '../../components/header-doador.php';
 require_once '../../../model/ProjetoModel.php';
 $projetoModel = new Projeto();
 
-if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['id'])) {
+if (isset($_GET['id'])) {
     $id = $_GET['id'];
     $projeto = $projetoModel->buscarId($id);
+    $valor_projeto = $projetoModel->buscarValor($id);
+    $qntdoadores = $projetoModel->contarDoadores($id);
+    $barra = round(($valor_projeto / $projeto->meta) * 100);
 }
 
 if (!isset($_GET['id']) || !$projeto){
@@ -16,7 +20,29 @@ if (!isset($_GET['id']) || !$projeto){
     exit();
     
 }
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $valor = $_POST['valor'];
+    if ($valor == 'outro') {
+        $valor = $_POST['outro-valor'];
+    }
+    $doacao = $projetoModel->doacao($projeto->codproj, $valor, $_SESSION['doador_id']);
+    if ($doacao > 0) {
+        header("Location: perfil-projeto.php?id=$id&msg=doacao");
+        exit;
+    }
+}
+ob_end_flush();
 ?>
+<div id="toast-doacao-sucesso" class="toast">
+    <i class="fa-regular fa-circle-check"></i>
+    Doação Realizada Com Sucesso!
+</div>
+<?php if (isset($_GET['msg']) && $_GET['msg'] == 'doacao'): ?>
+    <script>
+        exibir_toast('toast-doacao-sucesso')
+    </script>
+<?php endif; ?>
 
 <main>
     <div class="container" id="container-principal">
@@ -24,17 +50,17 @@ if (!isset($_GET['id']) || !$projeto){
             <div id="dados-projeto">
                 <h1><?= $projeto->nome ?></h1>
                 <div id="valor-arrecadado">
-                    <h3>Arrecadado: <span>R$ 30.000</span></h3>
+                    <h3>Arrecadado: <span>R$ <?= number_format($valor_projeto, 0, ',', '.'); ?></span></h3>
                     <div class="barra-doacao">
                         <div class="barra">
-                            <div class="barra-verde"></div>
+                            <div class="barra-verde" style="width: <?= $barra ?>%;"></div>
                         </div>
                     </div>
                 </div>
                 <div id="progresso">
                     <p>Meta: <span>R$ <?= number_format($projeto->meta, 0, ',', '.'); ?></span></p>
-                    <p>Status: Em progresso <span>(30% alcançado)</span></p>
-                    <p><span>24</span> Doações Recebidas</p>
+                    <p>Status: Em progresso <span>(<?= $barra ?>% alcançado)</span></p>
+                    <p><span><?= $qntdoadores ?></span> Doações Recebidas</p>
                 </div>
                 <div id="acoes">
                     <button class="btn" id="btn-doacao" onclick="abrir_popup('doacao-popup')">Fazer uma doação</button>

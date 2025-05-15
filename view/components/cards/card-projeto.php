@@ -8,9 +8,9 @@
         <h5><?= $projeto->nome ?></h5>
         <p><?= $projeto->resumo ?></p>
         <div class="barra-doacao">
-            <span>30%</span>
+            <span><?= $barra ?>%</span>
             <div class="barra">
-                <div class="barra-verde"></div>
+                <div class="barra-verde" style="width: <?= $barra ?>%;"></div>
             </div>
         </div>
     </div>

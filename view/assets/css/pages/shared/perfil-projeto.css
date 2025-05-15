@@ -1,6 +1,7 @@
 /* CSS DA TELA DE PERFIL DO PROJETO */
 
-@import url(../doador/fazer-doacao.css);
+/* @import url(../doador/fazer-doacao.css); */
+@import url(../../components/popup/doacao.css);
 @import url(../doador/ser-voluntario.css);
 
 body {

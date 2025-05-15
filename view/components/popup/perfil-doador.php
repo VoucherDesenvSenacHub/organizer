@@ -11,9 +11,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $cpf = preg_replace('/[^0-9]/', '', $_POST['cpf']);
         $data = $_POST['data'];
         $email = $_POST['email'];
-        $envio = $doadorModel->update($id, $nome, $telefone, $cpf, $data, $email);
-        if ($envio) {
-            $doador = $doadorModel->buscar_perfil($_SESSION['doador_id']);
+        $idade = $doadorModel->calcularIdade($data);
+
+        if ($idade >= 18) {
+            $envio = $doadorModel->update($id, $nome, $telefone, $cpf, $data, $email);
+            if ($envio) {
+                $doador = $doadorModel->buscar_perfil($_SESSION['doador_id']);
+            }
+        } else {
+            echo "<script>alert('Você precisa ter 18 anos ou mais para atualizar o cadastro.')</script>";
+            $envio = false;
         }
     }
     if (isset($_POST['idsenha'])) {
@@ -55,12 +62,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     </div>
                     <div class="input-box inputM">
                         <label for="telefone">Telefone</label>
-                        <input name="telefone" id="telefone" type="tel" value="<?= $doador->telefone ?>" required>
+                        <input name="telefone" id="telefone" type="tel" value="<?= $doador->telefone ?>" required minlength="11">
                         <i class="fa-solid fa-phone"></i>
                     </div>
                     <div class="input-box inputM">
                         <label for="cpf">CPF</label>
-                        <input name="cpf" id="cpf" type="text" value="<?= $doador->cpf ?>" required>
+                        <input name="cpf" id="cpf" type="text" value="<?= $doador->cpf ?>" required minlength="14">
                         <i class="fa-regular fa-address-card"></i>
                     </div>
                     <div class="input-box">

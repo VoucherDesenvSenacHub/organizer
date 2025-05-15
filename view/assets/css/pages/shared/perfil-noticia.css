@@ -75,24 +75,24 @@ body {
 .subtitulo {
     display: flex;
     flex-direction: column;
-    padding-left: 3%;
 }
 
 .baixo {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
-    gap: 10px;
+    gap: 30px;
 }
 
 .baixo p, .texto p {
     text-align: justify;
     font-size: 16px;
     line-height: 1.5;
+    text-indent: 10%;
 }
 
+
 /* Responsividade para telas pequenas */
-@media (max-width: 700px) {
+@media (max-width: 950px) {
     .baixo {
         display: block;
     }
@@ -113,10 +113,6 @@ body {
     .titulo p {
         font-size: 14px;
     }
-
-    /* .subtitulo {
-
-    } */
 
     .baixo p, .texto p {
         font-size: 14px;

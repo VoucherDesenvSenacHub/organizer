@@ -104,6 +104,8 @@ $lista = $projetoModel->listar();
                 </div>
                 <div class="mini-cards">
                     <?php foreach($lista as $projeto) {
+                        $valor_projeto = $projetoModel->buscarValor($projeto->codproj);
+                        $barra = round(($valor_projeto / $projeto->meta) * 100);
                         require '../../components/cards/card-projeto.php';
                     }?>
                 </div>

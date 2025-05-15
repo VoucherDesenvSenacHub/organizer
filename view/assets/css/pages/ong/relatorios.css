@@ -12,7 +12,7 @@ body {
     flex-direction: column;
     max-width: 1220px;
     margin:auto;
-    border-radius: 8px;
+    border-radius: 3px;
     padding: 45px 15px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     background-color: white;

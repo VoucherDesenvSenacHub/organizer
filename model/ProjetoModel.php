@@ -34,6 +34,24 @@
             $stmt->setFetchMode(PDO::FETCH_CLASS, __CLASS__);
             return $stmt->fetchAll();
         }
+
+        function buscarValor($id) {
+            $query = "SELECT SUM(valor) AS total FROM valprojeto WHERE codproj = :id";
+            $stmt = $this->pdo->prepare($query);
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+            $stmt->execute();
+            $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $resultado['total'] ?? 0;
+        } 
+
+        function contarDoadores($id) {
+            $query = "SELECT COUNT(*) AS total FROM valprojeto WHERE codproj = :id";
+            $stmt = $this->pdo->prepare($query);
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+            $stmt->execute();
+            $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $resultado['total'] ?? 0;
+        }
         
 
         function editar($id, $nome, $resumo, $sobre, $meta) {
@@ -82,6 +100,17 @@
                 header('Location: projetos.php?msg=erro');
                 exit;
             }
-        }        
+        }       
+        
+        function doacao($codproj, $valor, $coddoador) {
+            $query = 'INSERT INTO valprojeto (codproj, valor, coddoador)
+                      VALUES (:projeto, :valor, :doador)';
+            $stmt = $this->pdo->prepare($query);
+            $stmt->bindParam(':projeto', $codproj);
+            $stmt->bindParam(':valor', $valor);
+            $stmt->bindParam(':doador', $coddoador);
+            $stmt->execute();
+            return $stmt->rowCount();
+        }
     }
 ?>
