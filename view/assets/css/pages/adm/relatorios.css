@@ -161,6 +161,7 @@
         }
         .card1 {
             width: 100%;
+            height: 250px;
         }
         .titulo {
             font-size: 0.7em;
@@ -172,11 +173,9 @@
                 width: 50%;
             }
         }
-        .graficos{
-            font-size: 0.3em;
+        .graficos, .grafico-linhas, .grafico-pizza, .grafico-horizontal{
+            font-size: 0.35em;
         }
-        
-        
     }
 
 }

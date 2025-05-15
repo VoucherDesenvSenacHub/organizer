@@ -15,9 +15,15 @@
   
     function graficoHorizontalDuplo($width, $height, $dados){
         $mi=0;
-        $alturaUtil = $height-10;
-        $larguraUtil = $width-100;
-        $centroLinha = 30;
+        if($width>240){
+            $alturaUtil = $height-10;
+            $larguraUtil = $width-100;
+            $centroLinha = 30;
+        }else{
+            $alturaUtil = $height-5;
+            $larguraUtil = $width-30;
+            $centroLinha = 15;
+        }
         $linhaDoacoes = '';
         $linhaVoluntarios = '';
         $textoIndices = '';

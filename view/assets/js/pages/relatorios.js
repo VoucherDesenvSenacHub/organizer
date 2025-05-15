@@ -17,8 +17,8 @@ function tamanhoGraficos() {
   let width = 600;
   let height = 320;
   if(tela < 700){
-    width = 200;
-    height = 150;
+    width = 240;
+    height = 160;
   }else{
     width = 600;
     height = 320;
