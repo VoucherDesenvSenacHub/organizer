@@ -1,3 +1,46 @@
+
+body {
+    background-color: aliceblue;
+    margin: 0;
+    padding: 0;
+}
+/* Adicionando responsividade para telas maiores */
+@media (min-width: 1200px) {
+    #principal {
+        padding: 70px 20px;
+    }
+
+    .titulo h1 {
+        font-size: 40px;
+    }
+
+    .titulo p {
+        font-size: 18px;
+    }
+
+    .baixo p, .texto p {
+        font-size: 18px;
+    }
+
+    .carousel {
+        min-height: 500px;
+    }
+}
+
+/* Adicionando transição suave para a animação do carrossel */
+.carousel-imgs {
+    transition: transform 1.5s ease-in-out;
+}
+
+/* Adicionando efeito de sombra para os itens do carrossel */
+.carousel-item {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Adicionando espaçamento entre os itens do carrossel */
+.carousel-imgs {
+    gap: 50px;
+}
 #principal {
     max-width: 1200px;
     margin: 0 auto;
@@ -7,12 +50,6 @@
     flex-direction: column;
     display: flex;
     gap: 15px;
-}
-
-body {
-    background-color: aliceblue;
-    margin: 0;
-    padding: 0;
 }
 
 .carousel {
