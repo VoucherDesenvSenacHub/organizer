@@ -15,7 +15,7 @@ function loginPopup() {
 function tamanhoGraficos() {
   load = true;
   let width = 600;
-  let height = 320;
+  let height = 330;
   if(tela < 700){
     width = 240;
     height = 160;
