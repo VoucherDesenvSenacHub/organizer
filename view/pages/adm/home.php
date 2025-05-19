@@ -43,7 +43,7 @@ require_once '../../components/header-adm.php';
             <div class="card-adm">
                 <h4>ONGS</h4>
                 <span>Aprove ou recuse cadastros de ONG’s novas no sistema.</span>
-                <a href="ongs-a-serem-validadas.php">
+                <a href="solicitacao-ong.php">
                     <div><i class="fa-solid fa-house-flag"></i>
                         <p>5 Solicitações</p>
                     </div>
