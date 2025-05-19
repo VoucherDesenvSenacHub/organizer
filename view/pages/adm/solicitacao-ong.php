@@ -20,7 +20,7 @@ require_once '../../components/header-adm.php';
                 <tbody>
                     <tr>
                         <td data-label="NOME">Ong 1</td>
-                        <td data-label="RESPONSÁVEL">Victor</td>
+                        <td data-label="RESPONSÁVEL">João</td>
                         <td data-label="DATA">12/05/2025</td>
                         <td>
                             <form method="GET" action="validar-ong.php">
@@ -31,7 +31,7 @@ require_once '../../components/header-adm.php';
                     </tr>
                     <tr>
                         <td data-label="NOME">Ong 1</td>
-                        <td data-label="RESPONSÁVEL">Victor</td>
+                        <td data-label="RESPONSÁVEL">João</td>
                         <td data-label="DATA">12/05/2025</td>
                         <td>
                             <form method="GET" action="validar-ong.php">
@@ -42,7 +42,7 @@ require_once '../../components/header-adm.php';
                     </tr>
                     <tr>
                         <td data-label="NOME">Ong 1</td>
-                        <td data-label="RESPONSÁVEL">Victor</td>
+                        <td data-label="RESPONSÁVEL">João</td>
                         <td data-label="DATA">12/05/2025</td>
                         <td>
                             <form method="GET" action="validar-ong.php">

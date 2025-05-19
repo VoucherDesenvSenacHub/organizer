@@ -8,33 +8,51 @@ main.container {
     padding: 50px 30px;
     flex-direction: column;
     align-items: start;
-    gap: 40px;
+    gap: 20px;
+    transition: .3s;
 }
 
 .dados-ong {
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
 }
 
 .dados-ong fieldset {
     width: 100%;
     /* text-align: center; */
     border: none;
-    border-top: 1px solid var(--cor-principal);
+    border-top: 1px solid var(--cor-amarelo);
+}
+
+.dados-ong fieldset i {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    padding: 10px;
+    border: 1px solid var(--cor-amarelo-hover);
+    border-radius: 50%;
 }
 
 .dados-ong fieldset legend {
-    color: var(--cor-principal);
-    /* padding-inline: 5px; */
+    padding-right: 5px;
     font-weight: 600;
     margin-bottom: 20px;
+    color: var(--cor-amarelo-hover);
+    display: flex;
+    align-items: center;
+    gap: 5px;
 }
 
 /* Formulário */
 .dados-ong .form {
     display: flex;
-    gap: 15px;
+    gap: 15px 8px;
     flex-wrap: wrap;
-    padding-left: 20px;
+    /* padding-left: 20px; */
 }
 
 .dados-ong .form label {
@@ -44,12 +62,18 @@ main.container {
     position: relative;
 }
 
-.dados-ong .form label input {
+.dados-ong .form label input,
+.dados-ong .form label textarea {
     outline: none;
     padding: 10px;
+    border: none;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    color: var(--cor-principal);
 }
 
-.dados-ong .form label span {
+.dados-ong .form label span,
+.dados-ong .form-descricao div span {
     position: absolute;
     top: -10px;
     left: 5px;
@@ -57,4 +81,63 @@ main.container {
     padding-inline: 4px;
     font-weight: 600;
     font-size: 13px;
+    color: var(--cor-amarelo);
+}
+
+/* Botões de Aprovar/Recusar */
+.btn-acoes {
+    display: flex;
+    gap: 10px;
+    justify-content: end;
+}
+
+.btn-acoes button:first-child {
+    background-color: var(--cor-verde-barra);
+}
+
+.btn-acoes button:last-child{
+    background-color: var(--cor-vermelho);
+}
+
+.dados-ong .form-descricao {
+    margin-top: 15px;
+    display: flex;
+}
+
+.dados-ong .form label textarea {
+    min-height: 100px;
+    max-height: 300px;
+    max-width: 1140px;
+}
+
+.dados-ong .form-descricao label {
+    flex: 1 1 300px;
+}
+
+.dados-ong .form-descricao div {
+    flex: 1 1 300px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    position: relative;
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0px 20px;
+}
+
+.dados-ong .form-descricao input {
+    accent-color: var(--cor-amarelo-hover);
+}
+
+.dados-ong .form-descricao div small {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+}
+
+@media (max-width: 700px) {
+    main.container {
+        padding-inline: 10px;
+    }
 }
