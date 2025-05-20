@@ -38,6 +38,8 @@ function buscarCEP(cep) {
     });
 }
 
+
+//Começar código a partir daqui
 // Evento para detectar a digitação do CEP
 // $('#cep').on('input', function() {
 //     const cep = $(this).val();
