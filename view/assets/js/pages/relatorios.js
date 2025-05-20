@@ -12,10 +12,12 @@ function loginPopup() {
 
 }
 
+
+// Inportar esse código da linha 17 até a linha 41 para que os gráficos funcionem em desktop e celular
 function tamanhoGraficos() {
   load = true;
   let width = 600;
-  let height = 330;
+  let height = 320;
   if(tela < 700){
     width = 240;
     height = 160;

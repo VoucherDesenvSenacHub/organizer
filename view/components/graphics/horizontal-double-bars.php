@@ -19,46 +19,60 @@
             $alturaUtil = $height-10;
             $larguraUtil = $width-100;
             $centroLinha = 30;
+            $deslocamentoLdy = 12;
+            $deslocamentoTdy  = 8;
+            $deslocamentoLvy = 12;
+            $deslocamentoTvy = 18;
+            $inicioLinha = 70;
+            $fimLinha = 570;
+            $espessuraLinha = 12;
         }else{
             $alturaUtil = $height-5;
             $larguraUtil = $width-30;
             $centroLinha = 15;
+            $deslocamentoLdy = 5;
+            $deslocamentoTdy = 3;
+            $deslocamentoLvy = 5;
+            $deslocamentoTvy = 7;
+            $inicioLinha = 40;
+            $fimLinha = 230;
+            $espessuraLinha = 7;
         }
         $linhaDoacoes = '';
         $linhaVoluntarios = '';
         $textoIndices = '';
         $divisoes = (int)($alturaUtil/(sizeof($dados)));
         foreach($dados as $dv) {
-            $lDoacao=($dv[1]*$larguraUtil)/100+70;
-            $lVoluntario=($dv[2]*$larguraUtil)/100+70;
+            $lDoacao=($dv[1]*$larguraUtil)/100+$inicioLinha;
+            $lVoluntario=($dv[2]*$larguraUtil)/100+$inicioLinha;
             $textoIndices = $textoIndices."
             <text x='1' y='$centroLinha'>$dv[0]</text>
             ";
             //Linha Doações
-            $ldy = $centroLinha-12;
             $tdx = $lDoacao+3;
-            $tdy = $centroLinha-8;
+            $ldy = $centroLinha-$deslocamentoLdy;
+            $tdy = $centroLinha-$deslocamentoTdy;
             $linhaDoacoes = $linhaDoacoes."
-            <line x1='70' y1='$ldy'
-            x2='570' y2='$ldy'
-            style='stroke: #51CD32; stroke-width: 12px; opacity:0.3'/>
-            <line x1='70' y1='$ldy'
+            <line x1='$inicioLinha' y1='$ldy'
+            x2='$fimLinha' y2='$ldy'
+            style='stroke: #51CD32; stroke-width: $espessuraLinha; opacity:0.3'/>
+            <line x1='$inicioLinha' y1='$ldy'
             x2='$lDoacao' y2='$ldy'
-            style='stroke: #51CD32; stroke-width: 12px;'/>
+            style='stroke: #51CD32; stroke-width: $espessuraLinha;'/>
             <text x='$tdx' y='$tdy'>$dv[1]</text>
             ";
             //Linha Voluntários
 
-            $lvy = $centroLinha+12;
+            $lvy = $centroLinha+$deslocamentoLvy;
             $tvx = $lVoluntario+3;
-            $tvy = $centroLinha+18;
+            $tvy = $centroLinha+$deslocamentoTvy;
             $linhaVoluntarios = $linhaVoluntarios."
-            <line x1='70' y1='$lvy'
-            x2='570' y2='$lvy'
-            style='stroke: #006CA2; stroke-width: 12px; opacity:0.3'/>
-            <line x1='70' y1='$lvy'
+            <line x1='$inicioLinha' y1='$lvy'
+            x2='$fimLinha' y2='$lvy'
+            style='stroke: #006CA2; stroke-width: $espessuraLinha; opacity:0.3'/>
+            <line x1='$inicioLinha' y1='$lvy'
             x2='$lVoluntario' y2='$lvy'
-            style='stroke: #006CA2; stroke-width: 12px;'/>
+            style='stroke: #006CA2; stroke-width: $espessuraLinha;'/>
             <text x='$tvx' y='$tvy'>$dv[2]</text>
             ";
             $centroLinha+=$divisoes;

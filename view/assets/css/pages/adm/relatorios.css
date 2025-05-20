@@ -1,3 +1,5 @@
+/* Utilizar essa folha de estilo para as páginas que utilizarem os gráficos renderizados */
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 #principal {
@@ -175,6 +177,12 @@
         }
         .graficos, .grafico-linhas, .grafico-pizza, .grafico-horizontal{
             font-size: 0.35em;
+        }
+        .quadrado2{
+            margin-top: 170px;
+            p {
+                font-size: 0.4em;
+            }
         }
     }
 

@@ -20,12 +20,12 @@
 
         $mi=0;
         if($width>240){
-            $alturaUtil = $height-7; // Define a altura útil para renderização do gráfico
+            $alturaUtil = $height-27; // Define a altura útil para renderização do gráfico
             $xDash = 40;
             $divisoesHorizontais = (($width-60)/sizeof($dados));
             $pontoX = 40+($divisoesHorizontais/2); //Posição inicial do gráfico
         }else if($width <=240){
-            $alturaUtil = $height-27; // Define a altura útil para renderização do gráfico
+            $alturaUtil = $height-10; // Define a altura útil para renderização do gráfico
             $xDash = 13;
             $divisoesHorizontais = (($width-20)/sizeof($dados));
             $pontoX = 10+($divisoesHorizontais/2); //Posição inicial do gráfico
@@ -56,7 +56,7 @@
         $larguraBarra = $width * 0.065;
         for($i = 0; $i<sizeof($dados); $i++){
             $pontoY = $alturaUtil-(($dados[$i][1]*$alturaUtil)/$indices[0]); //Calcula a altura da barra vertical? 
-            $pontoTextoBase = $pontoX-($divisoesHorizontais/2);
+            $pontoTextoBase = $pontoX-($divisoesHorizontais/2.5);
             $width >240 ? $pontoTextoBase+=15 : $pontoTextoBase+=5;
             $xTextoTopo = $pontoX-5;
             $yTextoTopo = $pontoY-3;

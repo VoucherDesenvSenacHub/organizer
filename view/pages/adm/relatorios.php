@@ -61,7 +61,6 @@
                     <div class="grafico-pizza">
                         <?php echo graficoPizza($largura, $altura, $doacoesPorProjeto)?>
                     </div>
-                    <!-- <img src="../../assets//images/pie-graph.png" alt="" id="pie-graph"> -->
                 </div>
             <!-- Fim doações por projeto -->
 
