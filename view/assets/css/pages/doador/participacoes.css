@@ -27,6 +27,7 @@ section .container h1{
     font-size: 32px;
     line-height: 1;
     width: 100%;
+    margin-bottom: 10px;
 }
 
 section .container h3{
@@ -42,9 +43,15 @@ section .container h3{
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    gap: 30px;
-    
+    gap: 5px;
+
 }
+
+
+a {
+    text-decoration: none;
+    color: inherit;
+  }
 
 
 /* .quadrado-verde{
