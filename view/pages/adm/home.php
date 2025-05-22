@@ -34,7 +34,7 @@ require_once '../../components/header-adm.php';
             <div class="card-adm">
                 <h4>EMPRESAS</h4>
                 <span>Aprove ou recuse solicitações de parcerias de empresas.</span>
-                <a href="solicitacao-parcerias.php">
+                <a href="solicitacao-parceria.php">
                     <div><i class="fa-solid fa-handshake"></i>
                         <p>5 Solicitações</p>
                     </div>
@@ -43,7 +43,7 @@ require_once '../../components/header-adm.php';
             <div class="card-adm">
                 <h4>ONGS</h4>
                 <span>Aprove ou recuse cadastros de ONG’s novas no sistema.</span>
-                <a href="ongs-a-serem-validadas.php">
+                <a href="solicitacao-ong.php">
                     <div><i class="fa-solid fa-house-flag"></i>
                         <p>5 Solicitações</p>
                     </div>

@@ -69,11 +69,17 @@ body {
     width: 100%;
 }
 
+/* @keyframes rolagem {
+    0%   { transform: translateX(0); }
+    33%  { transform: translateX(-1090px); }
+    66%  { transform: translateX(-2170px); }
+    100% { transform: translateX(-3250px); }
+} */
 @keyframes rolagem {
     0%   { transform: translateX(0); }
-    33%  { transform: translateX(-1160px); }
-    66%  { transform: translateX(-2320px); }
-    100% { transform: translateX(-3480px); }
+    33%  { transform: translateX(-102%); }
+    66%  { transform: translateX(-205%); }
+    100% { transform: translateX(-310%); }
 }
 
 .carousel-item {
@@ -180,8 +186,8 @@ body {
 
     @keyframes rolagem {
         0%   { transform: translateX(0); }
-        33%  { transform: translateX(-375px); }
-        66% { transform: translateX(-750px); }
-        100% { transform: translateX(-1123px); }
+        33%  { transform: translateX(-380px); }
+        66% { transform: translateX(-740px); }
+        100% { transform: translateX(-1110px); }
     }
 }
