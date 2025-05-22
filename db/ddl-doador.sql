@@ -35,6 +35,3 @@ create table dados_ong (
 	banco int not null,
 	codusu foreign key (cadusu) int not null,
 )
-
-
-
