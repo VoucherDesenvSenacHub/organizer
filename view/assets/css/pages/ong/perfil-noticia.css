@@ -1,13 +1,46 @@
-@import url("noticias.css");
-
-/* Página de edição de notícias */
 
 body {
     background-color: aliceblue;
     margin: 0;
     padding: 0;
 }
+/* Adicionando responsividade para telas maiores */
+@media (min-width: 1200px) {
+    #principal {
+        padding: 70px 20px;
+    }
 
+    .titulo h1 {
+        font-size: 40px;
+    }
+
+    .titulo p {
+        font-size: 18px;
+    }
+
+    .baixo p, .texto p {
+        font-size: 18px;
+    }
+
+    .carousel {
+        min-height: 500px;
+    }
+}
+
+/* Adicionando transição suave para a animação do carrossel */
+.carousel-imgs {
+    transition: transform 1.5s ease-in-out;
+}
+
+/* Adicionando efeito de sombra para os itens do carrossel */
+.carousel-item {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Adicionando espaçamento entre os itens do carrossel */
+.carousel-imgs {
+    gap: 50px;
+}
 #principal {
     max-width: 1200px;
     margin: 0 auto;
@@ -36,6 +69,18 @@ body {
     width: 100%;
 }
 
+@keyframes rolagem {
+    0%   { transform: translateX(0); }
+    33%  { transform: translateX(-102%); }
+    66%  { transform: translateX(-205%); }
+    100% { transform: translateX(-310%); }
+}
+
+.carousel-item {
+    max-width: 100%;
+    border-radius: 5px;
+}
+
 .titulo {
     display: flex;
     flex-direction: column;
@@ -45,7 +90,6 @@ body {
     font-weight: 600;
     letter-spacing: 2px;
     font-size: 32px;
-    color: #1C3464;
 }
 
 .titulo p {
@@ -60,28 +104,6 @@ body {
     font-weight: 600;
 }
 
-
-.botoes-edicao {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-.botoes-edicao>button {
-    display: flex;
-    align-items: center;
-    border: none;
-    height: 50px;
-    font-family: 'Comfortaa', sans-serif;
-    font-size: 20px;
-    padding: 10px 20px;
-    border-radius: 8px;
-}
-
-.botoes-edicao button img {
-    padding-left: 20px;
-    width: 40px;
-}
-
 .texto {
     display: flex;
     text-indent: 10%;
@@ -92,12 +114,6 @@ body {
     flex-direction: column;
 }
 
-.cima{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;    
-}
-
 .baixo {
     display: flex;
     flex-direction: row;
@@ -105,7 +121,6 @@ body {
 }
 
 .baixo p, .texto p {
-    display: flex;
     text-align: justify;
     font-size: 16px;
     line-height: 1.5;
@@ -113,200 +128,61 @@ body {
 }
 
 
-/* Edição individual de notícias */
-
-@keyframes editar-noticia {
-    from {opacity: 0;}
-    to {opacity: 1;}
-}
-
-#pagina-edicao{
-    display: none;
-    margin: 0 auto;
-    justify-content: space-around;
-    background-color: #FFFFFF;
-    position: absolute;
-    top: 15%;
-    left: 15%;
-    animation: editar-noticia 1.5s forwards;
-    width: 70%;
-    border-radius: 8px;
-    padding: 10px;
-    box-shadow: 0px 2px 2px rgba(1, 1, 1, 0.5);
-}
-#pagina-criacao {
-    display: flex;
-    margin: 30px auto;
-    justify-content: space-between;
-    background-color: #FFFFFF;
-    width: 90%;
-    border-radius: 8px;
-    padding: 10px;
-    box-shadow: 0px 2px 2px rgba(1, 1, 1, 0.5);
-}
-#edicao-esquerda {
-   display: flex;
-   flex-direction: column;
-   width: 65%;
-   border-radius: 8px;
-   box-shadow: 2px 2px 2px rgba(0,0,0,0.5);
-}
-#edicao-esquerda form label {
-    font-size: 15px;
-}
-#edicao-esquerda form input {
-    width: 250px;
-    height: 40px;
-    border-radius: 8px;
-    border: none;
-    box-shadow: 3px 3px 3px rgba(1,1,1,0.7);
-}
-#edicao-esquerda form textarea {
-    border-radius: 8px;
-    width: 90%;
-    border: none;
-    margin-left: 10px;
-    box-shadow: 3px 3px 3px rgba(1,1,1,0.7);
-}
-#linha1-edicao {
-    display: flex;
-    padding: 10px 10px;
-    justify-content: space-between;
-}
-#edicao-direita {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    width: 28%;
-    border-radius: 8px;
-    padding: 10px;
-    box-shadow: 0px 2px 2px rgba(1, 1, 1, 0.5);
-}
-#upload-fotos {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-}
-#edicao-direita>button, #upload-fotos>button{
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    gap: 10px;
-    width: 90%;
-    height: 50px;
-    border-radius: 8px;
-    font-family: 'Comfortaa', sans-serif;
-    font-size: 20px;
-    font-weight: 600;
-}
-#upload-fotos>button{
-    background-color: #FFFFFF;
-    border: 2px dashed #F29200;
-    color: #F29200;
-    justify-content: space-around;
-}
-#edicao-direita>button {
-    background-color: #F29200;
-    border: none;
-}
-#editar-noticia {
-    background-color: #FFCC00;
-}
-
-#deletar-noticia {
-    background-color: #E41D1D;
-}
-
-/* Responsividade */
-
-@media (max-width: 481px){
-    /* Página de edição de notícias */
-    .container-fotos {
-        width: 60%;
-        height: 110px;
-    }
-    
-    .fotos-slide>img {
-        width: 200px;
-        height: 110px;
-    }
-    .cabecalho-noticia {
-        flex-direction: column;
-        margin: 5px 10px;
-    }
-    .h1-pb {
-        font-size: 1.3em;
-    }
-    .h2-pb {
-        font-size: 1em;
-    }
-    .botoes-edicao {
-        display: flex;
-        gap: 10px;
-    }
-    .botoes-edicao>button {
-        display: flex;
-        align-items: center;
-        border: none;
-        font-family: 'Comfortaa', sans-serif;
-        font-size: 15px;
-        padding: 5px 10px;
-    }
-    .botoes-edicao button img {
-        padding-left: 10px;
-        width: 30%;
-    }
-    #texto-noticia {
-        text-indent: 3em;
-        margin: 15px 10px;
-    }
-    #texto-noticia h3 {
-        font-size: 1.3em;
-    }
-    #foto-meio-noticia {
-        width: 45%;
-        float: left;
-        padding-right: 15px;
-        padding-top: 15px;
-        padding-bottom: 15px;
+/* Responsividade para telas pequenas */
+@media (max-width: 950px) {
+    .baixo {
+        display: block;
     }
 
-    /* Edição individual de notícias */
-
-    #pagina-edicao {
-        flex-direction: column;
-        width: 80%;
-        left: 10%;
-    }
-    #pagina-criacao {
-        flex-direction: column;
-        width: 80%;
-    }
-    #linha1-edicao {
-        flex-direction: column;
-    }
-    #edicao-esquerda {
+    .baixo img {
         width: 100%;
+        height: auto;
     }
-    #edicao-esquerda form label {
+
+    .carousel {
+        min-height: 300px;
+    }
+
+    .titulo h1 {
+        font-size: 24px;
+    }
+
+    .titulo p {
+        font-size: 14px;
+    }
+
+    .baixo p, .texto p {
+        font-size: 14px;
+    }
+}
+
+/* Melhorias específicas para Galaxy S8+ (360px de largura) */
+@media (max-width: 400px) {
+    #principal {
+        padding: 35px 10px;
+    }
+
+    .titulo h1 {
+        font-size: 22px;
+    }
+
+    .carousel {
+        min-height: 200px;
+    }
+
+    .texto {
+        text-indent: 0;
+    }
+
+    .baixo p, .texto p {
         font-size: 13px;
     }
-    #edicao-esquerda form input {
-        width: 250px;
-        height: 30px;
-    }
-    #edicao-esquerda form textarea {
-        width: 250px;
 
+    @keyframes rolagem {
+        0%   { transform: translateX(0); }
+        33%  { transform: translateX(-380px); }
+        66% { transform: translateX(-740px); }
+        100% { transform: translateX(-1110px); }
     }
-    #edicao-direita {
-        width: 100%;
-        margin-top: 20px;
-        padding: 10px;
-        gap: 20px;
-    }
-    
-    
 }
+

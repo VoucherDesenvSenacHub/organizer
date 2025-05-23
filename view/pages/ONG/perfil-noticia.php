@@ -1,8 +1,7 @@
 <?php
-$tituloPagina = 'Editar Notícias'; // Definir o título da página
-$cssPagina = ['ong/perfil-noticia.css']; //Colocar o arquivo .css 
+$tituloPagina = 'Leia Mais'; // Definir o título da página
+$cssPagina = ['shared/perfil-noticia.css'];
 require_once '../../components/header-ong.php';
-
 $noticia = (object) [
     'codnot' => '',
     'titulo' => '',
@@ -10,14 +9,9 @@ $noticia = (object) [
     'texto' => '',
     'subtexto' => ''
 ];
-$acao = 'EDITAR NOTICIA';
+$acao = 'NOVA NOTICIA';
 require_once '../../components/popup/formulario-noticia.php';
 ?>
-
-<!-- Fim cabeçalho -->
-
-
-<!-- Início DIV principal -->
 <div id="principal">
     <div class="carousel">
         <div class="carousel-imgs">
@@ -28,17 +22,17 @@ require_once '../../components/popup/formulario-noticia.php';
         </div>
     </div>
 
-    <div class="cima">
-        <div class="titulo">
+    <div class="titulo">
+        <div class="titulo-texto">
             <h1>Título da notícia</h1>
             <p>Publicado em: 29 de agosto de 2024</p>
             <h3>Nome da ONG</h3>
         </div>
 
-        <div class="botoes-edicao">
-            <button id="editar-noticia" onclick="abrir_popup('editar-noticia-popup')">Editar<img
-                    src="" class="fa-solid fa-pen-to-square lapis-editar" alt=""></button>
-            <button id="deletar-noticia" onclick="popConclusao('delete')">Excluir<img
+        <div class="botoes">
+            <button class="editar" onclick="editarNoticia()">Editar<img src=""
+                    class="fa-solid fa-pen-to-square lapis-editar" alt=""></button>
+            <button class="deletar" onclick="popConclusao('delete')">Excluir<img
                     src="../../assets/images/delete-noticia.png" alt=""></button>
         </div>
     </div>
@@ -73,25 +67,10 @@ require_once '../../components/popup/formulario-noticia.php';
                 Proin vel tellus eu massa iaculis cursus. Aliquam ultrices enim et gravida scelerisque. Sed et molestie.
             </p>
         </div>
-
     </div>
 </div>
 
-<!-- Fim DIV principal  -->
-
-
-<!-- Pop-up conclusão -->
-<div id="pop-conclusao">
-    <img id="icone-conclusao" src="" alt="" width="20%">
-    <p id="texto-conclusao"></p>
-</div>
-
-<!-- Fim do popup conclusão -->
 <?php
 $jsPagina = ['ongs.js']; //Colocar o arquivo .js
 require_once '../../components/footer.php';
 ?>
-
-</body>
-
-</html>

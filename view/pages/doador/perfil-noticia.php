@@ -13,7 +13,7 @@
             </div>
         </div>
 
-        <div class="titulo">
+        <div class="titulo" style="display:flex; flex-direction: column;">
             <h1>Título da notícia</h1>
             <p>Publicado em: 29 de agosto de 2024</p>
             <h3>Nome da ONG</h3>
