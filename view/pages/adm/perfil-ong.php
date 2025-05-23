@@ -86,8 +86,8 @@
                     <h3>Notícias</h3>
                 </div>
                 <div class="mini-cards">
-                    <?php require '../../components/cards/card-noticia.php'; ?>
-                    <?php require '../../components/cards/card-noticia.php'; ?>
+                    <?php require '../../components/cards/card-noticia.php';?>
+                    <?php require '../../components/cards/card-noticia.php';?>
                 </div>
             </div>
         </section>
