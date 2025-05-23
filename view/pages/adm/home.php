@@ -57,6 +57,14 @@ require_once '../../components/header-adm.php';
                 </div>
             </div>
         </fieldset>
+        <div id="acoes">
+            <button class="btn" id="btn-editar" onclick="abrir_popup('editar-projeto-popup')">
+                <i class="fa-solid fa-pen-to-square"></i> Editar
+            </button>
+            <button class="btn" id="btn-inativar" onclick="abrir_popup('inativar-projeto-popup')">
+                <i class="fa-solid fa-trash-can"></i> Inativar
+            </button>
+        </div>
 
         <fieldset id="section-ong">
             <legend><i class="fa-solid fa-house-flag"></i> ONGS</legend>
@@ -81,6 +89,7 @@ require_once '../../components/header-adm.php';
                                 <input type="hidden" name="id" value="">
                                 <button class="fa-solid fa-pen-to-square"></button>
                             </form>
+                            </button>
                         </td>
                     </tr>
                     <tr>
@@ -225,6 +234,6 @@ require_once '../../components/header-adm.php';
     </div>
 </main>
 <?php
-$jsPagina = [];
+$jsPagina = ['perfil-projeto.js'];
 require_once '../../components/footer.php';
 ?>

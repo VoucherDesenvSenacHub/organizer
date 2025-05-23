@@ -263,6 +263,22 @@ table tbody td button:hover {
     color: var(--cor-verde-barra);
 }
 
+/* popup de editar */
+@import url(../shared/perfil-projeto.css);
+@import url(../../components/editar-projeto.css);
+@import url(../../components/inativar-projeto.css);
+
+/* Botões de Editar e Inativar */
+#dados-projeto #acoes #btn-editar {
+    background-color: #FFCC00;
+    /* color: #912B2B; */
+}
+
+#dados-projeto #acoes #btn-inativar {
+    background-color: var(--cor-vermelho);
+    /* color: #912B2B; */
+}
+
 /* Responsividade */
 @media (max-width: 700px) {
 
