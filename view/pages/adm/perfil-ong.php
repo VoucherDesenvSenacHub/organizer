@@ -53,7 +53,7 @@
                         <div class="margin_nome">
                             Maria
                         </div>
-                        <span>R$102</span>
+                        <span>R$112</span>
                     </div>
 
                     <div class="nomes">
