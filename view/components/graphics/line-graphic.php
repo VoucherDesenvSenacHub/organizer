@@ -16,18 +16,25 @@
   
     function graficoLinhas($indices, $width, $height, $dados){
         $mi=0;
-        $alturaUtil = $height-27;
+        if($width>240){
+            $alturaUtil = $height-27; // Calcula a altura útil para vetorização do gráfico
+            $xDash = 40;
+        }else{
+            $alturaUtil = $height-15; // Calcula a altura útil para vetorização do gráfico
+            $xDash = 16;
+        }
         $linhasHorizontais = '';
         $barrasVerticais = '';
+        $xFinal = $width-1;
         $divisoes = (int)($alturaUtil/(sizeof($indices)-1));
             
         //Desenha linhas horizontais de referência do gráfico e escreve os índices do eixo Y
 
         for($i = 1; $i <=$alturaUtil; $i+=$divisoes){
-            $iText = $i+10;
+            $width >240?$iText = $i+10 : $iText = $i+5;
             $linhasHorizontais = $linhasHorizontais."
-                <line x1='40' y1='$i' x2='$width' y2='$i' style='stroke: black; stroke-dasharray: 4 '/>
-                <text x='0' y='$iText'>$indices[$mi]</text>        
+                <line x1='$xDash' y1='$i' x2='$width' y2='$i' style='stroke: gray; stroke-dasharray: 3 '/>
+                <text x='0' y='$iText'>$indices[$mi]</text>     
             ";
             $mi++;
         }
@@ -36,7 +43,7 @@
         $linhaIndicesY = $height-5;
         for($i = 0; $i < sizeof($dados); $i++){
             $indiceY = $dados[$i][0];
-            $localTexto = ($i*($width-40)/sizeof($dados))+40;
+            $localTexto = ($i*($width-$xDash)/sizeof($dados))+$xDash;
             $barrasVerticais = $barrasVerticais."
             <text x='$localTexto' y='$linhaIndicesY' textlenght='7'>$indiceY</text>
             <line x1='$localTexto' y1='1' x2='$localTexto' y2='$alturaUtil' style='stroke: black; stroke-dasharray: 4 '/>
@@ -44,8 +51,8 @@
         }
 
         //Desenha o gráfico proporcional aos dados coletados
-        $x1= 60;
-        $passo = (($width-40)/sizeof($dados));
+        $width > 240 ? $x1 = 60 : $x1 = 25;
+        $passo = (($width-$xDash)/sizeof($dados));
         $x2 = $x1+$passo;
         $graficoLinhas = '';
         for($i=0; $i<sizeof($dados); $i++){
@@ -70,7 +77,7 @@
         $linhasHorizontais
         $barrasVerticais
         $graficoLinhas
-        <line x1='$width' y1='1' x2='$width' y2='$alturaUtil' style='stroke: black; stroke-dasharray: 4 '/>
+        <line x1='$xFinal' y1='1' x2='$xFinal' y2='$alturaUtil' style='stroke: black; stroke-dasharray: 4 '/>
         </svg>
         ";
     }
