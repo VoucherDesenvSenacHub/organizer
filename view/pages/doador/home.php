@@ -5,7 +5,7 @@ $cssPagina = ['doador/home.css'];
 require_once '../../components/header-doador.php';
 ?>
 <section id="cabecalho">
-    <h1>Olá, <?= implode(' ', array_slice(explode(' ', trim($doador->nome)), 0, 2)) ?>.</h1>
+    <h1>Olá, <?= implode(' ', array_slice(explode(' ', trim($usuario->nome)), 0, 2)) ?>.</h1>
     <p>Seja bem-vindo à sua área de doador.</p>
     <div id="info-doacao">
         <div class="item-info">

@@ -45,13 +45,12 @@
                 </ul>
             </nav>
             <div class="btn-login">
-                <button class="btn" id="openPopup" onclick="abrir_popup('fundo-login-popup')">LOGIN</button>
+                <a href="login.php"><button class="btn">LOGIN</button></a>
                 <button onclick="menu_mobile()" id="hamburguer"></button>
             </div>
         </div>
     </header>
     <?php
-    require_once 'popup/escolher-login.php'; //EFEITO POPUP DO LOGIN
     require_once 'popup/login-obrigatorio.php'; //POPUP LOGIN OBRIGATORIO
     require_once 'popup/compartilhar.php'; //POPUP DE COMPARTILHAR
     ?>

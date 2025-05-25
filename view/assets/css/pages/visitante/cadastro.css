@@ -91,6 +91,22 @@ section .container h1 {
     background-color: var(--cor-principal);
 }
 
+.line #linhaClara,
+.line #linhaAzul {
+    position: absolute;
+    top: 11px;
+    background-color: #ccdbff;
+    height: 3px;
+    width: 50%;
+}
+
+.line #linhaAzul {
+    width: 0%;
+    background-color: var(--cor-principal);
+    left: 25%;
+    transition: .5s ease-out;
+} 
+
 .container .formBox {
     display: flex;
     flex-wrap: wrap;

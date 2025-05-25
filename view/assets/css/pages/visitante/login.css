@@ -93,6 +93,10 @@ form .remember-forgot {
     color: var(--cor-azul-escuro);
 }
 
+input#lembrar {
+    accent-color: var(--cor-azul);
+}
+
 /* Área de "Criar Conta" */
 form span {
     font-size: 11px;
@@ -140,7 +144,7 @@ form span a:hover {
 }
 
 #popup-recuperar-senha div h2 {
-    font-weight: 400;
+    font-weight: 500;
 }
 
 #popup-recuperar-senha div p {
@@ -199,6 +203,10 @@ form span a:hover {
 }
 
 @media (max-width: 330px) {
+    #container-login {
+        padding: 30px 15px;
+    }
+
     #container-login img {
         display: none;
     }

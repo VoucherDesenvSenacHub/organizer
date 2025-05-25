@@ -1,21 +1,20 @@
 <?php 
 ob_start();
-    $tituloPagina = 'Login do Doador';
-    $cssPagina = ['doador/login.css'];
+    $tituloPagina = 'Login | Organizer';
+    $cssPagina = ['visitante/login.css'];
     require_once '../../components/header.php';
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $email = $_POST['email'];
         $senha = $_POST['senha'];
 
-        require_once __DIR__ . '/../../../model/DoadorModel.php';
-        $doadorModel = new Doador();
+        require_once __DIR__ . '/../../../model/UsuarioModel.php';
+        $usuarioModel = new Usuario();
 
-        $doadorModel->login($email, $senha);
+        $usuarioModel->login($email, $senha);
     }
 ob_end_flush();
 ?>
-<!-- COMEÇAR SEU CÓDIGO AQUI -->
 <main>
     <div id="container-login" class="container">
         <form action="login.php" method="POST">

@@ -1,7 +1,7 @@
 <?php 
     require_once __DIR__ . "\..\config\database.php";
     Class Projeto {
-        private $tabela = 'cadprojeto';
+        private $tabela = 'projetos';
         private $pdo; 
 
         public function __construct() {
