@@ -1,22 +1,39 @@
-<?php 
-    require_once __DIR__ . "\..\..\..\model\ProjetoModel.php";
-    $projetoModel = new Projeto();
-    if ($_SERVER['REQUEST_METHOD']  == 'GET') {
-        $id = $_GET['id'];
-        $projeto = $projetoModel->buscarId($id);
+<?php
+//Lógica e dependências primeiro
+require_once __DIR__ . "/../../../model/ProjetoModel.php";
+$projetoModel = new Projeto();
+
+//Processamento de dados
+if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+    $id = $_GET['id'] ?? null;
+    $projeto = $projetoModel->buscarId($id);
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $id = $_POST['id'];
+    $nome = $_POST['nome'];
+    $descricao = $_POST['descricao'];
+    $meta = $_POST['meta'];
+    if ($id) {
+        $projetoModel->editar($id, $nome, $descricao, $meta);
+    } else {
+        $projetoModel->criar($nome, $descricao, $meta);
     }
+}
 
+//Definições da página (título e CSS)
+$tituloPagina = 'Perfil do Projeto | Organizer';
+$cssPagina = ['projeto/perfil.css'];
+require_once '../../components/layout/base-inicio.php';
+require_once 'popups-projeto.php';
+require_once 'toast-projeto.php';
 
-    $tituloPagina = 'Perfil do Projeto | Organizer';
-    $cssPagina = ['shared/perfil-projeto.css'];
-    require_once '../../components/layout/base-inicio.php';
 ?>
-
 <main>
     <div class="container" id="container-principal">
         <section id="apresentacao" class="container-section">
             <div id="dados-projeto">
-                <h1><?= $projeto->nome?></h1>
+                <h1><?= $projeto->nome ?></h1>
                 <div id="valor-arrecadado">
                     <h3>Arrecadado: <span>R$ 30.000</span></h3>
                     <div class="barra-doacao">
@@ -48,23 +65,23 @@
                 </div>
             </div>
         </section>
-            <div class="popup-fundo" id="carousel-popup">
-                <div class="container-popup">
-                    <button class="btn-fechar-popup fa-solid fa-xmark" onclick="fechar_popup('carousel-popup')"></button>
-                    <div id="carousel-big" class="carousel">
-                        <div id="carousel-big-imgs" class="carousel-imgs">
-                            <img src="https://placeholder.pagebee.io/api/plain/600/375" class="carousel-item-big">
-                            <img src="https://placeholder.pagebee.io/api/plain/600/375" class="carousel-item-big">
-                            <img src="https://placeholder.pagebee.io/api/plain/600/375" class="carousel-item-big">
-                        </div>
-                        <!-- <div class="btn-salvar">
+        <div class="popup-fundo" id="carousel-popup">
+            <div class="container-popup">
+                <button class="btn-fechar-popup fa-solid fa-xmark" onclick="fechar_popup('carousel-popup')"></button>
+                <div id="carousel-big" class="carousel">
+                    <div id="carousel-big-imgs" class="carousel-imgs">
+                        <img src="https://placeholder.pagebee.io/api/plain/600/375" class="carousel-item-big">
+                        <img src="https://placeholder.pagebee.io/api/plain/600/375" class="carousel-item-big">
+                        <img src="https://placeholder.pagebee.io/api/plain/600/375" class="carousel-item-big">
+                    </div>
+                    <!-- <div class="btn-salvar">
                             <button id="share" class="fa-solid fa-share-nodes" onclick="abrir_popup('compartilhar-popup')"></button>
                             <button id="like" class="fa-solid fa-heart" onclick="abrir_popup('login-obrigatorio-popup')"></button>
                         </div> -->
-                    </div>
                 </div>
             </div>
-            <section id="painel-projeto" class="container-section">
+        </div>
+        <section id="painel-projeto" class="container-section">
             <div id="btns-group">
                 <div class="icon-title active">
                     <img src="../../assets/images/pages/icone-sobre.png" alt="">
@@ -87,7 +104,7 @@
                 <div id="control-painel">
                     <div class="container-painel active">
                         <span id="data-criacao">Projeto criado em: <?= date('d/m/Y', strtotime($projeto->data_cadastro)); ?></span>
-                        <p><?= $projeto->descricao?></p>
+                        <p><?= $projeto->descricao ?></p>
                     </div>
                     <div class="container-painel area-doador-voluntario">
                         <h3>DOADORES DESTE PROJETO</h3>
@@ -103,16 +120,16 @@
                     </div>
                     <div class="container-painel area-doador-voluntario">
                         <h3>VOLUNTÁRIOS DESTE PROJETO</h3>
-                            <div class="box-cards">
-                                <?php require '../../components/cards/card-voluntario.php'; ?>
-                                <?php require '../../components/cards/card-voluntario.php'; ?>
-                                <?php require '../../components/cards/card-voluntario.php'; ?>
-                                <?php require '../../components/cards/card-voluntario.php'; ?>
-                                <?php require '../../components/cards/card-voluntario.php'; ?>
-                                <?php require '../../components/cards/card-voluntario.php'; ?>
-                                <?php require '../../components/cards/card-voluntario.php'; ?>
-                            </div>
+                        <div class="box-cards">
+                            <?php require '../../components/cards/card-voluntario.php'; ?>
+                            <?php require '../../components/cards/card-voluntario.php'; ?>
+                            <?php require '../../components/cards/card-voluntario.php'; ?>
+                            <?php require '../../components/cards/card-voluntario.php'; ?>
+                            <?php require '../../components/cards/card-voluntario.php'; ?>
+                            <?php require '../../components/cards/card-voluntario.php'; ?>
+                            <?php require '../../components/cards/card-voluntario.php'; ?>
                         </div>
+                    </div>
                     <div class="container-painel area-doador-voluntario">
                         <h3>ONG RESPONSÁVEL</h3>
                         <div class="card-ong">
@@ -141,6 +158,6 @@
 </main>
 
 <?php
-    $jsPagina = ['perfil-projeto.js'];
-    require_once '../../components/footer.php';
+$jsPagina = ['perfil-projeto.js'];
+require_once '../../components/footer.php';
 ?>

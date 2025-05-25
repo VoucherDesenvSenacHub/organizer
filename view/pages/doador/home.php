@@ -2,7 +2,7 @@
 //CONFIGURAÇÕES DA PÁGINA
 $tituloPagina = 'Home - Doador';
 $cssPagina = ['doador/home.css'];
-require_once '../../components/header-doador.php';
+require_once '../../components/layout/base-inicio.php';
 ?>
 <section id="cabecalho">
     <h1>Olá, <?= implode(' ', array_slice(explode(' ', trim($usuario->nome)), 0, 2)) ?>.</h1>

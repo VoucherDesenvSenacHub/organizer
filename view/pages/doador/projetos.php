@@ -139,8 +139,8 @@ if ($_SERVER['REQUEST_METHOD'] = 'GET' && isset($_GET['pesquisa'])) {
                 <a class="saiba-mais-projeto" href="perfil-projeto.php">Saiba Mais</a>
             </div> -->
             <?php foreach ($lista as $projeto) {
-                $valor_projeto = $projetoModel->buscarValor($projeto->codproj);
-                $barra = round(($valor_projeto / $projeto->meta) * 100);
+                // $valor_projeto = $projetoModel->buscarValor($projeto->codproj);
+                // $barra = round(($valor_projeto / $projeto->meta) * 100);
                 require '../../components/cards/card-projeto.php';
             } ?>
         </section>

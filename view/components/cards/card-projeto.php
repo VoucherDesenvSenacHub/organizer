@@ -21,5 +21,5 @@ $barra = $projeto->barra ?? '30';
             </div>
         </div>
     </div>
-    <a class="saiba-mais-projeto" href="perfil-projeto.php?id=<?= $projeto->projeto_id ?>">Saiba Mais</a>
+    <a class="saiba-mais-projeto" href="../projeto/perfil.php?id=<?= $projeto->projeto_id ?>">Saiba Mais</a>
 </div>

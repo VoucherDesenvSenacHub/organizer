@@ -1,7 +1,7 @@
 <?php
 $tituloPagina = 'Home | Organizer'; // Definir o título da página
 $cssPagina = ['visitante/home.css']; //Colocar o arquivo .css 
-require_once '../../components/header.php';
+require_once '../../components//layout/base-inicio.php';
 
 require_once '../../../model/OngModel.php';
 $ongModel = new Ong();

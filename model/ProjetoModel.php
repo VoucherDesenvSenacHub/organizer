@@ -69,42 +69,40 @@ class Projeto
     }
 
 
-    function editar($id, $nome, $resumo, $sobre, $meta)
+    function editar($id, $nome, $descricao, $meta)
     {
         try {
             $query = "UPDATE $this->tabela
-                          SET nome = :nome, resumo = :resumo, sobre = :sobre, meta = :meta
-                          WHERE codproj = :id";
+                          SET nome = :nome, descricao = :descricao, meta = :meta
+                          WHERE projeto_id = :id";
             $stmt = $this->pdo->prepare($query);
             $stmt->bindParam(':nome', $nome);
-            $stmt->bindParam(':resumo', $resumo);
-            $stmt->bindParam(':sobre', $sobre);
+            $stmt->bindParam(':descricao', $descricao);
             $stmt->bindParam(':meta', $meta);
             $stmt->bindParam(':id', $id);
             $stmt->execute();
 
             if ($stmt->rowCount() > 0) {
-                header("Location: perfil-projeto.php?id=$id&msg=sucesso");
+                header("Location: perfil.php?id=$id&msg=sucesso");
             } else {
-                header("Location: perfil-projeto.php?id=$id");
+                header("Location: perfil.php?id=$id");
             }
             exit;
         } catch (PDOException $e) {
-            echo "Erro no UPDATE: " . $e->getMessage();
-            header("Location: perfil-projeto.php?id=$id&msg=erro");
+            // echo "Erro no UPDATE: " . $e->getMessage();
+            header("Location: perfil.php?id=$id&msg=erro");
             exit;
         }
     }
 
-    function criar($nome, $resumo, $sobre, $meta)
+    function criar($nome, $descricao, $meta)
     {
         try {
-            $query = "INSERT INTO $this->tabela (nome, resumo, sobre, meta)
-                          VALUES (:nome, :resumo, :sobre, :meta)";
+            $query = "INSERT INTO $this->tabela (nome, descricao, meta)
+                          VALUES (:nome, :descricao, :meta)";
             $stmt = $this->pdo->prepare($query);
             $stmt->bindParam(':nome', $nome);
-            $stmt->bindParam(':resumo', $resumo);
-            $stmt->bindParam(':sobre', $sobre);
+            $stmt->bindParam(':descricao', $descricao);
             $stmt->bindParam(':meta', $meta);
             $stmt->execute();
             if ($stmt->rowCount() > 0) {

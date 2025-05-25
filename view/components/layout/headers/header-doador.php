@@ -6,10 +6,10 @@
         </a>
         <nav id="nav-bar">
             <ul>
-                <li><a href="home.php">Home</a></li>
-                <li><a href="ongs.php">Ongs</a></li>
-                <li><a href="projetos.php">Projetos</a></li>
-                <li><a href="noticias.php">Notícias</a></li>
+                <li><a href="../doador/home.php">Home</a></li>
+                <li><a href="../doador/ongs.php">Ongs</a></li>
+                <li><a href="../doador/projetos.php">Projetos</a></li>
+                <li><a href="../doador/noticias.php">Notícias</a></li>
             </ul>
         </nav>
         <div id="doador-nav">
@@ -20,3 +20,9 @@
         </div>
     </div>
 </header>
+
+<!-- ASIDE -->
+<main id="main-doador">
+    <div class="container">
+        <?php require_once '../../components/aside-doador.php'; ?>
+        <div id="container-conteudo">
