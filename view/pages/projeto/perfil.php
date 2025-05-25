@@ -9,7 +9,7 @@
 
     $tituloPagina = 'Perfil do Projeto | Organizer';
     $cssPagina = ['shared/perfil-projeto.css'];
-    require_once '../../components/header.php';
+    require_once '../../components/layout/base-inicio.php';
 ?>
 
 <main>
@@ -30,10 +30,8 @@
                     <p>Status: Em progresso <span>(30% alcançado)</span></p>
                     <p><span>24</span> Doações Recebidas</p>
                 </div>
-                <div id="acoes">
-                    <button class="btn" id="btn-doacao" onclick="abrir_popup('login-obrigatorio-popup')">Fazer uma doação</button>
-                    <button class="btn" id="btn-voluntario" onclick="abrir_popup('login-obrigatorio-popup')">Ser Voluntário</button>
-                </div>
+                <!-- Botão de Acões do Projeto -->
+                <?php require_once 'acoes-projeto.php'; ?>
             </div>
             <div id="imagem-ilustrativa">
                 <img src="../../assets/images/pages/perfil-projeto.png" alt="">

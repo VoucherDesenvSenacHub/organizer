@@ -1,19 +1,28 @@
-<?php 
-    //CONFIGURAÇÕES DA PÁGINA
-    $tituloPagina = 'Perfil da ONG | Organizer';
-    $cssPagina = ['shared/perfil-ong.css'];
-    require_once '../../components/header.php';
+<?php
+//CONFIGURAÇÕES DA PÁGINA
+$tituloPagina = 'Perfil da ONG | Organizer';
+$cssPagina = ['shared/perfil-ong.css'];
+require_once '../../components/header.php';
 
-    //IMPORTS
-    require_once __DIR__ . '/../../../model/ProjetoModel.php';
 
-    //CARREGA CARDS DE PROJETOS
-    $projetoModel = new Projeto();
-    $lista = $projetoModel->listar();
+require_once '../../../model/OngModel.php';
+require_once '../../../model/ProjetoModel.php';
+$ongModel = new Ong();
+$projetoModel = new Projeto();
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+    $ong = $ongModel->buscarId($id);
+    $projetos_ong = $projetoModel->listar($id);
+}
 ?>
 
 <main>
     <div class="container" id="container-principal">
+        <?php
+        if (!isset($_GET['id']) || !$ong) {
+            exit('<h2>ERRO AO ENCONTRAR ONG!</h2>');
+        }
+        ?>
         <section id="apresentacao" class="container-section">
             <div id="logo-ong">
                 <img src="https://placeholder.pagebee.io/api/plain/400/250">
@@ -23,7 +32,7 @@
                 </div>
             </div>
             <div id="dados-ong">
-                <h1>NOME ONG</h1>
+                <h1><?= $ong->nome ?></h1>
                 <span id="data-criacao">Criada em 12/04/2023</span>
                 <h3>Arrecadado: <span>R$ 50.000</span></h3>
                 <div id="recebidos">
@@ -45,7 +54,7 @@
                     <img src="../../assets/images/pages/icone-sobre.png" alt="">
                     <h3>Sobre</h3>
                 </div>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit doloremque odio, optio adipisci voluptatibus est consequuntur non id soluta officiis dolorum possimus nemo quaerat incidunt accusantium omnis eaque voluptate dignissimos? Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum quis libero iste esse pariatur laudantium. Aliquam minima, incidunt quae ex dolorum voluptas quia animi explicabo facere ad dolores autem ipsam.</p>
+                <p><?= $ong->descricao ?></p>
             </div>
         </section>
         <section class="container-section" id="apoiadores">
@@ -97,11 +106,15 @@
                     <h3>Projetos</h3>
                 </div>
                 <div class="mini-cards">
-                    <?php foreach($lista as $projeto) {
-                        $valor_projeto = $projetoModel->buscarValor($projeto->codproj);
-                        $barra = round(($valor_projeto / $projeto->meta) * 100);
-                        require '../../components/cards/card-projeto.php';
-                    } ?>
+                    <?php 
+                        if ($projetos_ong) {
+                            foreach ($projetos_ong as $projeto) {
+                                require '../../components/cards/card-projeto.php';
+                            }
+                        } else {
+                            echo '<h4>Está ONG ainda não tem projetos!</h4>';
+                        }
+                    ?>
                 </div>
             </div>
         </section>
@@ -109,6 +122,6 @@
 </main>
 
 <?php
-    $jsPagina = [];
-    require_once '../../components/footer.php';
+$jsPagina = [];
+require_once '../../components/footer.php';
 ?>

@@ -53,7 +53,7 @@ class Usuario
                 session_start();
                 $_SESSION['usuario_id'] = $conta['usuario_id'];
 
-                header('Location: ../doador/home.php');
+                header('Location: acesso.php');
                 exit;
             }
         }
