@@ -23,9 +23,9 @@ CREATE TABLE usuarios (
 CREATE TABLE ongs (
 -- Identificação da ONG
     ong_id INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(255) NOT NULL,
     cnpj VARCHAR(18) NOT NULL UNIQUE,
     responsavel_id INT NOT NULL,
-    descricao TEXT NOT NULL,
 -- Contato
     telefone VARCHAR(20) NOT NULL,
     email VARCHAR(255) NOT NULL UNIQUE,
@@ -39,10 +39,14 @@ CREATE TABLE ongs (
     agencia VARCHAR(10) NOT NULL,
     conta VARCHAR(20) NOT NULL,
     tipo_conta ENUM('CORRENTE', 'POUPANÇA') NOT NULL DEFAULT 'CORRENTE',
-    -- Relacionamentos
+-- Outros dados
+    descricao TEXT NOT NULL,
+    data_cadastro TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+-- Relacionamentos
     CONSTRAINT fk_responsavel FOREIGN KEY (responsavel_id) REFERENCES usuarios(usuario_id),
     CONSTRAINT fk_banco FOREIGN KEY (banco_id) REFERENCES bancos(banco_id)
 );
+
 
 -- TABELA DE PROJETOS
 CREATE TABLE projetos (

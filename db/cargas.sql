@@ -19,18 +19,15 @@ VALUES
 ('Fernanda Alves', '34567890123', '1993-11-03', 'fernanda.jpg', 'fernanda@example.com', '(31)99876-5432', 'senha123', 'DOADOR'),
 ('Marcos Silva', '45678901234', '1978-03-30', 'marcos.jpg', 'marcos@example.com', '(41)97654-3210', 'senha123', 'ADM');
 
-
-INSERT INTO ongs (cnpj, responsavel_id, descricao, telefone, email, cep, rua, bairro, cidade, banco_id, agencia, conta, tipo_conta) VALUES
-('12.345.678/0001-90', 1, 'ONG dedicada a combater a fome em comunidades carentes.', '11999998888', 'contato@fomezero.org', '01001-000', 'Rua das Esperanças', 'Centro', 'São Paulo', 1, '1234', '00012345-6', 'CORRENTE'),
-('23.456.789/0001-01', 2, 'Apoio à educação de crianças em situação de vulnerabilidade.', '21988887777', 'educa@futuro.org', '20040-001', 'Av. do Saber', 'Copacabana', 'Rio de Janeiro', 2, '5678', '00023456-7', 'POUPANÇA'),
-('34.567.890/0001-12', 3, 'Abrigo e cuidado de animais abandonados.', '31977776666', 'contato@amigopet.org', '30140-110', 'Rua dos Bichos', 'Savassi', 'Belo Horizonte', 3, '4321', '00034567-8', 'CORRENTE'),
-('45.678.901/0001-23', 4, 'ONG que atua em desastres naturais com doações e suporte.', '41966665555', 'ajuda@emergencia.org', '80010-020', 'Rua do Socorro', 'Centro Cívico', 'Curitiba', 4, '8765', '00045678-9', 'CORRENTE'),
-('56.789.012/0001-34', 5, 'Promoção da saúde e bem-estar em comunidades rurais.', '51955554444', 'saude@bem.org', '90010-000', 'Av. da Saúde', 'Menino Deus', 'Porto Alegre', 5, '6789', '00056789-0', 'POUPANÇA');
-
+INSERT INTO ongs (nome, cnpj, responsavel_id, telefone, email, cep, rua, bairro, cidade, banco_id, agencia, conta, tipo_conta, descricao) VALUES 
+('ONG Vida Melhor', '12.345.678/0001-90', 1, '11999999999', 'contato@vidamelhor.org', '01001-000', 'Rua da Esperança, 123', 'Centro', 'São Paulo', 1, '1234', '56789-0', 'CORRENTE', 'A ONG Vida Melhor foi fundada com o propósito de promover o bem-estar de comunidades em situação de vulnerabilidade social. Oferecemos atendimento médico gratuito, distribuição de alimentos, suporte psicológico e programas de capacitação profissional. Nosso trabalho impacta milhares de famílias e busca gerar oportunidades reais de transformação social.'),
+('Educa Futuro', '98.765.432/0001-11', 2, '21988887777', 'contato@educafuturo.org', '20010-000', 'Av. do Conhecimento, 456', 'Centro', 'Rio de Janeiro', 2, '4321', '12345-6', 'POUPANÇA', 'A Educa Futuro é uma organização sem fins lucrativos dedicada a ampliar o acesso à educação de qualidade para jovens em situação de risco. Atuamos com aulas de reforço, preparação para vestibulares, acesso a bolsas de estudo e oficinas de habilidades socioemocionais. Acreditamos que a educação é o caminho mais eficaz para mudar realidades e construir um futuro mais justo.'),
+('Amigos da Natureza', '11.222.333/0001-44', 3, '31977776666', 'contato@natureza.org', '30140-000', 'Rua Verde, 789', 'Savassi', 'Belo Horizonte', 3, '5678', '98765-4', 'CORRENTE', 'Amigos da Natureza nasceu da urgência de preservar os recursos naturais e promover a consciência ambiental. Realizamos campanhas de reflorestamento, mutirões de limpeza de rios, oficinas de educação ambiental em escolas e pesquisas sobre biodiversidade. Nossa missão é mobilizar a sociedade para práticas sustentáveis e proteger o meio ambiente para as próximas gerações.'),
+('Sorriso Animal', '55.666.777/0001-55', 4, '47999998888', 'contato@sorrisoanimal.org', '89010-000', 'Rua dos Bichos, 101', 'Centro', 'Blumenau', 4, '8765', '65432-1', 'POUPANÇA', 'A Sorriso Animal é uma ONG dedicada ao resgate, tratamento e adoção de animais abandonados ou vítimas de maus-tratos. Mantemos um abrigo com capacidade para mais de 200 animais, todos assistidos por veterinários e voluntários. Além disso, promovemos feiras de adoção, campanhas de castração e ações educativas sobre a guarda responsável de pets.');
 
 INSERT INTO projetos (nome, descricao, meta, status, ong_id) VALUES
 ('Alimento para Todos', 'Projeto focado em arrecadar alimentos para famílias carentes.', 5000.00, 'ATIVO', 1),
 ('Educação para o Futuro', 'Campanha de doação de materiais escolares para crianças.', 3000.00, 'ATIVO', 2),
 ('Cuidando dos Animais', 'Apoio financeiro para um abrigo de animais abandonados.', 4500.00, 'INATIVO', 3),
 ('Ajuda às Vítimas de Enchentes', 'Projeto para fornecer roupas e abrigo a vítimas de desastres naturais.', 10000.00, 'FINALIZADO', 4),
-('Saúde e Bem-Estar', 'Distribuição de kits de higiene e saúde em comunidades vulneráveis.', 7000.00, 'ATIVO', 5);
+('Saúde e Bem-Estar', 'Distribuição de kits de higiene e saúde em comunidades vulneráveis.', 7000.00, 'ATIVO', 3);
