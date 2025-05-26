@@ -33,7 +33,7 @@ class Usuario
             }
             exit;
         } catch (PDOException $e) {
-            header('Location: cadastro.php?cadastro=erro{$e}');
+            header('Location: cadastro.php?cadastro=erro');
             exit;
         }
     }
