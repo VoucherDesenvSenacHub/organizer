@@ -15,7 +15,7 @@
             </ul>
         </nav>
         <div id="btns-adm">
-            <a id="parceria" href="solicitacao-parcerias.php">
+            <a id="parceria" href="solicitacao-parceria.php">
                 <i class="fa-solid fa-handshake"></i>
                 <span>Parcerias</span>
             </a>

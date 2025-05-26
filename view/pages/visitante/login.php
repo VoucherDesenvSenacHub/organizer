@@ -2,7 +2,7 @@
 ob_start();
     $tituloPagina = 'Login | Organizer';
     $cssPagina = ['visitante/login.css'];
-    require_once '../../components/header.php';
+    require_once '../../components/layout/base-inicio.php';
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $email = $_POST['email'];

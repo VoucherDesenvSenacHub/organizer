@@ -1,7 +1,7 @@
 <?php 
     $tituloPagina = 'Cadastro | Organizer';
     $cssPagina = ['visitante/cadastro.css'];
-    require_once '../../components/header.php';
+    require_once '../../components/layout/base-inicio.php';
     
     require_once '../../../model/UsuarioModel.php';
     $usuarioModel = new Usuario();

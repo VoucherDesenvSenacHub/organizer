@@ -21,7 +21,7 @@ $descricao =  mb_strimwidth($ong->descricao, 0, 215, '...') ?? 'Lorem ipsum dolo
         <p><span>9 </span>Projetos</p>
     </div>
     <div class="acoes-ong">
-        <a href="perfil-ong.php?id=<?= $ong->ong_id ?>" class="saiba-mais-ong">Saiba Mais</a>
+        <a href="../ong/perfil.php?id=<?= $ong->ong_id ?>" class="saiba-mais-ong">Saiba Mais</a>
         <div class="btn-salvar">
             <button id="share" class="fa-solid fa-share-nodes" onclick="abrir_popup('compartilhar-popup')"></button>
             <button id="like" class="fa-solid fa-heart" onclick="abrir_popup('login-obrigatorio-popup')"></button>

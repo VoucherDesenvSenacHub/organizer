@@ -95,15 +95,16 @@ class Projeto
         }
     }
 
-    function criar($nome, $descricao, $meta)
+    function criar($nome, $descricao, $meta, $ong_id)
     {
         try {
-            $query = "INSERT INTO $this->tabela (nome, descricao, meta)
-                          VALUES (:nome, :descricao, :meta)";
+            $query = "INSERT INTO $this->tabela (nome, descricao, meta, ong_id)
+                          VALUES (:nome, :descricao, :meta, :ong_id)";
             $stmt = $this->pdo->prepare($query);
             $stmt->bindParam(':nome', $nome);
             $stmt->bindParam(':descricao', $descricao);
             $stmt->bindParam(':meta', $meta);
+            $stmt->bindParam(':ong_id', $ong_id);
             $stmt->execute();
             if ($stmt->rowCount() > 0) {
                 header('Location: projetos.php?msg=sucesso');

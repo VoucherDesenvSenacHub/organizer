@@ -1,3 +1,12 @@
+<?php 
+    session_start();
+    if($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $usuario = $_POST['perfil'];
+        $_SESSION['perfil_usuario'] = $usuario;
+        header("Location: ../{$usuario}/home.php");
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -14,19 +23,22 @@
         <h1>Olá, Gean</h1>
         <p>Escolha qual acesso você deseja:</p>
         <div class="forms">
-            <form class="form-doador" action="../doador/home.php">
+            <form class="form-doador" action="#" method="POST">
+                <input type="hidden" name="perfil" value="doador">
                 <button>
                     <i class="fa-solid fa-user"></i>
                     <p>DOADOR</p>
                 </button>
             </form>
-            <form class="form-ong" action="#">
+            <form class="form-ong" action="#" method="POST">
+                <input type="hidden" name="perfil" value="ong">
                 <button>
                     <i class="fa-solid fa-house-flag"></i>
                     <p>ONG</p>
                 </button>
             </form>
-            <form class="form-adm" action="#">
+            <form class="form-adm" action="#" method="POST">
+                <input type="hidden" name="perfil" value="adm">
                 <button>
                     <i class="fa-solid fa-user-secret"></i>
                     <p>ADM</p>

@@ -27,9 +27,9 @@
 }
 
 body {
-    background-color: var(--cor-principal);
+    background-color: aliceblue;
     color: var(--cor-principal);
-    scrollbar-color: #06c;
+    /* scrollbar-color: #06c; */
 }
 
 h1 {

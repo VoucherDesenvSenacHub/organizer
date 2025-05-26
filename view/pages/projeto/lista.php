@@ -1,7 +1,7 @@
 <?php
 $tituloPagina = 'Encontre Projetos';
-$cssPagina = ['doador/catalogo-doador.css'];
-require_once '../../components/header-doador.php';
+$cssPagina = ['shared/catalogo.css'];
+require_once '../../components/layout/base-inicio.php';
 
 require_once __DIR__ . "\..\..\..\model\ProjetoModel.php";
 $projetoModel = new Projeto();
@@ -11,16 +11,17 @@ if ($_SERVER['REQUEST_METHOD'] = 'GET' && isset($_GET['pesquisa'])) {
     $pesquisa = $_GET['pesquisa'];
     $lista = $projetoModel->buscarNome($pesquisa);
 }
+$perfil = $_SESSION['perfil_usuario'] ?? '';
 ?>
 
-<main>
+<main <?php if ($perfil == 'doador') echo 'class="usuario-logado"'; ?>>
     <div class="container" id="container-catalogo">
         <section id="top-info">
             <div id="info">
                 <div>
                     <h1>ENCONTRE PROJETOS</h1>
                     <p>Explore projetos inspiradores e apoie causas e faça a diferença hoje mesmo.</p>
-                    <form id="form-filtro" action="projetos.php" method="GET">
+                    <form id="form-filtro" action="lista.php" method="GET">
                         <!-- ### -->
                         <div class="ul-group">
                             <ul class="drop" id="esc-status">
@@ -105,7 +106,7 @@ if ($_SERVER['REQUEST_METHOD'] = 'GET' && isset($_GET['pesquisa'])) {
                         <button class="btn">Filtrar</button>
                     </form>
                 </div>
-                <form id="form-busca" action="projetos.php" method="GET">
+                <form id="form-busca" action="lista.php" method="GET">
                     <input type="text" name="pesquisa" placeholder="Busque um projeto">
                     <button class="btn"><i class="fa-solid fa-search"></i></button>
                 </form>
@@ -117,30 +118,10 @@ if ($_SERVER['REQUEST_METHOD'] = 'GET' && isset($_GET['pesquisa'])) {
         <?php if (isset($_GET['pesquisa'])) {
             echo "<p class='qnt-busca'><i class='fa-solid fa-search'></i> " . count($lista) . " Projetos Encontrados</p>";
         } ?>
+
         <section id="box-ongs">
-            <!-- <div class="card-projeto">
-                <div class="acoes-projeto">
-                    <button class="btn-share fa-solid fa-share-nodes" onclick="abrir_popup('compartilhar-popup')"></button>
-                    <button class="btn-like fa-solid fa-heart" onclick="abrir_popup('login-obrigatorio-popup')"></button>
-                </div>
-                <div class="img-projeto">250x130</div>
-                <div class="info-projeto">
-                    <h5>Nome Projeto</h5>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, laborum et? Repellendus perferendis provident
-                        ratione deserunt alias cumque et quasi odio amet temporibus, quam obcaecati dolores. Enim quibusdam a atque.
-                    </p>
-                    <div class="barra-doacao">
-                        <span>30%</span>
-                        <div class="barra">
-                            <div class="barra-verde"></div>
-                        </div>
-                    </div>
-                </div>
-                <a class="saiba-mais-projeto" href="perfil-projeto.php">Saiba Mais</a>
-            </div> -->
+            <!-- LISTAR CARDS PROJETOS -->
             <?php foreach ($lista as $projeto) {
-                // $valor_projeto = $projetoModel->buscarValor($projeto->codproj);
-                // $barra = round(($valor_projeto / $projeto->meta) * 100);
                 require '../../components/cards/card-projeto.php';
             } ?>
         </section>
@@ -154,10 +135,8 @@ if ($_SERVER['REQUEST_METHOD'] = 'GET' && isset($_GET['pesquisa'])) {
         </nav>
     </div>
 </main>
-</div>
-</div>
 
 <?php
 $jsPagina = [];
-require_once '../../components/footer-doador.php';
+require_once '../../components/footer.php';
 ?>

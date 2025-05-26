@@ -7,9 +7,9 @@
         <nav id="nav-bar">
             <ul>
                 <li><a href="../doador/home.php">Home</a></li>
-                <li><a href="../doador/ongs.php">Ongs</a></li>
-                <li><a href="../doador/projetos.php">Projetos</a></li>
-                <li><a href="../doador/noticias.php">Notícias</a></li>
+                <li><a href="../ong/lista.php">Ongs</a></li>
+                <li><a href="../projeto/lista.php">Projetos</a></li>
+                <li><a href="../noticia/lista.php">Notícias</a></li>
             </ul>
         </nav>
         <div id="doador-nav">

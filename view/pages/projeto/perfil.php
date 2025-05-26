@@ -16,8 +16,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $meta = $_POST['meta'];
     if ($id) {
         $projetoModel->editar($id, $nome, $descricao, $meta);
-    } else {
-        $projetoModel->criar($nome, $descricao, $meta);
     }
 }
 
@@ -25,8 +23,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 $tituloPagina = 'Perfil do Projeto | Organizer';
 $cssPagina = ['projeto/perfil.css'];
 require_once '../../components/layout/base-inicio.php';
-require_once 'popups-projeto.php';
-require_once 'toast-projeto.php';
+require_once 'partials/popups-projeto.php';
+require_once 'partials/toast-projeto.php';
 
 ?>
 <main>
@@ -48,7 +46,7 @@ require_once 'toast-projeto.php';
                     <p><span>24</span> Doações Recebidas</p>
                 </div>
                 <!-- Botão de Acões do Projeto -->
-                <?php require_once 'acoes-projeto.php'; ?>
+                <?php require_once 'partials/acoes-projeto.php'; ?>
             </div>
             <div id="imagem-ilustrativa">
                 <img src="../../assets/images/pages/perfil-projeto.png" alt="">

@@ -8,7 +8,7 @@
         </a>
         <nav id="nav-bar">
             <ul>
-                <li><a href="home.php">Home</a></li>
+                <li><a href="../ong/home.php">Home</a></li>
                 <li><a href="projetos.php">Projetos</a></li>
                 <li><a href="voluntarios.php">Voluntários</a></li>
                 <li><a href="relatorios.php">Relatórios</a></li>
@@ -20,7 +20,7 @@
                 <span>Conta</span>
             </button>
             <div class="dropdown">
-                <a href="perfil.php"><button><i class="fa-solid fa-user-pen"></i>Editar Perfil</button></a>
+                <a href="conta.php"><button><i class="fa-solid fa-user-pen"></i>Editar Perfil</button></a>
                 <button onclick="abrir_popup('sair-da-conta-popup')"><i class="fa-solid fa-right-from-bracket"></i>Sair</button>
             </div>
             <div class="btn-login">

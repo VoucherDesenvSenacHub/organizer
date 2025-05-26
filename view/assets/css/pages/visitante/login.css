@@ -1,3 +1,7 @@
+body {
+    background-color: var(--cor-principal);
+}
+
 main {
     padding: 0 30px;
     height: calc(100vh - 60px);

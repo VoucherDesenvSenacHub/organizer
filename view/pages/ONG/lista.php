@@ -1,27 +1,27 @@
 <?php
-$tituloPagina = 'Encontre Projetos';
+$tituloPagina = 'Descubra ONGS';
 $cssPagina = ['shared/catalogo.css'];
-require_once '../../components/header.php';
+require_once '../../components/layout/base-inicio.php';
 
-require_once __DIR__ . "\..\..\..\model\ProjetoModel.php";
-$projetoModel = new Projeto();
-$lista = $projetoModel->listar();
+require_once '../../../model/OngModel.php';
+$ongModel = new Ong();
+$lista = $ongModel->listar();
 
 if ($_SERVER['REQUEST_METHOD'] = 'GET' && isset($_GET['pesquisa'])) {
     $pesquisa = $_GET['pesquisa'];
-    $lista = $projetoModel->buscarNome($pesquisa);
+    $lista = $ongModel->buscarNome($pesquisa);
 }
-
+$perfil = $_SESSION['perfil_usuario'] ?? '';
 ?>
 
-<main>
+<main <?php if ($perfil == 'doador') echo 'class="usuario-logado"'; ?>>
     <div class="container" id="container-catalogo">
         <section id="top-info">
             <div id="info">
                 <div>
-                    <h1>ENCONTRE PROJETOS</h1>
-                    <p>Explore projetos inspiradores e apoie causas e faça a diferença hoje mesmo.</p>
-                    <form id="form-filtro" action="projetos.php" method="GET">
+                    <h1>DESCUBRA AS ONGS</h1>
+                    <p>Explore organizações que estão fazendo a diferença e saiba como você pode contribuir.</p>
+                    <form id="form-filtro" action="lista.php" method="GET">
                         <!-- ### -->
                         <div class="ul-group">
                             <ul class="drop" id="esc-status">
@@ -106,26 +106,23 @@ if ($_SERVER['REQUEST_METHOD'] = 'GET' && isset($_GET['pesquisa'])) {
                         <button class="btn">Filtrar</button>
                     </form>
                 </div>
-                <form id="form-busca" action="projetos.php" method="GET">
-                    <input type="text" name="pesquisa" placeholder="Busque um projeto">
+                <form id="form-busca" action="lista.php" method="GET">
+                    <input type="text" name="pesquisa" placeholder="Busque uma ONG">
                     <button class="btn"><i class="fa-solid fa-search"></i></button>
                 </form>
             </div>
             <div id="imagem-top">
-                <img src="../../assets/images/pages/tela-projeto-kids.png" alt="">
+                <img src="../../assets/images/pages/tela-ong-team.png" alt="">
             </div>
         </section>
         <?php if (isset($_GET['pesquisa'])) {
-            echo "<p class='qnt-busca'><i class='fa-solid fa-search'></i> " . count($lista) . " Projetos Encontrados</p>";
+            echo "<p class='qnt-busca'><i class='fa-solid fa-search'></i> " . count($lista) . " ONGS Encontradas</p>";
         } ?>
-
         <section id="box-ongs">
-            <!-- LISTAR CARDS PROJETOS -->
-            <?php foreach ($lista as $projeto) {
-                $valor_projeto = $projetoModel->buscarValor($projeto->codproj);
-                $barra = round(($valor_projeto / $projeto->meta) * 100);
-                require '../../components/cards/card-projeto.php';
-            } ?>
+            <?php foreach ($lista as $ong) {
+                require '../../components/cards/card-ong.php';
+            }
+            ?>
         </section>
         <nav id="navegacao">
             <a class="active" href="#">1</a>

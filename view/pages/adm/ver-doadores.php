@@ -1,10 +1,8 @@
 <?php
 $tituloPagina = 'Doadores ADM'; // Definir o título da página
 $cssPagina = ['adm/ver-doadores.css']; //Colocar o arquivo .css 
-require_once '../../components/header-adm.php';
+require_once '../../components/layout/base-inicio.php';
 ?>
-
-
 
 <div id="block-popup">
     <div id="ipopup">
