@@ -29,5 +29,5 @@ INSERT INTO projetos (nome, descricao, meta, status, ong_id) VALUES
 ('Alimento para Todos', 'Projeto focado em arrecadar alimentos para famílias carentes.', 5000.00, 'ATIVO', 1),
 ('Educação para o Futuro', 'Campanha de doação de materiais escolares para crianças.', 3000.00, 'ATIVO', 2),
 ('Cuidando dos Animais', 'Apoio financeiro para um abrigo de animais abandonados.', 4500.00, 'INATIVO', 3),
-('Ajuda às Vítimas de Enchentes', 'Projeto para fornecer roupas e abrigo a vítimas de desastres naturais.', 10000.00, 'FINALIZADO', 4),
+('Ajuda às Vítimas de Enchentes', 'Projeto para fornecer roupas e abrigo a vítimas de desastres naturais.', 10000.00, 'FINALIZADO', 3),
 ('Saúde e Bem-Estar', 'Distribuição de kits de higiene e saúde em comunidades vulneráveis.', 7000.00, 'ATIVO', 3);

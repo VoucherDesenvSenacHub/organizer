@@ -14,7 +14,7 @@ CREATE TABLE usuarios (
     telefone VARCHAR(20),
     senha VARCHAR(255) NOT NULL,
 -- Metadados do sistema
-    tipo_usuario ENUM('DOADOR', 'ONG', 'ADM') NOT NULL DEFAULT 'DOADOR'
+    tipo_usuario ENUM('DOADOR', 'ONG', 'ADM') NOT NULL DEFAULT 'DOADOR',
     ativo BOOLEAN DEFAULT TRUE,
     data_cadastro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );

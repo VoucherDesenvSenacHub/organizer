@@ -8,10 +8,10 @@
         </a>
         <nav id="nav-bar">
             <ul>
-                <li><a href="home.php">Home</a></li>
-                <li><a href="ver-ong.php">Ongs</a></li>
-                <li><a href="ver-projetos.php">Projetos</a></li>
-                <li><a href="ver-doadores.php">Doadores</a></li>
+                <li><a href="../adm/home.php">Home</a></li>
+                <li><a href="../adm/ver-ong.php">Ongs</a></li>
+                <li><a href="../adm/ver-projetos.php">Projetos</a></li>
+                <li><a href="../adm/ver-doadores.php">Doadores</a></li>
             </ul>
         </nav>
         <div id="btns-adm">

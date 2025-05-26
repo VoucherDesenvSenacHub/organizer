@@ -9,9 +9,9 @@
         <nav id="nav-bar">
             <ul>
                 <li><a href="../ong/home.php">Home</a></li>
-                <li><a href="projetos.php">Projetos</a></li>
-                <li><a href="voluntarios.php">Voluntários</a></li>
-                <li><a href="relatorios.php">Relatórios</a></li>
+                <li><a href="../ong/projetos.php">Projetos</a></li>
+                <li><a href="../ong/voluntarios.php">Voluntários</a></li>
+                <li><a href="../ong/relatorios.php">Relatórios</a></li>
             </ul>
         </nav>
         <div id="btns-ong">
