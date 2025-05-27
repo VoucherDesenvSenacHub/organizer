@@ -1,10 +1,10 @@
-<?php 
-    session_start();
-    if($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $usuario = $_POST['perfil'];
-        $_SESSION['perfil_usuario'] = $usuario;
-        header("Location: ../{$usuario}/home.php");
-    }
+<?php
+session_start();
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $usuario = $_POST['perfil'];
+    $_SESSION['perfil_usuario'] = $usuario;
+    header("Location: ../{$usuario}/home.php");
+}
 ?>
 
 <!DOCTYPE html>
@@ -20,7 +20,7 @@
 
 <body>
     <div class="container">
-        <h1>Olá, Gean</h1>
+        <h1>Olá, <?= explode(' ', $_SESSION['usuario_nome'])[0] ?></h1>
         <p>Escolha qual acesso você deseja:</p>
         <div class="forms">
             <form class="form-doador" action="#" method="POST">

@@ -52,6 +52,7 @@ class Usuario
                 // Iniciar sessão e guardar dados do doador
                 session_start();
                 $_SESSION['usuario_id'] = $conta['usuario_id'];
+                $_SESSION['usuario_nome'] = $conta['nome'];
 
                 header('Location: acesso.php');
                 exit;
