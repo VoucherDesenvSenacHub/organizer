@@ -73,7 +73,7 @@ require_once '../../components/header-doador.php';
                         </div>
                     </div>
                 </div>
-                <a class="saiba-mais-projeto" href="perfil-projeto.php">Saiba Mais</a>
+                <a class="saiba-mais-projeto" href="perfil-projeto.php?id=1">Saiba Mais</a>
             </div>
         <?php } ?>
     </div>
