@@ -20,7 +20,7 @@
     $grafico = '';
     $legenda = '';
     $larguraUtil<=$alturaUtil ? $raio=$larguraUtil/4 : $raio=$alturaUtil/4; // Define o raio máximo do círculo
-    $cx = $larguraUtil-$raio-70; // Define o centro do círculo no eixo X
+    $width > 240 ? $cx = $larguraUtil-$raio-70 : $cx = $larguraUtil-$raio+5; // Define o centro do círculo no eixo X
     $cy = $height/2; // Define o centro do círculo no eixo Y
     $stroke=$raio*2; // Define a largura da linha de borda do círculo para preenchimento total
     $perimetro = 2*pi()*$raio; // Calcula o comprimento da circunferência
@@ -54,13 +54,21 @@
             ";
 
             // Cria as legendas
-            
-            $cabecalho = "<text x='70' y='30'>Total arrecadado R$ $totalArrecadado</text>";
+            if($width>240){
+                $colRect = 30;
+                $colLeg = 70;
+                $rowCab = 30;
+            }else{
+                $colRect = 5;
+                $colLeg = 30;
+                $rowCab = 5;
+            }
+            $cabecalho = "<text x='$colLeg' y='$rowCab'>Total arrecadado R$ $totalArrecadado</text>";
             $leg = $dados[$i][0].' - R$ '.$dados[$i][1]; // Variável com texto de cada legenda
             $yIcone = $yLegendas-10; // Define o eixo Y onde será desenhado o retângulo/ícone da legenda
             $legenda = $legenda."
-            <rect width='20' height='12' x='30' y='$yIcone' fill='$colors[$i]'/>
-            <text x='70' y='$yLegendas'>$leg</text>
+            <rect width='20' height='12' x='$colRect' y='$yIcone' fill='$colors[$i]'/>
+            <text x='$colLeg' y='$yLegendas'>$leg</text>
             ";
             $yLegendas-=$divisoes;
     }

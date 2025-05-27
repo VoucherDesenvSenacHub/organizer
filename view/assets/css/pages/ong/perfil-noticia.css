@@ -5,7 +5,7 @@ body {
     padding: 0;
 }
 /* Adicionando responsividade para telas maiores */
-@media (min-width: 1200px) {
+@media (min-width: 1000px) {
     #principal {
         padding: 70px 20px;
     }

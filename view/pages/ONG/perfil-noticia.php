@@ -1,6 +1,6 @@
 <?php
 $tituloPagina = 'Leia Mais'; // Definir o título da página
-$cssPagina = ['shared/perfil-noticia.css'];
+$cssPagina = ['shared/perfil-noticia.css', 'ong/noticias.css'];
 require_once '../../components/header-ong.php';
 $noticia = (object) [
     'codnot' => '',
@@ -30,10 +30,10 @@ require_once '../../components/popup/formulario-noticia.php';
         </div>
 
         <div class="botoes">
-            <button class="editar" onclick="editarNoticia()">Editar<img src=""
-                    class="fa-solid fa-pen-to-square lapis-editar" alt=""></button>
-            <button class="deletar" onclick="popConclusao('delete')">Excluir<img
-                    src="../../assets/images/delete-noticia.png" alt=""></button>
+            <button class="editar" onclick="abrir_popup('editar-noticia-popup')">Editar <img src=""
+                    class="fa-solid fa-pen-to-square lapis-editar" alt=""></button> 
+                <button class="deletar" onclick="popConclusao('delete')">Excluir<img
+                        src="../../assets/images/delete-noticia.png" alt=""></button>
         </div>
     </div>
 
