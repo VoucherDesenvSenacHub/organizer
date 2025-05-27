@@ -1,103 +1,198 @@
 <?php 
     $tituloPagina = 'Participações'; // Definir o título da página
     $cssPagina = ['doador/participacoes.css']; //Colocar o arquivo .css (exemplo: 'ONG/cadastro.css')
-    require_once '../../components/header-usuario.php';
+    require_once '../../components/header-doador.php';
+    require_once __DIR__ . "\..\..\..\model\ProjetoModel.php";
+    
 ?>
 
 <main>
     <section>
         <div class="container">
             <div id="secao-1">
-            <h1>SUAS PARTICIPAÇÕES</h1>
-                <div class="quadrado-verde">
-                    <p>Participações</p>
-                    <span>4 Projetos</span>
-                </div>
+                <h1>SUAS PARTICIPAÇÕES</h1>
+                <h3>Projetos</h3>
+                <a href="perfil-projeto.php?id=1">
                 <div class="cards-participacao">
-                    <div class="card-participacao">
-                        <img src="../../assets/images/projeto-sem-foto.png" alt="Imagem do projeto">
-                        <div class="info-card">
-                            <div class="info-cima">
-                                <div>
-                                    <h3 class="titulo-ong">Nome ONG</h3>
-                                    <p class="projeto-de-ong">ONG</p>
+                    <div class="cards-projeto">
+                        <div class="card-participacao">
+                            <img src="../../assets/images/projeto-sem-foto.png" alt="Imagem do projeto">
+                            <div class="info-card">
+                                <div class="info-cima">
+                                    <div>
+                                        <h3 class="titulo-projeto">Nome do Projeto</h3>
+                                        <p class="projeto">Projeto</p>
+                                    </div>
+                                    <p class="ong-responsavel">Ong Responsável</p>
                                 </div>
-                                <p><span>9</span> Projetos</p>
+                                <div class="info-baixo">
+                                    <ul>
+                                        <li>Saúde</li>
+                                        <li>Ambiente</li>
+                                        <li>Esporte</li>
+                                    </ul>
+                                </div>
                             </div>
-                            <div class="info-baixo">
-                                <ul>
-                                    <li>Saúde</li>
-                                    <li>Ambiente</li>
-                                    <li>Esporte</li>
-                                </ul>
+                        </div>
+                        </a>
+                        <a href="perfil-projeto.php?id=2">
+                        <div class="card-participacao">
+                            <img src="../../assets/images/projeto-sem-foto.png" alt="Imagem do projeto">
+                            <div class="info-card">
+                                <div class="info-cima">
+                                    <div>
+                                        <h3 class="titulo-projeto">Nome do Projeto</h3>
+                                        <p class="projeto">Projeto</p>
+                                    </div>
+                                    <p class="ong-responsavel">Ong Responsável</p>
+                                </div>
+                                <div class="info-baixo">
+                                    <ul>
+                                        <li>Saúde</li>
+                                        <li>Ambiente</li>
+                                        <li>Esporte</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        </a>
+                        <a href="perfil-projeto.php?id=3">
+                        <div class="card-participacao">
+                            <img src="../../assets/images/projeto-sem-foto.png" alt="Imagem do projeto">
+                            <div class="info-card">
+                                <div class="info-cima">
+                                    <div>
+                                        <h3 class="titulo-projeto">Nome do Projeto</h3>
+                                        <p class="projeto">Projeto</p>
+                                    </div>
+                                    <p class="ong-responsavel">Ong Responsável</p>
+                                </div>
+                                <div class="info-baixo">
+                                    <ul>
+                                        <li>Saúde</li>
+                                        <li>Ambiente</li>
+                                        <li>Esporte</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        </a>
+                        <a href="perfil-projeto.php?id=4">
+                        <div class="card-participacao">
+                            <img src="../../assets/images/projeto-sem-foto.png" alt="Imagem do projeto">
+                            <div class="info-card">
+                                <div class="info-cima">
+                                    <div>
+                                        <h3 class="titulo-projeto">Nome do Projeto</h3>
+                                        <p class="projeto">Projeto</p>
+                                    </div>
+                                    <p class="ong-responsavel">Ong Responsável</p>
+                                </div>
+                                <div class="info-baixo">
+                                    <ul>
+                                        <li>Saúde</li>
+                                        <li>Ambiente</li>
+                                        <li>Esporte</li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="card-participacao">
-                        <img src="../../assets/images/projeto-sem-foto.png" alt="Imagem do projeto">
-                        <div class="info-card">
-                            <div class="info-cima">
-                                <div>
-                                    <h3 class="titulo-projeto">Nome do Projeto</h3>
-                                    <p class="projeto">Projeto</p>
+                </div>
+                </a>
+                <h3>Ongs</h3>
+                <a href="perfil-ong.php">
+                <div class="cards-participacao">
+                    <div class="cards-projeto">
+                        <div class="card-participacao">
+                            <img src="../../assets/images/projeto-sem-foto.png" alt="Imagem do projeto">
+                            <div class="info-card">
+                                <div class="info-cima">
+                                    <div>
+                                        <h3 class="titulo-ong">Nome da ONG</h3>
+                                        <p class="projeto-de-ong">ONG</p>
+                                    </div>
+                                    <p><span>9</span> Projetos</p>
                                 </div>
-                                <p class="ong-responsavel">Ong Responsável</p>
-                            </div>
-                            <div class="info-baixo">
-                                <ul>
-                                    <li>Saúde</li>
-                                    <li>Ambiente</li>
-                                    <li>Esporte</li>
-                                </ul>
+                                <div class="info-baixo">
+                                    <ul>
+                                        <li>Saúde</li>
+                                        <li>Ambiente</li>
+                                        <li>Esporte</li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="card-participacao">
-                        <img src="../../assets/images/projeto-sem-foto.png" alt="Imagem do projeto">
-                        <div class="info-card">
-                            <div class="info-cima">
-                                <div>
-                                    <h3 class="titulo-projeto">Nome do Projeto</h3>
-                                    <p class="projeto">Projeto</p>
+                        </a>
+                        <a href="perfil-ong.php">
+                        <div class="card-participacao">
+                            <img src="../../assets/images/projeto-sem-foto.png" alt="Imagem do projeto">
+                            <div class="info-card">
+                                <div class="info-cima">
+                                    <div>
+                                        <h3 class="titulo-ong">Nome da ONG</h3>
+                                        <p class="projeto-de-ong">ONG</p>
+                                    </div>
+                                    <p><span>9</span> Projetos</p>
                                 </div>
-                                <p class="ong-responsavel">Ong Responsável</p>
-                            </div>
-                            <div class="info-baixo">
-                                <ul>
-                                    <li>Saúde</li>
-                                    <li>Ambiente</li>
-                                    <li>Esporte</li>
-                                </ul>
+                                <div class="info-baixo">
+                                    <ul>
+                                        <li>Saúde</li>
+                                        <li>Ambiente</li>
+                                        <li>Esporte</li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="card-participacao">
-                        <img src="../../assets/images/projeto-sem-foto.png" alt="Imagem do projeto">
-                        <div class="info-card">
-                            <div class="info-cima">
-                                <div>
-                                    <h3 class="titulo-ong">Nome da ONG</h3>
-                                    <p class="projeto-de-ong">ONG</p>
+                        </a>
+                        <a href="perfil-ong.php">
+                        <div class="card-participacao">
+                            <img src="../../assets/images/projeto-sem-foto.png" alt="Imagem do projeto">
+                            <div class="info-card">
+                                <div class="info-cima">
+                                    <div>
+                                        <h3 class="titulo-ong">Nome da ONG</h3>
+                                        <p class="projeto-de-ong">ONG</p>
+                                    </div>
+                                    <p><span>9</span> Projetos</p>
                                 </div>
-                                <p><span>9</span> Projetos</p>
-                            </div>
-                            <div class="info-baixo">
-                                <ul>
-                                    <li>Saúde</li>
-                                    <li>Ambiente</li>
-                                    <li>Esporte</li>
-                                </ul>
+                                <div class="info-baixo">
+                                    <ul>
+                                        <li>Saúde</li>
+                                        <li>Ambiente</li>
+                                        <li>Esporte</li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
+                        </a>
+                        <a href="perfil-ong.php">
+                        <div class="card-participacao">
+                            <img src="../../assets/images/projeto-sem-foto.png" alt="Imagem do projeto">
+                            <div class="info-card">
+                                <div class="info-cima">
+                                    <div>
+                                        <h3 class="titulo-ong">Nome da ONG</h3>
+                                        <p class="projeto-de-ong">ONG</p>
+                                    </div>
+                                    <p><span>9</span> Projetos</p>
+                                </div>
+                                <div class="info-baixo">
+                                    <ul>
+                                        <li>Saúde</li>
+                                        <li>Ambiente</li>
+                                        <li>Esporte</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 </main>
-</div>
-    <?php require_once '../../components/meu-perfil-doador.php'; ?>
-</div>
 
 <?php
     $jsPagina = ['home-doador.js']; //Colocar o arquivo .js (exemplo: 'cadastro.js')

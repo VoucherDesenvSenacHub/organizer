@@ -1,0 +1,766 @@
+@import url('https://fonts.googleapis.com/css2?family=Agdasima:wght@400;700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Inter:wght@100..900&display=swap');
+
+:root {
+    --fonte: "Poppins", serif;
+    --cor-principal: #1C3464;
+    --cor-principal-claro: #203866;
+    --cor-amarelo: #E3B652;
+    --cor-amarelo-hover: #e69d00;
+    --cor-azul: #45BEE6;
+    --cor-azul-hover: #289AC0;
+    --cor-azul-escuro: #007AFF;
+}
+
+body {
+    background-color:aliceblue;
+}
+
+#principal {
+    justify-content: space-around;
+    z-index: 1;
+    width: 80%;
+    margin: auto;
+    padding: 20px;
+    background-color: #FFFFFF;
+    border-radius: 3px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    ;
+}
+
+.header-principal{
+    display: flex;
+    gap: 50px;
+    align-items: center;
+    justify-content: space-between;
+    margin: 20px;
+}
+
+.header-principal h1{
+    font-family: "Poppins", serif;
+    font-size: 30px;
+    color: #F79329;
+    margin: 0;
+}
+
+.header-principal form {
+    margin: 0;
+}
+
+/* css do imput */
+.input {
+    position: relative;
+    width: 330px; 
+    height: 40px; 
+}
+
+.input input {
+    width: 100%; 
+    height: 100%; 
+    padding-left: 10px;
+    padding-right: 50px; 
+    font-size: 14px; 
+    border-radius: 50px;
+}
+
+.lupa-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.lupa-icon img {
+    width: 25px;  
+    height: 25px;
+    pointer-events: none; 
+}
+
+
+/* css dos cards */
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+
+    & .card-projeto {
+        height: fit-content;
+        display: flex;
+    }
+}
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+}
+.div-card-geral {
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 20px;
+    gap: 20px 15px;
+}
+
+.card {
+    width: 245px;
+    height: 265px;
+    display: flex;
+    flex-direction: column;
+    background-color: red;
+    align-items: center;
+    gap: 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
+    padding: 5px;
+
+    p {
+        font-size: 18px;
+    }
+}
+
+.img-card {
+    width: 100%;
+    height: auto;
+    align-items: center;
+}
+
+.btn-card {
+    background-color: #E3B652;
+    color: black;
+    width: 170px;
+    height: 45px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+}
+
+.btn-card:hover {
+    cursor: pointer;
+    transition: 0.7s;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+}
+/* fim card */
+
+/* .card-projeto {
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    gap: 5px;
+    width: 250px;
+    height: 120px;
+    padding: 0 5px;
+    border-radius: 4px;
+    cursor: pointer;
+    border-bottom: var(--cor-amarelo) 5px solid;
+    border-left: none;
+}
+**/ 
+
+.card-projeto .dados {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    flex-wrap: wrap;
+}
+
+.card-projeto .dados h4  {
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+.card-projeto .dados .quant-voluntarios {
+    display: flex;
+    gap: 10px;
+    font-size: 13px;;
+    color: #188241;
+
+}
+
+.card-projeto .dados .quant-solicitacao {
+    display: flex;
+    gap : 10px;
+    font-size: 13px;
+    color: #FF5A79;
+
+    
+
+}  
+
+/* tela botao visualizar voluntarios ativos e solicitações */
+.tela-voluntario-ativo-solicitacao{
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.card-voluntario-ativo-solicitacao{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    padding: 20px;
+    margin: 20% auto;
+    width: 30%;
+    border-radius: 10px;
+    gap: 10px;
+}
+
+.div-button{
+    display: flex;
+    gap: 20px;
+}
+
+.v-ativos{
+    background-color: #188241;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    width: 200px;  
+    text-align: center;
+    cursor: pointer;
+}
+
+.v-solicitacoes{
+    background-color: #FF5A79;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #ccc; 
+    border-radius: 8px;
+    width: 200px;  
+    text-align: center;
+    cursor: pointer;
+}
+
+.v-ativos img, .v-solicitacoes img {
+    width: 40px; 
+    margin-bottom: 10px;  
+}
+
+.v-ativos h1, .v-solicitacoes h1 {
+    font-size: 16px;
+    color: #FFFFFF;
+}
+
+/* tela voluntarios ativos */
+.tela-voluntarios-ativos{
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 100px;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.card-voluntarios-ativos{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    padding: 20px;
+    margin: 20px auto;
+    width: 50%;
+    border-radius: 10px;
+    gap: 10px;
+}
+
+.table {
+    width: 95%;
+    margin: auto;
+    border-color: rgb(175, 175, 175);
+    border-collapse: separate;
+    border-spacing: 0 10px;
+    
+
+    th, td {
+        padding: 0.5rem;
+        text-align: left;
+    }
+
+    tbody{
+        border-collapse: separate;
+        gap: 20px;
+    }
+
+
+    tbody tr:hover {
+        background-color: rgb(175, 175, 175);
+    }
+}
+
+.table tr{
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
+    
+}
+
+.table td:last-child {
+    text-align: right; 
+    
+}
+
+.logo-empresa{
+    display: flex;
+    align-items: center; 
+    height: 100%; 
+    gap: 10px;
+}
+
+.logo-empresa img{
+    width: 60px;
+    height: auto;
+    
+}
+
+.logo-empresa h1{
+    font-size: 14px;
+    top: 5px;
+    align-items: center;
+    margin: 0; 
+    display: block;
+}
+
+.logo-empresa p{
+    font-size: 12px;
+    align-items: center;
+    margin: 0; 
+    display: block;
+}
+
+.date{
+    font-size: 14px;
+}
+
+.btn-inativar-voluntario img{
+    width: 45px;
+    height: 40px;
+    cursor: pointer;
+}
+
+/* tela notificação de voluntario deletado */
+.tela-voluntario-delete{
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 100px;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.card-voluntario-delete{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    padding: 20px;
+    margin: 20px auto;
+    width: 25%;
+    border-radius: 10px;
+    gap: 10px;
+    text-align: center;
+    position: fixed; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+}
+
+.card-voluntario-delete img {
+    width: 60px; 
+    height: auto; 
+    margin-bottom: 10px;  
+}
+
+.card-voluntario-delete h1 {
+    font-size: 32px;
+    font-family: "Comfortaa", sans-serif;
+    color: #FF5A79;
+    margin: 0;
+}
+
+/* Teela solicitações dos voluntarios */
+.tela-voluntarios-solicitacoes{
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 100px;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.card-voluntarios-solicitacoes{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    padding: 20px;
+    margin: 20px auto;
+    width: 50%;
+    border-radius: 10px;
+    gap: 10px;
+}
+
+.btn-ver-solicitacao{
+    background-color: #F29200;
+    font-family: "Poppins", serif;
+    border: none;
+    border-radius: 5px;
+    width: 140px;
+    height: 40px;
+    cursor: pointer;
+}
+
+/* tela solicitação voluntario - mensagem e aceitar ou nao */
+.tela-solicitacao-voluntario{
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 100px;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.card-solicitacao-voluntario{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    padding: 20px;
+    margin: 20px auto;
+    width: 50%;
+    border-radius: 10px;
+    gap: 10px;
+    position: fixed; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%);
+}
+.texto-solicitacao{
+    width: 100%;
+}
+
+.texto-solicitacao textarea{
+    width: 100%;
+    height: 130px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.img-usuario-solicitacao{
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center; 
+    height: 100%; 
+    gap: 10px;
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.div-img-info{
+    display: flex;
+    margin-top: 5px;
+}
+
+.img-usuario-solicitacao .info {
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center; 
+}
+.img-usuario-solicitacao h1{
+    text-align: left;
+    font-size: 14px;
+}
+
+.img-usuario-solicitacao p{
+    font-size: 12px;
+    text-align: left;
+}
+.div-btns {
+    display: flex; 
+    justify-content: center;
+    margin-bottom: 5px;
+    width: 100%; 
+}
+.div-btns button{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    font-size: 26px;
+    width: 50%;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    
+}
+.div-btns .aceitar{
+    background-color: #51CD32;
+    cursor: pointer;
+}
+.div-btns .aceitar img{
+    width: 35px;
+    height: auto;
+    
+}
+.div-btns .recusar{
+    background-color: #E64545;
+    cursor: pointer;
+}
+.div-btns .recusar img{
+    width: 35px;
+    height: auto;
+}
+
+/* tela aceitar */
+.tela-aceitar{
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 100px;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.card-aceitar{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    padding: 20px;
+    margin: 20px auto;
+    width: 25%;
+    border-radius: 10px;
+    gap: 10px;
+    position: fixed; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%);
+}
+
+.card-aceitar img {
+    width: 60px; 
+    height: auto; 
+    margin-bottom: 10px;  
+}
+
+.card-aceitar h1 {
+    font-size: 32px;
+    font-family: "Comfortaa", sans-serif;
+    color: #188241;
+    margin: 0;
+}
+
+/* tela recusar */
+.tela-recusar{
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 100px;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.card-recusar{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    padding: 20px;
+    margin: 20px auto;
+    width: 25%;
+    border-radius: 10px;
+    gap: 10px;
+    position: fixed; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%);
+}
+
+.card-recusar img {
+    width: 60px; 
+    height: auto; 
+    margin-bottom: 10px;  
+}
+
+.card-recusar h1 {
+    font-size: 32px;
+    font-family: "Comfortaa", sans-serif;
+    color: #E64545;
+    margin: 0;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .header-principal h1{
+        font-size: 16px;
+        margin-bottom: 5px;
+    }
+    .header-principal{
+        display: block;
+    }
+    .input {
+        margin-top: 10px;
+        width: 200px; 
+        height: 30px; 
+    }
+    .input input {
+        padding-right: 30px; 
+        font-size: 12px; 
+        border-radius: 50px;
+    }
+    .lupa-icon img {
+        width: 15px;  
+        height: 15px;
+    }
+    .card-voluntario-ativo-solicitacao{
+        width: 80%;
+        text-align: center;
+        position: fixed; 
+        top: 50%; 
+        left: 50%; 
+        transform: translate(-50%, -50%); 
+    }
+    .v-ativos{
+        background-color: #188241;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        width: 200px;  
+        text-align: center;
+        cursor: pointer;
+    }
+    .v-solicitacoes{
+        width: 150px;  
+    }
+    .v-ativos{
+        width: 150px;  
+    }
+    .card-voluntarios-ativos{
+        width: 80%;
+    }
+    .table {
+        width: 90%;
+    }
+    .logo-empresa img{
+        width: 40px;
+        height: auto;   
+    }
+    .logo-empresa h1{
+        font-size: 12px;
+    }
+    .logo-empresa p{
+        font-size: 10px;
+    }
+    .date{
+        font-size: 12px;
+    }
+    
+    .btn-inativar-voluntario img{
+        width: 30px;
+        height: auto;
+    }
+    .card-voluntario-delete{
+        width: 60%;
+    }
+    .card-voluntario-delete img {
+        width: 35px;   
+    } 
+    .card-voluntario-delete h1 {
+        font-size: 20px;
+    }
+    .card-voluntarios-solicitacoes{
+        width: 90%;
+    }
+    .btn-ver-solicitacao{
+        font-size: 12px;
+        width: 70px;
+        height: auto;
+    }
+    .card-solicitacao-voluntario{
+        width: 90%;
+    } 
+    .texto-solicitacao textarea{
+        font-size: 12px;
+    }
+    .div-img-info img{
+        width: 50px;
+        height: auto;
+    }
+    .img-usuario-solicitacao h1{
+        font-size: 12px;
+    }
+    
+    .img-usuario-solicitacao p{
+        font-size: 10px;
+    }
+    .div-btns button{
+        width: 50%;
+        height: 30px; 
+        font-size: 14px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .div-btns .aceitar img{
+        width: 20px;
+        height: auto;   
+        
+    }
+    .div-btns .recusar img{
+        width: 20px;
+        height: auto;
+    }
+    .card-aceitar{
+        width: 60%;
+    }    
+    .card-aceitar img {
+        width: 35px; 
+    }
+    .card-aceitar h1 {
+        font-size: 20px;
+    }
+    .card-recusar{
+        width: 60%;
+    }    
+    .card-recusar img {
+        width: 35px; 
+    }
+    .card-recusar h1 {
+        font-size: 20px;
+    }
+}

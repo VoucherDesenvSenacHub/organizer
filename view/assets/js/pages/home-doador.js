@@ -1,29 +1,20 @@
-function asidebar(){
-    let aside = document.getElementById("aside");
-    aside.style.right= "0px"
+function getQueryParam(param) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(param);
 }
 
-function fechar_aside(){
-    let aside = document.getElementById("aside");
-    aside.style.right= "-230px"
+function verificarMensagem() {
+    const mensagem = getQueryParam('msg');
+
+    if (mensagem === 'volte') {
+        mostrar_toast("toast-volte-sempre");
+    }
 }
 
-function fechar_confirmacao(){
-    const confirmacao = document.getElementById('fundo-confirmacao');
-    confirmacao.classList.remove('ativo');
-}
+window.onload = function () {
+    verificarMensagem();
+};
 
-function abrir_popup_confirmacao(id){
-    const confirmacao_aside = document.getElementById(id);
-    confirmacao_aside.classList.add('ativo');
-    let aside = document.getElementById("aside");
-    aside.style.right= "-230px"
-    confirmacao_aside.addEventListener('click', (event) => {
-        if (event.target === confirmacao_aside) {
-            confirmacao_aside.classList.remove('ativo');
-        }
-    });
-}
 
 function abrir_popup_empresas(id){
     const popup_empresas = document.getElementById(id);

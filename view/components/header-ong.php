@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo isset($tituloPagina) ? $tituloPagina : 'Index'; ?></title>
+    <title><?php echo isset($tituloPagina) ? $tituloPagina : 'Sem Nome'; ?></title>
     <!-- LINK DO FONT-AWESOME -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
         integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
@@ -38,7 +38,7 @@
                 <ul>
                     <li><a href="home.php">Home</a></li>
                     <li><a href="projetos.php">Projetos</a></li>
-                    <li><a href="voluntario-projetos.php">Voluntários</a></li>
+                    <li><a href="voluntarios.php">Voluntários</a></li>
                     <li><a href="relatorios.php">Relatórios</a></li>
                 </ul>
             </nav>
@@ -59,6 +59,7 @@
     </header>
     <div id="sair-ong">
         <?php 
-            require_once 'sair-da-conta-popup.php'; 
+            require_once 'popup/logoff.php';
+            require_once 'popup/compartilhar.php';
         ?>
     </div>

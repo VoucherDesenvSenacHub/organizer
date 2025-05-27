@@ -1,120 +1,65 @@
-/* Importando o CSS do Card da ONG */
-.secoes {
-    padding: 0 20px;
+body {
+    background-color: aliceblue;
 }
 
+#aside-doador #area-topo a:nth-child(2) {
+    color: var(--cor-azul-escuro);
+}
+
+#container-conteudo {
+    overflow: hidden;
+}
+
+/* Botões ONGS e PROJETOS */
 #buttons {
     display: flex;
-    gap: 20px;
-
-    & .rs {
-        background-color:white;
-        border: none;
-        height: 40px;
-        width: fit-content;
-        border-radius: 5px;
-        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-        display: flex;
-        gap: 10px;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0 10px;
-        cursor: pointer;
-        font-size: 15px;
-        transition: 10s;
-
-        & img {
-            width: 20px;
-            height: 20px;
-            justify-content: center; 
-        };
-    
-}}
-
-#buttons .rs:hover{
-    box-shadow: rgba(0, 0, 0, 0.4) 0px 3px 8px;
+    width: 200px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    background-color: white;
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
 }
 
-.btn-salvar #like :hover{
-    color: red;
+#buttons::after {
+    content: '';
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    background-color: rgb(216, 216, 216);
+    pointer-events: none;
+    transition: .4s;
+    left: 0;
+    background-color: var(--cor-amarelo);
 }
 
-#secao-1 {
-    min-height: calc(100vh - 60px);
-    display: flex;
-    padding-block: 20px;
-    align-items: center;
-    justify-content: center;
-    scroll-margin-top: 60px;
+#buttons.active::after {
+    left: 50%;
+    background-color: var(--cor-azul);
 }
 
-#secao-1 .container {
-    background-color: var(--cor-principal-claro);
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
-    border-radius: 15px;
-    padding: 50px;
-    width: 100%;
-    justify-content: space-between;
+#buttons button {
+    width: 50%;
+    padding: 9px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    transition: .3s;
+    font-weight: 600;
+    font-size: 15px;
+    z-index: 1;
+    color: var(--cor-principal);
 }
 
-#secao-1 .container #area-texto {
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    max-width: 400px;
-    gap: 10px;
-}
-
-#area-texto h1 {
-    font-size: clamp(30px, 5vw, 2.5em);
-    color: var(--cor-amarelo);
-    margin: 0;
-    line-height: 1;
-}
-
-#area-texto p {
-    color: aliceblue;
-}
-
-#area-texto button {
-    transform: translateY();
-}
-
-#area-texto button:hover {
-    transform: translateY(-3px);
-    color: aliceblue;
-}
-
-/* Área Imagem */
-#area-img {
-    max-width: 400px;
-}
-
-#area-img img {
-    width: 100%;
-}
-
-@media (max-width: 990px) {
-    #secao-1 .container {
-        flex-direction: column-reverse;
-        text-align: center;
-        align-items: center;
-    }
-
-    #secao-1 .container #area-texto {
-        align-items: center;
-    }
+#buttons.active button#btn-ong:hover,
+#buttons:not(.active) button#btn-projeto:hover {
+    background-color: #f0f0f0;
 }
 
 
 /* SEÇÃO 2 */
 #secao-2 {
-    min-height: calc(100vh - 60px);
     display: flex;
-    align-items: center;
-    scroll-margin-top: 60px;
-    background-color: aliceblue;
-    padding: 40px;
 }
 
 #secao-2 .container {
@@ -122,6 +67,7 @@
     align-items: flex-start;
     gap: 30px;
     width: 100%;
+    /* background-color: red; */
 }
 
 #secao-2 h1 {
@@ -131,187 +77,32 @@
 }
 
 #principal {
-    display:flex;
-    /* width: 1200px; */
+    /* display: flex; */
     width: 100%;
-    overflow:hidden;
-    gap: 30px;
+    /* overflow: hidden; */
 }
 
-
-#cards {
+#control-box {
     display: flex;
-    gap: 80px;
+    flex-wrap: nowrap;
+    gap: 30px;
     transform: translateX(0);
-    transition: .6s;
+    transition: 0.6s;
 }
 
-/* CARD DA ONG */
+/* CARD ONG */
 .box-ongs {
     display: flex;
-    gap: 75px;
-    justify-content: space-between;
+    gap: 20px 5px;
+    justify-content: space-around;
+    align-content: flex-start;
     flex-wrap: wrap;
-    width: 1200px;
+    flex: 0 0 100%;
+    height: fit-content;
 }
 
-@media (max-width: 1204px) {
+@media (max-width: 830px) {
     #secao-2 .container {
         align-items: center;
-    }
-
-    .box-ongs {
-        justify-content: space-evenly;
-    }
-
-    #principal {
-        justify-content: space-around;
-        flex-direction: column;
-        width: 100%;
-    }
-}
-
-/* SEÇÃO 3 */
-
-#secao-3 .container {
-    flex-direction: column;
-    gap: 50px;
-    padding: 50px 0;
-}
-
-#secao-3 h1 {
-    font-size: 2em;
-    color: var(--cor-amarelo);
-}
-
-#secao-3 #info {
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
-    gap: 30px;
-    flex-wrap: wrap;
-}
-
-#secao-3 #info div {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 400px;
-    text-align: center;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    padding: 25px;
-    border-radius: 10px;
-    gap: 15px;
-    background-color: var(--cor-principal-claro);
-    transition: .3s;
-}
-
-#secao-3 #info div:hover {
-    transform: translateY(-5px);
-    box-shadow: rgba(0, 0, 0, 0.6) 0px 3px 8px;
-}
-
-#secao-3 #info div i {
-    font-size: 60px;
-    color: var(--cor-amarelo);
-}
-
-#secao-3 #info div h3 {
-    color: aliceblue;
-    font-weight: 500;
-}
-
-#secao-3 #info div p {
-    font-size: 14px;
-    color: slategrey;
-}
-
-#secao-3 #scroll-home {
-    width: 40px;
-    height: 40px;
-    border: none;
-    border: 3px solid var(--cor-amarelo);
-    background: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    text-decoration: none;
-    color: var(--cor-amarelo);
-    font-size: 18px;
-    transform: translateY(0);
-    transition: .3s;
-}
-
-#secao-3 #scroll-home:hover {
-    filter: brightness(.7);
-    transform: translateY(-4px);
-}
-
-.card-projeto {
-    width: 250px;
-    background-color: white;
-    /* box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px; */
-    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
-    border-radius: 10px;
-    overflow: hidden;
-    position: relative;
-    transition: .3s;
-}
-
-/* Imagem do Projeto */
-#principal  .mae-cards .card-projeto .img-projeto {
-    width: 100%;
-    height: 130px;
-    background-color: rgba(0, 0, 0, .2);
-    color: grey;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex: wrap;
-
-}
-/* Texto Resumo*/
-.card-projeto .info-projeto {
-    padding: 5px 10px 20px 10px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.card-projeto p {
-    font-size: 12px;
-    text-align: justify;
-    line-height: 1;
-}  
-
-#principal .mae-cards{
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    align-items: center;
-    width: 1200px;
-    height: 100%;
-    gap: 50px;  
-}
-
-.box-ongs  {
-    justify-content: center;
-
-}
-
-.btn-paginacao {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin: 20px 0;
-
-    & .bts { 
-        padding: 5px 10px;
-        border: none;
-        border-radius: 5px;
-        background-color: white;
-        color: black;
-        cursor: pointer;
     }
 }

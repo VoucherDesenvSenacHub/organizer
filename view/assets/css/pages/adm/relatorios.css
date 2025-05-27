@@ -1,3 +1,5 @@
+/* Utilizar essa folha de estilo para as páginas que utilizarem os gráficos renderizados */
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 #principal {
@@ -29,6 +31,7 @@
         justify-content: space-between;
         align-items: center;
         margin-bottom: 10px;
+        z-index: 999;
 
         button {
             border: none;
@@ -40,13 +43,14 @@
     .card1 {
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: start;
         background-color: white;
         color: black;
         border-radius: 10px;
         box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.2);
         padding: 20px;
-        width: 620px;
+        width: 48%;
+        height: 400px;
         text-align: left;
         font-size: 20px;
     }
@@ -93,6 +97,31 @@
         animation: animacao 1s ease;
     }  
 }
+
+.grafico-linhas, .graficos, .grafico-horizontal{
+    display: flex;
+    padding-top: 40px;
+    position: absolute;
+    font-size: 0.7em;
+}
+.graficos {
+    font-size: 0.5em;
+}
+.barra{
+    width: 10%;
+    background-color: rgb(141, 217, 255);
+
+}
+.grafico-pizza{
+    font-size: 0.6em;
+}
+.ponto{
+    position: relative;
+    width: 8px;
+    height: 8px;
+    background-color: blue;
+    border-radius: 50%;
+}
 @keyframes animacao {
     0% {
         top: 100%;
@@ -105,6 +134,7 @@
 .quadrado2{
     display: flex;
     align-items: center;
+    margin-top: 315px;
     flex-direction: row;
     justify-content: center;
 
@@ -117,4 +147,43 @@
     img{
         margin: 1%;
     }
+}
+
+/* Responsividade Mobile */
+
+@media (max-width: 700px){
+    main {
+        width: 95%;
+    }
+    #principal {
+        margin: 10px auto;
+        .cards {
+            flex-direction: column;
+            margin: 5px 10px;
+        }
+        .card1 {
+            width: 100%;
+            height: 250px;
+        }
+        .titulo {
+            font-size: 0.7em;
+        }
+        
+        .icon {
+            font-size: 0.5em;
+            img{
+                width: 50%;
+            }
+        }
+        .graficos, .grafico-linhas, .grafico-pizza, .grafico-horizontal{
+            font-size: 0.35em;
+        }
+        .quadrado2{
+            margin-top: 170px;
+            p {
+                font-size: 0.4em;
+            }
+        }
+    }
+
 }

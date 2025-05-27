@@ -90,6 +90,7 @@ main .container h1 {
 @media (max-width: 1190px) {
     .caixa-noticias {
         align-items: center;
+        flex: 1;
     }
 
     .caixa-noticias .container-cards {

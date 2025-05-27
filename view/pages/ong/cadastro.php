@@ -4,6 +4,7 @@
     require_once '../../components/header.php';
     require_once '../../../model/Bancos.php';
     require_once '../../../model/Estados.php';
+    require_once '../../../model/Cidades.php';
     
     
 ?>
@@ -48,7 +49,7 @@
                         </div>
                         <div>
                             <label for="telefone">Telefone</label><br>
-                            <input type="number" id="foneOng" placeholder="(00) 0000-0000">
+                            <input type="text" id="foneOng" placeholder="(00) 0000-0000">
                         </div>
                         <div>
                             <label for="cnpj">cnpj</label><br>
@@ -134,20 +135,25 @@
                 </div>
                 <div>
                     <label for="cidade">Cidade</label><br>
-                    <input type="text" id="cidade" placeholder="Campo Grande" minlength="3" maxlength="50">
+                    <input list="cidade">
+                    <datalist id="cidade">
+                        <?php foreach ($cidades_ms as $cidade) { ?>
+                            <option value="<?php echo $cidade ?>">
+                            <?php } ?>
+                    </datalist>
                 </div>
                 <div>
                     <label for="cep">CEP</label><br>
                     <input type="text" id="cep" placeholder="00000-000">
                 </div>
                 <div>
-                    <label for="uf">UF</label><br>
-                    <select name="uf" id="uf">
-                        <?php 
-                        foreach ($estados as $uf) {?>
-                        <option value="<?php echo $uf ?>"><?php echo $uf ?></option>
-                        <?php }?>
-                    </select>
+                <label for="cidade">UF</label><br>
+                <select name="cidade" id="cidade">
+                    <?php
+                    foreach ($estados as $uf) {?>
+                    <option value="<?php echo $uf ?>"><?php echo $uf ?></option>
+                    <?php } ?>
+                </select>
                 </div>
             </div>
             
@@ -260,6 +266,15 @@
             </a>
 </div>
 </form>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
+<script type="text/javascript">
+    $("#foneOng").mask("(00) 0 0000-0000");
+    $("#cnpj").mask("00.000.000/0000-00");
+    $("#cep").mask("00000-000");
+    $("#cpf").mask("000.000.000-00");
+    $("#telefone").mask("(00) 0 0000-0000");
+</script>
 
     <?php
         $jsPagina = ['ongs.js']; //Colocar o arquivo .js

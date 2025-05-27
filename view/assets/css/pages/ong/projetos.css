@@ -1,0 +1,152 @@
+@import url(../../components/editar-projeto.css);
+
+#editar-projeto-popup .container-popup .box-edit button {
+    background-color: #51CD32;
+    color: var(--cor-principal);
+}
+
+#nav-bar ul li:nth-child(2) a {
+    color: var(--cor-amarelo);
+    font-weight: bold;
+}
+
+body {
+    background-color: aliceblue;
+}
+
+#principal {
+    justify-content: space-around;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    background-color: #FFFFFF;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.header-principal {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header-principal h1 {
+    color:#F79329;  
+    font-size: 30px;
+    font-weight: 700;
+    padding: 10px;
+    text-align: center;
+}
+
+#qnt-busca {
+    text-align: center;
+    padding-top: 30px;
+}
+
+.input-buscar-projetos {
+    width: 100%;
+    height: 40px;
+    border-radius: 50px;
+    padding: 10px 40px 10px 10px;
+    box-sizing: border-box;
+}
+
+.botao-novo-projeto {
+    background-color: #51CD32;
+    color: var(--cor-principal);
+    font-size: 15px;
+    font-weight: 600;
+    width: 210px;
+    height: 40px;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+    transform: translateY(0);
+    transition: .3s;
+}
+
+.botao-novo-projeto:hover {
+    cursor: pointer;
+    transform: translateY(-2px);
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+#form-busca {
+    display: flex;
+    align-items: center;
+    max-width: 350px;
+    width: 100%;
+}
+
+#form-busca input {
+    background-color: white;
+    border: none;
+    outline: none;
+    border-radius: 24px;
+    padding: 10px 65px 10px 15px;
+    transition: .3s;
+    width: 100%;
+    border: solid 1px var(--cor-principal);
+}
+
+#form-busca .btn {
+    font-size: 20px;
+    padding: 0;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    margin-left: -42px;
+}
+
+.div-card-geral {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    padding-top: 20px;
+    gap: 20px 15px;
+}
+
+.card {
+    width: 245px;
+    height: 265px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
+    padding: 5px;
+}
+
+.card p {
+    font-size: 18px;
+}
+
+.img-card {
+    width: 100%;
+    height: auto;
+    align-items: center;
+}
+
+.btn-card {
+    background-color: #E3B652;
+    color: black;
+    width: 170px;
+    height: 45px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+}
+
+.btn-card:hover {
+    cursor: pointer;
+    transition: 0.7s;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 750px) {
+    .header-principal {
+        flex-direction: column;
+    }
+}
