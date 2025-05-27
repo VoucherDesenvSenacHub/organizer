@@ -1,59 +1,44 @@
 <?php
 $tituloPagina = 'Solicitação de ONGS';
-$cssPagina = ['adm/home.css'];
+$cssPagina = ['adm/solicitacoes.css'];
 require_once '../../components/header-adm.php';
 ?>
 <main class="container">
     <h1>SOLICITAÇÃO DE ONGS</h1>
-    <div class="dashboard">
-        <fieldset id="section-ong">
-            <!-- <legend><i class="fa-solid fa-house-flag"></i> SOLICITAÇÃO DE ONGS</legend> -->
-            <table id="table-ong">
-                <thead>
-                    <tr>
-                        <th>NOME</th>
-                        <th>RESPONSÁVEL</th>
-                        <th>DATA</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td data-label="NOME">Ong 1</td>
-                        <td data-label="RESPONSÁVEL">João</td>
-                        <td data-label="DATA">12/05/2025</td>
-                        <td>
-                            <form method="GET" action="validar-ong.php">
-                                <input type="hidden" name="id" value="">
-                                <button class="fa-solid fa-eye"></button>
-                            </form>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td data-label="NOME">Ong 1</td>
-                        <td data-label="RESPONSÁVEL">João</td>
-                        <td data-label="DATA">12/05/2025</td>
-                        <td>
-                            <form method="GET" action="validar-ong.php">
-                                <input type="hidden" name="id" value="">
-                                <button class="fa-solid fa-eye"></button>
-                            </form>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td data-label="NOME">Ong 1</td>
-                        <td data-label="RESPONSÁVEL">João</td>
-                        <td data-label="DATA">12/05/2025</td>
-                        <td>
-                            <form method="GET" action="validar-ong.php">
-                                <input type="hidden" name="id" value="">
-                                <button class="fa-solid fa-eye"></button>
-                            </form>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </fieldset>
+    <div class="box-cards">
+        <div class="card-solicitacao">
+            <div class="nome">
+                <h3>Nome da ONG</h3>
+                <small>Responsável</small>
+            </div>
+            <small class="cnpj" >12/05/2025</small>
+            <form action="validar-ong.php" method="GET">
+                <input type="hidden" name="id">
+                <button class="fa-solid fa-eye"></button>
+            </form>
+        </div>
+        <div class="card-solicitacao">
+            <div class="nome">
+                <h3>Nome da ONG</h3>
+                <small>Responsável</small>
+            </div>
+            <small>12/05/2025</small>
+            <form action="validar-ong.php" method="GET">
+                <input type="hidden" name="id">
+                <button class="fa-solid fa-eye"></button>
+            </form>
+        </div>
+        <div class="card-solicitacao">
+            <div class="nome">
+                <h3>Nome da ONG</h3>
+                <small>Responsável</small>
+            </div>
+            <small>12/05/2025</small>
+            <form action="validar-ong.php" method="GET">
+                <input type="hidden" name="id">
+                <button class="fa-solid fa-eye"></button>
+            </form>
+        </div>
     </div>
 </main>
 <?php
