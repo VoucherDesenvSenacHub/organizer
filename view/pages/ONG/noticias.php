@@ -1,7 +1,9 @@
 <?php
 $tituloPagina = 'Notícias'; // Definir o título da página
-$cssPagina = ['ong/noticias.css']; //Colocar o arquivo .css 
+$cssPagina = ['ong/noticias.css']; //Colocar o arquivo .css
 require_once '../../components/header-ong.php';
+require_once '../../../model/NoticiasModel.php'; 
+
 $noticia = (object) [
     'codnot' => '',
     'titulo' => '',
@@ -10,8 +12,17 @@ $noticia = (object) [
     'subtexto' => ''
 ];
 $acao = 'NOVA NOTICIA';
+
 require_once '../../components/popup/formulario-noticia.php';
 ?>
+<div id="toast-projeto" class="toast">
+    <i class="fa-regular fa-circle-check"></i>
+    Projeto Criado com Sucesso!
+</div>
+<div id="toast-projeto-erro" class="toast erro">
+    <i class="fa-solid fa-triangle-exclamation"></i>
+    Falha ao Criar Projeto!
+</div>
 
 <!-- Início DIV principal -->
 <div id="principal">

@@ -1,12 +1,12 @@
 <?php
-// $acao = ($noticia->codnot) ? 'EDITAR NOTICIA' : 'NOVA NOTICIA';
+$acao = ($noticia->codnot) ? 'EDITAR NOTICIA' : 'NOVA NOTICIA';
 $btn_text = ($noticia->codnot) ? 'SALVAR ALTERAÇÃO' : 'CRIAR NOTICIA';
 // $meta = (int)$meta;
 ?>
 <div class="popup-fundo" id="editar-noticia-popup">
     <div class="container-popup">
         <button class="btn-fechar-popup fa-solid fa-xmark" onclick="fechar_popup('editar-noticia-popup')"></button>
-        <form action="noticia-edicao .php" method="POST">
+        <form action="noticias.php" method="POST">
             <input type="hidden" name="id" value="<?= $noticia->codnot ?>">
             <div class="box-edit">
                 <h1><?= $acao ?></h1>
@@ -38,6 +38,7 @@ $btn_text = ($noticia->codnot) ? 'SALVAR ALTERAÇÃO' : 'CRIAR NOTICIA';
                     <input id="fotos" type="file" name="fotos[]" multiple>
                 </div>
                 <button class="btn"><?= $btn_text ?> <i class="fa-solid fa-floppy-disk"></i></button>
+                
             </div>
         </form>
     </div>

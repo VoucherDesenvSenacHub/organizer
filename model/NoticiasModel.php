@@ -73,13 +73,13 @@
                 $stmt->bindParam(':subtexto', $subtexto);
                 $stmt->execute();
                 if ($stmt->rowCount() > 0) {
-                    header('Location: .php?msg=sucesso');
+                    header('Location: noticias.php?msg=sucesso');
                 } else {
-                    header('Location: .php');
+                    header('Location: noticias.php?msg=kkkkk');
                 }
                 exit;
             } catch (PDOException $e) {
-                header('Location: .php?msg=erro');
+                header('Location: noticias.php?msg=erro');
                 exit;
             }
         }        
