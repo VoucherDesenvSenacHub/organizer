@@ -6,7 +6,7 @@
         </p>
         <div class="acoes">
             <p>Por : Ong Tal</p>
-            <a href="perfil-noticia.php"><button class="btn">Leia Mais</button></a>
+            <a href="../ong/perfil-noticia.php"><button class="btn">Leia Mais</button></a>
         </div>
     </div>
     <div class="imagem-noticia">
