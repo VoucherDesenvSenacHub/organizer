@@ -8,7 +8,7 @@
         <h5><?= $projeto->nome ?></h5>
         <p><?= $projeto->resumo ?></p>
         <div class="barra-doacao">
-            <?php $barra = isset($barra) ? $barra : 0; ?>
+            <?php $barra = isset($barra) ? $barra : rand(0, 100); ?>
             <span><?= $barra ?>%</span>
             <div class="barra">
                 <div class="barra-verde" style="width: <?= $barra ?>%;"></div>
