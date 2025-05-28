@@ -94,7 +94,7 @@
               <div class="ONG-form-group">
                 <label>Descrição</label>
                 <div class="ONG-input-container ONG-textarea-container">
-                  <textarea readonly>Lorem ipsum...</textarea>
+                  <textarea>Lorem ipsum...</textarea>
                   <button class="ONG-edit-btn">
                     <i data-lucide="pencil"></i>
                   </button>
