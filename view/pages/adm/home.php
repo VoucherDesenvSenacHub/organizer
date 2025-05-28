@@ -52,9 +52,11 @@ require_once '../../components/header-adm.php';
             <div class="card-adm">
                 <h4>INATIVAR</h4>
                 <span>Confirme a inativação do projeto solicitados pela ONG.</span>
+                <a href="solicitacao-inativar-projeto-ong.php">
                 <div><i class="fa-solid fa-trash-can"></i>
-                    <p>5 Solicitações</p>
-                </div>
+                <p>5 Solicitações</p>
+            </div>
+            </a>
             </div>
         </fieldset>
 
