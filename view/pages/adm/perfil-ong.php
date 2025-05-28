@@ -1,16 +1,38 @@
-<?php 
-    //CONFIGURAÇÕES DA PÁGINA
-    $tituloPagina = 'Perfil da ONG | Organizer';
-    $cssPagina = ['adm/perfil-ong.css'];
-    require_once '../../components/header-adm.php';
+<?php
+//CONFIGURAÇÕES DA PÁGINA
+$tituloPagina = 'Perfil da ONG | Organizer';
+$cssPagina = ['adm/perfil-ong.css'];
+require_once '../../components/header-adm.php';
 
-    //IMPORTS
-    require_once __DIR__ . '/../../../model/ProjetoModel.php';
+//IMPORTS
+require_once __DIR__ . '/../../../model/ProjetoModel.php';
 
-    //CARREGA CARDS DE PROJETOS
-    $projetoModel = new Projeto();
-    $lista = $projetoModel->listar(); 
+//CARREGA CARDS DE PROJETOS
+$projetoModel = new Projeto();
+$lista = $projetoModel->listar();
+
+$ong = (object) [
+    'codong' => '',
+    'titulo' => '',
+    'subtitulo' => '',
+    'texto' => '',
+    'subtexto' => ''
+];
+
+$acao = 'EDITAR ONG';
+
+require_once '../../components/popup/formulario-ong.php';
+require_once '../../components/popup/inativar-ong.php';
 ?>
+
+<div id="toast-projeto" class="toast">
+    <i class="fa-regular fa-circle-check"></i>
+    Projeto salvo com Sucesso!
+</div>
+<div id="toast-projeto-erro" class="toast erro">
+    <i class="fa-solid fa-triangle-exclamation"></i>
+    Falha ao salvar Projeto!
+</div>
 
 <main>
     <div class="container" id="container-principal">
@@ -20,7 +42,7 @@
                 <div class="btn-salvar">
                     <button id="share" class="fa-solid fa-share-nodes" onclick="abrir_popup('compartilhar-popup')"></button>
                     <button id="like" class="fa-solid fa-heart" onclick="abrir_popup('login-obrigatorio-popup')"></button>
-                    
+
                 </div>
             </div>
             <div id="dados-ong">
@@ -32,8 +54,12 @@
                     <p><span>9 </span>Projetos Criados</p>
                 </div>
                 <div id="acoes">
-                    <button class="btn" onclick="abrir_popup('login-obrigatorio-popup')"><i class="fa-solid fa-pen-to-square"></i>Editar</button>
-                    <button class="btn" id="btn-voluntario" onclick="abrir_popup('login-obrigatorio-popup')"><i class="fa-solid fa-trash-can"></i>Inativar</button>
+                    <button class="btn" id="btn-editar" onclick="abrir_popup('editar-ong-popup')">
+                        <i class="fa-solid fa-pen-to-square"></i> Editar
+                    </button>
+                    <button class="btn" id="btn-inativar" onclick="abrir_popup('inativar-ong-popup')">
+                        <i class="fa-solid fa-trash-can"></i> Inativar
+                    </button>
                 </div>
             </div>
             <div id="imagem">
@@ -86,8 +112,8 @@
                     <h3>Notícias</h3>
                 </div>
                 <div class="mini-cards">
-                    <?php require '../../components/cards/card-noticia.php';?>
-                    <?php require '../../components/cards/card-noticia.php';?>
+                    <?php require '../../components/cards/card-noticia.php'; ?>
+                    <?php require '../../components/cards/card-noticia.php'; ?>
                 </div>
             </div>
         </section>
@@ -98,7 +124,7 @@
                     <h3>Projetos</h3>
                 </div>
                 <div class="mini-cards">
-                    <?php foreach($lista as $projeto) {
+                    <?php foreach ($lista as $projeto) {
                         require '../../components/cards/card-projeto.php';
                     } ?>
                 </div>
@@ -108,6 +134,6 @@
 </main>
 
 <?php
-    $jsPagina = [];
-    require_once '../../components/footer.php';
+$jsPagina = ['perfil-ong.js'];;
+require_once '../../components/footer.php';
 ?>
