@@ -77,7 +77,7 @@ class Usuario
         try {
             $query = "UPDATE $this->tabela 
                       SET nome = :nome, telefone = :telefone, cpf = :cpf, data_nascimento = :data, email = :email
-                      WHERE coddoador = :id";
+                      WHERE usuario_id = :id";
             $stmt = $this->pdo->prepare($query);
             $stmt->bindParam(':id', $id);
             $stmt->bindParam(':nome', $nome);
