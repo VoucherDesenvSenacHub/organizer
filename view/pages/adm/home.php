@@ -1,8 +1,11 @@
 <?php
 $tituloPagina = 'Home | ADM';
-$cssPagina = ['adm/home.css'];
+$cssPagina = ['adm/home.css', 'adm/editar-adm.css']; 
 require_once '../../components/header-adm.php';
 ?>
+
+
+
 <main class="container">
     <div id="title">
         <h1>BEM VINDO</h1>
@@ -57,15 +60,6 @@ require_once '../../components/header-adm.php';
                 </div>
             </div>
         </fieldset>
-        <div id="acoes">
-            <button class="btn" id="btn-editar" onclick="abrir_popup('editar-projeto-popup')">
-                <i class="fa-solid fa-pen-to-square"></i> Editar
-            </button>
-            <button class="btn" id="btn-inativar" onclick="abrir_popup('inativar-projeto-popup')">
-                <i class="fa-solid fa-trash-can"></i> Inativar
-            </button>
-        </div>
-
         <fieldset id="section-ong">
             <legend><i class="fa-solid fa-house-flag"></i> ONGS</legend>
             <table id="table-ong">
@@ -74,6 +68,7 @@ require_once '../../components/header-adm.php';
                         <th>#</th>
                         <th>NOME</th>
                         <th>PROJETOS</th>
+                        <th>RESPONSAVEL</th>
                         <th>CRIADO</th>
                         <th></th>
                     </tr>
@@ -83,37 +78,30 @@ require_once '../../components/header-adm.php';
                         <td data-label="#">0</td>
                         <td data-label="NOME">ONG 1</td>
                         <td data-label="PROJETOS">15</td>
+                        <td data-label="Responsaveis">Responsavel1</td>
                         <td data-label="CRIADO">12/05/2025</td>
                         <td>
-                            <form method="GET">
-                                <input type="hidden" name="id" value="">
-                                <button class="fa-solid fa-pen-to-square"></button>
-                            </form>
-                            </button>
+                            <button class="fa-solid fa-pen-to-square" onclick="abrirPopupEdicao(this, 'ong')"></button>
                         </td>
                     </tr>
                     <tr>
                         <td data-label="#">1</td>
                         <td data-label="NOME">ONG 2</td>
                         <td data-label="PROJETOS">15</td>
+                        <td data-label="Responsaveis">Responsavel2</td>
                         <td data-label="CRIADO">12/05/2025</td>
                         <td>
-                            <form method="GET">
-                                <input type="hidden" name="id" value="">
-                                <button class="fa-solid fa-pen-to-square"></button>
-                            </form>
+                            <button class="fa-solid fa-pen-to-square" onclick="abrirPopupEdicao(this, 'ong')"></button>
                         </td>
                     </tr>
                     <tr>
                         <td data-label="#">2</td>
                         <td data-label="NOME">ONG 3</td>
                         <td data-label="PROJETOS">15</td>
+                        <td data-label="Responsaveis">Responsavel3</td>
                         <td data-label="CRIADO">12/05/2025</td>
                         <td>
-                            <form method="GET">
-                                <input type="hidden" name="id" value="">
-                                <button class="fa-solid fa-pen-to-square"></button>
-                            </form>
+                            <button class="fa-solid fa-pen-to-square" onclick="abrirPopupEdicao(this, 'ong')"></button>
                         </td>
                     </tr>
                 </tbody>
@@ -140,36 +128,30 @@ require_once '../../components/header-adm.php';
                         <td data-label="ARRECADADO">R$ 15.000</td>
                         <td data-label="CRIADO">12/05/2025</td>
                         <td>
-                            <form method="GET">
-                                <input type="hidden" name="id" value="">
-                                <button class="fa-solid fa-pen-to-square"></button>
-                            </form>
+                            <button class="fa-solid fa-pen-to-square"
+                                onclick="abrirPopupEdicao(this, 'projeto')"></button>
                         </td>
                     </tr>
                     <tr>
                         <td data-label="#">1</td>
                         <td data-label="NOME">Projeto 2</td>
                         <td data-label="ONG">ONG 2</td>
-                        <td data-label="ARRECADADO">R$ 5.000</td>
+                        <td data-label="ARRECADADO">R$ 15.000</td>
                         <td data-label="CRIADO">12/05/2025</td>
                         <td>
-                            <form method="GET">
-                                <input type="hidden" name="id" value="">
-                                <button class="fa-solid fa-pen-to-square"></button>
-                            </form>
+                            <button class="fa-solid fa-pen-to-square"
+                                onclick="abrirPopupEdicao(this, 'projeto')"></button>
                         </td>
                     </tr>
                     <tr>
-                        <td data-label="#">2</td>
+                        <td data-label="#">3</td>
                         <td data-label="NOME">Projeto 3</td>
                         <td data-label="ONG">ONG 3</td>
-                        <td data-label="ARRECADADO">R$ 500</td>
+                        <td data-label="ARRECADADO">R$ 15.000</td>
                         <td data-label="CRIADO">12/05/2025</td>
                         <td>
-                            <form method="GET">
-                                <input type="hidden" name="id" value="">
-                                <button class="fa-solid fa-pen-to-square"></button>
-                            </form>
+                            <button class="fa-solid fa-pen-to-square"
+                                onclick="abrirPopupEdicao(this, 'projeto')"></button>
                         </td>
                     </tr>
                 </tbody>
@@ -196,36 +178,30 @@ require_once '../../components/header-adm.php';
                         <td data-label="DOAÇÕES">R$ 5.000</td>
                         <td data-label="CRIADO">01/01/2025</td>
                         <td>
-                            <form method="GET">
-                                <input type="hidden" name="id" value="">
-                                <button class="fa-solid fa-pen-to-square"></button>
-                            </form>
+                            <button class="fa-solid fa-pen-to-square"
+                                onclick="abrirPopupEdicao(this, 'doador')"></button>
                         </td>
                     </tr>
                     <tr>
-                        <td data-label="#">1</td>
+                        <td data-label="#">2</td>
                         <td data-label="NOME">João</td>
                         <td data-label="EMAIL">joao@organizer.com</td>
                         <td data-label="DOAÇÕES">R$ 3.400</td>
                         <td data-label="CRIADO">01/01/2025</td>
                         <td>
-                            <form method="GET">
-                                <input type="hidden" name="id" value="">
-                                <button class="fa-solid fa-pen-to-square"></button>
-                            </form>
+                            <button class="fa-solid fa-pen-to-square"
+                                onclick="abrirPopupEdicao(this, 'doador')"></button>
                         </td>
                     </tr>
                     <tr>
-                        <td data-label="#">2</td>
+                        <td data-label="#">3</td>
                         <td data-label="NOME">Maria</td>
                         <td data-label="EMAIL">maria@gmail.com</td>
                         <td data-label="DOAÇÕES">R$ 20.000</td>
                         <td data-label="CRIADO">01/01/2025</td>
                         <td>
-                            <form method="GET">
-                                <input type="hidden" name="id" value="">
-                                <button class="fa-solid fa-pen-to-square"></button>
-                            </form>
+                            <button class="fa-solid fa-pen-to-square"
+                                onclick="abrirPopupEdicao(this, 'doador')"></button>
                         </td>
                     </tr>
                 </tbody>
@@ -233,7 +209,10 @@ require_once '../../components/header-adm.php';
         </fieldset>
     </div>
 </main>
+
+
 <?php
-$jsPagina = ['perfil-projeto.js'];
+$jsPagina = ['editar-adm.js'];
+require_once '../../components/popup/editar-adm.php';
 require_once '../../components/footer.php';
 ?>
