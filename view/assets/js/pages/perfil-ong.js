@@ -92,12 +92,27 @@ document.addEventListener('DOMContentLoaded', function () {
       input.contentEditable = false;
     });
 
+    // Verificar checkboxes selecionados
+    const checkedBoxes = document.querySelectorAll('.ONG-checkbox-container input[type="checkbox"]:checked');
+    const selectedAreas = Array.from(checkedBoxes).map(cb => {
+    const label = document.querySelector(`label[for="${cb.id}"]`);
+      return label ? label.textContent : cb.id;
+    });
+
+    if (selectedAreas.length > 0) {
+      editedFields.push({
+      field: 'Áreas de atuação',
+      value: selectedAreas.join(', ')
+    });
+    }
+
     // Se todos os campos são válidos, salvar as alterações
     if (isValid && editedFields.length > 0) {
       alert(`Alterações salvas com sucesso!\n\n${editedFields.map(field => `${field.field}: ${field.value}`).join('\n')}`);
-    } else if (editedFields.length === 0) {
-      alert('Nenhuma alteração foi feita.');
+      } else if (editedFields.length === 0) {
+        alert('Nenhuma alteração foi feita.');
     }
+
   }
 
   // Adicionar evento de clique a cada header de accordion
