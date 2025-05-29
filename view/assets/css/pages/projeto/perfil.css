@@ -172,6 +172,7 @@ section#apresentacao {
 #carousel {
     width: 400px;
     height: 250px;
+    min-height: 250px;
 }
 
 /* Carrossel grande */
