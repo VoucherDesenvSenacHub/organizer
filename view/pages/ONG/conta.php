@@ -31,7 +31,7 @@
                 <div class="ONG-input-container">
                   <div class="ONG-input-with-icon">
                     <i data-lucide="building-2"></i>
-                    <span>Salvando o Mundo</span>
+                    <input type="text" value="Salvando o Mundo" class="editing">
                   </div>
                   <button class="ONG-edit-btn">
                     <i data-lucide="pencil"></i>
@@ -94,7 +94,7 @@
               <div class="ONG-form-group">
                 <label>Descrição</label>
                 <div class="ONG-input-container ONG-textarea-container">
-                  <textarea readonly>Lorem ipsum...</textarea>
+                  <textarea >Lorem ipsum...</textarea>
                   <button class="ONG-edit-btn">
                     <i data-lucide="pencil"></i>
                   </button>
