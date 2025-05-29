@@ -73,7 +73,7 @@ require_once '../../components/layout/base-inicio.php';
                         </div>
                     </div>
                 </div>
-                <a class="saiba-mais-projeto" href="perfil-projeto.php">Saiba Mais</a>
+                <a class="saiba-mais-projeto" href="../projeto/perfil.php?id=1">Saiba Mais</a>
             </div>
         <?php } ?>
     </div>
