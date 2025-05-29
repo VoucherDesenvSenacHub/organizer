@@ -1,12 +1,9 @@
 <?php
 $tituloPagina = 'Cartões | Organizer'; // Definir o título da página
 $cssPagina = ["doador/cartoes.css"]; //Colocar o arquivo .css (exemplo: 'ONG/cadastro.css')
-require_once '../../components/header-doador.php';
+require_once '../../components/layout/base-inicio.php';
 ?>
-
 <body>
-
-
     <!-- COMEÇAR SEU CÓDIGO AQUI -->
     <div class="conteiner">
         <div class="principal">

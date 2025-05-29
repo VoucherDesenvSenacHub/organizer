@@ -1,10 +1,9 @@
 <?php
 $tituloPagina = 'Favoritos | Organizer'; // Definir o título da página
 $cssPagina = ['doador/favoritos.css']; //Colocar o arquivo .css 
-require_once '../../components/header-doador.php';
+require_once '../../components/layout/base-inicio.php';
 ?>
 <main>
-
     <section class="secoes" id="secao-2">
         <div class="container">
             <h1>FAVORITOS</h1>
