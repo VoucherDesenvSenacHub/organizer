@@ -1,7 +1,8 @@
 <?php
 $tituloPagina = 'Home | Organizer';
 $cssPagina = ['ong/home.css'];
-require_once '../../components/header-ong.php';
+require_once '../../components/layout/base-inicio.php';
+$_SESSION['perfil_usuario'] = 'ong';
 ?>
 <main class="container">
     <div id="title">
@@ -25,7 +26,7 @@ require_once '../../components/header-ong.php';
     <nav id="nav-home">
         <a href="noticias.php"><img src="../../assets/images/icons/gif-noticia.gif" alt=""><span>NOTÍCIAS</span></a>
         <a href="projetos.php"><img src="../../assets/images/icons/gif-projeto.gif" alt=""><span>PROJETOS</span></a>
-        <a href="perfil.php"><img src="../../assets/images/icons/gif-perfil.gif" alt=""><span>PERFIL</span></a>
+        <a href="conta.php"><img src="../../assets/images/icons/gif-perfil.gif" alt=""><span>PERFIL</span></a>
         <a href="voluntarios.php"><img src="../../assets/images/icons/gif-voluntario.gif" alt=""><span>VOLUNTÁRIOS</span></a>
         <a href="relatorios.php"><img src="../../assets/images/icons/gif-relatorio.gif" alt=""><span>RELATÓRIOS</span></a>
     </nav>

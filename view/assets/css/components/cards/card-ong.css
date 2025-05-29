@@ -28,6 +28,7 @@
 .card-ong .perfil .logo {
     width: 70px;
     height: 70px;
+    min-width: 70px;
     background-color: rgb(48, 48, 48);
     border-radius: 50%;
     display: flex;

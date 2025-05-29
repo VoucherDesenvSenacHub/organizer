@@ -1,6 +1,6 @@
 <?php
 $tituloPagina = 'Home | ADM';
-$cssPagina = ['adm/home.css', 'adm/editar-adm.css']; 
+$cssPagina = ['adm/home.css'];
 require_once '../../components/header-adm.php';
 ?>
 

@@ -1,0 +1,107 @@
+main .container-noticia {
+    max-width: 1200px;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    padding: 50px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin: 0 auto;
+}
+
+main section {
+    display: flex;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    width: 100%;
+    gap: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+section.area-materia {
+    flex-direction: column;
+    text-align: justify;
+}
+
+/* Carrossel */
+#carousel-imgs {
+    max-width: 100%;
+    max-height: 510px;
+    display: flex;
+    gap: 30px;
+    transition: 1s ease-in-out;
+}
+
+#carousel-imgs img {
+    flex: 0 0 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+/* Título */
+.area-materia p {
+    text-indent: 30px;
+}
+
+.area-materia .titulo span {
+    font-size: 14px;
+    font-weight: 500;
+    color: #aaa;
+}
+
+.area-materia .titulo h5 {
+    color: var(--cor-amarelo);
+    cursor: pointer;
+    transition: .3s;
+}
+
+.area-materia .titulo h5:hover {
+    filter: brightness(.9);
+}
+
+
+/* Subtítulo */
+.area-materia .subtitulo {
+    display: flex;
+    gap: 10px 20px;
+}
+
+.area-materia .subtitulo .sub-img {
+    border-radius: 5px;
+    overflow: hidden;
+    min-width: 430px;
+    max-height: 280px;
+    /* background-color: rgb(48, 48, 48); */
+    /* box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px; */
+}
+
+.area-materia .subtitulo .sub-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Responsividade */
+@media (max-width: 800px) {
+    .area-materia .subtitulo {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .area-materia .subtitulo .sub-img {
+        width: 100%;
+        min-width: auto;
+        margin-top: 20px;
+    }
+
+    .area-materia .subtitulo .sub-texto {
+        max-width: 450px;
+    }
+}
+
+/* Visão do doador */
+main.usuario-logado .container-noticia {
+    padding: 0;
+    box-shadow: none;
+}

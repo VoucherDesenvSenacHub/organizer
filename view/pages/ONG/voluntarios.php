@@ -65,7 +65,7 @@ $voluntarios = [
 <?php
 $tituloPagina = 'Visualizar Voluntarios por Projeto'; // Definir o título da página
 $cssPagina = ['ONG/voluntarios-projetos.css']; //Colocar o arquivo .css (exemplo: 'ONG/cadastro.css')
-require_once '../../components/header-ong.php';
+require_once '../../components/layout/base-inicio.php';
 ?>
 <!-- COMEÇAR SEU CÓDIGO AQUI -->
 <div id="principal">

@@ -22,13 +22,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const inputTexto = document.querySelector('#input-value input[type="number"]');
     const radioOutroValor = document.querySelector('#input-value input[type="radio"]');
 
-    if (inputTexto && radioOutroValor) {
-        inputTexto.addEventListener('focus', () => {
-            radioOutroValor.checked = true;
-            // opcional: disparar evento de change, se precisar
-            radioOutroValor.dispatchEvent(new Event('change'));
-        });
-    }
+    inputTexto.addEventListener('focus', () => {
+        radioOutroValor.checked = true;
+        // opcional: disparar evento de change, se precisar
+        radioOutroValor.dispatchEvent(new Event('change'));
+    });
 
     let btns = document.querySelectorAll('#btns-group .icon-title');
     let container = document.querySelectorAll('.container-painel');
@@ -110,18 +108,18 @@ function changeSlideBig() {
 setInterval(changeSlideBig, 2500);
 
 // UPLOAD DE FOTOS NO CADASTRO - (SÓ PODE ENVIAR 5 IMAGENS)
-const fotosInput = document.getElementById('fotos');
-if (fotosInput) {
-    fotosInput.addEventListener('change', function () {
-        let qt_img = document.getElementById('qt-img');
-        qt_img.innerText = `${this.files.length}/5`;
-        if (this.files.length > 5) {
-            alert('Você só pode enviar no máximo 5 arquivos!');
-            qt_img.innerText = `0/5`;
-            this.value = '';
-        }
-    });
-}
+
+document.getElementById('fotos').addEventListener('change', function () {
+    let qt_img = document.getElementById('qt-img');
+    qt_img.innerText = `${this.files.length}/5`;
+    if (this.files.length > 5) {
+        alert('Você só pode enviar no máximo 5 arquivos!');
+        qt_img.innerText = `0/5`;
+        this.value = '';
+    }
+});
+
+
 
 function getQueryParam(param) {
     const urlParams = new URLSearchParams(window.location.search);
