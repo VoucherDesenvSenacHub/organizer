@@ -1,7 +1,7 @@
 <?php 
 $class = $class ?? '';
 $nome = $projeto->nome ?? 'Nome do Projeto';
-$descricao = $projeto->descricao ?? 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odit, explicabo magni? Laboriosam possimus voluptas recusandae blanditiis architecto dolorem tenetur odio, nisi molestiae facere quia facilis officia cumque dicta impedit minima.';
+$descricao =  mb_strimwidth($projeto->descricao, 0, 230, '...') ?? 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odit, explicabo magni? Laboriosam possimus voluptas recusandae blanditiis architecto dolorem tenetur odio, nisi molestiae facere quia facilis officia cumque dicta impedit minima.';
 $barra = $projeto->barra ?? '30';
 ?>
 
