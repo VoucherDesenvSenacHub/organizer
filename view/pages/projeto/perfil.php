@@ -6,10 +6,12 @@ $projetoModel = new Projeto();
 $ongModel = new Ong();
 
 //Processamento de dados
-if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['id'])) {
     $id = $_GET['id'] ?? null;
     $projeto = $projetoModel->buscarId($id);
-    $ong = $ongModel->buscarId($projeto->ong_id);
+    if ($projeto) {
+        $ong = $ongModel->buscarId($projeto->ong_id);
+    }
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -32,6 +34,11 @@ require_once 'partials/toast-projeto.php';
 ?>
 <main>
     <div class="container" id="container-principal">
+        <?php
+        if (!isset($_GET['id']) || !$projeto) {
+            exit('<h2>ERRO AO ENCONTRAR PROJETO!</h2>');
+        }
+        ?>
         <section id="apresentacao" class="container-section">
             <div id="dados-projeto">
                 <h1><?= $projeto->nome ?></h1>
