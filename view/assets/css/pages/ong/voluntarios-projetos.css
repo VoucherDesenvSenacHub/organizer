@@ -88,6 +88,13 @@ body {
     & .card-projeto {
         height: fit-content;
         display: flex;
+        position: relative;
+        bottom: 0px;
+        transition: 0.3s ease;
+    };
+    & .card-projeto:hover {
+        bottom: 5px;
+        cursor: pointer;
     }
 }
 .cards {
@@ -195,8 +202,34 @@ body {
     left: 0;
     top: 0;
     width: 100%;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: brightness(0.5);
+    /* position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease; */
+}
+.tela-voluntario-ativo-solicitacao.ativo {
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    padding: 15px 35px;
+    gap: 50px;
+    margin-top: 100%;
+    height: 150px;
+    transition: .5s ease;
+    color: aliceblue;
 }
 
 .card-voluntario-ativo-solicitacao{
@@ -210,6 +243,16 @@ body {
     width: 30%;
     border-radius: 10px;
     gap: 10px;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    /* background-color: white;
+    border-radius: 10px;
+    display: flex;
+    padding: 15px 35px;
+    gap: 50px;
+    margin-top: 100%;
+    height: 150px;
+    transition: .5s ease;
+    color: aliceblue; */
 }
 
 .div-button{
@@ -228,6 +271,8 @@ body {
     width: 200px;  
     text-align: center;
     cursor: pointer;
+
+
 }
 
 .v-solicitacoes{
@@ -263,7 +308,9 @@ body {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
+    transition: opacity 0.3s ease, visibility 0.3s ease;
 }
+
 
 .card-voluntarios-ativos{
     display: flex;
@@ -276,6 +323,7 @@ body {
     width: 50%;
     border-radius: 10px;
     gap: 10px;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
 .table {

@@ -14,11 +14,13 @@ const btnRecusar = document.getElementById('recusar');
 const telaRecusar = document.getElementById('tela-recusar');
 
 btnCard.forEach(card => {
-    card.addEventListener('click', function () { telaAtivoPendentesVoluntario.style.display = "block"; })
+    card.addEventListener('click', function () { telaAtivoPendentesVoluntario.style.display = "block";})
 });
 
 btnAtivos.onclick = function() {
     telaVoluntariosAtivos.style.display = "block";
+    // telaVoluntariosAtivos.classList.add('ativo');\
+    
 }
 
 btnDeleteVoluntario.forEach( card => {
