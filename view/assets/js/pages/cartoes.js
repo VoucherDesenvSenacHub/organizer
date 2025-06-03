@@ -5,6 +5,8 @@ document.addEventListener('DOMContentLoaded', function() {
     let cartaoSelecionado = null;
 
     // ==================== FUNÇÕES PRINCIPAIS ====================
+
+
     function abrirPopup(id) {
         const popup = document.getElementById(id);
         if (popup) {

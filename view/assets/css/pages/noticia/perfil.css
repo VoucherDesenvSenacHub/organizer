@@ -105,3 +105,7 @@ main.usuario-logado .container-noticia {
     padding: 0;
     box-shadow: none;
 }
+
+#main-doador .container #container-conteudo {
+    padding-inline: 10px;
+}

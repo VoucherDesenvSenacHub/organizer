@@ -172,6 +172,7 @@ section#apresentacao {
 #carousel {
     width: 400px;
     height: 250px;
+    min-height: 250px;
 }
 
 /* Carrossel grande */
@@ -345,7 +346,7 @@ section#apresentacao {
 }
 
 #main-doador .container #container-conteudo {
-    padding-inline: 20px;
+    padding-inline: 10px;
 }
 
 /* Botões de Editar e Inativar */

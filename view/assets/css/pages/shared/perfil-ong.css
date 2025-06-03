@@ -255,3 +255,7 @@ main.usuario-logado #container-principal {
     padding: 0;
     box-shadow: none;
 }
+
+#main-doador #container-conteudo {
+    padding-inline: 10px;
+}

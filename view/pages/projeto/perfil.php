@@ -1,12 +1,17 @@
 <?php
 //Lógica e dependências primeiro
 require_once __DIR__ . "/../../../model/ProjetoModel.php";
+require_once __DIR__ . "/../../../model/OngModel.php";
 $projetoModel = new Projeto();
+$ongModel = new Ong();
 
 //Processamento de dados
-if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['id'])) {
     $id = $_GET['id'] ?? null;
     $projeto = $projetoModel->buscarId($id);
+    if ($projeto) {
+        $ong = $ongModel->buscarId($projeto->ong_id);
+    }
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -29,6 +34,11 @@ require_once 'partials/toast-projeto.php';
 ?>
 <main>
     <div class="container" id="container-principal">
+        <?php
+        if (!isset($_GET['id']) || !$projeto) {
+            exit('<h2>ERRO AO ENCONTRAR PROJETO!</h2>');
+        }
+        ?>
         <section id="apresentacao" class="container-section">
             <div id="dados-projeto">
                 <h1><?= $projeto->nome ?></h1>
@@ -136,12 +146,12 @@ require_once 'partials/toast-projeto.php';
                                     <p>Logo</p>
                                 </div>
                                 <div class="nome">
-                                    <h2>Nome da ONG</h2>
-                                    <p>Área de Atuação</p>
+                                    <h2><?= $ong->nome ?></h2>
+                                    <!-- <p>Área de Atuação</p> -->
                                 </div>
                             </div>
                             <div class="acoes-ong">
-                                <a href="perfil-ong.php" class="saiba-mais-ong">Conhecer ONG</a>
+                                <a href="../ong/perfil.php?id=<?= $projeto->ong_id ?>" class="saiba-mais-ong">Conhecer ONG</a>
                                 <div class="btn-salvar">
                                     <button id="share" class="fa-solid fa-share-nodes" onclick="abrir_popup('compartilhar-popup')"></button>
                                     <button id="like" class="fa-solid fa-heart" onclick="abrir_popup('login-obrigatorio-popup')"></button>
