@@ -2,7 +2,7 @@
 //CONFIGURAÇÕES DA PÁGINA
 $tituloPagina = 'Perfil da ONG | Organizer';
 $cssPagina = ['adm/perfil-ong.css'];
-require_once '../../components/header-adm.php';
+require_once '../../components/layout/base-inicio.php';
 
 //IMPORTS
 require_once __DIR__ . '/../../../model/ProjetoModel.php';
@@ -10,29 +10,7 @@ require_once __DIR__ . '/../../../model/ProjetoModel.php';
 //CARREGA CARDS DE PROJETOS
 $projetoModel = new Projeto();
 $lista = $projetoModel->listar();
-
-$ong = (object) [
-    'codong' => '',
-    'titulo' => '',
-    'subtitulo' => '',
-    'texto' => '',
-    'subtexto' => ''
-];
-
-$acao = 'EDITAR ONG';
-
-require_once '../../components/popup/formulario-ong.php';
-require_once '../../components/popup/inativar-ong.php';
 ?>
-
-<div id="toast-projeto" class="toast">
-    <i class="fa-regular fa-circle-check"></i>
-    Projeto salvo com Sucesso!
-</div>
-<div id="toast-projeto-erro" class="toast erro">
-    <i class="fa-solid fa-triangle-exclamation"></i>
-    Falha ao salvar Projeto!
-</div>
 
 <main>
     <div class="container" id="container-principal">
@@ -54,12 +32,8 @@ require_once '../../components/popup/inativar-ong.php';
                     <p><span>9 </span>Projetos Criados</p>
                 </div>
                 <div id="acoes">
-                    <button class="btn" id="btn-editar" onclick="abrir_popup('editar-ong-popup')">
-                        <i class="fa-solid fa-pen-to-square"></i> Editar
-                    </button>
-                    <button class="btn" id="btn-inativar" onclick="abrir_popup('inativar-ong-popup')">
-                        <i class="fa-solid fa-trash-can"></i> Inativar
-                    </button>
+                    <button class="btn" onclick="abrir_popup('login-obrigatorio-popup')"><i class="fa-solid fa-pen-to-square"></i>Editar</button>
+                    <button class="btn" id="btn-voluntario" onclick="abrir_popup('login-obrigatorio-popup')"><i class="fa-solid fa-trash-can"></i>Inativar</button>
                 </div>
             </div>
             <div id="imagem">
@@ -134,6 +108,6 @@ require_once '../../components/popup/inativar-ong.php';
 </main>
 
 <?php
-$jsPagina = ['perfil-ong.js'];;
+$jsPagina = [];
 require_once '../../components/footer.php';
 ?>
