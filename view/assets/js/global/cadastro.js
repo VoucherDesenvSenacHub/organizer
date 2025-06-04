@@ -45,6 +45,16 @@ function validarCampo(campo, indice, mensagem, tamanho) {
     return true;
 }
 
+function validarSelect(campo, indice, mensagem) {
+    if (!campo.value) {
+        visor[indice].innerHTML = `${icon} ${mensagem}`;
+        campo.focus();
+        return false;
+    }
+    visor[indice].innerHTML = '';
+    return true;
+}
+
 function validarEmail(campo, indice, mensagem) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     
