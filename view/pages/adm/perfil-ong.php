@@ -134,10 +134,6 @@ require_once '../../components/popup/inativar-ong.php';
 </main>
 
 <?php
-<<<<<<< HEAD
 $jsPagina = ['perfil-ong.js'];;
-=======
-$jsPagina = [];
->>>>>>> 01e3c0286948149107d86fb9d4e3dec041da1088
 require_once '../../components/footer.php';
 ?>
