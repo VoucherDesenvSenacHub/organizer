@@ -1,116 +1,132 @@
-<?php 
-    require_once __DIR__ . "\..\config\database.php";
-    Class Projeto {
-        private $tabela = 'cadprojeto';
-        private $pdo; 
+<?php
+require_once __DIR__ . "\..\config\database.php";
+class Projeto
+{
+    private $tabela = 'projetos';
+    private $pdo;
 
-        public function __construct() {
-            global $pdo;
-            $this->pdo = $pdo;
-        }
+    public function __construct()
+    {
+        global $pdo;
+        $this->pdo = $pdo;
+    }
 
-        function listar() {
+    function listar($id = null)
+    {
+        if ($id) {
+            $query = "SELECT * FROM $this->tabela WHERE ong_id = :id";
+            $stmt = $this->pdo->prepare($query);
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        } else {
             $query = "SELECT * FROM $this->tabela";
             $stmt = $this->pdo->prepare($query);
-            $stmt->execute();
-            $stmt->setFetchMode(PDO::FETCH_CLASS, __CLASS__);
-            return $stmt->fetchAll(); 
         }
 
-        function buscarId($id) {
-            $query = "SELECT * FROM $this->tabela WHERE codproj = :id";
-            $stmt = $this->pdo->prepare($query);
-            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-            $stmt->execute();
-            $stmt->setFetchMode(PDO::FETCH_CLASS, __CLASS__);
-            return $stmt->fetch(); 
-        }
+        $stmt->execute();
+        $stmt->setFetchMode(PDO::FETCH_CLASS, __CLASS__);
+        return $stmt->fetchAll();
+    }
 
-        function buscarNome($nome) {
-            $query = "SELECT * FROM $this->tabela WHERE nome LIKE :nome";
-            $stmt = $this->pdo->prepare($query);
-            $stmt->bindValue(':nome', "%{$nome}%", PDO::PARAM_STR);
-            $stmt->execute();
-            $stmt->setFetchMode(PDO::FETCH_CLASS, __CLASS__);
-            return $stmt->fetchAll();
-        }
 
-        function buscarValor($id) {
-            $query = "SELECT SUM(valor) AS total FROM valprojeto WHERE codproj = :id";
-            $stmt = $this->pdo->prepare($query);
-            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-            $stmt->execute();
-            $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
-            return $resultado['total'] ?? 0;
-        } 
+    function buscarId($id)
+    {
+        $query = "SELECT * FROM $this->tabela WHERE projeto_id = :id";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+        $stmt->setFetchMode(PDO::FETCH_CLASS, __CLASS__);
+        return $stmt->fetch();
+    }
 
-        function contarDoadores($id) {
-            $query = "SELECT COUNT(*) AS total FROM valprojeto WHERE codproj = :id";
-            $stmt = $this->pdo->prepare($query);
-            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-            $stmt->execute();
-            $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
-            return $resultado['total'] ?? 0;
-        }
-        
+    function buscarNome($nome)
+    {
+        $query = "SELECT * FROM $this->tabela WHERE nome LIKE :nome";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindValue(':nome', "%{$nome}%", PDO::PARAM_STR);
+        $stmt->execute();
+        $stmt->setFetchMode(PDO::FETCH_CLASS, __CLASS__);
+        return $stmt->fetchAll();
+    }
 
-        function editar($id, $nome, $resumo, $sobre, $meta) {
-            try {
-                $query = "UPDATE $this->tabela
-                          SET nome = :nome, resumo = :resumo, sobre = :sobre, meta = :meta
-                          WHERE codproj = :id";
-                $stmt = $this->pdo->prepare($query);
-                $stmt->bindParam(':nome', $nome);
-                $stmt->bindParam(':resumo', $resumo);
-                $stmt->bindParam(':sobre', $sobre);
-                $stmt->bindParam(':meta', $meta);
-                $stmt->bindParam(':id', $id);
-                $stmt->execute();
-        
-                if ($stmt->rowCount() > 0) {
-                    header("Location: perfil-projeto.php?id=$id&msg=sucesso");
-                } else {
-                    header("Location: perfil-projeto.php?id=$id");
-                }
-                exit;
-            } catch (PDOException $e) {
-                echo "Erro no UPDATE: " . $e->getMessage();
-                header("Location: perfil-projeto.php?id=$id&msg=erro");
-                exit;
+    function buscarValor($id)
+    {
+        $query = "SELECT SUM(valor) AS total FROM valprojeto WHERE codproj = :id";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+        $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $resultado['total'] ?? 0;
+    }
+
+    function contarDoadores($id)
+    {
+        $query = "SELECT COUNT(*) AS total FROM valprojeto WHERE codproj = :id";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+        $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $resultado['total'] ?? 0;
+    }
+
+
+    function editar($id, $nome, $descricao, $meta)
+    {
+        try {
+            $query = "UPDATE $this->tabela
+                          SET nome = :nome, descricao = :descricao, meta = :meta
+                          WHERE projeto_id = :id";
+            $stmt = $this->pdo->prepare($query);
+            $stmt->bindParam(':nome', $nome);
+            $stmt->bindParam(':descricao', $descricao);
+            $stmt->bindParam(':meta', $meta);
+            $stmt->bindParam(':id', $id);
+            $stmt->execute();
+
+            if ($stmt->rowCount() > 0) {
+                header("Location: perfil.php?id=$id&msg=sucesso");
+            } else {
+                header("Location: perfil.php?id=$id");
             }
-        }        
-
-        function criar($nome, $resumo, $sobre, $meta) {
-            try {
-                $query = "INSERT INTO $this->tabela (nome, resumo, sobre, meta)
-                          VALUES (:nome, :resumo, :sobre, :meta)";
-                $stmt = $this->pdo->prepare($query);
-                $stmt->bindParam(':nome', $nome);
-                $stmt->bindParam(':resumo', $resumo);
-                $stmt->bindParam(':sobre', $sobre);
-                $stmt->bindParam(':meta', $meta);
-                $stmt->execute();
-                if ($stmt->rowCount() > 0) {
-                    header('Location: projetos.php?msg=sucesso');
-                } else {
-                    header('Location: projetos.php');
-                }
-                exit;
-            } catch (PDOException $e) {
-                header('Location: projetos.php?msg=erro');
-                exit;
-            }
-        }       
-        
-        function doacao($codproj, $valor, $coddoador) {
-            $query = 'INSERT INTO valprojeto (codproj, valor, coddoador)
-                      VALUES (:projeto, :valor, :doador)';
-            $stmt = $this->pdo->prepare($query);
-            $stmt->bindParam(':projeto', $codproj);
-            $stmt->bindParam(':valor', $valor);
-            $stmt->bindParam(':doador', $coddoador);
-            $stmt->execute();
-            return $stmt->rowCount();
+            exit;
+        } catch (PDOException $e) {
+            // echo "Erro no UPDATE: " . $e->getMessage();
+            header("Location: perfil.php?id=$id&msg=erro");
+            exit;
         }
     }
-?>
+
+    function criar($nome, $descricao, $meta, $ong_id)
+    {
+        try {
+            $query = "INSERT INTO $this->tabela (nome, descricao, meta, ong_id)
+                          VALUES (:nome, :descricao, :meta, :ong_id)";
+            $stmt = $this->pdo->prepare($query);
+            $stmt->bindParam(':nome', $nome);
+            $stmt->bindParam(':descricao', $descricao);
+            $stmt->bindParam(':meta', $meta);
+            $stmt->bindParam(':ong_id', $ong_id);
+            $stmt->execute();
+            if ($stmt->rowCount() > 0) {
+                header('Location: projetos.php?msg=sucesso');
+            } else {
+                header('Location: projetos.php');
+            }
+            exit;
+        } catch (PDOException $e) {
+            header('Location: projetos.php?msg=erro');
+            exit;
+        }
+    }
+
+    function doacao($codproj, $valor, $coddoador)
+    {
+        $query = 'INSERT INTO valprojeto (codproj, valor, coddoador)
+                      VALUES (:projeto, :valor, :doador)';
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindParam(':projeto', $codproj);
+        $stmt->bindParam(':valor', $valor);
+        $stmt->bindParam(':doador', $coddoador);
+        $stmt->execute();
+        return $stmt->rowCount();
+    }
+}

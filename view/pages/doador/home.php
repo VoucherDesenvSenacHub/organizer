@@ -2,10 +2,10 @@
 //CONFIGURAÇÕES DA PÁGINA
 $tituloPagina = 'Home - Doador';
 $cssPagina = ['doador/home.css'];
-require_once '../../components/header-doador.php';
+require_once '../../components/layout/base-inicio.php';
 ?>
 <section id="cabecalho">
-    <h1>Olá, <?= implode(' ', array_slice(explode(' ', trim($doador->nome)), 0, 2)) ?>.</h1>
+    <h1>Olá, <?= implode(' ', array_slice(explode(' ', trim($usuario->nome)), 0, 2)) ?>.</h1>
     <p>Seja bem-vindo à sua área de doador.</p>
     <div id="info-doacao">
         <div class="item-info">
@@ -73,7 +73,7 @@ require_once '../../components/header-doador.php';
                         </div>
                     </div>
                 </div>
-                <a class="saiba-mais-projeto" href="perfil-projeto.php">Saiba Mais</a>
+                <a class="saiba-mais-projeto" href="../projeto/perfil.php">Saiba Mais</a>
             </div>
         <?php } ?>
     </div>

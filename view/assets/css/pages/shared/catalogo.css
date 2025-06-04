@@ -1,17 +1,4 @@
-/* CSS DAS TELAS DE ONG E PROJETO (NAVBAR) */
-
-#nav-bar ul li a.active {
-    color: var(--cor-amarelo);
-    font-weight: bold;
-}
-
-body {
-    background-color: aliceblue;
-}
-
-main {
-    padding: 0 20px;
-}
+@import url(../projeto/lista.css);
 
 #container-catalogo {
     background-color: aliceblue;
@@ -277,4 +264,18 @@ section#box-ongs {
     #form-filtro #esc-regiao:hover {
         width: 190px;
     }
+}
+
+/* Se o usuário for um doador: */
+.usuario-logado {
+    padding: 0;
+}
+
+.usuario-logado #container-catalogo {
+    background: none;    
+    padding: 0;
+}
+
+.usuario-logado section#box-ongs {
+    gap: 30px 10px;
 }

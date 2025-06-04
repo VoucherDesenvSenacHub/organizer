@@ -2,7 +2,7 @@
 //CONFIGURAÇÕES DA PÁGINA
 $tituloPagina = 'Projetos';
 $cssPagina = ['ong/projetos.css'];
-require_once __DIR__ . '/../../components/header-ong.php';
+require_once '../../components/layout/base-inicio.php';
 
 //IMPORTS
 require_once __DIR__ . '/../../../model/ProjetoModel.php';
@@ -12,18 +12,25 @@ $projetoModel = new Projeto();
 $lista = $projetoModel->listar();
 
 //PESQUISAR PROJETO
-if ($_SERVER['REQUEST_METHOD'] = 'GET' && isset($_GET['pesquisa'])) {
+if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['pesquisa'])) {
     $pesquisa = $_GET['pesquisa'];
     $lista = $projetoModel->buscarNome($pesquisa);
 }
 
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $nome = $_POST['nome'];
+    $descricao = $_POST['descricao'];
+    $meta = $_POST['meta'];
+    $ong = 1;
+    $projetoModel->criar($nome, $descricao, $meta, $ong);
+}
+
 //FORMULÁRIO DE CRIAÇÃO DE PROJETO (popup)
 $projeto = (object) [
-    'codproj' => '',
+    'projeto_id' => '',
     'nome' => '',
     'meta' => '',
-    'resumo' => '',
-    'sobre' => ''
+    'descricao' => ''
 ];
 require_once __DIR__ . '/../../components/popup/formulario-projeto.php';
 ?>

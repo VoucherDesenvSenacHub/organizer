@@ -3,10 +3,6 @@
 @import url(../doador/fazer-doacao.css);
 @import url(../doador/ser-voluntario.css);
 
-body {
-    background-color: aliceblue;
-}
-
 #container-principal {
     background-color: white;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
@@ -252,4 +248,14 @@ section#apresentacao {
     #dados-ong p {
         font-size: 14px;
     }
+}
+
+/* Visão do doador: */
+main.usuario-logado #container-principal {
+    padding: 0;
+    box-shadow: none;
+}
+
+#main-doador #container-conteudo {
+    padding-inline: 10px;
 }

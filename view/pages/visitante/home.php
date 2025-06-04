@@ -1,9 +1,13 @@
-<!-- PEGAR A BASE NO README.md -->
-
 <?php
 $tituloPagina = 'Home | Organizer'; // Definir o título da página
 $cssPagina = ['visitante/home.css']; //Colocar o arquivo .css 
-require_once '../../components/header.php';
+require_once '../../components//layout/base-inicio.php';
+
+require_once '../../../model/OngModel.php';
+$ongModel = new Ong();
+
+$lista = $ongModel->listar();
+// var_dump($lista);
 ?>
 <!-- COMEÇAR SEU CÓDIGO AQUI -->
 <div id="toast-volte-sempre" class="toast">
@@ -29,180 +33,9 @@ require_once '../../components/header.php';
         <div class="container">
             <h1>ONGS EM DESTAQUES</h1>
             <div class="box-ongs">
-                <div class="card-ong">
-                    <div class="perfil">
-                        <div class="logo">
-                            <p>Logo</p>
-                        </div>
-                        <div class="nome">
-                            <h2>Nome da ONG</h2>
-                            <p>Área de Atuação</p>
-                        </div>
-                    </div>
-                    <div class="descricao">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati qui odio, dignissimos
-                            alias ut, nesciunt deserunt maiores at adipisci modi dolor inventore suscipit quas quis
-                            cumque minus nobis, ipsum delectus!</p>
-                    </div>
-                    <div class="doacao">
-                        <p><span>150 </span>Doações</p>
-                        <p><span>9 </span>Projetos</p>
-                    </div>
-                    <div class="acoes-ong">
-                        <a href="perfil-ong.php" class="saiba-mais-ong">Saiba Mais</a>
-                        <div class="btn-salvar">
-                            <button id="share" class="fa-solid fa-share-nodes"
-                                onclick="abrir_popup('compartilhar-popup')"></button>
-                            <button id="like" class="fa-solid fa-heart"
-                                onclick="abrir_popup('login-obrigatorio-popup')"></button>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-ong">
-                    <div class="perfil">
-                        <div class="logo">
-                            <p>Logo</p>
-                        </div>
-                        <div class="nome">
-                            <h2>Nome da ONG</h2>
-                            <p>Área de Atuação</p>
-                        </div>
-                    </div>
-                    <div class="descricao">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati qui odio, dignissimos
-                            alias ut, nesciunt deserunt maiores at adipisci modi dolor inventore suscipit quas quis
-                            cumque minus nobis, ipsum delectus!</p>
-                    </div>
-                    <div class="doacao">
-                        <p><span>150 </span>Doações</p>
-                        <p><span>9 </span>Projetos</p>
-                    </div>
-                    <div class="acoes-ong">
-                        <a href="perfil-ong.php" class="saiba-mais-ong">Saiba Mais</a>
-                        <div class="btn-salvar">
-                            <button id="share" class="fa-solid fa-share-nodes"
-                                onclick="abrir_popup('compartilhar-popup')"></button>
-                            <button id="like" class="fa-solid fa-heart"
-                                onclick="abrir_popup('login-obrigatorio-popup')"></button>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-ong">
-                    <div class="perfil">
-                        <div class="logo">
-                            <p>Logo</p>
-                        </div>
-                        <div class="nome">
-                            <h2>Nome da ONG</h2>
-                            <p>Área de Atuação</p>
-                        </div>
-                    </div>
-                    <div class="descricao">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati qui odio, dignissimos
-                            alias ut, nesciunt deserunt maiores at adipisci modi dolor inventore suscipit quas quis
-                            cumque minus nobis, ipsum delectus!</p>
-                    </div>
-                    <div class="doacao">
-                        <p><span>150 </span>Doações</p>
-                        <p><span>9 </span>Projetos</p>
-                    </div>
-                    <div class="acoes-ong">
-                        <a href="perfil-ong.php" class="saiba-mais-ong">Saiba Mais</a>
-                        <div class="btn-salvar">
-                            <button id="share" class="fa-solid fa-share-nodes"
-                                onclick="abrir_popup('compartilhar-popup')"></button>
-                            <button id="like" class="fa-solid fa-heart"
-                                onclick="abrir_popup('login-obrigatorio-popup')"></button>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-ong">
-                    <div class="perfil">
-                        <div class="logo">
-                            <p>Logo</p>
-                        </div>
-                        <div class="nome">
-                            <h2>Nome da ONG</h2>
-                            <p>Área de Atuação</p>
-                        </div>
-                    </div>
-                    <div class="descricao">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati qui odio, dignissimos
-                            alias ut, nesciunt deserunt maiores at adipisci modi dolor inventore suscipit quas quis
-                            cumque minus nobis, ipsum delectus!</p>
-                    </div>
-                    <div class="doacao">
-                        <p><span>150 </span>Doações</p>
-                        <p><span>9 </span>Projetos</p>
-                    </div>
-                    <div class="acoes-ong">
-                        <a href="perfil-ong.php" class="saiba-mais-ong">Saiba Mais</a>
-                        <div class="btn-salvar">
-                            <button id="share" class="fa-solid fa-share-nodes"
-                                onclick="abrir_popup('compartilhar-popup')"></button>
-                            <button id="like" class="fa-solid fa-heart"
-                                onclick="abrir_popup('login-obrigatorio-popup')"></button>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-ong">
-                    <div class="perfil">
-                        <div class="logo">
-                            <p>Logo</p>
-                        </div>
-                        <div class="nome">
-                            <h2>Nome da ONG</h2>
-                            <p>Área de Atuação</p>
-                        </div>
-                    </div>
-                    <div class="descricao">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati qui odio, dignissimos
-                            alias ut, nesciunt deserunt maiores at adipisci modi dolor inventore suscipit quas quis
-                            cumque minus nobis, ipsum delectus!</p>
-                    </div>
-                    <div class="doacao">
-                        <p><span>150 </span>Doações</p>
-                        <p><span>9 </span>Projetos</p>
-                    </div>
-                    <div class="acoes-ong">
-                        <a href="perfil-ong.php" class="saiba-mais-ong">Saiba Mais</a>
-                        <div class="btn-salvar">
-                            <button id="share" class="fa-solid fa-share-nodes"
-                                onclick="abrir_popup('compartilhar-popup')"></button>
-                            <button id="like" class="fa-solid fa-heart"
-                                onclick="abrir_popup('login-obrigatorio-popup')"></button>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-ong">
-                    <div class="perfil">
-                        <div class="logo">
-                            <p>Logo</p>
-                        </div>
-                        <div class="nome">
-                            <h2>Nome da ONG</h2>
-                            <p>Área de Atuação</p>
-                        </div>
-                    </div>
-                    <div class="descricao">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati qui odio, dignissimos
-                            alias ut, nesciunt deserunt maiores at adipisci modi dolor inventore suscipit quas quis
-                            cumque minus nobis, ipsum delectus!</p>
-                    </div>
-                    <div class="doacao">
-                        <p><span>150 </span>Doações</p>
-                        <p><span>9 </span>Projetos</p>
-                    </div>
-                    <div class="acoes-ong">
-                        <a href="perfil-ong.php" class="saiba-mais-ong">Saiba Mais</a>
-                        <div class="btn-salvar">
-                            <button id="share" class="fa-solid fa-share-nodes"
-                                onclick="abrir_popup('compartilhar-popup')"></button>
-                            <button id="like" class="fa-solid fa-heart"
-                                onclick="abrir_popup('login-obrigatorio-popup')"></button>
-                        </div>
-                    </div>
-                </div>
+                <?php foreach ($lista as $ong):
+                    require '../../components/cards/card-ong.php';
+                endforeach; ?>
             </div>
         </div>
     </section>
@@ -292,7 +125,7 @@ require_once '../../components/header.php';
         Mensagem enviada com sucesso!
     </div>
     <script>
-        document.getElementById("formParceiro").addEventListener("submit", function (event) {
+        document.getElementById("formParceiro").addEventListener("submit", function(event) {
             event.preventDefault();
             this.reset();
         });

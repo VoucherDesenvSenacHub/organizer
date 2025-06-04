@@ -1,7 +1,7 @@
 <?php
 $tituloPagina = 'Ver Projetos ADM'; // Definir o título da página
 $cssPagina = ['adm/ver-projetos.css']; //Colocar o arquivo .css 
-require_once '../../components/header-adm.php';
+require_once '../../components/layout/base-inicio.php';
 
 require_once __DIR__ . "\..\..\..\model\ProjetoModel.php";
 $projetoModel = new Projeto();
@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] = 'GET' && isset($_GET['pesquisa'])) {
     <div id="principal">
         <div class="top">
             <h1 class="top-text">TODOS OS PROJETOS</h1>
-            <form id="form-busca" action="projetos.php" method="GET">
+            <form id="form-busca" action="ver-projetos.php" method="GET">
                 <input type="text" name="pesquisa" placeholder="Busque um projeto">
                 <button class="btn"><i class="fa-solid fa-search"></i></button>
             </form>

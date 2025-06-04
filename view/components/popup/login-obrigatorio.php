@@ -5,7 +5,7 @@
         </div>
         <div class="msg">
             <h1>Para realizar essa ação<br><span>faça login</span></h1>
-            <a id="logar" class="btn" href="../doador/login.php">Fazer Login</a>
+            <a id="logar" class="btn" href="../visitante/login.php">Fazer Login</a>
             <button onclick="fechar_popup('login-obrigatorio-popup')">Mais Tarde</button>
         </div>
     </div>

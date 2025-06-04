@@ -1,9 +1,7 @@
 <?php
 session_start();
-
-if (!isset($_SESSION['doador_id'])) {
-    header('Location: login.php?msg=login');
-    exit;
-}
-
+    if (!isset($_SESSION['usuario_id'])) {
+        header('Location: ../visitante/login.php?msg=login');
+        exit;
+    }
 ?>

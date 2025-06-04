@@ -1,13 +1,13 @@
 <?php
-$acao = ($projeto->codproj) ? 'EDITAR PROJETO' : 'NOVO PROJETO';
-$btn_text = ($projeto->codproj) ? 'SALVAR ALTERAÇÃO' : 'CRIAR PROJETO';
+$acao = ($projeto->projeto_id) ? 'EDITAR PROJETO' : 'NOVO PROJETO';
+$btn_text = ($projeto->projeto_id) ? 'SALVAR ALTERAÇÃO' : 'CRIAR PROJETO';
 // $meta = (int)$meta;
 ?>
 <div class="popup-fundo" id="editar-projeto-popup">
     <div class="container-popup">
         <button class="btn-fechar-popup fa-solid fa-xmark" onclick="fechar_popup('editar-projeto-popup')"></button>
-        <form action="perfil-projeto.php" method="POST">
-            <input type="hidden" name="id" value="<?= $projeto->codproj ?>">
+        <form action="#" method="POST">
+            <input type="hidden" name="id" value="<?= $projeto->projeto_id ?>">
             <div class="box-edit">
                 <h1><?= $acao ?></h1>
                 <div class="input-group">
@@ -21,13 +21,13 @@ $btn_text = ($projeto->codproj) ? 'SALVAR ALTERAÇÃO' : 'CRIAR PROJETO';
                             required>
                     </div>
                 </div>
-                <div class="input-box">
+                <!-- <div class="input-box">
                     <label for="resumo">Resumo<span>*</span></label>
-                    <textarea name="resumo" id="resumo" rows="3" required><?= $projeto->resumo ?></textarea>
-                </div>
+                    <textarea name="resumo" id="resumo" rows="3" required>RESUMO{VAR}</textarea>
+                </div> -->
                 <div class="input-box">
-                    <label for="sobre">Sobre<span>*</span></label>
-                    <textarea name="sobre" id="sobre" rows="6" required><?= $projeto->sobre ?></textarea>
+                    <label for="descricao">Descrição<span>*</span></label>
+                    <textarea name="descricao" id="descricao" rows="8" required><?= $projeto->descricao ?></textarea>
                 </div>
             </div>
             <div class="box-edit">
