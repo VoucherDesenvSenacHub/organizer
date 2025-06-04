@@ -1,15 +1,15 @@
-<?php 
-    //CONFIGURAÇÕES DA PÁGINA
-    $tituloPagina = 'Perfil da ONG | Organizer';
-    $cssPagina = ['adm/perfil-ong.css'];
-    require_once '../../components/header-adm.php';
+<?php
+//CONFIGURAÇÕES DA PÁGINA
+$tituloPagina = 'Perfil da ONG | Organizer';
+$cssPagina = ['adm/perfil-ong.css'];
+require_once '../../components/layout/base-inicio.php';
 
-    //IMPORTS
-    require_once __DIR__ . '/../../../model/ProjetoModel.php';
+//IMPORTS
+require_once __DIR__ . '/../../../model/ProjetoModel.php';
 
-    //CARREGA CARDS DE PROJETOS
-    $projetoModel = new Projeto();
-    $lista = $projetoModel->listar(); 
+//CARREGA CARDS DE PROJETOS
+$projetoModel = new Projeto();
+$lista = $projetoModel->listar();
 ?>
 
 <main>
@@ -20,7 +20,7 @@
                 <div class="btn-salvar">
                     <button id="share" class="fa-solid fa-share-nodes" onclick="abrir_popup('compartilhar-popup')"></button>
                     <button id="like" class="fa-solid fa-heart" onclick="abrir_popup('login-obrigatorio-popup')"></button>
-                    
+
                 </div>
             </div>
             <div id="dados-ong">
@@ -100,7 +100,7 @@
                     <h3>Projetos</h3>
                 </div>
                 <div class="mini-cards">
-                    <?php foreach($lista as $projeto) {
+                    <?php foreach ($lista as $projeto) {
                         require '../../components/cards/card-projeto.php';
                     } ?>
                 </div>
@@ -110,6 +110,6 @@
 </main>
 
 <?php
-    $jsPagina = [];
-    require_once '../../components/footer.php';
+$jsPagina = [];
+require_once '../../components/footer.php';
 ?>
