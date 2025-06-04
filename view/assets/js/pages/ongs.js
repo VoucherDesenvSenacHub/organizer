@@ -54,7 +54,10 @@ function buscarCEP(cep) {
 // Passar etapas do cadastro
 var pagina_atual = 0;
 var botao_voltar = document.querySelector(".voltar");
-botao_voltar.style.visibility = "hidden";
+if (!botao_voltar == null){
+    botao_voltar.style.visibility = "hidden";
+}
+
 function mudaEtapaCadastro(page, origin){
     const etapa = document.getElementById("container");
     const linha = document.querySelector(".line-0");
@@ -133,11 +136,16 @@ function esqueciSenha(status) {
     }
 }
 function slider(){
+    const box = document.querySelector(".fotos-slide");
+
     contador++;
     if (contador > 4) {
         contador=0;
     }
-    box.style.transform = `translateX(${-contador * slideWidth}px)`;
+    if(!box == null){
+        box.style.transform = `translateX(${-contador * slideWidth}px)`;
+    }
+    
 }
 
 function editarNoticia() {
@@ -200,17 +208,6 @@ document.getElementById('fotos').addEventListener('change', function () {
 function getQueryParam(param) {
   const urlParams = new URLSearchParams(window.location.search);
   return urlParams.get(param);
-}
-
-function verificarMensagem() {
-  const mensagem = getQueryParam('msg');
-
-  if (mensagem === 'sucesso') {
-    mostrar_toast("toast-projeto");
-  }
-  else if (mensagem === 'erro') {
-    mostrar_toast("toast-projeto-erro");
-  }
 }
 
 window.onload = function () {

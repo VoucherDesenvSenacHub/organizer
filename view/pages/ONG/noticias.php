@@ -15,11 +15,11 @@ require_once '../../components/popup/formulario-noticia.php';
 ?>
 <div id="toast-projeto" class="toast">
     <i class="fa-regular fa-circle-check"></i>
-    Projeto Criado com Sucesso!
+    Noticia Criado com Sucesso!
 </div>
 <div id="toast-projeto-erro" class="toast erro">
     <i class="fa-solid fa-triangle-exclamation"></i>
-    Falha ao Criar Projeto!
+    Falha ao Criar Noticia!
 </div>
 
 <!-- Início DIV principal -->
