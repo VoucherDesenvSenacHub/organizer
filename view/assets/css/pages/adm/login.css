@@ -1,9 +1,0 @@
-@import url(../../global/login.css);
-
-form h1 {
-    color: var(--cor-roxo-adm);
-}
-
-input#lembrar {
-    accent-color: var(--cor-roxo-adm);
-}

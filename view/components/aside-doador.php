@@ -4,9 +4,9 @@
         <nav>
             <a href="#" title="Doações"><i class="fa-solid fa-coins"></i><span>Doações</span>
             </a>
-            <a href="favoritos.php" title="Favoritos"><i class="fa-solid fa-heart"></i><span>Favoritos</span></a>
-            <a href="cartoes.php" title="Cartões"><i class="fa-solid fa-credit-card"></i><span>Cartões</span></a>
-            <a href="participacoes.php" title="Participações"><i class="fa-solid fa-user-group"></i><span>Participações</span></a>
+            <a href="../doador/favoritos.php" title="Favoritos"><i class="fa-solid fa-heart"></i><span>Favoritos</span></a>
+            <a href="../doador/cartoes.php" title="Cartões"><i class="fa-solid fa-credit-card"></i><span>Cartões</span></a>
+            <a href="../doador/participacoes.php" title="Participações"><i class="fa-solid fa-user-group"></i><span>Participações</span></a>
         </nav>
     </div>
     <button id="btn-sair" title="Sair" onclick="abrir_popup('sair-da-conta-popup')">

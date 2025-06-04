@@ -1,15 +1,15 @@
-<?php 
-    //CONFIGURAÇÕES DA PÁGINA
-    $tituloPagina = 'Perfil da ONG | Organizer';
-    $cssPagina = ['adm/perfil-ong.css'];
-    require_once '../../components/header-adm.php';
+<?php
+//CONFIGURAÇÕES DA PÁGINA
+$tituloPagina = 'Perfil da ONG | Organizer';
+$cssPagina = ['adm/perfil-ong.css'];
+require_once '../../components/layout/base-inicio.php';
 
-    //IMPORTS
-    require_once __DIR__ . '/../../../model/ProjetoModel.php';
+//IMPORTS
+require_once __DIR__ . '/../../../model/ProjetoModel.php';
 
-    //CARREGA CARDS DE PROJETOS
-    $projetoModel = new Projeto();
-    $lista = $projetoModel->listar(); 
+//CARREGA CARDS DE PROJETOS
+$projetoModel = new Projeto();
+$lista = $projetoModel->listar();
 ?>
 
 <<<<<<< HEAD
@@ -98,8 +98,12 @@
                 <div class="btn-salvar">
                     <button id="share" class="fa-solid fa-share-nodes" onclick="abrir_popup('compartilhar-popup')"></button>
                     <button id="like" class="fa-solid fa-heart" onclick="abrir_popup('login-obrigatorio-popup')"></button>
+<<<<<<< HEAD
                     
 >>>>>>> 6b53f1825d36cd5fe3ec87dea6deb3a1586a340d
+=======
+
+>>>>>>> 01e3c0286948149107d86fb9d4e3dec041da1088
                 </div>
             </div>
             <div id="dados-ong">
@@ -165,8 +169,8 @@
                     <h3>Notícias</h3>
                 </div>
                 <div class="mini-cards">
-                    <?php require '../../components/cards/card-noticia.php';?>
-                    <?php require '../../components/cards/card-noticia.php';?>
+                    <?php require '../../components/cards/card-noticia.php'; ?>
+                    <?php require '../../components/cards/card-noticia.php'; ?>
                 </div>
             </div>
         </section>
@@ -177,7 +181,7 @@
                     <h3>Projetos</h3>
                 </div>
                 <div class="mini-cards">
-                    <?php foreach($lista as $projeto) {
+                    <?php foreach ($lista as $projeto) {
                         require '../../components/cards/card-projeto.php';
                     } ?>
                 </div>
@@ -187,6 +191,6 @@
 </main>
 
 <?php
-    $jsPagina = [];
-    require_once '../../components/footer.php';
+$jsPagina = [];
+require_once '../../components/footer.php';
 ?>
