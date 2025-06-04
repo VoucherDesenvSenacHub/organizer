@@ -2,6 +2,7 @@ iniciarEventos(25)
 
 function proximo(indice) {
     const input = document.querySelectorAll('.inputBox > input');
+    const select = document.querySelectorAll('.inputBox > select');
      
     if (indice == 1) {
         if (
@@ -55,9 +56,10 @@ function proximo(indice) {
     else if (indice == 4) {
         if (
             !validarCampo(input[8], 9, 'Digite a agência corretamente.', 6) ||
-            !validarCampo(input[9], 10, 'Escolha o tipo de Conta.') ||
-            !validarCampo(input[10], 11, 'Digite a conta corretamente.', 8) ||
-            !validarCampo(input[11], 12, 'Digite o nome completo do titular.', 8)
+            // !validarCampo(input[9], 10, 'Escolha o tipo de Conta.') ||
+            !validarSelect(select[0], 10, 'Escolha o tipo da conta') ||
+            !validarCampo(input[9], 11, 'Digite a conta corretamente.', 8) ||
+            !validarCampo(input[10], 12, 'Digite o nome completo do titular.', 8)
         ) {
             check[3].classList.remove('input-valid');
             return false;
