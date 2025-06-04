@@ -65,7 +65,7 @@ $voluntarios = [
 <?php
 $tituloPagina = 'Visualizar Voluntarios por Projeto'; // Definir o título da página
 $cssPagina = ['ONG/voluntarios-projetos.css']; //Colocar o arquivo .css (exemplo: 'ONG/cadastro.css')
-require_once '../../components/header-ong.php';
+require_once '../../components/layout/base-inicio.php';
 ?>
 <!-- COMEÇAR SEU CÓDIGO AQUI -->
 <div id="principal">
@@ -106,7 +106,7 @@ require_once '../../components/header-ong.php';
 
 <!-- tela escolher voluntarios ativos e solicitações de novos voluntarios -->
 <div class="tela-voluntario-ativo-solicitacao" id="tela-voluntario-ativo-solicitacao">
-    <div class="card-voluntario-ativo-solicitacao">
+    <div class="card-voluntario-ativo-solicitacao" id="card-voluntario-ativo-solicitacao">
         <div class="div-button">
             <div class="v-ativos" id="v-ativos">
                 <img src="../../assets/images/icon-voluntarios.png" alt="">

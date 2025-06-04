@@ -1,10 +1,9 @@
 <?php
 $tituloPagina = 'Favoritos | Organizer'; // Definir o título da página
 $cssPagina = ['doador/favoritos.css']; //Colocar o arquivo .css 
-require_once '../../components/header-doador.php';
+require_once '../../components/layout/base-inicio.php';
 ?>
 <main>
-
     <section class="secoes" id="secao-2">
         <div class="container">
             <h1>FAVORITOS</h1>
@@ -37,7 +36,7 @@ require_once '../../components/header-doador.php';
                                 <p><span>9 </span>Projetos</p>
                             </div>
                             <div class="acoes-ong">
-                                <a href="perfil-ong.php" class="saiba-mais-ong">Saiba Mais</a>
+                                <a href="../ong/perfil.php" class="saiba-mais-ong">Saiba Mais</a>
                                 <div class="btn-salvar">
                                     <button id="share" class="fa-solid fa-share-nodes"
                                         onclick="abrir_popup('compartilhar-popup')"></button>
@@ -67,7 +66,7 @@ require_once '../../components/header-doador.php';
                                 <p><span>9 </span>Projetos</p>
                             </div>
                             <div class="acoes-ong">
-                                <a href="perfil-ong.php" class="saiba-mais-ong">Saiba Mais</a>
+                                <a href="../ong/perfil.php" class="saiba-mais-ong">Saiba Mais</a>
                                 <div class="btn-salvar">
                                     <button id="share" class="fa-solid fa-share-nodes"
                                         onclick="abrir_popup('compartilhar-popup')"></button>
@@ -97,7 +96,7 @@ require_once '../../components/header-doador.php';
                                 <p><span>9 </span>Projetos</p>
                             </div>
                             <div class="acoes-ong">
-                                <a href="perfil-ong.php" class="saiba-mais-ong">Saiba Mais</a>
+                                <a href="../ong/perfil.php" class="saiba-mais-ong">Saiba Mais</a>
                                 <div class="btn-salvar">
                                     <button id="share" class="fa-solid fa-share-nodes"
                                         onclick="abrir_popup('compartilhar-popup')"></button>
@@ -127,7 +126,7 @@ require_once '../../components/header-doador.php';
                                 <p><span>9 </span>Projetos</p>
                             </div>
                             <div class="acoes-ong">
-                                <a href="perfil-ong.php" class="saiba-mais-ong">Saiba Mais</a>
+                                <a href="../ong/perfil.php" class="saiba-mais-ong">Saiba Mais</a>
                                 <div class="btn-salvar">
                                     <button id="share" class="fa-solid fa-share-nodes"
                                         onclick="abrir_popup('compartilhar-popup')"></button>
@@ -157,7 +156,7 @@ require_once '../../components/header-doador.php';
                                 <p><span>9 </span>Projetos</p>
                             </div>
                             <div class="acoes-ong">
-                                <a href="perfil-ong.php" class="saiba-mais-ong">Saiba Mais</a>
+                                <a href="../ong/perfil.php" class="saiba-mais-ong">Saiba Mais</a>
                                 <div class="btn-salvar">
                                     <button id="share" class="fa-solid fa-share-nodes"
                                         onclick="abrir_popup('compartilhar-popup')"></button>
@@ -187,7 +186,7 @@ require_once '../../components/header-doador.php';
                                 <p><span>9 </span>Projetos</p>
                             </div>
                             <div class="acoes-ong">
-                                <a href="perfil-ong.php" class="saiba-mais-ong">Saiba Mais</a>
+                                <a href="../ong/perfil.php" class="saiba-mais-ong">Saiba Mais</a>
                                 <div class="btn-salvar">
                                     <button id="share" class="fa-solid fa-share-nodes"
                                         onclick="abrir_popup('compartilhar-popup')"></button>
@@ -217,7 +216,7 @@ require_once '../../components/header-doador.php';
                                 <p><span>9 </span>Projetos</p>
                             </div>
                             <div class="acoes-ong">
-                                <a href="perfil-ong.php" class="saiba-mais-ong">Saiba Mais</a>
+                                <a href="../ong/perfil.php" class="saiba-mais-ong">Saiba Mais</a>
                                 <div class="btn-salvar">
                                     <button id="share" class="fa-solid fa-share-nodes"
                                         onclick="abrir_popup('compartilhar-popup')"></button>
@@ -247,7 +246,7 @@ require_once '../../components/header-doador.php';
                                 <p><span>9 </span>Projetos</p>
                             </div>
                             <div class="acoes-ong">
-                                <a href="perfil-ong.php" class="saiba-mais-ong">Saiba Mais</a>
+                                <a href="../ong/perfil.php" class="saiba-mais-ong">Saiba Mais</a>
                                 <div class="btn-salvar">
                                     <button id="share" class="fa-solid fa-share-nodes"
                                         onclick="abrir_popup('compartilhar-popup')"></button>
@@ -277,7 +276,7 @@ require_once '../../components/header-doador.php';
                                 <p><span>9 </span>Projetos</p>
                             </div>
                             <div class="acoes-ong">
-                                <a href="perfil-ong.php" class="saiba-mais-ong">Saiba Mais</a>
+                                <a href="../ong/perfil.php" class="saiba-mais-ong">Saiba Mais</a>
                                 <div class="btn-salvar">
                                     <button id="share" class="fa-solid fa-share-nodes"
                                         onclick="abrir_popup('compartilhar-popup')"></button>
@@ -307,7 +306,7 @@ require_once '../../components/header-doador.php';
                                 <p><span>9 </span>Projetos</p>
                             </div>
                             <div class="acoes-ong">
-                                <a href="perfil-ong.php" class="saiba-mais-ong">Saiba Mais</a>
+                                <a href="../ong/perfil.php" class="saiba-mais-ong">Saiba Mais</a>
                                 <div class="btn-salvar">
                                     <button id="share" class="fa-solid fa-share-nodes"
                                         onclick="abrir_popup('compartilhar-popup')"></button>
@@ -339,7 +338,7 @@ require_once '../../components/header-doador.php';
                                     </div>
                                 </div>
                             </div>
-                            <a class="saiba-mais-projeto" href="perfil-projeto.php">Saiba Mais</a>
+                            <a class="saiba-mais-projeto" href="../projeto/perfil.php">Saiba Mais</a>
                         </div>
 
                         <div class="card-projeto">
@@ -364,7 +363,7 @@ require_once '../../components/header-doador.php';
                                     </div>
                                 </div>
                             </div>
-                            <a class="saiba-mais-projeto" href="perfil-projeto.php">Saiba Mais</a>
+                            <a class="saiba-mais-projeto" href="../projeto/perfil.php">Saiba Mais</a>
                         </div>
 
                         <div class="card-projeto">
@@ -389,7 +388,7 @@ require_once '../../components/header-doador.php';
                                     </div>
                                 </div>
                             </div>
-                            <a class="saiba-mais-projeto" href="perfil-projeto.php">Saiba Mais</a>
+                            <a class="saiba-mais-projeto" href="../projeto/perfil.php">Saiba Mais</a>
 
 
                         </div>
@@ -418,7 +417,7 @@ require_once '../../components/header-doador.php';
                                     </div>
                                 </div>
                             </div>
-                            <a class="saiba-mais-projeto" href="perfil-projeto.php">Saiba Mais</a>
+                            <a class="saiba-mais-projeto" href="../projeto/perfil.php">Saiba Mais</a>
                         </div>
 
                         <div class="card-projeto">
@@ -443,7 +442,7 @@ require_once '../../components/header-doador.php';
                                     </div>
                                 </div>
                             </div>
-                            <a class="saiba-mais-projeto" href="perfil-projeto.php">Saiba Mais</a>
+                            <a class="saiba-mais-projeto" href="../projeto/perfil.php">Saiba Mais</a>
                         </div>
 
                         <div class="card-projeto">
@@ -468,7 +467,7 @@ require_once '../../components/header-doador.php';
                                     </div>
                                 </div>
                             </div>
-                            <a class="saiba-mais-projeto" href="perfil-projeto.php">Saiba Mais</a>
+                            <a class="saiba-mais-projeto" href="../projeto/perfil.php">Saiba Mais</a>
                         </div>
 
                         <div class="card-projeto">
@@ -493,7 +492,7 @@ require_once '../../components/header-doador.php';
                                     </div>
                                 </div>
                             </div>
-                            <a class="saiba-mais-projeto" href="perfil-projeto.php">Saiba Mais</a>
+                            <a class="saiba-mais-projeto" href="../projeto/perfil.php">Saiba Mais</a>
                         </div>
 
                         <div class="card-projeto">
@@ -518,7 +517,7 @@ require_once '../../components/header-doador.php';
                                     </div>
                                 </div>
                             </div>
-                            <a class="saiba-mais-projeto" href="perfil-projeto.php">Saiba Mais</a>
+                            <a class="saiba-mais-projeto" href="../projeto/perfil.php">Saiba Mais</a>
                         </div>
                     </div>
                 </div>

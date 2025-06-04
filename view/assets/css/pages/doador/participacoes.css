@@ -38,7 +38,7 @@ section .container h3{
 }
 
 #secao-1{
-    width: 80%;
+    width: 90%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -81,7 +81,7 @@ a {
 
 .cards-projeto{
     display: flex;
-    gap: 6px;
+    gap: 15px;
     flex-wrap: wrap;
     justify-content: space-between;
 }

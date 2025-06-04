@@ -1,3 +1,7 @@
+body {
+  background-color: var(--cor-principal);
+}
+
 #nav-bar ul li:nth-child(1) a {
   color: var(--cor-amarelo);
   font-weight: bold;
