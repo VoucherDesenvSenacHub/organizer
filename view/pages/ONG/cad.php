@@ -1,6 +1,6 @@
 <?php
 $tituloPagina = 'Cadastro do Doador';
-$cssPagina = ['shared/cadastro.css'];
+$cssPagina = ['shared/cadastro.css', 'ong/cad.css'];
 require_once '../../components/layout/base-inicio.php';
 ?>
 
@@ -23,18 +23,18 @@ require_once '../../components/layout/base-inicio.php';
                     <div class="circle"><i class="fa-solid fa-check"></i></div>
                     <p>Endereço</p>
                 </div>
-                <div class="item">
+                <!-- <div class="item">
                     <div class="circle"><i class="fa-solid fa-check"></i></div>
                     <p>Responsável</p>
-                </div>
+                </div> -->
                 <div class="item">
                     <div class="circle"><i class="fa-solid fa-check"></i></div>
                     <p>Banco</p>
                 </div>
-                <div class="item">
+                <!-- <div class="item">
                     <div class="circle"><i class="fa-solid fa-check"></i></div>
                     <p>Login</p>
-                </div>
+                </div> -->
             </div>
             <form id="form" action="login.php" method="POST">
                 <div class="formBox">
@@ -44,7 +44,7 @@ require_once '../../components/layout/base-inicio.php';
                         <span class="visor"></span>
                     </div>
                     <div class="inputBox">
-                        <label for="telefone">Telefone<span>*</span></label>
+                        <label for="telefone">Telefone da ONG<span>*</span></label>
                         <input id="telefone" type="text" placeholder="(00) 00000-0000">
                         <span class="visor"></span>
                     </div>
@@ -54,7 +54,7 @@ require_once '../../components/layout/base-inicio.php';
                         <span class="visor"></span>
                     </div>
                     <div class="inputBox">
-                        <label for="email-ong">Email<span>*</span></label>
+                        <label for="email-ong">Email da ONG<span>*</span></label>
                         <input id="email-ong" type="email" placeholder="ong@conta.com" required>
                         <span class="visor"></span>
                     </div>
@@ -133,7 +133,7 @@ require_once '../../components/layout/base-inicio.php';
                         <button class="btn" type="button" onclick="return proximo(3)">Próximo</button>
                     </div>
                 </div>
-                <div class="formBox">
+                <!-- <div class="formBox">
                     <div class="inputBox">
                         <label for="nome-resp">Nome<span>*</span></label>
                         <input id="nome-resp" type="text" placeholder="Nome Completo">
@@ -158,7 +158,7 @@ require_once '../../components/layout/base-inicio.php';
                         <button class="btn btnVoltar" type="button" onclick="moverPara(2, 16)">Voltar</button>
                         <button class="btn" type="button" onclick="return proximo(4)">Próximo</button>
                     </div>
-                </div>
+                </div> -->
                 <div class="formBox">
                     <div class="inputBox">
                         <label for="agencia">Agência<span>*</span></label>
@@ -181,11 +181,11 @@ require_once '../../components/layout/base-inicio.php';
                         <span class="visor"></span>
                     </div>
                     <div class="btnNextBack">
-                        <button class="btn btnVoltar" type="button" onclick="moverPara(3, 16)">Voltar</button>
-                        <button class="btn" type="button" onclick="return proximo(5)">Próximo</button>
+                        <button class="btn btnVoltar" type="button" onclick="moverPara(2, 16)">Voltar</button>
+                        <button class="btn" type="submit" onclick="return proximo(4)">CADASTRAR ONG</button>
                     </div>
                 </div>
-                <div class="formBox">
+                <!-- <div class="formBox">
                     <div class="inputBox BoxG">
                         <label for="email-login">Email<span>*</span></label>
                         <input id="email-login" type="text" placeholder="usúario@conta.com">
@@ -209,7 +209,7 @@ require_once '../../components/layout/base-inicio.php';
                         <button class="btn btnVoltar" type="button" onclick="moverPara(4, 16)">Voltar</button>
                         <button class="btn" type="submit" onclick="return proximo(6)">CADASTRAR</button>
                     </div>
-                </div>
+                </div> -->
             </form>
         </div>
     </section>
