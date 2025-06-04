@@ -1,16 +1,16 @@
 <?php 
     // BANCO DE DADO LOCAL:
-        // $host = 'localhost';
-        // $port = 3306;
-        // $dbname = 'organizer';
-        // $user = 'root';
-        // $password = '';
+        $host = 'localhost';
+        $port = 3306;
+        $dbname = 'organizer';
+        $user = 'root';
+        $password = '';
 
-    $host = 'turntable.proxy.rlwy.net';
-    $port = 14796;
-    $dbname = 'organizer';
-    $user = 'root';
-    $password = 'ABfifqyKxrpFnVSdyjIUOAQKKHjgZkct'; 
+    // $host = 'turntable.proxy.rlwy.net';
+    // $port = 14796;
+    // $dbname = 'organizer';
+    // $user = 'root';
+    // $password = 'ABfifqyKxrpFnVSdyjIUOAQKKHjgZkct'; 
     
     try {
         $pdo = new PDO("mysql:host=$host;port=$port;dbname=$dbname;charset=utf8", $user, $password);
