@@ -103,10 +103,9 @@ $lista = $ongModel->listar();
             <form id="formParceiro" action=""
                 onsubmit="mensagem_enviada('toast-mensagem-enviada', 'body-forma'); return false;">
                 <label class="Cnpj" for="cnpj">CNPJ</label>
-                <input type="" id="cnpj" maxlength="15" placeholder="000.000.000-00" required>
-
+                <input type="text" id="cnpj" maxlength="18" placeholder="00.000.000/0000-00" required>
                 <label class="mens" for="mensagem">Mensagem</label>
-                <textarea style="width: 557px; height: 200px; resize: none;"  id="mensagem"
+                <textarea style="width: 99%; height: 100px; resize: none;"  id="mensagem"
                     placeholder="Ex: Somos a Coca-Cola e gostaríamos de apoiar seu projeto. Aguardo retorno!"
                     required></textarea>
                 <div class="botoes">

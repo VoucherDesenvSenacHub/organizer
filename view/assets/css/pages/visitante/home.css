@@ -374,12 +374,14 @@ body {
   display: flex;
 }
 
+
+
 .conteiner-forma {
   background-color: #1C3464;
   border-radius: 10px;
   padding: 20px;
   width: 600px;
-  height: 500px;
+  height: 400px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
@@ -457,8 +459,14 @@ body {
 
 @media (max-width:700px) {
   .conteiner-forma {
-    width: 300px;
-    height: 400px;
+    width: 90%;
+    height: auto;
+      background-color: #1C3464;
+      border-radius: 10px;
+      padding: 20px;
+      width: 90%;
+      height: auto;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   }
 
   #body-empresas .botoes button {

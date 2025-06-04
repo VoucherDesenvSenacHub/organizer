@@ -48,3 +48,21 @@ function msg_enviada(id){
         }
     });
 }
+
+    function formatarCNPJ(cnpj) {
+        // Remove tudo que não for número
+        cnpj = cnpj.replace(/\D/g, '');
+
+        // Aplica a máscara: 00.000.000/0000-00
+        return cnpj
+            .replace(/^(\d{2})(\d)/, '$1.$2')
+            .replace(/^(\d{2})\.(\d{3})(\d)/, '$1.$2.$3')
+            .replace(/\.(\d{3})(\d)/, '.$1/$2')
+            .replace(/(\d{4})(\d)/, '$1-$2');
+    }
+
+    const cnpjInput = document.getElementById('cnpj');
+
+    cnpjInput.addEventListener('input', function () {
+        this.value = formatarCNPJ(this.value);
+    });
