@@ -2,11 +2,7 @@
 //CONFIGURAÇÕES DA PÁGINA
 $tituloPagina = 'Perfil da ONG | Organizer';
 $cssPagina = ['adm/perfil-ong.css'];
-<<<<<<< HEAD
 require_once '../../components/header-adm.php';
-=======
-require_once '../../components/layout/base-inicio.php';
->>>>>>> 01e3c0286948149107d86fb9d4e3dec041da1088
 
 //IMPORTS
 require_once __DIR__ . '/../../../model/ProjetoModel.php';
@@ -14,7 +10,6 @@ require_once __DIR__ . '/../../../model/ProjetoModel.php';
 //CARREGA CARDS DE PROJETOS
 $projetoModel = new Projeto();
 $lista = $projetoModel->listar();
-<<<<<<< HEAD
 
 $ong = (object) [
     'codong' => '',
@@ -28,8 +23,6 @@ $acao = 'EDITAR ONG';
 
 require_once '../../components/popup/formulario-ong.php';
 require_once '../../components/popup/inativar-ong.php';
-=======
->>>>>>> 01e3c0286948149107d86fb9d4e3dec041da1088
 ?>
 
 <div id="toast-projeto" class="toast">
