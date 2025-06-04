@@ -1,7 +1,7 @@
 <?php 
     $tituloPagina = 'Relatórios'; // Definir o título da página
     $cssPagina = ["adm/relatorios.css"]; //Colocar o arquivo .css (exemplo: 'ONG/cadastro.css')
-    require_once '../../components/header-adm.php';
+    require_once '../../components/layout/base-inicio.php';
     require_once '../../components/graphics/vertical-bars.php';
     require_once '../../components/graphics/line-graphic.php';
     require_once '../../components/graphics/horizontal-double-bars.php';

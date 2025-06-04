@@ -1,0 +1,210 @@
+body {
+    background-color: var(--cor-principal);
+}
+
+main {
+    padding: 0 30px;
+    height: calc(100vh - 60px);
+}
+
+section {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+section .container {
+    background-color: aliceblue;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+    flex-direction: column;
+    width: 690px;
+    gap: 20px;
+    height: fit-content;
+    align-items: start;
+    overflow: hidden;
+    transition: .5s;
+}
+
+.container form {
+    display: flex;
+    gap: 30px;
+    transform: translateX(0);
+    transition: .5s ease-out;
+}
+
+section .container .btn {
+    padding: 15px;
+}
+
+section .container h1 {
+    width: 100%;
+    color: var(--cor-principal);
+}
+
+.container .line {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    position: relative;
+}
+
+.line .item {
+    display: flex;
+    flex-direction: column;
+    font-size: 11px;
+    align-items: center;
+    width: 70px;
+    text-align: center;
+    gap: 2px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.line .item:hover {
+    transform: scale(1.05);
+}
+
+.line .item.active .circle {
+    background-color: var(--cor-principal);
+    transition-delay: .5s;
+}
+
+.line .item.active p {
+    transition-delay: .5s;
+    font-weight: 600;
+    color: var(--cor-azul-escuro);
+}
+
+.line .circle {
+    width: 25px;
+    height: 25px;
+    background-color: #ccdbff;
+    border-radius: 50%;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    color: transparent;
+}
+
+.line .circle.input-valid {
+    color: aliceblue;
+    background-color: var(--cor-principal);
+}
+
+.line #linhaClara,
+.line #linhaAzul {
+    position: absolute;
+    top: 11px;
+    background-color: #ccdbff;
+    height: 3px;
+    width: 50%;
+}
+
+.line #linhaAzul {
+    width: 0%;
+    background-color: var(--cor-principal);
+    left: 25%;
+    transition: .5s ease-out;
+} 
+
+.container .formBox {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: space-between;
+    gap: 20px 0;
+    width: 630px;
+    /* background-color: red; */
+}
+
+.formBox .inputBox {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    position: relative;
+}
+
+.formBox #BoxG {
+    width: 100%;
+}
+
+.inputBox label {
+    font-size: 13px;
+}
+
+.inputBox label span {
+    font-size: 15px;
+    color: red;
+    font-weight: 600;
+}
+
+/* INPUT */
+.inputBox > input {
+    background-color: rgba(0, 0, 0, 0.07);
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    padding: 15px;
+    transition: .3s;
+    width: 100%;
+}
+
+.inputBox#mobileInput {
+    display: none;
+    visibility: hidden;
+}
+
+.inputBox > input:focus {
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+
+/* MENSAGEM DE ERRO */
+.inputBox span.visor {
+    font-size: 13px;
+    color: #fb3f3f;
+    position: absolute;
+    bottom: -19px;
+}
+
+.inputBox span i {
+    margin-right: 4px
+}
+
+/* BOTÂO */
+.container .btnNext,
+.container .btnNextBack {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.container .btnNextBack {
+    justify-content: space-between;
+}
+
+.container .btnNextBack .btnVoltar {
+    background-color: rgba(0, 0, 0, 0.07);
+}
+
+@media (max-width: 750px) {
+    main {
+        padding: 50px 0;
+        height: auto;
+    }
+
+    .inputBox#mobileInput {
+        display: block;
+    }
+
+    section .container {
+        width: 360px;
+    }
+
+    .container .formBox {
+        width: 300px;
+    }
+}
