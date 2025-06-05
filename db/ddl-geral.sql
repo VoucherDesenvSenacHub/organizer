@@ -1,36 +1,23 @@
--- /// TABELA ONG //
+-- Tabela: Bancos
 
-CREATE TABLE ongs (
-    ong_id INT PRIMARY KEY AUTO_INCREMENT,
+CREATE TABLE bancos (
+    banco_id INT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(100) NOT NULL,
-    cnpj VARCHAR(20) UNIQUE NOT NULL,
-    responsavel_id INT,
-    telefone VARCHAR(20),
-    email VARCHAR(100),
-    cep VARCHAR(10),
-    rua VARCHAR(100),
-    bairro VARCHAR(100),
-    cidade VARCHAR(100),
-    banco_id VARCHAR(20),
-    agencia VARCHAR(20),
-    conta VARCHAR(20),
-    tipo_conta ENUM('corrente', 'poupanca', 'salario') NOT NULL,
-    descricao TEXT,
-    data_cadastro TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    fk_responsavel INT,
-    fk_banco INT,
-    FOREIGN KEY (fk_responsavel) REFERENCES usuarios(usuario_id),
-    FOREIGN KEY (fk_banco) REFERENCES bancos(banco_id)
+    codigo VARCHAR(20) NOT NULL
 );
 
--- // TIPOS ONG //
-CREATE TABLE tipo_ongs (
+-- Tabela: ONGs 
+
+--  Tabela: Categorias de ONGs
+
+CREATE TABLE categorias_ongs (
     id INT PRIMARY KEY AUTO_INCREMENT,
-    nome VARCHAR(100) NOT NULL
+    nome VARCHAR(100) NOT NULL,
+    ong_id INT,
+    FOREIGN KEY (ong_id) REFERENCES ongs(ong_id)
 );
 
-
--- // USUARIOS // 
+-- Tabela: Usuários
 
 CREATE TABLE usuarios (
     usuario_id INT PRIMARY KEY AUTO_INCREMENT,
@@ -46,7 +33,7 @@ CREATE TABLE usuarios (
     data_cadastro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- // EMPRESAS PARCERIAS //
+-- Tabela : Empresas Parceiras 
 
 CREATE TABLE empresas_parceiras (
     id INT PRIMARY KEY AUTO_INCREMENT,
@@ -58,10 +45,21 @@ CREATE TABLE empresas_parceiras (
     status BOOLEAN DEFAULT TRUE
 );
 
+-- Tabela : Projetos
+CREATE TABLE projetos (
+    projeto_id INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(100) NOT NULL,
+    descricao TEXT,
+    meta DECIMAL(10,2) NOT NULL,
+    status ENUM('ativo', 'inativo', 'concluido', 'cancelado') NOT NULL DEFAULT 'ativo',
+    data_cadastro TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    ong_id INT,
+    FOREIGN KEY (ong_id) REFERENCES ongs(ong_id)
+);
 
--- // TABELA VOLUNTARIOS (Relacionamento N:N entre usuários e projetos) //
- 
- CREATE TABLE voluntarios (
+--  Tabela: Voluntários (N:N Usuários e Projetos)
+
+CREATE TABLE voluntarios (
     usuario_id INT,
     projeto_id INT,
     PRIMARY KEY (usuario_id, projeto_id),
@@ -69,74 +67,7 @@ CREATE TABLE empresas_parceiras (
     FOREIGN KEY (projeto_id) REFERENCES projetos(projeto_id)
 );
 
--- // FOTOS ONGS //
-
-CREATE TABLE fotos_ongs (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    foto TEXT NOT NULL,
-    ong_id INT,
-    FOREIGN KEY (ong_id) REFERENCES ongs(ong_id)
-);
-
--- // DOAÇÕES ONGS //
-
-CREATE TABLE doacoes_ongs (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    valor FLOAT NOT NULL,
-    dt_doacao DATE NOT NULL,
-    ong_id INT,
-    doador_id INT,
-    doacao_anonima BOOLEAN DEFAULT FALSE,
-    FOREIGN KEY (ong_id) REFERENCES ongs(ong_id),
-    FOREIGN KEY (doador_id) REFERENCES usuarios(usuario_id)
-);
-
--- // DOACOES PROJETOS //
-
-CREATE TABLE doacoes_projetos (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    valor FLOAT NOT NULL,
-    dt_doacao DATE NOT NULL,
-    doador_id INT,
-    projeto_id INT,
-    FOREIGN KEY (doador_id) REFERENCES usuarios(usuario_id),
-    FOREIGN KEY (projeto_id) REFERENCES projetos(projeto_id)
-);
-
--- // FOTOS PROJETOS //
-
-CREATE TABLE fotos_projetos (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    foto TEXT NOT NULL,
-    projeto_id INT,
-    FOREIGN KEY (projeto_id) REFERENCES projetos(projeto_id)
-);
-
-
--- // ARQUIVOS // 
-
-CREATE TABLE arquivos (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    foto TEXT NOT NULL,
-    projeto_id INT,
-    noticias_id INT,
-    FOREIGN KEY (projeto_id) REFERENCES projetos(projeto_id),
-    FOREIGN KEY (noticias_id) REFERENCES noticias(noticias_id)
-);
-
-
--- // FAVORITOS // 
-
-CREATE TABLE favoritos (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    ong_id INT,
-    usuario_id INT,
-    FOREIGN KEY (ong_id) REFERENCES ongs(ong_id),
-    FOREIGN KEY (usuario_id) REFERENCES usuarios(usuario_id)
-);
-
-
--- // NOTICIAS //
+--  Tabela: Notícias
 
 CREATE TABLE noticias (
     noticias_id INT PRIMARY KEY AUTO_INCREMENT,
@@ -149,16 +80,65 @@ CREATE TABLE noticias (
     FOREIGN KEY (ong_id) REFERENCES ongs(ong_id)
 );
 
+-- Tabela: Arquivos (Projetos e Notícias)
 
--- // PROJETOS // 
+CREATE TABLE arquivos (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    foto TEXT NOT NULL,
+    projeto_id INT,
+    noticias_id INT,
+    FOREIGN KEY (projeto_id) REFERENCES projetos(projeto_id),
+    FOREIGN KEY (noticias_id) REFERENCES noticias(noticias_id)
+);
 
-CREATE TABLE projetos (
-    projeto_id INT PRIMARY KEY AUTO_INCREMENT,
-    nome VARCHAR(100) NOT NULL,
-    descricao TEXT,
-    meta DECIMAL(10, 2) NOT NULL,
-    status ENUM('ativo', 'inativo', 'concluido', 'cancelado') NOT NULL DEFAULT 'ativo',
-    data_cadastro TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+-- Tabela: Fotos de ONGs
+
+CREATE TABLE fotos_ongs (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    foto TEXT NOT NULL,
     ong_id INT,
     FOREIGN KEY (ong_id) REFERENCES ongs(ong_id)
+);
+
+-- Tabela: Fotos de Projetos
+
+CREATE TABLE fotos_projetos (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    foto TEXT NOT NULL,
+    projeto_id INT,
+    FOREIGN KEY (projeto_id) REFERENCES projetos(projeto_id)
+);
+
+--  Tabela: Favoritos (ONGs favorited por usuários)
+
+CREATE TABLE favoritos (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    ong_id INT,
+    usuario_id INT,
+    FOREIGN KEY (ong_id) REFERENCES ongs(ong_id),
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(usuario_id)
+);
+
+-- Tabela: Doações para ONGs
+
+CREATE TABLE doacoes_ongs (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    valor FLOAT NOT NULL,
+    dt_doacao DATE NOT NULL,
+    ong_id INT,
+    doador_id INT,
+    doacao_anonima BOOLEAN DEFAULT FALSE,
+    FOREIGN KEY (ong_id) REFERENCES ongs(ong_id),
+    FOREIGN KEY (doador_id) REFERENCES usuarios(usuario_id)
+);
+--  Tabela: Doações para Projetos
+
+CREATE TABLE doacoes_projetos (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    valor FLOAT NOT NULL,
+    dt_doacao DATE NOT NULL,
+    doador_id INT,
+    projeto_id INT,
+    FOREIGN KEY (doador_id) REFERENCES usuarios(usuario_id),
+    FOREIGN KEY (projeto_id) REFERENCES projetos(projeto_id)
 );

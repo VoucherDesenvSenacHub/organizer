@@ -40,49 +40,6 @@ class Ong
         return $stmt->fetchAll();
     }
     
-    public function editarOng($id, $nome, $cnpj, $telefone, $email, $cep, $rua, $bairro, $cidade, $agencia, $conta, $tipo_conta, $descricao, $fk_responsavel, $fk_banco)
-    {
-        $query = "UPDATE $this->tabela SET 
-                nome = :nome,
-                cnpj = :cnpj,
-                telefone = :telefone,
-                email = :email,
-                cep = :cep,
-                rua = :rua,
-                bairro = :bairro,
-                cidade = :cidade,
-                agencia = :agencia,
-                conta = :conta,
-                tipo_conta = :tipo_conta,
-                descricao = :descricao,
-                fk_responsavel = :fk_responsavel,
-                fk_banco = :fk_banco
-              WHERE ong_id = :id";
-
-        $stmt = $this->pdo->prepare($query);    
-
-        $stmt->bindParam(':id', $id);
-        $stmt->bindParam(':nome', $nome);
-        $stmt->bindParam(':cnpj', $cnpj);
-        $stmt->bindParam(':telefone', $telefone);
-        $stmt->bindParam(':email', $email);
-        $stmt->bindParam(':cep', $cep);
-        $stmt->bindParam(':rua', $rua);
-        $stmt->bindParam(':bairro', $bairro);
-        $stmt->bindParam(':cidade', $cidade);
-        $stmt->bindParam(':agencia', $agencia);
-        $stmt->bindParam(':conta', $conta);
-        $stmt->bindParam(':tipo_conta', $tipo_conta);
-        $stmt->bindParam(':descricao', $descricao);
-        $stmt->bindParam(':fk_responsavel', $fk_responsavel);
-        $stmt->bindParam(':fk_banco', $fk_banco);
-
-        if ($stmt->execute()) {
-            return true;
-        } else {
-            return false;
-        }
-    }
       
 
 }
