@@ -1,5 +1,5 @@
 <?php
-$tituloPagina = 'Cadastro do Doador';
+$tituloPagina = 'Cadastro da ONG';
 $cssPagina = ['ong/cadastro.css'];
 require_once '../../components/layout/base-inicio.php';
 
