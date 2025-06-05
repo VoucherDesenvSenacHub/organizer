@@ -1,4 +1,6 @@
 <?php
+require_once '../../../controller/verificarLoginDoador.php';
+
 $tituloPagina = 'Cartões | Organizer'; // Definir o título da página
 $cssPagina = ["doador/cartoes.css"]; //Colocar o arquivo .css (exemplo: 'ONG/cadastro.css')
 require_once '../../components/layout/base-inicio.php';
