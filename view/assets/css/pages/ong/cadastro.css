@@ -4,6 +4,33 @@ section .container h1 {
     color: var(--cor-amarelo);
 }
 
+.mensagem {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: rgba(255, 77, 77, 0.361);
+    padding: 5px;
+    border-radius: 5px;
+    margin: 0 auto;
+}
+
+.mensagem i {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--cor-vermelho);
+    font-weight: 800;
+    border: 3px solid var(--cor-vermelho);
+    border-radius: 50%;
+    min-width: 30px;
+    min-height: 30px;
+}
+
+/* Esconder o botão do login */
+header .btn-login a {
+    display: none;
+}
+
 .line #linhaClara,
 .line #linhaAzul {
     width: 75%;
