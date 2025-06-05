@@ -5,13 +5,13 @@ $ongModel = new Ong();
 $ong = $ongModel->verificarExistenciaOng($_SESSION['usuario_id']);
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $tipoUsuario = $_POST['perfil'];
-    if ($tipoUsuario == 'ong' && !$ong) {
+    $perfil_usuario = $_POST['perfil'];
+    if ($perfil_usuario == 'ong' && !$ong) {
         header("Location: ../ong/cadastro.php?msg=conta");
         exit;
     }
-    $_SESSION['perfil_usuario'] = $tipoUsuario;
-    header("Location: ../{$tipoUsuario}/home.php");
+    $_SESSION['perfil_usuario'] = $perfil_usuario;
+    header("Location: ../{$perfil_usuario}/home.php");
 }
 ?>
 

@@ -1,8 +1,10 @@
 <?php
+require_once '../../../controller/verificarLoginOng.php';
+
 $tituloPagina = 'Home | Organizer';
 $cssPagina = ['ong/home.css'];
 require_once '../../components/layout/base-inicio.php';
-$_SESSION['perfil_usuario'] = 'ong';
+
 ?>
 <main class="container">
     <div id="title">
