@@ -1,8 +1,5 @@
-const btnCard = document.querySelectorAll('.cards-container');
+const cardProjeto = document.querySelectorAll('.card-projeto');
 const telaAtivoPendentesVoluntario = document.getElementById('tela-voluntario-ativo-solicitacao');
-
-const cardVoluntarioAtivoSolicitacoes = document.getElementById('card-voluntario-ativo-solicitacao');
-
 const btnAtivos = document.getElementById('v-ativos');
 const telaVoluntariosAtivos = document.getElementById('tela-voluntarios-ativos');
 const btnDeleteVoluntario = document.querySelectorAll('.btn-inativar-voluntario');
@@ -16,10 +13,10 @@ const telaAceitar = document.getElementById('tela-aceitar');
 const btnRecusar = document.getElementById('recusar');
 const telaRecusar = document.getElementById('tela-recusar');
 
-btnCard.forEach(card => {
+
+cardProjeto.forEach(card => {
     card.addEventListener('click', function () {
         telaAtivoPendentesVoluntario.style.display = "block";
-        cardVoluntarioAtivoSolicitacoes.classList.add('ativo');
         telaAtivoPendentesVoluntario.classList.add('ativo');
     });
 });
