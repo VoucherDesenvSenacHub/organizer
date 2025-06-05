@@ -2,11 +2,40 @@
 $tituloPagina = 'Cadastro do Doador';
 $cssPagina = ['ong/cadastro.css'];
 require_once '../../components/layout/base-inicio.php';
+
+require_once __DIR__ . '/../../../model/OngModel.php';
+$ongModel = new Ong();
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $dados = [
+        'nome' => $_POST['nome'],
+        'cnpj' => $_POST['cnpj'],
+        'responsavel_id' => $_SESSION['usuario_id'],
+        'telefone' => $_POST['telefone'],
+        'email' => $_POST['email'],
+        'cep' => $_POST['cep'],
+        'rua' => $_POST['rua'],
+        'bairro' => $_POST['bairro'],
+        'cidade' => $_POST['cidade'],
+        'banco_id' => 1,
+        'agencia' => $_POST['agencia'],
+        'conta' => $_POST['conta'],
+        'tipo_conta' => $_POST['tipo_banco'],
+        'descricao' => $_POST['descricao'],
+    ];
+
+    $criar = $ongModel->criar($dados);
+}
 ?>
 
 <main>
     <section>
         <div class="container">
+            <?php if (isset($_GET['msg']) && $_GET['msg'] == 'conta'): ?>
+                <div class="mensagem">
+                    <i class="fa-solid fa-exclamation"></i>
+                    <span>Crie uma ONG primeiro para acessar!</span>
+                </div>
+            <?php endif; ?>
             <h1>CADASTRE SUA ONG</h1>
             <div class="line">
                 <div id="linhaClara"></div>
@@ -36,26 +65,26 @@ require_once '../../components/layout/base-inicio.php';
                     <p>Login</p>
                 </div> -->
             </div>
-            <form id="form" action="login.php" method="POST">
+            <form id="form" action="cadastro.php" method="POST">
                 <div class="formBox">
                     <div class="inputBox">
                         <label for="nome">Razão Social<span>*</span></label>
-                        <input id="nome" type="text" placeholder="Digite um nome">
+                        <input name="nome" id="nome" type="text" placeholder="Digite um nome">
                         <span class="visor"></span>
                     </div>
                     <div class="inputBox">
                         <label for="telefone">Telefone da ONG<span>*</span></label>
-                        <input id="telefone" type="text" placeholder="(00) 00000-0000">
+                        <input name="telefone" id="telefone" type="text" placeholder="(00) 00000-0000">
                         <span class="visor"></span>
                     </div>
                     <div class="inputBox">
                         <label for="cnpj">CNPJ<span>*</span></label>
-                        <input id="cnpj" type="text" placeholder="00.000.000/0000-00">
+                        <input name="cnpj" id="cnpj" type="text" placeholder="00.000.000/0000-00">
                         <span class="visor"></span>
                     </div>
                     <div class="inputBox">
                         <label for="email-ong">Email da ONG<span>*</span></label>
-                        <input id="email-ong" type="email" placeholder="ong@conta.com" required>
+                        <input name="email" id="email-ong" type="email" placeholder="ong@conta.com" required>
                         <span class="visor"></span>
                     </div>
                     <div class="btnNext">
@@ -65,7 +94,7 @@ require_once '../../components/layout/base-inicio.php';
                 <div class="formBox">
                     <div class="inputBox">
                         <label for="descricao">Descrição<span>*</span></label>
-                        <textarea id="descricao"></textarea>
+                        <textarea name="descricao" id="descricao"></textarea>
                         <!-- <input id="descricao" type="text" placeholder="Fale um pouco da sua ONG"> -->
                         <span class="visor"></span>
                     </div>
@@ -110,22 +139,22 @@ require_once '../../components/layout/base-inicio.php';
                 <div class="formBox">
                     <div class="inputBox">
                         <label for="cep">CEP<span>*</span></label>
-                        <input id="cep" type="text" placeholder="00000-000">
+                        <input name="cep" id="cep" type="text" placeholder="00000-000">
                         <span class="visor"></span>
                     </div>
                     <div class="inputBox">
                         <label for="rua">Rua<span>*</span></label>
-                        <input id="rua" type="text" placeholder="Ex: Rui Barbosa,1436">
+                        <input name="rua" id="rua" type="text" placeholder="Ex: Rui Barbosa,1436">
                         <span class="visor"></span>
                     </div>
                     <div class="inputBox">
                         <label for="bairro">Bairro<span>*</span></label>
-                        <input id="bairro" type="text" placeholder="Ex: Centro">
+                        <input name="bairro" id="bairro" type="text" placeholder="Ex: Centro">
                         <span class="visor"></span>
                     </div>
                     <div class="inputBox">
                         <label for="cidade">Cidade<span>*</span></label>
-                        <input id="cidade" type="text" placeholder="Campo Grande">
+                        <input name="cidade" id="cidade" type="text" placeholder="Campo Grande">
                         <span class="visor"></span>
                     </div>
                     <div class="btnNextBack">
@@ -162,13 +191,13 @@ require_once '../../components/layout/base-inicio.php';
                 <div class="formBox">
                     <div class="inputBox">
                         <label for="agencia">Agência<span>*</span></label>
-                        <input id="agencia" type="text" placeholder="0000-0">
+                        <input name="agencia" id="agencia" type="text" placeholder="0000-0">
                         <span class="visor"></span>
                     </div>
                     <div class="inputBox">
                         <label for="tipo-conta">Tipo<span>*</span></label>
                         <!-- <input id="tipo-conta" type="text"> -->
-                        <select>
+                        <select name="tipo_banco">
                             <option value="" disabled selected>Escolha</option>
                             <option value="CORRENTE">Corrente</option>
                             <option value="POUPANÇA">Poupança</option>
@@ -177,12 +206,12 @@ require_once '../../components/layout/base-inicio.php';
                     </div>
                     <div class="inputBox">
                         <label for="conta">Conta<span>*</span></label>
-                        <input id="conta" type="text" placeholder="00000-00">
+                        <input name="conta" id="conta" type="text" placeholder="00000-00">
                         <span class="visor"></span>
                     </div>
                     <div class="inputBox">
                         <label for="nome-conta">Nome do Titular<span>*</span></label>
-                        <input id="nome-conta" type="text" placeholder="Nome Completo">
+                        <input name="titular" id="nome-conta" type="text" placeholder="Nome Completo">
                         <span class="visor"></span>
                     </div>
                     <div class="btnNextBack">

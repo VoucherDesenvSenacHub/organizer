@@ -1,9 +1,17 @@
 <?php
 session_start();
+require_once __DIR__ . '/../../../model/OngModel.php';
+$ongModel = new Ong();
+$ong = $ongModel->verificarExistenciaOng($_SESSION['usuario_id']);
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $usuario = $_POST['perfil'];
-    $_SESSION['perfil_usuario'] = $usuario;
-    header("Location: ../{$usuario}/home.php");
+    $tipoUsuario = $_POST['perfil'];
+    if ($tipoUsuario == 'ong' && !$ong) {
+        header("Location: ../ong/cadastro.php?msg=conta");
+        exit;
+    }
+    $_SESSION['perfil_usuario'] = $tipoUsuario;
+    header("Location: ../{$tipoUsuario}/home.php");
 }
 ?>
 
