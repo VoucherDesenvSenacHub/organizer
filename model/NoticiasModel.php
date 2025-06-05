@@ -75,7 +75,7 @@
                 if ($stmt->rowCount() > 0) {
                     header('Location: noticias.php?msg=sucesso');
                 } else {
-                    header('Location: noticias.php?msg=kkkkk');
+                    header('Location: noticias.php');
                 }
                 exit;
             } catch (PDOException $e) {

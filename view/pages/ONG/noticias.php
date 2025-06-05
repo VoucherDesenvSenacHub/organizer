@@ -2,6 +2,12 @@
 $tituloPagina = 'Notícias'; // Definir o título da página
 $cssPagina = ['ong/noticias.css']; //Colocar o arquivo .css 
 require_once '../../components/layout/base-inicio.php';
+
+
+require_once __DIR__ . '/../../../model/NoticiasModel.php';
+
+$noticiaModel = new Noticia();
+
 $noticia = (object) [
     'codnot' => '',
     'titulo' => '',
@@ -9,13 +15,22 @@ $noticia = (object) [
     'texto' => '',
     'subtexto' => ''
 ];
+
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $titulo = $_POST['titulo'];
+    $subtitulo = $_POST['subtitulo'];
+    $texto = $_POST['texto'];
+    $subtexto = $_POST['subtexto'];
+    $noticiaModel->criar($titulo, $subtitulo, $texto, $subtexto);
+}
 $acao = 'NOVA NOTICIA';
 
 require_once '../../components/popup/formulario-noticia.php';
 ?>
 <div id="toast-projeto" class="toast">
     <i class="fa-regular fa-circle-check"></i>
-    Noticia Criado com Sucesso!
+    Noticia Criada com Sucesso!
 </div>
 <div id="toast-projeto-erro" class="toast erro">
     <i class="fa-solid fa-triangle-exclamation"></i>
