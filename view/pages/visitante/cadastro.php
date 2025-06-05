@@ -1,6 +1,6 @@
 <?php 
     $tituloPagina = 'Cadastro | Organizer';
-    $cssPagina = ['visitante/cadastro.css'];
+    $cssPagina = ['shared/cadastro.css'];
     require_once '../../components/layout/base-inicio.php';
     
     require_once '../../../model/UsuarioModel.php';
