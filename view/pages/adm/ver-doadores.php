@@ -1,4 +1,5 @@
 <?php
+$acesso = 'adm';
 $tituloPagina = 'Doadores ADM'; // Definir o título da página
 $cssPagina = ['adm/ver-doadores.css']; //Colocar o arquivo .css 
 require_once '../../components/layout/base-inicio.php';

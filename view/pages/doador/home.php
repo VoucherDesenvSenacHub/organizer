@@ -1,5 +1,5 @@
 <?php
-require_once '../../../controller/verificarLoginDoador.php';
+$acesso = 'doador';
 //CONFIGURAÇÕES DA PÁGINA
 $tituloPagina = 'Home - Doador';
 $cssPagina = ['doador/home.css'];

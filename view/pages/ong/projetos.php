@@ -1,5 +1,6 @@
 <?php
 //CONFIGURAÇÕES DA PÁGINA
+$acesso = 'ong';
 $tituloPagina = 'Projetos';
 $cssPagina = ['ong/projetos.css'];
 require_once '../../components/layout/base-inicio.php';

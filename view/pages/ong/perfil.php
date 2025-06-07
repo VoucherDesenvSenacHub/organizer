@@ -1,7 +1,8 @@
 <?php
 //CONFIGURAÇÕES DA PÁGINA
+$acesso = $_SESSION['perfil_usuario'] ?? 'visitante';
 $tituloPagina = 'Perfil da ONG | Organizer';
-$cssPagina = ['shared/perfil-ong.css'];
+$cssPagina = ['ong/perfil.css'];
 require_once '../../components/layout/base-inicio.php';
 
 require_once '../../../model/OngModel.php';
@@ -41,8 +42,8 @@ $perfil = $_SESSION['perfil_usuario'] ?? '';
                     <p><span>9 </span>Projetos Criados</p>
                 </div>
                 <div id="acoes">
-                    <button class="btn" onclick="abrir_popup('login-obrigatorio-popup')">Fazer uma doação</button>
-                    <button class="btn" id="btn-voluntario" onclick="abrir_popup('login-obrigatorio-popup')">Ser Voluntário</button>
+                    <!-- Botão de Acões da ONG -->
+                    <?php require_once 'partials/acoes-ong.php'; ?>
                 </div>
             </div>
             <div id="imagem">

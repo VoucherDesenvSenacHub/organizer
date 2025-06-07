@@ -1,4 +1,5 @@
 <?php
+$acesso = 'adm';
 $tituloPagina = 'Ver Projetos ADM'; // Definir o título da página
 $cssPagina = ['adm/ver-projetos.css']; //Colocar o arquivo .css 
 require_once '../../components/layout/base-inicio.php';

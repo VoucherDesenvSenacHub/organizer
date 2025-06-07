@@ -1,4 +1,5 @@
 <?php
+$acesso = 'adm';
 $tituloPagina = 'Ver ONG ADM '; // Definir o título da página
 $cssPagina = ['adm/ver-ong.css']; //Colocar o arquivo .css 
 require_once '../../components/layout/base-inicio.php';
@@ -35,7 +36,7 @@ require_once '../../components/layout/base-inicio.php';
                     <p><span>9 </span>Projetos</p>
                 </div>
                 <div class="acoes-ong">
-                    <a href="perfil-ong.php" class="saiba-mais-ong">Saiba Mais</a>
+                    <a href="../ong/perfil.php?id=1" class="saiba-mais-ong">Saiba Mais</a>
 
                 </div>
             </div>
@@ -59,7 +60,7 @@ require_once '../../components/layout/base-inicio.php';
                     <p><span>9 </span>Projetos</p>
                 </div>
                 <div class="acoes-ong">
-                    <a href="perfil-ong.php" class="saiba-mais-ong">Saiba Mais</a>
+                    <a href="../ong/perfil.php?id=1" class="saiba-mais-ong">Saiba Mais</a>
 
                 </div>
             </div>
@@ -83,7 +84,7 @@ require_once '../../components/layout/base-inicio.php';
                     <p><span>9 </span>Projetos</p>
                 </div>
                 <div class="acoes-ong">
-                    <a href="perfil-ong.php" class="saiba-mais-ong">Saiba Mais</a>
+                    <a href="../ong/perfil.php?id=1" class="saiba-mais-ong">Saiba Mais</a>
 
                 </div>
             </div>
@@ -107,7 +108,7 @@ require_once '../../components/layout/base-inicio.php';
                     <p><span>9 </span>Projetos</p>
                 </div>
                 <div class="acoes-ong">
-                    <a href="perfil-ong.php" class="saiba-mais-ong">Saiba Mais</a>
+                    <a href="../ong/perfil.php?id=1" class="saiba-mais-ong">Saiba Mais</a>
 
                 </div>
             </div>
@@ -131,7 +132,7 @@ require_once '../../components/layout/base-inicio.php';
                     <p><span>9 </span>Projetos</p>
                 </div>
                 <div class="acoes-ong">
-                    <a href="perfil-ong.php" class="saiba-mais-ong">Saiba Mais</a>
+                    <a href="../ong/perfil.php?id=1" class="saiba-mais-ong">Saiba Mais</a>
 
                 </div>
             </div>
@@ -155,7 +156,7 @@ require_once '../../components/layout/base-inicio.php';
                     <p><span>9 </span>Projetos</p>
                 </div>
                 <div class="acoes-ong">
-                    <a href="perfil-ong.php" class="saiba-mais-ong">Saiba Mais</a>
+                    <a href="../ong/perfil.php?id=1" class="saiba-mais-ong">Saiba Mais</a>
 
                 </div>
             </div>

@@ -1,5 +1,7 @@
 <?php
-require_once '../../../controller/verificarLoginOng.php';
+$acesso = 'ong';
+require_once '../../../controller/verificarAcesso.php';
+VerificarAcesso($acesso);
 
 $tituloPagina = 'Home | Organizer';
 $cssPagina = ['ong/home.css'];
