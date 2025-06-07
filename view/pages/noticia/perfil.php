@@ -1,4 +1,5 @@
 <?php
+$acesso = $_SESSION['perfil_usuario'] ?? 'visitante';
 $tituloPagina = 'Leia Mais | Organizer';
 $cssPagina = ['noticia/perfil.css'];
 require_once '../../components/layout/base-inicio.php';

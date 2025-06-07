@@ -1,4 +1,5 @@
 <?php
+$acesso = 'ong';
 $tituloPagina = 'Notícias'; // Definir o título da página
 $cssPagina = ['ong/noticias.css']; //Colocar o arquivo .css 
 require_once '../../components/layout/base-inicio.php';

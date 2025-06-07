@@ -1,18 +1,19 @@
-<?php 
+<?php
 ob_start();
-    $tituloPagina = 'Login | Organizer';
-    $cssPagina = ['visitante/login.css'];
-    require_once '../../components/layout/base-inicio.php';
+$acesso = 'visitante';
+$tituloPagina = 'Login | Organizer';
+$cssPagina = ['visitante/login.css'];
+require_once '../../components/layout/base-inicio.php';
 
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $email = $_POST['email'];
-        $senha = $_POST['senha'];
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $email = $_POST['email'];
+    $senha = $_POST['senha'];
 
-        require_once __DIR__ . '/../../../model/UsuarioModel.php';
-        $usuarioModel = new Usuario();
+    require_once __DIR__ . '/../../../model/UsuarioModel.php';
+    $usuarioModel = new Usuario();
 
-        $usuarioModel->login($email, $senha);
-    }
+    $usuarioModel->login($email, $senha);
+}
 ob_end_flush();
 ?>
 <main>
@@ -39,7 +40,7 @@ ob_end_flush();
             <button class="btn">ENTRAR</button>
             <span>Não tem uma conta? <a href="cadastro.php">Criar Conta</a></span>
         </form>
-            <img alt="Celular-Login" src="../../assets/images/pages/login_doador.png">
+        <img alt="Celular-Login" src="../../assets/images/pages/login_doador.png">
     </div>
 </main>
 <div id="fundo-cadastro-popup" class="popup-fundo">
@@ -76,6 +77,6 @@ ob_end_flush();
     Login necessário para continuar!
 </div>
 <?php
-    $jsPagina = ['login-doador.js'];
-    require_once '../../components/footer.php';
+$jsPagina = ['login-doador.js'];
+require_once '../../components/footer.php';
 ?>

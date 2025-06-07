@@ -1,12 +1,10 @@
 <?php
-require_once '../../../controller/verificarLoginDoador.php';
-$tituloPagina = 'Participações'; // Definir o título da página
-$cssPagina = ['doador/participacoes.css']; //Colocar o arquivo .css (exemplo: 'ONG/cadastro.css')
+$acesso = 'doador';
+$tituloPagina = 'Participações';
+$cssPagina = ['doador/participacoes.css'];
 require_once '../../components/layout/base-inicio.php';
 require_once __DIR__ . "\..\..\..\model\ProjetoModel.php";
-
 ?>
-
 <main>
     <section>
         <div class="container">

@@ -4,10 +4,6 @@
 @import url(../../components/popup/doacao.css);
 @import url(../doador/ser-voluntario.css);
 
-body {
-    background-color: aliceblue;
-}
-
 /* Classe das Sections */
 .container-section {
     display: flex;

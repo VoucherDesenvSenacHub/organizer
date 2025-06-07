@@ -1,4 +1,5 @@
 <?php
+$acesso = $_SESSION['perfil_usuario'] ?? 'visitante';
 $tituloPagina = 'Encontre Projetos';
 $cssPagina = ['shared/catalogo.css'];
 require_once '../../components/layout/base-inicio.php';

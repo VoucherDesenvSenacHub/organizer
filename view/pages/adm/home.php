@@ -1,4 +1,5 @@
 <?php
+$acesso = 'adm';
 $tituloPagina = 'Home | ADM';
 $cssPagina = ['adm/home.css'];
 require_once '../../components/layout/base-inicio.php';

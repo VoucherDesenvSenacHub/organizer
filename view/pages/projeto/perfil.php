@@ -25,6 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 //Definições da página (título e CSS)
+$acesso = $_SESSION['perfil_usuario'] ?? 'visitante';
 $tituloPagina = 'Perfil do Projeto | Organizer';
 $cssPagina = ['projeto/perfil.css'];
 require_once '../../components/layout/base-inicio.php';
