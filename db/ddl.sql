@@ -1,7 +1,7 @@
 CREATE DATABASE organizer;
 USE organizer;
 
--- TABELA DE USÚARIOS
+-- TABELA DOS USÚARIOS
 CREATE TABLE usuarios (
     usuario_id INT PRIMARY KEY AUTO_INCREMENT,
 -- Informações pessoais
@@ -10,14 +10,26 @@ CREATE TABLE usuarios (
     data_nascimento DATE NOT NULL,
     foto_perfil VARCHAR(255),
 -- Contato e autenticação
-    email VARCHAR(255) UNIQUE NOT null ,
-    telefone VARCHAR(20),
+    email VARCHAR(255) UNIQUE NOT NULL,
+    telefone VARCHAR(20) NOT NULL,
     senha VARCHAR(255) NOT NULL,
--- Metadados do sistema
-    tipo_usuario ENUM('DOADOR', 'ONG', 'ADM') NOT NULL DEFAULT 'DOADOR',
-    ativo BOOLEAN DEFAULT TRUE,
-    data_cadastro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+-- Outros dados
+    doador BOOLEAN DEFAULT TRUE,
+    ong BOOLEAN DEFAULT FALSE,
+    adm BOOLEAN DEFAULT FALSE,
+    status ENUM('ATIVO', 'INATIVO') NOT NULL DEFAULT 'ATIVO',
+    data_cadastro TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    data_atualizacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
+
+
+-- TABELA DAS AGÊNCIAS BANCARIAS
+CREATE TABLE bancos (
+    banco_id INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(100) NOT NULL UNIQUE,
+    codigo VARCHAR(10) NOT NULL UNIQUE
+);
+
 
 -- TABELA DAS ONGS
 CREATE TABLE ongs (
@@ -28,7 +40,7 @@ CREATE TABLE ongs (
     responsavel_id INT NOT NULL,
 -- Contato
     telefone VARCHAR(20) NOT NULL,
-    email VARCHAR(255) NOT NULL UNIQUE,
+    email VARCHAR(255) NOT NULL,
 -- Endereço
     cep VARCHAR(10) NOT NULL,
     rua VARCHAR(200) NOT NULL,
@@ -37,18 +49,21 @@ CREATE TABLE ongs (
 -- Dados bancários
     banco_id INT NOT NULL,
     agencia VARCHAR(10) NOT NULL,
-    conta VARCHAR(20) NOT NULL,
+    conta_numero VARCHAR(20) NOT NULL,
     tipo_conta ENUM('CORRENTE', 'POUPANÇA') NOT NULL DEFAULT 'CORRENTE',
 -- Outros dados
+    logo_url VARCHAR(255),
     descricao TEXT NOT NULL,
+    status ENUM('ATIVO', 'INATIVO') NOT NULL DEFAULT 'ATIVO',
     data_cadastro TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    data_atualizacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 -- Relacionamentos
     CONSTRAINT fk_responsavel FOREIGN KEY (responsavel_id) REFERENCES usuarios(usuario_id),
     CONSTRAINT fk_banco FOREIGN KEY (banco_id) REFERENCES bancos(banco_id)
 );
 
 
--- TABELA DE PROJETOS
+-- TABELA DOS PROJETOS
 CREATE TABLE projetos (
     projeto_id INT PRIMARY KEY AUTO_INCREMENT,
 -- Informações principais do projeto
@@ -58,6 +73,7 @@ CREATE TABLE projetos (
 -- Status e controle
     status ENUM('ATIVO', 'INATIVO', 'FINALIZADO') NOT NULL DEFAULT 'ATIVO',
     data_cadastro TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    data_atualizacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 -- Relacionamento
     ong_id INT NOT NULL,
     CONSTRAINT fk_projeto_ong FOREIGN KEY (ong_id) REFERENCES ongs(ong_id)

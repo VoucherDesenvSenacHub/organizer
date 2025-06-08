@@ -55,11 +55,12 @@ function proximo(indice) {
     // }
     else if (indice == 4) {
         if (
-            !validarCampo(input[8], 9, 'Digite a agência corretamente.', 6) ||
+            // !validarCampo(input[8], 9, 'Digite a agência corretamente.', 6) ||
             // !validarCampo(input[9], 10, 'Escolha o tipo de Conta.') ||
-            !validarSelect(select[0], 10, 'Escolha o tipo da conta') ||
-            !validarCampo(input[9], 11, 'Digite a conta corretamente.', 8) ||
-            !validarCampo(input[10], 12, 'Digite o nome completo do titular.', 8)
+            !validarSelect(select[0], 9, 'Escolha um banco.') ||
+            !validarSelect(select[1], 10, 'Escolha o tipo da conta.') ||
+            !validarCampo(input[8], 11, 'Digite a agência corretamente.', 6) ||
+            !validarCampo(input[9], 12, 'Digite a conta corretamente.', 8)
         ) {
             check[3].classList.remove('input-valid');
             return false;
@@ -88,3 +89,9 @@ function cadastrar_ong() {
     sessionStorage.setItem("cadastro_sucesso", "true");
     window.location.href = "login.php";
 }
+
+$("#form").submit(function(event) {
+    // Remover máscara dos campos antes de enviar
+    $("#telefone").unmask();
+    $("#cnpj").unmask();
+});

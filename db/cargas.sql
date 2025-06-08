@@ -1,16 +1,15 @@
--- TABELA DOS BANCOS
-CREATE TABLE bancos (
-    banco_id INT PRIMARY KEY AUTO_INCREMENT,
-    nome VARCHAR(100) NOT NULL UNIQUE,
-    codigo VARCHAR(10) NOT NULL UNIQUE
-);
-INSERT INTO bancos (nome, codigo) VALUES
-('Banco do Brasil', '001'),
-('Bradesco', '237'),
+-- Cadastro dos bancos disponíveis no sistema.
+INSERT INTO bancos (nome, codigo) VALUES 
+('Banco do Brasil S.A.', '001'),
+('Banco Bradesco S.A.', '237'),
 ('Caixa Econômica Federal', '104'),
-('Itaú Unibanco', '341'),
-('Santander', '033');
-
+('Itaú Unibanco S.A.', '341'),
+('Banco Santander (Brasil) S.A.', '033'),
+('Banco Safra S.A.', '422'),
+('Banco BTG Pactual S.A.', '208'),
+('Banco Pan S.A.', '623'),
+('Banco Inter S.A.', '077'),
+('Banco Original S.A.', '212');
 
 INSERT INTO usuarios (nome, cpf, data_nascimento, foto_perfil, email, telefone, senha, tipo_usuario)
 VALUES 

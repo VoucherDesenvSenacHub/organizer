@@ -1,5 +1,6 @@
 <?php
 session_start();
+$_SESSION['perfil_usuario'] = null;
 require_once __DIR__ . '/../../../model/OngModel.php';
 $ongModel = new Ong();
 $ong = $ongModel->verificarExistenciaOng($_SESSION['usuario_id']);
@@ -45,13 +46,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <p>ONG</p>
                 </button>
             </form>
-            <form class="form-adm" action="#" method="POST">
-                <input type="hidden" name="perfil" value="adm">
-                <button>
-                    <i class="fa-solid fa-user-secret"></i>
-                    <p>ADM</p>
-                </button>
-            </form>
+            <?php if ($_SESSION['usuario_adm']): ?>
+                <form class="form-adm" action="#" method="POST">
+                    <input type="hidden" name="perfil" value="adm">
+                    <button>
+                        <i class="fa-solid fa-user-secret"></i>
+                        <p>ADM</p>
+                    </button>
+                </form>
+            <?php endif; ?>
         </div>
         <a href="../../../controller/logout.php">SAIR</a>
     </div>

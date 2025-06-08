@@ -17,13 +17,13 @@ class Ong
             nome, cnpj, responsavel_id,
             telefone, email,
             cep, rua, bairro, cidade,
-            banco_id, agencia, conta, tipo_conta,
+            banco_id, agencia, conta_numero, tipo_conta,
             descricao
         ) VALUES (
             :nome, :cnpj, :responsavel_id,
             :telefone, :email,
             :cep, :rua, :bairro, :cidade,
-            :banco_id, :agencia, :conta, :tipo_conta,
+            :banco_id, :agencia, :conta_numero, :tipo_conta,
             :descricao
         )";
 
@@ -40,11 +40,11 @@ class Ong
         $stmt->bindParam(':cidade', $dados['cidade']);
         $stmt->bindParam(':banco_id', $dados['banco_id'], PDO::PARAM_INT);
         $stmt->bindParam(':agencia', $dados['agencia']);
-        $stmt->bindParam(':conta', $dados['conta']);
+        $stmt->bindParam(':conta_numero', $dados['conta']);
         $stmt->bindParam(':tipo_conta', $dados['tipo_conta']);
         $stmt->bindParam(':descricao', $dados['descricao']);
 
-        return $stmt->execute(); // true em caso de sucesso, false se falhar
+        return $stmt->execute();
     }
 
 
