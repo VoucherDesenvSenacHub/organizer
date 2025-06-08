@@ -38,15 +38,23 @@ class Projeto
         return $stmt->fetch();
     }
 
-    function buscarNome($nome)
+    function buscarNome($nome, $ong_id = null)
     {
-        $query = "SELECT * FROM $this->tabela WHERE nome LIKE :nome";
-        $stmt = $this->pdo->prepare($query);
-        $stmt->bindValue(':nome', "%{$nome}%", PDO::PARAM_STR);
+        if ($ong_id) {
+            $query = "SELECT * FROM $this->tabela WHERE nome LIKE :nome AND ong_id = :ong_id";
+            $stmt = $this->pdo->prepare($query);
+            $stmt->bindValue(':nome', "%{$nome}%", PDO::PARAM_STR);
+            $stmt->bindValue(':ong_id', $ong_id, PDO::PARAM_INT);
+        } else {
+            $query = "SELECT * FROM $this->tabela WHERE nome LIKE :nome";
+            $stmt = $this->pdo->prepare($query);
+            $stmt->bindValue(':nome', "%{$nome}%", PDO::PARAM_STR);
+        }
         $stmt->execute();
         $stmt->setFetchMode(PDO::FETCH_CLASS, __CLASS__);
         return $stmt->fetchAll();
     }
+
 
     function buscarValor($id)
     {

@@ -54,6 +54,7 @@
     text-align: justify;
     line-height: 1.2;
     cursor: default;
+    word-break: break-word;
 }
 
 /* Quantidade de Doação e Projeto */

@@ -80,10 +80,10 @@ class Ong
     // Verificar se o usúario tem uma ONG!
     function verificarExistenciaOng($id_responsavel)
     {
-        $query = "SELECT 1 FROM $this->tabela WHERE responsavel_id = :id";
+        $query = "SELECT ong_id FROM $this->tabela WHERE responsavel_id = :id LIMIT 1";
         $stmt = $this->pdo->prepare($query);
         $stmt->bindParam(':id', $id_responsavel, PDO::PARAM_INT);
         $stmt->execute();
-        return (bool) $stmt->fetchColumn();
+        return $stmt->fetchColumn();
     }
 }

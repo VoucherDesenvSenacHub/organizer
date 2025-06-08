@@ -10,12 +10,12 @@ require_once __DIR__ . '/../../../model/ProjetoModel.php';
 
 //CARREGA CARDS DE PROJETOS
 $projetoModel = new Projeto();
-$lista = $projetoModel->listar();
-
+$lista = $projetoModel->listar($_SESSION['ong_id']);
+$temprojeto = $lista;
 //PESQUISAR PROJETO
 if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['pesquisa'])) {
     $pesquisa = $_GET['pesquisa'];
-    $lista = $projetoModel->buscarNome($pesquisa);
+    $lista = $projetoModel->buscarNome($pesquisa, $_SESSION['ong_id']);
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -63,10 +63,17 @@ require_once __DIR__ . '/../../components/popup/formulario-projeto.php';
     } ?>
     <!-- CARDS DE PROJETOS -->
     <div class="div-card-geral">
-        <?php $class = 'tp-ong'; ?>
-        <?php foreach ($lista as $projeto) {
-            require '../../components/cards/card-projeto.php';
-        } ?>
+        <?php
+        if ($lista) {
+            $class = 'tp-ong';
+            foreach ($lista as $projeto) {
+                require '../../components/cards/card-projeto.php';
+            }
+        } 
+        if (isset($temprojeto) && !$temprojeto) {
+            echo 'Você ainda não tem nenhum projeto :(';
+        }
+        ?>
     </div>
 </div>
 

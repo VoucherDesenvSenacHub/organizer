@@ -1,12 +1,9 @@
 <?php
 $acesso = 'ong';
-require_once '../../../controller/verificarAcesso.php';
-VerificarAcesso($acesso);
-
 $tituloPagina = 'Home | Organizer';
 $cssPagina = ['ong/home.css'];
 require_once '../../components/layout/base-inicio.php';
-
+echo $_SESSION['ong_id'];
 ?>
 <main class="container">
     <div id="title">

@@ -7,6 +7,7 @@ require_once '../../components/layout/base-inicio.php';
 require_once __DIR__ . "\..\..\..\model\OngModel.php";
 $ongModel = new Ong();
 $lista = $ongModel->listar();
+$temong = $lista;
 
 if ($_SERVER['REQUEST_METHOD'] = 'GET' && isset($_GET['pesquisa'])) {
     $pesquisa = $_GET['pesquisa'];
@@ -29,12 +30,15 @@ if ($_SERVER['REQUEST_METHOD'] = 'GET' && isset($_GET['pesquisa'])) {
         } ?>
 
         <section id="box-ongs">
-            <?php 
-                if($lista) {
-                    // Listar as ongs
-                } else {
-                    echo '<p>Nenhuma ONG cadastrada!</p>';
+            <?php
+            if ($lista) {
+                foreach ($lista as $ong) {
+                    require '../../components/cards/card-ong.php';
                 }
+            } 
+            if (isset($temong) && !$temong) {
+                echo '<p>Nenhuma ONG cadastrada!</p>';
+            }
             ?>
         </section>
         <nav id="navegacao">

@@ -12,6 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         exit;
     }
     $_SESSION['perfil_usuario'] = $perfil_usuario;
+    $_SESSION['ong_id'] = $ong;
     header("Location: ../{$perfil_usuario}/home.php");
 }
 ?>
