@@ -123,6 +123,7 @@ section#apresentacao {
 
 #dados-ong #acoes button {
     transform: translateY(0);
+    width: 100%;
 }
 
 #dados-ong #acoes button:hover {

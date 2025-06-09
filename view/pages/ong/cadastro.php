@@ -5,7 +5,10 @@ $cssPagina = ['ong/cadastro.css'];
 require_once '../../components/layout/base-inicio.php';
 
 require_once __DIR__ . '/../../../model/OngModel.php';
+require_once __DIR__ . '/../../../model/BancoModel.php';
 $ongModel = new Ong();
+$bancoModel = new BancoModel();
+$lista_banco = $bancoModel->listar();
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $dados = [
         'nome' => $_POST['nome'],
@@ -17,16 +20,39 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         'rua' => $_POST['rua'],
         'bairro' => $_POST['bairro'],
         'cidade' => $_POST['cidade'],
-        'banco_id' => 1,
+        'banco_id' => $_POST['banco'],
         'agencia' => $_POST['agencia'],
         'conta' => $_POST['conta'],
-        'tipo_conta' => $_POST['tipo_banco'],
+        'tipo_conta' => $_POST['tipo_conta'],
         'descricao' => $_POST['descricao'],
     ];
 
-    $criar = $ongModel->criar($dados);
+    try {
+        $criar = $ongModel->criar($dados);
+        if ($criar) {
+            $_SESSION['perfil_usuario'] = 'ong';
+            $_SESSION['ong_id'] = $criar;
+            header('Location: home.php');
+            exit;
+        }
+    } catch (PDOException $e) {
+        header('Location: cadastro.php?cadastro=erro');
+        exit;
+    }
 }
 ?>
+<!-- Mostrar toast se o cadastro falhar -->
+<?php if (isset($_GET['cadastro']) && $_GET['cadastro'] == 'erro'): ?>
+    <script>
+        window.onload = function() {
+            mostrar_toast('toast-cadastro-erro');
+        };
+    </script>
+<?php endif; ?>
+<div id="toast-cadastro-erro" class="toast erro">
+    <i class="fa-solid fa-triangle-exclamation"></i>
+    Falha ao realizar cadastro!
+</div>
 
 <main>
     <section>
@@ -191,14 +217,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 </div> -->
                 <div class="formBox">
                     <div class="inputBox">
-                        <label for="agencia">Agência<span>*</span></label>
-                        <input name="agencia" id="agencia" type="text" placeholder="0000-0">
+                        <label for="banco">Banco<span>*</span></label>
+                        <select name="banco">
+                            <option value="" disabled selected>Escolha</option>
+                            <?php foreach ($lista_banco as $banco): ?>
+                                <option value="<?= $banco->banco_id ?>"><?= $banco->nome ?></option>
+                            <?php endforeach ?>
+                        </select>
                         <span class="visor"></span>
                     </div>
+
                     <div class="inputBox">
                         <label for="tipo-conta">Tipo<span>*</span></label>
                         <!-- <input id="tipo-conta" type="text"> -->
-                        <select name="tipo_banco">
+                        <select name="tipo_conta">
                             <option value="" disabled selected>Escolha</option>
                             <option value="CORRENTE">Corrente</option>
                             <option value="POUPANÇA">Poupança</option>
@@ -206,13 +238,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <span class="visor"></span>
                     </div>
                     <div class="inputBox">
-                        <label for="conta">Conta<span>*</span></label>
-                        <input name="conta" id="conta" type="text" placeholder="00000-00">
+                        <label for="agencia">Agência<span>*</span></label>
+                        <input name="agencia" id="agencia" type="text" placeholder="0000-0">
                         <span class="visor"></span>
                     </div>
                     <div class="inputBox">
-                        <label for="nome-conta">Nome do Titular<span>*</span></label>
-                        <input name="titular" id="nome-conta" type="text" placeholder="Nome Completo">
+                        <label for="conta">Conta<span>*</span></label>
+                        <input name="conta" id="conta" type="text" placeholder="00000-00">
                         <span class="visor"></span>
                     </div>
                     <div class="btnNextBack">
@@ -254,7 +286,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <script type="text/javascript">
     $("#telefone").mask("(00) 00000-0000");
     $("#cnpj").mask("00.000.000/0000-00");
-    $("#cep").mask("00000-00");
+    $("#cep").mask("00000-000");
     $("#cpf-resp").mask("000.000.000-00");
     $("#telefone-resp").mask("(00) 00000-0000");
     $("#agencia").mask("0000-0");

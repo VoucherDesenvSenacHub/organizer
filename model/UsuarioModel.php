@@ -53,6 +53,7 @@ class Usuario
                 session_start();
                 $_SESSION['usuario_id'] = $conta['usuario_id'];
                 $_SESSION['usuario_nome'] = $conta['nome'];
+                $_SESSION['usuario_adm'] = $conta['adm'];
 
                 header('Location: acesso.php');
                 exit;
@@ -64,7 +65,18 @@ class Usuario
         exit;
     }
 
-    function buscar_perfil($id) {
+    // Listagem para o ADM
+    function listar()
+    {
+        $query = "SELECT * FROM $this->tabela";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute();
+        $stmt->setFetchMode(PDO::FETCH_CLASS, __CLASS__);
+        return $stmt->fetchAll();
+    }
+
+    function buscar_perfil($id)
+    {
         $query = "SELECT * FROM $this->tabela WHERE usuario_id = :id";
         $stmt = $this->pdo->prepare($query);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
@@ -73,7 +85,18 @@ class Usuario
         return $stmt->fetch();
     }
 
-    function update($id, $nome, $telefone, $cpf, $data, $email) {
+    function buscarNome($nome)
+    {
+        $query = "SELECT * FROM $this->tabela WHERE nome LIKE :nome";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindValue(':nome', "%{$nome}%", PDO::PARAM_STR);
+        $stmt->execute();
+        $stmt->setFetchMode(PDO::FETCH_CLASS, __CLASS__);
+        return $stmt->fetchAll();
+    }
+
+    function update($id, $nome, $telefone, $cpf, $data, $email)
+    {
         try {
             $query = "UPDATE $this->tabela 
                       SET nome = :nome, telefone = :telefone, cpf = :cpf, data_nascimento = :data, email = :email
@@ -94,12 +117,13 @@ class Usuario
         }
     }
 
-    function updatesenha($id, $senha) {
+    function updatesenha($id, $senha)
+    {
         try {
             $hashSenha = password_hash($senha, PASSWORD_DEFAULT);
             $query = "UPDATE $this->tabela 
                       SET senha = :senha
-                      WHERE coddoador = :id";
+                      WHERE usuario_id = :id";
             $stmt = $this->pdo->prepare($query);
             $stmt->bindParam(':id', $id);
             $stmt->bindParam(':senha', $hashSenha);
@@ -112,7 +136,8 @@ class Usuario
         }
     }
 
-    function calcularIdade($dataNascimento) {
+    function calcularIdade($dataNascimento)
+    {
         $dataNascimento = new DateTime($dataNascimento);
         $hoje = new DateTime();
         $idade = $hoje->diff($dataNascimento)->y;

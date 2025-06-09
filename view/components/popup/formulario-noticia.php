@@ -1,32 +1,29 @@
 <?php
-// $acao = ($noticia->codnot) ? 'EDITAR NOTICIA' : 'NOVA NOTICIA';
-$btn_text = ($noticia->codnot) ? 'SALVAR ALTERAÇÃO' : 'CRIAR NOTICIA';
-// $meta = (int)$meta;
+$acao = ($noticia->noticia_id) ? 'EDITAR NOTICIA' : 'NOVA NOTICIA';
+$btn_text = ($noticia->noticia_id) ? 'SALVAR ALTERAÇÃO' : 'CRIAR NOTICIA';
 ?>
 <div class="popup-fundo" id="editar-noticia-popup">
     <div class="container-popup">
         <button class="btn-fechar-popup fa-solid fa-xmark" onclick="fechar_popup('editar-noticia-popup')"></button>
-        <form action="noticia-edicao .php" method="POST">
-            <input type="hidden" name="id" value="<?= $noticia->codnot ?>">
+        <form action="#" method="POST">
+            <input type="hidden" name="id" value="<?= $noticia->noticia_id ?>">
             <div class="box-edit">
                 <h1><?= $acao ?></h1>
-                <div class="input-group">
-                    <div class="input-box">
-                        <label for="nome">Titulo<span>*</span></label>
-                        <input id="nome" name="nome" type="text" maxlength="50" value="<?= $noticia->titulo ?>" required>
-                    </div>
-                    <div class="input-box">
-                        <label for="subtitulo">Subtitulo<span>*</span></label>
-                        <input id="subtitulo" name="subtitulo" type="text"<?= $noticia->subtitulo ?> required>
-                    </div>
+                <div class="input-box">
+                    <label for="titulo">Titulo<span>*</span></label>
+                    <input id="titulo" name="titulo" type="text" value="<?= $noticia->titulo ?>" required>
                 </div>
                 <div class="input-box">
                     <label for="texto">Texto<span>*</span></label>
-                    <textarea name="texto" id="texto" rows="3" required><?= $noticia->texto ?></textarea>
+                    <textarea name="texto" id="texto" rows="6" required><?= $noticia->texto ?></textarea>
+                </div>
+                <div class="input-box" id="subtitle">
+                    <label for="subtitulo">Subtitulo<span>*</span></label>
+                    <input id="subtitulo" name="subtitulo" type="text" maxlength="90" value="<?= $noticia->subtitulo ?>" required>
                 </div>
                 <div class="input-box">
                     <label for="subtexto">Subtexto<span>*</span></label>
-                    <textarea name="subtexto" id="subtexto" rows="6" required><?= $noticia->subtexto ?></textarea>
+                    <textarea name="subtexto" id="subtexto" rows="4" required><?= $noticia->subtexto ?></textarea>
                 </div>
             </div>
             <div class="box-edit">

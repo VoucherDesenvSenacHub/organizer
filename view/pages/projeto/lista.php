@@ -123,6 +123,8 @@ $perfil = $_SESSION['perfil_usuario'] ?? '';
         <section id="box-ongs">
             <!-- LISTAR CARDS PROJETOS -->
             <?php foreach ($lista as $projeto) {
+                $valor_projeto = $projetoModel->buscarValor($projeto->projeto_id);
+                $barra = round(($valor_projeto / $projeto->meta) * 100);
                 require '../../components/cards/card-projeto.php';
             } ?>
         </section>

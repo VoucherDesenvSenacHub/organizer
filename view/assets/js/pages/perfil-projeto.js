@@ -94,17 +94,24 @@ function getQueryParam(param) {
     return urlParams.get(param);
 }
 
+function removerParametro(param) {
+    const url = new URL(window.location);
+    url.searchParams.delete(param);
+    window.history.replaceState({}, document.title, url.toString());
+}
+
 function verificarMensagem() {
     const mensagem = getQueryParam('msg');
 
     if (mensagem === 'sucesso') {
         mostrar_toast("toast-projeto");
-    }
-    else if (mensagem === 'erro') {
+        removerParametro('msg');
+    } else if (mensagem === 'erro') {
         mostrar_toast("toast-projeto-erro");
-    }
-    else if (mensagem === 'doacao') {
-        mostrar_toast("toast-doacao-sucesso");
+        removerParametro('msg');
+    } else if (mensagem === 'doacao') {
+        mostrar_toast("toast-doacao");
+        removerParametro('msg');
     }
 }
 
