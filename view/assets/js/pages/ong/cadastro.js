@@ -29,7 +29,7 @@ function proximo(indice) {
     }
     else if (indice == 3) {
         if (
-            !validarCampo(input[4], 5, 'Digite um CEP válido.', 8) ||
+            !validarCampo(input[4], 5, 'Digite um CEP válido.', 9) ||
             !validarCampo(input[5], 6, 'Digite sua rua.', 5) ||
             !validarCampo(input[6], 7, 'Digite seu bairro.', 5) ||
             !validarCampo(input[7], 8, 'Digite sua cidade.', 5)

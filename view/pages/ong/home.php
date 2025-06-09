@@ -3,11 +3,14 @@ $acesso = 'ong';
 $tituloPagina = 'Home | Organizer';
 $cssPagina = ['ong/home.css'];
 require_once '../../components/layout/base-inicio.php';
-echo $_SESSION['ong_id'];
+
+require_once '../../../model/OngModel.php';
+$ongModel = new Ong();
+$minhaOng = $ongModel->buscarId($_SESSION['ong_id']);
 ?>
 <main class="container">
     <div id="title">
-        <h1>BEM VINDO</h1>
+        <h1><i class="fa-solid fa-house-flag"></i> <?= $minhaOng->nome ?></h1>
         <p>PAINEL</p>
     </div>
     <div id="resumo">
@@ -27,7 +30,7 @@ echo $_SESSION['ong_id'];
     <nav id="nav-home">
         <a href="noticias.php"><img src="../../assets/images/icons/gif-noticia.gif" alt=""><span>NOTÍCIAS</span></a>
         <a href="projetos.php"><img src="../../assets/images/icons/gif-projeto.gif" alt=""><span>PROJETOS</span></a>
-        <a href="conta.php"><img src="../../assets/images/icons/gif-perfil.gif" alt=""><span>PERFIL</span></a>
+        <a href="meu-perfil.php"><img src="../../assets/images/icons/gif-perfil.gif" alt=""><span>PERFIL</span></a>
         <a href="voluntarios.php"><img src="../../assets/images/icons/gif-voluntario.gif" alt=""><span>VOLUNTÁRIOS</span></a>
         <a href="relatorios.php"><img src="../../assets/images/icons/gif-relatorio.gif" alt=""><span>RELATÓRIOS</span></a>
     </nav>

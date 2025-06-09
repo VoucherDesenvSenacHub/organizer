@@ -176,6 +176,7 @@ section#box-ongs {
     justify-content: space-between;
     gap: 30px;
     flex-wrap: wrap;
+    padding-inline: 10px;
 }
 
 /* Botões de navegação */

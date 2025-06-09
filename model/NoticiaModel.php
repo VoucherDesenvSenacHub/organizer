@@ -1,0 +1,101 @@
+<?php
+require_once __DIR__ . "\..\config\database.php";
+class NoticiaModel
+{
+    private $tabela = 'noticias';
+    private $pdo;
+
+    public function __construct()
+    {
+        global $pdo;
+        $this->pdo = $pdo;
+    }
+
+    function criar($titulo, $subtitulo, $texto, $subtexto, $id)
+    {
+        $query = "INSERT INTO $this->tabela (titulo, subtitulo, texto, subtexto, ong_id)
+                          VALUES (:titulo, :subtitulo, :texto, :subtexto, :ong_id)";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindParam(':titulo', $titulo);
+        $stmt->bindParam(':subtitulo', $subtitulo);
+        $stmt->bindParam(':texto', $texto);
+        $stmt->bindParam(':subtexto', $subtexto);
+        $stmt->bindParam(':ong_id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+    }
+
+    function editar($id, $titulo, $subtitulo, $texto, $subtexto)
+    {
+        $query = "UPDATE $this->tabela
+                          SET titulo = :titulo, subtitulo = :subtitulo, texto = :texto, subtexto = :subtexto
+                          WHERE noticia_id = :id";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindParam(':titulo', $titulo);
+        $stmt->bindParam(':subtitulo', $subtitulo);
+        $stmt->bindParam(':texto', $texto);
+        $stmt->bindParam(':subtexto', $subtexto);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->rowCount();
+    }
+
+    function listar($id = null)
+    {
+        if ($id) {
+            $query = "SELECT * FROM $this->tabela WHERE ong_id = :id";
+            $stmt = $this->pdo->prepare($query);
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        } else {
+            $query = "SELECT * FROM $this->tabela";
+            $stmt = $this->pdo->prepare($query);
+        }
+        $stmt->execute();
+        $stmt->setFetchMode(PDO::FETCH_CLASS, __CLASS__);
+        return $stmt->fetchAll();
+    }
+
+    function buscarId($id)
+    {
+        $query = "SELECT n.*, o.nome FROM $this->tabela n, ongs o WHERE noticia_id = :id AND n.ong_id = o.ong_id";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+        $stmt->setFetchMode(PDO::FETCH_CLASS, __CLASS__);
+        return $stmt->fetch();
+    }
+
+    function buscarNome($titulo, $ong_id = null)
+    {
+        if ($ong_id) {
+            $query = "SELECT n.*, o.nome FROM $this->tabela n, ongs o WHERE titulo LIKE :titulo AND o.ong_id = :ong_id AND n.ong_id = o.ong_id";
+            $stmt = $this->pdo->prepare($query);
+            $stmt->bindValue(':titulo', "%{$titulo}%", PDO::PARAM_STR);
+            $stmt->bindValue(':ong_id', $ong_id, PDO::PARAM_INT);
+        } else {
+            $query = "SELECT * FROM $this->tabela WHERE titulo LIKE :titulo";
+            $stmt = $this->pdo->prepare($query);
+            $stmt->bindValue(':titulo', "%{$titulo}%", PDO::PARAM_STR);
+        }
+        $stmt->execute();
+        $stmt->setFetchMode(PDO::FETCH_CLASS, __CLASS__);
+        return $stmt->fetchAll();
+    }
+
+    function listarCards($ong_id = null)
+    {
+        if ($ong_id) {
+            $query = "SELECT noticia_id, titulo, subtitulo, texto, subtexto, n.data_cadastro, nome
+                  FROM noticias n, ongs o
+                  WHERE n.ong_id = o.ong_id AND o.ong_id = :ong_id";
+            $stmt = $this->pdo->prepare($query);
+            $stmt->bindValue(':ong_id', $ong_id, PDO::PARAM_INT);
+        } else {
+            $query = "SELECT noticia_id, titulo, subtitulo, texto, subtexto, n.data_cadastro, nome
+                  FROM noticias n, ongs o
+                  WHERE n.ong_id = o.ong_id";
+            $stmt = $this->pdo->prepare($query);
+        }
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
+    }
+}

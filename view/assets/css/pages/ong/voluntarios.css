@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Agdasima:wght@400;700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Inter:wght@100..900&display=swap');
 
+/* @import url(listagem.css); */
+
 :root {
     --fonte: "Poppins", serif;
     --cor-principal: #1C3464;
@@ -18,63 +20,56 @@ body {
 
 #principal {
     justify-content: space-around;
-    z-index: 1;
-    width: 80%;
+    max-width: 1200px;
     margin: auto;
-    padding: 20px;
+    padding: 50px 30px;
     background-color: #FFFFFF;
     border-radius: 3px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     ;
 }
 
-.header-principal{
+#principal .topo {
+    width: 100%;
     display: flex;
-    gap: 50px;
-    align-items: center;
+    flex-wrap: wrap;
     justify-content: space-between;
-    margin: 20px;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
 }
 
-.header-principal h1{
-    font-family: "Poppins", serif;
-    font-size: 30px;
-    color: #F79329;
-    margin: 0;
+#principal .topo h1 {
+    font-size: 28px;
+    color: var(--cor-amarelo-hover);
 }
 
-.header-principal form {
-    margin: 0;
+/* Área barra de pesquisa */
+#form-busca {
+    display: flex;
+    align-items: center;
+    max-width: 350px;
+    width: 100%;
 }
 
-/* css do imput */
-.input {
-    position: relative;
-    width: 330px; 
-    height: 40px; 
+#form-busca input {
+    background-color: white;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    border: none;
+    outline: none;
+    border-radius: 4px 24px 24px 4px;
+    padding: 10px 65px 10px 15px;
+    transition: .3s;
+    width: 100%;
 }
 
-.input input {
-    width: 100%; 
-    height: 100%; 
-    padding-left: 10px;
-    padding-right: 50px; 
-    font-size: 14px; 
-    border-radius: 50px;
-}
-
-.lupa-icon {
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    cursor: pointer;
-}
-
-.lupa-icon img {
-    width: 25px;  
-    height: 25px;
-    pointer-events: none; 
+#form-busca .btn {
+    font-size: 20px;
+    padding: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-left: -40px;
 }
 
 

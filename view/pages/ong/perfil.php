@@ -7,12 +7,15 @@ require_once '../../components/layout/base-inicio.php';
 
 require_once '../../../model/OngModel.php';
 require_once '../../../model/ProjetoModel.php';
+require_once '../../../model/NoticiaModel.php';
 $ongModel = new Ong();
 $projetoModel = new Projeto();
+$noticiaModel = new NoticiaModel();
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
     $ong = $ongModel->buscarId($id);
     $projetos_ong = $projetoModel->listar($id);
+    $noticias_ong = $noticiaModel->listarCards($id);
 }
 
 $perfil = $_SESSION['perfil_usuario'] ?? '';
@@ -96,8 +99,15 @@ $perfil = $_SESSION['perfil_usuario'] ?? '';
                     <h3>Notícias</h3>
                 </div>
                 <div class="mini-cards">
-                    <?php require '../../components/cards/card-noticia.php'; ?>
-                    <?php require '../../components/cards/card-noticia.php'; ?>
+                    <?php
+                    if ($noticias_ong) {
+                        foreach ($noticias_ong as $noticia) {
+                            require '../../components/cards/card-noticia.php';
+                        }
+                    } else {
+                        echo '<h4>Está ONG ainda não tem notícias!</h4>';
+                    }
+                    ?>
                 </div>
             </div>
         </section>
@@ -111,6 +121,8 @@ $perfil = $_SESSION['perfil_usuario'] ?? '';
                     <?php
                     if ($projetos_ong) {
                         foreach ($projetos_ong as $projeto) {
+                            $valor_projeto = $projetoModel->buscarValor($projeto->projeto_id);
+                            $barra = round(($valor_projeto / $projeto->meta) * 100);
                             require '../../components/cards/card-projeto.php';
                         }
                     } else {

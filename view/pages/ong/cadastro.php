@@ -284,7 +284,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <script type="text/javascript">
     $("#telefone").mask("(00) 00000-0000");
     $("#cnpj").mask("00.000.000/0000-00");
-    $("#cep").mask("00000-00");
+    $("#cep").mask("00000-000");
     $("#cpf-resp").mask("000.000.000-00");
     $("#telefone-resp").mask("(00) 00000-0000");
     $("#agencia").mask("0000-0");

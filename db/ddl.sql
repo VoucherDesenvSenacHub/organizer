@@ -78,3 +78,34 @@ CREATE TABLE projetos (
     ong_id INT NOT NULL,
     CONSTRAINT fk_projeto_ong FOREIGN KEY (ong_id) REFERENCES ongs(ong_id)
 );
+
+
+-- TABELA DAS NOTÍCIAS
+CREATE TABLE noticias (
+    noticia_id INT PRIMARY KEY AUTO_INCREMENT,
+-- Títulos da notícia
+    titulo VARCHAR(90) NOT NULL,
+    subtitulo VARCHAR(90) NOT NULL,
+-- Textos da notícia
+    texto TEXT NOT NULL,
+    subtexto TEXT NOT NULL,
+-- Status e controle
+    status ENUM('ATIVO', 'INATIVO') NOT NULL DEFAULT 'ATIVO',
+    data_cadastro TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    data_atualizacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+-- Relacionamento
+    ong_id INT NOT NULL,
+    CONSTRAINT fk_noticia_ong FOREIGN KEY (ong_id) REFERENCES ongs(ong_id)
+);
+
+
+-- TABELA DE DOAÇÕES PARA O PROJETO
+CREATE TABLE doacao_projeto (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    projeto_id INT NOT NULL,
+    usuario_id INT NOT NULL,
+    valor DECIMAL(10, 2) NOT NULL,
+    data_doacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (projeto_id) REFERENCES projetos(projeto_id),
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(usuario_id)
+);

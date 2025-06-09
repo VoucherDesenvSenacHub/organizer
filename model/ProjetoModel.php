@@ -58,7 +58,7 @@ class Projeto
 
     function buscarValor($id)
     {
-        $query = "SELECT SUM(valor) AS total FROM valprojeto WHERE codproj = :id";
+        $query = "SELECT SUM(valor) AS total FROM doacao_projeto WHERE projeto_id = :id";
         $stmt = $this->pdo->prepare($query);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
@@ -68,7 +68,7 @@ class Projeto
 
     function contarDoadores($id)
     {
-        $query = "SELECT COUNT(*) AS total FROM valprojeto WHERE codproj = :id";
+        $query = "SELECT COUNT(*) AS total FROM doacao_projeto WHERE projeto_id = :id";
         $stmt = $this->pdo->prepare($query);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
@@ -126,14 +126,14 @@ class Projeto
         }
     }
 
-    function doacao($codproj, $valor, $coddoador)
+    function doacao($projeto_id, $usuario_id, $valor)
     {
-        $query = 'INSERT INTO valprojeto (codproj, valor, coddoador)
-                      VALUES (:projeto, :valor, :doador)';
+        $query = 'INSERT INTO doacao_projeto (projeto_id, usuario_id, valor)
+                  VALUES (:projeto, :doador, :valor)';
         $stmt = $this->pdo->prepare($query);
-        $stmt->bindParam(':projeto', $codproj);
+        $stmt->bindParam(':projeto', $projeto_id);
+        $stmt->bindParam(':doador', $usuario_id);
         $stmt->bindParam(':valor', $valor);
-        $stmt->bindParam(':doador', $coddoador);
         $stmt->execute();
         return $stmt->rowCount();
     }
