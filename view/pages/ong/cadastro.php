@@ -30,6 +30,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     try {
         $criar = $ongModel->criar($dados);
         if ($criar) {
+            $_SESSION['perfil_usuario'] = 'ong';
+            $_SESSION['ong_id'] = $criar;
             header('Location: home.php');
             exit;
         }

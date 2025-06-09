@@ -44,10 +44,15 @@ class Ong
         $stmt->bindParam(':tipo_conta', $dados['tipo_conta']);
         $stmt->bindParam(':descricao', $dados['descricao']);
 
-        return $stmt->execute();
+        if ($stmt->execute()) {
+            return $this->pdo->lastInsertId();
+        }
+
+        return false;
     }
 
-    function editar($dados) {
+    function editar($dados)
+    {
         $query = "UPDATE $this->tabela
                   SET nome = :nome, cnpj = :cnpj, telefone = :telefone, 
                   email = :email, cep = :cep, rua = :rua, bairro = :bairro, 
