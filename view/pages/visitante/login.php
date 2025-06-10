@@ -1,5 +1,6 @@
 <?php
 ob_start();
+$acesso = 'visitante';
 $tituloPagina = 'Login | Organizer';
 $cssPagina = ['visitante/login.css'];
 require_once '../../components/layout/base-inicio.php';

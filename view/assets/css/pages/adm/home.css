@@ -15,6 +15,11 @@ a {
     text-decoration: none;
 }
 
+.container h1 {
+    /* color: var(--cor-roxo-adm); */
+    text-transform: uppercase;
+}
+
 #title {
     display: flex;
     justify-content: space-between;
@@ -261,6 +266,19 @@ table tbody td button:hover {
 
 #table-doador button {
     color: var(--cor-verde-barra);
+}
+
+/* Botão ver mais */
+.btn-ver-mais {
+    width: 100%;
+    text-align: center;
+    font-weight: 500;
+    color: var(--cor-principal);
+    transition: .3s;
+}
+
+.btn-ver-mais:hover {
+    color: var(--cor-roxo-adm);
 }
 
 /* Responsividade */

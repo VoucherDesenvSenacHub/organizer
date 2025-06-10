@@ -29,7 +29,7 @@ function proximo(indice) {
     }
     else if (indice == 3) {
         if (
-            !validarCampo(input[4], 5, 'Digite um CEP válido.', 8) ||
+            !validarCampo(input[4], 5, 'Digite um CEP válido.', 9) ||
             !validarCampo(input[5], 6, 'Digite sua rua.', 5) ||
             !validarCampo(input[6], 7, 'Digite seu bairro.', 5) ||
             !validarCampo(input[7], 8, 'Digite sua cidade.', 5)
@@ -55,11 +55,12 @@ function proximo(indice) {
     // }
     else if (indice == 4) {
         if (
-            !validarCampo(input[8], 9, 'Digite a agência corretamente.', 6) ||
+            // !validarCampo(input[8], 9, 'Digite a agência corretamente.', 6) ||
             // !validarCampo(input[9], 10, 'Escolha o tipo de Conta.') ||
-            !validarSelect(select[0], 10, 'Escolha o tipo da conta') ||
-            !validarCampo(input[9], 11, 'Digite a conta corretamente.', 8) ||
-            !validarCampo(input[10], 12, 'Digite o nome completo do titular.', 8)
+            !validarSelect(select[0], 9, 'Escolha um banco.') ||
+            !validarSelect(select[1], 10, 'Escolha o tipo da conta.') ||
+            !validarCampo(input[8], 11, 'Digite a agência corretamente.', 6) ||
+            !validarCampo(input[9], 12, 'Digite a conta corretamente.', 8)
         ) {
             check[3].classList.remove('input-valid');
             return false;
@@ -88,3 +89,9 @@ function cadastrar_ong() {
     sessionStorage.setItem("cadastro_sucesso", "true");
     window.location.href = "login.php";
 }
+
+$("#form").submit(function(event) {
+    // Remover máscara dos campos antes de enviar
+    $("#telefone").unmask();
+    $("#cnpj").unmask();
+});

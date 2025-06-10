@@ -1,10 +1,52 @@
 <?php
+$acesso = $_SESSION['perfil_usuario'] ?? 'visitante';
 $tituloPagina = 'Leia Mais | Organizer';
 $cssPagina = ['noticia/perfil.css'];
 require_once '../../components/layout/base-inicio.php';
 
+require_once '../../../model/NoticiaModel.php';
+$noticiaModel = new NoticiaModel();
+
+if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+    $id = $_GET['id'];
+    $noticia = $noticiaModel->buscarId($id);
+}
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $id = $_POST['id'];
+    $titulo = $_POST['titulo'];
+    $subtitulo = $_POST['subtitulo'];
+    $texto = $_POST['texto'];
+    $subtexto = $_POST['subtexto'];
+    try {
+        $update = $noticiaModel->editar($id, $titulo, $subtitulo, $texto, $subtexto);
+        if ($update > 0) {
+            header("Location: perfil.php?id=$id&upd=sucesso");
+            exit;
+        } else {
+            header("Location: perfil.php?id=aaaa");
+            exit;
+        }
+    } catch (PDOException $e) {
+        header("Location: perfil.php?id=$id&upd=erro");
+        exit;
+    }
+}
+
 $perfil = $_SESSION['perfil_usuario'] ?? '';
+if ($perfil == 'ong') {
+    require_once '../../components/popup/formulario-noticia.php';
+}
 ?>
+<div id="toast-noticia" class="toast">
+    <i class="fa-regular fa-circle-check"></i>
+    Notícia atualizada com sucesso!
+</div>
+<div id="toast-noticia-erro" class="toast erro">
+    <i class="fa-solid fa-triangle-exclamation"></i>
+    Falha ao atualizar notícia!
+</div>
+
 <main <?php if ($perfil == 'doador') echo 'class="usuario-logado"'; ?>>
     <div class="container-noticia">
         <section id="carousel">
@@ -17,12 +59,19 @@ $perfil = $_SESSION['perfil_usuario'] ?? '';
         </section>
         <section class="area-materia">
             <div class="titulo">
-                <h1>Título da Notícia</h1>
-                <span>Publicado em: 01/01/2025</span>
-                <h5>Nome da Ong</h5>
+                <h1><?= $noticia->titulo ?></h1>
+                <span><i class="fa-regular fa-clock"></i> <?= $noticia->data_cadastro ?></span>
+                <a title="Ver Perfil da ONG" href="../ong/perfil.php?id=<?= $noticia->ong_id ?>"><i class="fa-solid fa-house-flag"></i> <?= $noticia->nome ?></a>
             </div>
+            <!-- Botões de edição para a ONG -->
+            <?php if ($perfil == 'ong'): ?>
+                <div class="area-acoes">
+                    <button class="btn" onclick="abrir_popup('editar-noticia-popup')"><i class="fa-solid fa-pen-to-square"></i> Editar</button>
+                    <button class="btn"><i class="fa-solid fa-trash-can"></i> Inativar</button>
+                </div>
+            <?php endif; ?>
             <div class="texto">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium, ipsam aut labore autem porro ipsa vero placeat vitae repudiandae facere. Corporis, nostrum. Ex, laborum ad! Nihil eveniet commodi laborum nobis! Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus doloremque et deserunt reprehenderit eius enim ad veritatis corporis. Quasi aliquam atque aperiam inventore deserunt a sint tenetur rerum eos voluptas?</p>
+                <p><?= $noticia->texto ?></p>
             </div>
             <!-- Subtítulo -->
             <div class="subtitulo">
@@ -30,8 +79,8 @@ $perfil = $_SESSION['perfil_usuario'] ?? '';
                     <img src="../../assets/images/noticia-foto-meio.png">
                 </div>
                 <div class="sub-texto">
-                    <h3>Subtítulo</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae, in. Libero reiciendis illo similique expedita saepe facilis, quis dolores nam nisi officia itaque tempora cum accusamus voluptates corporis asperiores quo.</p>
+                    <h3><?= $noticia->subtitulo ?></h3>
+                    <p><?= $noticia->subtexto ?></p>
                 </div>
             </div>
         </section>

@@ -83,6 +83,7 @@
     width: 100%;
     max-width: 800px;
 }
+
 #editar-projeto-popup .input-box input:focus,
 #editar-projeto-popup .input-box textarea:focus {
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
@@ -119,5 +120,11 @@
 
     #editar-projeto-popup .input-group .input-box:first-child {
         width: 100%;
+    }
+}
+
+@media (max-width: 400px) {
+    #editar-projeto-popup .container-popup {
+        padding-inline: 10px;
     }
 }

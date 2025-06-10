@@ -1,84 +1,85 @@
 <?php
-$tituloPagina = 'Notícias'; // Definir o título da página
-$cssPagina = ['ong/noticias.css']; //Colocar o arquivo .css 
+$acesso = 'ong';
+$tituloPagina = 'Notícias | Organizer';
+$cssPagina = ['ong/listagem.css'];
 require_once '../../components/layout/base-inicio.php';
+
+require_once '../../../model/NoticiaModel.php';
+$noticiaModel = new NoticiaModel();
+
+// Pegar as noticias
+$lista = $noticiaModel->listarCards($_SESSION['ong_id']);
+$temnoticia = $lista;
+
+if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['pesquisa'])) {
+    $pesquisa = $_GET['pesquisa'];
+    $lista = $noticiaModel->buscarNome($pesquisa, $_SESSION['ong_id']);
+}
+// Criar a Noticia
 $noticia = (object) [
-    'codnot' => '',
+    'noticia_id' => '',
     'titulo' => '',
     'subtitulo' => '',
     'texto' => '',
     'subtexto' => ''
 ];
-$acao = 'NOVA NOTICIA';
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $titulo = $_POST['titulo'];
+    $subtitulo = $_POST['subtitulo'];
+    $texto = $_POST['texto'];
+    $subtexto = $_POST['subtexto'];
+    $id = $_SESSION['ong_id'];
+    try {
+        $criar = $noticiaModel->criar($titulo, $subtitulo, $texto, $subtexto, $id);
+        header("Location: noticias.php?msg=sucesso");
+        exit;
+    } catch (PDOException) {
+        header("Location: noticias.php?msg=erro");
+        exit;
+    }
+}
 require_once '../../components/popup/formulario-noticia.php';
 ?>
+<!-- Toasts -->
+<div id="toast-noticia" class="toast">
+    <i class="fa-regular fa-circle-check"></i>
+    Notícia criada com sucesso!
+</div>
+<div id="toast-noticia-erro" class="toast erro">
+    <i class="fa-solid fa-triangle-exclamation"></i>
+    Falha ao criar Notícia!
+</div>
 
-<!-- Início DIV principal -->
-<div id="principal">
-    <div id="painel-l1">
-        <h1>SUAS NOTÍCIAS PUBLICADAS</h1>
-        <div>
-            <button class="botao-nova-noticia" onclick="abrir_popup('editar-noticia-popup')">NOVA NOTÍCIA +</button>
+<main>
+    <div class="container">
+        <div class="topo">
+            <h1><i class="fa-solid fa-newspaper"></i> MINHAS NOTÍCIAS</h1>
+            <form id="form-busca" action="noticias.php" method="GET">
+                <input type="text" name="pesquisa" placeholder="Busque uma notícia">
+                <button class="btn"><i class="fa-solid fa-search"></i></button>
+            </form>
+            <button class="btn btn-novo" onclick="abrir_popup('editar-noticia-popup')">NOVA NOTÍCIA +</button>
+        </div>
+        <?php if (isset($_GET['pesquisa'])) {
+            echo "<p id='qnt-busca'><i class='fa-solid fa-search'></i> " . count($lista) . " Notícias Encontradas</p>";
+        } ?>
+        <div class="area-cards">
+            <?php
+            if ($lista) {
+                $class = 'tp-ong';
+                foreach ($lista as $noticia) {
+                    require '../../components/cards/card-noticia.php';
+                }
+            }
+            if (isset($temnoticia) && !$temnoticia) {
+                echo 'Você ainda não publicou nenhuma notícia :(';
+            }
+            ?>
         </div>
     </div>
-    <div id="noticias-publicadas">
-        <div class="card-noticia">
-            <img src="../../assets/images/sos-rs.png" alt="">
-            <span>
-                <h2>SOS Rio Grande do Sul</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur qui quasi accusamus ipsa inventore deserunt perspiciatis unde dolorum reiciendis officia? </p>
-            </span>
-            <span class="btn-edicao">
-                <a href="perfil-noticia.php"><button><img src="../../assets/images/edit.png" alt=""></button></a>
-                <button onclick="popConclusao('delete')"><img src="../../assets/images/delete.png" alt=""></button>
-            </span>
-        </div>
-        <div class="card-noticia">
-            <img src="../../assets/images/imagem-prevista.png" alt="">
-            <span>
-                <h2>Título da Matéria</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur qui quasi accusamus ipsa inventore deserunt perspiciatis unde dolorum reiciendis officia? </p>
-            </span>
-            <span class="btn-edicao">
-                <a href="perfil-noticia.php"><button><img src="../../assets/images/edit.png" alt=""></button></a>
-                <button onclick="popConclusao('delete')"><img src="../../assets/images/delete.png" alt=""></button>
-            </span>
-        </div>
-        <div class="card-noticia">
-            <img src="../../assets/images/imagem-prevista.png" alt="">
-            <span>
-                <h2>Título da Matéria</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur qui quasi accusamus ipsa inventore deserunt perspiciatis unde dolorum reiciendis officia? </p>
-            </span>
-            <span class="btn-edicao">
-                <a href="perfil-noticia.php"><button><img src="../../assets/images/edit.png" alt=""></button></a>
-                <button onclick="popConclusao('delete')"><img src="../../assets/images/delete.png" alt=""></button>
-            </span>
-        </div>
-        <div class="card-noticia">
-            <img src="../../assets/images/imagem-prevista.png" alt="">
-            <span>
-                <h2>Título da Matéria</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur qui quasi accusamus ipsa inventore deserunt perspiciatis unde dolorum reiciendis officia? </p>
-            </span>
-            <span class="btn-edicao">
-                <a href="perfil-noticia.php"><button><img src="../../assets/images/edit.png" alt=""></button></a>   
-                <button onclick="popConclusao('delete')"><img src="../../assets/images/delete.png" alt=""></button>
-            </span>
-        </div>
-    </div>
-</div>
-<!-- Fim DIV principal  -->
-
-<!-- Pop-up conclusão -->
-<div id="pop-conclusao">
-    <img id="icone-conclusao" src="" alt="" width="20%">
-    <p id="texto-conclusao"></p>
-</div>
-<!-- Fim do popup conclusão -->
-
+</main>
 <?php
-$jsPagina = ['ongs.js']; //Colocar o arquivo .js
+$jsPagina = ['ong/noticias.js'];
 require_once '../../components/footer.php';
 ?>
 </body>

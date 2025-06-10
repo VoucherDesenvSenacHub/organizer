@@ -1,17 +1,19 @@
 <?php
 session_start();
+$_SESSION['perfil_usuario'] = null;
 require_once __DIR__ . '/../../../model/OngModel.php';
 $ongModel = new Ong();
 $ong = $ongModel->verificarExistenciaOng($_SESSION['usuario_id']);
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $tipoUsuario = $_POST['perfil'];
-    if ($tipoUsuario == 'ong' && !$ong) {
+    $perfil_usuario = $_POST['perfil'];
+    if ($perfil_usuario == 'ong' && !$ong) {
         header("Location: ../ong/cadastro.php?msg=conta");
         exit;
     }
-    $_SESSION['perfil_usuario'] = $tipoUsuario;
-    header("Location: ../{$tipoUsuario}/home.php");
+    $_SESSION['perfil_usuario'] = $perfil_usuario;
+    $_SESSION['ong_id'] = $ong;
+    header("Location: ../{$perfil_usuario}/home.php");
 }
 ?>
 
@@ -45,13 +47,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <p>ONG</p>
                 </button>
             </form>
-            <form class="form-adm" action="#" method="POST">
-                <input type="hidden" name="perfil" value="adm">
-                <button>
-                    <i class="fa-solid fa-user-secret"></i>
-                    <p>ADM</p>
-                </button>
-            </form>
+            <?php if ($_SESSION['usuario_adm']): ?>
+                <form class="form-adm" action="#" method="POST">
+                    <input type="hidden" name="perfil" value="adm">
+                    <button>
+                        <i class="fa-solid fa-user-secret"></i>
+                        <p>ADM</p>
+                    </button>
+                </form>
+            <?php endif; ?>
         </div>
         <a href="../../../controller/logout.php">SAIR</a>
     </div>
