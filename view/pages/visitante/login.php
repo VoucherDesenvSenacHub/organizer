@@ -28,6 +28,7 @@ ob_end_flush();
                 <div class="input-item">
                     <label for="senha">Senha<span>*</span></label>
                     <input id="senha" name="senha" type="password" minlength="8" maxlength="20" placeholder="********" required>
+                    <i id="togglePassword" class="fas fa-eye"></i>
                 </div>
                 <div class="remember-forgot">
                     <div class="remember">
