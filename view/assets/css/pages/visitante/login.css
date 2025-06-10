@@ -46,6 +46,7 @@ form .input-group {
 .input-group .input-item {
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 
 .input-item label {
@@ -71,26 +72,12 @@ form .input-group {
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
 }
 
-.password-container {
-  position: relative;
-  margin-bottom: 20px;
-  width: 100%;
-}
-
-#senha {
-  width: 100%;
-  padding: 10px;
-  font-size: 16px;
-  border: 2px solid #ddd;
-  border-radius: 5px;
-  box-sizing: border-box;
-  font-size: 14px;
-}
-
+/* Icone de ver senha */
 #togglePassword {
   position: absolute;
   right: 10px;
-  top: calc(50% - 7px);
+  top: calc(50% - 4px);
+  transform: translateY(50%);
   cursor: pointer;
   color: #666;
 }
