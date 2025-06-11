@@ -1,4 +1,4 @@
-const btnCard = document.querySelectorAll('.cards-container');
+const cardProjeto = document.querySelectorAll('.card-projeto');
 const telaAtivoPendentesVoluntario = document.getElementById('tela-voluntario-ativo-solicitacao');
 const btnAtivos = document.getElementById('v-ativos');
 const telaVoluntariosAtivos = document.getElementById('tela-voluntarios-ativos');
@@ -13,58 +13,73 @@ const telaAceitar = document.getElementById('tela-aceitar');
 const btnRecusar = document.getElementById('recusar');
 const telaRecusar = document.getElementById('tela-recusar');
 
-btnCard.forEach(card => {
-    card.addEventListener('click', function () { telaAtivoPendentesVoluntario.style.display = "block"; })
+
+cardProjeto.forEach(card => {
+    card.addEventListener('click', function () {
+        telaAtivoPendentesVoluntario.style.display = "block";
+        telaAtivoPendentesVoluntario.classList.add('ativo');
+    });
 });
 
-btnAtivos.onclick = function() {
+btnAtivos.onclick = function () {
     telaVoluntariosAtivos.style.display = "block";
+    telaVoluntariosAtivos.classList.add('ativo');
+
 }
 
-btnDeleteVoluntario.forEach( card => {
-    card.addEventListener('click', function () { telaVoluntariosDelete.style.display = "block"; })
+btnDeleteVoluntario.forEach(card => {
+    card.addEventListener('click', function () { 
+        telaVoluntariosDelete.style.display = "block";
+        telaVoluntariosDelete.classList.add('ativo');
+    })
 });
 
-btnSolicitacoes.onclick = function() {
+btnSolicitacoes.onclick = function () {
     telaVoluntariosSolicitacoes.style.display = "block";
+    telaVoluntariosSolicitacoes.classList.add('ativo');
 }
 
-btnVerSolicitacao.forEach( card => {
-    card.addEventListener('click', function () { telaSolicitacaoVoluntario.style.display = "block";
-     })
+btnVerSolicitacao.forEach(card => {
+    card.addEventListener('click', function () {
+        telaSolicitacaoVoluntario.style.display = "block";
+        telaSolicitacaoVoluntario.classList.add('ativo');
+    })
 });
 
-btnAceitar.onclick = function() {
+btnAceitar.onclick = function () {
     telaAceitar.style.display = "block";
+    telaAceitar.classList.add('ativo');
 }
 
-btnRecusar.onclick = function() {
+btnRecusar.onclick = function () {
     telaRecusar.style.display = "block";
+    telaRecusar.classList.add('ativo');
 }
 
 window.onclick = function (event) {
     if (event.target == telaAtivoPendentesVoluntario) {
-        telaAtivoPendentesVoluntario.style.display = "none";
+        telaAtivoPendentesVoluntario.classList.remove('ativo');
     }
     if (event.target == telaVoluntariosAtivos) {
-        telaVoluntariosAtivos.style.display = "none";
+        telaVoluntariosAtivos.classList.remove('ativo');
     }
     if (event.target == telaVoluntariosDelete) {
-        telaVoluntariosDelete.style.display = "none";
+        telaVoluntariosDelete.classList.remove('ativo');
     }
     if (event.target == telaVoluntariosSolicitacoes) {
-        telaVoluntariosSolicitacoes.style.display = "none";
+        telaVoluntariosSolicitacoes.classList.remove('ativo');
     }
     if (event.target == telaSolicitacaoVoluntario) {
-        telaSolicitacaoVoluntario.style.display = "none";
+        telaSolicitacaoVoluntario.classList.remove('ativo');
     }
     if (event.target == telaAceitar) {
-        telaAceitar.style.display = "none";
-        telaSolicitacaoVoluntario.style.display = "none";
+        telaAceitar.classList.remove('ativo');
+        telaSolicitacaoVoluntario.classList.remove('ativo');
         
+
     }
     if (event.target == telaRecusar) {
-        telaRecusar.style.display = "none";
-        telaSolicitacaoVoluntario.style.display = "none";
+        telaRecusar.classList.remove('ativo');
+        telaSolicitacaoVoluntario.classList.remove('ativo');
     }
 }

@@ -105,7 +105,7 @@ require_once '../../components/layout/base-inicio.php';
 
 <!-- tela escolher voluntarios ativos e solicitações de novos voluntarios -->
 <div class="tela-voluntario-ativo-solicitacao" id="tela-voluntario-ativo-solicitacao">
-    <div class="card-voluntario-ativo-solicitacao">
+    <div class="card-voluntario-ativo-solicitacao" id="card-voluntario-ativo-solicitacao">
         <div class="div-button">
             <div class="v-ativos" id="v-ativos">
                 <img src="../../assets/images/icon-voluntarios.png" alt="">
