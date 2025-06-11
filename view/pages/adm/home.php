@@ -82,7 +82,7 @@ require_once '../../components/layout/base-inicio.php';
                         <td>
                             <!-- <form method="GET"> -->
                                 <input type="hidden" name="id" value="">
-                                <a href="perfil-ong.php"> <button class="fa-solid fa-pen-to-square" ></button></a>
+                                <a href="http://localhost/organizer/view/pages/ong/perfil.php?id=1"> <button class="fa-solid fa-eye" ></button></a>
                             <!-- </form> -->
                         </td>
                     </tr>
@@ -95,7 +95,7 @@ require_once '../../components/layout/base-inicio.php';
                         <td>
                             <!-- <form method="GET"> -->
                                 <input type="hidden" name="id" value="">
-                                <a href="perfil-ong.php"> <button class="fa-solid fa-pen-to-square" ></button></a>
+                                <a href="http://localhost/organizer/view/pages/ong/perfil.php?id=1"> <button class="fa-solid fa-eye" ></button></a>
                             <!-- </form> -->
                         </td>
                     </tr>
@@ -108,7 +108,7 @@ require_once '../../components/layout/base-inicio.php';
                         <td>
                             <!-- <form method="GET"> -->
                                 <input type="hidden" name="id" value="">
-                                <a href="perfil-ong.php"> <button class="fa-solid fa-pen-to-square" ></button></a>
+                                <a href="http://localhost/organizer/view/pages/ong/perfil.php?id=1"> <button class="fa-solid fa-eye" ></button></a>
                             <!-- </form> -->
                         </td>
                     </tr>
@@ -139,7 +139,7 @@ require_once '../../components/layout/base-inicio.php';
                         <td>
                             <!-- <form method="GET"> -->
                                 <input type="hidden" name="id" value="">
-                                <a href="ver-projetos.php"> <button class="fa-solid fa-pen-to-square" ></button></a>
+                                <a href="http://localhost/organizer/view/pages/projeto/perfil.php?id=1"> <button class="fa-solid fa-eye" ></button></a>
                             <!-- </form> -->
                         </td>
                     </tr>
@@ -152,7 +152,7 @@ require_once '../../components/layout/base-inicio.php';
                         <td>
                             <!-- <form method="GET"> -->
                                 <input type="hidden" name="id" value="">
-                                <a href="ver-projetos.php"> <button class="fa-solid fa-pen-to-square" ></button></a>
+                                <a href="http://localhost/organizer/view/pages/projeto/perfil.php?id=1"> <button class="fa-solid fa-eye" ></button></a>
                             <!-- </form> -->
                         </td>
                     </tr>
@@ -165,7 +165,7 @@ require_once '../../components/layout/base-inicio.php';
                         <td>
                             <!-- <form method="GET"> -->
                                 <input type="hidden" name="id" value="">
-                                <a href="ver-projetos.php"> <button class="fa-solid fa-pen-to-square" ></button></a>
+                                <a href="http://localhost/organizer/view/pages/projeto/perfil.php?id=1"> <button class="fa-solid fa-eye" ></button></a>
                             <!-- </form> -->
                         </td>
                     </tr>
@@ -196,7 +196,7 @@ require_once '../../components/layout/base-inicio.php';
                         <td>
                             <!-- <form method="GET"> -->
                                 <input type="hidden" name="id" value="">
-                                <a href="ver-doadores.php"> <button class="fa-solid fa-pen-to-square" ></button></a>
+                                <a href="http://localhost/organizer/view/pages/adm/doadores.php?id=1"> <button class="fa-solid fa-eye" ></button></a>
                             <!-- </form> -->
                         </td>
                     </tr>
@@ -209,7 +209,7 @@ require_once '../../components/layout/base-inicio.php';
                         <td>
                             <!-- <form method="GET"> -->
                                 <input type="hidden" name="id" value="">
-                                <a href="ver-doadores.php"> <button class="fa-solid fa-pen-to-square" ></button></a>
+                                <a href="http://localhost/organizer/view/pages/adm/doadores.php?id=1"> <button class="fa-solid fa-eye" ></button></a>
                             <!-- </form> -->
                         </td>
                     </tr>
@@ -222,7 +222,7 @@ require_once '../../components/layout/base-inicio.php';
                         <td>
                             <!-- <form method="GET"> -->
                                 <input type="hidden" name="id" value="">
-                                <a href="ver-doadores.php"> <button class="fa-solid fa-pen-to-square" ></button></a>
+                                <a href="http://localhost/organizer/view/pages/adm/doadores.php?id=1"> <button class="fa-solid fa-eye" ></button></a>
                             <!-- </form> -->
                         </td>
                     </tr>
