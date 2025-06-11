@@ -4,6 +4,11 @@ $tituloPagina = 'Cadastro da ONG';
 $cssPagina = ['ong/cadastro.css'];
 require_once '../../components/layout/base-inicio.php';
 
+// Se o usuario ja tem uma ong e tentar acessar o cadastro
+if (isset($_SESSION['ong_id'])) {
+    header('Location: ../ong/home.php');
+}
+
 require_once __DIR__ . '/../../../model/OngModel.php';
 require_once __DIR__ . '/../../../model/BancoModel.php';
 $ongModel = new Ong();
