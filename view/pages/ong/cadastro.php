@@ -1,284 +1,303 @@
-<?php 
-    $tituloPagina = 'Cadastro ONG'; // Definir o título da página
-    $cssPagina = ['ong/cadastro.css']; //Colocar o arquivo .css 
-    require_once '../../components/layout/base-inicio.php';
-    require_once '../../../model/Bancos.php';
-    require_once '../../../model/Estados.php';
-    require_once '../../../model/Cidades.php';
-    
-    
+<?php
+$acesso = 'ong';
+$tituloPagina = 'Cadastro da ONG';
+$cssPagina = ['ong/cadastro.css'];
+require_once '../../components/layout/base-inicio.php';
+
+// Se o usuario ja tem uma ong e tentar acessar o cadastro
+if (isset($_SESSION['ong_id'])) {
+    header('Location: ../ong/home.php');
+}
+
+require_once __DIR__ . '/../../../model/OngModel.php';
+require_once __DIR__ . '/../../../model/BancoModel.php';
+$ongModel = new Ong();
+$bancoModel = new BancoModel();
+$lista_banco = $bancoModel->listar();
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $dados = [
+        'nome' => $_POST['nome'],
+        'cnpj' => $_POST['cnpj'],
+        'responsavel_id' => $_SESSION['usuario_id'],
+        'telefone' => $_POST['telefone'],
+        'email' => $_POST['email'],
+        'cep' => $_POST['cep'],
+        'rua' => $_POST['rua'],
+        'bairro' => $_POST['bairro'],
+        'cidade' => $_POST['cidade'],
+        'banco_id' => $_POST['banco'],
+        'agencia' => $_POST['agencia'],
+        'conta' => $_POST['conta'],
+        'tipo_conta' => $_POST['tipo_conta'],
+        'descricao' => $_POST['descricao'],
+    ];
+
+    try {
+        $criar = $ongModel->criar($dados);
+        if ($criar) {
+            $_SESSION['perfil_usuario'] = 'ong';
+            $_SESSION['ong_id'] = $criar;
+            header('Location: home.php');
+            exit;
+        }
+    } catch (PDOException $e) {
+        header('Location: cadastro.php?cadastro=erro');
+        exit;
+    }
+}
 ?>
-        <!-- Fim cabeçalho -->
-<!-- Barra de navegação -->
-
-<div class="nav-buttons">
-    <button id="b1" onClick="mudaEtapaCadastro(0, false)"></button>
-    <button id="b2" onClick="mudaEtapaCadastro(1, false)"></button>
-    <button id="b3" onClick="mudaEtapaCadastro(2, false)"></button>
-    <button id="b4" onClick="mudaEtapaCadastro(3, false)"></button>
-    <button id="b5" onClick="mudaEtapaCadastro(4, false)"></button>
-    <button id="b6" onClick="mudaEtapaCadastro(5, false)"></button>
-</div>
-<div class="progress">
-    <div class="line">
-        <div class="line-0"></div>
-    </div>
-</div>
-<div class="text-progress">
-    <div id="t1">Dados<br> da ONG</div>
-    <div id="t2">Descrição</div>
-    <div id="t3">Endereço</div>
-    <div id="t4">Responsável</div>
-    <div id="t5">Banco</div>
-    <div id="t6">Login</div>
+<!-- Mostrar toast se o cadastro falhar -->
+<?php if (isset($_GET['cadastro']) && $_GET['cadastro'] == 'erro'): ?>
+    <script>
+        window.onload = function() {
+            mostrar_toast('toast-cadastro-erro');
+        };
+    </script>
+<?php endif; ?>
+<div id="toast-cadastro-erro" class="toast erro">
+    <i class="fa-solid fa-triangle-exclamation"></i>
+    Falha ao realizar cadastro!
 </div>
 
-<!-- Início DIV Cadastro -->
-<div id="cadastro-completo">
-    <div id="container">
-        <div id="cadastro">
-            <div class="formulario-geral">
-                <div class="titulo">
-                    <h1>CADASTRO</h1>
+<main>
+    <section>
+        <div class="container">
+            <?php if (isset($_GET['msg']) && $_GET['msg'] == 'conta'): ?>
+                <div class="mensagem">
+                    <i class="fa-solid fa-exclamation"></i>
+                    <span>Crie uma ONG primeiro para acessar!</span>
                 </div>
-                <form>
-                    <div class="formulario-dados">
-                        <div>
-                            <label for="rSocial">Razão Social</label><br>
-                            <input type="text" id="rSocial" minlength="5" maxlength="50" placeholder="Digite o nome">
-                        </div>
-                        <div>
-                            <label for="telefone">Telefone</label><br>
-                            <input type="text" id="foneOng" placeholder="(00) 0000-0000">
-                        </div>
-                        <div>
-                            <label for="cnpj">cnpj</label><br>
-                            <input type="text" id="cnpj" placeholder="00.000.000/0000-00">
-                        </div>
-                        <div>
-                            <label for="email">email</label><br>
-                            <input type="email" id="mailOng" placeholder="usuario@conta.com">
-                        </div>
-                    </div>
-            </div>
-        </div>
-        <!-- Fim DIV Cadastro  -->
-        
-        <!-- Início Atuação da ONG -->
-        <div id="atuacao">
-        <div class="formulario-geral">
-            <div class="titulo">
-                <h1>ATUAÇÃO DA ONG</h1>
-            </div>
-            
-            <div id="form-atuacao">
-                <div>
-                    <label for="descricao">Descrição</label><br>
-                    <textarea id="descricao-ong" placeholder="Um breve resumo da sua ONG" minlength="10"></textarea><br>
+            <?php endif; ?>
+            <h1>CADASTRE SUA ONG</h1>
+            <div class="line">
+                <div id="linhaClara"></div>
+                <div id="linhaAzul"></div>
+                <div class="item active">
+                    <div class="circle"><i class="fa-solid fa-check"></i></div>
+                    <p>Dados da ONG</p>
                 </div>
-                <div id="areasDeAtuacao">
-                    <p>Áreas de atuação</p>
-                    <div class="row-checkbox">
-                        <div class="opt-atuacao">
-                            <input type="checkbox" id="saude" value="saude" name="saude">
-                            <label for="saude">Saúde</label>
-                        </div>
-                        <div class="opt-atuacao">
-                            <input type="checkbox" id="esporte" value="esporte" name="esporte">
-                            <label for="esporte">Esporte</label>
-                        </div>
-                        <div class="opt-atuacao">
-                            <input type="checkbox" id="meioAmbiente" value="meioAmbiente" name="meioAmbiente">
-                            <label for="meioAmbiente">Meio Ambiente</label>
-                        </div>
-                        <div class="opt-atuacao">
-                            <input type="checkbox" id="tecnologia" value="tecnologia" name="tecnologia">
-                            <label for="tecnologia">Tecnologia</label>
-                        </div>
+                <div class="item">
+                    <div class="circle"><i class="fa-solid fa-check"></i></div>
+                    <p>Descrição</p>
+                </div>
+                <div class="item">
+                    <div class="circle"><i class="fa-solid fa-check"></i></div>
+                    <p>Endereço</p>
+                </div>
+                <!-- <div class="item">
+                    <div class="circle"><i class="fa-solid fa-check"></i></div>
+                    <p>Responsável</p>
+                </div> -->
+                <div class="item">
+                    <div class="circle"><i class="fa-solid fa-check"></i></div>
+                    <p>Banco</p>
+                </div>
+                <!-- <div class="item">
+                    <div class="circle"><i class="fa-solid fa-check"></i></div>
+                    <p>Login</p>
+                </div> -->
+            </div>
+            <form id="form" action="cadastro.php" method="POST">
+                <div class="formBox">
+                    <div class="inputBox">
+                        <label for="nome">Razão Social<span>*</span></label>
+                        <input name="nome" id="nome" type="text" placeholder="Digite um nome">
+                        <span class="visor"></span>
                     </div>
-                    <div class="row-checkbox">
-                        <div class="opt-atuacao">
-                            <input type="checkbox" id="educacao" value="educacao" name="educacao">
-                            <label for="educacao">Educação</label>
-                        </div>
-                        <div class="opt-atuacao">
-                            <input type="checkbox" id="cultura" value="cultura" name="cultura">
-                            <label for="cultura">Cultura</label>
-                        </div>
-                        <div class="opt-atuacao">
-                            <input type="checkbox" id="protAnimal" value="protAnimal" name="protAnimal">
-                            <label for="protAnimal">Proteção Animal</label>
-                        </div>
-                        <div class="opt-atuacao">
-                            <input type="checkbox" id="dirHumanos" value="dirHumanos" name="dirHumanos">
-                            <label for="dirHumanos">Direitos Humanos</label>
-                        </div>
+                    <div class="inputBox">
+                        <label for="telefone">Telefone da ONG<span>*</span></label>
+                        <input name="telefone" id="telefone" type="text" placeholder="(00) 00000-0000">
+                        <span class="visor"></span>
+                    </div>
+                    <div class="inputBox">
+                        <label for="cnpj">CNPJ<span>*</span></label>
+                        <input name="cnpj" id="cnpj" type="text" placeholder="00.000.000/0000-00">
+                        <span class="visor"></span>
+                    </div>
+                    <div class="inputBox">
+                        <label for="email-ong">Email da ONG<span>*</span></label>
+                        <input name="email" id="email-ong" type="email" placeholder="ong@conta.com" required>
+                        <span class="visor"></span>
+                    </div>
+                    <div class="btnNext">
+                        <button class="btn" type="button" onclick="return proximo(1)">Próximo</button>
                     </div>
                 </div>
-            </div>
-            
-        </div>
-        </div>
-        <!-- Fim Atuação da ONG -->
-          
-        
-        <!-- Início Endereço -->
-        
-        <div class="formulario-geral">
-            <div class="titulo">
-                <h1>ENDEREÇO</h1>
-            </div>
-            <div class="formulario-dados">
-                <div>
-                    <label for="rua">Endereço</label><br>
-                    <input type="text" id="rua" placeholder="Ex. Rua Projetada, 199" minlength="5" maxlength="50">
+                <div class="formBox">
+                    <div class="inputBox">
+                        <label for="descricao">Descrição<span>*</span></label>
+                        <textarea name="descricao" id="descricao"></textarea>
+                        <!-- <input id="descricao" type="text" placeholder="Fale um pouco da sua ONG"> -->
+                        <span class="visor"></span>
+                    </div>
+                    <div class="inputBox">
+                        <label for="">Áreas de Atuação</label>
+                        <div class="checkbox-group">
+                            <div class="item-check">
+                                <input type="checkbox" id="cat-saude">
+                                <label for="cat-saude">Saúde</label>
+                            </div>
+                            <div class="item-check">
+                                <input type="checkbox" id="cat-esporte">
+                                <label for="cat-esporte">Esporte</label>
+                            </div>
+                            <div class="item-check">
+                                <input type="checkbox" id="cat-ambiente">
+                                <label for="cat-ambiente">Meio Ambiente</label>
+                            </div>
+                            <div class="item-check">
+                                <input type="checkbox" id="cat-tecnologia">
+                                <label for="cat-tecnologia">Tecnologia</label>
+                            </div>
+                            <div class="item-check">
+                                <input type="checkbox" id="cat-educacao">
+                                <label for="cat-educacao">Educação</label>
+                            </div>
+                            <div class="item-check">
+                                <input type="checkbox" id="cat-cultura">
+                                <label for="cat-cultura">Cultura</label>
+                            </div>
+                            <div class="item-check">
+                                <input type="checkbox" id="cat-animal">
+                                <label for="cat-animal">Proteção Animal</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btnNextBack">
+                        <button class="btn btnVoltar" type="button" onclick="moverPara(0, 16)">Voltar</button>
+                        <button class="btn" type="button" onclick="return proximo(2)">Próximo</button>
+                    </div>
                 </div>
-                <div>
-                    <label for="cidade">Cidade</label><br>
-                    <input list="cidade">
-                    <datalist id="cidade">
-                        <?php foreach ($cidades_ms as $cidade) { ?>
-                            <option value="<?php echo $cidade ?>">
-                            <?php } ?>
-                    </datalist>
+                <div class="formBox">
+                    <div class="inputBox">
+                        <label for="cep">CEP<span>*</span></label>
+                        <input name="cep" id="cep" type="text" placeholder="00000-000">
+                        <span class="visor"></span>
+                    </div>
+                    <div class="inputBox">
+                        <label for="rua">Rua<span>*</span></label>
+                        <input name="rua" id="rua" type="text" placeholder="Ex: Rui Barbosa,1436">
+                        <span class="visor"></span>
+                    </div>
+                    <div class="inputBox">
+                        <label for="bairro">Bairro<span>*</span></label>
+                        <input name="bairro" id="bairro" type="text" placeholder="Ex: Centro">
+                        <span class="visor"></span>
+                    </div>
+                    <div class="inputBox">
+                        <label for="cidade">Cidade<span>*</span></label>
+                        <input name="cidade" id="cidade" type="text" placeholder="Campo Grande">
+                        <span class="visor"></span>
+                    </div>
+                    <div class="btnNextBack">
+                        <button class="btn btnVoltar" type="button" onclick="moverPara(1, 16)">Voltar</button>
+                        <button class="btn" type="button" onclick="return proximo(3)">Próximo</button>
+                    </div>
                 </div>
-                <div>
-                    <label for="cep">CEP</label><br>
-                    <input type="text" id="cep" placeholder="00000-000">
-                </div>
-                <div>
-                <label for="cidade">UF</label><br>
-                <select name="cidade" id="cidade">
-                    <?php
-                    foreach ($estados as $uf) {?>
-                    <option value="<?php echo $uf ?>"><?php echo $uf ?></option>
-                    <?php } ?>
-                </select>
-                </div>
-            </div>
-            
-        </div>
-        
-        <!-- Fim Endereço -->
+                <!-- <div class="formBox">
+                    <div class="inputBox">
+                        <label for="nome-resp">Nome<span>*</span></label>
+                        <input id="nome-resp" type="text" placeholder="Nome Completo">
+                        <span class="visor"></span>
+                    </div>
+                    <div class="inputBox">
+                        <label for="cpf-resp">CPF<span>*</span></label>
+                        <input id="cpf-resp" type="text" placeholder="000.000.000.00">
+                        <span class="visor"></span>
+                    </div>
+                    <div class="inputBox">
+                        <label for="telefone-resp">Telefone<span>*</span></label>
+                        <input id="telefone-resp" type="text" placeholder="(00) 00000-0000">
+                        <span class="visor"></span>
+                    </div>
+                    <div class="inputBox">
+                        <label for="email-resp">Email<span>*</span></label>
+                        <input id="email-resp" type="email" placeholder="usuario@conta.com">
+                        <span class="visor"></span>
+                    </div>
+                    <div class="btnNextBack">
+                        <button class="btn btnVoltar" type="button" onclick="moverPara(2, 16)">Voltar</button>
+                        <button class="btn" type="button" onclick="return proximo(4)">Próximo</button>
+                    </div>
+                </div> -->
+                <div class="formBox">
+                    <div class="inputBox">
+                        <label for="banco">Banco<span>*</span></label>
+                        <select name="banco">
+                            <option value="" disabled selected>Escolha</option>
+                            <?php foreach ($lista_banco as $banco): ?>
+                                <option value="<?= $banco->banco_id ?>"><?= $banco->nome ?></option>
+                            <?php endforeach ?>
+                        </select>
+                        <span class="visor"></span>
+                    </div>
 
-        <!-- Início Responsável -->
-        <div id="responsavel">
-            <div class="formulario-geral">
-                <div class="titulo">
-                    <h1>RESPONSÁVEL PELA ONG</h1>
-                </div>
-                <div class="formulario-dados">
-                    <div>
-                        <label for="nome">Nome</label><br>
-                        <input type="text" id="nome" placeholder="Nome completo" minlength="3" maxlength="50">
+                    <div class="inputBox">
+                        <label for="tipo-conta">Tipo<span>*</span></label>
+                        <!-- <input id="tipo-conta" type="text"> -->
+                        <select name="tipo_conta">
+                            <option value="" disabled selected>Escolha</option>
+                            <option value="CORRENTE">Corrente</option>
+                            <option value="POUPANÇA">Poupança</option>
+                        </select>
+                        <span class="visor"></span>
                     </div>
-                    <div>
-                        <label for="cpf">CPF</label><br>
-                        <input type="text" id="cpf" placeholder="000.000.000-00" size="11">
+                    <div class="inputBox">
+                        <label for="agencia">Agência<span>*</span></label>
+                        <input name="agencia" id="agencia" type="text" placeholder="0000-0">
+                        <span class="visor"></span>
                     </div>
-                    <div>
-                        <label for="telefone">Telefone</label><br>
-                        <input type="tel" id="telefone" placeholder="(00) 0000-0000" size="11">
+                    <div class="inputBox">
+                        <label for="conta">Conta<span>*</span></label>
+                        <input name="conta" id="conta" type="text" placeholder="00000-00">
+                        <span class="visor"></span>
                     </div>
-                    <div>
-                        <label for="email">email</label><br>
-                        <input type="email" id="email" placeholder="usuario@conta.com" minlength="5" maxlength="50">
+                    <div class="btnNextBack">
+                        <button class="btn btnVoltar" type="button" onclick="moverPara(2, 16)">Voltar</button>
+                        <button class="btn" type="submit" onclick="return proximo(4)">CADASTRAR ONG</button>
                     </div>
                 </div>
-                
-            </div>
+                <!-- <div class="formBox">
+                    <div class="inputBox BoxG">
+                        <label for="email-login">Email<span>*</span></label>
+                        <input id="email-login" type="text" placeholder="usúario@conta.com">
+                        <span class="visor"></span>
+                    </div>
+                    <div class="inputBox">
+                        <label for="senha-login">Senha<span>*</span></label>
+                        <input id="senha-login" type="password" placeholder="********">
+                        <span class="visor"></span>
+                    </div>
+                    <div class="inputBox">
+                        <label for="confirm-login">Confirmar Senha<span>*</span></label>
+                        <input id="confirm-login" type="password" placeholder="********">
+                        <span class="visor"></span>
+                    </div>
+                    <div class="inputBox" id="mobileInput">
+                        <label></label>
+                        <input type="text" disabled>
+                    </div>
+                    <div class="btnNextBack">
+                        <button class="btn btnVoltar" type="button" onclick="moverPara(4, 16)">Voltar</button>
+                        <button class="btn" type="submit" onclick="return proximo(6)">CADASTRAR</button>
+                    </div>
+                </div> -->
+            </form>
         </div>
-        <!-- Fim Responsável -->
-
-        <!-- Início Dados bancários -->
-        <div id="dados-bancarios">
-        <div class="formulario-geral">
-            <div class="titulo">
-                <h1>DADOS BANCÁRIOS</h1>
-            </div>
-            <div class="formulario-dados">
-                <div>
-                    <label for="banco">Banco</label><br>
-                    <select name="banco" id="banco">
-                        <?php foreach($bancos as $banco) {?>
-                        <option value="<?php echo $banco ?>"><?php echo $banco ?></option>
-                        <?php } ?>
-                    </select>
-                </div>
-                <div>
-                    <label for="tipo">Tipo</label><br>
-                    <select name="tipo" id="tipo">
-                        <option value="c-corrente">Conta Corrente</option>
-                        <option value="c-poupanca">Conta Poupança</option>
-                    </select>
-                </div>
-                <div>
-                    <label for="agencia">Agência</label><br>
-                    <input type="text" id="agencia" placeholder="Agência" minlength="4" maxlength="6">
-                </div>
-                <div>
-                    <label for="conta">Conta</label><br>
-                    <input type="tel" id="conta" placeholder="Conta" minlength="3" maxlength="15">
-                </div>
-            </div>
-        
-        </div>
-        </div>
-        <!-- Fim Dados bancários -->
-
-        <!-- Início Criar login -->
-
-        <div id="criar-login">
-            <div class="formulario-geral">
-            <div class="titulo">
-                <h1>CRIAR SEU LOGIN</h1>
-            </div>
-            <div id="senhas">
-                <div>
-                    <label for="senha-login">Senha</label><br>
-                    <input type="password" id="senha-login" placeholder="**********" minlength="8" maxlength="20">
-                    <button class="ver-senha" type="button"onclick="showHide('senha-login', 'eyepassword')">
-                        <span class="material-symbols-outlined" id="eyepassword">
-                            visibility
-                        </span>
-                    </button>
-                </div>
-                <div>
-                    <label for="conf-senha">Confirmar senha</label><br>
-                    <input type="password" id="conf-senha" placeholder="**********" minlength="8" maxlength="20">
-                    <button class="ver-senha" type="button" onclick="showHide('conf-senha', 'eye-conf-password')">
-                        <span class="material-symbols-outlined" id="eye-conf-password">
-                            visibility
-                        </span>
-                    </button>
-                </div>
-            </div>
-        </div>
-        <!-- Fim Criar login -->
-    </div>
-</div>
-</div>
-<div class="btn-navegacao">
-    <button class="voltar" type="button" onClick="mudaEtapaCadastro(-1, true)">Voltar</button>
-    <button class="proximo" type="button" onClick="mudaEtapaCadastro(1, true)">Próximo</button>
-    <a id="confirmacao" href="login.php">
-                <button class="confirm" type="button">Cadastrar</button>
-            </a>
-</div>
-</form>
+    </section>
+</main>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
 <script type="text/javascript">
-    $("#foneOng").mask("(00) 0 0000-0000");
+    $("#telefone").mask("(00) 00000-0000");
     $("#cnpj").mask("00.000.000/0000-00");
     $("#cep").mask("00000-000");
-    $("#cpf").mask("000.000.000-00");
-    $("#telefone").mask("(00) 0 0000-0000");
+    $("#cpf-resp").mask("000.000.000-00");
+    $("#telefone-resp").mask("(00) 00000-0000");
+    $("#agencia").mask("0000-0");
+    $("#conta").mask("00000-00");
 </script>
-
-    <?php
-        $jsPagina = ['ongs.js']; //Colocar o arquivo .js
-        require_once '../../components/footer.php';
-    ?>
-</body>
-</html>
+<?php
+$jsPagina = ['ong/cadastro.js'];
+require_once '../../components/footer.php';
+?>

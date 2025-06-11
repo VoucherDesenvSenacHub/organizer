@@ -123,6 +123,7 @@ section#apresentacao {
 
 #dados-ong #acoes button {
     transform: translateY(0);
+    width: 100%;
 }
 
 #dados-ong #acoes button:hover {
@@ -258,4 +259,15 @@ main.usuario-logado #container-principal {
 
 #main-doador #container-conteudo {
     padding-inline: 10px;
+}
+
+/* Botões de Editar e Inativar */
+#dados-ong #acoes #btn-editar {
+    background-color: #FFCC00;
+    /* color: #912B2B; */
+}
+
+#dados-ong #acoes #btn-inativar {
+    background-color: var(--cor-vermelho);
+    /* color: #912B2B; */
 }

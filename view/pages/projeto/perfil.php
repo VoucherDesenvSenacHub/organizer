@@ -1,36 +1,60 @@
 <?php
+ob_start();
 //Lógica e dependências primeiro
 require_once __DIR__ . "/../../../model/ProjetoModel.php";
 require_once __DIR__ . "/../../../model/OngModel.php";
 $projetoModel = new Projeto();
 $ongModel = new Ong();
 
+//Definições da página (título e CSS)
+$acesso = $_SESSION['perfil_usuario'] ?? 'visitante';
+$tituloPagina = 'Perfil do Projeto | Organizer';
+$cssPagina = ['projeto/perfil.css'];
+require_once '../../components/layout/base-inicio.php';
+
 //Processamento de dados
-if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['id'])) {
-    $id = $_GET['id'] ?? null;
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
     $projeto = $projetoModel->buscarId($id);
+    $valor_projeto = $projetoModel->buscarValor($id);
+    $qntdoadores = $projetoModel->contarDoadores($id);
+    $barra = round(($valor_projeto / $projeto->meta) * 100);
     if ($projeto) {
         $ong = $ongModel->buscarId($projeto->ong_id);
     }
 }
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+// Editar o Projeto (ONG)
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_SESSION['perfil_usuario'] == 'ong') {
     $id = $_POST['id'];
     $nome = $_POST['nome'];
     $descricao = $_POST['descricao'];
     $meta = $_POST['meta'];
-    if ($id) {
+    if ($meta < $valor_projeto) {
+        echo "<script>alert('Meta inválida: o valor deve ser maior do que o que já foi arrecadado.')</script>";
+    } else {
         $projetoModel->editar($id, $nome, $descricao, $meta);
     }
 }
+// Fazer doação (doador)
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_SESSION['perfil_usuario'] === 'doador') {
+    $valor = $_POST['valor'];
+    if ($valor == 'outro') {
+        $valor = $_POST['outro-valor'];
+    }
+    if ($valor + $valor_projeto > $projeto->meta) {
+        echo "<script>alert('O valor ultrapassou a meta!! doe um valor menor.')</script>";
+    } else {
+        $doacao = $projetoModel->doacao($projeto->projeto_id, $_SESSION['usuario_id'], $valor);
+        if ($doacao > 0) {
+            header("Location: perfil.php?id=$id&msg=doacao");
+            exit;
+        }
+    }
+}
 
-//Definições da página (título e CSS)
-$tituloPagina = 'Perfil do Projeto | Organizer';
-$cssPagina = ['projeto/perfil.css'];
-require_once '../../components/layout/base-inicio.php';
 require_once 'partials/popups-projeto.php';
 require_once 'partials/toast-projeto.php';
-
+ob_end_flush();
 ?>
 <main>
     <div class="container" id="container-principal">
@@ -43,17 +67,17 @@ require_once 'partials/toast-projeto.php';
             <div id="dados-projeto">
                 <h1><?= $projeto->nome ?></h1>
                 <div id="valor-arrecadado">
-                    <h3>Arrecadado: <span>R$ 30.000</span></h3>
+                    <h3>Arrecadado: <span>R$ <?= number_format($valor_projeto, 0, ',', '.'); ?></span></h3>
                     <div class="barra-doacao">
                         <div class="barra">
-                            <div class="barra-verde"></div>
+                            <div class="barra-verde" style="width: <?= $barra ?>%;"></div>
                         </div>
                     </div>
                 </div>
                 <div id="progresso">
                     <p>Meta: <span>R$ <?= number_format($projeto->meta, 0, ',', '.'); ?></span></p>
-                    <p>Status: Em progresso <span>(30% alcançado)</span></p>
-                    <p><span>24</span> Doações Recebidas</p>
+                    <p>Status: Em progresso <span>(<?= $barra ?>% alcançado)</span></p>
+                    <p><span><?= $qntdoadores ?></span> Doações Recebidas</p>
                 </div>
                 <!-- Botão de Acões do Projeto -->
                 <?php require_once 'partials/acoes-projeto.php'; ?>

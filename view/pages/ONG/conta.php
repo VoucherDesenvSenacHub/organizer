@@ -1,7 +1,8 @@
-<?php 
-    $tituloPagina = 'Conta da Ong'; // Definir o título da página
-    $cssPagina = ['ong/conta.css']; //Colocar o arquivo .css (exemplo: 'ONG/cadastro.css')
-    require_once '../../components/layout/base-inicio.php';
+<?php
+$acesso = 'ong';
+$tituloPagina = 'Conta da Ong'; // Definir o título da página
+$cssPagina = ['ong/conta.css']; //Colocar o arquivo .css (exemplo: 'ONG/cadastro.css')
+require_once '../../components/layout/base-inicio.php';
 ?>
 <!-- COMEÇAR SEU CÓDIGO AQUI -->
 <div class="ONG-page-container">
@@ -11,11 +12,11 @@
         <h1>Dados da ONG</h1>
         <button class="ONG-profile-btn">Minha Conta</button>
       </div>
-      
+
       <div class="ONG-accordion">
         <!-- Dados da ONG -->
         <div class="ONG-accordion-item" data-color="purple">
-          <div class="ONG-accordion-header">  
+          <div class="ONG-accordion-header">
             <div class="ONG-header-content">
               <div class="ONG-icon-container purple">
                 <i data-lucide="building-2"></i>
@@ -390,6 +391,6 @@
 </div>
 <script src="https://unpkg.com/lucide@latest"></script>
 <?php
-    $jsPagina = ['conta-ong.js']; //Colocar o arquivo .js (exemplo: 'ONG/cadastro.js')
-    require_once '../../components/footer.php';
+$jsPagina = ['conta-ong.js']; //Colocar o arquivo .js (exemplo: 'ONG/cadastro.js')
+require_once '../../components/footer.php';
 ?>

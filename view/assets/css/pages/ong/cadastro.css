@@ -1,534 +1,85 @@
+@import url(../shared/cadastro.css);
 
-h2 {
-    font-size: 1.3em;
-    font-weight: 600;
+section .container h1 {
+    color: var(--cor-amarelo);
 }
-h3 {
-    font-size: 1.1em;
+
+.mensagem {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: rgba(255, 77, 77, 0.361);
+    padding: 5px;
+    border-radius: 5px;
+    margin: 0 auto;
+}
+
+.mensagem i {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--cor-vermelho);
+    font-weight: 800;
+    border: 3px solid var(--cor-vermelho);
+    border-radius: 50%;
+    min-width: 30px;
+    min-height: 30px;
+}
+
+/* Esconder o botão do login */
+header .btn-login a {
+    display: none;
+}
+
+.line #linhaClara,
+.line #linhaAzul {
+    width: 75%;
+}
+
+.line #linhaAzul {
+    width: 0%;
+    left: 12.5%;
+}
+
+.inputBox #descricao {
+    max-width: 300px;
+    height: 140px;
+    max-height: 140px;
+    background-color: rgba(0, 0, 0, 0.07);
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    padding: 15px;
+}
+
+.inputBox .checkbox-group {
+    display: flex;
+    justify-content: space-around;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.inputBox .checkbox-group .item-check {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    transition: .3s;
+}
+.inputBox .checkbox-group .item-check:hover {
     font-weight: 400;
 }
-h4 {
-    color: #5282E3;
-    padding-bottom: 10px;
-}
-#container {
-    display: flex;
-    gap: 200px;
-    transition: 0.9s ease-in-out;
-    transform: translateX(0);
-    
-    h1 {
-        font-size: 1.5em;
-        font-weight: 400;
-        color: #5282E3;
-    }
+
+.inputBox .checkbox-group .item-check input {
+    accent-color: var(--cor-amarelo-hover);
 }
 
-#cadastro-completo{
-    display: flex;
-    justify-content: space-around;
-    width: 60%;
-    height: 80vh;
-    margin: 0px auto;
-    margin-bottom: 20px;
-    padding: 20px;
-    padding-left: 3%;
-    background-color: #FFFFFF;
-    border-radius: 8px;
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.7);
-    overflow: hidden;
-}
-.titulo {
-    display: flex;
-    width: 90%;
-    padding-left: 30px;
-    padding-bottom: 80px;
-    justify-content: start;
-}
-#cadastro {
-    display: flex;
-    position: relative;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 100%;
-    margin: 0px auto;
-}
-#atuacao {
-    display: flex;
-    position: relative;
-}
-
-#endereco {
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    justify-content: space-around;
-    width: 60%;
-    margin: 20px auto;
-    padding: 20px;
-}
-#responsavel {    
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    justify-content: space-between;
-    width: 60%;
-    margin-top: 5px;
-}
-#dados-bancarios {
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    justify-content: space-between;
-    width: 60%;
-    margin-top: 5px;
-}
-#criar-login {
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    justify-content: space-between;
-    width: 60%;
-    margin-top: 5px;
-}
-
-.titulo-cadastro {
-    text-align: left;
-    margin-left: 90px;
-    
-}
-.titulo-atuacao {
-    text-align: left;
-    margin-left: 90px;
-    
-}
-.prog-bar{
-    position: absolute;
-    width: 70px;
-    height: 8px;
-    z-index: 200;
-}
-
-.progress {
-    display: flex;
-    position: relative;
-    top: 180px;
-    margin: 15px auto;
-    width: 57%;
-    justify-content: center;
-}
-.nav-buttons {
-    display: flex;
-    position: relative;
-    top: 180px;
-    width: 45%;
-    margin: 0px auto;
-    justify-content: space-around;
-}
-
-
-.text-progress {
-    display: flex;
-    position: relative;
-    top: 180px;
-    width: 47%;
-    margin: 10px auto;
-    padding: 0px 50px;
-    font-size: 0.8em;
-    justify-content: space-between;
-    align-items: center;
-}
-#t1 {
-    color: #000000;
-}
-#t2, #t3, #t4, #t5, #t6 {
-    color: #6e6a6a;
-}
-
-/* Barra de progresso */
-
-.line {
-    display: flex;
-    position: absolute;
-    z-index: 20;
-    width: 65%;
-    height: 4px;
-    background-color: #5282e39f;
-}
-
-.line-0,
-.line-1,
-.line-2,
-.line-3,
-.line-4,
-.line-5 {
-    display: flex;
-    justify-content: start;
-    position: relative;
-    width: 1%;
-    z-index: 21;
-    height: 4px;
-    background-color: #5282E3;
-}
-.line-1{
-    width: 20%;
-}
-.line-2{
-    width: 40%;
-}
-.line-3{
-    width: 60%;
-}
-.line-4{
-    width: 80%;
-}
-.line-5{
-    width: 100%;
-}
-#b1, #b2, #b3, #b4, #b5, #b6{
-    position: relative;
-    top: 30px;
-    width: 25px;
-    height: 25px;
-    z-index: 100;
-    border: none;
-    background-color: #5282e39f;
-    border-radius: 50%;
-}
-#b1:hover,
-#b2:hover,
-#b3:hover,
-#b4:hover,
-#b5:hover,
-#b6:hover{
-    cursor: pointer;
-    
-}
-#b1 {
-    background-color: #5282E3;
-}
-
-
-.formulario-geral, .formulario-dados {
-    display: flex;
-    left: 20px;
-    width: 1000px;
-    flex-wrap: wrap;
-    justify-content: start;
-    padding: 35px;
-    gap: 20px;
-    input {
-        width: 300px;
-        height: 50px;
-        border-radius: 6px;
-        border: none;
-        background-color: #f2f2f2;
-        padding-left: 20px;
-    }
-    select {
-        width: 300px;
-        height: 50px;
-        border-radius: 6px;
-        border: none;
-        background-color: #f2f2f2;
-        padding-left: 20px;
-    }
-}
-.formulario-dados {
-    padding-top: 10px;
-}
-.btn-navegacao{
-    display: flex;
-    position: relative;
-    width: 55%;
-    bottom: 100px;
-    left: 20%;
-    justify-content: space-between;
-    padding: 10px 90px;
-}
-#confirmacao {
-    display: none;
-}
-
-.ver-senha{
-    display: block;
-    position: relative;
-    border: none;
-    top: -35px;
-    left: 260px;
-}
-.voltar, .proximo {
-    font-family: 'Poppins', sans-serif;
+.inputBox .checkbox-group .item-check input:checked ~ label {
+    color: var(--cor-amarelo-hover);
     font-weight: 500;
-    font-size: 1em;
-    letter-spacing: 2px;
-    border: none;
-    border-radius: 6px;
-    width: 150px;
-    height: 38px;
-}
-.voltar {
-    background-color: #8f8888;
-    visibility: visible;
-}
-.proximo{
-    background-color: #E3B652;
-    color: #FFFFFF;
-    visibility: visible;
-}
-.confirm {
-    position: relative;
-    z-index: 10;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 500;
-    font-size: 1em;
-    letter-spacing: 2px;
-    border: none;
-    border-radius: 6px;
-    width: 150px;
-    height: 38px;
-    background-color: #E3B652;
-    color: #FFFFFF;
-}
-#confirmacao {
-    display: none;
-    text-decoration: none;
-}
-.voltar:hover {
-    transition: 0.7s;
-    color: #FFFFFF;
-    background-color: black;
-}
-.proximo:hover, .confirm:hover {
-    transition: 0.7s;
-    color: black;
-    background-color: #FFFFFF;
-    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.3);
 }
 
-.proximo a{
-    text-decoration: none;
-    color: inherit;
-}
-
-/* Atuação ONG */
-#form-atuacao{
-    margin: 30px;
-    margin-top: -10px;
-}
-#descricao-ong {
-    margin-top: 10px;
-    width: 400px;
-    height: 100px;
-}
-#areasDeAtuacao {
-    display: flex;
-    margin-left: 10px;
-    margin-top: 10px;
-    flex-direction: column;
-}
-.row-checkbox {
-    display: flex;
-    justify-content: left;
-    margin-right: 15px;
-}
-.opt-atuacao{
-    display: flex;
-    width: 130px;
-    justify-content: left;
-    font-size: 0.8em;
-    input {
-        width: 15px;
-        height: 15px;
-    }
-
-}
-#senha-login::-ms-reveal {
-    display: none;
-}
-#conf-senha::-ms-reveal {
-    display: none;
-}
-
-
-
-#senhas {
-    display: flex;
-    padding-top: 40px;
-    gap: 50px;
-}
-
-/* Responsividade */
-
-@media (max-width: 481px) {
-    
-    .titulo-atuacao {
-        margin-left: 20px;
-    }
-    #atuacao,
-    #endereco,
-    #responsavel,
-    #dados-bancarios,
-    #criar-login {
-        width: 90%;
-        margin: 20px auto;
-        left: 10%;
-        padding: 10px;
-        background-color: #FFFFFF;
-        border-radius: 8px;
-        h1 {
-            text-align: left;
-            font-size: 1.3em;
-        }
-    }
-    #atuacao{
-        left: 10px;
-        margin-right: 30px;
-    }
-    #endereco{
-        left: 30px;
-        margin-left: 30px;
-        padding-left: 50px;
-    }
-    #responsavel{
-        left: 30px;
-    }
-    #dados-bancarios{
-        left: 30px;
-    }
-    #criar-login{
-
-        left: 30px;
-    }
-    #senhas{
-        flex-direction: column;
-    }
-    .confirm {
-        font-size: 0.5em;
-        width: 80px;
-        height: 20px;
-    }
-    #cadastro-completo{
-        width: 90%;
-        margin: 0px auto;
-        margin-bottom: 20px;
-        padding: 20px;
-        padding-left: 3%;
-        background-color: #FFFFFF;
-        border-radius: 8px;
-        box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.7);
-        overflow: hidden;
-    }
-    #cadastro{
-        padding-bottom: 40px;
-    }
-    #atuacao {
-        padding: 0px;
-        margin: 0px;
-    }
-    #endereco .btn-navegacao {
-        padding-bottom: 30px;
-    }
-    .formulario-dados, .formulario-geral {
-        justify-content: start;
-        flex-direction: column;
-        width: 350px;
-        padding: 15px;
-        input {
-            width: 220px;
-            height: 30px;
-            border-radius: 6px;
-            background-color: #f2f2f2;
-            padding-left: 20px;
-        }
-        select {
-            width: 220px;
-            height: 30px;
-        }
-    }
-    .formulario-geral{
-        z-index: 1;
-    }
-    #container {
-        display: flex;
-        justify-content: space-around;
-        gap: 10px;
-    }
-    #cadastro-ong {
-        width: 100%;
-    }
-    .progress {
-        margin: 0 auto;
-    }
-    .line {
-        height: 3px;
-        top: -8px;
-        width: 125%;
-    }
-    .line-0{
-        height: 3px;
-    }
-    .nav-buttons {
-        display: flex;
-        width: 85%;
-        top: 150px;
-    }
-    #b1, #b2, #b3, #b4, #b5, #b6{
-        width: 13px;
-        height: 13px;
-    }
-    .text-progress {
-        font-size: 0.4em;
-        z-index: 50;
-        margin: 20px 20px;
-        width: 100%;
-        top: 170px;
-        left: -20px;
-    }
-    .btn-navegacao {
-        width: 90%;
-        justify-content: space-between;
-        margin: 5px auto;
-        padding: 30px;
-        gap: 30px;
-        bottom: 80px;
-        left: 2%;
-    }
-    .voltar, .proximo {
-        font-weight: 300;
-        font-size: 0.5em;
-        border: none;
-        border-radius: 6px;
-        width: 80px;
-        height: 20px;
-    }
-    /* Descrição ONG */
-    #descricao-ong {
-        width: 290px;
-        height: 130px;
-    }
-
-    /*Atuação da ONG */
-    #form-atuacao{
-        margin: 0px;
-        margin-top: -10px;
-    }
-    .row-checkbox {
-        flex-wrap: wrap;
-        justify-content: space-between;
-        input{
-            width: 20px;
-            height: 20px;
-        }
-    }
-    .opt-atuacao {
-        gap: 5px;
-        font-size: 0.5em;
-        margin-top: 15px;
-        margin-bottom: 15px;
-    }
-    .ver-senha {
-        top: -30px;
-        left: 180px;
+@media (max-width: 750px) {
+    .line .item {
+        font-size: 9px;
     }
 }

@@ -1,4 +1,5 @@
 <?php
+$acesso = 'adm';
 $tituloPagina = 'Solicitação de ONGS';
 $cssPagina = ['adm/solicitacoes.css'];
 require_once '../../components/layout/base-inicio.php';

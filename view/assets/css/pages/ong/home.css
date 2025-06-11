@@ -18,6 +18,11 @@ main.container {
     width: 100%;
 }
 
+#title h1 {
+    font-size: 28px;
+    text-transform: uppercase;
+}
+
 #resumo {
     display: flex;
     gap: 10px;

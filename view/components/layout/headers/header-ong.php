@@ -20,7 +20,7 @@
                 <span>Conta</span>
             </button>
             <div class="dropdown">
-                <a href="conta.php"><button><i class="fa-solid fa-user-pen"></i>Editar Perfil</button></a>
+                <a href="meu-perfil.php"><button><i class="fa-solid fa-user-pen"></i>Editar Perfil</button></a>
                 <button onclick="abrir_popup('sair-da-conta-popup')"><i class="fa-solid fa-right-from-bracket"></i>Sair</button>
             </div>
             <div class="btn-login">

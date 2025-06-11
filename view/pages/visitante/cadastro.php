@@ -1,19 +1,20 @@
-<?php 
-    $tituloPagina = 'Cadastro | Organizer';
-    $cssPagina = ['visitante/cadastro.css'];
-    require_once '../../components/layout/base-inicio.php';
-    
-    require_once '../../../model/UsuarioModel.php';
-    $usuarioModel = new Usuario();
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $nome = $_POST['nome'];
-        $telefone = $_POST['telefone'];
-        $cpf = $_POST['cpf'];
-        $data_nascimento = $_POST['data_nascimento'];
-        $email = $_POST['email'];
-        $senha = $_POST['senha'];
-        $usuarioModel->cadastro($nome, $telefone, $cpf, $data_nascimento, $email, $senha);
-    }
+<?php
+$acesso = 'visitante';
+$tituloPagina = 'Cadastro | Organizer';
+$cssPagina = ['shared/cadastro.css'];
+require_once '../../components/layout/base-inicio.php';
+
+require_once '../../../model/UsuarioModel.php';
+$usuarioModel = new Usuario();
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $nome = $_POST['nome'];
+    $telefone = $_POST['telefone'];
+    $cpf = $_POST['cpf'];
+    $data_nascimento = $_POST['data_nascimento'];
+    $email = $_POST['email'];
+    $senha = $_POST['senha'];
+    $usuarioModel->cadastro($nome, $telefone, $cpf, $data_nascimento, $email, $senha);
+}
 ?>
 <div id="toast-cadastro-erro" class="toast erro">
     <i class="fa-solid fa-triangle-exclamation"></i>
@@ -69,7 +70,7 @@
                     </div>
                     <div class="inputBox">
                         <label for="senha">Senha<span>*</span></label>
-                        <input id="senha"name="senha" type="password" maxlength="20" placeholder="********">
+                        <input id="senha" name="senha" type="password" maxlength="20" placeholder="********">
                         <span class="visor"></span>
                     </div>
                     <div class="inputBox">
@@ -99,6 +100,6 @@
     $("#code_cartao").mask("000");
 </script>
 <?php
-    $jsPagina = ['cadastro-doador.js'];
-    require_once '../../components/footer.php';
+$jsPagina = ['cadastro-doador.js'];
+require_once '../../components/footer.php';
 ?>
