@@ -1,0 +1,110 @@
+main {
+    padding-inline: 10px;
+}
+
+main .container {
+    flex-direction: column;
+    padding: 40px 0px;
+    gap: 30px;
+}
+
+/* Top */
+.top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+}
+
+/* Área barra de pesquisa */
+#form-busca {
+    display: flex;
+    align-items: center;
+    max-width: 416px;
+    width: 100%;
+}
+
+#form-busca input {
+    background-color: white;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    border: none;
+    outline: none;
+    border-radius: 4px 24px 24px 4px;
+    padding: 15px 65px 15px 15px;
+    transition: .3s;
+    width: 100%;
+}
+
+#form-busca .btn {
+    font-size: 20px;
+    padding: 0;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-left: -50px;
+}
+
+.qnt-busca {
+    text-align: center;
+}
+
+/* Sessão de Baixo: Áreas dos cards */
+section#box-ongs {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    flex-wrap: wrap;
+    width: 100%;
+    padding-bottom: 30px;
+}
+
+/* Botões de navegação */
+#navegacao {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+#navegacao a {
+    text-decoration: none;
+    color: var(--cor-principal);
+    background-color: white;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+}
+
+#navegacao a:hover {
+    filter: brightness(.9);
+}
+
+#navegacao a.active {
+    background-color: var(--cor-amarelo);
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 1200px) {
+    section#box-ongs {
+        justify-content: space-evenly;
+        gap: 30px 15px;
+    }
+}
+
+@media (max-width: 700px) {
+    .top {
+        flex-direction: column;
+        align-items: center;
+    }
+
+}
+
+@media (max-width: 450px) {
+    #form-busca {
+        max-width: 320px;
+    }
+}

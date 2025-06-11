@@ -1,8 +1,17 @@
 <?php
+$acesso = $_SESSION['perfil_usuario'] ?? 'visitante';
 $tituloPagina = 'Notícias | Organizer';
 $cssPagina = ['shared/catalogo.css'];
 require_once '../../components/layout/base-inicio.php';
 
+require_once __DIR__ . "\..\..\..\model\NoticiaModel.php";
+$noticiaModel = new NoticiaModel();
+$lista = $noticiaModel->listarCards();
+
+if ($_SERVER['REQUEST_METHOD'] = 'GET' && isset($_GET['pesquisa'])) {
+    $pesquisa = $_GET['pesquisa'];
+    $lista = $noticiaModel->buscarNome($pesquisa);
+}
 $perfil = $_SESSION['perfil_usuario'] ?? '';
 ?>
 
@@ -108,17 +117,12 @@ $perfil = $_SESSION['perfil_usuario'] ?? '';
             </div>
         </section>
         <?php if (isset($_GET['pesquisa'])) {
-            echo "<p class='qnt-busca'><i class='fa-solid fa-search'></i> " . count($lista) . " Projetos Encontrados</p>";
+            echo "<p class='qnt-busca'><i class='fa-solid fa-search'></i> " . count($lista) . " Notícias Encontradas</p>";
         } ?>
 
         <section id="box-ongs">
             <!-- LISTAR CARDS -->
-            <?php {
-                require '../../components/cards/card-noticia.php';
-                require '../../components/cards/card-noticia.php';
-                require '../../components/cards/card-noticia.php';
-                require '../../components/cards/card-noticia.php';
-                require '../../components/cards/card-noticia.php';
+            <?php foreach ($lista as $noticia) {
                 require '../../components/cards/card-noticia.php';
             } ?>
         </section>

@@ -1,27 +1,28 @@
 <?php
+$acesso = 'adm';
 $tituloPagina = 'Home | ADM';
 $cssPagina = ['adm/home.css'];
 require_once '../../components/layout/base-inicio.php';
 ?>
 <main class="container">
     <div id="title">
-        <h1>BEM VINDO</h1>
+        <h1><i class="fa-solid fa-user-secret"></i> <?= $_SESSION['usuario_nome']?></h1>
         <p>DASHBOARD</p>
     </div>
     <div id="resumo">
-        <a href="ver-ong.php">
+        <a href="ongs.php">
             <div class="resumo-item">
                 <h3>30 <span>ONGS</span></h3>
                 <i class="fa-solid fa-house-flag"></i>
             </div>
         </a>
-        <a href="ver-projetos.php">
+        <a href="projetos.php">
             <div class="resumo-item">
                 <h3>110 <span>PROJETOS</span></h3>
                 <i class="fa-solid fa-diagram-project"></i>
             </div>
         </a>
-        <a href="ver-doadores.php">
+        <a href="doadores.php">
             <div class="resumo-item">
                 <h3>400 <span>DOADORES</span></h3>
                 <i class="fa-solid fa-users"></i>
@@ -113,6 +114,7 @@ require_once '../../components/layout/base-inicio.php';
                     </tr>
                 </tbody>
             </table>
+            <a class="btn-ver-mais" href="ongs.php">Ver Mais</a>
         </fieldset>
         <fieldset id="section-projeto">
             <legend><i class="fa-solid fa-diagram-project"></i> PROJETOS</legend>
@@ -169,6 +171,7 @@ require_once '../../components/layout/base-inicio.php';
                     </tr>
                 </tbody>
             </table>
+            <a class="btn-ver-mais" href="projetos.php">Ver Mais</a>
         </fieldset>
         <fieldset id="section-doador">
             <legend><i class="fa-solid fa-users"></i> DOADORES</legend>
@@ -225,6 +228,7 @@ require_once '../../components/layout/base-inicio.php';
                     </tr>
                 </tbody>
             </table>
+            <a class="btn-ver-mais" href="doadores.php">Ver Mais</a>
         </fieldset>
     </div>
 </main>

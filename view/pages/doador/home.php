@@ -1,4 +1,5 @@
 <?php
+$acesso = 'doador';
 //CONFIGURAÇÕES DA PÁGINA
 $tituloPagina = 'Home - Doador';
 $cssPagina = ['doador/home.css'];

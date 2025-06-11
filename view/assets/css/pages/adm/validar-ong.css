@@ -63,7 +63,8 @@ main.container {
 }
 
 .dados-ong .form label input,
-.dados-ong .form label textarea {
+.dados-ong .form label textarea,
+.dados-ong .form label select {
     outline: none;
     padding: 10px;
     border: none;

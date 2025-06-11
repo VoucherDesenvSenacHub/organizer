@@ -1,4 +1,5 @@
 <?php
+$acesso = 'doador';
 $tituloPagina = 'Favoritos | Organizer'; // Definir o título da página
 $cssPagina = ['doador/favoritos.css']; //Colocar o arquivo .css 
 require_once '../../components/layout/base-inicio.php';
