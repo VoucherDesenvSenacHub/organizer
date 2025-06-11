@@ -5,6 +5,10 @@ require_once __DIR__ . '/../../../model/OngModel.php';
 $ongModel = new Ong();
 $ong = $ongModel->verificarExistenciaOng($_SESSION['usuario_id']);
 
+if (isset($ong) && $ong) {
+    $_SESSION['ong_id'] = $ong;
+}
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $perfil_usuario = $_POST['perfil'];
     if ($perfil_usuario == 'ong' && !$ong) {
@@ -12,7 +16,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         exit;
     }
     $_SESSION['perfil_usuario'] = $perfil_usuario;
-    $_SESSION['ong_id'] = $ong;
     header("Location: ../{$perfil_usuario}/home.php");
 }
 ?>
