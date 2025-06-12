@@ -151,6 +151,11 @@ section#apresentacao {
     text-align: justify;
 }
 
+#sobre p {
+    word-break: break-word;
+    color: var(--cor-cinza);
+}
+
 /* Título com ícone das sessões */
 .icon-title {
     display: flex;
@@ -218,6 +223,12 @@ section#apresentacao {
     #apresentacao #dados-ong #acoes {
         flex-direction: column;
     }
+
+    #dados-ong h1 {
+        text-align: center;
+        margin-bottom: 8px;
+        font-size: 24px;
+    }
 }
 
 @media (max-width: 1190px) {
@@ -247,6 +258,10 @@ section#apresentacao {
     }
 
     #dados-ong p {
+        font-size: 14px;
+    }
+
+    #sobre p {
         font-size: 14px;
     }
 }

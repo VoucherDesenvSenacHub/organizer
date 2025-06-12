@@ -251,6 +251,11 @@ section#apresentacao {
     text-align: justify;
 }
 
+/* Descrição */
+#principal-painel #control-painel .container-painel:nth-child(1) p {
+    color: var(--cor-cinza);
+}
+
 #btns-group .icon-title.active {
     background-color: var(--cor-principal);
     color: aliceblue;
@@ -321,6 +326,10 @@ section#apresentacao {
 
     #carousel {
         transform: scale(0.8);
+    }
+
+    #principal-painel #control-painel .container-painel:nth-child(1) p {
+        font-size: 14px;
     }
 }
 

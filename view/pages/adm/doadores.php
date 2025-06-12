@@ -14,14 +14,20 @@ if ($_SERVER['REQUEST_METHOD'] = 'GET' && isset($_GET['pesquisa'])) {
 }
 
 // Abrir o popup e ver o perfil do doador
-if ($_SERVER['REQUEST_METHOD'] = 'GET' && isset($_GET['id'])) {
+if (isset($_GET['id'])) {
     $id = $_GET['id'];
     $usuario = $usuarioModel->buscar_perfil($id);
     require_once '../../components/popup/perfil-doador-adm.php';
-    echo "<script>window.onload = function() {
+    echo "<script>
+        window.onload = function() {
             abrir_popup('perfil-doador-popup');
-          };
-         </script>";
+
+            // Limpa o parâmetro 'id' da URL após abrir o popup
+            const url = new URL(window.location.href);
+            url.searchParams.delete('id');
+            window.history.replaceState({}, document.title, url.pathname + url.search);
+        };
+    </script>";
 }
 ?>
 
