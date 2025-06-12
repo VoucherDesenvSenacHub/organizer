@@ -1,3 +1,5 @@
+@import url('../../components/popup/download-relatorio.css');
+
 #nav-bar ul li:nth-child(4) a {
     color: var(--cor-amarelo);
     font-weight: bold;

@@ -3,6 +3,7 @@ $acesso = 'ong';
 $tituloPagina = 'Relatórios'; // Definir o título da página
 $cssPagina = ["ong/relatorios.css"]; //Colocar o arquivo .css (exemplo: 'ONG/cadastro.css')
 require_once '../../components/layout/base-inicio.php';
+require_once '../../components/popup/download.php';
 ?>
 <main>
     <div id="principal">
