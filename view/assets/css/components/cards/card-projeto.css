@@ -39,6 +39,7 @@
     font-size: 12px;
     text-align: justify;
     line-height: 1;
+    color: var(--cor-cinza);
 }
 
 /* Marcação de Doação */

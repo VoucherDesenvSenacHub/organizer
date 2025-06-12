@@ -40,7 +40,7 @@
     font-size: 13px;
     text-align: justify;
     line-height: 1;
-    color: #666;
+    color: var(--cor-cinza);
 }
 
 .card-noticia .info {

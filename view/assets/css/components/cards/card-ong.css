@@ -58,6 +58,7 @@
     line-height: 1.2;
     cursor: default;
     word-break: break-word;
+    color: var(--cor-cinza);
 }
 
 /* Quantidade de Doação e Projeto */
