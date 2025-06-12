@@ -17,7 +17,7 @@ $id = $doador->usuario_id;
     <small><?= $data ?></small>
     <form action="doadores.php" method="GET">
         <input type="hidden" name="id" value="<?= $id ?>">
-        <button onclick="abrir_popup('perfil-doador-popup')">
+        <button type="submit">
             <i class="fa-solid fa-eye"></i>
             <p>Ver Perfil</p>
         </button>
