@@ -296,6 +296,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $("#telefone-resp").mask("(00) 00000-0000");
     $("#agencia").mask("0000-0");
     $("#conta").mask("00000-00");
+    $("#nome").on("input", function () {
+        var valor = $(this).val();
+        $(this).val(valor.replace(/[^a-zA-ZÀ-ÿ\s]/g, ""));
+    });
+    $("#bairro").on("input", function () {
+        var valor = $(this).val();
+        $(this).val(valor.replace(/[^a-zA-ZÀ-ÿ\s]/g, ""));
+    });
+    $("#cidade").on("input", function () {
+        var valor = $(this).val();
+        $(this).val(valor.replace(/[^a-zA-ZÀ-ÿ\s]/g, ""));
+    });
 </script>
 <?php
 $jsPagina = ['ong/cadastro.js'];

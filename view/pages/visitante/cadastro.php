@@ -98,7 +98,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $("#cpf").mask("000.000.000-00");
     $("#num_cartao").mask("0000 0000 0000 0000");
     $("#code_cartao").mask("000");
+
+
+    $("#nome").on("input", function () {
+        var valor = $(this).val();
+        // Remove tudo que não for letra ou espaço
+        $(this).val(valor.replace(/[^a-zA-ZÀ-ÿ\s]/g, ""));
+    });
 </script>
+
 <?php
 $jsPagina = ['cadastro-doador.js'];
 require_once '../../components/footer.php';
