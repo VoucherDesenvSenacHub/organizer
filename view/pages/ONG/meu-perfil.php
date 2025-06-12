@@ -55,17 +55,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </div>
 <!-- Inicio do Container -->
 <main class="container">
-    <form id="form" class="dados-ong" action="meu-perfil.php" method="POST" onsubmit="return confirm('Tem certeza que deseja alterar esses dados da ONG?')">
+    <form id="form" class="dados-ong" action="meu-perfil.php" method="POST"
+        onsubmit="return confirm('Tem certeza que deseja alterar esses dados da ONG?')">
         <fieldset>
             <legend><i class="fa-solid fa-house-flag"></i> DADOS DA ONG</legend>
             <div class="form">
-                <label><span>Nome da ONG</span><input name="nome" type="text" required value="<?= $perfil->nome ?>"></label>
-                <label><span>CPNJ</span><input name="cnpj" id="cnpj" type="text" required value="<?= $perfil->cnpj ?>"></label>
-                <label><span>Telefone</span><input name="telefone" id="telefone" type="text" required value="<?= $perfil->telefone ?>"></label>
+                <label><span>Nome da ONG</span><input id="nome" name="nome" type="text" required
+                        value="<?= $perfil->nome ?>"></label>
+                <label><span>CPNJ</span><input name="cnpj" id="cnpj" type="text" required
+                        value="<?= $perfil->cnpj ?>"></label>
+                <label><span>Telefone</span><input name="telefone" id="telefone" type="text" required
+                        value="<?= $perfil->telefone ?>"></label>
                 <label><span>Email</span><input name="email" type="text" required value="<?= $perfil->email ?>"></label>
             </div>
             <div class="form form-descricao">
-                <label><span>Descrição</span><textarea name="descricao" required><?= $perfil->descricao ?></textarea></label>
+                <label><span>Descrição</span><textarea name="descricao"
+                        required><?= $perfil->descricao ?></textarea></label>
                 <div class="checkbox">
                     <span>Áreas de Atuação</span>
                     <small><input type="checkbox">Saúde</small>
@@ -81,10 +86,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <fieldset>
             <legend><i class="fa-solid fa-location-dot"></i> DADOS DE ENDEREÇO</legend>
             <div class="form">
-                <label><span>CEP</span><input name="cep" id="cep" type="text" required value="<?= $perfil->cep ?>"></label>
+                <label><span>CEP</span><input name="cep" id="cep" type="text" required
+                        value="<?= $perfil->cep ?>"></label>
                 <label><span>Rua</span><input name="rua" type="text" required value="<?= $perfil->rua ?>"></label>
-                <label><span>Bairro</span><input name="bairro" type="text" required value="<?= $perfil->bairro ?>"></label>
-                <label><span>Cidade</span><input name="cidade" type="text" required value="<?= $perfil->cidade ?>"></label>
+                <label><span>Bairro</span><input id="bairro" name="bairro" type="text" required
+                        value="<?= $perfil->bairro ?>"></label>
+                <label><span>Cidade</span><input id="cidade" name="cidade" type="text" required
+                        value="<?= $perfil->cidade ?>"></label>
             </div>
         </fieldset>
         <fieldset>
@@ -100,13 +108,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <?php endforeach; ?>
                     </select>
                 </label>
-                <label><span>Agência</span><input name="agencia" id="agencia" type="text" required value="<?= $perfil->agencia ?>"></label>
-                <label><span>Número da conta</span><input name="conta_numero" id="conta" type="text" required value="<?= $perfil->conta_numero ?>"></label>
+                <label><span>Agência</span><input name="agencia" id="agencia" type="text" required
+                        value="<?= $perfil->agencia ?>"></label>
+                <label><span>Número da conta</span><input name="conta_numero" id="conta" type="text" required
+                        value="<?= $perfil->conta_numero ?>"></label>
                 <label>
                     <span>Tipo de Conta</span>
                     <select name="tipo_conta">
-                        <option value="POUPANÇA" <?= ($perfil->tipo_conta === 'POUPANÇA') ? 'selected' : '' ?>>Poupança</option>
-                        <option value="CORRENTE" <?= ($perfil->tipo_conta === 'CORRENTE') ? 'selected' : '' ?>>Corrente</option>
+                        <option value="POUPANÇA" <?= ($perfil->tipo_conta === 'POUPANÇA') ? 'selected' : '' ?>>Poupança
+                        </option>
+                        <option value="CORRENTE" <?= ($perfil->tipo_conta === 'CORRENTE') ? 'selected' : '' ?>>Corrente
+                        </option>
                     </select>
                 </label>
             </div>
@@ -134,6 +146,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $("#cep").mask("00000-000");
     $("#agencia").mask("0000-0");
     $("#conta").mask("00000-00");
+    $("#nome").on("input", function () {
+        var valor = $(this).val();
+        $(this).val(valor.replace(/[^a-zA-ZÀ-ÿ\s]/g, ""));
+    });
+    $("#bairro").on("input", function () {
+        var valor = $(this).val();
+        $(this).val(valor.replace(/[^a-zA-ZÀ-ÿ\s]/g, ""));
+    });
+    $("#cidade").on("input", function () {
+        var valor = $(this).val();
+        $(this).val(valor.replace(/[^a-zA-ZÀ-ÿ\s]/g, ""));
+    });
 </script>
 <?php
 $jsPagina = ['ong/conta.js'];
