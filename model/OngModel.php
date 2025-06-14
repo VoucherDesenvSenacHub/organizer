@@ -98,6 +98,22 @@ class Ong
         return $stmt->fetchAll(PDO::FETCH_CLASS, __CLASS__);
     }
 
+    function buscarPerfil($id)
+    {
+        $query = "
+            SELECT o.ong_id, o.nome, o.data_cadastro, o.descricao, 
+            (SELECT COUNT(*) FROM projetos p WHERE p.ong_id = o.ong_id) AS total_projetos,
+            (SELECT COUNT(*) FROM doacao_projeto dp JOIN projetos p ON dp.projeto_id = p.projeto_id WHERE p.ong_id = o.ong_id) AS total_doacoes,
+            (SELECT COALESCE(SUM(dp.valor), 0) FROM doacao_projeto dp JOIN projetos p ON dp.projeto_id = p.projeto_id WHERE p.ong_id = o.ong_id) AS total_arrecadado
+            FROM $this->tabela o 
+            WHERE o.ong_id = :id
+        ";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+        $stmt->setFetchMode(PDO::FETCH_CLASS, __CLASS__);
+        return $stmt->fetch();
+    }
 
     function buscarId($id)
     {

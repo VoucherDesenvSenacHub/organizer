@@ -13,7 +13,7 @@ $projetoModel = new Projeto();
 $noticiaModel = new NoticiaModel();
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
-    $ong = $ongModel->buscarId($id);
+    $ong = $ongModel->buscarPerfil($id);
     $projetos_ong = $projetoModel->listar($id);
     $noticias_ong = $noticiaModel->listarCards($id);
 }
@@ -38,11 +38,11 @@ $perfil = $_SESSION['perfil_usuario'] ?? '';
             </div>
             <div id="dados-ong">
                 <h1><?= $ong->nome ?></h1>
-                <span id="data-criacao">Criada em 12/04/2023</span>
-                <h3>Arrecadado: <span>R$ 50.000</span></h3>
+                <span id="data-criacao">Criada em <?= date('d/m/Y', strtotime($ong->data_cadastro)); ?></span>
+                <h3>Arrecadado: <span>R$ <?= number_format($ong->total_arrecadado, 0, ',', '.'); ?></span></h3>
                 <div id="recebidos">
-                    <p><span>150 </span>Doações Recebidas</p>|
-                    <p><span>9 </span>Projetos Criados</p>
+                    <p><span><?= $ong->total_projetos ?> </span>Projetos Criados</p>|
+                    <p><span><?= $ong->total_doacoes ?> </span>Doações Recebidas</p>
                 </div>
                 <div id="acoes">
                     <!-- Botão de Acões da ONG -->

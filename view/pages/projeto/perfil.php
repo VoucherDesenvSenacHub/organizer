@@ -20,7 +20,7 @@ if (isset($_GET['id'])) {
     $qntdoadores = $projetoModel->contarDoadores($id);
     $barra = round(($valor_projeto / $projeto->meta) * 100);
     if ($projeto) {
-        $ong = $ongModel->buscarId($projeto->ong_id);
+        $ong = $ongModel->buscarPerfil($projeto->ong_id);
     }
 }
 // Editar o Projeto (ONG)
