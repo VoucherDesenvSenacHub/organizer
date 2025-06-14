@@ -6,7 +6,7 @@ require_once '../../components/layout/base-inicio.php';
 
 require_once __DIR__ . "\..\..\..\model\OngModel.php";
 $ongModel = new Ong();
-$lista = $ongModel->listar();
+$lista = $ongModel->listarCards();
 $temong = $lista;
 
 if ($_SERVER['REQUEST_METHOD'] = 'GET' && isset($_GET['pesquisa'])) {

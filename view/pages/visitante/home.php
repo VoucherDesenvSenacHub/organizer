@@ -7,7 +7,7 @@ require_once '../../components//layout/base-inicio.php';
 require_once '../../../model/OngModel.php';
 $ongModel = new Ong();
 
-$lista = $ongModel->listar();
+$lista = $ongModel->listarCards();
 // var_dump($lista);
 ?>
 <!-- COMEÇAR SEU CÓDIGO AQUI -->
