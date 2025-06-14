@@ -6,7 +6,7 @@ require_once '../../components/layout/base-inicio.php';
 
 require_once '../../../model/OngModel.php';
 $ongModel = new Ong();
-$minhaOng = $ongModel->buscarId($_SESSION['ong_id']);
+$minhaOng = $ongModel->buscarPerfil($_SESSION['ong_id']);
 ?>
 <main class="container">
     <div id="title">
