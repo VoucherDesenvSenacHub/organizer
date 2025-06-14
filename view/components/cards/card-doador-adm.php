@@ -1,7 +1,7 @@
 <?php
 $nome = $doador->nome ?? 'Nome do Usuário';
 $email = $doador->email ?? 'usuario@email.com';
-$data = $doador->data_cadastro ?? '01/01/2025';
+$data = date('d/m/Y H:i', strtotime($doador->data_cadastro)) ?? '01/01/2025';
 $id = $doador->usuario_id;
 ?>
 <div class="card-doadores">
