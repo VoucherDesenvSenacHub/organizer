@@ -75,6 +75,13 @@ main.container {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    cursor: default;
+    transition: .3s;
+}
+
+.box-cards .card-solicitacao-empresa:hover {
+    border-left-color: #6a00f3;
+    transform: translateY(-3px);
 }
 
 .box-cards .card-solicitacao-empresa .topo {

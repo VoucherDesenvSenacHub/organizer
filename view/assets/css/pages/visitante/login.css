@@ -46,6 +46,7 @@ form .input-group {
 .input-group .input-item {
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 
 .input-item label {
@@ -69,6 +70,16 @@ form .input-group {
 }
 .input-item input:focus {
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+
+/* Icone de ver senha */
+#togglePassword {
+  position: absolute;
+  right: 10px;
+  top: calc(50% - 4px);
+  transform: translateY(50%);
+  cursor: pointer;
+  color: #666;
 }
 
 /* Área "Esqueci a senha" */

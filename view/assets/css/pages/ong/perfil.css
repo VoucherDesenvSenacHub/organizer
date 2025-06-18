@@ -123,6 +123,7 @@ section#apresentacao {
 
 #dados-ong #acoes button {
     transform: translateY(0);
+    width: 100%;
 }
 
 #dados-ong #acoes button:hover {
@@ -148,6 +149,11 @@ section#apresentacao {
 #sobre {
     width: 100%;
     text-align: justify;
+}
+
+#sobre p {
+    word-break: break-word;
+    color: var(--cor-cinza);
 }
 
 /* Título com ícone das sessões */
@@ -217,6 +223,12 @@ section#apresentacao {
     #apresentacao #dados-ong #acoes {
         flex-direction: column;
     }
+
+    #dados-ong h1 {
+        text-align: center;
+        margin-bottom: 8px;
+        font-size: 24px;
+    }
 }
 
 @media (max-width: 1190px) {
@@ -248,6 +260,10 @@ section#apresentacao {
     #dados-ong p {
         font-size: 14px;
     }
+
+    #sobre p {
+        font-size: 14px;
+    }
 }
 
 /* Visão do doador: */
@@ -258,4 +274,15 @@ main.usuario-logado #container-principal {
 
 #main-doador #container-conteudo {
     padding-inline: 10px;
+}
+
+/* Botões de Editar e Inativar */
+#dados-ong #acoes #btn-editar {
+    background-color: #FFCC00;
+    /* color: #912B2B; */
+}
+
+#dados-ong #acoes #btn-inativar {
+    background-color: var(--cor-vermelho);
+    /* color: #912B2B; */
 }

@@ -60,22 +60,21 @@ $voluntarios = [
         'date' => '20/03/2025'
     ]
 ]
-    ?>
+?>
 
 <?php
+$acesso = 'ong';
 $tituloPagina = 'Visualizar Voluntarios por Projeto'; // Definir o título da página
-$cssPagina = ['ONG/voluntarios-projetos.css']; //Colocar o arquivo .css (exemplo: 'ONG/cadastro.css')
+$cssPagina = ['ong/voluntarios.css']; //Colocar o arquivo .css (exemplo: 'ONG/cadastro.css')
 require_once '../../components/layout/base-inicio.php';
 ?>
 <!-- COMEÇAR SEU CÓDIGO AQUI -->
 <div id="principal">
-    <div class="header-principal">
-        <h1>VOLUNTÁRIO POR PROJETO</h1>
-        <form class="input">
-            <input type="text" placeholder="Buscar Voluntário">
-            <span class="lupa-icon">
-                <img src="../../assets/images/lupa-cinza.png" alt="">
-            </span>
+    <div class="topo">
+        <h1><i class="fa-solid fa-users"></i> MEUS VOLUNTÁRIOS</h1>
+        <form id="form-busca" action="voluntarios.php" method="GET">
+            <input type="text" name="pesquisa" placeholder="Busque um voluntário">
+            <button class="btn"><i class="fa-solid fa-search"></i></button>
         </form>
     </div>
     <div class="cards">
@@ -106,7 +105,7 @@ require_once '../../components/layout/base-inicio.php';
 
 <!-- tela escolher voluntarios ativos e solicitações de novos voluntarios -->
 <div class="tela-voluntario-ativo-solicitacao" id="tela-voluntario-ativo-solicitacao">
-    <div class="card-voluntario-ativo-solicitacao">
+    <div class="card-voluntario-ativo-solicitacao" id="card-voluntario-ativo-solicitacao">
         <div class="div-button">
             <div class="v-ativos" id="v-ativos">
                 <img src="../../assets/images/icon-voluntarios.png" alt="">

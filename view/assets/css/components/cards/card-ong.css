@@ -8,6 +8,9 @@
     background-color: white;
     color: var(--cor-principal);
     transition: .3s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .card-ong:hover {
@@ -39,21 +42,26 @@
 }
 
 .card-ong .perfil .nome h2 {
-    font-size: 20px;
-}
-
-.card-ong .perfil .nome p {
-    color: grey;
-    font-size: 13px;
+    font-size: 18px;
+    font-weight: 600;
 }
 
 /* Descrição - Área do Meio */
+.card-ong .meio {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
 .card-ong .descricao {
     padding: 10px;
     font-size: 12.5px;
     text-align: justify;
     line-height: 1.2;
     cursor: default;
+    word-break: break-word;
+    color: var(--cor-cinza);
 }
 
 /* Quantidade de Doação e Projeto */

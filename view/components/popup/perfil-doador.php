@@ -23,8 +23,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $envio = false;
         }
     }
-    if (isset($_POST['idsenha'])) {
-        $id = $_POST['idsenha'];
+    if (isset($_POST['usuario_id'])) {
+        $id = $_POST['usuario_id'];
         $senha = $_POST['senha'];
         $senhaconfirm = $_POST['senhaconfirm'];
         if ($senha === $senhaconfirm) {
@@ -105,11 +105,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </div>
 
 <?php
-    if (isset($envio)) {
-        if ($envio === true) {
-            echo "<script>exibir_toast('toast-update')</script>";
-        } else {
-            echo "<script>exibir_toast('toast-update-erro')</script>";
-        }
-    }    
+if (isset($envio)) {
+    echo "<script>window.onload = function() {";
+    if ($envio === true) {
+        echo "mostrar_toast('toast-update');";
+    } else {
+        echo "mostrar_toast('toast-update-erro');";
+    }
+    echo "};</script>";
+}
 ?>

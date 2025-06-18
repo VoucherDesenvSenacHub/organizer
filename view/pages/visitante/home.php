@@ -1,12 +1,13 @@
 <?php
-$tituloPagina = 'Home | Organizer'; // Definir o título da página
-$cssPagina = ['visitante/home.css']; //Colocar o arquivo .css 
+$acesso = 'visitante';
+$tituloPagina = 'Home | Organizer';
+$cssPagina = ['visitante/home.css'];
 require_once '../../components//layout/base-inicio.php';
 
 require_once '../../../model/OngModel.php';
 $ongModel = new Ong();
 
-$lista = $ongModel->listar();
+$lista = $ongModel->listarCards();
 // var_dump($lista);
 ?>
 <!-- COMEÇAR SEU CÓDIGO AQUI -->

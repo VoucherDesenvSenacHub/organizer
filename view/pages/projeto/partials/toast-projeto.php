@@ -11,4 +11,9 @@ $perfil = $_SESSION['perfil_usuario'] ?? 'visitante';
         <i class="fa-solid fa-triangle-exclamation"></i>
         Falha ao salvar Projeto!
     </div>
+<?php elseif ($perfil === 'doador'): ?>
+    <div id="toast-doacao" class="toast">
+        <i class="fa-regular fa-circle-check"></i>
+        Doação Realizada Com Sucesso!
+    </div>
 <?php endif; ?>

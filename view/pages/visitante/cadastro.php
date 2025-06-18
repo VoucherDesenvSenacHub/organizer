@@ -1,19 +1,20 @@
-<?php 
-    $tituloPagina = 'Cadastro | Organizer';
-    $cssPagina = ['shared/cadastro.css'];
-    require_once '../../components/layout/base-inicio.php';
-    
-    require_once '../../../model/UsuarioModel.php';
-    $usuarioModel = new Usuario();
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $nome = $_POST['nome'];
-        $telefone = $_POST['telefone'];
-        $cpf = $_POST['cpf'];
-        $data_nascimento = $_POST['data_nascimento'];
-        $email = $_POST['email'];
-        $senha = $_POST['senha'];
-        $usuarioModel->cadastro($nome, $telefone, $cpf, $data_nascimento, $email, $senha);
-    }
+<?php
+$acesso = 'visitante';
+$tituloPagina = 'Cadastro | Organizer';
+$cssPagina = ['shared/cadastro.css'];
+require_once '../../components/layout/base-inicio.php';
+
+require_once '../../../model/UsuarioModel.php';
+$usuarioModel = new Usuario();
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $nome = $_POST['nome'];
+    $telefone = $_POST['telefone'];
+    $cpf = $_POST['cpf'];
+    $data_nascimento = $_POST['data_nascimento'];
+    $email = $_POST['email'];
+    $senha = $_POST['senha'];
+    $usuarioModel->cadastro($nome, $telefone, $cpf, $data_nascimento, $email, $senha);
+}
 ?>
 <div id="toast-cadastro-erro" class="toast erro">
     <i class="fa-solid fa-triangle-exclamation"></i>
@@ -69,7 +70,7 @@
                     </div>
                     <div class="inputBox">
                         <label for="senha">Senha<span>*</span></label>
-                        <input id="senha"name="senha" type="password" maxlength="20" placeholder="********">
+                        <input id="senha" name="senha" type="password" maxlength="20" placeholder="********">
                         <span class="visor"></span>
                     </div>
                     <div class="inputBox">
@@ -97,8 +98,16 @@
     $("#cpf").mask("000.000.000-00");
     $("#num_cartao").mask("0000 0000 0000 0000");
     $("#code_cartao").mask("000");
+
+
+    $("#nome").on("input", function () {
+        var valor = $(this).val();
+        // Remove tudo que não for letra ou espaço
+        $(this).val(valor.replace(/[^a-zA-ZÀ-ÿ\s]/g, ""));
+    });
 </script>
+
 <?php
-    $jsPagina = ['cadastro-doador.js'];
-    require_once '../../components/footer.php';
+$jsPagina = ['cadastro-doador.js'];
+require_once '../../components/footer.php';
 ?>

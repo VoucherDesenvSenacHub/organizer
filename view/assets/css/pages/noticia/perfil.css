@@ -22,6 +22,7 @@ main section {
 section.area-materia {
     flex-direction: column;
     text-align: justify;
+    position: relative;
 }
 
 /* Carrossel */
@@ -42,6 +43,7 @@ section.area-materia {
 /* Título */
 .area-materia p {
     text-indent: 30px;
+    color: #666;
 }
 
 .area-materia .titulo span {
@@ -50,14 +52,39 @@ section.area-materia {
     color: #aaa;
 }
 
-.area-materia .titulo h5 {
+.area-materia .titulo a {
     color: var(--cor-amarelo);
     cursor: pointer;
     transition: .3s;
+    display: block;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 14px;
 }
 
-.area-materia .titulo h5:hover {
-    filter: brightness(.9);
+.area-materia .titulo a:hover {
+    color: var(--cor-amarelo-hover);
+}
+
+.sub-texto h3 {
+    font-weight: 600;
+}
+
+/* Botões */
+.area-materia .area-acoes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.area-materia .area-acoes button:first-child {
+    background-color: #FFCC00;
+    padding-inline: 40px;
+}
+
+.area-materia .area-acoes button:last-child {
+    background-color: var(--cor-vermelho);
+    padding-inline: 40px;
 }
 
 
@@ -97,6 +124,29 @@ section.area-materia {
 
     .area-materia .subtitulo .sub-texto {
         max-width: 450px;
+    }
+}
+
+@media (max-width: 500px) {
+    .area-materia .area-acoes button {
+        flex: 1 1 160px;
+    }
+
+    .area-materia .titulo {
+        text-align: center;
+    }
+
+    .area-materia h1 {
+        font-size: 18px;
+    }
+
+    .container-noticia p {
+        font-size: 14px;
+    }
+
+    .sub-texto h3 {
+        font-size: 16px;
+        text-align: center;
     }
 }
 
