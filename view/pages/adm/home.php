@@ -67,6 +67,7 @@ require_once '../../components/layout/base-inicio.php';
                         <th>#</th>
                         <th>NOME</th>
                         <th>PROJETOS</th>
+                        <th>RESPONSAVEL</th>
                         <th>CRIADO</th>
                         <th></th>
                     </tr>
@@ -76,36 +77,39 @@ require_once '../../components/layout/base-inicio.php';
                         <td data-label="#">0</td>
                         <td data-label="NOME">ONG 1</td>
                         <td data-label="PROJETOS">15</td>
+                        <td data-label="RESPONSAVEL">Fulano</td>
                         <td data-label="CRIADO">12/05/2025</td>
                         <td>
-                            <form method="GET">
+                            <!-- <form method="GET"> -->
                                 <input type="hidden" name="id" value="">
-                                <button class="fa-solid fa-pen-to-square"></button>
-                            </form>
+                                <a href="http://localhost/organizer/view/pages/ong/perfil.php?id=1"> <button class="fa-solid fa-eye" ></button></a>
+                            <!-- </form> -->
                         </td>
                     </tr>
                     <tr>
                         <td data-label="#">1</td>
                         <td data-label="NOME">ONG 2</td>
                         <td data-label="PROJETOS">15</td>
+                        <td data-label="RESPONSAVEL">Fulano</td>
                         <td data-label="CRIADO">12/05/2025</td>
                         <td>
-                            <form method="GET">
+                            <!-- <form method="GET"> -->
                                 <input type="hidden" name="id" value="">
-                                <button class="fa-solid fa-pen-to-square"></button>
-                            </form>
+                                <a href="http://localhost/organizer/view/pages/ong/perfil.php?id=1"> <button class="fa-solid fa-eye" ></button></a>
+                            <!-- </form> -->
                         </td>
                     </tr>
                     <tr>
                         <td data-label="#">2</td>
                         <td data-label="NOME">ONG 3</td>
                         <td data-label="PROJETOS">15</td>
+                        <td data-label="RESPONSAVEL">Fulano</td>
                         <td data-label="CRIADO">12/05/2025</td>
                         <td>
-                            <form method="GET">
+                            <!-- <form method="GET"> -->
                                 <input type="hidden" name="id" value="">
-                                <button class="fa-solid fa-pen-to-square"></button>
-                            </form>
+                                <a href="http://localhost/organizer/view/pages/ong/perfil.php?id=1"> <button class="fa-solid fa-eye" ></button></a>
+                            <!-- </form> -->
                         </td>
                     </tr>
                 </tbody>
@@ -133,10 +137,10 @@ require_once '../../components/layout/base-inicio.php';
                         <td data-label="ARRECADADO">R$ 15.000</td>
                         <td data-label="CRIADO">12/05/2025</td>
                         <td>
-                            <form method="GET">
+                            <!-- <form method="GET"> -->
                                 <input type="hidden" name="id" value="">
-                                <button class="fa-solid fa-pen-to-square"></button>
-                            </form>
+                                <a href="http://localhost/organizer/view/pages/projeto/perfil.php?id=1"> <button class="fa-solid fa-eye" ></button></a>
+                            <!-- </form> -->
                         </td>
                     </tr>
                     <tr>
@@ -146,10 +150,10 @@ require_once '../../components/layout/base-inicio.php';
                         <td data-label="ARRECADADO">R$ 5.000</td>
                         <td data-label="CRIADO">12/05/2025</td>
                         <td>
-                            <form method="GET">
+                            <!-- <form method="GET"> -->
                                 <input type="hidden" name="id" value="">
-                                <button class="fa-solid fa-pen-to-square"></button>
-                            </form>
+                                <a href="http://localhost/organizer/view/pages/projeto/perfil.php?id=1"> <button class="fa-solid fa-eye" ></button></a>
+                            <!-- </form> -->
                         </td>
                     </tr>
                     <tr>
@@ -159,10 +163,10 @@ require_once '../../components/layout/base-inicio.php';
                         <td data-label="ARRECADADO">R$ 500</td>
                         <td data-label="CRIADO">12/05/2025</td>
                         <td>
-                            <form method="GET">
+                            <!-- <form method="GET"> -->
                                 <input type="hidden" name="id" value="">
-                                <button class="fa-solid fa-pen-to-square"></button>
-                            </form>
+                                <a href="http://localhost/organizer/view/pages/projeto/perfil.php?id=1"> <button class="fa-solid fa-eye" ></button></a>
+                            <!-- </form> -->
                         </td>
                     </tr>
                 </tbody>
@@ -190,10 +194,10 @@ require_once '../../components/layout/base-inicio.php';
                         <td data-label="DOAÇÕES">R$ 5.000</td>
                         <td data-label="CRIADO">01/01/2025</td>
                         <td>
-                            <form method="GET">
+                            <!-- <form method="GET"> -->
                                 <input type="hidden" name="id" value="">
-                                <button class="fa-solid fa-pen-to-square"></button>
-                            </form>
+                                <a href="http://localhost/organizer/view/pages/adm/doadores.php?id=1"> <button class="fa-solid fa-eye" ></button></a>
+                            <!-- </form> -->
                         </td>
                     </tr>
                     <tr>
@@ -203,10 +207,10 @@ require_once '../../components/layout/base-inicio.php';
                         <td data-label="DOAÇÕES">R$ 3.400</td>
                         <td data-label="CRIADO">01/01/2025</td>
                         <td>
-                            <form method="GET">
+                            <!-- <form method="GET"> -->
                                 <input type="hidden" name="id" value="">
-                                <button class="fa-solid fa-pen-to-square"></button>
-                            </form>
+                                <a href="http://localhost/organizer/view/pages/adm/doadores.php?id=1"> <button class="fa-solid fa-eye" ></button></a>
+                            <!-- </form> -->
                         </td>
                     </tr>
                     <tr>
@@ -216,10 +220,10 @@ require_once '../../components/layout/base-inicio.php';
                         <td data-label="DOAÇÕES">R$ 20.000</td>
                         <td data-label="CRIADO">01/01/2025</td>
                         <td>
-                            <form method="GET">
+                            <!-- <form method="GET"> -->
                                 <input type="hidden" name="id" value="">
-                                <button class="fa-solid fa-pen-to-square"></button>
-                            </form>
+                                <a href="http://localhost/organizer/view/pages/adm/doadores.php?id=1"> <button class="fa-solid fa-eye" ></button></a>
+                            <!-- </form> -->
                         </td>
                     </tr>
                 </tbody>
