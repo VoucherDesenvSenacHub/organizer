@@ -7,6 +7,7 @@ require_once '../../components/layout/base-inicio.php';
 require_once '../../../model/OngModel.php';
 $ongModel = new Ong();
 $minhaOng = $ongModel->buscarPerfil($_SESSION['ong_id']);
+$dadosOng = $ongModel->buscarDados($_SESSION['ong_id']);
 ?>
 <main class="container">
     <div id="title">
@@ -14,18 +15,18 @@ $minhaOng = $ongModel->buscarPerfil($_SESSION['ong_id']);
         <p>PAINEL</p>
     </div>
     <div id="resumo">
-        <div class="resumo-item">
-            <h3>12 <span>PROJETOS</span></h3>
+        <a class="resumo-item" href="projetos.php">
+            <h3><?= $dadosOng->qnt_projeto ?> <span>PROJETOS</span></h3>
             <i class="fa-solid fa-diagram-project"></i>
-        </div>
-        <div class="resumo-item">
-            <h3>R$ 15.000 <span>DOAÇÔES</span></h3>
+        </a>
+        <a class="resumo-item" href="relatorios.php">
+            <h3>R$ <?= number_format($dadosOng->qnt_doacoes, 0, ',', '.'); ?> <span>DOAÇÔES</span></h3>
             <i class="fa-solid fa-coins"></i>
-        </div>
-        <div class="resumo-item">
-            <h3>45 <span>VOLUNTÁRIOS</span></h3>
+        </a>
+        <a class="resumo-item" href="voluntarios.php">
+            <h3>??? <span>VOLUNTÁRIOS</span></h3>
             <i class="fa-solid fa-users"></i>
-        </div>
+        </a>
     </div>
     <nav id="nav-home">
         <a href="noticias.php"><img src="../../assets/images/icons/gif-noticia.gif" alt=""><span>NOTÍCIAS</span></a>
