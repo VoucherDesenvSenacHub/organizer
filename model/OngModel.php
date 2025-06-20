@@ -135,6 +135,20 @@ class Ong
         return $stmt->fetchAll();
     }
 
+    // Buscar os dados para a home
+    function buscarDados($id)
+    {
+        $query = "SELECT count(*) as qnt_projeto, sum(valor) as qnt_doacoes
+                  FROM projetos p, doacao_projeto dp
+                  WHERE p.projeto_id = dp.projeto_id
+                  AND ong_id = :id";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+        $stmt->setFetchMode(PDO::FETCH_CLASS, __CLASS__);
+        return $stmt->fetch();
+    }
+
     // Verificar se o usúario tem uma ONG!
     function verificarExistenciaOng($id_responsavel)
     {
