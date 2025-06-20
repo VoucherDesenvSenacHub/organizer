@@ -79,7 +79,7 @@ section#apresentacao {
 
 /* Nome */
 #dados-ong h1 {
-    font-size: 32px;
+    font-size: 28px;
     color: var(--cor-principal);
     line-height: 1;
 }
