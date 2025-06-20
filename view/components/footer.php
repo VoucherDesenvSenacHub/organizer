@@ -1,4 +1,8 @@
-    <footer>
+        </div><!-- Fecha a div#container-conteudo -->
+    </div><!-- Fecha a div.container -->
+</main>
+
+<footer>
         <!-- Em desenvolvimento... -->
     </footer>
 

@@ -1,4 +1,4 @@
-#aside-doador {
+#aside-container {
     position: absolute;
     left: 0;
     /* top: 60px; */
@@ -19,14 +19,14 @@
     z-index: 2;
 }
 
-#aside-doador.active {
+#aside-container.active {
     width: 200px;
 }
 
 /* Botão de abrir aside */
 
-#aside-doador #btn-aside,
-#aside-doador #btn-sair {
+#aside-container #btn-aside,
+#aside-container #btn-sair {
     background: none;
     border: none;
     cursor: pointer;
@@ -37,58 +37,63 @@
     overflow: hidden;
 }
 
-#aside-doador #btn-aside {
+#aside-container #btn-aside {
     position: fixed;
     background-color: var(--cor-azul);
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
+    /* transition: .3s; */
 }
 
-#aside-doador #btn-sair:hover {
+#aside-container #btn-aside:hover {
+    filter: brightness(.93);
+}
+
+#aside-container #btn-sair:hover {
     background-color: rgba(0, 0, 0, 0.2);
 }
 
-#aside-doador #btn-aside i {
+#aside-container #btn-aside i {
     transform: rotate(0);
     transition: .4s;
     font-size: 17px;
     color: aliceblue;
 }
 
-#aside-doador #btn-aside.active i {
+#aside-container #btn-aside.active i {
     transform: rotate(-180deg);
 }
 
-#aside-doador #btn-aside.active {
+#aside-container #btn-aside.active {
     transform: translateX(135px);
 }
 
-#aside-doador #area-topo {
+#aside-container #area-topo {
     display: flex;
     position: fixed;
 }
 
-#aside-doador #area-topo a {
+#aside-container #area-topo a {
     height: 45px;
     width: 45px;
     transition: .4s;
 }
 
-#aside-doador.active #area-topo a {
+#aside-container.active #area-topo a {
     width: 180px;
 }
 
 /* Navegação */
-#aside-doador nav {
+#aside-container nav {
     display: flex;
     flex-direction: column;
     overflow: hidden;
     margin-top: 50px;
 }
 
-#aside-doador a {
+#aside-container a {
     text-decoration: none;
     display: flex;
     gap: 30px;
@@ -101,15 +106,15 @@
     font-size: 15px
 }
 
-#aside-doador a:hover {
+#aside-container a:hover {
     background-color: rgba(0, 0, 0, 0.2);
 }
 
-#aside-doador a i {
+#aside-container a i {
     font-size: 17px;
 }
 
-#aside-doador #btn-sair {
+#aside-container #btn-sair {
     overflow: hidden;
     background: none;
     border: none;
@@ -123,69 +128,69 @@
     width: 45px;
 }
 
-#aside-doador #btn-sair i {
+#aside-container #btn-sair i {
     font-size: 20px;
 }
 
-#aside-doador #btn-sair span {
+#aside-container #btn-sair span {
     font-size: 15px;
 }
 
-#aside-doador.active #btn-sair {
+#aside-container.active #btn-sair {
     width: 180px;
 }
 
 /* @media (max-width: 400px) {
-    #aside-doador {
+    #aside-container-doador {
         width: 50px;
         padding: 5px;
     }
 
-    #aside-doador a {
+    #aside-container-doador a {
         padding-left: 10.5px;
     }
 
 
-    #aside-doador #area-topo a {
+    #aside-container-doador #area-topo a {
         width: 40px;
     }
 
-    #aside-doador #btn-aside {
+    #aside-container-doador #btn-aside {
         width: 40px;
         height: 40px;
     }
 
-    #aside-doador #btn-sair {
+    #aside-container-doador #btn-sair {
         padding: 0 10px;
         width: 40px;
     }
 
-    #aside-doador.active #btn-sair,
-    #aside-doador.active #area-topo a {
+    #aside-container-doador.active #btn-sair,
+    #aside-container-doador.active #area-topo a {
         width: 189px;
     }
 } */
 
 @media (max-width: 500px) {
-    #aside-doador {
+    #aside-container {
         left: -65px;
     }
 
-    #aside-doador.active {
+    #aside-container.active {
         left: 0;
     }
 
-    #aside-doador #btn-aside {
+    #aside-container #btn-aside {
         transform: translateX(55px);
     }
 
-    #aside-doador #btn-aside i {
+    #aside-container #btn-aside i {
         background-color: var(--cor-azul);
         padding: 10px;
         border-radius: 50%;
     }
 
-    #aside-doador:not(.active) #btn-aside {
+    #aside-container:not(.active) #btn-aside {
         border-radius: 0 50px 50px 0;
         background-color: white;
         box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
@@ -202,4 +207,9 @@
 
 #sair-doador #sair-da-conta-popup .btns-sair button {
     background-color: var(--cor-azul);
+}
+
+/* ONG */
+#aside-container.aside-ong #btn-aside {
+    background-color: var(--cor-amarelo);
 }

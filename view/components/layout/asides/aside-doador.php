@@ -1,6 +1,6 @@
-<aside id="aside-doador">
+<aside id="aside-container">
     <div id="area-topo">
-        <button id="btn-aside" title="Abrir Menu" onclick="abrir_aside_doador()"><i id="icon-aside" class="fa-solid fa-angles-right"></i></button>
+        <button id="btn-aside" title="Abrir Menu" onclick="abrir_aside()"><i id="icon-aside" class="fa-solid fa-angles-right"></i></button>
         <nav>
             <a href="#" title="Doações"><i class="fa-solid fa-coins"></i><span>Doações</span>
             </a>
