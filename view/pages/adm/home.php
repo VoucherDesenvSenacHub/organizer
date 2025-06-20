@@ -3,28 +3,32 @@ $acesso = 'adm';
 $tituloPagina = 'Home | ADM';
 $cssPagina = ['adm/home.css'];
 require_once '../../components/layout/base-inicio.php';
+
+require_once '../../../model/AdminModel.php';
+$adminModel = new AdminModel();
+$relatorio = $adminModel->RelatorioHome();
 ?>
 <main class="container">
     <div id="title">
-        <h1><i class="fa-solid fa-user-secret"></i> <?= $_SESSION['usuario_nome']?></h1>
+        <h1><i class="fa-solid fa-user-secret"></i> <?= $_SESSION['usuario_nome'] ?></h1>
         <p>DASHBOARD</p>
     </div>
     <div id="resumo">
         <a href="ongs.php">
             <div class="resumo-item">
-                <h3>30 <span>ONGS</span></h3>
+                <h3><?= $relatorio->qnt_ongs ?> <span>ONGS</span></h3>
                 <i class="fa-solid fa-house-flag"></i>
             </div>
         </a>
         <a href="projetos.php">
             <div class="resumo-item">
-                <h3>110 <span>PROJETOS</span></h3>
+                <h3><?= $relatorio->qnt_projetos ?> <span>PROJETOS</span></h3>
                 <i class="fa-solid fa-diagram-project"></i>
             </div>
         </a>
         <a href="doadores.php">
             <div class="resumo-item">
-                <h3>400 <span>DOADORES</span></h3>
+                <h3><?= $relatorio->qnt_usuarios ?> <span>DOADORES</span></h3>
                 <i class="fa-solid fa-users"></i>
             </div>
         </a>
@@ -81,8 +85,8 @@ require_once '../../components/layout/base-inicio.php';
                         <td data-label="CRIADO">12/05/2025</td>
                         <td>
                             <!-- <form method="GET"> -->
-                                <input type="hidden" name="id" value="">
-                                <a href="http://localhost/organizer/view/pages/ong/perfil.php?id=1"> <button class="fa-solid fa-eye" ></button></a>
+                            <input type="hidden" name="id" value="">
+                            <a href="http://localhost/organizer/view/pages/ong/perfil.php?id=1"> <button class="fa-solid fa-eye"></button></a>
                             <!-- </form> -->
                         </td>
                     </tr>
@@ -94,8 +98,8 @@ require_once '../../components/layout/base-inicio.php';
                         <td data-label="CRIADO">12/05/2025</td>
                         <td>
                             <!-- <form method="GET"> -->
-                                <input type="hidden" name="id" value="">
-                                <a href="http://localhost/organizer/view/pages/ong/perfil.php?id=1"> <button class="fa-solid fa-eye" ></button></a>
+                            <input type="hidden" name="id" value="">
+                            <a href="http://localhost/organizer/view/pages/ong/perfil.php?id=1"> <button class="fa-solid fa-eye"></button></a>
                             <!-- </form> -->
                         </td>
                     </tr>
@@ -107,8 +111,8 @@ require_once '../../components/layout/base-inicio.php';
                         <td data-label="CRIADO">12/05/2025</td>
                         <td>
                             <!-- <form method="GET"> -->
-                                <input type="hidden" name="id" value="">
-                                <a href="http://localhost/organizer/view/pages/ong/perfil.php?id=1"> <button class="fa-solid fa-eye" ></button></a>
+                            <input type="hidden" name="id" value="">
+                            <a href="http://localhost/organizer/view/pages/ong/perfil.php?id=1"> <button class="fa-solid fa-eye"></button></a>
                             <!-- </form> -->
                         </td>
                     </tr>
@@ -138,8 +142,8 @@ require_once '../../components/layout/base-inicio.php';
                         <td data-label="CRIADO">12/05/2025</td>
                         <td>
                             <!-- <form method="GET"> -->
-                                <input type="hidden" name="id" value="">
-                                <a href="http://localhost/organizer/view/pages/projeto/perfil.php?id=1"> <button class="fa-solid fa-eye" ></button></a>
+                            <input type="hidden" name="id" value="">
+                            <a href="http://localhost/organizer/view/pages/projeto/perfil.php?id=1"> <button class="fa-solid fa-eye"></button></a>
                             <!-- </form> -->
                         </td>
                     </tr>
@@ -151,8 +155,8 @@ require_once '../../components/layout/base-inicio.php';
                         <td data-label="CRIADO">12/05/2025</td>
                         <td>
                             <!-- <form method="GET"> -->
-                                <input type="hidden" name="id" value="">
-                                <a href="http://localhost/organizer/view/pages/projeto/perfil.php?id=1"> <button class="fa-solid fa-eye" ></button></a>
+                            <input type="hidden" name="id" value="">
+                            <a href="http://localhost/organizer/view/pages/projeto/perfil.php?id=1"> <button class="fa-solid fa-eye"></button></a>
                             <!-- </form> -->
                         </td>
                     </tr>
@@ -164,8 +168,8 @@ require_once '../../components/layout/base-inicio.php';
                         <td data-label="CRIADO">12/05/2025</td>
                         <td>
                             <!-- <form method="GET"> -->
-                                <input type="hidden" name="id" value="">
-                                <a href="http://localhost/organizer/view/pages/projeto/perfil.php?id=1"> <button class="fa-solid fa-eye" ></button></a>
+                            <input type="hidden" name="id" value="">
+                            <a href="http://localhost/organizer/view/pages/projeto/perfil.php?id=1"> <button class="fa-solid fa-eye"></button></a>
                             <!-- </form> -->
                         </td>
                     </tr>
@@ -195,8 +199,8 @@ require_once '../../components/layout/base-inicio.php';
                         <td data-label="CRIADO">01/01/2025</td>
                         <td>
                             <!-- <form method="GET"> -->
-                                <input type="hidden" name="id" value="">
-                                <a href="http://localhost/organizer/view/pages/adm/doadores.php?id=1"> <button class="fa-solid fa-eye" ></button></a>
+                            <input type="hidden" name="id" value="">
+                            <a href="http://localhost/organizer/view/pages/adm/doadores.php?id=1"> <button class="fa-solid fa-eye"></button></a>
                             <!-- </form> -->
                         </td>
                     </tr>
@@ -208,8 +212,8 @@ require_once '../../components/layout/base-inicio.php';
                         <td data-label="CRIADO">01/01/2025</td>
                         <td>
                             <!-- <form method="GET"> -->
-                                <input type="hidden" name="id" value="">
-                                <a href="http://localhost/organizer/view/pages/adm/doadores.php?id=1"> <button class="fa-solid fa-eye" ></button></a>
+                            <input type="hidden" name="id" value="">
+                            <a href="http://localhost/organizer/view/pages/adm/doadores.php?id=1"> <button class="fa-solid fa-eye"></button></a>
                             <!-- </form> -->
                         </td>
                     </tr>
@@ -221,8 +225,8 @@ require_once '../../components/layout/base-inicio.php';
                         <td data-label="CRIADO">01/01/2025</td>
                         <td>
                             <!-- <form method="GET"> -->
-                                <input type="hidden" name="id" value="">
-                                <a href="http://localhost/organizer/view/pages/adm/doadores.php?id=1"> <button class="fa-solid fa-eye" ></button></a>
+                            <input type="hidden" name="id" value="">
+                            <a href="http://localhost/organizer/view/pages/adm/doadores.php?id=1"> <button class="fa-solid fa-eye"></button></a>
                             <!-- </form> -->
                         </td>
                     </tr>
