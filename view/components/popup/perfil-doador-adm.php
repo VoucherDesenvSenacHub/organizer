@@ -1,6 +1,6 @@
-<div class="popup-fundo" id="perfil-doador-popup">
+<div class="popup-fundo perfil-usuario-popup" id="perfil-doador-adm-popup">
     <div class="container-popup">
-        <button class="btn-fechar-popup fa-solid fa-xmark" onclick="fechar_popup('perfil-doador-popup')"></button>
+        <button class="btn-fechar-popup fa-solid fa-xmark" onclick="fechar_popup('perfil-doador-adm-popup')"></button>
         <div id="left" class="box">
             <div id="perfil">
                 <img src="../../assets/images/pages/perfil_julia.png">

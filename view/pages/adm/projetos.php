@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] = 'GET' && isset($_GET['pesquisa'])) {
 <main>
     <div class="container">
         <div class="top">
-            <h1>PROJETOS</h1>
+            <h1><i class="fa-solid fa-diagram-project"></i> PROJETOS</h1>
             <form id="form-busca" action="projetos.php" method="GET">
                 <input type="text" name="pesquisa" placeholder="Busque um projeto">
                 <button class="btn"><i class="fa-solid fa-search"></i></button>

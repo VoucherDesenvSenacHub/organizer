@@ -17,8 +17,9 @@
 }
 
 #title h1 {
-    font-size: 28px;
+    font-size: 26px;
     text-transform: uppercase;
+    text-align: center;
 }
 
 #resumo {
@@ -85,6 +86,12 @@
     border-radius: 4px;
     padding: 20px 10px;
     flex: 1;
+    transition: .3s;
+}
+
+#nav-home a:hover {
+    transform: translateY(-4px);
+    box-shadow: rgba(50, 50, 93, 0.5) 0px 2px 5px 1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;   
 }
 
 #nav-home a img {
@@ -120,10 +127,4 @@
 #atividades .card-acoes .icon {
     background: none;
     box-shadow: none;
-}
-
-@media (max-width: 600px) {
-    main.container {
-        padding: 50px 10px;
-    }
 }

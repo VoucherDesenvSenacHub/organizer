@@ -64,14 +64,14 @@ $voluntarios = [
 
 <?php
 $acesso = 'ong';
-$tituloPagina = 'Visualizar Voluntarios por Projeto'; // Definir o título da página
-$cssPagina = ['ong/voluntarios.css']; //Colocar o arquivo .css (exemplo: 'ONG/cadastro.css')
+$tituloPagina = 'Apoiadores | Organizer'; // Definir o título da página
+$cssPagina = ['ong/apoiadores.css']; //Colocar o arquivo .css (exemplo: 'ONG/cadastro.css')
 require_once '../../components/layout/base-inicio.php';
 ?>
 <!-- COMEÇAR SEU CÓDIGO AQUI -->
 <div id="principal">
     <div class="topo">
-        <h1><i class="fa-solid fa-users"></i> MEUS VOLUNTÁRIOS</h1>
+        <h1><i class="fa-solid fa-users"></i> MEUS APOIADORES</h1>
         <form id="form-busca" action="voluntarios.php" method="GET">
             <input type="text" name="pesquisa" placeholder="Busque um voluntário">
             <button class="btn"><i class="fa-solid fa-search"></i></button>
@@ -229,6 +229,6 @@ require_once '../../components/layout/base-inicio.php';
 
 
 <?php
-$jsPagina = ['voluntarios-projetos.js']; //Colocar o arquivo .js (exemplo: 'cadastro.js')
+$jsPagina = ['ong/apoiadores.js']; //Colocar o arquivo .js (exemplo: 'cadastro.js')
 require_once '../../components/footer.php';
 ?>

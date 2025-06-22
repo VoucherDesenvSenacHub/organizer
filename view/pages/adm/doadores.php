@@ -20,7 +20,7 @@ if (isset($_GET['id'])) {
     require_once '../../components/popup/perfil-doador-adm.php';
     echo "<script>
         window.onload = function() {
-            abrir_popup('perfil-doador-popup');
+            abrir_popup('perfil-doador-adm-popup');
 
             // Limpa o parâmetro 'id' da URL após abrir o popup
             const url = new URL(window.location.href);
@@ -34,7 +34,7 @@ if (isset($_GET['id'])) {
 <main>
     <div class="container">
         <div class="top">
-            <h1>DOADORES</h1>
+            <h1><i class="fa-solid fa-users"></i> DOADORES</h1>
             <form id="form-busca" action="doadores.php" method="GET">
                 <input type="text" name="pesquisa" placeholder="Busque um doador">
                 <button class="btn"><i class="fa-solid fa-search"></i></button>
