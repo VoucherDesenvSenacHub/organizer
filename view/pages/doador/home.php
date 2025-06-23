@@ -5,7 +5,7 @@ $tituloPagina = 'Home - Doador';
 $cssPagina = ['doador/home.css'];
 require_once '../../components/layout/base-inicio.php';
 
-require_once '../../../model/UsuarioModel.php';
+require_once __DIR__ . '/../../../autoload.php';
 $usuarioModel = new Usuario();
 $relatorio = $usuarioModel->RelatorioHome($_SESSION['usuario_id']);
 ?>

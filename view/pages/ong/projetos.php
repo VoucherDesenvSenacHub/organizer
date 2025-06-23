@@ -6,7 +6,7 @@ $cssPagina = ['ong/listagem.css'];
 require_once '../../components/layout/base-inicio.php';
 
 //IMPORT CLASSES
-require_once __DIR__ . "\..\..\..\autoload.php";
+require_once __DIR__ . '/../../../autoload.php';
 
 //CARREGA CARDS DE PROJETOS
 $projetoModel = new Projeto();

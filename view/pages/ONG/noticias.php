@@ -4,7 +4,7 @@ $tituloPagina = 'Notícias | Organizer';
 $cssPagina = ['ong/listagem.css'];
 require_once '../../components/layout/base-inicio.php';
 
-require_once __DIR__ . "\..\..\..\autoload.php";
+require_once __DIR__ . '/../../../autoload.php';
 $noticiaModel = new NoticiaModel();
 
 // Pegar as noticias

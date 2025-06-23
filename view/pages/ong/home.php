@@ -4,7 +4,7 @@ $tituloPagina = 'Home | Organizer';
 $cssPagina = ['ong/home.css'];
 require_once '../../components/layout/base-inicio.php';
 
-require_once __DIR__ . "\..\..\..\autoload.php";
+require_once __DIR__ . '/../../../autoload.php';
 $ongModel = new Ong();
 $minhaOng = $ongModel->buscarPerfil($_SESSION['ong_id']);
 $dadosOng = $ongModel->buscarDados($_SESSION['ong_id']);
