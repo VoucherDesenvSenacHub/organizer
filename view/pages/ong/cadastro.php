@@ -9,8 +9,7 @@ if (isset($_SESSION['ong_id'])) {
     header('Location: ../ong/home.php');
 }
 
-require_once __DIR__ . '/../../../model/OngModel.php';
-require_once __DIR__ . '/../../../model/BancoModel.php';
+require_once __DIR__ . "\..\..\..\autoload.php";
 $ongModel = new Ong();
 $bancoModel = new BancoModel();
 $lista_banco = $bancoModel->listar();

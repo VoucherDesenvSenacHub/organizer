@@ -3,7 +3,7 @@ $acesso = 'doador';
 $tituloPagina = 'Participações';
 $cssPagina = ['doador/participacoes.css'];
 require_once '../../components/layout/base-inicio.php';
-require_once __DIR__ . "\..\..\..\model\ProjetoModel.php";
+require_once __DIR__ . "\..\..\..\autoload.php";
 ?>
 <main>
     <section>

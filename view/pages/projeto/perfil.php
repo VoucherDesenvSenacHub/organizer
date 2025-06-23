@@ -1,8 +1,7 @@
 <?php
 ob_start();
 //Lógica e dependências primeiro
-require_once __DIR__ . "/../../../model/ProjetoModel.php";
-require_once __DIR__ . "/../../../model/OngModel.php";
+require_once __DIR__ . "\..\..\..\autoload.php";
 $projetoModel = new Projeto();
 $ongModel = new Ong();
 

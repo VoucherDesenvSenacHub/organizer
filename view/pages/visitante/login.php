@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
     $senha = $_POST['senha'];
 
-    require_once __DIR__ . '/../../../model/UsuarioModel.php';
+    require_once __DIR__ . "\..\..\..\autoload.php";
     $usuarioModel = new Usuario();
 
     $usuarioModel->login($email, $senha);

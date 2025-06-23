@@ -4,7 +4,7 @@ $tituloPagina = 'Leia Mais | Organizer';
 $cssPagina = ['noticia/perfil.css'];
 require_once '../../components/layout/base-inicio.php';
 
-require_once '../../../model/NoticiaModel.php';
+require_once __DIR__ . "\..\..\..\autoload.php";
 $noticiaModel = new NoticiaModel();
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {

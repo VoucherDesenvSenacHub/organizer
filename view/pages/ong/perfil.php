@@ -5,9 +5,7 @@ $tituloPagina = 'Perfil da ONG | Organizer';
 $cssPagina = ['ong/perfil.css'];
 require_once '../../components/layout/base-inicio.php';
 
-require_once '../../../model/OngModel.php';
-require_once '../../../model/ProjetoModel.php';
-require_once '../../../model/NoticiaModel.php';
+require_once __DIR__ . "\..\..\..\autoload.php";
 $ongModel = new Ong();
 $projetoModel = new Projeto();
 $noticiaModel = new NoticiaModel();

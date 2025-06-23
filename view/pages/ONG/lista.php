@@ -4,7 +4,7 @@ $tituloPagina = 'Descubra ONGS';
 $cssPagina = ['shared/catalogo.css'];
 require_once '../../components/layout/base-inicio.php';
 
-require_once '../../../model/OngModel.php';
+require_once __DIR__ . "\..\..\..\autoload.php";
 $ongModel = new Ong();
 $lista = $ongModel->listarCards();
 

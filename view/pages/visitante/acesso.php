@@ -1,7 +1,7 @@
 <?php
 session_start();
 $_SESSION['perfil_usuario'] = null;
-require_once __DIR__ . '/../../../model/OngModel.php';
+require_once __DIR__ . "\..\..\..\autoload.php";
 $ongModel = new Ong();
 $ong = $ongModel->verificarExistenciaOng($_SESSION['usuario_id']);
 

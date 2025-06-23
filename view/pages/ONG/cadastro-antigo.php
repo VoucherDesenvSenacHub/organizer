@@ -2,9 +2,7 @@
     $tituloPagina = 'Cadastro ONG'; // Definir o título da página
     $cssPagina = ['ong/cadastro.css']; //Colocar o arquivo .css 
     require_once '../../components/layout/base-inicio.php';
-    require_once '../../../model/Bancos.php';
-    require_once '../../../model/Estados.php';
-    require_once '../../../model/Cidades.php';
+    require_once __DIR__ . "\..\..\..\autoload.php";
     
     
 ?>
