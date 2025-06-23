@@ -230,5 +230,5 @@ require_once '../../components/layout/base-inicio.php';
 
 <?php
 $jsPagina = ['ong/apoiadores.js']; //Colocar o arquivo .js (exemplo: 'cadastro.js')
-require_once '../../components/footer.php';
+require_once '../../components/layout/footer/footer-logado.php';
 ?>

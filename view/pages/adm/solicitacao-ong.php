@@ -1,6 +1,6 @@
 <?php
 $acesso = 'adm';
-$tituloPagina = 'Solicitação de ONGS';
+$tituloPagina = 'Solicitação | Organizer';
 $cssPagina = ['adm/solicitacoes.css'];
 require_once '../../components/layout/base-inicio.php';
 ?>
@@ -44,5 +44,5 @@ require_once '../../components/layout/base-inicio.php';
 </main>
 <?php
 $jsPagina = [];
-require_once '../../components/footer.php';
+require_once '../../components/layout/footer/footer-logado.php';
 ?>

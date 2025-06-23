@@ -73,5 +73,5 @@ $dadosOng = $ongModel->buscarDados($_SESSION['ong_id']);
 </main>
 <?php
 $jsPagina = [];
-require_once '../../components/footer.php';
+require_once '../../components/layout/footer/footer-logado.php';
 ?>

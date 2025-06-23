@@ -2,7 +2,7 @@
     <div id="area-topo">
         <button id="btn-aside" title="Abrir Menu" onclick="abrir_aside()"><i id="icon-aside" class="fa-solid fa-angles-right"></i></button>
         <nav>
-            <a href="#" title="Doações"><i class="fa-solid fa-coins"></i><span>Doações</span></a>
+            <a href="../doador/doacoes.php" title="Doações"><i class="fa-solid fa-coins"></i><span>Doações</span></a>
             <a href="../doador/cartoes.php" title="Cartões"><i class="fa-solid fa-credit-card"></i><span>Cartões</span></a>
             <a href="../doador/favoritos.php" title="Favoritos"><i class="fa-solid fa-heart"></i><span>Favoritos</span></a>
             <a href="../doador/apoios.php" title="Apoios"><i class="fa-solid fa-hand-holding-heart"></i><span>Apoios</span></a>

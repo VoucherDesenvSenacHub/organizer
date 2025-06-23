@@ -1,6 +1,6 @@
 <?php
 $acesso = $_SESSION['perfil_usuario'] ?? 'visitante';
-$tituloPagina = 'Encontre Projetos';
+$tituloPagina = 'Encontre Projetos | Organizer';
 $cssPagina = ['shared/catalogo.css'];
 require_once '../../components/layout/base-inicio.php';
 
@@ -141,5 +141,5 @@ $perfil = $_SESSION['perfil_usuario'] ?? '';
 
 <?php
 $jsPagina = [];
-require_once '../../components/footer.php';
+require_once '../../components/layout/footer/footer-logado.php';
 ?>

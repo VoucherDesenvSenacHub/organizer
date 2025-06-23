@@ -195,5 +195,5 @@ require_once __DIR__ . "\..\..\..\model\ProjetoModel.php";
 
 <?php
 // $jsPagina = ['home-doador.js'];
-require_once '../../components/footer.php';
+require_once '../../components/layout/footer/footer-logado.php';
 ?>

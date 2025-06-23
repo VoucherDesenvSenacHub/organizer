@@ -238,5 +238,5 @@ $relatorio = $adminModel->RelatorioHome();
 </main>
 <?php
 $jsPagina = [];
-require_once '../../components/footer.php';
+require_once '../../components/layout/footer/footer-logado.php';
 ?>

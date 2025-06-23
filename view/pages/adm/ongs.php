@@ -1,6 +1,6 @@
 <?php
 $acesso = 'adm';
-$tituloPagina = 'Ver ONG ADM '; // Definir o título da página
+$tituloPagina = 'Ongs | Organizer'; // Definir o título da página
 $cssPagina = ['adm/listagem.css']; //Colocar o arquivo .css 
 require_once '../../components/layout/base-inicio.php';
 
@@ -54,5 +54,5 @@ if ($_SERVER['REQUEST_METHOD'] = 'GET' && isset($_GET['pesquisa'])) {
 
 <?php
 $jsPagina = []; //Colocar o arquivo .js (exemplo: 'ONG/cadastro.js')
-require_once '../../components/footer.php';
+require_once '../../components/layout/footer/footer-logado.php';
 ?>

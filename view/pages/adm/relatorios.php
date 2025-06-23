@@ -1,6 +1,6 @@
 <?php
 $acesso = 'adm';
-$tituloPagina = 'Relatórios'; // Definir o título da página
+$tituloPagina = 'Relatórios | Organizer'; // Definir o título da página
 $cssPagina = ["adm/relatorios.css"]; //Colocar o arquivo .css (exemplo: 'ONG/cadastro.css')
 require_once '../../components/layout/base-inicio.php';
 require_once '../../components/graphics/vertical-bars.php';
@@ -96,5 +96,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <?php
 $jsPagina = ["relatorios.js"]; //Colocar o arquivo .js (exemplo: 'ONG/cadastro.js')
-require_once '../../components/footer.php';
+require_once '../../components/layout/footer/footer-logado.php';
 ?>

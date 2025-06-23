@@ -1,6 +1,6 @@
 <?php
 $acesso = 'adm';
-$tituloPagina = 'Ver Projetos ADM'; // Definir o título da página
+$tituloPagina = 'Projetos | Organizer'; // Definir o título da página
 $cssPagina = ['adm/listagem.css']; //Colocar o arquivo .css 
 require_once '../../components/layout/base-inicio.php';
 
@@ -53,5 +53,5 @@ if ($_SERVER['REQUEST_METHOD'] = 'GET' && isset($_GET['pesquisa'])) {
 </main>
 <?php
 $jsPagina = []; //Colocar o arquivo .js
-require_once '../../components/footer.php';
+require_once '../../components/layout/footer/footer-logado.php';
 ?>

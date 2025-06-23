@@ -15,30 +15,30 @@
             <h1>PERFIL</h1>
             <div class="input-group">
                 <div class="input-box">
-                    <label for="nome">Nome</label>
-                    <input id="nome" type="text" value="<?= $usuario->nome ?>" readonly>
+                    <label>Nome</label>
+                    <input type="text" value="<?= $usuario->nome ?>" readonly>
                     <i class="fa-solid fa-user"></i>
                 </div>
                 <div class="input-box inputM">
-                    <label for="telefone">Telefone</label>
-                    <input id="telefone" type="tel" value="<?= $usuario->telefone ?>" readonly>
+                    <label>Telefone</label>
+                    <input id="telefone_div" type="tel" value="<?= $usuario->telefone ?>" readonly>
                     <i class="fa-solid fa-phone"></i>
                 </div>
                 <div class="input-box inputM">
-                    <label for="cpf">CPF</label>
-                    <input id="cpf" type="text" value="<?= $usuario->cpf ?>" readonly>
+                    <label>CPF</label>
+                    <input id="cpf_div" type="text" value="<?= $usuario->cpf ?>" readonly>
                     <i class="fa-regular fa-address-card"></i>
                 </div>
                 <div class="input-box">
-                    <label for="datan">Data de Nascimento</label>
-                    <input id="datan" type="date" value="<?= $usuario->data_nascimento ?>" readonly>
+                    <label>Data de Nascimento</label>
+                    <input type="date" value="<?= $usuario->data_nascimento ?>" readonly>
                     <i class="fa-solid fa-calendar-days"></i>
                 </div>
             </div>
             <h1>LOGIN</h1>
             <div class="input-box">
-                <label for="email">Email</label>
-                <input id="email" type="email" value="<?= $usuario->email ?>" readonly>
+                <label>Email</label>
+                <input type="email" value="<?= $usuario->email ?>" readonly>
                 <i class="fa-solid fa-envelope"></i>
             </div>
         </div>
