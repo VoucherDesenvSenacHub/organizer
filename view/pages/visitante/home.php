@@ -133,5 +133,5 @@ $lista = $ongModel->listarCards();
     </script>
     <?php
     $jsPagina = ['home-doador.js']; //Colocar o arquivo .js
-    require_once '../../components/footer.php';
+    require_once '../../components/layout/footer/footer-visitante.php';
     ?>

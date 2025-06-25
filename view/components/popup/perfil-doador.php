@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 ?>
 
-<div class="popup-fundo" id="perfil-doador-popup">
+<div class="popup-fundo perfil-usuario-popup" id="perfil-doador-popup">
     <div class="container-popup">
         <button class="btn-fechar-popup fa-solid fa-xmark" onclick="fechar_popup('perfil-doador-popup')"></button>
         <div id="left" class="box">

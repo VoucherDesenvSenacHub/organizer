@@ -94,8 +94,8 @@ function ativar_classe(id) {
 
 
 // ============================ DOADOR ===============================
-function abrir_aside_doador() {
-    let aside = document.getElementById('aside-doador');
+function abrir_aside() {
+    let aside = document.getElementById('aside-container');
     let btn_aside = document.getElementById('btn-aside');
     aside.classList.toggle('active');
     btn_aside.classList.toggle('active');

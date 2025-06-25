@@ -77,5 +77,5 @@ require_once __DIR__ . '/../../components/popup/formulario-projeto.php';
 
 <?php
 $jsPagina = ['projetos-ong.js'];
-require_once __DIR__ . '/../../components/footer.php';
+require_once '../../components/layout/footer/footer-logado.php';
 ?>

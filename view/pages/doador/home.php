@@ -4,6 +4,10 @@ $acesso = 'doador';
 $tituloPagina = 'Home - Doador';
 $cssPagina = ['doador/home.css'];
 require_once '../../components/layout/base-inicio.php';
+
+require_once '../../../model/UsuarioModel.php';
+$usuarioModel = new Usuario();
+$relatorio = $usuarioModel->RelatorioHome($_SESSION['usuario_id']);
 ?>
 <section id="cabecalho">
     <h1>Olá, <?= implode(' ', array_slice(explode(' ', trim($usuario->nome)), 0, 2)) ?>.</h1>
@@ -11,11 +15,11 @@ require_once '../../components/layout/base-inicio.php';
     <div id="info-doacao">
         <div class="item-info">
             <h4>Minhas Doações</h4>
-            <h5>R$ 300</h5>
+            <h5>R$ <?= number_format($relatorio->qnt_doacoes, 0, ',', '.'); ?></h5>
         </div>
         <div class="item-info">
             <h4>Participações</h4>
-            <h5>4 Projetos</h5>
+            <h5>?? Projetos</h5>
         </div>
     </div>
 </section>
@@ -115,5 +119,5 @@ require_once '../../components/layout/base-inicio.php';
             </section> -->
 <?php
 $jsPagina = [];
-require_once '../../components/footer-doador.php';
+require_once '../../components/layout/footer/footer-logado.php';
 ?>

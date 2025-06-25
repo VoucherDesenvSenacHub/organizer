@@ -1,11 +1,11 @@
 <?php
 $acesso = 'adm';
-$tituloPagina = 'Solicitação de Parcerias';
+$tituloPagina = 'Parcerias | Organizer';
 $cssPagina = ['adm/solicitacoes.css'];
 require_once '../../components/layout/base-inicio.php';
 ?>
 <main class="container">
-    <h1>SOLICITAÇÃO DE PARCERIAS</h1>
+    <h1><i class="fa-solid fa-handshake"></i> SOLICITAÇÃO DE PARCERIAS</h1>
     <div class="box-cards">
         <div class="card-solicitacao-empresa">
             <div class="nome">
@@ -67,5 +67,5 @@ require_once '../../components/layout/base-inicio.php';
 </main>
 <?php
 $jsPagina = [];
-require_once '../../components/footer.php';
+require_once '../../components/layout/footer/footer-logado.php';
 ?>

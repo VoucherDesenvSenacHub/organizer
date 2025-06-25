@@ -122,5 +122,5 @@ require_once '../../components/layout/base-inicio.php';
 </script>
 <?php
 $jsPagina = ['cartoes.js']; //Colocar o arquivo .js (exemplo: 'cadastro.js')
-require_once '../../components/footer-doador.php';
+require_once '../../components/layout/footer/footer-logado.php';
 ?>
