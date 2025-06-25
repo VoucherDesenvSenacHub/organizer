@@ -1,4 +1,5 @@
 <?php
+ob_start();
 $acesso = 'ong';
 $tituloPagina = 'Meu Perfil | Organizer';
 $cssPagina = ['adm/validar-ong.css'];
@@ -43,6 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         exit;
     }
 }
+ob_end_flush();
 ?>
 <!-- Toast do Update -->
 <div id="toast-ong-sucesso" class="toast">
