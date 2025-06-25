@@ -1,6 +1,6 @@
 <?php
 $acesso = 'ong';
-$tituloPagina = 'Relatórios'; // Definir o título da página
+$tituloPagina = 'Relatórios | Organizer'; // Definir o título da página
 $cssPagina = ["ong/relatorios.css"]; //Colocar o arquivo .css (exemplo: 'ONG/cadastro.css')
 require_once '../../components/layout/base-inicio.php';
 require_once '../../components/popup/download.php';
@@ -8,7 +8,7 @@ require_once '../../components/popup/download.php';
 <main>
     <div id="principal">
         <div class="titulo">
-            <h1>RELATÓRIOS</h1>
+            <h1><i class="fa-solid fa-chart-pie"></i> RELATÓRIOS</h1>
         </div>
 
         <div class="cards">
@@ -71,5 +71,5 @@ require_once '../../components/popup/download.php';
 
 <?php
 $jsPagina = ["relatorios.js"]; //Colocar o arquivo .js (exemplo: 'ONG/cadastro.js')
-require_once '../../components/footer.php';
+require_once '../../components/layout/footer/footer-logado.php';
 ?>

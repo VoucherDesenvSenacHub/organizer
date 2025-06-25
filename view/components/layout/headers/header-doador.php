@@ -24,5 +24,5 @@
 <!-- ASIDE -->
 <main id="main-doador">
     <div class="container">
-        <?php require_once '../../components/aside-doador.php'; ?>
+        <?php require_once __DIR__ . '/../asides/aside-doador.php'; ?>
         <div id="container-conteudo">

@@ -109,5 +109,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <?php
 $jsPagina = ['cadastro-doador.js'];
-require_once '../../components/footer.php';
+require_once '../../components/layout/footer/footer-visitante.php';
 ?>

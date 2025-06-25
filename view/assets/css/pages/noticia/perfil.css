@@ -1,3 +1,9 @@
+#main-doador .container-noticia {
+    /* background-color: red; */
+    box-shadow: none;
+    padding: 0;
+}
+
 main .container-noticia {
     max-width: 1200px;
     background-color: white;

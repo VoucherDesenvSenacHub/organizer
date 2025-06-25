@@ -8,7 +8,7 @@ $ongModel = new Ong();
 
 //Definições da página (título e CSS)
 $acesso = $_SESSION['perfil_usuario'] ?? 'visitante';
-$tituloPagina = 'Perfil do Projeto | Organizer';
+$tituloPagina = 'Sobre o Projeto | Organizer';
 $cssPagina = ['projeto/perfil.css'];
 require_once '../../components/layout/base-inicio.php';
 
@@ -191,5 +191,5 @@ ob_end_flush();
 
 <?php
 $jsPagina = ['perfil-projeto.js'];
-require_once '../../components/footer.php';
+require_once '../../components/layout/footer/footer-logado.php';
 ?>

@@ -39,7 +39,7 @@ $relatorio = $adminModel->RelatorioHome();
             <div class="card-adm">
                 <h4>EMPRESAS</h4>
                 <span>Aprove ou recuse solicitações de parcerias de empresas.</span>
-                <a href="solicitacao-parceria.php">
+                <a href="parcerias.php">
                     <div><i class="fa-solid fa-handshake"></i>
                         <p>5 Solicitações</p>
                     </div>
@@ -238,5 +238,5 @@ $relatorio = $adminModel->RelatorioHome();
 </main>
 <?php
 $jsPagina = [];
-require_once '../../components/footer.php';
+require_once '../../components/layout/footer/footer-logado.php';
 ?>

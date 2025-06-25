@@ -1,10 +1,6 @@
-main {
-    padding-inline: 10px;
-}
-
 main .container {
     flex-direction: column;
-    padding: 40px 0px;
+    /* padding: 40px 0px; */
     gap: 30px;
 }
 
@@ -15,6 +11,11 @@ main .container {
     align-items: center;
     gap: 20px;
     width: 100%;
+}
+
+.top h1 {
+    font-size: 26px;
+    color: var(--cor-roxo-adm);
 }
 
 /* Área barra de pesquisa */
@@ -53,7 +54,7 @@ main .container {
 section#box-ongs {
     display: flex;
     justify-content: space-between;
-    gap: 30px;
+    gap: 30px 10px;
     flex-wrap: wrap;
     width: 100%;
     padding-bottom: 30px;

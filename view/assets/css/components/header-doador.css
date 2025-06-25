@@ -49,6 +49,7 @@ header #img-doador img {
     display: flex;
     flex-direction: column;
     gap: 30px;
+    transition: .3s ease-out;
 }
 
 

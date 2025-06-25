@@ -119,5 +119,5 @@ $relatorio = $usuarioModel->RelatorioHome($_SESSION['usuario_id']);
             </section> -->
 <?php
 $jsPagina = [];
-require_once '../../components/footer-doador.php';
+require_once '../../components/layout/footer/footer-logado.php';
 ?>

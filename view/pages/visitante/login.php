@@ -79,5 +79,5 @@ ob_end_flush();
 </div>
 <?php
 $jsPagina = ['login-doador.js'];
-require_once '../../components/footer.php';
+require_once '../../components/layout/footer/footer-visitante.php';
 ?>

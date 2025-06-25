@@ -1,7 +1,7 @@
 <?php
 $acesso = 'doador';
-$tituloPagina = 'Participações';
-$cssPagina = ['doador/participacoes.css'];
+$tituloPagina = 'Apoios | Organizer';
+$cssPagina = ['doador/apoios.css'];
 require_once '../../components/layout/base-inicio.php';
 require_once __DIR__ . "\..\..\..\model\ProjetoModel.php";
 ?>
@@ -195,5 +195,5 @@ require_once __DIR__ . "\..\..\..\model\ProjetoModel.php";
 
 <?php
 // $jsPagina = ['home-doador.js'];
-require_once '../../components/footer.php';
+require_once '../../components/layout/footer/footer-logado.php';
 ?>

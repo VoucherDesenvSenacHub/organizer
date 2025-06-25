@@ -1,11 +1,11 @@
 <?php
 $acesso = 'adm';
-$tituloPagina = 'Solicitação de ONGS';
+$tituloPagina = 'Solicitação | Organizer';
 $cssPagina = ['adm/solicitacoes.css'];
 require_once '../../components/layout/base-inicio.php';
 ?>
 <main class="container">
-    <h1>SOLICITAÇÃO DE ONGS</h1>
+    <h1><i class="fa-solid fa-house-flag"></i> SOLICITAÇÃO DE ONGS</h1>
     <div class="box-cards">
         <div class="card-solicitacao">
             <div class="nome">
@@ -44,5 +44,5 @@ require_once '../../components/layout/base-inicio.php';
 </main>
 <?php
 $jsPagina = [];
-require_once '../../components/footer.php';
+require_once '../../components/layout/footer/footer-logado.php';
 ?>
