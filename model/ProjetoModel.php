@@ -9,6 +9,7 @@ class Projeto
     {
         global $pdo;
         $this->pdo = $pdo;
+        $this->pdo->exec("SET time_zone = '-04:00'");
     }
 
     function listar($id = null)

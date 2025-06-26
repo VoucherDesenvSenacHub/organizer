@@ -12,6 +12,18 @@ $doacoes = $projetoModel->buscarDoacao($_SESSION['usuario_id']);
 ?>
 <section>
     <h1><i class="fa-solid fa-coins"></i> MINHAS DOAÇÕES</h1>
+    <?php 
+    if (!$doacoes) {
+        echo '<div class="btn-doar"> 
+        <h4>Você ainda não realizou nenhuma doação! <i class="fa-regular fa-face-frown"></i> </h4>
+        <a href="../projeto/lista.php">
+        <button class="btn"><i class="fa-solid fa-hand-holding-dollar"></i> Conhecer Projetos</button></a>
+    </div>
+';
+        exit;
+    }
+    ?>
+    
     <div class="cards-container">
         <?php foreach ($doacoes as $doacao): ?>
             <div class="card-doacao">

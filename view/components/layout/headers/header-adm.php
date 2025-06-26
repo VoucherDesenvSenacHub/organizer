@@ -1,6 +1,6 @@
 <header>
     <div class="container">
-        <a class="logo" href="home.php">
+        <a class="logo" href="../adm/home.php">
             <img src="../../assets/images/global/Logo-Organizer.png">
             <h1>Organizer</h1>
         </a>
