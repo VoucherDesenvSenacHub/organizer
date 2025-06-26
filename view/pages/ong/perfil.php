@@ -1,7 +1,7 @@
 <?php
 //CONFIGURAÇÕES DA PÁGINA
 $acesso = $_SESSION['perfil_usuario'] ?? 'visitante';
-$tituloPagina = 'Perfil da ONG | Organizer';
+$tituloPagina = 'Sobre a ONG | Organizer';
 $cssPagina = ['ong/perfil.css'];
 require_once '../../components/layout/base-inicio.php';
 
@@ -135,5 +135,5 @@ $perfil = $_SESSION['perfil_usuario'] ?? '';
 
 <?php
 $jsPagina = [];
-require_once '../../components/footer.php';
+require_once '../../components/layout/footer/footer-logado.php';
 ?>

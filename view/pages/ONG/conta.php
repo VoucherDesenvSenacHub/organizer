@@ -392,5 +392,5 @@ require_once '../../components/layout/base-inicio.php';
 <script src="https://unpkg.com/lucide@latest"></script>
 <?php
 $jsPagina = ['conta-ong.js']; //Colocar o arquivo .js (exemplo: 'ONG/cadastro.js')
-require_once '../../components/footer.php';
+require_once '../../components/layout/footer/footer-logado.php';
 ?>

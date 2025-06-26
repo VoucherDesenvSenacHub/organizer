@@ -1,6 +1,6 @@
 <?php
 $acesso = 'adm';
-$tituloPagina = 'Ver ONG ADM '; // Definir o título da página
+$tituloPagina = 'Ongs | Organizer'; // Definir o título da página
 $cssPagina = ['adm/listagem.css']; //Colocar o arquivo .css 
 require_once '../../components/layout/base-inicio.php';
 
@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] = 'GET' && isset($_GET['pesquisa'])) {
 <main>
     <div class="container">
         <div class="top">
-            <h1>ONGS</h1>
+            <h1><i class="fa-solid fa-house-flag"></i> ONGS</h1>
             <form id="form-busca" action="ongs.php" method="GET">
                 <input type="text" name="pesquisa" placeholder="Busque uma ONG">
                 <button class="btn"><i class="fa-solid fa-search"></i></button>
@@ -54,5 +54,5 @@ if ($_SERVER['REQUEST_METHOD'] = 'GET' && isset($_GET['pesquisa'])) {
 
 <?php
 $jsPagina = []; //Colocar o arquivo .js (exemplo: 'ONG/cadastro.js')
-require_once '../../components/footer.php';
+require_once '../../components/layout/footer/footer-logado.php';
 ?>

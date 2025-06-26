@@ -80,8 +80,5 @@ require_once '../../components/popup/formulario-noticia.php';
 </main>
 <?php
 $jsPagina = ['ong/noticias.js'];
-require_once '../../components/footer.php';
+require_once '../../components/layout/footer/footer-logado.php';
 ?>
-</body>
-
-</html>

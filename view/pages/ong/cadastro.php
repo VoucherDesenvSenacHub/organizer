@@ -1,6 +1,6 @@
 <?php
 $acesso = 'ong';
-$tituloPagina = 'Cadastro da ONG';
+$tituloPagina = 'Cadastro da ONG | Organizer';
 $cssPagina = ['ong/cadastro.css'];
 require_once '../../components/layout/base-inicio.php';
 
@@ -310,5 +310,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </script>
 <?php
 $jsPagina = ['ong/cadastro.js'];
-require_once '../../components/footer.php';
+require_once '../../components/layout/footer/footer-logado.php';
 ?>

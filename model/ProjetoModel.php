@@ -9,6 +9,7 @@ class Projeto
     {
         global $pdo;
         $this->pdo = $pdo;
+        $this->pdo->exec("SET time_zone = '-04:00'");
     }
 
     function listar($id = null)
@@ -136,5 +137,18 @@ class Projeto
         $stmt->bindParam(':valor', $valor);
         $stmt->execute();
         return $stmt->rowCount();
+    }
+
+    function buscarDoacao($id) {
+        $query = "SELECT p.nome, valor, data_doacao
+                  FROM $this->tabela p, doacao_projeto d
+                  WHERE p.projeto_id = d.projeto_id
+                  AND d.usuario_id = :id
+                  ORDER BY 3 DESC";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+        $stmt->setFetchMode(PDO::FETCH_CLASS, __CLASS__);
+        return $stmt->fetchAll();
     }
 }

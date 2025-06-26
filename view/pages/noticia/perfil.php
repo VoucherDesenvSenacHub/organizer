@@ -88,5 +88,5 @@ if ($perfil == 'ong') {
 </main>
 <?php
 $jsPagina = ['noticia/perfil.js'];
-require_once '../../components/footer.php';
+require_once '../../components/layout/footer/footer-logado.php';
 ?>

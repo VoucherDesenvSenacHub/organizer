@@ -1,11 +1,12 @@
-body {
-    background-color: aliceblue;
+#nav-bar ul li:nth-child(1) a {
+    color: var(--cor-amarelo);
+    font-weight: bold;
 }
 
 main.container {
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
     background-color: white;
-    padding: 50px 30px;
+    /* padding: 50px 30px; */
     flex-direction: column;
     align-items: start;
     gap: 40px;
@@ -15,9 +16,10 @@ a {
     text-decoration: none;
 }
 
-.container h1 {
+#container-conteudo .container h1 {
     /* color: var(--cor-roxo-adm); */
     text-transform: uppercase;
+    font-size: 26px;
 }
 
 #title {
@@ -283,8 +285,6 @@ table tbody td button:hover {
 
 /* Responsividade */
 @media (max-width: 700px) {
-
-    main.container,
     fieldset {
         padding-inline: 10px;
     }

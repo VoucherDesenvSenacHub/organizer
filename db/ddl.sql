@@ -47,7 +47,7 @@ CREATE TABLE ongs (
     bairro VARCHAR(100) NOT NULL,
     cidade VARCHAR(100) NOT NULL,
 -- Dados bancários
-    banco_id INT NOT NULL,
+    banco_id INT NOT NULL, (VARCHAR)
     agencia VARCHAR(10) NOT NULL,
     conta_numero VARCHAR(20) NOT NULL,
     tipo_conta ENUM('CORRENTE', 'POUPANÇA') NOT NULL DEFAULT 'CORRENTE',
@@ -60,7 +60,7 @@ CREATE TABLE ongs (
 -- Relacionamentos
     CONSTRAINT fk_responsavel FOREIGN KEY (responsavel_id) REFERENCES usuarios(usuario_id),
     CONSTRAINT fk_banco FOREIGN KEY (banco_id) REFERENCES bancos(banco_id)
-);
+); 
 
 
 -- TABELA DOS PROJETOS

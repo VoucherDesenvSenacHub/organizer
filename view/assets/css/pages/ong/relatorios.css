@@ -4,172 +4,165 @@
     color: var(--cor-amarelo);
     font-weight: bold;
 }
-body {
-    background-color: aliceblue;
 
-}
 #principal {
     display: flex;
     justify-content: start;
     flex-direction: column;
-    max-width: 1220px;
-    margin:auto;
     border-radius: 3px;
-    padding: 45px 15px;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     background-color: white;
-    font-size: 35px;
-
-    .titulo {
-        margin-left: 27px;
-        margin-bottom: 20px;
-        font-size: 16px;
-        letter-spacing: 1px;
-        color: #F79329;
-    }   
-
-    .cards {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 30px;
-        height: fit-content;
-    }
-
-    .icon {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 10px;
-
-        button {
-            border: none;
-            background-color: transparent;
-            cursor: pointer;
-        }
-    }
-
-    .card1 {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        background-color: white;
-        color: black;
-        border-radius: 10px;
-        box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.2);
-        padding: 20px;
-        width: 500px;
-        text-align: left;
-        font-size: 20px;
-        
-    }
-
-    .card1 img{
-        width: 80%;
-    }
-
-    .sub {
-        /* margin-top: 15px; */
-
-        .quadrado{
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            img{
-                width: 10px ;
-                height: 10px;
-                margin: 1%;
-            }
-
-            p{
-                font-size: 12px;
-                color: rgba(0, 0, 0, 0.605);
-            }
-        }
-    }
-
-    #download p{
-        font-size: 12px;
-        color: black;
-    }
-
-    #download {
-        display: flex;
-        align-items: center;
-        gap: 20px;
-        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-        padding: 20px;
-        position: fixed;
-        right: 76px;
-        background-color: rgb(123, 215, 238);
-        border-radius: 5px;
-        top: 125px;
-        display: none;
-        animation: animacao 1s ease;
-    }  
+    gap: 30px;
 }
+
+#principal .titulo h1 {
+    font-size: 28px;
+    color: var(--cor-amarelo-hover);
+}
+
+#principal .cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 30px;
+    height: fit-content;
+}
+
+#principal .icon {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+#principal .icon button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+#principal .card1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: white;
+    color: black;
+    border-radius: 5px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    padding: 20px;
+    width: 500px;
+    text-align: left;
+    font-size: 20px;
+}
+
+#principal .card1 img {
+    width: 80%;
+}
+
+#principal .sub .quadrado {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#principal .sub .quadrado img {
+    width: 10px;
+    height: 10px;
+    margin: 1%;
+}
+
+#principal .sub .quadrado p {
+    font-size: 12px;
+    color: rgba(0, 0, 0, 0.605);
+}
+
+#principal #download p {
+    font-size: 12px;
+    color: black;
+}
+
+#principal #download {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    padding: 20px;
+    position: fixed;
+    right: 76px;
+    background-color: rgb(123, 215, 238);
+    border-radius: 5px;
+    top: 125px;
+    display: none;
+    animation: animacao 1s ease;
+}
+
 @keyframes animacao {
     0% {
         top: 100%;
     }
+
     100% {
         top: 125px;
     }
 }
 
-.quadrado2{
+.quadrado2 {
     display: flex;
     align-items: center;
     flex-direction: row;
     justify-content: center;
+}
 
-    p{
-        font-size: 18px;
-        color: rgba(0, 0, 0, 0.605);
-        margin-right: 2%;
-    }
+.quadrado2 p {
+    font-size: 18px;
+    color: rgba(0, 0, 0, 0.605);
+    margin-right: 2%;
+}
 
-    img{
-        width: 8px !important;
-        margin: 1%;
-    }
+.quadrado2 img {
+    width: 8px !important;
+    margin: 1%;
 }
 
 @media (max-width: 450px) {
-    .card1{
+    .card1 {
         color: rgb(0, 0, 0);
         width: 120px;
         font-size: 14px;
     }
 
-    .card1 img{
+    .card1 img {
         width: 120px;
     }
 
-    #principal .titulo{
+    #principal .titulo {
         font-size: 25px;
     }
 
-    .icon{
+    .icon {
         font-size: 14px;
     }
 
-    .quadrado2 p{
+    .quadrado2 p {
         font-size: 12px;
     }
 
-    #download{
+    #download {
         padding: 10px;
     }
 
-    #download p{
+    #download p {
         font-size: 12px;
         right: 0;
         color: black;
     }
 
-    #download img{
+    #download img {
         width: 20px;
+    }
+}
+
+@media (max-width: 550px) {
+    #principal .titulo h1 {
+        text-align: center;
     }
 }

@@ -1,6 +1,6 @@
-    <footer>
+<footer>
         <!-- Em desenvolvimento... -->
-    </footer>
+</footer>
 
 
     <!-- Arquivo JS Principal -->

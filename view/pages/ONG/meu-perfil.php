@@ -1,6 +1,7 @@
 <?php
+ob_start();
 $acesso = 'ong';
-$tituloPagina = 'Solicitação de ONGS';
+$tituloPagina = 'Meu Perfil | Organizer';
 $cssPagina = ['adm/validar-ong.css'];
 require_once '../../components/layout/base-inicio.php';
 
@@ -42,6 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         exit;
     }
 }
+ob_end_flush();
 ?>
 <!-- Toast do Update -->
 <div id="toast-ong-sucesso" class="toast">
@@ -160,5 +162,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </script>
 <?php
 $jsPagina = ['ong/conta.js'];
-require_once '../../components/footer.php';
+require_once '../../components/layout/footer/footer-logado.php';
 ?>

@@ -11,8 +11,8 @@ $dadosOng = $ongModel->buscarDados($_SESSION['ong_id']);
 ?>
 <main class="container">
     <div id="title">
-        <h1><i class="fa-solid fa-house-flag"></i> <?= $minhaOng->nome ?></h1>
-        <p>PAINEL</p>
+        <h1> <?= $minhaOng->nome ?></h1>
+        <!-- <p>PAINEL</p> -->
     </div>
     <div id="resumo">
         <a class="resumo-item" href="projetos.php">
@@ -23,8 +23,8 @@ $dadosOng = $ongModel->buscarDados($_SESSION['ong_id']);
             <h3>R$ <?= number_format($dadosOng->qnt_doacoes, 0, ',', '.'); ?> <span>DOAÇÔES</span></h3>
             <i class="fa-solid fa-coins"></i>
         </a>
-        <a class="resumo-item" href="voluntarios.php">
-            <h3>??? <span>VOLUNTÁRIOS</span></h3>
+        <a class="resumo-item" href="apoiadores.php">
+            <h3>??? <span>APOIADORES</span></h3>
             <i class="fa-solid fa-users"></i>
         </a>
     </div>
@@ -32,7 +32,7 @@ $dadosOng = $ongModel->buscarDados($_SESSION['ong_id']);
         <a href="noticias.php"><img src="../../assets/images/icons/gif-noticia.gif" alt=""><span>NOTÍCIAS</span></a>
         <a href="projetos.php"><img src="../../assets/images/icons/gif-projeto.gif" alt=""><span>PROJETOS</span></a>
         <a href="meu-perfil.php"><img src="../../assets/images/icons/gif-perfil.gif" alt=""><span>PERFIL</span></a>
-        <a href="voluntarios.php"><img src="../../assets/images/icons/gif-voluntario.gif" alt=""><span>VOLUNTÁRIOS</span></a>
+        <a href="apoiadores.php"><img src="../../assets/images/icons/gif-voluntario.gif" alt=""><span>APOIADORES</span></a>
         <a href="relatorios.php"><img src="../../assets/images/icons/gif-relatorio.gif" alt=""><span>RELATÓRIOS</span></a>
     </nav>
     <div id="atividades">
@@ -73,5 +73,5 @@ $dadosOng = $ongModel->buscarDados($_SESSION['ong_id']);
 </main>
 <?php
 $jsPagina = [];
-require_once '../../components/footer.php';
+require_once '../../components/layout/footer/footer-logado.php';
 ?>
