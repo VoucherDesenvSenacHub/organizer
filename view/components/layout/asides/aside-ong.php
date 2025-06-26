@@ -4,7 +4,7 @@
         <nav>
             <a href="../ong/projetos.php" title="Projetos"><i class="fa-solid fa-diagram-project"></i><span>Projetos</span></a>
             <a href="../ong/noticias.php" title="Notícias"><i class="fa-solid fa-newspaper"></i><span>Notícias</span></a>
-            <a href="../ong/apoiadores.php" title="Apoiadores"><i class="fa-solid fa-hand-holding-heart"></i><span>Apoiadores</span></a>
+            <!-- <a href="../ong/apoiadores.php" title="Apoiadores"><i class="fa-solid fa-hand-holding-heart"></i><span>Apoiadores</span></a> -->
             <a href="../ong/relatorios.php" title="Relatórios"><i class="fa-solid fa-chart-pie"></i><span>Relatórios</span></a>
             <a href="../ong/meu-perfil.php" title="Editar ONG"><i class="fa-solid fa-pen-to-square"></i><span>Editar ONG</span></a>
         </nav>

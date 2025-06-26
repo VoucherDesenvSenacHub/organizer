@@ -15,24 +15,24 @@ $dadosOng = $ongModel->buscarDados($_SESSION['ong_id']);
         <!-- <p>PAINEL</p> -->
     </div>
     <div id="resumo">
-        <a class="resumo-item" href="projetos.php">
-            <h3><?= $dadosOng->qnt_projeto ?> <span>PROJETOS</span></h3>
-            <i class="fa-solid fa-diagram-project"></i>
-        </a>
         <a class="resumo-item" href="relatorios.php">
             <h3>R$ <?= number_format($dadosOng->qnt_doacoes, 0, ',', '.'); ?> <span>DOAÇÔES</span></h3>
             <i class="fa-solid fa-coins"></i>
         </a>
-        <a class="resumo-item" href="apoiadores.php">
-            <h3>??? <span>APOIADORES</span></h3>
-            <i class="fa-solid fa-users"></i>
+        <a class="resumo-item" href="projetos.php">
+            <h3><?= $dadosOng->qnt_projeto ?> <span>PROJETOS</span></h3>
+            <i class="fa-solid fa-diagram-project"></i>
+        </a>
+        <a class="resumo-item" href="noticias.php">
+            <h3><?= $dadosOng->qnt_noticia ?> <span>NOTÍCIAS</span></h3>
+            <i class="fa-solid fa-newspaper"></i>
         </a>
     </div>
     <nav id="nav-home">
         <a href="noticias.php"><img src="../../assets/images/icons/gif-noticia.gif" alt=""><span>NOTÍCIAS</span></a>
         <a href="projetos.php"><img src="../../assets/images/icons/gif-projeto.gif" alt=""><span>PROJETOS</span></a>
         <a href="meu-perfil.php"><img src="../../assets/images/icons/gif-perfil.gif" alt=""><span>PERFIL</span></a>
-        <a href="apoiadores.php"><img src="../../assets/images/icons/gif-voluntario.gif" alt=""><span>APOIADORES</span></a>
+        <!-- <a href="apoiadores.php"><img src="../../assets/images/icons/gif-voluntario.gif" alt=""><span>APOIADORES</span></a> -->
         <a href="relatorios.php"><img src="../../assets/images/icons/gif-relatorio.gif" alt=""><span>RELATÓRIOS</span></a>
     </nav>
     <div id="atividades">

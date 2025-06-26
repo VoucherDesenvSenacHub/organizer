@@ -8,7 +8,7 @@ require_once '../../components/popup/download.php';
 <main>
     <div id="principal">
         <div class="titulo">
-            <h1><i class="fa-solid fa-chart-pie"></i> RELATÓRIOS</h1>
+            <h1><i class="fa-solid fa-chart-pie"></i> PAINEL DE RELATÓRIOS</h1>
         </div>
 
         <div class="cards">

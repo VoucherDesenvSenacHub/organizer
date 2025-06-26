@@ -11,9 +11,12 @@ main.container {
 } 
 
 main.container h1 {
-    font-size: 28px;
-    color: var(--cor-roxo-adm);
+    font-size: 24px;
     text-align: center;
+}
+
+main.container h1 i {
+    color: var(--cor-roxo-adm);
 }
 
 .box-cards {

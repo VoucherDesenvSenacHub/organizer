@@ -8,7 +8,10 @@ main .container {
 }
 
 main .container h1 {
-    font-size: 28px;
+    font-size: 24px;
+}
+
+main .container h1 i {
     color: var(--cor-amarelo-hover);
 }
 
@@ -62,13 +65,7 @@ main .container .area-cards {
     width: 100%;
 }
 
-@media (max-width: 600px) {
-    main .container {
-        padding-inline: 10px;
-    }
-}
-
-@media (max-width: 550px) {
+@media (max-width: 500px) {
     main .container .topo {
         justify-content: center;
     }

@@ -39,11 +39,12 @@ header #img-doador img {
     justify-content: normal;
     align-items: normal;
     padding-left: 65px;
+    transition: .3s;
 }
 
 .container #container-conteudo {
-    padding: 20px;
-    padding-top: 50px;
+    padding: 30px 20px;
+    /* padding-top: 50px; */
     width: 100%;
     /* margin-left: 65px; */
     display: flex;
@@ -55,7 +56,7 @@ header #img-doador img {
 
 @media (max-width: 700px) {
     .container #container-conteudo {
-        padding: 50px 10px;
+        padding-inline: 10px;
         /* margin-left: 50px; */
     }
 }
@@ -73,5 +74,9 @@ header #img-doador img {
 
     #main-doador > .container {
         padding-left: 0;
+    }
+
+    .container #container-conteudo {
+        padding-top: 65px;
     }
 }

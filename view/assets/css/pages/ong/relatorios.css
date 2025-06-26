@@ -15,7 +15,10 @@
 }
 
 #principal .titulo h1 {
-    font-size: 28px;
+    font-size: 24px;
+}
+
+#principal .titulo h1 i {
     color: var(--cor-amarelo-hover);
 }
 
@@ -28,6 +31,9 @@
 }
 
 #principal .icon {
+    color: var(--cor-principal);
+    font-weight: 500;
+    font-size: 16px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -43,19 +49,20 @@
 #principal .card1 {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     background-color: white;
     color: black;
     border-radius: 5px;
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
     padding: 20px;
-    width: 500px;
+    /* width: 500px; */
+    max-width: 500px;
+    flex: 1 1 350px;
     text-align: left;
-    font-size: 20px;
 }
 
 #principal .card1 img {
-    width: 80%;
+    width: 100%;
 }
 
 #principal .sub .quadrado {
@@ -113,7 +120,7 @@
 }
 
 .quadrado2 p {
-    font-size: 18px;
+    font-size: 12px;
     color: rgba(0, 0, 0, 0.605);
     margin-right: 2%;
 }

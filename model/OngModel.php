@@ -138,10 +138,12 @@ class Ong
     // Buscar os dados para a home
     function buscarDados($id)
     {
-        $query = "SELECT count(*) as qnt_projeto, sum(valor) as qnt_doacoes
-                  FROM projetos p, doacao_projeto dp
-                  WHERE p.projeto_id = dp.projeto_id
-                  AND ong_id = :id";
+        $query = "SELECT 
+                    (SELECT COUNT(*) FROM projetos p WHERE p.ong_id = :id) AS qnt_projeto,
+                    (SELECT COUNT(*) FROM noticias n WHERE n.ong_id = :id) AS qnt_noticia,
+                    (SELECT SUM(dp.valor) FROM doacao_projeto dp 
+                  INNER JOIN projetos p ON dp.projeto_id = p.projeto_id 
+                  WHERE p.ong_id = :id) AS qnt_doacoes;";
         $stmt = $this->pdo->prepare($query);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
