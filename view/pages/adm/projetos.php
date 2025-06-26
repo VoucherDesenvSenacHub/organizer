@@ -4,7 +4,7 @@ $tituloPagina = 'Projetos | Organizer'; // Definir o título da página
 $cssPagina = ['adm/listagem.css']; //Colocar o arquivo .css 
 require_once '../../components/layout/base-inicio.php';
 
-require_once __DIR__ . "\..\..\..\model\ProjetoModel.php";
+require_once __DIR__ . '/../../../autoload.php';
 $projetoModel = new Projeto();
 $lista = $projetoModel->listar();
 

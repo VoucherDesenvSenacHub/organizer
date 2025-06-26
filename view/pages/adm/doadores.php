@@ -4,7 +4,7 @@ $tituloPagina = 'Doadores | Organizer';
 $cssPagina = ['adm/doadores.css'];
 require_once '../../components/layout/base-inicio.php';
 
-require_once __DIR__ . "\..\..\..\model\UsuarioModel.php";
+require_once __DIR__ . '/../../../autoload.php';
 $usuarioModel = new Usuario();
 $lista = $usuarioModel->listar();
 
