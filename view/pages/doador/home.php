@@ -13,10 +13,10 @@ $relatorio = $usuarioModel->RelatorioHome($_SESSION['usuario_id']);
     <h1>Olá, <?= implode(' ', array_slice(explode(' ', trim($usuario->nome)), 0, 2)) ?>.</h1>
     <p>Seja bem-vindo à sua área de doador.</p>
     <div id="info-doacao">
-        <div class="item-info">
+        <a class="item-info" href="doacoes.php">
             <h4>Minhas Doações</h4>
             <h5>R$ <?= number_format($relatorio->qnt_doacoes, 0, ',', '.'); ?></h5>
-        </div>
+        </a>
         <div class="item-info">
             <h4>Participações</h4>
             <h5>?? Projetos</h5>
