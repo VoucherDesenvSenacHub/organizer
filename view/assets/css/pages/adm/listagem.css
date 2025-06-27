@@ -7,6 +7,7 @@ main .container {
 /* Top */
 .top {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     gap: 20px;
@@ -35,7 +36,7 @@ main .container {
     border: none;
     outline: none;
     border-radius: 4px 24px 24px 4px;
-    padding: 15px 65px 15px 15px;
+    padding: 13px 65px 13px 15px;
     transition: .3s;
     width: 100%;
 }
@@ -43,10 +44,10 @@ main .container {
 #form-busca .btn {
     font-size: 20px;
     padding: 0;
-    width: 50px;
-    height: 50px;
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
-    margin-left: -50px;
+    margin-left: -44px;
 }
 
 .qnt-busca {
@@ -99,7 +100,7 @@ section#box-ongs {
     }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 770px) {
     .top {
         flex-direction: column;
         align-items: center;

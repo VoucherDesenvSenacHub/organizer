@@ -1,6 +1,6 @@
 <?php
 $acesso = 'adm';
-$tituloPagina = 'Doadores | Organizer';
+$tituloPagina = 'Painel de Doadores | Organizer';
 $cssPagina = ['adm/doadores.css'];
 require_once '../../components/layout/base-inicio.php';
 
@@ -34,7 +34,7 @@ if (isset($_GET['id'])) {
 <main>
     <div class="container">
         <div class="top">
-            <h1><i class="fa-solid fa-users"></i> DOADORES</h1>
+            <h1><i class="fa-solid fa-users"></i> PAINEL DE DOADORES</h1>
             <form id="form-busca" action="doadores.php" method="GET">
                 <input type="text" name="pesquisa" placeholder="Busque um doador">
                 <button class="btn"><i class="fa-solid fa-search"></i></button>
