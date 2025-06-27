@@ -107,9 +107,9 @@ main.container h1 {
 }
 
 .dados-ong .form label textarea {
-    min-height: 100px;
-    max-height: 300px;
-    max-width: 1140px;
+    min-height: 150px;
+    max-height: 400px;
+    max-width: 1095px;
 }
 
 .dados-ong .form-descricao label {
