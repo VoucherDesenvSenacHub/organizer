@@ -109,3 +109,25 @@ CREATE TABLE doacao_projeto (
     FOREIGN KEY (projeto_id) REFERENCES projetos(projeto_id),
     FOREIGN KEY (usuario_id) REFERENCES usuarios(usuario_id)
 );
+
+-- SISTEMA DE FAVORITAR UM PROJETO
+CREATE TABLE favoritos_projetos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    usuario_id INT NOT NULL,
+    projeto_id INT NOT NULL,
+    data_favoritado DATETIME DEFAULT CURRENT_TIMESTAMP,
+    UNIQUE (usuario_id, projeto_id),
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(usuario_id) ON DELETE CASCADE,
+    FOREIGN KEY (projeto_id) REFERENCES projetos(projeto_id) ON DELETE CASCADE
+);
+
+-- SISTEMA DE FAVORITAR UMA ONG
+CREATE TABLE favoritos_ongs (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    usuario_id INT NOT NULL,
+    ong_id INT NOT NULL,
+    data_favoritado DATETIME DEFAULT CURRENT_TIMESTAMP,
+    UNIQUE (usuario_id, ong_id),
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(usuario_id) ON DELETE CASCADE,
+    FOREIGN KEY (ong_id) REFERENCES ongs(ong_id) ON DELETE CASCADE
+);

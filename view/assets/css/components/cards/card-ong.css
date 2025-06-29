@@ -141,6 +141,10 @@
     color: hotpink;
 }
 
+.btn-salvar button.favoritado {
+    color: hotpink;
+}
+
 @media (max-width: 450px) {
     .card-ong {
         max-height: none;

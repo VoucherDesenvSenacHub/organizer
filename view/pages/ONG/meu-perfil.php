@@ -11,7 +11,7 @@ $bancoModel = new BancoModel();
 $lista_banco = $bancoModel->listar();
 $perfil = $ongModel->buscarId($_SESSION['ong_id']);
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['atualizar-ong'])) {
     $dados = [
         'nome' => $_POST['nome'],
         'cnpj' => $_POST['cnpj'],
@@ -58,6 +58,7 @@ ob_end_flush();
 <main class="container">
     <form id="form" class="dados-ong" action="meu-perfil.php" method="POST"
         onsubmit="return confirm('Tem certeza que deseja alterar esses dados da ONG?')">
+        <input type="hidden" name="atualizar-ong" value="true">
         <fieldset>
             <legend><i class="fa-solid fa-house-flag"></i> DADOS DA ONG</legend>
             <div class="form">
@@ -70,9 +71,11 @@ ob_end_flush();
                 <label><span>Email</span><input name="email" type="text" required value="<?= $perfil->email ?>"></label>
             </div>
             <div class="form form-descricao">
-                <label><span>Descrição</span><textarea name="descricao"
-                        required><?= $perfil->descricao ?></textarea></label>
-                <div class="checkbox">
+                <label>
+                    <span>Descrição</span>
+                    <textarea name="descricao" required><?= $perfil->descricao ?></textarea>
+                </label>
+                <!-- <div class="checkbox">
                     <span>Áreas de Atuação</span>
                     <small><input type="checkbox">Saúde</small>
                     <small><input type="checkbox">Esporte</small>
@@ -81,7 +84,7 @@ ob_end_flush();
                     <small><input type="checkbox">Educação</small>
                     <small><input type="checkbox">Cultura</small>
                     <small><input type="checkbox">Proteção Animal</small>
-                </div>
+                </div> -->
             </div>
         </fieldset>
         <fieldset>
@@ -147,15 +150,15 @@ ob_end_flush();
     $("#cep").mask("00000-000");
     $("#agencia").mask("0000-0");
     $("#conta").mask("00000-00");
-    $("#nome").on("input", function () {
+    $("#nome").on("input", function() {
         var valor = $(this).val();
         $(this).val(valor.replace(/[^a-zA-ZÀ-ÿ\s]/g, ""));
     });
-    $("#bairro").on("input", function () {
+    $("#bairro").on("input", function() {
         var valor = $(this).val();
         $(this).val(valor.replace(/[^a-zA-ZÀ-ÿ\s]/g, ""));
     });
-    $("#cidade").on("input", function () {
+    $("#cidade").on("input", function() {
         var valor = $(this).val();
         $(this).val(valor.replace(/[^a-zA-ZÀ-ÿ\s]/g, ""));
     });

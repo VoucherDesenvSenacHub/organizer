@@ -23,7 +23,7 @@ if (isset($_GET['id'])) {
     }
 }
 // Editar o Projeto (ONG)
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_SESSION['perfil_usuario'] == 'ong') {
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_SESSION['perfil_usuario'] == 'ong' && isset($_POST['id'])) {
     $id = $_POST['id'];
     $nome = $_POST['nome'];
     $descricao = $_POST['descricao'];

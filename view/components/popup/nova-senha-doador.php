@@ -7,8 +7,8 @@
             <input type="hidden" name="usuario_id" value="<?= $_SESSION['usuario_id'] ?>">
             <div class="input-group">
                 <div class="input-box">
-                    <label for="senha">Senha</label>
-                    <input name="senha" id="senha" type="password" minlength="8" maxlength="20" required>
+                    <label for="senha_usuario">Senha</label>
+                    <input name="senha_usuario" id="senha_usuario" type="password" minlength="8" maxlength="20" required>
                     <i class="fa-solid fa-lock"></i>
                 </div>
                 <div class="input-box">
