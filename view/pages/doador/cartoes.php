@@ -8,7 +8,7 @@ require_once '../../components/layout/base-inicio.php';
     <!-- COMEÇAR SEU CÓDIGO AQUI -->
     <div class="conteiner">
         <div class="principal">
-            <h1>MEUS CARTÕES</h1>
+            <h1><i class="fa-solid fa-credit-card"></i> MEUS CARTÕES</h1>
             <div class="container-white">
 
                 <div class="cartoes-container">

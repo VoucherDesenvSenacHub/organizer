@@ -8,8 +8,9 @@ require_once __DIR__ . '/../../../autoload.php';
 <main>
     <section>
         <div class="container">
+            <h1><i class="fa-solid fa-hand-holding-heart"></i> MEUS APOIOS</h1>
             <div id="secao-1">
-                <h1>SUAS PARTICIPAÇÕES</h1>
+                
                 <h3>Projetos</h3>
                 <a href="../projeto/perfil.php">
                     <div class="cards-participacao">

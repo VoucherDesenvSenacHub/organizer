@@ -9,6 +9,7 @@ class Ong
     {
         global $pdo;
         $this->pdo = $pdo;
+        $this->pdo->exec("SET time_zone = '-04:00'");
     }
 
     function criar($dados)
@@ -159,5 +160,63 @@ class Ong
         $stmt->bindParam(':id', $id_responsavel, PDO::PARAM_INT);
         $stmt->execute();
         return $stmt->fetchColumn();
+    }
+
+
+    function favoritarOng($ong_id)
+    {
+        $usuario_id = $_SESSION['usuario_id'];
+
+        // Verifica se já está favoritada
+        $sql = "SELECT * FROM favoritos_ongs WHERE usuario_id = :id AND ong_id = :id_ong";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam(':id', $usuario_id, PDO::PARAM_INT);
+        $stmt->bindParam(':id_ong', $ong_id, PDO::PARAM_INT);
+        $stmt->execute();
+
+        if ($stmt->rowCount() > 0) {
+            // Já favoritada → remover
+            $sql = "DELETE FROM favoritos_ongs WHERE usuario_id = :id AND ong_id = :id_ong";
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->bindParam(':id', $usuario_id, PDO::PARAM_INT);
+            $stmt->bindParam(':id_ong', $ong_id, PDO::PARAM_INT);
+            $stmt->execute();
+        } else {
+            // Não favoritada → adicionar
+            $sql = "INSERT INTO favoritos_ongs (usuario_id, ong_id) VALUES (:id, :id_ong)";
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->bindParam(':id', $usuario_id, PDO::PARAM_INT);
+            $stmt->bindParam(':id_ong', $ong_id, PDO::PARAM_INT);
+            $stmt->execute();
+        }
+    }
+
+    function listarFavoritas($usuario_id)
+    {
+        $sql = "SELECT ong_id FROM favoritos_ongs WHERE usuario_id = :id";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam(':id', $usuario_id, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_COLUMN);
+    }
+
+    function favoritosUsuario($usuario_id)
+    {
+        $query = "SELECT
+            o.ong_id,
+            o.nome,
+            o.descricao,
+            (SELECT COUNT(*) FROM projetos p WHERE p.ong_id = o.ong_id) AS total_projetos,
+            (SELECT COUNT(*) FROM doacao_projeto dp
+                JOIN projetos p ON dp.projeto_id = p.projeto_id
+                WHERE p.ong_id = o.ong_id) AS total_doacoes
+        FROM $this->tabela o
+        INNER JOIN favoritos_ongs f USING(ong_id)
+        WHERE f.usuario_id = :id";
+
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindParam(':id', $usuario_id, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_CLASS, __CLASS__);
     }
 }

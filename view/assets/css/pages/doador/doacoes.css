@@ -8,6 +8,9 @@ section h1 i {
     color: var(--cor-azul);
 }
 
+#aside-container #area-topo a:nth-child(1) {
+    color: var(--cor-azul);
+}
 
 .cards-container {
     display: flex;

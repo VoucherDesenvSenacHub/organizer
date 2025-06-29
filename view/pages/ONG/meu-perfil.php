@@ -11,7 +11,7 @@ $bancoModel = new BancoModel();
 $lista_banco = $bancoModel->listar();
 $perfil = $ongModel->buscarId($_SESSION['ong_id']);
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['atualizar-ong'])) {
     $dados = [
         'nome' => $_POST['nome'],
         'cnpj' => $_POST['cnpj'],
@@ -58,6 +58,7 @@ ob_end_flush();
 <main class="container">
     <form id="form" class="dados-ong" action="meu-perfil.php" method="POST"
         onsubmit="return confirm('Tem certeza que deseja alterar esses dados da ONG?')">
+        <input type="hidden" name="atualizar-ong" value="true">
         <fieldset>
             <legend><i class="fa-solid fa-house-flag"></i> DADOS DA ONG</legend>
             <div class="form">

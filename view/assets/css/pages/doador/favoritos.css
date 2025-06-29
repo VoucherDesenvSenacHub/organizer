@@ -1,9 +1,5 @@
-body {
-    background-color: aliceblue;
-}
-
-#aside-doador #area-topo a:nth-child(2) {
-    color: var(--cor-azul-escuro);
+#aside-container #area-topo a:nth-child(3) {
+    color: var(--cor-azul);
 }
 
 #container-conteudo {
@@ -70,10 +66,8 @@ body {
     /* background-color: red; */
 }
 
-#secao-2 h1 {
-    font-size: 2em;
-    color: var(--cor-principal);
-    line-height: 1;
+#secao-2 h1 i {
+    color: var(--cor-azul);
 }
 
 #principal {

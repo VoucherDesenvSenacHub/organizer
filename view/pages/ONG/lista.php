@@ -8,10 +8,22 @@ require_once __DIR__ . '/../../../autoload.php';
 $ongModel = new Ong();
 $lista = $ongModel->listarCards();
 
-if ($_SERVER['REQUEST_METHOD'] = 'GET' && isset($_GET['pesquisa'])) {
+if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['pesquisa'])) {
     $pesquisa = $_GET['pesquisa'];
     $lista = $ongModel->buscarNome($pesquisa);
 }
+
+// Favoritar ONG
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['ong-id-favorito'])) {
+    $ong_id = $_POST['ong-id-favorito'];
+    $ongModel->favoritarOng($ong_id);
+}
+
+// Buscar os favoritos
+if (isset($_SESSION['usuario_id'])) {
+    $ongsFavoritas = $ongModel->listarFavoritas($_SESSION['usuario_id']);
+}
+
 $perfil = $_SESSION['perfil_usuario'] ?? '';
 ?>
 
@@ -121,6 +133,7 @@ $perfil = $_SESSION['perfil_usuario'] ?? '';
         } ?>
         <section id="box-ongs">
             <?php foreach ($lista as $ong) {
+                $jaFavoritada = isset($_SESSION['usuario_id']) && in_array($ong->ong_id, $ongsFavoritas);
                 require '../../components/cards/card-ong.php';
             }
             ?>

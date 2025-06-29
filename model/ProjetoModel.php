@@ -139,7 +139,8 @@ class Projeto
         return $stmt->rowCount();
     }
 
-    function buscarDoacao($id) {
+    function buscarDoacao($id)
+    {
         $query = "SELECT p.nome, valor, data_doacao
                   FROM $this->tabela p, doacao_projeto d
                   WHERE p.projeto_id = d.projeto_id
@@ -147,6 +148,54 @@ class Projeto
                   ORDER BY 3 DESC";
         $stmt = $this->pdo->prepare($query);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+        $stmt->setFetchMode(PDO::FETCH_CLASS, __CLASS__);
+        return $stmt->fetchAll();
+    }
+
+
+    function favoritarProjeto($projeto_id)
+    {
+        $usuario_id = $_SESSION['usuario_id'];
+
+        // Verifica se já está favoritada
+        $sql = "SELECT * FROM favoritos_projetos WHERE usuario_id = :id AND projeto_id = :projeto_id";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam(':id', $usuario_id, PDO::PARAM_INT);
+        $stmt->bindParam(':projeto_id', $projeto_id, PDO::PARAM_INT);
+        $stmt->execute();
+
+        if ($stmt->rowCount() > 0) {
+            // Já favoritada → remover
+            $sql = "DELETE FROM favoritos_projetos WHERE usuario_id = :id AND projeto_id = :projeto_id";
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->bindParam(':id', $usuario_id, PDO::PARAM_INT);
+            $stmt->bindParam(':projeto_id', $projeto_id, PDO::PARAM_INT);
+            $stmt->execute();
+        } else {
+            // Não favoritada → adicionar
+            $sql = "INSERT INTO favoritos_projetos (usuario_id, projeto_id) VALUES (:id, :projeto_id)";
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->bindParam(':id', $usuario_id, PDO::PARAM_INT);
+            $stmt->bindParam(':projeto_id', $projeto_id, PDO::PARAM_INT);
+            $stmt->execute();
+        }
+    }
+
+    function listarFavoritos($usuario_id)
+    {
+        $sql = "SELECT projeto_id FROM favoritos_projetos WHERE usuario_id = :id";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam(':id', $usuario_id, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_COLUMN);
+    }
+
+    function favoritosUsuario($usuario_id)
+    {
+        $query = "SELECT * FROM $this->tabela INNER JOIN favoritos_projetos f USING(projeto_id) WHERE f.usuario_id = :id";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindParam(':id', $usuario_id, PDO::PARAM_INT);
         $stmt->execute();
         $stmt->setFetchMode(PDO::FETCH_CLASS, __CLASS__);
         return $stmt->fetchAll();

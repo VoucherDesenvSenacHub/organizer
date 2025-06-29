@@ -24,9 +24,9 @@ if (isset($jsPagina) && is_array($jsPagina)) {
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
 <script type="text/javascript">
-    $("#telefone").mask("(00) 0 0000-0000");
-    $("#cpf").mask("000.000.000-00");
-    $("#nome").on("input", function () {
+    $("#telefone_usuario").mask("(00) 0 0000-0000");
+    $("#cpf_usuario").mask("000.000.000-00");
+    $("#nome_usuario").on("input", function () {
         var valor = $(this).val();
         $(this).val(valor.replace(/[^a-zA-ZÀ-ÿ\s]/g, ""));
     });
