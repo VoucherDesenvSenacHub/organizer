@@ -1,4 +1,5 @@
 <?php
+ob_start();
 $acesso = 'ong';
 $tituloPagina = 'Notícias | Organizer';
 $cssPagina = ['ong/listagem.css'];
@@ -23,7 +24,7 @@ $noticia = (object) [
     'texto' => '',
     'subtexto' => ''
 ];
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['titulo'])) {
     $titulo = $_POST['titulo'];
     $subtitulo = $_POST['subtitulo'];
     $texto = $_POST['texto'];
@@ -39,6 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
 require_once '../../components/popup/formulario-noticia.php';
+ob_end_flush();
 ?>
 <!-- Toasts -->
 <div id="toast-noticia" class="toast">

@@ -150,11 +150,10 @@
 
 
 /* TIPOS DE CARD */
-.card-projeto.tp-ong {
+/* .card-projeto.tp-ong {
     height: auto;
-}
+} */
 
-.card-projeto.tp-ong .acoes-projeto .btn-like,
-.card-projeto.tp-ong .barra-doacao {
+.card-projeto.tp-ong .acoes-projeto .btn-like {
     display: none;
 }

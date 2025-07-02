@@ -1,4 +1,5 @@
 <?php
+ob_start();
 $acesso = $_SESSION['perfil_usuario'] ?? 'visitante';
 $tituloPagina = 'Leia Mais | Organizer';
 $cssPagina = ['noticia/perfil.css'];
@@ -37,6 +38,7 @@ $perfil = $_SESSION['perfil_usuario'] ?? '';
 if ($perfil == 'ong') {
     require_once '../../components/popup/formulario-noticia.php';
 }
+ob_end_flush();
 ?>
 <div id="toast-noticia" class="toast">
     <i class="fa-regular fa-circle-check"></i>
