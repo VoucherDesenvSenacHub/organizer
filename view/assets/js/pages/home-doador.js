@@ -49,21 +49,20 @@ function msg_enviada(id){
     });
 }
 
-document.getElementById('cnpj').addEventListener('input', function (e) {
-    let value = e.target.value.replace(/\D/g, '');
+function formatarCNPJ(cnpj) {
+    // Remove tudo que não for número
+    cnpj = cnpj.replace(/\D/g, '');
 
-    if (value.length > 14) value = value.slice(0, 14);
+    // Aplica a máscara: 00.000.000/0000-00
+    return cnpj
+        .replace(/^(\d{2})(\d)/, '$1.$2')
+        .replace(/^(\d{2})\.(\d{3})(\d)/, '$1.$2.$3')
+        .replace(/\.(\d{3})(\d)/, '.$1/$2')
+        .replace(/(\d{4})(\d)/, '$1-$2');
+}
 
-    value = value.replace(/^(\d{2})(\d)/, '$1.$2');
-    value = value.replace(/^(\d{2})\.(\d{3})(\d)/, '$1.$2.$3');
-    value = value.replace(/\.(\d{3})(\d)/, '.$1/$2');
-    value = value.replace(/(\d{4})(\d)/, '$1-$2');
+const cnpjInput = document.getElementById('cnpj');
 
-    e.target.value = value;
-  });
-
-  function atualizarContador() {
-    const textarea = document.getElementById("mensagem");
-    const contador = document.getElementById("contador");
-    contador.textContent = `${textarea.value.length} / ${textarea.maxLength} caracteres`;
-  }
+cnpjInput.addEventListener('input', function () {
+    this.value = formatarCNPJ(this.value);
+});

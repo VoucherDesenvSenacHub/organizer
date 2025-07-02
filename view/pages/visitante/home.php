@@ -268,14 +268,14 @@ require_once '../../components/header.php';
         <div class="conteiner-forma">
             <h2 class="titulo">Solicitação de Parceria</h2>
             <form id="formParceiro" action=""
-                onsubmit="mensagem_enviada('toast-mensagem-enviada', 'body-forma'); return false;">
+            onsubmit="mensagem_enviada('toast-mensagem-enviada', 'body-forma'); return false;">
                 <label class="Cnpj" for="cnpj">CNPJ</label>
-                <input type="text" id="cnpj" maxlength="11" placeholder="000.000.000-00" required>
-
+                <input type="text" id="cnpj" maxlength="18" placeholder="00.000.000/0000-00" required>
                 <label class="mens" for="mensagem">Mensagem</label>
-                <textarea id="mensagem" maxlength="500"
+                <textarea style="width: 99%; height: 100px; resize: none;"  id="mensagem"
                     placeholder="Ex: Somos a Coca-Cola e gostaríamos de apoiar seu projeto. Aguardo retorno!"
-                    oninput="atualizarContador()" required></textarea>
+                    required></textarea>
+
                 <div class="botoes">
                     <div>
                         <button type="button" onclick="fechar_popup('body-forma')" class="btn-voltar">VOLTAR</button>
