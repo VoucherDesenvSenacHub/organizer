@@ -100,3 +100,33 @@ function abrir_aside() {
     aside.classList.toggle('active');
     btn_aside.classList.toggle('active');
 }
+
+
+
+// BLOQUEAR ENVIO DUPLO EM TODOS OS FORMULÁRIOS
+document.addEventListener('DOMContentLoaded', function () {
+    const formularios = document.querySelectorAll('form');
+
+    formularios.forEach(form => {
+        form.addEventListener('submit', function (e) {
+            if (form.dataset.enviado === 'true') {
+                e.preventDefault();
+                return;
+            }
+
+            form.dataset.enviado = 'true';
+
+            const botoes = form.querySelectorAll('button, input[type=submit]');
+            botoes.forEach(botao => {
+                botao.disabled = true;
+
+                const temTextoVisivel = botao.innerText.trim().length > 0;
+
+                // Se o botão tem texto, troca para "Carregando..."
+                if (temTextoVisivel) {
+                    botao.innerText = 'Carregando...';
+                }
+            });
+        });
+    });
+});

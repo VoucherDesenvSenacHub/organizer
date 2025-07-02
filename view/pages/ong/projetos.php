@@ -1,4 +1,5 @@
 <?php
+ob_start();
 //CONFIGURAÇÕES DA PÁGINA
 $acesso = 'ong';
 $tituloPagina = 'Projetos | Organizer';
@@ -18,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['pesquisa'])) {
     $lista = $projetoModel->buscarNome($pesquisa, $_SESSION['ong_id']);
 }
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['nome'])) {
     $nome = $_POST['nome'];
     $descricao = $_POST['descricao'];
     $meta = $_POST['meta'];
@@ -34,6 +35,7 @@ $projeto = (object) [
     'descricao' => ''
 ];
 require_once __DIR__ . '/../../components/popup/formulario-projeto.php';
+ob_end_flush();
 ?>
 <div id="toast-projeto" class="toast">
     <i class="fa-regular fa-circle-check"></i>
