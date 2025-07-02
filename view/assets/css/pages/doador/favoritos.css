@@ -95,6 +95,27 @@
     height: fit-content;
 }
 
+.btn-doar {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn-doar h4 {
+    font-weight: 500;
+    text-align: center;
+}
+
+.btn-doar#btn-doar-ong .btn {
+    background-color: var(--cor-amarelo);
+}
+
+.btn-doar .btn {
+    background-color: var(--cor-azul);
+}
+
 @media (max-width: 830px) {
     #secao-2 .container {
         align-items: center;
