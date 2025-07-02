@@ -273,9 +273,9 @@ require_once '../../components/header.php';
                 <input type="text" id="cnpj" maxlength="11" placeholder="000.000.000-00" required>
 
                 <label class="mens" for="mensagem">Mensagem</label>
-                <textarea id="mensagem"
+                <textarea id="mensagem" maxlength="500"
                     placeholder="Ex: Somos a Coca-Cola e gostaríamos de apoiar seu projeto. Aguardo retorno!"
-                    required></textarea>
+                    oninput="atualizarContador()" required></textarea>
                 <div class="botoes">
                     <div>
                         <button type="button" onclick="fechar_popup('body-forma')" class="btn-voltar">VOLTAR</button>
@@ -292,7 +292,7 @@ require_once '../../components/header.php';
         Mensagem enviada com sucesso!
     </div>
     <script>
-        document.getElementById("formParceiro").addEventListener("submit", function (event) {
+        document.getElementById("formParceiro").addEventListener("submit", function(event) {
             event.preventDefault();
             this.reset();
         });
