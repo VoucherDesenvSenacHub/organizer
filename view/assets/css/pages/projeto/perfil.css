@@ -1,8 +1,5 @@
 /* CSS DA TELA DE PERFIL DO PROJETO */
-
-/* @import url(../doador/fazer-doacao.css); */
 @import url(../../components/popup/doacao.css);
-@import url(../doador/ser-voluntario.css);
 
 /* Classe das Sections */
 .container-section {
@@ -117,8 +114,8 @@ section#apresentacao {
     color: var(--cor-principal);
 }
 
-#dados-projeto #acoes #btn-voluntario {
-    background-color: #1F97BF;
+#dados-projeto #acoes #btn-apoio     {
+    background-color: var(--cor-apoiar);
     color: var(--cor-principal);
 }
 

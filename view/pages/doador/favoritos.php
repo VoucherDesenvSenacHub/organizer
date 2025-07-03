@@ -44,7 +44,11 @@ if (isset($_SESSION['usuario_id'])) {
                 <div id="control-box">
                     <div class="box-ongs">
                         <?php if (!$listaOngs) {
-                            echo '<p>Você ainda não favoritou nenhuma ONG! <i class="fa-regular fa-face-frown"></i></p>';
+                            echo '<div class="btn-doar" id="btn-doar-ong"> 
+                                    <h4>Você ainda não favoritou nenhuma ONG! <i class="fa-regular fa-face-frown"></i> </h4>
+                                    <a href="../ong/lista.php">
+                                    <button class="btn"><i class="fa-solid fa-house-flag"></i> Conhecer Ongs</button></a>
+                                  </div>';
                         } else {
                             foreach ($listaOngs as $ong) {
                                 $jaFavoritada = isset($_SESSION['usuario_id']) && in_array($ong->ong_id, $ongsFavoritas);
@@ -55,7 +59,11 @@ if (isset($_SESSION['usuario_id'])) {
                     </div>
                     <div class="box-ongs">
                         <?php if (!$listaProjetos) {
-                            echo '<p>Você ainda não favoritou nenhum Projeto! <i class="fa-regular fa-face-frown"></i></p>';
+                            echo '<div class="btn-doar"> 
+                                    <h4>Você ainda não favoritou nenhum Projeto! <i class="fa-regular fa-face-frown"></i> </h4>
+                                    <a href="../projeto/lista.php">
+                                    <button class="btn"><i class="fa-solid fa-diagram-project"></i> Conhecer Projetos</button></a>
+                                  </div>';
                         } else {
                             foreach ($listaProjetos as $projeto) {
                                 $jaFavoritado = isset($_SESSION['usuario_id']) && in_array($projeto->projeto_id, $projetosFavoritos);
