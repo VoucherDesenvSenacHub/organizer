@@ -74,7 +74,7 @@ $relatorio = $usuarioModel->RelatorioHome($_SESSION['usuario_id']);
                         </div>
                     </div>
                 </div>
-                <a class="saiba-mais-projeto" href="../projeto/perfil.php">Saiba Mais</a>
+                <a class="saiba-mais-projeto" href="../projeto/perfil.php?id=1">Saiba Mais</a>
             </div>
         <?php } ?>
     </div>
