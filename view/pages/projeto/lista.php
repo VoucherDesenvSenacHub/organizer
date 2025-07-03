@@ -1,17 +1,31 @@
 <?php
-$tituloPagina = 'Encontre Projetos';
+$acesso = $_SESSION['perfil_usuario'] ?? 'visitante';
+$tituloPagina = 'Encontre Projetos | Organizer';
 $cssPagina = ['shared/catalogo.css'];
 require_once '../../components/layout/base-inicio.php';
 
-require_once __DIR__ . "\..\..\..\model\ProjetoModel.php";
+require_once __DIR__ . '/../../../autoload.php';
 $projetoModel = new Projeto();
 $lista = $projetoModel->listar();
 
-if ($_SERVER['REQUEST_METHOD'] = 'GET' && isset($_GET['pesquisa'])) {
+if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['pesquisa'])) {
     $pesquisa = $_GET['pesquisa'];
     $lista = $projetoModel->buscarNome($pesquisa);
 }
+
+// Favoritar Projeto
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['projeto-id-favorito'])) {
+    $projeto_id = $_POST['projeto-id-favorito'];
+    $projetoModel->favoritarProjeto($projeto_id);
+}
+
+// Buscar os favoritos
+if (isset($_SESSION['usuario_id'])) {
+    $projetosFavoritos = $projetoModel->listarFavoritos($_SESSION['usuario_id']);
+}
+
 $perfil = $_SESSION['perfil_usuario'] ?? '';
+
 ?>
 
 <main <?php if ($perfil == 'doador') echo 'class="usuario-logado"'; ?>>
@@ -122,6 +136,9 @@ $perfil = $_SESSION['perfil_usuario'] ?? '';
         <section id="box-ongs">
             <!-- LISTAR CARDS PROJETOS -->
             <?php foreach ($lista as $projeto) {
+                $jaFavoritado = isset($_SESSION['usuario_id']) && in_array($projeto->projeto_id, $projetosFavoritos);
+                $valor_projeto = $projetoModel->buscarValor($projeto->projeto_id);
+                $barra = round(($valor_projeto / $projeto->meta) * 100);
                 require '../../components/cards/card-projeto.php';
             } ?>
         </section>
@@ -138,5 +155,5 @@ $perfil = $_SESSION['perfil_usuario'] ?? '';
 
 <?php
 $jsPagina = [];
-require_once '../../components/footer.php';
+require_once '../../components/layout/footer/footer-logado.php';
 ?>

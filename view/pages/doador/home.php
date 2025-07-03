@@ -1,21 +1,22 @@
 <?php
+$acesso = 'doador';
 //CONFIGURAÇÕES DA PÁGINA
 $tituloPagina = 'Home - Doador';
 $cssPagina = ['doador/home.css'];
 require_once '../../components/layout/base-inicio.php';
+
+require_once __DIR__ . '/../../../autoload.php';
+$usuarioModel = new Usuario();
+$relatorio = $usuarioModel->RelatorioHome($_SESSION['usuario_id']);
 ?>
 <section id="cabecalho">
     <h1>Olá, <?= implode(' ', array_slice(explode(' ', trim($usuario->nome)), 0, 2)) ?>.</h1>
     <p>Seja bem-vindo à sua área de doador.</p>
     <div id="info-doacao">
-        <div class="item-info">
-            <h4>Minhas Doações</h4>
-            <h5>R$ 300</h5>
-        </div>
-        <div class="item-info">
-            <h4>Participações</h4>
-            <h5>4 Projetos</h5>
-        </div>
+        <a class="item-info" href="doacoes.php">
+            <h3>R$ <?= number_format($relatorio->qnt_doacoes, 0, ',', '.'); ?> <span>MINHAS DOAÇÕES</span></h3>
+            <i class="fa-solid fa-coins"></i>
+        </a>
     </div>
 </section>
 <section id="acoes-doador">
@@ -73,7 +74,7 @@ require_once '../../components/layout/base-inicio.php';
                         </div>
                     </div>
                 </div>
-                <a class="saiba-mais-projeto" href="../projeto/perfil.php">Saiba Mais</a>
+                <a class="saiba-mais-projeto" href="../projeto/perfil.php?id=1">Saiba Mais</a>
             </div>
         <?php } ?>
     </div>
@@ -114,5 +115,5 @@ require_once '../../components/layout/base-inicio.php';
             </section> -->
 <?php
 $jsPagina = [];
-require_once '../../components/footer-doador.php';
+require_once '../../components/layout/footer/footer-logado.php';
 ?>

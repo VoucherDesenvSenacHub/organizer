@@ -1,11 +1,12 @@
-body {
-    background-color: aliceblue;
+#nav-bar ul li:nth-child(1) a {
+    color: var(--cor-amarelo);
+    font-weight: bold;
 }
 
 main.container {
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
     background-color: white;
-    padding: 50px 30px;
+    /* padding: 50px 30px; */
     flex-direction: column;
     align-items: start;
     gap: 40px;
@@ -13,6 +14,16 @@ main.container {
 
 a {
     text-decoration: none;
+}
+
+#container-conteudo .container h1 {
+    /* color: var(--cor-roxo-adm); */
+    text-transform: uppercase;
+    font-size: 24px;
+}
+
+#container-conteudo .container h1 i {
+    color: var(--cor-roxo-adm);
 }
 
 #title {
@@ -263,6 +274,7 @@ table tbody td button:hover {
     color: var(--cor-verde-barra);
 }
 
+<<<<<<< HEAD
 /* popup de editar */
 @import url(../shared/perfil-projeto.css);
 @import url(../../components/editar-projeto.css);
@@ -277,12 +289,23 @@ table tbody td button:hover {
 #dados-projeto #acoes #btn-inativar {
     background-color: var(--cor-vermelho);
     /* color: #912B2B; */
+=======
+/* Botão ver mais */
+.btn-ver-mais {
+    width: 100%;
+    text-align: center;
+    font-weight: 500;
+    color: var(--cor-principal);
+    transition: .3s;
+}
+
+.btn-ver-mais:hover {
+    color: var(--cor-roxo-adm);
+>>>>>>> ff928dd382550df166a8a35c47fa9205125e076c
 }
 
 /* Responsividade */
 @media (max-width: 700px) {
-
-    main.container,
     fieldset {
         padding-inline: 10px;
     }

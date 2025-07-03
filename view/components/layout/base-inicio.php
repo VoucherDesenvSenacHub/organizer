@@ -1,4 +1,8 @@
-<?php session_start() ?>
+<?php
+    require_once '../../../controller/verificarAcesso.php';
+    VerificarAcesso($acesso);
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -22,7 +26,7 @@
 </head>
 
 <body>
-    <?php
-        require_once 'includes/popup_loader.php';
-        require_once 'headers/header.php';
-    ?>
+<?php
+    require_once 'includes/popup_loader.php';
+    require_once 'headers/header.php';
+?>

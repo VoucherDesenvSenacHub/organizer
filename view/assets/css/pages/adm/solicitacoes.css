@@ -1,16 +1,23 @@
-body {
-    background-color: aliceblue;
-}
-
 main.container {
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
     background-color: white;
-    padding: 50px 30px;
+    /* padding: 50px 30px; */
     flex-direction: column;
     align-items: start;
-    gap: 40px;
+    justify-content: start;
+    gap: 30px;
     transition: .3s;
+    width: 100%;
 } 
+
+main.container h1 {
+    font-size: 24px;
+    text-align: center;
+}
+
+main.container h1 i {
+    color: var(--cor-roxo-adm);
+}
 
 .box-cards {
     display: flex;
@@ -55,11 +62,11 @@ main.container {
     background-color: var(--cor-amarelo-hover);
 }
 
-@media (max-width: 700px) {
+/* @media (max-width: 700px) {
     main.container {
         padding-inline: 10px;
     }
-}
+} */
 
 /* TIPO EMPRESA */
 .box-cards .card-solicitacao-empresa {
@@ -75,6 +82,13 @@ main.container {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    cursor: default;
+    transition: .3s;
+}
+
+.box-cards .card-solicitacao-empresa:hover {
+    border-left-color: #6a00f3;
+    transform: translateY(-3px);
 }
 
 .box-cards .card-solicitacao-empresa .topo {

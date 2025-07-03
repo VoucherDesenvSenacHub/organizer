@@ -94,9 +94,39 @@ function ativar_classe(id) {
 
 
 // ============================ DOADOR ===============================
-function abrir_aside_doador() {
-    let aside = document.getElementById('aside-doador');
+function abrir_aside() {
+    let aside = document.getElementById('aside-container');
     let btn_aside = document.getElementById('btn-aside');
     aside.classList.toggle('active');
     btn_aside.classList.toggle('active');
 }
+
+
+
+// BLOQUEAR ENVIO DUPLO EM TODOS OS FORMULÁRIOS
+document.addEventListener('DOMContentLoaded', function () {
+    const formularios = document.querySelectorAll('form');
+
+    formularios.forEach(form => {
+        form.addEventListener('submit', function (e) {
+            if (form.dataset.enviado === 'true') {
+                e.preventDefault();
+                return;
+            }
+
+            form.dataset.enviado = 'true';
+
+            const botoes = form.querySelectorAll('button, input[type=submit]');
+            botoes.forEach(botao => {
+                botao.disabled = true;
+
+                const temTextoVisivel = botao.innerText.trim().length > 0;
+
+                // Se o botão tem texto, troca para "Carregando..."
+                if (temTextoVisivel) {
+                    botao.innerText = 'Carregando...';
+                }
+            });
+        });
+    });
+});

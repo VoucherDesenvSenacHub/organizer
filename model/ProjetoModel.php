@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . "\..\config\database.php";
+require_once __DIR__ . "/../config/database.php";
 class Projeto
 {
     private $tabela = 'projetos';
@@ -9,6 +9,7 @@ class Projeto
     {
         global $pdo;
         $this->pdo = $pdo;
+        $this->pdo->exec("SET time_zone = '-04:00'");
     }
 
     function listar($id = null)
@@ -38,19 +39,27 @@ class Projeto
         return $stmt->fetch();
     }
 
-    function buscarNome($nome)
+    function buscarNome($nome, $ong_id = null)
     {
-        $query = "SELECT * FROM $this->tabela WHERE nome LIKE :nome";
-        $stmt = $this->pdo->prepare($query);
-        $stmt->bindValue(':nome', "%{$nome}%", PDO::PARAM_STR);
+        if ($ong_id) {
+            $query = "SELECT * FROM $this->tabela WHERE nome LIKE :nome AND ong_id = :ong_id";
+            $stmt = $this->pdo->prepare($query);
+            $stmt->bindValue(':nome', "%{$nome}%", PDO::PARAM_STR);
+            $stmt->bindValue(':ong_id', $ong_id, PDO::PARAM_INT);
+        } else {
+            $query = "SELECT * FROM $this->tabela WHERE nome LIKE :nome";
+            $stmt = $this->pdo->prepare($query);
+            $stmt->bindValue(':nome', "%{$nome}%", PDO::PARAM_STR);
+        }
         $stmt->execute();
         $stmt->setFetchMode(PDO::FETCH_CLASS, __CLASS__);
         return $stmt->fetchAll();
     }
 
+
     function buscarValor($id)
     {
-        $query = "SELECT SUM(valor) AS total FROM valprojeto WHERE codproj = :id";
+        $query = "SELECT SUM(valor) AS total FROM doacao_projeto WHERE projeto_id = :id";
         $stmt = $this->pdo->prepare($query);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
@@ -60,7 +69,7 @@ class Projeto
 
     function contarDoadores($id)
     {
-        $query = "SELECT COUNT(*) AS total FROM valprojeto WHERE codproj = :id";
+        $query = "SELECT COUNT(*) AS total FROM doacao_projeto WHERE projeto_id = :id";
         $stmt = $this->pdo->prepare($query);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
@@ -118,15 +127,77 @@ class Projeto
         }
     }
 
-    function doacao($codproj, $valor, $coddoador)
+    function doacao($projeto_id, $usuario_id, $valor)
     {
-        $query = 'INSERT INTO valprojeto (codproj, valor, coddoador)
-                      VALUES (:projeto, :valor, :doador)';
+        $query = 'INSERT INTO doacao_projeto (projeto_id, usuario_id, valor)
+                  VALUES (:projeto, :doador, :valor)';
         $stmt = $this->pdo->prepare($query);
-        $stmt->bindParam(':projeto', $codproj);
+        $stmt->bindParam(':projeto', $projeto_id);
+        $stmt->bindParam(':doador', $usuario_id);
         $stmt->bindParam(':valor', $valor);
-        $stmt->bindParam(':doador', $coddoador);
         $stmt->execute();
         return $stmt->rowCount();
+    }
+
+    function buscarDoacao($id)
+    {
+        $query = "SELECT p.nome, valor, data_doacao
+                  FROM $this->tabela p, doacao_projeto d
+                  WHERE p.projeto_id = d.projeto_id
+                  AND d.usuario_id = :id
+                  ORDER BY 3 DESC";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+        $stmt->setFetchMode(PDO::FETCH_CLASS, __CLASS__);
+        return $stmt->fetchAll();
+    }
+
+
+    function favoritarProjeto($projeto_id)
+    {
+        $usuario_id = $_SESSION['usuario_id'];
+
+        // Verifica se já está favoritada
+        $sql = "SELECT * FROM favoritos_projetos WHERE usuario_id = :id AND projeto_id = :projeto_id";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam(':id', $usuario_id, PDO::PARAM_INT);
+        $stmt->bindParam(':projeto_id', $projeto_id, PDO::PARAM_INT);
+        $stmt->execute();
+
+        if ($stmt->rowCount() > 0) {
+            // Já favoritada → remover
+            $sql = "DELETE FROM favoritos_projetos WHERE usuario_id = :id AND projeto_id = :projeto_id";
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->bindParam(':id', $usuario_id, PDO::PARAM_INT);
+            $stmt->bindParam(':projeto_id', $projeto_id, PDO::PARAM_INT);
+            $stmt->execute();
+        } else {
+            // Não favoritada → adicionar
+            $sql = "INSERT INTO favoritos_projetos (usuario_id, projeto_id) VALUES (:id, :projeto_id)";
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->bindParam(':id', $usuario_id, PDO::PARAM_INT);
+            $stmt->bindParam(':projeto_id', $projeto_id, PDO::PARAM_INT);
+            $stmt->execute();
+        }
+    }
+
+    function listarFavoritos($usuario_id)
+    {
+        $sql = "SELECT projeto_id FROM favoritos_projetos WHERE usuario_id = :id";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam(':id', $usuario_id, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_COLUMN);
+    }
+
+    function favoritosUsuario($usuario_id)
+    {
+        $query = "SELECT * FROM $this->tabela INNER JOIN favoritos_projetos f USING(projeto_id) WHERE f.usuario_id = :id";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindParam(':id', $usuario_id, PDO::PARAM_INT);
+        $stmt->execute();
+        $stmt->setFetchMode(PDO::FETCH_CLASS, __CLASS__);
+        return $stmt->fetchAll();
     }
 }

@@ -1,33 +1,38 @@
 <?php
+$acesso = 'ong';
 $tituloPagina = 'Home | Organizer';
 $cssPagina = ['ong/home.css'];
 require_once '../../components/layout/base-inicio.php';
-$_SESSION['perfil_usuario'] = 'ong';
+
+require_once __DIR__ . '/../../../autoload.php';
+$ongModel = new Ong();
+$minhaOng = $ongModel->buscarPerfil($_SESSION['ong_id']);
+$dadosOng = $ongModel->buscarDados($_SESSION['ong_id']);
 ?>
 <main class="container">
     <div id="title">
-        <h1>BEM VINDO</h1>
-        <p>PAINEL</p>
+        <h1> <?= $minhaOng->nome ?></h1>
+        <!-- <p>PAINEL</p> -->
     </div>
     <div id="resumo">
-        <div class="resumo-item">
-            <h3>12 <span>PROJETOS</span></h3>
-            <i class="fa-solid fa-diagram-project"></i>
-        </div>
-        <div class="resumo-item">
-            <h3>R$ 15.000 <span>DOAÇÔES</span></h3>
+        <a class="resumo-item" href="relatorios.php">
+            <h3>R$ <?= number_format($dadosOng->qnt_doacoes, 0, ',', '.'); ?> <span>DOAÇÔES</span></h3>
             <i class="fa-solid fa-coins"></i>
-        </div>
-        <div class="resumo-item">
-            <h3>45 <span>VOLUNTÁRIOS</span></h3>
-            <i class="fa-solid fa-users"></i>
-        </div>
+        </a>
+        <a class="resumo-item" href="projetos.php">
+            <h3><?= $dadosOng->qnt_projeto ?> <span>PROJETOS</span></h3>
+            <i class="fa-solid fa-diagram-project"></i>
+        </a>
+        <a class="resumo-item" href="noticias.php">
+            <h3><?= $dadosOng->qnt_noticia ?> <span>NOTÍCIAS</span></h3>
+            <i class="fa-solid fa-newspaper"></i>
+        </a>
     </div>
     <nav id="nav-home">
         <a href="noticias.php"><img src="../../assets/images/icons/gif-noticia.gif" alt=""><span>NOTÍCIAS</span></a>
         <a href="projetos.php"><img src="../../assets/images/icons/gif-projeto.gif" alt=""><span>PROJETOS</span></a>
-        <a href="conta.php"><img src="../../assets/images/icons/gif-perfil.gif" alt=""><span>PERFIL</span></a>
-        <a href="voluntarios.php"><img src="../../assets/images/icons/gif-voluntario.gif" alt=""><span>VOLUNTÁRIOS</span></a>
+        <a href="meu-perfil.php"><img src="../../assets/images/icons/gif-perfil.gif" alt=""><span>PERFIL</span></a>
+        <!-- <a href="apoiadores.php"><img src="../../assets/images/icons/gif-voluntario.gif" alt=""><span>APOIADORES</span></a> -->
         <a href="relatorios.php"><img src="../../assets/images/icons/gif-relatorio.gif" alt=""><span>RELATÓRIOS</span></a>
     </nav>
     <div id="atividades">
@@ -68,5 +73,5 @@ $_SESSION['perfil_usuario'] = 'ong';
 </main>
 <?php
 $jsPagina = [];
-require_once '../../components/footer.php';
+require_once '../../components/layout/footer/footer-logado.php';
 ?>

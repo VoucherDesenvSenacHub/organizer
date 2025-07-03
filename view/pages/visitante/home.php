@@ -1,12 +1,13 @@
 <?php
-$tituloPagina = 'Home | Organizer'; // Definir o título da página
-$cssPagina = ['visitante/home.css']; //Colocar o arquivo .css 
+$acesso = 'visitante';
+$tituloPagina = 'Home | Organizer';
+$cssPagina = ['visitante/home.css'];
 require_once '../../components//layout/base-inicio.php';
 
-require_once '../../../model/OngModel.php';
+require_once __DIR__ . '/../../../autoload.php';
 $ongModel = new Ong();
 
-$lista = $ongModel->listar();
+$lista = $ongModel->listarCards();
 // var_dump($lista);
 ?>
 <!-- COMEÇAR SEU CÓDIGO AQUI -->
@@ -102,6 +103,12 @@ $lista = $ongModel->listar();
             <h2 class="titulo">Solicitação de Parceria</h2>
             <form id="formParceiro" action=""
                 onsubmit="mensagem_enviada('toast-mensagem-enviada', 'body-forma'); return false;">
+                <label class="Email" for="email">E-mail</label>
+                <input type="text" id="email" maxlength="100" placeholder="Exemplo@gmail.com:" required>
+
+                <label class="Telefone" for="telefone">Telefone</label>
+                <input type="text" id="telefone" maxlength="11" placeholder="(00)00000-0000" required>
+
                 <label class="Cnpj" for="cnpj">CNPJ</label>
                 <input type="text" id="cnpj" maxlength="11" placeholder="000.000.000-00" required>
 
@@ -132,5 +139,5 @@ $lista = $ongModel->listar();
     </script>
     <?php
     $jsPagina = ['home-doador.js']; //Colocar o arquivo .js
-    require_once '../../components/footer.php';
+    require_once '../../components/layout/footer/footer-visitante.php';
     ?>

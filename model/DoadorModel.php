@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/../config/database.php';
+require_once __DIR__ . "/../config/database.php";
 
 class Doador
 {
@@ -10,6 +10,7 @@ class Doador
     {
         global $pdo;
         $this->pdo = $pdo;
+        $this->pdo->exec("SET time_zone = '-04:00'");
     }
 
     function cadastro($nome, $telefone, $cpf, $data, $email, $senha)

@@ -1,33 +1,90 @@
--- TABELA DOS BANCOS
-CREATE TABLE bancos (
-    banco_id INT PRIMARY KEY AUTO_INCREMENT,
-    nome VARCHAR(100) NOT NULL UNIQUE,
-    codigo VARCHAR(10) NOT NULL UNIQUE
-);
-INSERT INTO bancos (nome, codigo) VALUES
-('Banco do Brasil', '001'),
-('Bradesco', '237'),
+-- Cadastro dos bancos disponíveis no sistema.
+INSERT INTO bancos (nome, codigo) VALUES 
+('Banco do Brasil S.A.', '001'),
+('Banco Bradesco S.A.', '237'),
 ('Caixa Econômica Federal', '104'),
-('Itaú Unibanco', '341'),
-('Santander', '033');
+('Itaú Unibanco S.A.', '341'),
+('Banco Santander (Brasil) S.A.', '033'),
+('Banco Safra S.A.', '422'),
+('Banco BTG Pactual S.A.', '208'),
+('Banco Pan S.A.', '623'),
+('Banco Inter S.A.', '077'),
+('Banco Original S.A.', '212');
 
 
-INSERT INTO usuarios (nome, cpf, data_nascimento, foto_perfil, email, telefone, senha, tipo_usuario)
-VALUES 
-('Ana Souza', '12345678901', '1990-05-12', 'ana.jpg', 'ana@example.com', '(11)91234-5678', 'senha123', 'DOADOR'),
-('Carlos Lima', '23456789012', '1985-08-23', 'carlos.jpg', 'carlos@example.com', '(21)98765-4321', 'senha123', 'ONG'),
-('Fernanda Alves', '34567890123', '1993-11-03', 'fernanda.jpg', 'fernanda@example.com', '(31)99876-5432', 'senha123', 'DOADOR'),
-('Marcos Silva', '45678901234', '1978-03-30', 'marcos.jpg', 'marcos@example.com', '(41)97654-3210', 'senha123', 'ADM');
+-- Cargas de projeto (TESTE) ! Mudar o ID da ONG
+INSERT INTO projetos (nome, descricao, meta, ong_id) VALUES
+(
+  'Educação para Todos',
+  'Este projeto visa democratizar o acesso à educação de qualidade para comunidades em situação de vulnerabilidade social. Serão oferecidas aulas de reforço escolar, oficinas de leitura, inclusão digital e apoio psicológico. A ONG contará com voluntários especializados e parcerias com escolas locais para garantir uma educação mais justa e inclusiva.',
+  20000.00,
+  1
+),
+(
+  'Vida Sustentável',
+  'O projeto Vida Sustentável tem como objetivo conscientizar e capacitar famílias de baixa renda sobre práticas sustentáveis no dia a dia. Através de oficinas sobre reciclagem, hortas comunitárias, compostagem e economia de água e energia, buscamos promover uma transformação ambiental e social nas comunidades atendidas.',
+  18000.00,
+  1
+),
+(
+  'Cuidando de Quem Cuida',
+  'Com foco no apoio a cuidadores de idosos e pessoas com deficiência, este projeto oferece capacitações, suporte psicológico, grupos de apoio e atividades de lazer. A iniciativa reconhece a importância dos cuidadores e busca melhorar sua qualidade de vida, saúde emocional e valorização dentro do contexto familiar e social.',
+  15000.00,
+  1
+),
+(
+  'Tecnologia para o Bem',
+  'A proposta deste projeto é oferecer cursos gratuitos de programação, robótica, e outras tecnologias para jovens em situação de risco social. Além das aulas, os participantes terão acesso a mentorias, eventos de tecnologia e oportunidades de estágio em empresas parceiras, abrindo portas para um futuro promissor no mercado de TI.',
+  25000.00,
+  1
+),
+(
+  'Mulheres Empreendedoras',
+  'Voltado para o empoderamento feminino, este projeto apoia mulheres de comunidades periféricas a desenvolverem habilidades empreendedoras. Com cursos de gestão, marketing, finanças e produção artesanal, o objetivo é incentivar o empreendedorismo como ferramenta de autonomia financeira e superação de ciclos de violência.',
+  22000.00,
+  1
+);
 
-INSERT INTO ongs (nome, cnpj, responsavel_id, telefone, email, cep, rua, bairro, cidade, banco_id, agencia, conta, tipo_conta, descricao) VALUES 
-('ONG Vida Melhor', '12.345.678/0001-90', 1, '11999999999', 'contato@vidamelhor.org', '01001-000', 'Rua da Esperança, 123', 'Centro', 'São Paulo', 1, '1234', '56789-0', 'CORRENTE', 'A ONG Vida Melhor foi fundada com o propósito de promover o bem-estar de comunidades em situação de vulnerabilidade social. Oferecemos atendimento médico gratuito, distribuição de alimentos, suporte psicológico e programas de capacitação profissional. Nosso trabalho impacta milhares de famílias e busca gerar oportunidades reais de transformação social.'),
-('Educa Futuro', '98.765.432/0001-11', 2, '21988887777', 'contato@educafuturo.org', '20010-000', 'Av. do Conhecimento, 456', 'Centro', 'Rio de Janeiro', 2, '4321', '12345-6', 'POUPANÇA', 'A Educa Futuro é uma organização sem fins lucrativos dedicada a ampliar o acesso à educação de qualidade para jovens em situação de risco. Atuamos com aulas de reforço, preparação para vestibulares, acesso a bolsas de estudo e oficinas de habilidades socioemocionais. Acreditamos que a educação é o caminho mais eficaz para mudar realidades e construir um futuro mais justo.'),
-('Amigos da Natureza', '11.222.333/0001-44', 3, '31977776666', 'contato@natureza.org', '30140-000', 'Rua Verde, 789', 'Savassi', 'Belo Horizonte', 3, '5678', '98765-4', 'CORRENTE', 'Amigos da Natureza nasceu da urgência de preservar os recursos naturais e promover a consciência ambiental. Realizamos campanhas de reflorestamento, mutirões de limpeza de rios, oficinas de educação ambiental em escolas e pesquisas sobre biodiversidade. Nossa missão é mobilizar a sociedade para práticas sustentáveis e proteger o meio ambiente para as próximas gerações.'),
-('Sorriso Animal', '55.666.777/0001-55', 4, '47999998888', 'contato@sorrisoanimal.org', '89010-000', 'Rua dos Bichos, 101', 'Centro', 'Blumenau', 4, '8765', '65432-1', 'POUPANÇA', 'A Sorriso Animal é uma ONG dedicada ao resgate, tratamento e adoção de animais abandonados ou vítimas de maus-tratos. Mantemos um abrigo com capacidade para mais de 200 animais, todos assistidos por veterinários e voluntários. Além disso, promovemos feiras de adoção, campanhas de castração e ações educativas sobre a guarda responsável de pets.');
 
-INSERT INTO projetos (nome, descricao, meta, status, ong_id) VALUES
-('Alimento para Todos', 'Projeto focado em arrecadar alimentos para famílias carentes.', 5000.00, 'ATIVO', 1),
-('Educação para o Futuro', 'Campanha de doação de materiais escolares para crianças.', 3000.00, 'ATIVO', 2),
-('Cuidando dos Animais', 'Apoio financeiro para um abrigo de animais abandonados.', 4500.00, 'INATIVO', 3),
-('Ajuda às Vítimas de Enchentes', 'Projeto para fornecer roupas e abrigo a vítimas de desastres naturais.', 10000.00, 'FINALIZADO', 3),
-('Saúde e Bem-Estar', 'Distribuição de kits de higiene e saúde em comunidades vulneráveis.', 7000.00, 'ATIVO', 3);
+-- Cargas de Notícias (TESTE) ! Mudar o ID da ONG
+INSERT INTO noticias (titulo, subtitulo, texto, subtexto, status, ong_id) VALUES
+(
+  'Campanha arrecada livros para comunidades carentes',
+  'A leitura como ponte para transformação social',
+  'A ONG Saber para Todos iniciou uma campanha de arrecadação de livros com o objetivo de montar pequenas bibliotecas em comunidades carentes da zona rural. A ação pretende incentivar o hábito da leitura entre crianças e adolescentes, promovendo educação e cidadania através do acesso ao conhecimento.',
+  'A campanha conta com o apoio de voluntários e livrarias da região, além de escolas que estão mobilizando alunos para arrecadar exemplares usados. A expectativa é alcançar mais de 2 mil livros em apenas dois meses.',
+  'ATIVO',
+  1
+),
+(
+  'Projeto ambiental recolhe mais de 5 toneladas de lixo',
+  'Ação mobilizou voluntários no último sábado',
+  'Em uma ação de impacto ambiental, mais de 300 voluntários participaram de um mutirão de limpeza em praias e parques urbanos. A iniciativa foi promovida pela ONG Verde é Vida, que atua há mais de 10 anos em projetos de preservação ambiental em áreas urbanas e costeiras.',
+  'A limpeza teve início às 7h e recolheu principalmente resíduos plásticos, como garrafas, sacolas e canudos, além de pneus e eletrodomésticos descartados de forma irregular. A ONG alertou sobre a importância da reciclagem e descarte correto do lixo.',
+  'ATIVO',
+  1
+),
+(
+  'Nova sede da ONG Esperança é inaugurada em Belo Horizonte',
+  'Espaço vai oferecer apoio social e psicológico',
+  'A ONG Esperança celebrou a inauguração da sua nova sede na capital mineira. O novo espaço conta com salas de atendimento psicológico, oficinas de capacitação profissional e um centro comunitário para atividades culturais e esportivas. A proposta é ampliar o impacto social do trabalho já realizado.',
+  'Com recursos obtidos por meio de doações e parcerias com empresas privadas, a nova estrutura permitirá atendimento a mais de 500 pessoas por mês. As atividades já começam na próxima semana com oficinas de arte e cursos de informática básica.',
+  'ATIVO',
+  1
+),
+(
+  'Doações para vítimas das enchentes superam expectativas',
+  'Solidariedade mobiliza milhares de brasileiros',
+  'Após as fortes chuvas que atingiram o sul do país, a ONG Ajuda Já lançou uma campanha emergencial de arrecadação de alimentos, roupas e produtos de higiene. Em menos de uma semana, a organização recebeu doações suficientes para atender mais de 3 mil famílias desalojadas.',
+  'Além das doações materiais, voluntários também estão atuando no acolhimento das vítimas, ajudando na limpeza das casas afetadas e distribuindo refeições. A campanha segue ativa, com pontos de coleta espalhados por várias cidades.',
+  'ATIVO',
+  1
+),
+(
+  'Crianças recebem atendimento médico gratuito em ação solidária',
+  'Mais de 200 crianças foram atendidas em evento de saúde',
+  'A ONG Cuidar Bem realizou no último final de semana uma ação comunitária de saúde infantil. Com o apoio de médicos voluntários, foram oferecidas consultas pediátricas, exames básicos e aplicação de vacinas. A ação aconteceu em uma escola pública no bairro Jardim Primavera.',
+  'Os pais das crianças destacaram a importância da iniciativa, já que muitos não têm acesso fácil ao sistema público de saúde. A ONG pretende repetir a ação em outras regiões da cidade nos próximos meses.',
+  'ATIVO',
+  1
+);

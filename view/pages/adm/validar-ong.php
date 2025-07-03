@@ -1,5 +1,6 @@
 <?php
-$tituloPagina = 'Solicitação de ONGS';
+$acesso = 'adm';
+$tituloPagina = 'Validar | Organizer';
 $cssPagina = ['adm/validar-ong.css'];
 require_once '../../components/layout/base-inicio.php';
 ?>
@@ -62,5 +63,5 @@ require_once '../../components/layout/base-inicio.php';
 </main>
 <?php
 $jsPagina = [];
-require_once '../../components/footer.php';
+require_once '../../components/layout/footer/footer-logado.php';
 ?>

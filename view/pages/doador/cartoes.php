@@ -1,4 +1,5 @@
 <?php
+$acesso = 'doador';
 $tituloPagina = 'Cartões | Organizer'; // Definir o título da página
 $cssPagina = ["doador/cartoes.css"]; //Colocar o arquivo .css (exemplo: 'ONG/cadastro.css')
 require_once '../../components/layout/base-inicio.php';
@@ -7,7 +8,7 @@ require_once '../../components/layout/base-inicio.php';
     <!-- COMEÇAR SEU CÓDIGO AQUI -->
     <div class="conteiner">
         <div class="principal">
-            <h1>MEUS CARTÕES</h1>
+            <h1><i class="fa-solid fa-credit-card"></i> MEUS CARTÕES</h1>
             <div class="container-white">
 
                 <div class="cartoes-container">
@@ -121,5 +122,5 @@ require_once '../../components/layout/base-inicio.php';
 </script>
 <?php
 $jsPagina = ['cartoes.js']; //Colocar o arquivo .js (exemplo: 'cadastro.js')
-require_once '../../components/footer-doador.php';
+require_once '../../components/layout/footer/footer-logado.php';
 ?>

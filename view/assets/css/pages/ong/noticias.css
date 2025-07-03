@@ -1,9 +1,4 @@
 @import url('../../components/popup/formulario-noticia.css');
-
-body {
-    background-color: aliceblue
-}
-
 #noticias-publicadas h2 {
     font-size: 1.3em;
     font-weight: 600;

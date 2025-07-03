@@ -1,0 +1,14 @@
+<aside id="aside-container" class="aside-adm">
+    <div id="area-topo">
+        <button id="btn-aside" title="Abrir Menu" onclick="abrir_aside()"><i id="icon-aside" class="fa-solid fa-angles-right"></i></button>
+        <nav>
+            <a href="../adm/parcerias.php" title="Parcerias"><i class="fa-solid fa-handshake"></i><span>Parcerias</span></a>
+            <a href="../adm/relatorios.php" title="Relatórios"><i class="fa-solid fa-chart-pie"></i><span>Relatórios</span></a>
+        </nav>
+    </div>
+    <a id="btn-acesso" href="../visitante/acesso.php" title="Mudar Acesso"><img src="../../assets/images/icons/trocar-acesso.png"><span>Mudar Acesso</span></a>
+    <button id="btn-sair" title="Sair" onclick="abrir_popup('sair-da-conta-popup')">
+        <i class="fa-solid fa-right-from-bracket"></i>
+        <span>Sair</span>
+    </button>
+</aside>

@@ -1,6 +1,6 @@
 <header>
     <div class="container">
-        <a class="logo" href="home.php">
+        <a class="logo" href="../doador/home.php">
             <img src="../../assets/images/global/Logo-Organizer.png">
             <h1>Organizer</h1>
         </a>
@@ -24,5 +24,5 @@
 <!-- ASIDE -->
 <main id="main-doador">
     <div class="container">
-        <?php require_once '../../components/aside-doador.php'; ?>
+        <?php require_once __DIR__ . '/../asides/aside-doador.php'; ?>
         <div id="container-conteudo">

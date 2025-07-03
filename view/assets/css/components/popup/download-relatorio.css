@@ -1,0 +1,11 @@
+#download{
+     display: none;
+     position: fixed; 
+     top: 60px; 
+     right: 10px; 
+     background-color: #fff; 
+     border: 1px solid #ccc; 
+     padding: 10px; 
+     box-shadow: 0 0 10px rgba(0,0,0,0.2);
+     z-index: 1000;
+}
