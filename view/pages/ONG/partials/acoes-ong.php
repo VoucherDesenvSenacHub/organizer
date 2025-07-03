@@ -4,8 +4,7 @@ $perfil = $_SESSION['perfil_usuario'] ?? 'visitante';
 
 <div id="acoes">
     <?php if ($perfil === 'doador'): ?>
-        <button class="btn" id="btn-doacao" onclick="abrir_popup('doacao-popup')">Fazer uma doação</button>
-        <button class="btn" id="btn-voluntario" onclick="abrir_popup('ser-voluntario-popup')">Ser Voluntário</button>
+        <button class="btn" id="btn-voluntario" onclick="abrir_popup('ser-voluntario-popup')">Apoiar esta ONG</button>
     <?php elseif ($perfil === 'ong'): ?>
         <a href="meu-perfil.php">
             <button class="btn" id="btn-editar">
@@ -24,7 +23,6 @@ $perfil = $_SESSION['perfil_usuario'] ?? 'visitante';
             <i class="fa-solid fa-trash-can"></i> Inativar
         </button>
     <?php else: ?>
-        <button class="btn" id="btn-doacao" onclick="abrir_popup('login-obrigatorio-popup')">Fazer uma doação</button>
-        <button class="btn" id="btn-voluntario" onclick="abrir_popup('login-obrigatorio-popup')">Ser Voluntário</button>
+        <button class="btn" id="btn-voluntario" onclick="abrir_popup('login-obrigatorio-popup')">Apoiar esta ONG</button>
     <?php endif; ?>
 </div>
