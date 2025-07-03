@@ -2,7 +2,6 @@
 $perfil = $_SESSION['perfil_usuario'] ?? 'visitante';
 switch ($perfil) {
     case 'doador':
-        require_once __DIR__ . '/../../../components/popup/ser-voluntario.php';
         require_once __DIR__ . '/../../../components/popup/doacao.php';
         break;
     case 'ong':

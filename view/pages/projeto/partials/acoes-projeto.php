@@ -5,7 +5,7 @@ $perfil = $_SESSION['perfil_usuario'] ?? 'visitante';
 <div id="acoes">
     <?php if ($perfil === 'doador'): ?>
         <button class="btn" id="btn-doacao" onclick="abrir_popup('doacao-popup')">Fazer uma doação</button>
-        <button class="btn" id="btn-voluntario" onclick="abrir_popup('ser-voluntario-popup')">Ser Voluntário</button>
+        <button class="btn" id="btn-apoio">Apoiar Projeto</button>
     <?php elseif ($perfil === 'ong'): ?>
         <button class="btn" id="btn-editar" onclick="abrir_popup('editar-projeto-popup')">
             <i class="fa-solid fa-pen-to-square"></i> Editar

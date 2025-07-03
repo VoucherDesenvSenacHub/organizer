@@ -1,7 +1,6 @@
 /* CSS DA TELA DE PERFIL DA ONG */
 
 @import url(../doador/fazer-doacao.css);
-@import url(../doador/ser-voluntario.css);
 
 #main-doador #container-principal {
     /* background-color: red; */
@@ -139,17 +138,12 @@ section#apresentacao {
 }
 
 #acoes #btn-voluntario {
-    background-color: var(--cor-principal);
-    color: aliceblue;
+    background-color: var(--cor-amarelo);
+    color: var(--cor-principal);
 }
 /* Botões dos popup */
 #doacao-popup form .btn {
     background-color: var(--cor-amarelo);
-}
-
-#ser-voluntario-popup .container-popup form button {
-    background-color: var(--cor-principal);
-    color: aliceblue;
 }
 
 
