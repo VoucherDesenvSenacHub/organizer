@@ -66,6 +66,8 @@ ob_end_flush();
             if ($lista) {
                 $class = 'tp-ong';
                 foreach ($lista as $projeto) {
+                    $valor_projeto = $projetoModel->buscarValor($projeto->projeto_id);
+                    $barra = round(($valor_projeto / $projeto->meta) * 100);
                     require '../../components/cards/card-projeto.php';
                 }
             }

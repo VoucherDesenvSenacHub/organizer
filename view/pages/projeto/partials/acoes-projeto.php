@@ -22,6 +22,6 @@ $perfil = $_SESSION['perfil_usuario'] ?? 'visitante';
         </button>
     <?php else: ?>
         <button class="btn" id="btn-doacao" onclick="abrir_popup('login-obrigatorio-popup')"><i class="fa-solid fa-hand-holding-dollar"></i> Quero Doar</button>
-        <button class="btn" id="btn-voluntario" onclick="abrir_popup('login-obrigatorio-popup')">Quero Apoiar <i class="fa-solid fa-hand-holding-heart"></i></button>
+        <button class="btn" id="btn-apoio" onclick="abrir_popup('login-obrigatorio-popup')">Quero Apoiar <i class="fa-solid fa-hand-holding-heart"></i></button>
     <?php endif; ?>
 </div>
