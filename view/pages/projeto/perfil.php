@@ -18,6 +18,7 @@ if (isset($_GET['id'])) {
     $valor_projeto = $projetoModel->buscarValor($id);
     $qntdoadores = $projetoModel->contarDoadores($id);
     $barra = round(($valor_projeto / $projeto->meta) * 100);
+    $doadores_projeto = $projetoModel->buscarDoadores($id);
     if ($projeto) {
         $ong = $ongModel->buscarPerfil($projeto->ong_id);
     }
@@ -123,8 +124,8 @@ ob_end_flush();
                     <h3>Doadores</h3>
                 </div>
                 <div class="icon-title">
-                    <img src="../../assets/images/pages/icone-abraco.png" alt="">
-                    <h3>Voluntários</h3>
+                    <img src="../../assets/images/pages/icone-apoio.png" alt="">
+                    <h3>Apoiadores</h3>
                 </div>
                 <div class="icon-title">
                     <img src="../../assets/images/pages/icone-medalha.png" alt="">
@@ -140,17 +141,19 @@ ob_end_flush();
                     <div class="container-painel area-doador-voluntario">
                         <h3>DOADORES DESTE PROJETO</h3>
                         <div class="box-cards">
-                            <?php require '../../components/cards/card-doador.php'; ?>
-                            <?php require '../../components/cards/card-doador.php'; ?>
-                            <?php require '../../components/cards/card-doador.php'; ?>
-                            <?php require '../../components/cards/card-doador.php'; ?>
-                            <?php require '../../components/cards/card-doador.php'; ?>
-                            <?php require '../../components/cards/card-doador.php'; ?>
-                            <?php require '../../components/cards/card-doador.php'; ?>
+                            <?php
+                            if ($doadores_projeto) {
+                                foreach ($doadores_projeto as $doador) {
+                                    require '../../components/cards/card-doador.php';
+                                }
+                            } else {
+                                echo '<h4>Este Projeto não recebeu doações! <i class="fa-regular fa-face-frown"></i></h4>';
+                            }
+                            ?>
                         </div>
                     </div>
                     <div class="container-painel area-doador-voluntario">
-                        <h3>VOLUNTÁRIOS DESTE PROJETO</h3>
+                        <h3>APOIADORES DESTE PROJETO</h3>
                         <div class="box-cards">
                             <?php require '../../components/cards/card-voluntario.php'; ?>
                             <?php require '../../components/cards/card-voluntario.php'; ?>

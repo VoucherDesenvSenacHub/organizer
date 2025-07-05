@@ -15,6 +15,7 @@
     flex-direction: column;
     gap: 30px;
 }
+
 /* Imagem Ilustrativa */
 #imagem img {
     max-width: 250px;
@@ -30,9 +31,10 @@
     border-radius: 5px;
     width: 100%;
 }
+
 /* Divs dentro da section */
 .section-item {
-    width: 50%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -61,7 +63,7 @@ section#apresentacao {
     height: 100%;
 }
 
-#logo-ong .btn-salvar  {
+#logo-ong .btn-salvar {
     position: absolute;
     top: 10px;
     right: 10px;
@@ -70,87 +72,103 @@ section#apresentacao {
 }
 
 #logo-ong .btn-salvar div {
-    background-color: white;    
+    background-color: white;
 }
 
 /* Informações da ONG */
-#dados-ong {
-    display: flex;
-    /* align-items: center; */
-    justify-content: center;
-    flex-direction: column;
+.ong-card {
     height: 100%;
-}
-
-/* Nome */
-#dados-ong h1 {
-    font-size: 28px;
-    color: var(--cor-principal);
-    margin-bottom: 5px;
-    line-height: 1;
-}
-
-#dados-ong #data-criacao {
-    font-size: 13px;
-    color: gray;
-    font-weight: 500;
-}
-/* Valor arrecadado */
-#dados-ong h3 {
-    font-size: 17px;
-    font-weight: 500;
-    color: var(--cor-verde);
-}
-#dados-ong h3 span {
-    font-weight: 600;
-}
-/* Doações recebidas */
-#dados-ong #recebidos {
-    display: flex;
-    margin: 10px 0 10px 0;
-    gap: 5px;
-    color: var(--cor-principal);
-}
-#dados-ong p {
-    font-size: 16px;
-}
-#dados-ong p span {
-    font-weight: 600;
-    color: var(--cor-verde-escuro);
-}
-
-/* Botões de Doação e Voluntario */
-#dados-ong #acoes {
-    width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: start;
+    justify-content: space-evenly;
     gap: 10px;
 }
 
-#dados-ong #acoes button {
-    transform: translateY(0);
+.ong-nome {
+    text-transform: uppercase;
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--cor-principal);
+    text-align: center;
+}
+
+.info-bloco.arrecadado {
+    background: #f0fff2;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+    padding: 12px;
+    border-radius: 8px;
+    text-align: center;
+    width: 100%;
+}
+
+.info-bloco .info-label {
+    display: block;
+    color: #666;
+    font-size: 14px;
+}
+
+.info-bloco .info-valor {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--cor-verde);
+}
+
+.info-resumo {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+}
+
+.info-item {
+    text-align: center;
+}
+
+.info-numero {
+    display: block;
+    font-size: 22px;
+    font-weight: bold;
+    color: #444;
+}
+
+.info-texto {
+    font-size: 14px;
+    color: #777;
+}
+
+/* Botões */
+#acoes a {
+    text-decoration: none;
+}
+
+#acoes {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+#acoes a,
+#acoes button {
+    width: 49%;
+}
+
+#acoes a button {
     width: 100%;
 }
 
 #dados-ong #acoes button:hover {
-    transform: translateY(-4px);
+    transform: translateY(-3px);
 }
-
-#acoes #btn-voluntario {
-    background-color: var(--cor-amarelo);
-    color: var(--cor-principal);
-}
-/* Botões dos popup */
-#doacao-popup form .btn {
-    background-color: var(--cor-amarelo);
-}
-
 
 /* Section: Sobre */
 #sobre {
     width: 100%;
     text-align: justify;
+}
+
+#sobre small {
+    width: 100%;
+    color: grey;
+    font-weight: 600;
 }
 
 #sobre p {
@@ -168,14 +186,16 @@ section#apresentacao {
     height: 39px;
     justify-content: center;
     border-radius: 50px;
-    padding:  5px 10px;
+    padding: 5px 10px;
     color: var(--cor-azul-escuro);
     background-color: #f0f0f0;
     cursor: default;
 }
+
 .icon-title h3 {
     font-weight: 600;
 }
+
 .icon-title img {
     width: 25px;
     height: 25px;
@@ -189,12 +209,9 @@ section#apresentacao {
     flex-wrap: wrap;
 }
 
-#noticias {
-    width: 100%;
-}
-
-#projetos {
-    width: 100%;
+.mini-cards h4 {
+    font-weight: 500;
+    color: #444;
 }
 
 #projetos .mini-cards {
@@ -218,12 +235,9 @@ section#apresentacao {
         gap: 40px;
     }
 
-    #apresentacao #dados-ong {
-        align-items: center;
-    }
-
     #apresentacao #dados-ong #acoes {
-        flex-direction: column;
+        margin-top: 5px;
+        /* flex-direction: column; */
     }
 
     #dados-ong h1 {
@@ -241,6 +255,17 @@ section#apresentacao {
 
     .section-item {
         align-items: center;
+    }
+}
+
+@media (max-width: 300px) {
+    #apresentacao #dados-ong #acoes {
+        flex-direction: column;
+    }
+
+    #acoes a,
+    #acoes button {
+        width: 100%;
     }
 }
 
@@ -287,4 +312,8 @@ main.usuario-logado #container-principal {
 #dados-ong #acoes #btn-inativar {
     background-color: var(--cor-vermelho);
     /* color: #912B2B; */
+}
+
+#dados-ong #acoes .adm-inativar {
+    width: 100%;
 }

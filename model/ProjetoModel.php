@@ -77,6 +77,21 @@ class Projeto
         return $resultado['total'] ?? 0;
     }
 
+    function buscarDoadores($id)
+    {
+        $query = "SELECT u.nome, SUM(dp.valor) as valor_doado FROM doacao_projeto dp
+                  INNER JOIN projetos p USING (projeto_id)
+                  INNER JOIN usuarios u USING (usuario_id)
+                  WHERE p.projeto_id = :id
+                  GROUP BY nome
+                  ORDER BY 2 DESC";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+        $stmt->setFetchMode(PDO::FETCH_CLASS, __CLASS__);
+        return $stmt->fetchAll();
+    }
+
 
     function editar($id, $nome, $descricao, $meta)
     {

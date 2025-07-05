@@ -14,6 +14,7 @@ if (isset($_GET['id'])) {
     $ong = $ongModel->buscarPerfil($id);
     $projetos_ong = $projetoModel->listar($id);
     $noticias_ong = $noticiaModel->listarCards($id);
+    $doadores_ong = $ongModel->buscarDoadores($id);
 }
 
 $perfil = $_SESSION['perfil_usuario'] ?? '';
@@ -34,19 +35,28 @@ $perfil = $_SESSION['perfil_usuario'] ?? '';
                     <button id="like" class="fa-solid fa-heart" onclick="abrir_popup('login-obrigatorio-popup')"></button>
                 </div>
             </div>
-            <div id="dados-ong">
-                <h1><?= $ong->nome ?></h1>
-                <span id="data-criacao">Criada em <?= date('d/m/Y', strtotime($ong->data_cadastro)); ?></span>
-                <h3>Arrecadado: <span>R$ <?= number_format($ong->total_arrecadado, 0, ',', '.'); ?></span></h3>
-                <div id="recebidos">
-                    <p><span><?= $ong->total_projetos ?> </span>Projetos Criados</p>|
-                    <p><span><?= $ong->total_doacoes ?> </span>Doações Recebidas</p>
+            <div id="dados-ong" class="ong-card">
+                <h1 class="ong-nome"><?= $ong->nome ?></h1>
+
+                <div class="info-bloco arrecadado">
+                    <span class="info-label">Arrecadado</span>
+                    <span class="info-valor">R$ <?= number_format($ong->total_arrecadado, 0, ',', '.'); ?></span>
                 </div>
-                <div id="acoes">
-                    <!-- Botão de Acões da ONG -->
-                    <?php require_once 'partials/acoes-ong.php'; ?>
+
+                <div class="info-resumo">
+                    <div class="info-item">
+                        <span class="info-numero"><?= $ong->total_projetos ?></span>
+                        <span class="info-texto">Projetos Criados</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-numero"><?= $ong->total_doacoes ?></span>
+                        <span class="info-texto">Doações Recebidas</span>
+                    </div>
                 </div>
+                <!-- Botões -->
+                <?php require_once 'partials/acoes-ong.php'; ?>
             </div>
+
             <div id="imagem">
                 <img src="../../assets/images/pages/perfil-ong.png" alt="">
             </div>
@@ -57,6 +67,7 @@ $perfil = $_SESSION['perfil_usuario'] ?? '';
                     <img src="../../assets/images/pages/icone-sobre.png" alt="">
                     <h3>Sobre</h3>
                 </div>
+                <small>Criada em <?= date('d/m/Y', strtotime($ong->data_cadastro)); ?></small>
                 <p><?= $ong->descricao ?></p>
             </div>
         </section>
@@ -67,26 +78,15 @@ $perfil = $_SESSION['perfil_usuario'] ?? '';
                     <h3>Doadores</h3>
                 </div>
                 <div class="mini-cards">
-                    <?php require '../../components/cards/card-doador.php'; ?>
-                    <?php require '../../components/cards/card-doador.php'; ?>
-                    <?php require '../../components/cards/card-doador.php'; ?>
-                    <?php require '../../components/cards/card-doador.php'; ?>
-                    <?php require '../../components/cards/card-doador.php'; ?>
-                    <?php require '../../components/cards/card-doador.php'; ?>
-                </div>
-            </div>
-            <div class="section-item">
-                <div class="icon-title">
-                    <img src="../../assets/images/pages/icone-abraco.png" alt="">
-                    <h3>Voluntários</h3>
-                </div>
-                <div class="mini-cards">
-                    <?php require '../../components/cards/card-voluntario.php'; ?>
-                    <?php require '../../components/cards/card-voluntario.php'; ?>
-                    <?php require '../../components/cards/card-voluntario.php'; ?>
-                    <?php require '../../components/cards/card-voluntario.php'; ?>
-                    <?php require '../../components/cards/card-voluntario.php'; ?>
-                    <?php require '../../components/cards/card-voluntario.php'; ?>
+                    <?php 
+                    if ($doadores_ong) {
+                        foreach ($doadores_ong as $doador) {
+                            require '../../components/cards/card-doador.php';
+                        }
+                    } else {
+                        echo '<h4>Está ONG não recebeu doações! <i class="fa-regular fa-face-frown"></i></h4>';
+                    }
+                    ?>
                 </div>
             </div>
         </section>
