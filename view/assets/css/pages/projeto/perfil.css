@@ -204,7 +204,6 @@ section#apresentacao {
     padding: 5px 10px;
     color: var(--cor-azul-escuro);
     background-color: #f0f0f0;
-    cursor: default;
     transition: .3s ease-out;
     cursor: pointer;
     flex: 1;
@@ -215,7 +214,8 @@ section#apresentacao {
 }
 
 #btns-group .icon-title h3 {
-    font-weight: 500;
+    font-size: 18px;
+    font-weight: 600;
 }
 
 #btns-group .icon-title img {
