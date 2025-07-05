@@ -209,6 +209,11 @@ section#apresentacao {
     flex-wrap: wrap;
 }
 
+.mini-cards h4 {
+    font-weight: 500;
+    color: #444;
+}
+
 #projetos .mini-cards {
     gap: 25px 10px;
 }

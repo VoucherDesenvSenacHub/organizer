@@ -14,6 +14,7 @@ if (isset($_GET['id'])) {
     $ong = $ongModel->buscarPerfil($id);
     $projetos_ong = $projetoModel->listar($id);
     $noticias_ong = $noticiaModel->listarCards($id);
+    $doadores_ong = $ongModel->buscarDoadores($id);
 }
 
 $perfil = $_SESSION['perfil_usuario'] ?? '';
@@ -77,12 +78,15 @@ $perfil = $_SESSION['perfil_usuario'] ?? '';
                     <h3>Doadores</h3>
                 </div>
                 <div class="mini-cards">
-                    <?php require '../../components/cards/card-doador.php'; ?>
-                    <?php require '../../components/cards/card-doador.php'; ?>
-                    <?php require '../../components/cards/card-doador.php'; ?>
-                    <?php require '../../components/cards/card-doador.php'; ?>
-                    <?php require '../../components/cards/card-doador.php'; ?>
-                    <?php require '../../components/cards/card-doador.php'; ?>
+                    <?php 
+                    if ($doadores_ong) {
+                        foreach ($doadores_ong as $doador) {
+                            require '../../components/cards/card-doador.php';
+                        }
+                    } else {
+                        echo '<h4>Está ONG não recebeu doações! <i class="fa-regular fa-face-frown"></i></h4>';
+                    }
+                    ?>
                 </div>
             </div>
         </section>
