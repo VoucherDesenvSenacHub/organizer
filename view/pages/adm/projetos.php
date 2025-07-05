@@ -34,6 +34,8 @@ if ($_SERVER['REQUEST_METHOD'] = 'GET' && isset($_GET['pesquisa'])) {
             if ($lista) {
                 foreach ($lista as $projeto) {
                     $class = 'tp-ong';
+                    $valor_projeto = $projetoModel->buscarValor($projeto->projeto_id);
+                    $barra = round(($valor_projeto / $projeto->meta) * 100);
                     require '../../components/cards/card-projeto.php';
                 }
             } else {

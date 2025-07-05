@@ -287,6 +287,11 @@ section#apresentacao {
     margin-bottom: 15px;
 }
 
+.box-cards h4 {
+    font-weight: 500;
+    color: #444;
+}
+
 
 @media (max-width: 530px) {
     .area-doador-voluntario {
@@ -360,4 +365,8 @@ section#apresentacao {
 #dados-projeto #acoes #btn-inativar {
     background-color: var(--cor-vermelho);
     /* color: #912B2B; */
+}
+
+#dados-projeto #acoes .adm-inativar {
+    width: 100%;
 }
