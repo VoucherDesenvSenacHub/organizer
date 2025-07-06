@@ -75,4 +75,8 @@
         width: 100%;
         min-height: 160px;
     }
+
+    .card-noticia .textos p {
+        font-size: 12px;
+    }
 }

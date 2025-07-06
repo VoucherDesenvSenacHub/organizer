@@ -306,6 +306,10 @@ section#apresentacao {
     margin-bottom: 20px;
 }
 
+.box-cards i {
+    font-size: 18px;
+}
+
 .box-cards h4 {
     font-weight: 500;
     color: #444;
@@ -366,6 +370,10 @@ section#apresentacao {
 
     .container-section {
         padding: 5px;
+    }
+
+    .box-cards h4 {
+        font-size: 13px;
     }
 }
 

@@ -15,7 +15,7 @@ if (isset($_GET['id'])) {
     $projetos_ong = $projetoModel->listar($id);
     $noticias_ong = $noticiaModel->listarCards($id);
     $doadores_ong = $ongModel->buscarDoadores($id);
-    $logo_url = $ong->logo_url ?? 'https://www.svgrepo.com/show/508699/landscape-placeholder.svg';
+    $logo_url = $ong->logo_url ?? '../../assets/images/global/image-placeholder.svg';
 }
 
 $perfil = $_SESSION['perfil_usuario'] ?? '';

@@ -50,22 +50,26 @@ section#apresentacao {
 
 /* Logo */
 #logo-ong {
-    width: 100%;
-    height: 100%;
+    /* width: 100%;
+    height: 250px;
     max-width: 400px;
-    max-height: 250px;
+    max-height: 250px; */
+    height: 100%;
+    width: 100%;
+    max-width: 400px;
     border-radius: 5px;
     /* background-color: rgb(48, 48, 48); */
     background-color: #eff1f3;
     box-shadow: rgba(60, 64, 67, 0.4) 0px 1px 2px 0px, rgba(60, 64, 67, 0.25) 0px 1px 3px 1px;
     position: relative;
     overflow: hidden;
+    aspect-ratio: 16 / 10;
 }
 
 #logo-ong img {
     width: 100%;
     height: 100%;
-    object-fit: fill;
+    object-fit: contain;
 }
 
 #logo-ong .btn-salvar {
@@ -266,10 +270,6 @@ section#apresentacao {
     .icon-title {
         width: 100%;
         text-align: center;
-    }
-
-    .section-item {
-        align-items: center;
     }
 }
 
