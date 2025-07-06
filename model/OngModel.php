@@ -207,6 +207,7 @@ class Ong
             o.ong_id,
             o.nome,
             o.descricao,
+            o.logo_url,
             (SELECT COUNT(*) FROM projetos p WHERE p.ong_id = o.ong_id) AS total_projetos,
             (SELECT COUNT(*) FROM doacao_projeto dp
                 JOIN projetos p ON dp.projeto_id = p.projeto_id

@@ -130,10 +130,12 @@ section#apresentacao {
 /* Carrossel Classes*/
 .carousel {
     /* border-radius: 5px; */
-    background-color: rgb(48, 48, 48);
-    box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
+    background-color: #eff1f3;
+    /* box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px; */
+    box-shadow: rgba(60, 64, 67, 0.4) 0px 1px 2px 0px, rgba(60, 64, 67, 0.25) 0px 1px 3px 1px;
     position: relative;
     overflow: hidden;
+    border-radius: 4px;
     cursor: pointer;
 }
 
@@ -141,13 +143,14 @@ section#apresentacao {
     display: flex;
     gap: 10px;
     transition: .4s ease-in;
+    height: 100%;
+    width: 100%;
 }
 
 .carousel .carousel-imgs img {
     width: 100%;
-    /* object-fit: cover; */
-    /* background-position: center;
-    background-size: cover; */
+    object-fit: cover;
+    flex: 0 0 100%;
 }
 
 .carousel .btn-salvar {

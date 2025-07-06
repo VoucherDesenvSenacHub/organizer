@@ -19,6 +19,7 @@ if (isset($_GET['id'])) {
     $qntdoadores = $projetoModel->contarDoadores($id);
     $barra = round(($valor_projeto / $projeto->meta) * 100);
     $doadores_projeto = $projetoModel->buscarDoadores($id);
+    $imagens_projeto = $projetoModel->buscarImagens($id);
     if ($projeto) {
         $ong = $ongModel->buscarPerfil($projeto->ong_id);
     }
@@ -87,9 +88,13 @@ ob_end_flush();
             </div>
             <div id="carousel" class="carousel">
                 <div id="carousel-imgs" class="carousel-imgs">
-                    <img src="https://placeholder.pagebee.io/api/plain/400/250" class="carousel-item">
-                    <img src="https://placeholder.pagebee.io/api/plain/400/250" class="carousel-item">
-                    <img src="https://placeholder.pagebee.io/api/plain/400/250" class="carousel-item">
+                    <?php if ($imagens_projeto) {
+                        foreach ($imagens_projeto as $imagem) {
+                            echo "<img src='$imagem->logo_url' class='carousel-item'>";
+                        }
+                    } else {
+                        echo "<img src='../../assets/images/global/image-placeholder.svg' class='carousel-item'>";
+                    } ?>
                 </div>
                 <div class="btn-salvar">
                     <button id="share" class="fa-solid fa-share-nodes" onclick="abrir_popup('compartilhar-popup')"></button>
@@ -102,9 +107,13 @@ ob_end_flush();
                 <button class="btn-fechar-popup fa-solid fa-xmark" onclick="fechar_popup('carousel-popup')"></button>
                 <div id="carousel-big" class="carousel">
                     <div id="carousel-big-imgs" class="carousel-imgs">
-                        <img src="https://placeholder.pagebee.io/api/plain/600/375" class="carousel-item-big">
-                        <img src="https://placeholder.pagebee.io/api/plain/600/375" class="carousel-item-big">
-                        <img src="https://placeholder.pagebee.io/api/plain/600/375" class="carousel-item-big">
+                        <?php if ($imagens_projeto) {
+                            foreach ($imagens_projeto as $imagem) {
+                                echo "<img src='$imagem->logo_url' class='carousel-item-big'>";
+                            }
+                        } else {
+                            echo "<img src='../../assets/images/global/image-placeholder.svg' class='carousel-item-big'>";
+                        } ?>
                     </div>
                     <!-- <div class="btn-salvar">
                             <button id="share" class="fa-solid fa-share-nodes" onclick="abrir_popup('compartilhar-popup')"></button>

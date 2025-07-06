@@ -15,11 +15,16 @@ class Projeto
     function listar($id = null)
     {
         if ($id) {
-            $query = "SELECT * FROM $this->tabela WHERE ong_id = :id";
+            $query = "SELECT p.projeto_id, p.nome, p.descricao, p.meta, 
+                      (SELECT i.logo_url FROM imagens_projeto i WHERE i.projeto_id = p.projeto_id ORDER BY i.id ASC LIMIT 1) AS logo_url
+                      FROM $this->tabela p
+                      WHERE ong_id = :id";
             $stmt = $this->pdo->prepare($query);
             $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         } else {
-            $query = "SELECT * FROM $this->tabela";
+            $query = "SELECT p.projeto_id, p.nome, p.descricao, p.meta,
+                      (SELECT i.logo_url FROM imagens_projeto i WHERE i.projeto_id = p.projeto_id ORDER BY i.id ASC LIMIT 1) AS logo_url
+                      FROM $this->tabela p";
             $stmt = $this->pdo->prepare($query);
         }
 
@@ -208,9 +213,23 @@ class Projeto
 
     function favoritosUsuario($usuario_id)
     {
-        $query = "SELECT * FROM $this->tabela INNER JOIN favoritos_projetos f USING(projeto_id) WHERE f.usuario_id = :id";
+        $query = "SELECT p.projeto_id, p.nome, p.descricao, p.meta,
+        (SELECT i.logo_url FROM imagens_projeto i WHERE i.projeto_id = p.projeto_id ORDER BY i.id ASC LIMIT 1) AS logo_url
+        FROM $this->tabela p
+        INNER JOIN favoritos_projetos f USING(projeto_id) 
+        WHERE f.usuario_id = :id";
         $stmt = $this->pdo->prepare($query);
         $stmt->bindParam(':id', $usuario_id, PDO::PARAM_INT);
+        $stmt->execute();
+        $stmt->setFetchMode(PDO::FETCH_CLASS, __CLASS__);
+        return $stmt->fetchAll();
+    }
+
+    function buscarImagens($id)
+    {
+        $query = "SELECT logo_url FROM imagens_projeto WHERE projeto_id = :id";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
         $stmt->setFetchMode(PDO::FETCH_CLASS, __CLASS__);
         return $stmt->fetchAll();
