@@ -1,6 +1,6 @@
 .perfil-usuario-popup {
-    background-color: rgba(0, 0, 0, 0.2);
-    padding: 15px;
+    background-color: rgba(0, 0, 0, 0.2) !important;
+    padding: 15px !important;
 }
 
 .perfil-usuario-popup .container-popup {
@@ -27,6 +27,9 @@
 .perfil-usuario-popup #left img {
     width: 150px;
     height: 150px;
+    object-fit: cover;
+    box-shadow: rgba(60, 64, 67, 0.5) 0px 1px 2px 0px, rgba(60, 64, 67, 0.30) 0px 1px 3px 1px;
+    border-radius: 10px;
 }
 
 .perfil-usuario-popup #left p {
@@ -107,10 +110,10 @@
     display: flex;
     align-items: center;
     gap: 5px;
-    
+
 }
 
-.perfil-usuario-popup #right #acoes-perfil .btn:last-child i{
+.perfil-usuario-popup #right #acoes-perfil .btn:last-child i {
     font-size: 18px;
 }
 

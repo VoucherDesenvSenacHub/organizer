@@ -54,6 +54,7 @@ class Usuario
                 session_start();
                 $_SESSION['usuario_id'] = $conta['usuario_id'];
                 $_SESSION['usuario_nome'] = $conta['nome'];
+                $_SESSION['usuario_foto'] = $conta['foto_perfil'] ?? '../../assets/images/global/user-placeholder.jpg';
                 $_SESSION['usuario_adm'] = $conta['adm'];
 
                 header('Location: acesso.php');
