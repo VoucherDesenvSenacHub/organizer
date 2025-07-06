@@ -135,11 +135,11 @@ ob_end_flush();
             <div id="principal-painel">
                 <div id="control-painel">
                     <div class="container-painel active">
-                        <span id="data-criacao">Projeto criado em: <?= date('d/m/Y', strtotime($projeto->data_cadastro)); ?></span>
+                        <span id="data-criacao">Criado em <?= date('d/m/Y', strtotime($projeto->data_cadastro)); ?></span>
                         <p><?= $projeto->descricao ?></p>
                     </div>
                     <div class="container-painel area-doador-voluntario">
-                        <h3>DOADORES DESTE PROJETO</h3>
+                        <h3><i class="fa-solid fa-hand-holding-dollar"></i> DOADORES DESTE PROJETO</h3>
                         <div class="box-cards">
                             <?php
                             if ($doadores_projeto) {
@@ -153,7 +153,7 @@ ob_end_flush();
                         </div>
                     </div>
                     <div class="container-painel area-doador-voluntario">
-                        <h3>APOIADORES DESTE PROJETO</h3>
+                        <h3><i class="fa-solid fa-hand-holding-heart"></i> APOIADORES DESTE PROJETO</h3>
                         <div class="box-cards">
                             <?php require '../../components/cards/card-voluntario.php'; ?>
                             <?php require '../../components/cards/card-voluntario.php'; ?>
@@ -165,7 +165,7 @@ ob_end_flush();
                         </div>
                     </div>
                     <div class="container-painel area-doador-voluntario">
-                        <h3>ONG RESPONSÁVEL</h3>
+                        <h3><i class="fa-solid fa-house-flag"></i> ONG RESPONSÁVEL</h3>
                         <div class="card-ong">
                             <div class="perfil">
                                 <div class="logo">

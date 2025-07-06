@@ -6,12 +6,13 @@ $total_doacoes = $ong->total_doacoes ?? '?';
 $total_projetos = $ong->total_projetos ?? '?';
 $jaFavoritada = $jaFavoritada ?? false;
 $classe = $jaFavoritada ? 'favoritado' : '';
+$logo_url = $ong->logo_url ?? 'https://www.svgrepo.com/show/508699/landscape-placeholder.svg';
 ?>
 
 <div class="card-ong">
     <div class="perfil">
         <div class="logo">
-            <p>Logo</p>
+            <img src="<?= $logo_url ?>">
         </div>
         <div class="nome">
             <h2><?= $nome ?></h2>
