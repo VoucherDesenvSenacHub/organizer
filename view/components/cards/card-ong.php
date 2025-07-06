@@ -6,12 +6,17 @@ $total_doacoes = $ong->total_doacoes ?? '?';
 $total_projetos = $ong->total_projetos ?? '?';
 $jaFavoritada = $jaFavoritada ?? false;
 $classe = $jaFavoritada ? 'favoritado' : '';
+$logo_url = $ong->logo_url;
 ?>
 
 <div class="card-ong">
     <div class="perfil">
         <div class="logo">
-            <p>Logo</p>
+            <?php if ($logo_url): ?>
+                <img src="<?= $logo_url ?>" alt="">
+            <?php else: ?>
+                <p>Logo</p>
+            <?php endif; ?>
         </div>
         <div class="nome">
             <h2><?= $nome ?></h2>

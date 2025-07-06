@@ -29,6 +29,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['atualizar-ong'])) {
         'ong_id' => $_SESSION['ong_id']
     ];
 
+    // Se imagem foi enviada e não deu erro
+    if (isset($_FILES['logo_url']) && $_FILES['logo_url']['error'] === UPLOAD_ERR_OK) {
+        require_once __DIR__ . '../../../../config/cloudinary.php'; // ajuste o caminho conforme seu projeto
+
+        $uploadResult = $cloudinary->uploadApi()->upload($_FILES['logo_url']['tmp_name'], [
+            'folder' => 'ongs_logos',
+            'public_id' => uniqid(),
+        ]);
+
+        // Coloca a URL da imagem dentro dos dados para salvar no banco
+        $dados['logo_url'] = $uploadResult['secure_url'];
+    }
+
     try {
         $update = $ongModel->editar($dados);
         if ($update > 0) {
@@ -56,12 +69,17 @@ ob_end_flush();
 </div>
 <!-- Inicio do Container -->
 <main class="container">
-    <form id="form" class="dados-ong" action="meu-perfil.php" method="POST"
-        onsubmit="return confirm('Tem certeza que deseja alterar esses dados da ONG?')">
+    <form id="form" class="dados-ong" action="meu-perfil.php" method="POST" enctype="multipart/form-data"
+        onsubmit="return confirm('Tem certeza que deseja alterar esses dados da ONG?')" >
         <input type="hidden" name="atualizar-ong" value="true">
-        <fieldset>
+        <fieldset class="cabecalho">
             <legend><i class="fa-solid fa-house-flag"></i> DADOS DA ONG</legend>
-            <div class="form">
+            <input type="file" id="logo_url" name="logo_url" style="display: none;">
+            <div>
+                <label for="logo_url"><img id="preview-logo" src="<?=$perfil->logo_url?>" alt=""></label>
+            </div>
+            <div>
+                <div class="form">
                 <label><span>Nome da ONG</span><input id="nome" name="nome" type="text" required
                         value="<?= $perfil->nome ?>"></label>
                 <label><span>CPNJ</span><input name="cnpj" id="cnpj" type="text" required
@@ -85,6 +103,7 @@ ob_end_flush();
                     <small><input type="checkbox">Cultura</small>
                     <small><input type="checkbox">Proteção Animal</small>
                 </div> -->
+            </div>
             </div>
         </fieldset>
         <fieldset>

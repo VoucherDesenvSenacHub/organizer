@@ -29,16 +29,24 @@
 }
 
 .card-ong .perfil .logo {
-    width: 70px;
+    width: 110px;
     height: 70px;
-    min-width: 70px;
-    background-color: rgb(48, 48, 48);
-    border-radius: 50%;
+    min-width: 110px;
+    /* background-color: rgb(48, 48, 48); */
+    border-radius: 3px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: aliceblue;
+    color: black;
     font-weight: 600;
+    overflow: hidden;
+}
+
+.card-ong .perfil .logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    display: block;
 }
 
 .card-ong .perfil .nome h2 {

@@ -58,7 +58,7 @@ class Ong
                   SET nome = :nome, cnpj = :cnpj, telefone = :telefone, 
                   email = :email, cep = :cep, rua = :rua, bairro = :bairro, 
                   cidade = :cidade, banco_id = :banco_id, agencia = :agencia,
-                  conta_numero = :conta_numero, tipo_conta = :tipo_conta, descricao = :descricao
+                  conta_numero = :conta_numero, tipo_conta = :tipo_conta, descricao = :descricao, logo_url = :logo_url
                   WHERE ong_id = :id";
         $stmt = $this->pdo->prepare($query);
         $stmt->bindParam(':nome', $dados['nome']);
@@ -74,6 +74,7 @@ class Ong
         $stmt->bindParam(':conta_numero', $dados['conta_numero']);
         $stmt->bindParam(':tipo_conta', $dados['tipo_conta']);
         $stmt->bindParam(':descricao', $dados['descricao']);
+        $stmt->bindParam(':logo_url', $dados['logo_url']);
         $stmt->bindParam(':id', $dados['ong_id'], PDO::PARAM_INT);
         $stmt->execute();
         return $stmt->rowCount();
@@ -87,6 +88,7 @@ class Ong
             o.ong_id,
             o.nome,
             o.descricao,
+            o.logo_url,
             (SELECT COUNT(*) FROM projetos p WHERE p.ong_id = o.ong_id) AS total_projetos,
             (SELECT COUNT(*) FROM doacao_projeto dp
                 JOIN projetos p ON dp.projeto_id = p.projeto_id
@@ -102,7 +104,7 @@ class Ong
     function buscarPerfil($id)
     {
         $query = "
-            SELECT o.ong_id, o.nome, o.data_cadastro, o.descricao, 
+            SELECT o.ong_id, o.nome, o.data_cadastro, o.descricao, o.logo_url, 
             (SELECT COUNT(*) FROM projetos p WHERE p.ong_id = o.ong_id) AS total_projetos,
             (SELECT COUNT(*) FROM doacao_projeto dp JOIN projetos p ON dp.projeto_id = p.projeto_id WHERE p.ong_id = o.ong_id) AS total_doacoes,
             (SELECT COALESCE(SUM(dp.valor), 0) FROM doacao_projeto dp JOIN projetos p ON dp.projeto_id = p.projeto_id WHERE p.ong_id = o.ong_id) AS total_arrecadado

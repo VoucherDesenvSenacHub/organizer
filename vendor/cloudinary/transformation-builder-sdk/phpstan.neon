@@ -1,0 +1,8 @@
+parameters:
+    level: 1
+    paths:
+        - src
+    ignoreErrors:
+        - '#Unsafe usage of new static\(\)#'
+        #- '#Method .+ has parameter \$[a-zA-Z0-9_]+ with no value type specified in iterable type array#'
+        #- '#Method .+ return type has no value type specified in iterable type array#'

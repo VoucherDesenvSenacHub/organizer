@@ -20,6 +20,18 @@ main.container h1 {
     gap: 40px;
 }
 
+.dados-ong img {
+    max-width: 400px;
+    width: 100%;
+    box-shadow: var(--cor-amarelo-hover) 0px 0px 0px 3px, var(--cor-amarelo-hover) 0px 4px 6px -1px, var(--cor-amarelo-hover) 0px 1px 0px inset;
+}
+
+.cabecalho {
+    display: flex;
+    gap: 15px;
+    /* flex-wrap: wrap; */
+}
+
 .dados-ong fieldset {
     width: 100%;
     /* text-align: center; */
@@ -138,8 +150,8 @@ main.container h1 {
     gap: 3px;
 }
 
-/* @media (max-width: 700px) {
-    main.container {
-        padding-inline: 10px;
+@media (max-width: 900px) {
+    .cabecalho{
+        flex-wrap: wrap;
     }
-} */
+}

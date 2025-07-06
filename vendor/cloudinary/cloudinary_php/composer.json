@@ -1,0 +1,55 @@
+{
+  "name": "cloudinary/cloudinary_php",
+  "version": "3.1.1",
+  "description": "Cloudinary PHP SDK",
+  "keywords": [
+    "cloudinary",
+    "sdk",
+    "cloud",
+    "image management",
+    "cdn"
+  ],
+  "type": "library",
+  "homepage": "https://github.com/cloudinary/cloudinary_php",
+  "minimum-stability": "stable",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Cloudinary",
+      "homepage": "https://github.com/cloudinary/cloudinary_php/graphs/contributors"
+    }
+  ],
+  "support": {
+    "email": "info@cloudinary.com",
+    "issues": "https://github.com/cloudinary/cloudinary_php/issues"
+  },
+  "require": {
+    "php": ">=8.0.0",
+    "cloudinary/transformation-builder-sdk":  "^2",
+    "guzzlehttp/guzzle": "^7.4.5",
+    "guzzlehttp/promises": "^1.5.3|^2.0",
+    "guzzlehttp/psr7": "^2.7",
+    "ext-json": "*",
+    "monolog/monolog": "^2|^3",
+    "psr/log" : "^2|^3"
+  },
+  "require-dev": {
+    "symfony/phpunit-bridge": "^7.2",
+    "phpmd/phpmd": "*",
+    "squizlabs/php_codesniffer": "*",
+    "friendsofphp/php-cs-fixer": "*",
+    "ext-dom": "*",
+    "ext-libxml": "*",
+    "ext-zip": "*"
+  },
+  "autoload": {
+    "classmap": [
+      "src"
+    ]
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Cloudinary\\Test\\": "tests"
+    }
+  }
+}

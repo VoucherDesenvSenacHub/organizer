@@ -15,3 +15,20 @@ $("#form").submit(function(event) {
     $("#telefone").unmask();
     $("#cnpj").unmask();
 });
+
+
+const inputLogo = document.getElementById('logo_url');
+const previewImg = document.getElementById('preview-logo');
+
+inputLogo.addEventListener('change', function() {
+  const file = this.files[0];
+  if (file) {
+    const reader = new FileReader();
+
+    reader.addEventListener('load', function() {
+      previewImg.setAttribute('src', this.result);
+    });
+
+    reader.readAsDataURL(file);
+  }
+});
