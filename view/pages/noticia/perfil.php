@@ -11,6 +11,8 @@ $noticiaModel = new NoticiaModel();
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $id = $_GET['id'];
     $noticia = $noticiaModel->buscarId($id);
+    $imagens_noticia = $noticiaModel->buscarImagens($id);
+    $imagem_subtitulo = $noticiaModel->imagemSubtitulo($id);
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -53,10 +55,13 @@ ob_end_flush();
     <div class="container-noticia">
         <section id="carousel">
             <div id="carousel-imgs">
-                <img src="../../assets/images/noticia-foto1.jpg" class="carousel-item">
-                <img src="../../assets/images/noticia-foto2.jpg" class="carousel-item">
-                <img src="../../assets/images/noticia-foto3.jpg" class="carousel-item">
-                <img src="../../assets/images/noticia-foto4.jpg" class="carousel-item">
+                <?php if ($imagens_noticia) {
+                    foreach ($imagens_noticia as $imagem) {
+                        echo "<img src='$imagem->logo_url' class='carousel-item'>";
+                    }
+                } else {
+                    echo "<img src='../../assets/images/global/image-placeholder.svg' class='carousel-item'>";
+                } ?>
             </div>
         </section>
         <section class="area-materia">
@@ -78,7 +83,11 @@ ob_end_flush();
             <!-- Subtítulo -->
             <div class="subtitulo">
                 <div class="sub-img">
-                    <img src="../../assets/images/noticia-foto-meio.png">
+                    <?php if ($imagem_subtitulo) {
+                        echo "<img src='$imagem_subtitulo->logo_url'>";
+                    } else {
+                        echo "<img src='../../assets/images/global/image-placeholder.svg'>";
+                    } ?>
                 </div>
                 <div class="sub-texto">
                     <h3><?= $noticia->subtitulo ?></h3>

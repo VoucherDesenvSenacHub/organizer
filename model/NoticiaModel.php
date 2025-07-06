@@ -85,18 +85,40 @@ class NoticiaModel
     function listarCards($ong_id = null)
     {
         if ($ong_id) {
-            $query = "SELECT noticia_id, titulo, subtitulo, texto, subtexto, n.data_cadastro, nome
-                  FROM noticias n, ongs o
-                  WHERE n.ong_id = o.ong_id AND o.ong_id = :ong_id";
+            $query = "SELECT noticia_id, titulo, subtitulo, texto, subtexto, n.data_cadastro, nome,
+                      (SELECT i.logo_url FROM imagens_noticia i WHERE i.noticia_id = n.noticia_id ORDER BY i.id ASC LIMIT 1) AS logo_url
+                      FROM noticias n, ongs o
+                      WHERE n.ong_id = o.ong_id AND o.ong_id = :ong_id";
             $stmt = $this->pdo->prepare($query);
             $stmt->bindValue(':ong_id', $ong_id, PDO::PARAM_INT);
         } else {
-            $query = "SELECT noticia_id, titulo, subtitulo, texto, subtexto, n.data_cadastro, nome
-                  FROM noticias n, ongs o
-                  WHERE n.ong_id = o.ong_id";
+            $query = "SELECT noticia_id, titulo, subtitulo, texto, subtexto, n.data_cadastro, nome,
+                      (SELECT i.logo_url FROM imagens_noticia i WHERE i.noticia_id = n.noticia_id ORDER BY i.id ASC LIMIT 1) AS logo_url
+                      FROM noticias n, ongs o
+                      WHERE n.ong_id = o.ong_id";
             $stmt = $this->pdo->prepare($query);
         }
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_OBJ);
+    }
+
+    function buscarImagens($id)
+    {
+        $query = "SELECT logo_url FROM imagens_noticia WHERE noticia_id = :id";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+        $stmt->setFetchMode(PDO::FETCH_CLASS, __CLASS__);
+        return $stmt->fetchAll();
+    }
+
+    function ImagemSubtitulo($id)
+    {
+        $query = "SELECT logo_url FROM imagens_noticia i WHERE noticia_id = :id ORDER BY i.id DESC LIMIT 1";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+        $stmt->setFetchMode(PDO::FETCH_CLASS, __CLASS__);
+        return $stmt->fetch();
     }
 }
