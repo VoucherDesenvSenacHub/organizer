@@ -110,6 +110,7 @@ CREATE TABLE doacao_projeto (
     FOREIGN KEY (usuario_id) REFERENCES usuarios(usuario_id)
 );
 
+
 -- SISTEMA DE FAVORITAR UM PROJETO
 CREATE TABLE favoritos_projetos (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -120,6 +121,7 @@ CREATE TABLE favoritos_projetos (
     FOREIGN KEY (usuario_id) REFERENCES usuarios(usuario_id) ON DELETE CASCADE,
     FOREIGN KEY (projeto_id) REFERENCES projetos(projeto_id) ON DELETE CASCADE
 );
+
 
 -- SISTEMA DE FAVORITAR UMA ONG
 CREATE TABLE favoritos_ongs (
@@ -132,6 +134,7 @@ CREATE TABLE favoritos_ongs (
     FOREIGN KEY (ong_id) REFERENCES ongs(ong_id) ON DELETE CASCADE
 );
 
+
 -- TABELA QUE GUARDA AS IMAGENS DE UM PROJETO
 CREATE TABLE imagens_projeto (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -141,6 +144,7 @@ CREATE TABLE imagens_projeto (
     FOREIGN KEY (projeto_id) REFERENCES projetos(projeto_id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
+
 -- TABELA QUE GUARDA AS IMAGENS DE UMA NOTÍCIA
 CREATE TABLE imagens_noticia (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -148,4 +152,16 @@ CREATE TABLE imagens_noticia (
     logo_url TEXT NOT NULL,
     data_upload TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (noticia_id) REFERENCES noticias(noticia_id ) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+
+-- TABELA DOS APOIOS DOS PROJETOS
+CREATE TABLE apoios_projeto (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    usuario_id INT NOT NULL,
+    projeto_id INT NOT NULL,
+    data_apoio DATETIME DEFAULT CURRENT_TIMESTAMP,
+    UNIQUE (usuario_id, projeto_id),
+    CONSTRAINT fk_apoio_usuario FOREIGN KEY (usuario_id) REFERENCES usuarios(usuario_id) ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT fk_apoio_projeto FOREIGN KEY (projeto_id) REFERENCES projetos(projeto_id) ON DELETE CASCADE ON UPDATE CASCADE
 );

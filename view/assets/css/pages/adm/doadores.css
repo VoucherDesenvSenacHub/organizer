@@ -71,11 +71,6 @@
     filter: brightness(.9);
 }
 
-.card-doadores form button p {
-    display: none;
-    font-size: 14px;
-}
-
 .input-box input {
     cursor: not-allowed;
 }
@@ -87,16 +82,12 @@
         flex-direction: column;
         align-items: flex-start;
         flex: 1;
+        position: relative;
     }
 
     .card-doadores form button {
-        width: auto;
-        display: flex;
-        gap: 10px;
-        float: right;
-    }
-
-    .card-doadores form button p {
-        display: block;
+        position: absolute;
+        right: 5px;
+        bottom: 5px;
     }
 }

@@ -20,7 +20,6 @@ $logo_url = $doador->foto_perfil ?? '../../assets/images/global/user-placeholder
         <input type="hidden" name="id" value="<?= $id ?>">
         <button type="submit">
             <i class="fa-solid fa-eye"></i>
-            <p>Ver Perfil</p>
         </button>
     </form>
 </div>

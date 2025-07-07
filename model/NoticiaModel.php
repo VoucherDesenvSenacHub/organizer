@@ -68,12 +68,18 @@ class NoticiaModel
     function buscarNome($titulo, $ong_id = null)
     {
         if ($ong_id) {
-            $query = "SELECT n.*, o.nome FROM $this->tabela n, ongs o WHERE titulo LIKE :titulo AND o.ong_id = :ong_id AND n.ong_id = o.ong_id";
+            $query = "SELECT noticia_id, titulo, subtitulo, texto, subtexto, n.data_cadastro, nome,
+                      (SELECT i.logo_url FROM imagens_noticia i WHERE i.noticia_id = n.noticia_id ORDER BY i.id ASC LIMIT 1) AS logo_url
+                      FROM noticias n, ongs o
+                      WHERE titulo LIKE :titulo AND n.ong_id = o.ong_id AND o.ong_id = :ong_id";
             $stmt = $this->pdo->prepare($query);
             $stmt->bindValue(':titulo', "%{$titulo}%", PDO::PARAM_STR);
             $stmt->bindValue(':ong_id', $ong_id, PDO::PARAM_INT);
         } else {
-            $query = "SELECT * FROM $this->tabela WHERE titulo LIKE :titulo";
+            $query = "SELECT noticia_id, titulo, subtitulo, texto, subtexto, n.data_cadastro, nome,
+                      (SELECT i.logo_url FROM imagens_noticia i WHERE i.noticia_id = n.noticia_id ORDER BY i.id ASC LIMIT 1) AS logo_url
+                      FROM noticias n, ongs o
+                      WHERE titulo LIKE :titulo AND n.ong_id = o.ong_id";
             $stmt = $this->pdo->prepare($query);
             $stmt->bindValue(':titulo', "%{$titulo}%", PDO::PARAM_STR);
         }

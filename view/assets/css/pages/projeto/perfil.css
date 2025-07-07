@@ -1,5 +1,6 @@
 /* CSS DA TELA DE PERFIL DO PROJETO */
 @import url(../../components/popup/doacao.css);
+@import url(../../components/popup/apoiar.css);
 
 /* Classe das Sections */
 .container-section {

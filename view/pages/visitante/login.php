@@ -38,7 +38,7 @@ ob_end_flush();
                     <button type="button" onclick="abrir_popup('fundo-cadastro-popup')">Esqueci a senha</button>
                 </div>
             </div>
-            <button class="btn">ENTRAR</button>
+            <button class="btn" type="submit">ENTRAR</button>
             <span>Não tem uma conta? <a href="cadastro.php">Criar Conta</a></span>
         </form>
         <img alt="Celular-Login" src="../../assets/images/pages/login_doador.png">

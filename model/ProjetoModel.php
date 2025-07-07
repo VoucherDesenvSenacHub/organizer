@@ -47,12 +47,18 @@ class Projeto
     function buscarNome($nome, $ong_id = null)
     {
         if ($ong_id) {
-            $query = "SELECT * FROM $this->tabela WHERE nome LIKE :nome AND ong_id = :ong_id";
+            $query = "SELECT p.projeto_id, p.nome, p.descricao, p.meta, 
+                      (SELECT i.logo_url FROM imagens_projeto i WHERE i.projeto_id = p.projeto_id ORDER BY i.id ASC LIMIT 1) AS logo_url
+                      FROM $this->tabela p
+                      WHERE nome LIKE :nome AND ong_id = :ong_id";
             $stmt = $this->pdo->prepare($query);
             $stmt->bindValue(':nome', "%{$nome}%", PDO::PARAM_STR);
             $stmt->bindValue(':ong_id', $ong_id, PDO::PARAM_INT);
         } else {
-            $query = "SELECT * FROM $this->tabela WHERE nome LIKE :nome";
+            $query = "SELECT p.projeto_id, p.nome, p.descricao, p.meta,
+                      (SELECT i.logo_url FROM imagens_projeto i WHERE i.projeto_id = p.projeto_id ORDER BY i.id ASC LIMIT 1) AS logo_url
+                      FROM $this->tabela p
+                      WHERE nome LIKE :nome";
             $stmt = $this->pdo->prepare($query);
             $stmt->bindValue(':nome', "%{$nome}%", PDO::PARAM_STR);
         }
@@ -90,6 +96,19 @@ class Projeto
                   WHERE p.projeto_id = :id
                   GROUP BY nome
                   ORDER BY 2 DESC";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+        $stmt->setFetchMode(PDO::FETCH_CLASS, __CLASS__);
+        return $stmt->fetchAll();
+    }
+
+    function buscarApoiadores($id)
+    {
+        $query = "SELECT u.nome, a.data_apoio from apoios_projeto a
+                  INNER JOIN usuarios u USING(usuario_id)
+                  WHERE projeto_id = :id
+                  ORDER BY data_apoio DESC";
         $stmt = $this->pdo->prepare($query);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
@@ -233,5 +252,51 @@ class Projeto
         $stmt->execute();
         $stmt->setFetchMode(PDO::FETCH_CLASS, __CLASS__);
         return $stmt->fetchAll();
+    }
+
+    public function apoiarProjeto($usuario_id, $projeto_id)
+    {
+        $query = "INSERT IGNORE INTO apoios_projeto (usuario_id, projeto_id) VALUES (:usuario_id, :projeto_id)";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindParam(':usuario_id', $usuario_id, PDO::PARAM_INT);
+        $stmt->bindParam(':projeto_id', $projeto_id, PDO::PARAM_INT);
+        return $stmt->execute();
+    }
+
+    public function desapoiarProjeto($usuario_id, $projeto_id)
+    {
+        $query = "DELETE FROM apoios_projeto WHERE usuario_id = :usuario_id AND projeto_id = :projeto_id";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindParam(':usuario_id', $usuario_id, PDO::PARAM_INT);
+        $stmt->bindParam(':projeto_id', $projeto_id, PDO::PARAM_INT);
+        return $stmt->execute();
+    }
+
+
+    function buscarCardsApoiados($id)
+    {
+        $query = "SELECT p.projeto_id, p.nome, p.descricao, p.meta, 
+                  (SELECT i.logo_url FROM imagens_projeto i WHERE i.projeto_id = p.projeto_id ORDER BY i.id ASC LIMIT 1) AS logo_url
+                  FROM projetos p 
+                  INNER JOIN apoios_projeto a USING (projeto_id)
+                  WHERE usuario_id = :id";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+        $stmt->setFetchMode(PDO::FETCH_CLASS, __CLASS__);
+        return $stmt->fetchAll();
+    }
+
+    public function usuarioJaApoiouProjeto($usuario_id, $projeto_id)
+    {
+        $query = "SELECT 1 FROM apoios_projeto 
+                  WHERE usuario_id = :usuario_id AND projeto_id = :projeto_id 
+                  LIMIT 1";
+
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindParam(':usuario_id', $usuario_id, PDO::PARAM_INT);
+        $stmt->bindParam(':projeto_id', $projeto_id, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetch();
     }
 }

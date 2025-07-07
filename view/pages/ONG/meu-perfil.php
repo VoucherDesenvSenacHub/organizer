@@ -136,7 +136,7 @@ ob_end_flush();
                 </div>
             </fieldset> -->
         <div class="btn-acoes">
-            <button class="btn">SALVAR ALTERAÇÕES <i class="fa-solid fa-floppy-disk"></i></button>
+            <button class="btn" type="submit">SALVAR ALTERAÇÕES <i class="fa-solid fa-floppy-disk"></i></button>
             <button class="btn" type="button">INATIVAR MINHA ONG <i class="fa-solid fa-ban"></i></button>
         </div>
     </form>

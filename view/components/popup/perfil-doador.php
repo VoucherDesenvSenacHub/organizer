@@ -87,7 +87,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <i class="fa-solid fa-key"></i>
                         Alterar Senha
                     </button>
-                    <button class="btn"><i class="fa-solid fa-floppy-disk"></i>Salvar</button>
+                    <button class="btn" type="submit"><i class="fa-solid fa-floppy-disk"></i>Salvar</button>
                 </div>
             </form>
         </div>

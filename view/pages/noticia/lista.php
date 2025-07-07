@@ -109,7 +109,7 @@ $perfil = $_SESSION['perfil_usuario'] ?? '';
                 </div>
                 <form id="form-busca" action="lista.php" method="GET">
                     <input type="text" name="pesquisa" placeholder="Busque uma notícia">
-                    <button class="btn"><i class="fa-solid fa-search"></i></button>
+                    <button class="btn" type="submit"><i class="fa-solid fa-search"></i></button>
                 </form>
             </div>
             <div id="imagem-top">

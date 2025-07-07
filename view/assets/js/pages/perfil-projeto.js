@@ -113,6 +113,14 @@ function verificarMensagem() {
         mostrar_toast("toast-doacao");
         removerParametro('msg');
     }
+    else if (mensagem === 'apoio') {
+        mostrar_toast("toast-apoio");
+        removerParametro('msg');
+    }
+    else if (mensagem === 'desapoio') {
+        mostrar_toast("toast-desapoio");
+        removerParametro('msg');
+    }
 }
 
 window.onload = function () {

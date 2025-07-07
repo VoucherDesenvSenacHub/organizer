@@ -53,6 +53,10 @@ $perfil = $_SESSION['perfil_usuario'] ?? '';
                         <span class="info-numero"><?= $ong->total_doacoes ?></span>
                         <span class="info-texto">Doações Recebidas</span>
                     </div>
+                    <div class="info-item">
+                        <span class="info-numero"><?= $ong->total_apoiadores ?></span>
+                        <span class="info-texto">Apoiadores</span>
+                    </div>
                 </div>
                 <!-- Botões -->
                 <?php require_once 'partials/acoes-ong.php'; ?>

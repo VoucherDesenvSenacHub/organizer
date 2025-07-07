@@ -106,6 +106,7 @@ class Ong
             SELECT o.ong_id, o.nome, o.data_cadastro, o.descricao, o.logo_url,
             (SELECT COUNT(*) FROM projetos p WHERE p.ong_id = o.ong_id) AS total_projetos,
             (SELECT COUNT(*) FROM doacao_projeto dp JOIN projetos p ON dp.projeto_id = p.projeto_id WHERE p.ong_id = o.ong_id) AS total_doacoes,
+            (SELECT COUNT(*) FROM apoios_projeto JOIN projetos USING(projeto_id) WHERE ong_id = :id) AS total_apoiadores,
             (SELECT COALESCE(SUM(dp.valor), 0) FROM doacao_projeto dp JOIN projetos p ON dp.projeto_id = p.projeto_id WHERE p.ong_id = o.ong_id) AS total_arrecadado
             FROM $this->tabela o 
             WHERE o.ong_id = :id
