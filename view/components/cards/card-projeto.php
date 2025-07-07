@@ -6,6 +6,7 @@ $descricao =  mb_strimwidth($projeto->descricao, 0, 230, '...') ?? 'Lorem ipsum 
 $barra = $barra ?? '30';
 $jaFavoritado = $jaFavoritado ?? false;
 $classe = $jaFavoritado ? 'favoritado' : '';
+$logo_url = $projeto->logo_url ?? '../../assets/images/global/image-placeholder.svg';
 ?>
 
 <div class="card-projeto <?= $class ?>">
@@ -20,7 +21,9 @@ $classe = $jaFavoritado ? 'favoritado' : '';
             </form>
         <?php endif; ?>
     </div>
-    <div class="img-projeto">250x130</div>
+    <div class="img-projeto">
+        <img src="<?= $logo_url ?>">
+    </div>
     <div class="info-projeto">
         <h5><?= $nome ?></h5>
         <p><?= $descricao ?></p>

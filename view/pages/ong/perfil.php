@@ -15,6 +15,7 @@ if (isset($_GET['id'])) {
     $projetos_ong = $projetoModel->listar($id);
     $noticias_ong = $noticiaModel->listarCards($id);
     $doadores_ong = $ongModel->buscarDoadores($id);
+    $logo_url = $ong->logo_url ?? '../../assets/images/global/image-placeholder.svg';
 }
 
 $perfil = $_SESSION['perfil_usuario'] ?? '';
@@ -29,7 +30,7 @@ $perfil = $_SESSION['perfil_usuario'] ?? '';
         ?>
         <section id="apresentacao" class="container-section">
             <div id="logo-ong">
-                <img src="https://placeholder.pagebee.io/api/plain/400/250">
+                <img src="<?= $logo_url ?>">
                 <div class="btn-salvar">
                     <button id="share" class="fa-solid fa-share-nodes" onclick="abrir_popup('compartilhar-popup')"></button>
                     <button id="like" class="fa-solid fa-heart" onclick="abrir_popup('login-obrigatorio-popup')"></button>
@@ -51,6 +52,10 @@ $perfil = $_SESSION['perfil_usuario'] ?? '';
                     <div class="info-item">
                         <span class="info-numero"><?= $ong->total_doacoes ?></span>
                         <span class="info-texto">Doações Recebidas</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-numero"><?= $ong->total_apoiadores ?></span>
+                        <span class="info-texto">Apoiadores</span>
                     </div>
                 </div>
                 <!-- Botões -->
@@ -78,7 +83,7 @@ $perfil = $_SESSION['perfil_usuario'] ?? '';
                     <h3>Doadores</h3>
                 </div>
                 <div class="mini-cards">
-                    <?php 
+                    <?php
                     if ($doadores_ong) {
                         foreach ($doadores_ong as $doador) {
                             require '../../components/cards/card-doador.php';

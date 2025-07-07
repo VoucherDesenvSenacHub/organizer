@@ -4,192 +4,39 @@ $tituloPagina = 'Apoios | Organizer';
 $cssPagina = ['doador/apoios.css'];
 require_once '../../components/layout/base-inicio.php';
 require_once __DIR__ . '/../../../autoload.php';
+$projetoModel = new Projeto();
+$lista = $projetoModel->buscarCardsApoiados($_SESSION['usuario_id']);
+
+// Favoritar
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['projeto-id-favorito'])) {
+    $projeto_id = $_POST['projeto-id-favorito'];
+    $projetoModel->favoritarProjeto($projeto_id);
+}
+
+$projetosFavoritos = $projetoModel->listarFavoritos($_SESSION['usuario_id']);
+
 ?>
 <main>
     <section>
         <div class="container">
             <h1><i class="fa-solid fa-hand-holding-heart"></i> MEUS APOIOS</h1>
-            <div id="secao-1">
-                
-                <h3>Projetos</h3>
-                <a href="../projeto/perfil.php">
-                    <div class="cards-participacao">
-                        <div class="cards-projeto">
-                            <div class="card-participacao">
-                                <img src="../../assets/images/projeto-sem-foto.png" alt="Imagem do projeto">
-                                <div class="info-card">
-                                    <div class="info-cima">
-                                        <div>
-                                            <h3 class="titulo-projeto">Nome do Projeto</h3>
-                                            <p class="projeto">Projeto</p>
-                                        </div>
-                                        <p class="ong-responsavel">Ong Responsável</p>
-                                    </div>
-                                    <div class="info-baixo">
-                                        <ul>
-                                            <li>Saúde</li>
-                                            <li>Ambiente</li>
-                                            <li>Esporte</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                </a>
-                <a href="../projeto/perfil.php">
-                    <div class="card-participacao">
-                        <img src="../../assets/images/projeto-sem-foto.png" alt="Imagem do projeto">
-                        <div class="info-card">
-                            <div class="info-cima">
-                                <div>
-                                    <h3 class="titulo-projeto">Nome do Projeto</h3>
-                                    <p class="projeto">Projeto</p>
-                                </div>
-                                <p class="ong-responsavel">Ong Responsável</p>
-                            </div>
-                            <div class="info-baixo">
-                                <ul>
-                                    <li>Saúde</li>
-                                    <li>Ambiente</li>
-                                    <li>Esporte</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-                <a href="../projeto/perfil.php">
-                    <div class="card-participacao">
-                        <img src="../../assets/images/projeto-sem-foto.png" alt="Imagem do projeto">
-                        <div class="info-card">
-                            <div class="info-cima">
-                                <div>
-                                    <h3 class="titulo-projeto">Nome do Projeto</h3>
-                                    <p class="projeto">Projeto</p>
-                                </div>
-                                <p class="ong-responsavel">Ong Responsável</p>
-                            </div>
-                            <div class="info-baixo">
-                                <ul>
-                                    <li>Saúde</li>
-                                    <li>Ambiente</li>
-                                    <li>Esporte</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-                <a href="../projeto/perfil.php">
-                    <div class="card-participacao">
-                        <img src="../../assets/images/projeto-sem-foto.png" alt="Imagem do projeto">
-                        <div class="info-card">
-                            <div class="info-cima">
-                                <div>
-                                    <h3 class="titulo-projeto">Nome do Projeto</h3>
-                                    <p class="projeto">Projeto</p>
-                                </div>
-                                <p class="ong-responsavel">Ong Responsável</p>
-                            </div>
-                            <div class="info-baixo">
-                                <ul>
-                                    <li>Saúde</li>
-                                    <li>Ambiente</li>
-                                    <li>Esporte</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+            <div class="box-apoios">
+                <?php if (!$lista) {
+                    echo '<div class="btn-doar"> 
+                            <h4>Você ainda não apoiou nenhum Projeto! <i class="fa-regular fa-face-frown"></i> </h4>
+                            <a href="../projeto/lista.php">
+                            <button class="btn"><i class="fa-solid fa-diagram-project"></i> Conhecer Projetos</button></a>
+                          </div>';
+                } else {
+                    foreach ($lista as $projeto) {
+                        $jaFavoritado = isset($_SESSION['usuario_id']) && in_array($projeto->projeto_id, $projetosFavoritos);
+                        $valor_projeto = $projetoModel->buscarValor($projeto->projeto_id);
+                        $barra = round(($valor_projeto / $projeto->meta) * 100);
+                        require '../../components/cards/card-projeto.php';
+                    }
+                }
+                ?>
             </div>
-        </div>
-        </a>
-        <h3>Ongs</h3>
-        <a href="../ong/perfil.php">
-            <div class="cards-participacao">
-                <div class="cards-projeto">
-                    <div class="card-participacao">
-                        <img src="../../assets/images/projeto-sem-foto.png" alt="Imagem do projeto">
-                        <div class="info-card">
-                            <div class="info-cima">
-                                <div>
-                                    <h3 class="titulo-ong">Nome da ONG</h3>
-                                    <p class="projeto-de-ong">ONG</p>
-                                </div>
-                                <p><span>9</span> Projetos</p>
-                            </div>
-                            <div class="info-baixo">
-                                <ul>
-                                    <li>Saúde</li>
-                                    <li>Ambiente</li>
-                                    <li>Esporte</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-        </a>
-        <a href="../ong/perfil.php">
-            <div class="card-participacao">
-                <img src="../../assets/images/projeto-sem-foto.png" alt="Imagem do projeto">
-                <div class="info-card">
-                    <div class="info-cima">
-                        <div>
-                            <h3 class="titulo-ong">Nome da ONG</h3>
-                            <p class="projeto-de-ong">ONG</p>
-                        </div>
-                        <p><span>9</span> Projetos</p>
-                    </div>
-                    <div class="info-baixo">
-                        <ul>
-                            <li>Saúde</li>
-                            <li>Ambiente</li>
-                            <li>Esporte</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </a>
-        <a href="../ong/perfil.php">
-            <div class="card-participacao">
-                <img src="../../assets/images/projeto-sem-foto.png" alt="Imagem do projeto">
-                <div class="info-card">
-                    <div class="info-cima">
-                        <div>
-                            <h3 class="titulo-ong">Nome da ONG</h3>
-                            <p class="projeto-de-ong">ONG</p>
-                        </div>
-                        <p><span>9</span> Projetos</p>
-                    </div>
-                    <div class="info-baixo">
-                        <ul>
-                            <li>Saúde</li>
-                            <li>Ambiente</li>
-                            <li>Esporte</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </a>
-        <a href="../ong/perfil.php">
-            <div class="card-participacao">
-                <img src="../../assets/images/projeto-sem-foto.png" alt="Imagem do projeto">
-                <div class="info-card">
-                    <div class="info-cima">
-                        <div>
-                            <h3 class="titulo-ong">Nome da ONG</h3>
-                            <p class="projeto-de-ong">ONG</p>
-                        </div>
-                        <p><span>9</span> Projetos</p>
-                    </div>
-                    <div class="info-baixo">
-                        <ul>
-                            <li>Saúde</li>
-                            <li>Ambiente</li>
-                            <li>Esporte</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </a>
-        </div>
-        </div>
-        </div>
         </div>
     </section>
 </main>

@@ -1,5 +1,6 @@
 /* CSS DA TELA DE PERFIL DO PROJETO */
 @import url(../../components/popup/doacao.css);
+@import url(../../components/popup/apoiar.css);
 
 /* Classe das Sections */
 .container-section {
@@ -34,6 +35,7 @@ section#apresentacao {
     height: 100%;
     max-width: 375px;
     width: 100%;
+    gap: 10px;
 }
 
 /* Nome */
@@ -114,7 +116,7 @@ section#apresentacao {
     color: var(--cor-principal);
 }
 
-#dados-projeto #acoes #btn-apoio     {
+#dados-projeto #acoes #btn-apoio {
     background-color: var(--cor-apoiar);
     color: var(--cor-principal);
 }
@@ -129,10 +131,12 @@ section#apresentacao {
 /* Carrossel Classes*/
 .carousel {
     /* border-radius: 5px; */
-    background-color: rgb(48, 48, 48);
-    box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
+    background-color: #eff1f3;
+    /* box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px; */
+    box-shadow: rgba(60, 64, 67, 0.4) 0px 1px 2px 0px, rgba(60, 64, 67, 0.25) 0px 1px 3px 1px;
     position: relative;
     overflow: hidden;
+    border-radius: 4px;
     cursor: pointer;
 }
 
@@ -140,13 +144,14 @@ section#apresentacao {
     display: flex;
     gap: 10px;
     transition: .4s ease-in;
+    height: 100%;
+    width: 100%;
 }
 
 .carousel .carousel-imgs img {
     width: 100%;
-    /* object-fit: cover; */
-    /* background-position: center;
-    background-size: cover; */
+    object-fit: cover;
+    flex: 0 0 100%;
 }
 
 .carousel .btn-salvar {
@@ -216,6 +221,7 @@ section#apresentacao {
 #btns-group .icon-title h3 {
     font-size: 18px;
     font-weight: 600;
+    transition: .3s;
 }
 
 #btns-group .icon-title img {
@@ -269,7 +275,24 @@ section#apresentacao {
 }
 
 #principal-painel #control-painel .container-painel h3 {
-    color: var(--cor-azul-escuro);
+    color: var(--cor-principal);
+    font-size: 16px;
+    font-weight: 600;
+    transition: .3s;
+}
+
+.area-doador-voluntario i {
+    font-size: 32px;
+}
+
+.area-doador-voluntario i.fa-hand-holding-heart {
+    color: var(--cor-apoiar);
+}
+.area-doador-voluntario i.fa-hand-holding-dollar {
+    color: var(--cor-verde);
+}
+.area-doador-voluntario i.fa-house-flag {
+    color: var(--cor-amarelo);
 }
 
 #principal-painel #control-painel .container-painel .box-cards {
@@ -279,12 +302,16 @@ section#apresentacao {
     gap: 10px;
 }
 
-.area-doador-voluntario {
+/* .area-doador-voluntario {
     padding: 0 50px;
-}
+} */
 
 .area-doador-voluntario h3 {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
+}
+
+.box-cards i {
+    font-size: 18px;
 }
 
 .box-cards h4 {
@@ -296,6 +323,11 @@ section#apresentacao {
 @media (max-width: 530px) {
     .area-doador-voluntario {
         padding: 0;
+    }
+
+    #btns-group .icon-title h3,
+    #principal-painel #control-painel .container-painel h3 {
+        font-size: 14px;
     }
 }
 
@@ -337,11 +369,15 @@ section#apresentacao {
 
 @media (max-width: 455px) {
     #container-principal {
-        padding: 50px 4px;
+        padding: 50px 5px;
     }
 
     .container-section {
         padding: 5px;
+    }
+
+    .box-cards h4 {
+        font-size: 13px;
     }
 }
 

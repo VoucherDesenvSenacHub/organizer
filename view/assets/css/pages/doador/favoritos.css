@@ -103,6 +103,10 @@
     gap: 10px;
 }
 
+.btn-doar a {
+    text-decoration: none;
+}
+
 .btn-doar h4 {
     font-weight: 500;
     text-align: center;

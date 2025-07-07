@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] = 'GET' && isset($_GET['pesquisa'])) {
             <h1><i class="fa-solid fa-house-flag"></i> PAINEL DE ONGS</h1>
             <form id="form-busca" action="ongs.php" method="GET">
                 <input type="text" name="pesquisa" placeholder="Busque uma ONG">
-                <button class="btn"><i class="fa-solid fa-search"></i></button>
+                <button class="btn" type="submit"><i class="fa-solid fa-search"></i></button>
             </form>
         </div>
         <!-- Quantidade da busca -->

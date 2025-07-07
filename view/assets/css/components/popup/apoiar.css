@@ -1,0 +1,76 @@
+#apoiar-popup {
+    background-color: rgba(0, 0, 0, 0.1);
+    padding: 15px !important;
+}
+
+#apoiar-popup div {
+    background-color: white;
+    color: var(--cor-principal);
+    flex-direction: column;
+    align-items: center;
+}
+
+#apoiar-popup div h1 {
+    text-align: center;
+    font-size: 18px;
+    text-transform: uppercase;
+}
+
+#apoiar-popup div p {
+    max-width: 400px;
+    text-align: center;
+    font-size: 14px;
+}
+
+/* Botão */
+#apoiar-popup form {
+    width: 100%;
+}
+
+#apoiar-popup form button {
+    width: 100%;
+    height: 40px;
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: none;
+    border: 2px solid var(--cor-apoiar);
+}
+
+#apoiar-popup form button img {
+    width: 30px;
+}
+
+#apoiar-popup form button:hover {
+    background-color: var(--cor-apoiar);
+    color: aliceblue;
+}
+
+/* #apoiar-popup form + button {
+    border: none;
+    padding: 10px;
+    font-weight: 500;
+    color: var(--cor-principal);
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    margin-top: 10px;
+    letter-spacing: 1px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+#apoiar-popup form + button:hover {
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 1px 4px;
+} */
+
+@media (max-width: 500px) {
+    #apoiar-popup div h1 {
+        font-size: 15px;
+    }
+
+    #apoiar-popup div p {
+        font-size: 12.5px;
+    }
+}

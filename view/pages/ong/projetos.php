@@ -53,7 +53,7 @@ ob_end_flush();
             <h1><i class="fa-solid fa-diagram-project"></i> MEUS PROJETOS</h1>
             <form id="form-busca" action="projetos.php" method="GET">
                 <input type="text" name="pesquisa" placeholder="Busque um Projeto">
-                <button class="btn"><i class="fa-solid fa-search"></i></button>
+                <button class="btn" type="submit"><i class="fa-solid fa-search"></i></button>
             </form>
             <button class="btn btn-novo" onclick="abrir_popup('editar-projeto-popup')">NOVO PROJETO +</button>
         </div>
