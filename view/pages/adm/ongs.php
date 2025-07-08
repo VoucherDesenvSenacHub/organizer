@@ -32,6 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] = 'GET' && isset($_GET['pesquisa'])) {
         <section id="box-ongs">
             <?php
             if ($lista) {
+                $class = 'tp-adm';
                 foreach ($lista as $ong) {
                     require '../../components/cards/card-ong.php';
                 }

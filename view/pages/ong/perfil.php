@@ -18,9 +18,31 @@ if (isset($_GET['id'])) {
     $logo_url = $ong->logo_url ?? '../../assets/images/global/image-placeholder.svg';
 }
 
+if (isset($_SESSION['usuario_id'])) {
+    $projetosFavoritos = $projetoModel->listarFavoritos($_SESSION['usuario_id']);
+}
+
+// Buscar se é favorito
+if (isset($_SESSION['usuario_id'])) {
+    $ongsFavoritas = $ongModel->listarFavoritas($_SESSION['usuario_id']);
+}
+
 $perfil = $_SESSION['perfil_usuario'] ?? '';
 ?>
-
+<!-- 
+    Toast de Favoritar
+-->
+<div id="toast-favorito" class="toast">
+    <i class="fa-solid fa-heart"></i>
+    Adicionado aos favoritos!
+</div>
+<div id="toast-remover-favorito" class="toast erro">
+    <i class="fa-solid fa-heart-crack"></i>
+    Removido dos favoritos!
+</div>
+<!-- 
+    Ínicio da Página
+-->
 <main <?php if ($perfil == 'doador') echo 'class="usuario-logado"'; ?>>
     <div class="container" id="container-principal">
         <?php
@@ -33,7 +55,15 @@ $perfil = $_SESSION['perfil_usuario'] ?? '';
                 <img src="<?= $logo_url ?>">
                 <div class="btn-salvar">
                     <button id="share" class="fa-solid fa-share-nodes" onclick="abrir_popup('compartilhar-popup')"></button>
-                    <button id="like" class="fa-solid fa-heart" onclick="abrir_popup('login-obrigatorio-popup')"></button>
+                    <?php if (!isset($_SESSION['usuario_id'])): ?>
+                        <button title="Favoritar" id="like" class="fa-solid fa-heart" onclick="abrir_popup('login-obrigatorio-popup')"></button>
+                    <?php elseif (!isset($_SESSION['perfil_usuario']) || $_SESSION['perfil_usuario'] === 'doador') : ?>
+                        <?php $classe = in_array($ong->ong_id, $ongsFavoritas) ? 'favoritado' : ''; ?>
+                        <form action="../.././../controller/OngController.php?acao=favoritar" method="POST">
+                            <input type="hidden" name="ong-id-favorito" value="<?= $id ?>">
+                            <button title="Favoritar" id="like" class="fa-solid fa-heart <?= $classe ?>"></button>
+                        </form>
+                    <?php endif; ?>
                 </div>
             </div>
             <div id="dados-ong" class="ong-card">
@@ -47,7 +77,7 @@ $perfil = $_SESSION['perfil_usuario'] ?? '';
                 <div class="info-resumo">
                     <div class="info-item">
                         <span class="info-numero"><?= $ong->total_projetos ?></span>
-                        <span class="info-texto">Projetos Criados</span>
+                        <span class="info-texto">Projetos</span>
                     </div>
                     <div class="info-item">
                         <span class="info-numero"><?= $ong->total_doacoes ?></span>
@@ -123,9 +153,13 @@ $perfil = $_SESSION['perfil_usuario'] ?? '';
                 <div class="mini-cards">
                     <?php
                     if ($projetos_ong) {
+                        if (isset($_SESSION['perfil_usuario']) && ($_SESSION['perfil_usuario'] === 'adm' || $_SESSION['perfil_usuario'] === 'ong')) {
+                            $class = 'tp-ong';
+                        }
                         foreach ($projetos_ong as $projeto) {
                             $valor_projeto = $projetoModel->buscarValor($projeto->projeto_id);
                             $barra = round(($valor_projeto / $projeto->meta) * 100);
+                            $jaFavoritado = isset($_SESSION['usuario_id']) && in_array($projeto->projeto_id, $projetosFavoritos);
                             require '../../components/cards/card-projeto.php';
                         }
                     } else {
@@ -141,4 +175,13 @@ $perfil = $_SESSION['perfil_usuario'] ?? '';
 <?php
 $jsPagina = [];
 require_once '../../components/layout/footer/footer-logado.php';
+// Ativar os toast
+if (isset($_SESSION['favorito'])) {
+    if ($_SESSION['favorito']) {
+        echo "<script>mostrar_toast('toast-favorito')</script>";
+    } else {
+        echo "<script>mostrar_toast('toast-remover-favorito')</script>";
+    }
+    unset($_SESSION['favorito']);
+}
 ?>

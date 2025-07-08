@@ -165,31 +165,34 @@ class Ong
     }
 
 
-    function favoritarOng($ong_id)
+    function favoritarOng($usuario_id, $ong_id)
     {
-        $usuario_id = $_SESSION['usuario_id'];
-
         // Verifica se já está favoritada
-        $sql = "SELECT * FROM favoritos_ongs WHERE usuario_id = :id AND ong_id = :id_ong";
+        $sql = "SELECT 1 FROM favoritos_ongs WHERE usuario_id = :id AND ong_id = :id_ong";
         $stmt = $this->pdo->prepare($sql);
-        $stmt->bindParam(':id', $usuario_id, PDO::PARAM_INT);
-        $stmt->bindParam(':id_ong', $ong_id, PDO::PARAM_INT);
-        $stmt->execute();
+        $stmt->execute([
+            ':id' => $usuario_id,
+            ':id_ong' => $ong_id
+        ]);
 
         if ($stmt->rowCount() > 0) {
             // Já favoritada → remover
             $sql = "DELETE FROM favoritos_ongs WHERE usuario_id = :id AND ong_id = :id_ong";
             $stmt = $this->pdo->prepare($sql);
-            $stmt->bindParam(':id', $usuario_id, PDO::PARAM_INT);
-            $stmt->bindParam(':id_ong', $ong_id, PDO::PARAM_INT);
-            $stmt->execute();
+            $stmt->execute([
+                ':id' => $usuario_id,
+                ':id_ong' => $ong_id
+            ]);
+            return false; // desfavoritada
         } else {
             // Não favoritada → adicionar
             $sql = "INSERT INTO favoritos_ongs (usuario_id, ong_id) VALUES (:id, :id_ong)";
             $stmt = $this->pdo->prepare($sql);
-            $stmt->bindParam(':id', $usuario_id, PDO::PARAM_INT);
-            $stmt->bindParam(':id_ong', $ong_id, PDO::PARAM_INT);
-            $stmt->execute();
+            $stmt->execute([
+                ':id' => $usuario_id,
+                ':id_ong' => $ong_id
+            ]);
+            return true; // favoritada
         }
     }
 
