@@ -1,5 +1,6 @@
 <?php
 $id = $ong->ong_id ?? 'Erro';
+$class = $class ?? '';
 $nome = $ong->nome ?? 'Nome da ONG';
 $descricao =  mb_strimwidth($ong->descricao, 0, 215, '...') ?? 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati qui odio, dignissimos alias ut, nesciunt deserunt maiores at adipisci modi dolor inventore suscipit quas quis cumque minus nobis, ipsum delectus!';
 $total_doacoes = $ong->total_doacoes ?? '?';
@@ -9,7 +10,7 @@ $classe = $jaFavoritada ? 'favoritado' : '';
 $logo_url = $ong->logo_url ?? '../../assets/images/global/image-placeholder.svg';
 ?>
 
-<div class="card-ong">
+<div class="card-ong <?= $class ?>">
     <div class="perfil">
         <div class="logo">
             <img src="<?= $logo_url ?>">
@@ -34,7 +35,7 @@ $logo_url = $ong->logo_url ?? '../../assets/images/global/image-placeholder.svg'
             <?php if (!isset($_SESSION['usuario_id'])): ?>
                 <button title="Favoritar" id="like" class="fa-solid fa-heart" onclick="abrir_popup('login-obrigatorio-popup')"></button>
             <?php else: ?>
-                <form action="" method="POST">
+                <form action="../.././../controller/OngController.php?acao=favoritar" method="POST">
                     <input type="hidden" name="ong-id-favorito" value="<?= $id ?>">
                     <button title="Favoritar" id="like" class="fa-solid fa-heart <?= $classe ?>"></button>
                 </form>

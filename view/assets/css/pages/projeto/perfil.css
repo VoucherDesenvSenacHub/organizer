@@ -160,10 +160,25 @@ section#apresentacao {
     right: 10px;
     width: fit-content;
     gap: 10px;
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: .3s;
+}
+
+.carousel:hover .btn-salvar {
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(0);
 }
 
 .carousel .btn-salvar div {
     background-color: white;
+}
+
+.carousel .btn-salvar button {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: aliceblue;
 }
 
 /* Carrossel pequeno */
@@ -317,6 +332,10 @@ section#apresentacao {
 .box-cards h4 {
     font-weight: 500;
     color: #444;
+}
+
+.area-doador-voluntario .card-ong .saiba-mais-ong {
+    width: 100%;
 }
 
 

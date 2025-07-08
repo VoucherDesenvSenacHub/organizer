@@ -102,7 +102,8 @@
     justify-content: center;
     align-items: center;
     font-size: 14px;
-    width: 70%;
+    /* width: 70%; */
+    width: 100%;
     background-color: var(--cor-amarelo);
     border-radius: 5px;
     font-weight: 500;
@@ -122,7 +123,8 @@
 /* Área de Salvar e Compartilhar */
 .btn-salvar {
     display: flex;
-    width: 30%;
+    /* width: 30%; */
+    gap: 15px;
     justify-content: space-between;
     align-items: center;
     font-size: 18px;
@@ -151,11 +153,17 @@
 }
 
 .btn-salvar button.favoritado {
-    color: hotpink;
+    color: hotpink !important;
 }
 
 @media (max-width: 450px) {
     .card-ong {
         max-height: none;
     }
+}
+
+
+/* Card para adm (tirar o botão de like) */
+.card-ong.tp-adm .btn-salvar form {
+    display: none;
 }

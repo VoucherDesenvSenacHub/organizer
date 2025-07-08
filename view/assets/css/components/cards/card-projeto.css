@@ -157,6 +157,6 @@
     height: auto;
 } */
 
-.card-projeto.tp-ong .acoes-projeto .btn-like {
+.card-projeto.tp-ong .acoes-projeto form {
     display: none;
 }

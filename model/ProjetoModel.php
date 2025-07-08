@@ -34,9 +34,9 @@ class Projeto
     }
 
 
-    function buscarId($id)
+    function buscarPerfil($id)
     {
-        $query = "SELECT * FROM $this->tabela WHERE projeto_id = :id";
+        $query = "SELECT projeto_id, nome, meta, descricao, data_cadastro, ong_id FROM $this->tabela WHERE projeto_id = :id";
         $stmt = $this->pdo->prepare($query);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
@@ -193,33 +193,34 @@ class Projeto
     }
 
 
-    function favoritarProjeto($projeto_id)
+    function favoritarProjeto($usuario_id, $projeto_id)
     {
-        $usuario_id = $_SESSION['usuario_id'];
-
-        // Verifica se já está favoritada
-        $sql = "SELECT * FROM favoritos_projetos WHERE usuario_id = :id AND projeto_id = :projeto_id";
+        // Verifica se já está favoritado
+        $sql = "SELECT 1 FROM favoritos_projetos WHERE usuario_id = :id AND projeto_id = :projeto_id";
         $stmt = $this->pdo->prepare($sql);
-        $stmt->bindParam(':id', $usuario_id, PDO::PARAM_INT);
-        $stmt->bindParam(':projeto_id', $projeto_id, PDO::PARAM_INT);
-        $stmt->execute();
+        $stmt->execute([
+            ':id' => $usuario_id,
+            ':projeto_id' => $projeto_id
+        ]);
 
         if ($stmt->rowCount() > 0) {
-            // Já favoritada → remover
+            // Já favoritado → desfavorita
             $sql = "DELETE FROM favoritos_projetos WHERE usuario_id = :id AND projeto_id = :projeto_id";
             $stmt = $this->pdo->prepare($sql);
-            $stmt->bindParam(':id', $usuario_id, PDO::PARAM_INT);
-            $stmt->bindParam(':projeto_id', $projeto_id, PDO::PARAM_INT);
-            $stmt->execute();
+            $stmt->execute([':id' => $usuario_id, ':projeto_id' => $projeto_id]);
+            return false; // desfavoritado
         } else {
-            // Não favoritada → adicionar
+            // Não favoritado → adiciona
             $sql = "INSERT INTO favoritos_projetos (usuario_id, projeto_id) VALUES (:id, :projeto_id)";
             $stmt = $this->pdo->prepare($sql);
-            $stmt->bindParam(':id', $usuario_id, PDO::PARAM_INT);
-            $stmt->bindParam(':projeto_id', $projeto_id, PDO::PARAM_INT);
-            $stmt->execute();
+            $stmt->execute([
+                ':id' => $usuario_id,
+                ':projeto_id' => $projeto_id
+            ]);
+            return true; // favoritado
         }
     }
+
 
     function listarFavoritos($usuario_id)
     {

@@ -7,15 +7,20 @@ require_once __DIR__ . '/../../../autoload.php';
 $projetoModel = new Projeto();
 $lista = $projetoModel->buscarCardsApoiados($_SESSION['usuario_id']);
 
-// Favoritar
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['projeto-id-favorito'])) {
-    $projeto_id = $_POST['projeto-id-favorito'];
-    $projetoModel->favoritarProjeto($projeto_id);
-}
-
 $projetosFavoritos = $projetoModel->listarFavoritos($_SESSION['usuario_id']);
 
 ?>
+<!-- 
+    Toast de Favoritar
+-->
+<div id="toast-favorito" class="toast">
+    <i class="fa-solid fa-heart"></i>
+    Adicionado aos favoritos!
+</div>
+<div id="toast-remover-favorito" class="toast erro">
+    <i class="fa-solid fa-heart-crack"></i>
+    Removido dos favoritos!
+</div>
 <main>
     <section>
         <div class="container">
@@ -42,6 +47,15 @@ $projetosFavoritos = $projetoModel->listarFavoritos($_SESSION['usuario_id']);
 </main>
 
 <?php
-// $jsPagina = ['home-doador.js'];
+$jsPagina = [''];
 require_once '../../components/layout/footer/footer-logado.php';
+// Ativar os toast
+if (isset($_SESSION['favorito'])) {
+    if ($_SESSION['favorito']) {
+        echo "<script>mostrar_toast('toast-favorito')</script>";
+    } else {
+        echo "<script>mostrar_toast('toast-remover-favorito')</script>";
+    }
+    unset($_SESSION['favorito']);
+}
 ?>

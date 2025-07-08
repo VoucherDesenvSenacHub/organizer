@@ -14,7 +14,7 @@ require_once '../../components/layout/base-inicio.php';
 //Processamento de dados
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
-    $projeto = $projetoModel->buscarId($id);
+    $projeto = $projetoModel->buscarPerfil($id);
     $valor_projeto = $projetoModel->buscarValor($id);
     $qntdoadores = $projetoModel->contarDoadores($id);
     $doadores_projeto = $projetoModel->buscarDoadores($id);
@@ -80,9 +80,26 @@ if (isset($_GET['id']) && isset($_SESSION['usuario_id'])) {
 if (isset($_GET['id']) && $projeto) {
     require_once 'partials/popups-projeto.php';
 }
+
+// Buscar se é favorito
+if (isset($_SESSION['usuario_id'])) {
+    $projetosFavoritos = $projetoModel->listarFavoritos($_SESSION['usuario_id']);
+}
+
 require_once 'partials/toast-projeto.php';
 ob_end_flush();
 ?>
+<!-- 
+    Toast de Favoritar
+-->
+<div id="toast-favorito" class="toast">
+    <i class="fa-solid fa-heart"></i>
+    Adicionado aos favoritos!
+</div>
+<div id="toast-remover-favorito" class="toast erro">
+    <i class="fa-solid fa-heart-crack"></i>
+    Removido dos favoritos!
+</div>
 <main>
     <div class="container" id="container-principal">
         <?php if (!isset($_GET['id']) || !$projeto): ?>
@@ -123,7 +140,16 @@ ob_end_flush();
                     </div>
                     <div class="btn-salvar">
                         <button id="share" class="fa-solid fa-share-nodes" onclick="abrir_popup('compartilhar-popup')"></button>
-                        <button id="like" class="fa-solid fa-heart" onclick="abrir_popup('login-obrigatorio-popup')"></button>
+                        <?php if (!isset($_SESSION['usuario_id'])): ?>
+                            <button title="Favoritar" class="btn-like fa-solid fa-heart" onclick="abrir_popup('login-obrigatorio-popup')"></button>
+
+                        <?php elseif (!isset($_SESSION['perfil_usuario']) || $_SESSION['perfil_usuario'] === 'doador') : ?>
+                            <?php $classe = in_array($projeto->projeto_id, $projetosFavoritos) ? 'favoritado' : ''; ?>
+                            <form action="../.././../controller/ProjetoController.php?acao=favoritar" method="POST">
+                                <input type="hidden" name="projeto-id-favorito" value="<?= $id ?>">
+                                <button title="Favoritar" class="btn-like fa-solid fa-heart <?= $classe ?>"></button>
+                            </form>
+                        <?php endif; ?>
                     </div>
                 </div>
             </section>
@@ -161,10 +187,12 @@ ob_end_flush();
                         <img src="../../assets/images/pages/icone-apoio.png" alt="">
                         <h3>Apoiadores</h3>
                     </div>
-                    <div class="icon-title">
-                        <img src="../../assets/images/pages/icone-medalha.png" alt="">
-                        <h3>Responsável</h3>
-                    </div>
+                    <?php if (!isset($_SESSION['perfil_usuario']) || $_SESSION['perfil_usuario'] !== 'ong'): ?>
+                        <div class="icon-title">
+                            <img src="../../assets/images/pages/icone-medalha.png" alt="">
+                            <h3>Responsável</h3>
+                        </div>
+                    <?php endif; ?>
                 </div>
                 <div id="principal-painel">
                     <div id="control-painel">
@@ -200,27 +228,25 @@ ob_end_flush();
                                 ?>
                             </div>
                         </div>
-                        <div class="container-painel area-doador-voluntario">
-                            <h3><i class="fa-solid fa-house-flag"></i> ONG RESPONSÁVEL</h3>
-                            <div class="card-ong">
-                                <div class="perfil">
-                                    <div class="logo">
-                                        <img src="<?= $ong->logo_url ?? '../../assets/images/global/image-placeholder.svg' ?>">
+                        <?php if (!isset($_SESSION['perfil_usuario']) || $_SESSION['perfil_usuario'] !== 'ong'): ?>
+                            <div class="container-painel area-doador-voluntario">
+                                <h3><i class="fa-solid fa-house-flag"></i> ONG RESPONSÁVEL</h3>
+                                <div class="card-ong">
+                                    <div class="perfil">
+                                        <div class="logo">
+                                            <img src="<?= $ong->logo_url ?? '../../assets/images/global/image-placeholder.svg' ?>">
+                                        </div>
+                                        <div class="nome">
+                                            <h2><?= $ong->nome ?></h2>
+                                            <!-- <p>Área de Atuação</p> -->
+                                        </div>
                                     </div>
-                                    <div class="nome">
-                                        <h2><?= $ong->nome ?></h2>
-                                        <!-- <p>Área de Atuação</p> -->
-                                    </div>
-                                </div>
-                                <div class="acoes-ong">
-                                    <a href="../ong/perfil.php?id=<?= $projeto->ong_id ?>" class="saiba-mais-ong">Conhecer ONG</a>
-                                    <div class="btn-salvar">
-                                        <button id="share" class="fa-solid fa-share-nodes" onclick="abrir_popup('compartilhar-popup')"></button>
-                                        <button id="like" class="fa-solid fa-heart" onclick="abrir_popup('login-obrigatorio-popup')"></button>
+                                    <div class="acoes-ong">
+                                        <a href="../ong/perfil.php?id=<?= $projeto->ong_id ?>" class="saiba-mais-ong">Conhecer ONG</a>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        <?php endif; ?>
                     </div>
                 </div>
             </section>
@@ -231,4 +257,13 @@ ob_end_flush();
 <?php
 $jsPagina = ['perfil-projeto.js'];
 require_once '../../components/layout/footer/footer-logado.php';
+// Ativar os toast
+if (isset($_SESSION['favorito'])) {
+    if ($_SESSION['favorito']) {
+        echo "<script>mostrar_toast('toast-favorito')</script>";
+    } else {
+        echo "<script>mostrar_toast('toast-remover-favorito')</script>";
+    }
+    unset($_SESSION['favorito']);
+}
 ?>
