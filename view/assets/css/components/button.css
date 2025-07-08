@@ -9,6 +9,11 @@
     letter-spacing: 1px;
     color: #1C3464;
     transition: .3s;
+    display: flex
+;
+    align-items: center;
+    gap: 5px;
+    justify-content: center;
 }
 
 .btn:hover {
@@ -19,4 +24,8 @@
 .btn a {
     text-decoration: none;
     color: #1C3464;
+}
+
+.btn i {
+    font-size: 16px;
 }

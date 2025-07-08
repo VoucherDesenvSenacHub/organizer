@@ -12,6 +12,7 @@
  
 #compartilhar-popup .container-popup p {
     color: var(--cor-principal);
+    font-weight: 400;
 }
 
 #compartilhar-popup .container-popup input {

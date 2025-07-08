@@ -31,3 +31,12 @@
 .toast.erro i {
     color: var(--cor-vermelho);
 }
+
+/* Cor do apoio */
+.toast.apoio {
+    border-left: 6px solid var(--cor-apoiar);
+}
+
+.toast.apoio i {
+    color: var(--cor-apoiar);
+}

@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <button class="btn-fechar-popup fa-solid fa-xmark" onclick="fechar_popup('perfil-doador-popup')"></button>
         <div id="left" class="box">
             <div id="perfil">
-                <img src="../../assets/images/pages/perfil_julia.png">
+                <img src="<?= $_SESSION['usuario_foto'] ?>">
                 <p><?= $usuario->nome ?></p>
                 <!-- <p>email@blabla.com</p> -->
             </div>
@@ -87,7 +87,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <i class="fa-solid fa-key"></i>
                         Alterar Senha
                     </button>
-                    <button class="btn"><i class="fa-solid fa-floppy-disk"></i>Salvar</button>
+                    <button class="btn" type="submit"><i class="fa-solid fa-floppy-disk"></i>Salvar</button>
                 </div>
             </form>
         </div>

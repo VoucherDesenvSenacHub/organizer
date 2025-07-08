@@ -17,7 +17,7 @@
                     <i class="fa-solid fa-lock"></i>
                 </div>
             </div>
-            <button class="btn">ALTERAR</button>
+            <button class="btn" type="submit">ALTERAR</button>
         </form>
     </div>
 </div>

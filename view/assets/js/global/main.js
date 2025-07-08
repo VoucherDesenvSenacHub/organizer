@@ -104,29 +104,26 @@ function abrir_aside() {
 
 
 // BLOQUEAR ENVIO DUPLO EM TODOS OS FORMULÁRIOS
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', () => {
     const formularios = document.querySelectorAll('form');
 
     formularios.forEach(form => {
-        form.addEventListener('submit', function (e) {
-            if (form.dataset.enviado === 'true') {
-                e.preventDefault();
-                return;
-            }
+        form.addEventListener('submit', (e) => {
+            setTimeout(() => {
+                if (form.dataset.enviado === 'true') return;
+                
+                if (!e.defaultPrevented) {
+                    form.dataset.enviado = 'true';
 
-            form.dataset.enviado = 'true';
-
-            const botoes = form.querySelectorAll('button, input[type=submit]');
-            botoes.forEach(botao => {
-                botao.disabled = true;
-
-                const temTextoVisivel = botao.innerText.trim().length > 0;
-
-                // Se o botão tem texto, troca para "Carregando..."
-                if (temTextoVisivel) {
-                    botao.innerText = 'Carregando...';
+                    const botoes = form.querySelectorAll('button[type=submit], input[type=submit]');
+                    botoes.forEach(botao => {
+                        botao.disabled = true;
+                        if (botao.innerText.trim().length > 0) {
+                            botao.innerText = 'Carregando...';
+                        }
+                    });
                 }
-            });
+            }, 0);
         });
     });
 });

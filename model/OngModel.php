@@ -87,6 +87,7 @@ class Ong
             o.ong_id,
             o.nome,
             o.descricao,
+            o.logo_url,
             (SELECT COUNT(*) FROM projetos p WHERE p.ong_id = o.ong_id) AS total_projetos,
             (SELECT COUNT(*) FROM doacao_projeto dp
                 JOIN projetos p ON dp.projeto_id = p.projeto_id
@@ -102,9 +103,10 @@ class Ong
     function buscarPerfil($id)
     {
         $query = "
-            SELECT o.ong_id, o.nome, o.data_cadastro, o.descricao, 
+            SELECT o.ong_id, o.nome, o.data_cadastro, o.descricao, o.logo_url,
             (SELECT COUNT(*) FROM projetos p WHERE p.ong_id = o.ong_id) AS total_projetos,
             (SELECT COUNT(*) FROM doacao_projeto dp JOIN projetos p ON dp.projeto_id = p.projeto_id WHERE p.ong_id = o.ong_id) AS total_doacoes,
+            (SELECT COUNT(*) FROM apoios_projeto JOIN projetos USING(projeto_id) WHERE ong_id = :id) AS total_apoiadores,
             (SELECT COALESCE(SUM(dp.valor), 0) FROM doacao_projeto dp JOIN projetos p ON dp.projeto_id = p.projeto_id WHERE p.ong_id = o.ong_id) AS total_arrecadado
             FROM $this->tabela o 
             WHERE o.ong_id = :id
@@ -163,31 +165,34 @@ class Ong
     }
 
 
-    function favoritarOng($ong_id)
+    function favoritarOng($usuario_id, $ong_id)
     {
-        $usuario_id = $_SESSION['usuario_id'];
-
         // Verifica se já está favoritada
-        $sql = "SELECT * FROM favoritos_ongs WHERE usuario_id = :id AND ong_id = :id_ong";
+        $sql = "SELECT 1 FROM favoritos_ongs WHERE usuario_id = :id AND ong_id = :id_ong";
         $stmt = $this->pdo->prepare($sql);
-        $stmt->bindParam(':id', $usuario_id, PDO::PARAM_INT);
-        $stmt->bindParam(':id_ong', $ong_id, PDO::PARAM_INT);
-        $stmt->execute();
+        $stmt->execute([
+            ':id' => $usuario_id,
+            ':id_ong' => $ong_id
+        ]);
 
         if ($stmt->rowCount() > 0) {
             // Já favoritada → remover
             $sql = "DELETE FROM favoritos_ongs WHERE usuario_id = :id AND ong_id = :id_ong";
             $stmt = $this->pdo->prepare($sql);
-            $stmt->bindParam(':id', $usuario_id, PDO::PARAM_INT);
-            $stmt->bindParam(':id_ong', $ong_id, PDO::PARAM_INT);
-            $stmt->execute();
+            $stmt->execute([
+                ':id' => $usuario_id,
+                ':id_ong' => $ong_id
+            ]);
+            return false; // desfavoritada
         } else {
             // Não favoritada → adicionar
             $sql = "INSERT INTO favoritos_ongs (usuario_id, ong_id) VALUES (:id, :id_ong)";
             $stmt = $this->pdo->prepare($sql);
-            $stmt->bindParam(':id', $usuario_id, PDO::PARAM_INT);
-            $stmt->bindParam(':id_ong', $ong_id, PDO::PARAM_INT);
-            $stmt->execute();
+            $stmt->execute([
+                ':id' => $usuario_id,
+                ':id_ong' => $ong_id
+            ]);
+            return true; // favoritada
         }
     }
 
@@ -206,6 +211,7 @@ class Ong
             o.ong_id,
             o.nome,
             o.descricao,
+            o.logo_url,
             (SELECT COUNT(*) FROM projetos p WHERE p.ong_id = o.ong_id) AS total_projetos,
             (SELECT COUNT(*) FROM doacao_projeto dp
                 JOIN projetos p ON dp.projeto_id = p.projeto_id
@@ -218,5 +224,21 @@ class Ong
         $stmt->bindParam(':id', $usuario_id, PDO::PARAM_INT);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_CLASS, __CLASS__);
+    }
+
+
+    function buscarDoadores($id)
+    {
+        $query = "SELECT u.nome, SUM(dp.valor) as valor_doado FROM doacao_projeto dp
+                  INNER JOIN projetos p USING (projeto_id)
+                  INNER JOIN usuarios u USING (usuario_id)
+                  WHERE p.ong_id = :id
+                  GROUP BY nome
+                  ORDER BY 2 DESC";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+        $stmt->setFetchMode(PDO::FETCH_CLASS, __CLASS__);
+        return $stmt->fetchAll();
     }
 }

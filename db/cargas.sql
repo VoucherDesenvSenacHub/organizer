@@ -1,15 +1,17 @@
--- Cadastro dos bancos disponíveis no sistema.
+-- ================================
+-- INSERÇÃO DE DADOS NA TABELA BANCOS
+-- ================================
 INSERT INTO bancos (nome, codigo) VALUES 
 ('Banco do Brasil S.A.', '001'),
 ('Banco Bradesco S.A.', '237'),
 ('Caixa Econômica Federal', '104'),
 ('Itaú Unibanco S.A.', '341'),
 ('Banco Santander (Brasil) S.A.', '033'),
-('Banco Safra S.A.', '422'),
-('Banco BTG Pactual S.A.', '208'),
-('Banco Pan S.A.', '623'),
+('Nubank S.A.', '260'),
+('Mercado Pago – Mercado Crédito SEP S.A.', '323'),
 ('Banco Inter S.A.', '077'),
-('Banco Original S.A.', '212');
+('C6 Bank S.A.', '336'),
+('PagBank – PagSeguro Internet S.A.', '290');
 
 
 -- Cargas de projeto (TESTE) ! Mudar o ID da ONG

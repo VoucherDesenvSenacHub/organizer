@@ -11,16 +11,6 @@ $ongModel = new Ong();
 require_once '../../../model/ProjetoModel.php';
 $projetoModel = new Projeto();
 
-// Favoritar
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['ong-id-favorito'])) {
-    $ong_id = $_POST['ong-id-favorito'];
-    $ongModel->favoritarOng($ong_id);
-}
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['projeto-id-favorito'])) {
-    $projeto_id = $_POST['projeto-id-favorito'];
-    $projetoModel->favoritarProjeto($projeto_id);
-}
-
 // Buscar os favoritos
 $listaOngs = $ongModel->favoritosUsuario($_SESSION['usuario_id']);
 $listaProjetos = $projetoModel->favoritosUsuario($_SESSION['usuario_id']);
@@ -32,6 +22,17 @@ if (isset($_SESSION['usuario_id'])) {
 }
 
 ?>
+<!-- 
+    Toast de Favoritar
+-->
+<div id="toast-favorito" class="toast">
+    <i class="fa-solid fa-heart"></i>
+    Adicionado aos favoritos!
+</div>
+<div id="toast-remover-favorito" class="toast erro">
+    <i class="fa-solid fa-heart-crack"></i>
+    Removido dos favoritos!
+</div>
 <main>
     <section class="secoes" id="secao-2">
         <div class="container">
@@ -86,4 +87,13 @@ if (isset($_SESSION['usuario_id'])) {
 <?php
 $jsPagina = ['favoritos.js']; //Colocar o arquivo .js
 require_once '../../components/layout/footer/footer-logado.php';
+// Ativar os toast
+if (isset($_SESSION['favorito'])) {
+    if ($_SESSION['favorito']) {
+        echo "<script>mostrar_toast('toast-favorito')</script>";
+    } else {
+        echo "<script>mostrar_toast('toast-remover-favorito')</script>";
+    }
+    unset($_SESSION['favorito']);
+}
 ?>

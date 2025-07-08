@@ -35,6 +35,10 @@ section h1 i {
     background-color: var(--cor-azul);
 }
 
+.btn-doar a {
+    text-decoration: none;
+}
+
 /* Cards */
 .card-doacao {
     flex: 1 1 350px;

@@ -13,7 +13,7 @@ function changeSlide() {
     divNoticia.style.transform = `translateX(${offset}px)`;
 }
 
-setInterval(changeSlide, 2500);
+setInterval(changeSlide, 3000);
 
 // Atualizar o slide atual ao redimensionar a janela
 window.addEventListener('resize', () => {

@@ -14,7 +14,7 @@
         </nav>
         <div id="doador-nav">
             <button id="img-doador" onclick="abrir_popup('perfil-doador-popup')" title="Meu Perfil">
-                <img src="../../assets/images/pages/perfil_julia.png" alt="">
+                <img src="<?= $_SESSION['usuario_foto'] ?>" alt="">
             </button>
             <button onclick="menu_mobile()" id="hamburguer"></button>
         </div>
