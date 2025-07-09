@@ -1,120 +1,175 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('../../components/popup/download-relatorio.css');
+
+#nav-bar ul li:nth-child(4) a {
+    color: var(--cor-amarelo);
+    font-weight: bold;
+}
 
 #principal {
     display: flex;
     justify-content: start;
     flex-direction: column;
-    width: 90%;
-    margin: 60px auto;
-    border-radius: 8px;
-    padding: 30px 15px;
+    border-radius: 3px;
     background-color: white;
-    color: orange;
-    font-size: 35px;
-
-    .titulo {
-        margin-left: 27px;
-    }
-
-    .cards {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: start;
-        gap: 30px;
-        margin-left: 27px;
-    }
-
-    .icon {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 10px;
-
-        button {
-            border: none;
-            background-color: transparent;
-            cursor: pointer;
-        }
-    }
-
-    .card1 {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        background-color: white;
-        color: black;
-        border-radius: 10px;
-        box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.2);
-        padding: 20px;
-        width: 620px;
-        text-align: left;
-        font-size: 20px;
-    }
-
-    .sub {
-        margin-top: 15px;
-
-        .quadrado{
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            img{
-                width: 10px ;
-                height: 10px;
-                margin: 1%;
-            }
-
-            p{
-                font-size: 12px;
-                color: rgba(0, 0, 0, 0.605);
-            }
-        }
-    }
-
-    #download p{
-        font-size: 18px;
-        color: black;
-    }
-
-    #download {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-        width: fit-content;
-        padding: 20px;
-        position: fixed;
-        right: 76px;
-        background-color: rgb(123, 215, 238);
-        border-radius: 5px;
-        top: 125px;
-        display: none;
-        animation: animacao 1s ease;
-    }  
+    gap: 30px;
 }
+
+#principal .titulo h1 {
+    font-size: 24px;
+}
+
+#principal .titulo h1 i {
+    color: var(--cor-amarelo-hover);
+}
+
+#principal .cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 30px;
+    height: fit-content;
+}
+
+#principal .icon {
+    color: var(--cor-principal);
+    font-weight: 500;
+    font-size: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+#principal .icon button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+#principal .card1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: white;
+    color: black;
+    border-radius: 5px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    padding: 20px;
+    /* width: 500px; */
+    max-width: 500px;
+    flex: 1 1 350px;
+    text-align: left;
+}
+
+#principal .card1 img {
+    width: 100%;
+}
+
+#principal .sub .quadrado {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#principal .sub .quadrado img {
+    width: 10px;
+    height: 10px;
+    margin: 1%;
+}
+
+#principal .sub .quadrado p {
+    font-size: 12px;
+    color: rgba(0, 0, 0, 0.605);
+}
+
+#principal #download p {
+    font-size: 12px;
+    color: black;
+}
+
+#principal #download {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    padding: 20px;
+    position: fixed;
+    right: 76px;
+    background-color: rgb(123, 215, 238);
+    border-radius: 5px;
+    top: 125px;
+    display: none;
+    animation: animacao 1s ease;
+}
+
 @keyframes animacao {
     0% {
         top: 100%;
     }
+
     100% {
         top: 125px;
     }
 }
 
-.quadrado2{
+.quadrado2 {
     display: flex;
     align-items: center;
     flex-direction: row;
     justify-content: center;
+}
 
-    p{
-        font-size: 12px;
-        color: rgba(0, 0, 0, 0.605);
-        margin-right: 2%;
+.quadrado2 p {
+    font-size: 12px;
+    color: rgba(0, 0, 0, 0.605);
+    margin-right: 2%;
+}
+
+.quadrado2 img {
+    width: 8px !important;
+    margin: 1%;
+}
+
+@media (max-width: 450px) {
+    .card1 {
+        color: rgb(0, 0, 0);
+        width: 120px;
+        font-size: 14px;
     }
 
-    img{
-        margin: 1%;
+    .card1 img {
+        width: 120px;
+    }
+
+    #principal .titulo {
+        font-size: 25px;
+    }
+
+    .icon {
+        font-size: 14px;
+    }
+
+    .quadrado2 p {
+        font-size: 12px;
+    }
+
+    #download {
+        padding: 10px;
+    }
+
+    #download p {
+        font-size: 12px;
+        right: 0;
+        color: black;
+    }
+
+    #download img {
+        width: 20px;
+    }
+}
+
+@media (max-width: 550px) {
+    #principal .titulo h1 {
+        text-align: center;
     }
 }

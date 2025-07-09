@@ -1,11 +1,3 @@
-function mudaMenu() {
-    let hbgMenu = document.querySelector('#hamburger-menu');
-    let btnHamburger = document.querySelector("#botao-hamburger");
-    hbgMenu.style.display = 'flex';
-    hbgMenu.id = 'hamburger-menu-slide';
-    btnHamburger.style.opacity = 0;
-}
-
 // Link para card direta do cadastro
 function targetPage(target, actual){
     let cards = ['cadastro', 'atuacao', 'endereco','responsavel','dados-bancarios','criar-login'];
@@ -21,15 +13,101 @@ function targetPage(target, actual){
     }
 }
 
-// Virar páginas gerais do cadastro
-function mudaPagina(p, action) {
-    let pagina = document.getElementById(p);
-    // action ? pagina.style.display = "flex" : pagina.style.display = "none";
-    if (!action){
-        pagina.style.animation = "vira-pagina 1s forwards";
-    }else {
-        pagina.style.animation = "volta-pagina 1s forwards";
+// Buscar CEP
+function buscarCEP(cep) {
+    $.ajax({
+        url: `https://viacep.com.br/ws/${cep}/json/`,
+        method: 'GET',
+        success: function(response) {
+            // Verifica se a resposta contém erro
+            if (response.erro) {
+                $('#resultado').hide(); // Esconde o resultado se houver erro
+                alert("CEP não encontrado.");
+            } else {
+                // Exibe os dados do CEP na tela
+                $('#rua').text(response.logradouro);
+                $('#bairro').text(response.bairro);
+                $('#cidade').text(response.localidade);
+                $('#uf').text(response.uf);
+                $('#resultado').show(); // Exibe a área de resultado
+            }
+        },
+        error: function() {
+            alert('Erro ao buscar o CEP. Tente novamente.');
+        }
+    });
+}
+
+// Evento para detectar a digitação do CEP
+// $('#cep').on('input', function() {
+//     const cep = $(this).val();
+
+//     // Só faz a busca se o CEP tiver 8 caracteres
+//     if (cep.length === 8) {
+//         buscarCEP(cep);
+//     } else {
+//         $('#resultado').hide(); // Esconde o resultado se o CEP não estiver completo
+//     }
+// });
+
+
+// Passar etapas do cadastro
+var pagina_atual = 0;
+var botao_voltar = document.querySelector(".voltar");
+botao_voltar.style.visibility = "hidden";
+function mudaEtapaCadastro(page, origin){
+    const etapa = document.getElementById("container");
+    const linha = document.querySelector(".line-0");
+    let progresso = 0;
+    origin ? progresso = page+pagina_atual : progresso = page;
+    let texto_atual = document.getElementById("t"+(progresso+1));
+    let botao_atual = document.getElementById("b"+(progresso+1));
+    if(page>0 && origin){
+        botao_atual.style.backgroundColor = "#5282E3";
+        texto_atual.style.color = "#000000"
+        linha.style.width = (page+pagina_atual)*20+"%";
+    }else if(page<0 && origin) {
+        botao_atual = document.getElementById("b"+(progresso+2));
+        texto_atual = document.getElementById("t"+(progresso+2));
+        botao_atual.style.backgroundColor = "#5282e39f";
+        texto_atual.style.color = "#6e6a6a";
+        linha.style.width = (progresso)*20+"%";
+    }else if(page>=pagina_atual && !origin){
+        for(let i = 1; i<= (page+1); i++){
+            texto_atual = document.getElementById("t"+(i));
+            botao_atual = document.getElementById("b"+(i));
+            botao_atual.style.backgroundColor = "#5282E3";
+            texto_atual.style.color = "#000000"
+            linha.style.width = (page+pagina_atual)*20+"%";
+        }
+    }else if(page<pagina_atual && !origin){
+        for(let i=(pagina_atual+1); i>page; i--){
+            botao_atual = document.getElementById("b"+(i+1));
+            texto_atual = document.getElementById("t"+(i+1));
+            botao_atual.style.backgroundColor = "#5282e39f";
+            texto_atual.style.color = "#6e6a6a";
+            linha.style.width = (i-1)*20+"%";
+        }
     }
+    let passo = -(progresso)*largura_cadastro;
+    etapa.style.transform = `translateX(${passo}px)`;
+    page>0 && origin ? pagina_atual++ : pagina_atual--;
+    if(page>=0 && !origin){
+        pagina_atual = page;
+    }
+    pagina_atual != 0 ? botao_voltar.style.visibility = "visible" : botao_voltar.style.visibility = "hidden";
+    if(pagina_atual == 5){
+        let proximo = document.querySelector(".proximo");
+        let confirmar = document.querySelector("#confirmacao");
+        proximo.style.visibility = "hidden";
+        confirmar.style.display = "flex";
+    }else{
+        let proximo = document.querySelector(".proximo");
+        let confirmar = document.querySelector("#confirmacao");
+        proximo.style.visibility = "visible";
+        confirmar.style.display = "none";
+    }
+
 }
 
 // Exibe e oculta senha digitada
@@ -88,15 +166,86 @@ function popConclusao(tipo) {
     }, 3000);
 }
 
-const box = document.querySelector(".fotos-slide");
+function buscaUf(){
+    var uflista = document.getElementById("uf").value;
+    alert(uflista);
+    // window.location.href = "../../../model/Cidades.php?uflista=" + encodeURIComponent(uflista);
+}
 
-let contador = 0;
+let pagina_cadastro = 1;
+const box = document.querySelector(".fotos-slide");
+var contador = 0;
 let tela = window.innerWidth;
 let slideWidth = 0;
+var largura_cadastro = 0;
 if(tela <= 481){
     slideWidth = 200;
+    largura_cadastro = 380;
 }else{
     slideWidth = 1016;
+    largura_cadastro = 1200;
 }
 setInterval (slider, 2000);
 
+document.getElementById('fotos').addEventListener('change', function () {
+  let qt_img = document.getElementById('qt-img');
+  qt_img.innerText = `${this.files.length}/5`;
+  if (this.files.length > 5) {
+    alert('Você só pode enviar no máximo 5 arquivos!');
+    qt_img.innerText = `0/5`;
+    this.value = '';
+  }
+});
+
+function getQueryParam(param) {
+  const urlParams = new URLSearchParams(window.location.search);
+  return urlParams.get(param);
+}
+
+function verificarMensagem() {
+  const mensagem = getQueryParam('msg');
+
+  if (mensagem === 'sucesso') {
+    mostrar_toast("toast-projeto");
+  }
+  else if (mensagem === 'erro') {
+    mostrar_toast("toast-projeto-erro");
+  }
+}
+
+window.onload = function () {
+  verificarMensagem();
+};
+
+
+// Editar Noticias //
+document.getElementById('fotos').addEventListener('change', function () {
+    let qt_img = document.getElementById('qt-img');
+    qt_img.innerText = `${this.files.length}/5`;
+    if (this.files.length > 5) {
+      alert('Você só pode enviar no máximo 5 arquivos!');
+      qt_img.innerText = `0/5`;
+      this.value = '';
+    }
+  });
+  
+  function getQueryParam(param) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(param);
+  }
+  
+  function verificarMensagem() {
+    const mensagem = getQueryParam('msg');
+  
+    if (mensagem === 'sucesso') {
+      mostrar_toast("toast-projeto");
+    }
+    else if (mensagem === 'erro') {
+      mostrar_toast("toast-projeto-erro");
+    }
+  }
+  
+  window.onload = function () {
+    verificarMensagem();
+  };
+  

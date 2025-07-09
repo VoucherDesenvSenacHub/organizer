@@ -1,0 +1,84 @@
+section {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+section h1 i {
+    color: var(--cor-azul);
+}
+
+#aside-container #area-topo a:nth-child(1) {
+    color: var(--cor-azul);
+}
+
+.cards-container {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.btn-doar {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn-doar h4 {
+    font-weight: 600;
+    text-align: center;
+}
+
+.btn-doar .btn {
+    background-color: var(--cor-azul);
+}
+
+.btn-doar a {
+    text-decoration: none;
+}
+
+/* Cards */
+.card-doacao {
+    flex: 1 1 350px;
+    padding: 8px;
+    border-radius: 5px;
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.card-doacao .img {
+    background-color: rgb(49, 49, 49);
+    border-radius: 3px;
+    width: 175px;
+    height: 91px;
+}
+
+.card-doacao .info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-weight: 500;
+}
+
+.card-doacao .info h4 {
+    font-weight: 600;
+}
+
+.card-doacao .info small {
+    color: #aaa;
+}
+
+.card-doacao .info small:first-of-type {
+    color: var(--cor-verde);
+    font-weight: 600;
+}
+
+.card-doacao .btn {
+    background-color: var(--cor-azul);
+    margin-left: auto;
+    align-self: flex-end;
+}

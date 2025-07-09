@@ -1,0 +1,42 @@
+.toast {
+    position: fixed;
+    top: 60px; /* Começa fora da tela */
+    right: -200px;
+    /* max-width: 300px; */
+    background-color: rgb(255, 255, 255);
+    border-left: 6px solid limegreen;
+    color: rgb(0, 0, 0);
+    padding: 15px;
+    border-radius: 0 4px 4px 0;
+    font-size: 16px;
+    z-index: 1000;
+    transition: right 0.5s ease-in-out, opacity 0.5s ease-in-out;
+    opacity: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+    pointer-events: none;
+}
+
+.toast i {
+    color: limegreen;
+    font-size: 20px
+}
+
+.toast.erro {
+    border-left: 6px solid var(--cor-vermelho);
+}
+
+.toast.erro i {
+    color: var(--cor-vermelho);
+}
+
+/* Cor do apoio */
+.toast.apoio {
+    border-left: 6px solid var(--cor-apoiar);
+}
+
+.toast.apoio i {
+    color: var(--cor-apoiar);
+}

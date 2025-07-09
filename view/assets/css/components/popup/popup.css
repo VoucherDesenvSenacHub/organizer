@@ -1,0 +1,73 @@
+@import url(login-obrigatorio.css);
+@import url(compartilhar.css);
+@import url(formulario-projeto.css);
+@import url(formulario-noticia.css);
+@import url(inativar-projeto.css);
+@import url(logoff.css);
+@import url(perfil-doador.css);
+@import url(nova-senha-doador.css);
+
+.popup-fundo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 30px;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.popup-fundo.ativo {
+    opacity: 1;
+    visibility: visible;
+}
+
+.container-popup {
+    background-color: var(--cor-principal);
+    border-radius: 10px;
+    display: flex;
+    gap: 10px;
+    padding: 20px;
+    margin-top: 100%;
+    transition: .5s ease;
+    color: aliceblue;
+    position: relative;
+    box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+}
+
+.popup-fundo.ativo .container-popup {
+    margin-top: 0;
+}
+
+/* Botão X de fechar popup */
+.btn-fechar-popup {
+    position: absolute;
+    top: -11px;
+    right: -11px;
+    cursor: pointer;
+    background-color: aliceblue;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    font-weight: 700;
+    font-size: 20px;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--cor-principal);
+    border: none;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    transition: .3s;
+}
+
+.btn-fechar-popup:hover {
+    color: brown;
+}

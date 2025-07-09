@@ -1,0 +1,127 @@
+#aside-container #area-topo a:nth-child(3) {
+    color: var(--cor-azul);
+}
+
+#container-conteudo {
+    overflow: hidden;
+}
+
+/* Botões ONGS e PROJETOS */
+#buttons {
+    display: flex;
+    width: 200px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    background-color: white;
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+}
+
+#buttons::after {
+    content: '';
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    background-color: rgb(216, 216, 216);
+    pointer-events: none;
+    transition: .4s;
+    left: 0;
+    background-color: var(--cor-amarelo);
+}
+
+#buttons.active::after {
+    left: 50%;
+    background-color: var(--cor-azul);
+}
+
+#buttons button {
+    width: 50%;
+    padding: 9px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    transition: .3s;
+    font-weight: 600;
+    font-size: 15px;
+    z-index: 1;
+    color: var(--cor-principal);
+}
+
+#buttons.active button#btn-ong:hover,
+#buttons:not(.active) button#btn-projeto:hover {
+    background-color: #f0f0f0;
+}
+
+
+/* SEÇÃO 2 */
+#secao-2 {
+    display: flex;
+}
+
+#secao-2 .container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 30px;
+    width: 100%;
+    /* background-color: red; */
+}
+
+#secao-2 h1 i {
+    color: var(--cor-azul);
+}
+
+#principal {
+    /* display: flex; */
+    width: 100%;
+    /* overflow: hidden; */
+}
+
+#control-box {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 30px;
+    transform: translateX(0);
+    transition: 0.6s;
+}
+
+/* CARD ONG */
+.box-ongs {
+    display: flex;
+    gap: 20px 5px;
+    justify-content: space-around;
+    align-content: flex-start;
+    flex-wrap: wrap;
+    flex: 0 0 100%;
+    height: fit-content;
+}
+
+.btn-doar {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn-doar a {
+    text-decoration: none;
+}
+
+.btn-doar h4 {
+    font-weight: 500;
+    text-align: center;
+}
+
+.btn-doar#btn-doar-ong .btn {
+    background-color: var(--cor-amarelo);
+}
+
+.btn-doar .btn {
+    background-color: var(--cor-azul);
+}
+
+@media (max-width: 830px) {
+    #secao-2 .container {
+        align-items: center;
+    }
+}

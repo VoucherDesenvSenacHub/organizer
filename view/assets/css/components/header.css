@@ -1,11 +1,11 @@
 header {
-    padding: 0 30px;
+    padding: 0 20px;
     height: 60px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     background-color: var(--cor-principal);
     position: sticky;
     top: 0;
-    z-index: 999;
+    z-index: 99;
 }
 
 header .container {
@@ -118,6 +118,10 @@ header nav.active {
 }
 
 @media (max-width: 700px) {
+    header {
+        padding: 0 7.5px;
+    }
+
     header nav {
         position: absolute;
         top: 100%;
@@ -140,5 +144,11 @@ header nav.active {
 
     #hamburguer {
         display: block;
+    }
+}
+
+@media (max-width: 350px) {
+    header {
+        padding: 0 5px;
     }
 }

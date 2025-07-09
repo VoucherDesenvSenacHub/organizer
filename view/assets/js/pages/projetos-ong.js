@@ -1,27 +1,29 @@
-const novoProjetoBtn = document.getElementById('novoProjetoBtn');
-const telaDeCriacao = document.getElementById('tela-de-criacao-projeto');
-const salvarProjeto = document.getElementById('salvarprojeto');
-const telaDeConfirmacao = document.getElementById('tela-confirma-criacao');
+document.getElementById('fotos').addEventListener('change', function () {
+  let qt_img = document.getElementById('qt-img');
+  qt_img.innerText = `${this.files.length}/5`;
+  if (this.files.length > 5) {
+    alert('Você só pode enviar no máximo 5 arquivos!');
+    qt_img.innerText = `0/5`;
+    this.value = '';
+  }
+});
 
-
-
-novoProjetoBtn.onclick = function() {
-    telaDeCriacao.style.display = "block";
+function getQueryParam(param) {
+  const urlParams = new URLSearchParams(window.location.search);
+  return urlParams.get(param);
 }
 
+function verificarMensagem() {
+  const mensagem = getQueryParam('msg');
 
-salvarProjeto.onclick = function() {
-    telaDeConfirmacao.style.display = "block";
+  if (mensagem === 'sucesso') {
+    mostrar_toast("toast-projeto");
+  }
+  else if (mensagem === 'erro') {
+    mostrar_toast("toast-projeto-erro");
+  }
 }
 
-
-
-
-window.onclick = function(event) {
-    if (event.target == telaDeCriacao) {
-        telaDeCriacao.style.display = "none";
-    }
-    if (event.target == telaDeConfirmacao) {
-        telaDeConfirmacao.style.display = "none";
-    }
-}
+window.onload = function () {
+  verificarMensagem();
+};

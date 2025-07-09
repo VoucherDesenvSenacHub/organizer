@@ -1,0 +1,120 @@
+/* CSS DO POPUP DE FAZER DOAÇÃO */
+
+#doacao-popup {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+#doacao-popup .container-popup {
+    background-color: aliceblue;
+    color: var(--cor-principal);
+    flex-direction: column;
+}
+
+#doacao-popup .container-popup h1 {
+    text-align: center;
+    line-height: 1;
+    font-size: 20px;
+    color: var(--cor-azul-escuro);
+    margin-bottom: 20px;
+}
+
+#quant-doacao {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 10px;
+}
+
+#quant-doacao .icon-title {
+    width: 39px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+    width: fit-content;
+    height: 39px;
+    justify-content: center;
+    border-radius: 3px;
+    padding:  5px;
+    color: var(--cor-principal);
+    background-color: #fff;
+    cursor: default;
+    font-size: 14px;
+    transition: .3s ease-out;
+    cursor: pointer;
+}
+
+#quant-doacao .icon-title:hover {
+    background-color: #57ff1573;
+}
+
+#quant-doacao .icon-title h3 {
+    font-weight: 600;
+    white-space: nowrap;
+}
+#quant-doacao .icon-title img {
+    width: 30px;
+    height: 30px;
+}
+
+
+#doacao-popup form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+#doacao-popup .inputBox {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    position: relative;
+}
+
+#doacao-popup .inputBox label {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--cor-principal);
+}
+
+/* INPUT */
+#doacao-popup .inputBox input {
+    background-color: rgba(0, 0, 0, 0.07);
+    border: none;
+    outline: none;
+    border-radius: 3px 3px 0 0;
+    padding: 10px 10px 5px 10px;
+    transition: .3s;
+    width: 30%;
+    border-bottom: 1px solid black;
+}
+
+#doacao-popup .inputBox input:focus {
+    border-bottom: 1px solid green;
+}
+
+
+#doacao-popup h4 {
+    font-weight: 500;
+    font-size: 12px;
+    color: var(--cor-azul-escuro);
+}
+
+.modo-pagamento {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 10px;
+    margin-top: -15px;
+    margin-bottom: 20px;
+}
+
+#doacao-popup form .btn {
+    background-color: #51CD32;
+}
+
+@media (max-width: 440px) {
+    #doacao-popup .container-popup {
+        padding: 30px 10px;
+    }
+}

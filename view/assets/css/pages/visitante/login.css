@@ -1,0 +1,233 @@
+body {
+    background-color: var(--cor-principal);
+}
+
+main {
+    padding: 0 30px;
+    height: calc(100vh - 60px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#container-login {
+    background-color: aliceblue;
+    padding: 30px;
+    border-radius: 10px;
+    /* transform: scale(1.3); */
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+    position: relative;
+    max-height: 400px;
+    height: 100%;
+    max-width: 730px;
+    width: 100%;
+}
+
+#container-login form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    width: 300px;
+    transition: .3s;
+}
+
+form h1 {
+    color: var(--cor-principal);
+    font-size: 1.5em;
+}
+
+form .input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.input-group .input-item {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.input-item label {
+    font-size: 13px;
+}
+
+.input-item label span {
+    font-size: 15px;
+    color: red;
+    font-weight: 600;
+}
+
+.input-item input {
+    background-color: rgba(0, 0, 0, 0.07);
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    padding: 15px;
+    transition: .3s;
+    width: 100%;
+}
+.input-item input:focus {
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+
+/* Icone de ver senha */
+#togglePassword {
+  position: absolute;
+  right: 10px;
+  top: calc(50% - 4px);
+  transform: translateY(50%);
+  cursor: pointer;
+  color: #666;
+}
+
+/* Área "Esqueci a senha" */
+form .remember-forgot {
+    display: flex;
+    font-size: 11px;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5px;
+}
+
+.remember-forgot .remember {
+    display: flex;
+    gap: 3px;
+}
+
+.remember-forgot button {
+    background: none;
+    border: none;
+    font-size: 11px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.remember-forgot button:hover {
+    color: var(--cor-azul-escuro);
+}
+
+input#lembrar {
+    accent-color: var(--cor-azul);
+}
+
+/* Área de "Criar Conta" */
+form span {
+    font-size: 11px;
+    width: 100%;
+    text-align: center;
+    cursor: default;
+}
+
+form span a {
+    text-decoration: none;
+    color: var(--cor-azul);
+    font-weight: 600;
+    padding-block: 5px;
+    transition: .3s;
+}
+
+form span a:hover {
+    color: var(--cor-azul-escuro);
+}
+
+/*===== IMAGEM =====*/
+#container-login img {
+    width: 350px;
+}
+
+/* POPUP RECUPERAR SENHA */
+#popup-recuperar-senha {
+    background-color: aliceblue;
+    color: var(--cor-principal);
+    gap: 30px;
+    position: relative;
+}
+
+#popup-recuperar-senha img {
+    width: 150px;
+    transition: .3s ease;
+}
+
+#popup-recuperar-senha div {
+    max-width: 300px;
+    text-align: justify;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#popup-recuperar-senha div h2 {
+    font-weight: 500;
+}
+
+#popup-recuperar-senha div p {
+    font-size: 15px;
+}
+
+#popup-recuperar-senha div form {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-top: 5px;
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 700px) {
+    #container-login {
+        width: fit-content;
+    }
+
+    #container-login img {
+        position: absolute;
+    }
+
+    #container-login img {
+        width: 100px;
+        top: 8px;
+        right: 8px;
+    }
+
+    #popup-recuperar-senha {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #popup-recuperar-senha img {
+        display: none;
+    }
+}
+
+@media (max-width: 400px) {
+    main {
+        padding: 0;
+    }
+
+    #container-login {
+        width: 100%;
+    }
+
+    #container-login form {
+        width: 100%;
+    }
+
+    /* #container-login form .remember-forgot {
+        flex-direction: column;
+    } */
+}
+
+@media (max-width: 330px) {
+    #container-login {
+        padding: 30px 15px;
+    }
+
+    #container-login img {
+        display: none;
+    }
+
+    form h1 {
+        text-align: center;
+        width: 100%;
+    }
+}

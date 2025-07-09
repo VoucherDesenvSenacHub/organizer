@@ -1,0 +1,373 @@
+#aside-container #area-topo a:nth-child(2) {
+    color: var(--cor-azul);
+}
+
+.principal {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.principal h1 {
+    font-size: 24px;
+}
+
+.principal h1 i {
+    color: var(--cor-azul);
+}
+
+.cartoes-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-around;
+}
+
+.cartao {
+    padding: 25px;
+    /* margin: 10px; */
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    width: 340px;
+    height: 200px;
+    color: white;
+    position: relative;
+    transition: .3s;
+    transform-origin: center;
+    cursor: pointer;
+    transform: translateY(0);
+}
+
+.cartao:hover {
+    /* transform: scale(1.01); */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    transform: translateY(-3px);
+}
+
+/* Cores específicas para cada cartão */
+.cartao:nth-child(1) {
+    background: linear-gradient(135deg, #FFA317, #FFA317);
+}
+
+.cartao:nth-child(2) {
+    background: linear-gradient(135deg, #9747FF, #9747FF);
+}
+
+.cartao:nth-child(3) {
+    background: linear-gradient(135deg, #FF5A79, #FF5A79);
+}
+
+.cartao:nth-child(4) {
+    background: linear-gradient(135deg, #6a1b9a, #8e24aa);
+}
+
+.nome-cartao {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.nome-cartao i {
+    font-size: 35px;
+}
+
+.nome-cartao h3 {
+    font-weight: 600;
+}
+
+.numero-cartao {
+    font-family: 'Courier New', monospace;
+    /* font-size: 1.1em; */
+    margin-top: 20px;
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.9);
+}
+
+.validade {
+    font-size: 0.9em;
+    opacity: 0.9;
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Botão adicionar cartão */
+.adicionar-cartao {
+    width: 340px;
+    height: 200px;
+    display: flex;
+    border: 2px dashed #007AFF;
+    border-radius: 10px;
+    /* padding: 40px 20px; */
+    justify-content: center;
+    align-items: center;
+    /* margin: 15px; */
+    cursor: pointer;
+    transform: translateY(0);
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.adicionar-cartao:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    transform: translateY(-3px);
+}
+
+.adicionar-cartao span {
+    color: #007AFF;
+    font-size: 18px;
+}
+
+.img-add {
+    width: 55px;
+    height: 55px;
+}
+
+.adicionar-cartao button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+/* ======= Popup: Adicionar Cartão ======= */
+#popup-adicionar-cartao {
+    padding: 10px;
+}
+
+.credit-card-popup {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 500px;
+    width: 100%;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    font-family: Arial, sans-serif;
+}
+
+.input-grupo {
+    margin-bottom: 20px;
+}
+
+.input-grupo, .credit-card-popup input {
+    color: #666;
+}
+
+.credit-card-popup label {
+    display: block;
+    font-size: 0.9em;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.credit-card-popup input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1em;
+}
+
+.credit-card-popup input::placeholder {
+    color: #999;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0px 20px;
+}
+
+.row .input-grupo:first-child {
+    flex: 2;
+}
+
+.row .input-grupo:last-child {
+    flex: 1;
+}
+
+.cvv {
+    max-width: 80px;
+}
+
+/* Botão com animação */
+.add-button {
+    position: relative;
+    width: 100%;
+    background: #1C3464;
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: all 0.3s;
+    overflow: hidden;
+    height: 50px;
+}
+
+.add-button:hover {
+    background: #0056b3;
+}
+
+.add-button:disabled {
+    background: #1C3464 !important;
+    cursor: not-allowed;
+}
+
+.button-text {
+    display: inline-block;
+    transition: all 0.3s;
+}
+
+.loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 24px;
+    height: 24px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    display: none;
+}
+
+.add-button.success {
+    background-color: #28a745 !important;
+}
+
+.checkmark {
+    display: none;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.checkmark-circle {
+    stroke: white;
+    stroke-width: 2;
+    stroke-dasharray: 166;
+    stroke-dashoffset: 166;
+}
+
+.checkmark-check {
+    stroke: white;
+    stroke-width: 2;
+    stroke-dasharray: 48;
+    stroke-dashoffset: 48;
+}
+
+/* Validação */
+.conteiner input.error {
+    border-color: #ff3860 !important;
+    animation: shake 0.5s;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-5px); }
+    40%, 80% { transform: translateX(5px); }
+}
+
+/* Animações */
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+@keyframes checkmark-circle {
+    0% { stroke-dashoffset: 166; }
+    100% { stroke-dashoffset: 0; }
+}
+
+@keyframes checkmark-check {
+    0% { stroke-dashoffset: 48; }
+    100% { stroke-dashoffset: 0; }
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7); }
+    70% { box-shadow: 0 0 0 12px rgba(255, 255, 255, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
+}
+
+/* ======= Popup Exclusão ======= */
+.popup-container {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    animation: fadeIn 0.3s ease-out;
+}
+
+.popup-content h2 {
+    color: #1C3464;
+    margin-bottom: 25px;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.btn-no {
+    background-color: #f1f1f1;
+    color: #333;
+}
+
+.btn-no:hover {
+    background-color: #e0e0e0;
+    transform: translateY(-2px);
+}
+
+.btn-yes {
+    background-color: #ff4d4d;
+    color: white;
+}
+
+.btn-yes:hover {
+    background-color: #ff3333;
+    transform: translateY(-2px);
+}
+
+.btn-back {
+    background-color: #1C3464;
+    color: white;
+    width: 100%;
+}
+
+.btn-back:hover {
+    background-color: #142a4e;
+    transform: translateY(-2px);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ======= Responsividade ======= */
+@media (max-width: 825px) {
+        .cartao,
+        .adicionar-cartao {
+            width: 100%;
+        }
+}
+
+@media (max-width: 500px) {
+        .principal h1 {
+            text-align: center;
+        }
+}
