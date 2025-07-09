@@ -2,6 +2,10 @@ body {
   background-color: var(--cor-principal);
 }
 
+a {
+  text-decoration: none;
+}
+
 #nav-bar ul li:nth-child(1) a {
   color: var(--cor-amarelo);
   font-weight: bold;
@@ -386,7 +390,7 @@ body {
   border-radius: 10px;
   padding: 20px;
   width: 600px;
-  height: 330px;
+  height: 500px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
@@ -395,6 +399,14 @@ body {
   margin-bottom: 20px;
   color: #ffffff;
   font-weight: 400;
+}
+
+#body-empresas .Email {
+  color: #E3B652;
+}
+
+#body-empresas .Telefone {
+  color: #E3B652;
 }
 
 #body-empresas .Cnpj {

@@ -63,7 +63,9 @@ $relatorio = $usuarioModel->RelatorioHome($_SESSION['usuario_id']);
                     <button class="btn-share fa-solid fa-share-nodes" onclick="abrir_popup('compartilhar-popup')"></button>
                     <button class="btn-like fa-solid fa-heart" onclick="abrir_popup('login-obrigatorio-popup')"></button>
                 </div>
-                <div class="img-projeto">250x130</div>
+                <div class="img-projeto">
+                    <img src="../../assets/images/global/image-placeholder.svg">
+                </div>
                 <div class="info-projeto">
                     <h5>Nome Projeto</h5>
                     <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequatur quo consectetur enim eos totam perspiciatis iure? Expedita dolores beatae officiis quaerat libero veritatis voluptas, ullam natus a animi accusantium earum.</p>
@@ -74,7 +76,7 @@ $relatorio = $usuarioModel->RelatorioHome($_SESSION['usuario_id']);
                         </div>
                     </div>
                 </div>
-                <a class="saiba-mais-projeto" href="../projeto/perfil.php">Saiba Mais</a>
+                <a class="saiba-mais-projeto" href="../projeto/perfil.php?id=1">Saiba Mais</a>
             </div>
         <?php } ?>
     </div>

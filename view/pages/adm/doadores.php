@@ -37,7 +37,7 @@ if (isset($_GET['id'])) {
             <h1><i class="fa-solid fa-users"></i> PAINEL DE DOADORES</h1>
             <form id="form-busca" action="doadores.php" method="GET">
                 <input type="text" name="pesquisa" placeholder="Busque um doador">
-                <button class="btn"><i class="fa-solid fa-search"></i></button>
+                <button class="btn" type="submit"><i class="fa-solid fa-search"></i></button>
             </form>
         </div>
         <!-- Quantidade da busca -->

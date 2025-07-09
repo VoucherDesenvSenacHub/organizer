@@ -173,7 +173,7 @@ section#top-info {
 /* Sessão de Baixo: Áreas dos cards */
 section#box-ongs {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     gap: 30px;
     flex-wrap: wrap;
     padding-inline: 10px;

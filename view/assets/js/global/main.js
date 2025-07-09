@@ -142,3 +142,30 @@ function abrir_aside() {
     aside.classList.toggle('active');
     btn_aside.classList.toggle('active');
 }
+
+
+
+// BLOQUEAR ENVIO DUPLO EM TODOS OS FORMULÁRIOS
+document.addEventListener('DOMContentLoaded', () => {
+    const formularios = document.querySelectorAll('form');
+
+    formularios.forEach(form => {
+        form.addEventListener('submit', (e) => {
+            setTimeout(() => {
+                if (form.dataset.enviado === 'true') return;
+                
+                if (!e.defaultPrevented) {
+                    form.dataset.enviado = 'true';
+
+                    const botoes = form.querySelectorAll('button[type=submit], input[type=submit]');
+                    botoes.forEach(botao => {
+                        botao.disabled = true;
+                        if (botao.innerText.trim().length > 0) {
+                            botao.innerText = 'Carregando...';
+                        }
+                    });
+                }
+            }, 0);
+        });
+    });
+});

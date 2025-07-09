@@ -1,4 +1,5 @@
 <?php
+ob_start();
 //CONFIGURAÇÕES DA PÁGINA
 $acesso = 'ong';
 $tituloPagina = 'Projetos | Organizer';
@@ -18,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['pesquisa'])) {
     $lista = $projetoModel->buscarNome($pesquisa, $_SESSION['ong_id']);
 }
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['nome'])) {
     $nome = $_POST['nome'];
     $descricao = $_POST['descricao'];
     $meta = $_POST['meta'];
@@ -34,6 +35,7 @@ $projeto = (object) [
     'descricao' => ''
 ];
 require_once __DIR__ . '/../../components/popup/formulario-projeto.php';
+ob_end_flush();
 ?>
 <div id="toast-projeto" class="toast">
     <i class="fa-regular fa-circle-check"></i>
@@ -51,7 +53,7 @@ require_once __DIR__ . '/../../components/popup/formulario-projeto.php';
             <h1><i class="fa-solid fa-diagram-project"></i> MEUS PROJETOS</h1>
             <form id="form-busca" action="projetos.php" method="GET">
                 <input type="text" name="pesquisa" placeholder="Busque um Projeto">
-                <button class="btn"><i class="fa-solid fa-search"></i></button>
+                <button class="btn" type="submit"><i class="fa-solid fa-search"></i></button>
             </form>
             <button class="btn btn-novo" onclick="abrir_popup('editar-projeto-popup')">NOVO PROJETO +</button>
         </div>
@@ -64,6 +66,8 @@ require_once __DIR__ . '/../../components/popup/formulario-projeto.php';
             if ($lista) {
                 $class = 'tp-ong';
                 foreach ($lista as $projeto) {
+                    $valor_projeto = $projetoModel->buscarValor($projeto->projeto_id);
+                    $barra = round(($valor_projeto / $projeto->meta) * 100);
                     require '../../components/cards/card-projeto.php';
                 }
             }

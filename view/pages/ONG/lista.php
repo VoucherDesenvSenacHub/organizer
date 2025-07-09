@@ -13,12 +13,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['pesquisa'])) {
     $lista = $ongModel->buscarNome($pesquisa);
 }
 
-// Favoritar ONG
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['ong-id-favorito'])) {
-    $ong_id = $_POST['ong-id-favorito'];
-    $ongModel->favoritarOng($ong_id);
-}
-
 // Buscar os favoritos
 if (isset($_SESSION['usuario_id'])) {
     $ongsFavoritas = $ongModel->listarFavoritas($_SESSION['usuario_id']);
@@ -26,7 +20,17 @@ if (isset($_SESSION['usuario_id'])) {
 
 $perfil = $_SESSION['perfil_usuario'] ?? '';
 ?>
-
+<!-- 
+    Toast de Favoritar
+-->
+<div id="toast-favorito" class="toast">
+    <i class="fa-solid fa-heart"></i>
+    Adicionado aos favoritos!
+</div>
+<div id="toast-remover-favorito" class="toast erro">
+    <i class="fa-solid fa-heart-crack"></i>
+    Removido dos favoritos!
+</div>
 <main <?php if ($perfil == 'doador') echo 'class="usuario-logado"'; ?>>
     <div class="container" id="container-catalogo">
         <section id="top-info">
@@ -121,7 +125,7 @@ $perfil = $_SESSION['perfil_usuario'] ?? '';
                 </div>
                 <form id="form-busca" action="lista.php" method="GET">
                     <input type="text" name="pesquisa" placeholder="Busque uma ONG">
-                    <button class="btn"><i class="fa-solid fa-search"></i></button>
+                    <button class="btn" type="submit"><i class="fa-solid fa-search"></i></button>
                 </form>
             </div>
             <div id="imagem-top">
@@ -152,4 +156,13 @@ $perfil = $_SESSION['perfil_usuario'] ?? '';
 <?php
 $jsPagina = [];
 require_once '../../components/layout/footer/footer-logado.php';
+// Ativar os toast
+if (isset($_SESSION['favorito'])) {
+    if ($_SESSION['favorito']) {
+        echo "<script>mostrar_toast('toast-favorito')</script>";
+    } else {
+        echo "<script>mostrar_toast('toast-remover-favorito')</script>";
+    }
+    unset($_SESSION['favorito']);
+}
 ?>

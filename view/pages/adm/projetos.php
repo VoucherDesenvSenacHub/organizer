@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] = 'GET' && isset($_GET['pesquisa'])) {
             <h1><i class="fa-solid fa-diagram-project"></i> PAINEL DE PROJETOS</h1>
             <form id="form-busca" action="projetos.php" method="GET">
                 <input type="text" name="pesquisa" placeholder="Busque um projeto">
-                <button class="btn"><i class="fa-solid fa-search"></i></button>
+                <button class="btn" type="submit"><i class="fa-solid fa-search"></i></button>
             </form>
         </div>
         <!-- Quantidade da busca -->
@@ -34,6 +34,8 @@ if ($_SERVER['REQUEST_METHOD'] = 'GET' && isset($_GET['pesquisa'])) {
             if ($lista) {
                 foreach ($lista as $projeto) {
                     $class = 'tp-ong';
+                    $valor_projeto = $projetoModel->buscarValor($projeto->projeto_id);
+                    $barra = round(($valor_projeto / $projeto->meta) * 100);
                     require '../../components/cards/card-projeto.php';
                 }
             } else {

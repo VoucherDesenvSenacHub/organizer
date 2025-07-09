@@ -38,7 +38,7 @@ $btn_text = ($projeto->projeto_id) ? 'SALVAR ALTERAÇÃO' : 'CRIAR PROJETO';
                     </div>
                     <input id="fotos" type="file" name="fotos[]" multiple>
                 </div>
-                <button class="btn"><?= $btn_text ?> <i class="fa-solid fa-floppy-disk"></i></button>
+                <button class="btn" type="submit"><?= $btn_text ?> <i class="fa-solid fa-floppy-disk"></i></button>
             </div>
         </form>
     </div>
