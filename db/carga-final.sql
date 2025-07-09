@@ -100,6 +100,44 @@ INSERT INTO usuarios (
     'ATIVO'
 );
 
+
+INSERT INTO usuarios (
+    nome, cpf, data_nascimento, foto_perfil, email, telefone, senha,
+    doador, ong, adm, status
+) VALUES (
+    'Adercio Barbuio Junior',
+    '12345677700',
+    '1974-10-26',
+    'https://avatars.githubusercontent.com/u/62699659?s=60&v=4',
+    'adercio@organizer.com',
+    '67992663558',
+    '$2y$10$AJjK477ZpcxLxe9jowzCJuxBLs8nsYgHsU2QF41BauggY3vfxmDSG',
+    TRUE,
+    FALSE,
+    TRUE,
+    'ATIVO'
+);
+
+
+INSERT INTO usuarios (
+    nome, cpf, data_nascimento, foto_perfil, email, telefone, senha,
+    doador, ong, adm, status
+) VALUES (
+    'Eduardo Silva Oliveira Filho',
+    '11111113245',
+    '2007-11-28',
+    'https://avatars.githubusercontent.com/u/177282096?v=4',
+    'eduardo@organizer.com',
+    '67111111111',
+    '$2y$10$AJjK477ZpcxLxe9jowzCJuxBLs8nsYgHsU2QF41BauggY3vfxmDSG',
+    TRUE,
+    FALSE,
+    TRUE,
+    'ATIVO'
+);
+
+
+
 -- ================================
 -- INSERÇÃO DE DADOS NA TABELA BANCOS
 -- ================================
