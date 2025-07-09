@@ -436,6 +436,8 @@ a {
   padding: 10px;
   margin-bottom: 15px;
   font-size: 14px;
+  max-width: 560px;
+  max-height: 76px;
 }
 
 #body-empresas input::placeholder,
