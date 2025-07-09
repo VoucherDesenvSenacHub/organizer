@@ -1,9 +1,12 @@
 <?php
 $acesso = 'adm';
 $tituloPagina = 'Parcerias | Organizer';
-$cssPagina = ['adm/solicitacoes.css'];
+$cssPagina = ['adm/solicitacoes.css', '..\components\popup\parcerias.css'];
 require_once '../../components/layout/base-inicio.php';
 ?>
+<head>
+  <link rel="stylesheet" href="../popup/recusar-parceria.css">
+</head>
 <main class="container">
     <h1><i class="fa-solid fa-handshake"></i> SOLICITAÇÃO DE PARCERIAS</h1>
     <div class="box-cards">
@@ -17,8 +20,8 @@ require_once '../../components/layout/base-inicio.php';
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, voluptatem. Perspiciatis voluptatem nostrum laudantium itaque consequatur, nihil dolore sapiente minima? Maiores pariatur rerum soluta atque amet corrupti nesciunt deserunt mollitia.</p>
             </div>
             <div class="btn-acoes">
-                <button class="btn">APROVAR <i class="fa-solid fa-thumbs-up"></i></button>
-                <button class="btn">RECUSAR <i class="fa-solid fa-thumbs-down"></i></button>
+                <button class="btn" onclick="abrir_popup('aprovar-popup')">APROVAR <i class="fa-solid fa-thumbs-up"></i></button>
+                <button class="btn" onclick="abrir_popup('recusar-popup')">RECUSAR <i class="fa-solid fa-thumbs-down"></i></button>
             </div>
         </div>
         <div class="card-solicitacao-empresa">
@@ -31,8 +34,8 @@ require_once '../../components/layout/base-inicio.php';
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, voluptatem. Perspiciatis voluptatem nostrum laudantium itaque consequatur, nihil dolore sapiente minima? Maiores pariatur rerum soluta atque amet corrupti nesciunt deserunt mollitia.</p>
             </div>
             <div class="btn-acoes">
-                <button class="btn">APROVAR <i class="fa-solid fa-thumbs-up"></i></button>
-                <button class="btn">RECUSAR <i class="fa-solid fa-thumbs-down"></i></button>
+                <button class="btn" onclick="abrir_popup('aprovar-popup')">APROVAR <i class="fa-solid fa-thumbs-up"></i></button>
+                <button class="btn" onclick="abrir_popup('recusar-popup')">RECUSAR <i class="fa-solid fa-thumbs-down"></i></button>
             </div>
         </div>
         <div class="card-solicitacao-empresa">
@@ -45,8 +48,8 @@ require_once '../../components/layout/base-inicio.php';
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, voluptatem. Perspiciatis voluptatem nostrum laudantium itaque consequatur, nihil dolore sapiente minima? Maiores pariatur rerum soluta atque amet corrupti nesciunt deserunt mollitia.</p>
             </div>
             <div class="btn-acoes">
-                <button class="btn">APROVAR <i class="fa-solid fa-thumbs-up"></i></button>
-                <button class="btn">RECUSAR <i class="fa-solid fa-thumbs-down"></i></button>
+                <button class="btn" onclick="abrir_popup('aprovar-popup')">APROVAR <i class="fa-solid fa-thumbs-up"></i></button>
+                <button class="btn" onclick="abrir_popup('recusar-popup')">RECUSAR <i class="fa-solid fa-thumbs-down"></i></button>
             </div>
         </div>
         <div class="card-solicitacao-empresa">
@@ -59,8 +62,8 @@ require_once '../../components/layout/base-inicio.php';
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, voluptatem. Perspiciatis voluptatem nostrum laudantium itaque consequatur, nihil dolore sapiente minima? Maiores pariatur rerum soluta atque amet corrupti nesciunt deserunt mollitia.</p>
             </div>
             <div class="btn-acoes">
-                <button class="btn">APROVAR <i class="fa-solid fa-thumbs-up"></i></button>
-                <button class="btn">RECUSAR <i class="fa-solid fa-thumbs-down"></i></button>
+                <button class="btn" onclick="abrir_popup('aprovar-popup')">APROVAR <i class="fa-solid fa-thumbs-up"></i></button>
+                <button class="btn" onclick="abrir_popup('recusar-popup')">RECUSAR <i class="fa-solid fa-thumbs-down"></i></button>
             </div>
         </div>
     </div>
