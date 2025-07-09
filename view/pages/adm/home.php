@@ -79,40 +79,40 @@ $relatorio = $adminModel->RelatorioHome();
                 <tbody>
                     <tr>
                         <td data-label="#">0</td>
-                        <td data-label="NOME">ONG 1</td>
-                        <td data-label="PROJETOS">15</td>
-                        <td data-label="RESPONSAVEL">Fulano</td>
+                        <td data-label="NOME">Ong Amigos</td>
+                        <td data-label="PROJETOS">4</td>
+                        <td data-label="RESPONSAVEL">Gean</td>
                         <td data-label="CRIADO">12/05/2025</td>
                         <td>
                             <!-- <form method="GET"> -->
                             <input type="hidden" name="id" value="">
-                            <a href="http://localhost/organizer/view/pages/ong/perfil.php?id=1"> <button class="fa-solid fa-eye"></button></a>
+                            <a href="../adm/ongs.php"> <button class="fa-solid fa-eye"></button></a>
                             <!-- </form> -->
                         </td>
                     </tr>
                     <tr>
                         <td data-label="#">1</td>
-                        <td data-label="NOME">ONG 2</td>
-                        <td data-label="PROJETOS">15</td>
-                        <td data-label="RESPONSAVEL">Fulano</td>
+                        <td data-label="NOME">Associação Natureza</td>
+                        <td data-label="PROJETOS">2</td>
+                        <td data-label="RESPONSAVEL">Eduarda</td>
                         <td data-label="CRIADO">12/05/2025</td>
                         <td>
                             <!-- <form method="GET"> -->
                             <input type="hidden" name="id" value="">
-                            <a href="http://localhost/organizer/view/pages/ong/perfil.php?id=1"> <button class="fa-solid fa-eye"></button></a>
+                            <a href="../adm/ongs.php"> <button class="fa-solid fa-eye"></button></a>
                             <!-- </form> -->
                         </td>
                     </tr>
                     <tr>
                         <td data-label="#">2</td>
-                        <td data-label="NOME">ONG 3</td>
-                        <td data-label="PROJETOS">15</td>
-                        <td data-label="RESPONSAVEL">Fulano</td>
+                        <td data-label="NOME">SOS Estados</td>
+                        <td data-label="PROJETOS">6</td>
+                        <td data-label="RESPONSAVEL">Carlos</td>
                         <td data-label="CRIADO">12/05/2025</td>
                         <td>
                             <!-- <form method="GET"> -->
                             <input type="hidden" name="id" value="">
-                            <a href="http://localhost/organizer/view/pages/ong/perfil.php?id=1"> <button class="fa-solid fa-eye"></button></a>
+                            <a href="../adm/ongs.php"> <button class="fa-solid fa-eye"></button></a>
                             <!-- </form> -->
                         </td>
                     </tr>
@@ -136,40 +136,40 @@ $relatorio = $adminModel->RelatorioHome();
                 <tbody>
                     <tr>
                         <td data-label="#">0</td>
-                        <td data-label="NOME">Projeto 1</td>
-                        <td data-label="ONG">ONG 1</td>
+                        <td data-label="NOME">Educação para Todos</td>
+                        <td data-label="ONG">Ong Amigos</td>
                         <td data-label="ARRECADADO">R$ 15.000</td>
                         <td data-label="CRIADO">12/05/2025</td>
                         <td>
                             <!-- <form method="GET"> -->
                             <input type="hidden" name="id" value="">
-                            <a href="http://localhost/organizer/view/pages/projeto/perfil.php?id=1"> <button class="fa-solid fa-eye"></button></a>
+                            <a href="../adm/projetos.php"> <button class="fa-solid fa-eye"></button></a>
                             <!-- </form> -->
                         </td>
                     </tr>
                     <tr>
                         <td data-label="#">1</td>
-                        <td data-label="NOME">Projeto 2</td>
-                        <td data-label="ONG">ONG 2</td>
+                        <td data-label="NOME">Vida Sustentável</td>
+                        <td data-label="ONG">Associação Natureza</td>
                         <td data-label="ARRECADADO">R$ 5.000</td>
                         <td data-label="CRIADO">12/05/2025</td>
                         <td>
                             <!-- <form method="GET"> -->
                             <input type="hidden" name="id" value="">
-                            <a href="http://localhost/organizer/view/pages/projeto/perfil.php?id=1"> <button class="fa-solid fa-eye"></button></a>
+                            <a href="../adm/projetos.php"> <button class="fa-solid fa-eye"></button></a>
                             <!-- </form> -->
                         </td>
                     </tr>
                     <tr>
                         <td data-label="#">2</td>
-                        <td data-label="NOME">Projeto 3</td>
-                        <td data-label="ONG">ONG 3</td>
+                        <td data-label="NOME">Alimenta Comunidade</td>
+                        <td data-label="ONG">SOS Estados</td>
                         <td data-label="ARRECADADO">R$ 500</td>
                         <td data-label="CRIADO">12/05/2025</td>
                         <td>
                             <!-- <form method="GET"> -->
                             <input type="hidden" name="id" value="">
-                            <a href="http://localhost/organizer/view/pages/projeto/perfil.php?id=1"> <button class="fa-solid fa-eye"></button></a>
+                            <a href="../adm/projetos.php"> <button class="fa-solid fa-eye"></button></a>
                             <!-- </form> -->
                         </td>
                     </tr>
@@ -200,33 +200,33 @@ $relatorio = $adminModel->RelatorioHome();
                         <td>
                             <!-- <form method="GET"> -->
                             <input type="hidden" name="id" value="">
-                            <a href="http://localhost/organizer/view/pages/adm/doadores.php?id=1"> <button class="fa-solid fa-eye"></button></a>
+                            <a href="../adm/doadores.php"> <button class="fa-solid fa-eye"></button></a>
                             <!-- </form> -->
                         </td>
                     </tr>
                     <tr>
                         <td data-label="#">1</td>
-                        <td data-label="NOME">João</td>
+                        <td data-label="NOME">Eduarda</td>
                         <td data-label="EMAIL">joao@organizer.com</td>
                         <td data-label="DOAÇÕES">R$ 3.400</td>
                         <td data-label="CRIADO">01/01/2025</td>
                         <td>
                             <!-- <form method="GET"> -->
                             <input type="hidden" name="id" value="">
-                            <a href="http://localhost/organizer/view/pages/adm/doadores.php?id=1"> <button class="fa-solid fa-eye"></button></a>
+                            <a href="../adm/doadores.php"> <button class="fa-solid fa-eye"></button></a>
                             <!-- </form> -->
                         </td>
                     </tr>
                     <tr>
                         <td data-label="#">2</td>
-                        <td data-label="NOME">Maria</td>
-                        <td data-label="EMAIL">maria@gmail.com</td>
+                        <td data-label="NOME">Bruna</td>
+                        <td data-label="EMAIL">bruna@organizer.com</td>
                         <td data-label="DOAÇÕES">R$ 20.000</td>
                         <td data-label="CRIADO">01/01/2025</td>
                         <td>
                             <!-- <form method="GET"> -->
                             <input type="hidden" name="id" value="">
-                            <a href="http://localhost/organizer/view/pages/adm/doadores.php?id=1"> <button class="fa-solid fa-eye"></button></a>
+                            <a href="../adm/doadores.php"> <button class="fa-solid fa-eye"></button></a>
                             <!-- </form> -->
                         </td>
                     </tr>
