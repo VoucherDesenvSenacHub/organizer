@@ -63,6 +63,48 @@ function copiar_link(toast) {
     }
 }
 
+function copiar_link_aprovar(toast) {
+    let input = document.getElementById("link-aprovar");
+    input.select();
+    input.setSelectionRange(0, 99999); // Compatibilidade com iOS
+
+    if (navigator.clipboard) {
+        navigator.clipboard.writeText(input.value).then(() => {
+            mostrar_toast(toast);
+            fechar_popup('aprovar-popup');
+        }).catch(() => {
+            document.execCommand("copy");
+            mostrar_toast(toast);
+            fechar_popup('aprovar-popup');
+        });
+    } else {
+        document.execCommand("copy");
+        mostrar_toast(toast);
+        fechar_popup('aprovar-popup');
+    }
+}
+
+function copiar_link_recusar(toast) {
+    let input = document.getElementById("link-recusar");
+    input.select();
+    input.setSelectionRange(0, 99999); // Compatibilidade com iOS
+
+    if (navigator.clipboard) {
+        navigator.clipboard.writeText(input.value).then(() => {
+            mostrar_toast(toast);
+            fechar_popup('recusar-popup');
+        }).catch(() => {
+            document.execCommand("copy");
+            mostrar_toast(toast);
+            fechar_popup('recusar-popup');
+        });
+    } else {
+        document.execCommand("copy");
+        mostrar_toast(toast);
+        fechar_popup('recusar-popup');
+    }
+}
+
 
 // MOSTRAR UM ALERTA QUE SOME DEPOIS
 function mostrar_toast(id) {
