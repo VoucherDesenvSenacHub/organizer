@@ -185,7 +185,7 @@ class Projeto
                   FROM $this->tabela p, doacao_projeto d
                   WHERE p.projeto_id = d.projeto_id
                   AND d.usuario_id = :id
-                  ORDER BY 3 DESC";
+                  ORDER BY data_doacao DESC";
         $stmt = $this->pdo->prepare($query);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
