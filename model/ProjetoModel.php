@@ -180,7 +180,8 @@ class Projeto
 
     function buscarDoacao($id)
     {
-        $query = "SELECT p.nome, valor, data_doacao
+        $query = "SELECT p.projeto_id, p.nome, valor, data_doacao,
+                  (SELECT logo_url FROM imagens_projeto i WHERE i.projeto_id = p.projeto_id ORDER BY data_upload ASC LIMIT 1) as logo_url
                   FROM $this->tabela p, doacao_projeto d
                   WHERE p.projeto_id = d.projeto_id
                   AND d.usuario_id = :id
