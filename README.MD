@@ -30,8 +30,6 @@ O **Organizer** é um sistema web desenvolvido para facilitar o gerenciamento de
   * **ONG:** pode se cadastrar, criar e gerenciar seus próprios projetos e notícias.
   * **Administrador:** possui controle total sobre o sistema, incluindo gestão de usuários e conteúdos.
 
-* Cadastro livre de usuários via site, sem necessidade de intervenção manual para criação das contas.
-
 * Gerenciamento completo de projetos sociais: criação, edição, exclusão e visualização detalhada.
 
 * Publicação e gerenciamento de notícias para manter a comunidade informada.
@@ -49,7 +47,6 @@ O **Organizer** é um sistema web desenvolvido para facilitar o gerenciamento de
 * PHP (arquitetura MVC)
 * MySQL (banco de dados)
 * HTML5 / CSS3 / JavaScript
-* Bootstrap para estilização
 * PDO para conexões seguras ao banco
 * Font Awesome para ícones
 
