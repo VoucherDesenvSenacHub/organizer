@@ -10,8 +10,6 @@
 * [Tecnologias Utilizadas](#tecnologias-utilizadas)
 * [Como Rodar o Projeto](#como-rodar-o-projeto)
 * [Estrutura do Projeto](#estrutura-do-projeto)
-* [Contribuindo](#contribuindo)
-* [Contato](#contato)
 * [Licença](#licença)
 
 ---
