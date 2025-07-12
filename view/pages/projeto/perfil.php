@@ -126,7 +126,7 @@ ob_end_flush();
                     <?php require_once 'partials/acoes-projeto.php'; ?>
                 </div>
                 <div id="imagem-ilustrativa">
-                    <img src="../../assets/images/pages/perfil-projeto.png" alt="">
+                    <img src="../../assets/images/pages/shared/projeto-lampada.png">
                 </div>
                 <div id="carousel" class="carousel">
                     <div id="carousel-imgs" class="carousel-imgs">
@@ -176,20 +176,20 @@ ob_end_flush();
             <section id="painel-projeto" class="container-section">
                 <div id="btns-group">
                     <div class="icon-title active">
-                        <img src="../../assets/images/pages/icone-sobre.png" alt="">
+                        <img src="../../assets/images/icons/icon-sobre.png" alt="">
                         <h3>Sobre</h3>
                     </div>
                     <div class="icon-title">
-                        <img src="../../assets/images/pages/icone-doacao.png" alt="">
+                        <img src="../../assets/images/icons/icon-doacao.png" alt="">
                         <h3>Doadores</h3>
                     </div>
                     <div class="icon-title">
-                        <img src="../../assets/images/pages/icone-apoio.png" alt="">
+                        <img src="../../assets/images/icons/icon-apoio.png" alt="">
                         <h3>Apoiadores</h3>
                     </div>
                     <?php if (!isset($_SESSION['perfil_usuario']) || $_SESSION['perfil_usuario'] !== 'ong'): ?>
                         <div class="icon-title">
-                            <img src="../../assets/images/pages/icone-medalha.png" alt="">
+                            <img src="../../assets/images/icons/icon-medalha.png" alt="">
                             <h3>Responsável</h3>
                         </div>
                     <?php endif; ?>

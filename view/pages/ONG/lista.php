@@ -129,7 +129,7 @@ $perfil = $_SESSION['perfil_usuario'] ?? '';
                 </form>
             </div>
             <div id="imagem-top">
-                <img src="../../assets/images/pages/tela-ong-team.png" alt="">
+                <img src="../../assets/images/pages/shared/time.png">
             </div>
         </section>
         <?php if (isset($_GET['pesquisa'])) {

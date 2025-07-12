@@ -93,13 +93,13 @@ $perfil = $_SESSION['perfil_usuario'] ?? '';
             </div>
 
             <div id="imagem">
-                <img src="../../assets/images/pages/perfil-ong.png" alt="">
+                <img src="../../assets/images/pages/shared/time-bandeira.png">
             </div>
         </section>
         <section class="container-section">
             <div class="section-item" id="sobre">
                 <div class="icon-title">
-                    <img src="../../assets/images/pages/icone-sobre.png" alt="">
+                    <img src="../../assets/images/icons/icon-sobre.png">
                     <h3>Sobre</h3>
                 </div>
                 <small>Criada em <?= date('d/m/Y', strtotime($ong->data_cadastro)); ?></small>
@@ -109,7 +109,7 @@ $perfil = $_SESSION['perfil_usuario'] ?? '';
         <section class="container-section" id="apoiadores">
             <div class="section-item">
                 <div class="icon-title">
-                    <img src="../../assets/images/pages/icone-doacao.png" alt="">
+                    <img src="../../assets/images/icons/icon-doacao.png">
                     <h3>Doadores</h3>
                 </div>
                 <div class="mini-cards">
@@ -128,7 +128,7 @@ $perfil = $_SESSION['perfil_usuario'] ?? '';
         <section class="container-section">
             <div class="section-item" id="noticias">
                 <div class="icon-title">
-                    <img src="../../assets/images/pages/icone-megafone.png" alt="">
+                    <img src="../../assets/images/icons/icon-megafone.png" alt="">
                     <h3>Notícias</h3>
                 </div>
                 <div class="mini-cards">
@@ -147,7 +147,7 @@ $perfil = $_SESSION['perfil_usuario'] ?? '';
         <section class="container-section">
             <div class="section-item" id="projetos">
                 <div class="icon-title">
-                    <img src="../../assets/images/pages/icone-lampada.png" alt="">
+                    <img src="../../assets/images/icons/icon-lampada.png" alt="">
                     <h3>Projetos</h3>
                 </div>
                 <div class="mini-cards">

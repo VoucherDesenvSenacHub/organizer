@@ -41,13 +41,13 @@ ob_end_flush();
             <button class="btn" type="submit">ENTRAR</button>
             <span>Não tem uma conta? <a href="cadastro.php">Criar Conta</a></span>
         </form>
-        <img alt="Celular-Login" src="../../assets/images/pages/login_doador.png">
+        <img src="../../assets/images/pages/visitante/celular-usuario.png">
     </div>
 </main>
 <div id="fundo-cadastro-popup" class="popup-fundo">
     <div class="container-popup" id="popup-recuperar-senha">
         <button class="btn-fechar-popup fa-solid fa-xmark" onclick="fechar_popup('fundo-cadastro-popup')"></button>
-        <img src="../../assets/images/pages/esqueci-senha-doador.png" alt="">
+        <img src="../../assets/images/pages/visitante/esqueci-senha.png">
         <div>
             <h2>RECUPERAR SENHA</h2>
             <p>Digite seu email abaixo para receber um link de recuperação</p>
