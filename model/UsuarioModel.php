@@ -39,32 +39,13 @@ class Usuario
         }
     }
 
-    function login($email, $senha)
+    function login($email)
     {
         $query = "SELECT * FROM $this->tabela WHERE email = :email";
         $stmt = $this->pdo->prepare($query);
         $stmt->bindParam(':email', $email);
         $stmt->execute();
-
-        if ($stmt->rowCount() > 0) {
-            $conta = $stmt->fetch(PDO::FETCH_ASSOC);
-
-            if (password_verify($senha, $conta['senha'])) {
-                // Iniciar sessão e guardar dados do doador
-                session_start();
-                $_SESSION['usuario_id'] = $conta['usuario_id'];
-                $_SESSION['usuario_nome'] = $conta['nome'];
-                $_SESSION['usuario_foto'] = $conta['foto_perfil'] ?? '../../assets/images/global/user-placeholder.jpg';
-                $_SESSION['usuario_adm'] = $conta['adm'];
-
-                header('Location: acesso.php');
-                exit;
-            }
-        }
-
-        // Login falhou (e-mail ou senha inválida)
-        header('Location: login.php?msg=logerro');
-        exit;
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
     // Listagem para o ADM
