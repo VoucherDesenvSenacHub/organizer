@@ -1,4 +1,5 @@
 <?php
+session_start();
 $acesso = $_SESSION['perfil_usuario'] ?? 'visitante';
 $tituloPagina = 'Acompanhe Notícias | Organizer';
 $cssPagina = ['shared/catalogo.css'];

@@ -48,6 +48,16 @@ class Usuario
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
+    // Verificar se o usuário tem uma ONG!
+    function buscarOngUsuario($usuarioId)
+    {
+        $query = "SELECT ong_id FROM ongs WHERE responsavel_id = :id LIMIT 1";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindParam(':id', $usuarioId, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchColumn();
+    }
+
     // Listagem para o ADM
     function listar()
     {

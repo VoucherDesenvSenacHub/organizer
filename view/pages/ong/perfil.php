@@ -1,5 +1,5 @@
 <?php
-//CONFIGURAÇÕES DA PÁGINA
+session_start();
 $acesso = $_SESSION['perfil_usuario'] ?? 'visitante';
 $tituloPagina = 'Sobre a ONG | Organizer';
 $cssPagina = ['ong/perfil.css'];

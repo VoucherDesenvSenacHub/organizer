@@ -1,4 +1,5 @@
 <?php
+session_start();
 $acesso = $_SESSION['perfil_usuario'] ?? 'visitante';
 $tituloPagina = 'Encontre Projetos | Organizer';
 $cssPagina = ['shared/catalogo.css'];
