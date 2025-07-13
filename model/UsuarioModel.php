@@ -13,32 +13,6 @@ class Usuario
         $this->pdo->exec("SET time_zone = '-04:00'");
     }
 
-    function cadastro($nome, $telefone, $cpf, $data, $email, $senha)
-    {
-        try {
-            $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
-            $query = "INSERT INTO $this->tabela (nome, cpf, data_nascimento, email, telefone, senha)
-                          VALUES (:nome, :cpf, :data_nascimento, :email, :telefone, :senha)";
-            $stmt = $this->pdo->prepare($query);
-            $stmt->bindParam(':nome', $nome);
-            $stmt->bindParam(':cpf', $cpf);
-            $stmt->bindParam(':data_nascimento', $data);
-            $stmt->bindParam(':email', $email);
-            $stmt->bindParam(':telefone', $telefone);
-            $stmt->bindParam(':senha', $senhaHash);
-            $stmt->execute();
-            if ($stmt->rowCount() > 0) {
-                header('Location: login.php?msg=cadsucesso');
-            } else {
-                header('Location: cadastro.php');
-            }
-            exit;
-        } catch (PDOException $e) {
-            header('Location: cadastro.php?cadastro=erro');
-            exit;
-        }
-    }
-
     function login($email)
     {
         $query = "SELECT * FROM $this->tabela WHERE email = :email";
@@ -57,6 +31,38 @@ class Usuario
         $stmt->execute();
         return $stmt->fetchColumn();
     }
+
+    function cadastro($dados)
+    {
+        try {
+            $senhaHash = password_hash($dados['senha'], PASSWORD_DEFAULT);
+
+            $query = "INSERT INTO $this->tabela (nome, cpf, data_nascimento, email, telefone, senha)
+                  VALUES (:nome, :cpf, :data_nascimento, :email, :telefone, :senha)";
+
+            $stmt = $this->pdo->prepare($query);
+
+            $stmt->bindParam(':nome', $dados['nome']);
+            $stmt->bindParam(':cpf', $dados['cpf']);
+            $stmt->bindParam(':data_nascimento', $dados['data_nascimento']);
+            $stmt->bindParam(':email', $dados['email']);
+            $stmt->bindParam(':telefone', $dados['telefone']);
+            $stmt->bindParam(':senha', $senhaHash);
+
+            return $stmt->execute();
+        } catch (PDOException $e) {
+            return false; // qualquer erro retorna false
+        }
+    }
+
+    function primeiroAcesso($usuarioId, $escolha)
+    {
+        $query = "UPDATE $this->tabela SET $escolha = 1 WHERE usuario_id = :id";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindParam(':id', $usuarioId, PDO::PARAM_INT);
+        return $stmt->execute();
+    }
+
 
     // Listagem para o ADM
     function listar()

@@ -40,23 +40,8 @@ function proximo(indice) {
         check[2].classList.add('input-valid');
         moverPara(indice, 25);
     }
-    // else if (indice == 4) {
-    //     if (
-    //         !validarCampo(input[8], 9, 'Digite o nome completo do responsável.', 8) ||
-    //         !validarCampo(input[9], 10, 'Digite um CPF válido.', 14) ||
-    //         !validarCampo(input[10], 11, 'Digite um telefone válido.', 15) ||
-    //         !validarEmail(input[11], 12, 'Digite um email válido.')
-    //     ) {
-    //         check[3].classList.remove('input-valid');
-    //         return false;
-    //     }
-    //     check[3].classList.add('input-valid');
-    //     moverPara(indice, 16);
-    // }
     else if (indice == 4) {
         if (
-            // !validarCampo(input[8], 9, 'Digite a agência corretamente.', 6) ||
-            // !validarCampo(input[9], 10, 'Escolha o tipo de Conta.') ||
             !validarSelect(select[0], 9, 'Escolha um banco.') ||
             !validarSelect(select[1], 10, 'Escolha o tipo da conta.') ||
             !validarCampo(input[8], 11, 'Digite a agência corretamente.', 6) ||
@@ -70,19 +55,6 @@ function proximo(indice) {
         cadastrar_ong()
         return true;
     }
-    // else if (indice == 6) {
-    //     if (
-    //         !validarEmail(input[16], 17, 'Digite um email válido.') ||
-    //         !validarCampo(input[17], 18, 'Insira a senha entre 8-20 caracteres.', 8) ||
-    //         !validarSenha(input[17], input[18], 19, 'As senhas não coincidem.')
-    //     ) {
-    //         check[5].classList.remove('input-valid');
-    //         return false;
-    //     }
-    //     check[5].classList.add('input-valid');
-    //     cadastrar_ong()
-    //     return true;
-    // }
 }
 
 function cadastrar_ong() {
