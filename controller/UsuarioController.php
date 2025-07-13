@@ -80,7 +80,7 @@ switch ($acao) {
 
         // Verificar se o usuário tem uma ONG
         if ($perfilUsuario === 'ong') {
-            $ongExiste = $usuarioModel->buscarOngUsuario($_SESSION['usuario_id']);
+            $ongExiste = $usuarioModel->buscarOngUsuario($_SESSION['usuario']['id']);
             if (!$ongExiste) {
                 header("Location: ../view/pages/ong/cadastro.php?msg=conta");
                 exit;
