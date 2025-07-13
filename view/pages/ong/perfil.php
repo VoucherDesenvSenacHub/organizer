@@ -18,13 +18,13 @@ if (isset($_GET['id'])) {
     $logo_url = $ong->logo_url ?? '../../assets/images/global/image-placeholder.svg';
 }
 
-if (isset($_SESSION['usuario_id'])) {
-    $projetosFavoritos = $projetoModel->listarFavoritos($_SESSION['usuario_id']);
+if (isset($_SESSION['usuario']['id'])) {
+    $projetosFavoritos = $projetoModel->listarFavoritos($_SESSION['usuario']['id']);
 }
 
 // Buscar se é favorito
-if (isset($_SESSION['usuario_id'])) {
-    $ongsFavoritas = $ongModel->listarFavoritas($_SESSION['usuario_id']);
+if (isset($_SESSION['usuario']['id'])) {
+    $ongsFavoritas = $ongModel->listarFavoritas($_SESSION['usuario']['id']);
 }
 
 $perfil = $_SESSION['perfil_usuario'] ?? '';
@@ -55,7 +55,7 @@ $perfil = $_SESSION['perfil_usuario'] ?? '';
                 <img src="<?= $logo_url ?>">
                 <div class="btn-salvar">
                     <button id="share" class="fa-solid fa-share-nodes" onclick="abrir_popup('compartilhar-popup')"></button>
-                    <?php if (!isset($_SESSION['usuario_id'])): ?>
+                    <?php if (!isset($_SESSION['usuario']['id'])): ?>
                         <button title="Favoritar" id="like" class="fa-solid fa-heart" onclick="abrir_popup('login-obrigatorio-popup')"></button>
                     <?php elseif (!isset($_SESSION['perfil_usuario']) || $_SESSION['perfil_usuario'] === 'doador') : ?>
                         <?php $classe = in_array($ong->ong_id, $ongsFavoritas) ? 'favoritado' : ''; ?>
@@ -159,7 +159,7 @@ $perfil = $_SESSION['perfil_usuario'] ?? '';
                         foreach ($projetos_ong as $projeto) {
                             $valor_projeto = $projetoModel->buscarValor($projeto->projeto_id);
                             $barra = round(($valor_projeto / $projeto->meta) * 100);
-                            $jaFavoritado = isset($_SESSION['usuario_id']) && in_array($projeto->projeto_id, $projetosFavoritos);
+                            $jaFavoritado = isset($_SESSION['usuario']['id']) && in_array($projeto->projeto_id, $projetosFavoritos);
                             require '../../components/cards/card-projeto.php';
                         }
                     } else {

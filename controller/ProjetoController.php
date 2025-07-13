@@ -9,7 +9,7 @@ $projetoModel = new Projeto();
 
 switch ($acao) {
     case 'favoritar':
-        $usuario_id = $_SESSION['usuario_id'];
+        $usuario_id = $_SESSION['usuario']['id'];
         $projeto_id = $_POST['projeto-id-favorito'] ?? null;
         if ($projeto_id) {
             $favorito = $projetoModel->favoritarProjeto($usuario_id, $projeto_id);

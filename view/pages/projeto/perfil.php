@@ -48,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_SESSION['perfil_usuario'] === 'do
     if ($valor + $valor_projeto > $projeto->meta) {
         echo "<script>alert('O valor ultrapassou a meta!! doe um valor menor.')</script>";
     } else {
-        $doacao = $projetoModel->doacao($projeto->projeto_id, $_SESSION['usuario_id'], $valor);
+        $doacao = $projetoModel->doacao($projeto->projeto_id, $_SESSION['usuario']['id'], $valor);
         if ($doacao > 0) {
             header("Location: perfil.php?id=$id&msg=doacao");
             exit;
@@ -58,7 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_SESSION['perfil_usuario'] === 'do
 
 // Apoiar um projeto 
 if (isset($_POST['projeto-apoio-id'])) {
-    $apoio = $projetoModel->apoiarProjeto($_SESSION['usuario_id'], $_POST['projeto-apoio-id']);
+    $apoio = $projetoModel->apoiarProjeto($_SESSION['usuario']['id'], $_POST['projeto-apoio-id']);
     if ($apoio) {
         header("Location: perfil.php?id=$id&msg=apoio");
         exit;
@@ -66,15 +66,15 @@ if (isset($_POST['projeto-apoio-id'])) {
 }
 
 if (isset($_POST['projeto-desapoiar-id'])) {
-    $desapoiado = $projetoModel->desapoiarProjeto($_SESSION['usuario_id'], $_POST['projeto-desapoiar-id']);
+    $desapoiado = $projetoModel->desapoiarProjeto($_SESSION['usuario']['id'], $_POST['projeto-desapoiar-id']);
     if ($desapoiado) {
         header("Location: perfil.php?id=$id&msg=desapoio");
         exit;
     }
 }
 
-if (isset($_GET['id']) && isset($_SESSION['usuario_id'])) {
-    $jaApoiou = $projetoModel->usuarioJaApoiouProjeto($_SESSION['usuario_id'], $_GET['id']);
+if (isset($_GET['id']) && isset($_SESSION['usuario']['id'])) {
+    $jaApoiou = $projetoModel->usuarioJaApoiouProjeto($_SESSION['usuario']['id'], $_GET['id']);
 } else {
     $jaApoiou = false;
 }
@@ -83,8 +83,8 @@ if (isset($_GET['id']) && $projeto) {
 }
 
 // Buscar se é favorito
-if (isset($_SESSION['usuario_id'])) {
-    $projetosFavoritos = $projetoModel->listarFavoritos($_SESSION['usuario_id']);
+if (isset($_SESSION['usuario']['id'])) {
+    $projetosFavoritos = $projetoModel->listarFavoritos($_SESSION['usuario']['id']);
 }
 
 require_once 'partials/toast-projeto.php';
@@ -141,7 +141,7 @@ ob_end_flush();
                     </div>
                     <div class="btn-salvar">
                         <button id="share" class="fa-solid fa-share-nodes" onclick="abrir_popup('compartilhar-popup')"></button>
-                        <?php if (!isset($_SESSION['usuario_id'])): ?>
+                        <?php if (!isset($_SESSION['usuario']['id'])): ?>
                             <button title="Favoritar" class="btn-like fa-solid fa-heart" onclick="abrir_popup('login-obrigatorio-popup')"></button>
 
                         <?php elseif (!isset($_SESSION['perfil_usuario']) || $_SESSION['perfil_usuario'] === 'doador') : ?>

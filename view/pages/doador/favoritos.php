@@ -12,13 +12,13 @@ require_once '../../../model/ProjetoModel.php';
 $projetoModel = new Projeto();
 
 // Buscar os favoritos
-$listaOngs = $ongModel->favoritosUsuario($_SESSION['usuario_id']);
-$listaProjetos = $projetoModel->favoritosUsuario($_SESSION['usuario_id']);
+$listaOngs = $ongModel->favoritosUsuario($_SESSION['usuario']['id']);
+$listaProjetos = $projetoModel->favoritosUsuario($_SESSION['usuario']['id']);
 
 // Pintar o icone de favoritos
-if (isset($_SESSION['usuario_id'])) {
-    $ongsFavoritas = $ongModel->listarFavoritas($_SESSION['usuario_id']);
-    $projetosFavoritos = $projetoModel->listarFavoritos($_SESSION['usuario_id']);
+if (isset($_SESSION['usuario']['id'])) {
+    $ongsFavoritas = $ongModel->listarFavoritas($_SESSION['usuario']['id']);
+    $projetosFavoritos = $projetoModel->listarFavoritos($_SESSION['usuario']['id']);
 }
 
 ?>
@@ -52,7 +52,7 @@ if (isset($_SESSION['usuario_id'])) {
                                   </div>';
                         } else {
                             foreach ($listaOngs as $ong) {
-                                $jaFavoritada = isset($_SESSION['usuario_id']) && in_array($ong->ong_id, $ongsFavoritas);
+                                $jaFavoritada = isset($_SESSION['usuario']['id']) && in_array($ong->ong_id, $ongsFavoritas);
                                 require '../../components/cards/card-ong.php';
                             }
                         }
@@ -67,7 +67,7 @@ if (isset($_SESSION['usuario_id'])) {
                                   </div>';
                         } else {
                             foreach ($listaProjetos as $projeto) {
-                                $jaFavoritado = isset($_SESSION['usuario_id']) && in_array($projeto->projeto_id, $projetosFavoritos);
+                                $jaFavoritado = isset($_SESSION['usuario']['id']) && in_array($projeto->projeto_id, $projetosFavoritos);
                                 $valor_projeto = $projetoModel->buscarValor($projeto->projeto_id);
                                 $barra = round(($valor_projeto / $projeto->meta) * 100);
                                 require '../../components/cards/card-projeto.php';

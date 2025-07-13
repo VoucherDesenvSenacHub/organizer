@@ -15,8 +15,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['pesquisa'])) {
 }
 
 // Buscar os favoritos
-if (isset($_SESSION['usuario_id'])) {
-    $ongsFavoritas = $ongModel->listarFavoritas($_SESSION['usuario_id']);
+if (isset($_SESSION['usuario']['id'])) {
+    $ongsFavoritas = $ongModel->listarFavoritas($_SESSION['usuario']['id']);
 }
 
 $perfil = $_SESSION['perfil_usuario'] ?? '';
@@ -138,7 +138,7 @@ $perfil = $_SESSION['perfil_usuario'] ?? '';
         } ?>
         <section id="box-ongs">
             <?php foreach ($lista as $ong) {
-                $jaFavoritada = isset($_SESSION['usuario_id']) && in_array($ong->ong_id, $ongsFavoritas);
+                $jaFavoritada = isset($_SESSION['usuario']['id']) && in_array($ong->ong_id, $ongsFavoritas);
                 require '../../components/cards/card-ong.php';
             }
             ?>

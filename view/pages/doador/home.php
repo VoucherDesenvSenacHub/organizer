@@ -7,7 +7,7 @@ require_once '../../components/layout/base-inicio.php';
 
 require_once __DIR__ . '/../../../autoload.php';
 $usuarioModel = new Usuario();
-$relatorio = $usuarioModel->RelatorioHome($_SESSION['usuario_id']);
+$relatorio = $usuarioModel->RelatorioHome($_SESSION['usuario']['id']);
 ?>
 <section id="cabecalho">
     <h1>Olá, <?= implode(' ', array_slice(explode(' ', trim($usuario->nome)), 0, 2)) ?>.</h1>

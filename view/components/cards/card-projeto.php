@@ -12,7 +12,7 @@ $logo_url = $projeto->logo_url ?? '../../assets/images/global/image-placeholder.
 <div class="card-projeto <?= $class ?>">
     <div class="acoes-projeto">
         <button class="btn-share fa-solid fa-share-nodes" onclick="abrir_popup('compartilhar-popup')"></button>
-        <?php if (!isset($_SESSION['usuario_id'])): ?>
+        <?php if (!isset($_SESSION['usuario']['id'])): ?>
             <button title="Favoritar" class="btn-like fa-solid fa-heart" onclick="abrir_popup('login-obrigatorio-popup')"></button>
         <?php else: ?>
             <form action="../.././../controller/ProjetoController.php?acao=favoritar" method="POST">

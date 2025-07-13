@@ -9,7 +9,7 @@ $ongModel = new Ong();
 
 switch ($acao) {
     case 'favoritar':
-        $usuario_id = $_SESSION['usuario_id'];
+        $usuario_id = $_SESSION['usuario']['id'];
         $ong_id = $_POST['ong-id-favorito'] ?? null;
         if ($ong_id) {
             $favorito = $ongModel->favoritarOng($usuario_id, $ong_id);
