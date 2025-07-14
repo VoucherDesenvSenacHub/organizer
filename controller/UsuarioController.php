@@ -36,7 +36,7 @@ switch ($acao) {
                 header("Location: ../view/pages/ong/cadastro.php");
                 exit;
             }
-            
+
             $_SESSION['ong_id'] = $usuarioModel->buscarOngUsuario($_SESSION['usuario']['id']);
 
             if ($quantidadeAcessos === 1) {
@@ -78,12 +78,13 @@ switch ($acao) {
         //========== PRIMEIRO ACESSO DO USUÁRIO ==========
     case 'primeiro-acesso':
         $escolhaUsuario = $_POST['escolha'];
-        $usuarioModel->primeiroAcesso($_SESSION['usuario']['id'], $escolhaUsuario);
-        $_SESSION['perfil_usuario'] = $escolhaUsuario;
         if ($escolhaUsuario === 'ong') {
             header("Location: ../view/pages/{$escolhaUsuario}/cadastro.php");
             exit;
         }
+        $_SESSION['perfil_usuario'] = $escolhaUsuario;
+        $_SESSION['usuario']['acessos'][$escolhaUsuario] = true;
+        $usuarioModel->primeiroAcesso($_SESSION['usuario']['id'], $escolhaUsuario);
         header("Location: ../view/pages/{$escolhaUsuario}/home.php");
         exit;
 

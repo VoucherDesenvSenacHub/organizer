@@ -1,10 +1,10 @@
 <?php 
     // BANCO DE DADO LOCAL:
-        // $host = 'localhost';
-        // $port = 3306;
-        // $dbname = 'organizer';
-        // $user = 'root';
-        // $password = '';
+        $host = 'localhost';
+        $port = 3306;
+        $dbname = 'organizer';
+        $user = 'root';
+        $password = '';
 
     // $host = 'turntable.proxy.rlwy.net';
     // $port = 14796;
@@ -18,11 +18,11 @@
     // $user = 'organizerr';
     // $password = '@Senac123'; 
 
-    $host = 'centerbeam.proxy.rlwy.net';
-    $port = 28838;
-    $dbname = 'organizer';
-    $user = 'root';
-    $password = 'GxbLQsKICwpVBaOQegbVxZvLHfgSIorV'; 
+    // $host = 'centerbeam.proxy.rlwy.net';
+    // $port = 28838;
+    // $dbname = 'organizer';
+    // $user = 'root';
+    // $password = 'GxbLQsKICwpVBaOQegbVxZvLHfgSIorV'; 
     
     try {
         $pdo = new PDO("mysql:host=$host;port=$port;dbname=$dbname;charset=utf8", $user, $password);
