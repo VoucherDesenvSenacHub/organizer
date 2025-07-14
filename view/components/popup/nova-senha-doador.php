@@ -4,7 +4,7 @@
         <h1>NOVA SENHA</h1>
         <p>Digite sua nova senha</p>
         <form action="#" method="POST" onsubmit="return confirm('Tem certeza que deseja alterar sua senha?')">
-            <input type="hidden" name="usuario_id" value="<?= $_SESSION['usuario_id'] ?>">
+            <input type="hidden" name="usuario_id" value="<?= $_SESSION['usuario']['id'] ?>">
             <div class="input-group">
                 <div class="input-box">
                     <label for="senha_usuario">Senha</label>
