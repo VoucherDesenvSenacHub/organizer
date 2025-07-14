@@ -31,6 +31,14 @@ switch ($acao) {
             $acessosUsuario = array_filter($_SESSION['usuario']['acessos']);
             $quantidadeAcessos = count($acessosUsuario);
 
+            // Se o usuário escolheu ser ong, mas ainda não fez o cadastro
+            if (array_key_first($acessosUsuario) === 'ong' && !$usuarioModel->buscarOngUsuario($_SESSION['usuario']['id'])) {
+                header("Location: ../view/pages/ong/cadastro.php");
+                exit;
+            }
+            
+            $_SESSION['ong_id'] = $usuarioModel->buscarOngUsuario($_SESSION['usuario']['id']);
+
             if ($quantidadeAcessos === 1) {
                 // Se o usuário tiver apenas 1 acesso, vai direto para home
                 $perfil = array_key_first($acessosUsuario);
@@ -72,6 +80,10 @@ switch ($acao) {
         $escolhaUsuario = $_POST['escolha'];
         $usuarioModel->primeiroAcesso($_SESSION['usuario']['id'], $escolhaUsuario);
         $_SESSION['perfil_usuario'] = $escolhaUsuario;
+        if ($escolhaUsuario === 'ong') {
+            header("Location: ../view/pages/{$escolhaUsuario}/cadastro.php");
+            exit;
+        }
         header("Location: ../view/pages/{$escolhaUsuario}/home.php");
         exit;
 
@@ -82,7 +94,7 @@ switch ($acao) {
         if ($perfilUsuario === 'ong') {
             $ongExiste = $usuarioModel->buscarOngUsuario($_SESSION['usuario']['id']);
             if (!$ongExiste) {
-                header("Location: ../view/pages/ong/cadastro.php?msg=conta");
+                header("Location: ../view/pages/ong/cadastro.php");
                 exit;
             }
             $_SESSION['ong_id'] = $ongExiste;

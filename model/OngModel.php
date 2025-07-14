@@ -12,7 +12,7 @@ class Ong
         $this->pdo->exec("SET time_zone = '-04:00'");
     }
 
-    function criar($dados)
+    function criarOng($dados)
     {
         $query = "INSERT INTO $this->tabela (
             nome, cnpj, responsavel_id,

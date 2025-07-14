@@ -6,8 +6,8 @@ require_once '../../components/layout/base-inicio.php';
 
 require_once __DIR__ . '/../../../autoload.php';
 $ongModel = new Ong();
-$minhaOng = $ongModel->buscarPerfil($_SESSION['usuario']['id']);
-$dadosOng = $ongModel->buscarDados($_SESSION['usuario']['id']);
+$minhaOng = $ongModel->buscarPerfil($_SESSION['ong_id']);
+$dadosOng = $ongModel->buscarDados($_SESSION['ong_id']);
 ?>
 <main class="container">
     <div id="title">
