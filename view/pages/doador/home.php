@@ -7,7 +7,7 @@ require_once '../../components/layout/base-inicio.php';
 
 require_once __DIR__ . '/../../../autoload.php';
 $usuarioModel = new Usuario();
-$relatorio = $usuarioModel->RelatorioHome($_SESSION['usuario_id']);
+$relatorio = $usuarioModel->RelatorioHome($_SESSION['usuario']['id']);
 ?>
 <section id="cabecalho">
     <h1>Olá, <?= implode(' ', array_slice(explode(' ', trim($usuario->nome)), 0, 2)) ?>.</h1>
@@ -24,7 +24,7 @@ $relatorio = $usuarioModel->RelatorioHome($_SESSION['usuario_id']);
     <div class="box-cards">
         <div class="card-acoes">
             <div class="icon tp-doacao">
-                <img src="../../assets/images/pages/home-doador/icon-dinheiro.png">
+                <img src="../../assets/images/icons/icon-dinheiro.png">
             </div>
             <div class="acoes-text">
                 <h4>Doação realizada</h4>
@@ -34,7 +34,7 @@ $relatorio = $usuarioModel->RelatorioHome($_SESSION['usuario_id']);
         </div>
         <div class="card-acoes">
             <div class="icon tp-salvar">
-                <img src="../../assets/images/pages/home-doador/icon-coracao.png">
+                <img src="../../assets/images/icons/icon-coracao.png">
             </div>
             <div class="acoes-text">
                 <h4>Projeto Salvo</h4>
@@ -44,11 +44,11 @@ $relatorio = $usuarioModel->RelatorioHome($_SESSION['usuario_id']);
         </div>
         <div class="card-acoes">
             <div class="icon tp-apoiar">
-                <img src="../../assets/images/pages/home-doador/icon-abraco.png">
+                <img src="../../assets/images/icons/icon-abraco.png">
             </div>
             <div class="acoes-text">
-                <h4>Voluntariado Escrito</h4>
-                <p>Você se inscreveu na ONG “Ajuda Animal”</p>
+                <h4>Projeto Apoiado</h4>
+                <p>Você apoiou o Projeto “Conecta Jovem”</p>
                 <span>04 de agosto de 2024, 14:21</span>
             </div>
         </div>

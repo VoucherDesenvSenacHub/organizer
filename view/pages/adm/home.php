@@ -10,7 +10,7 @@ $relatorio = $adminModel->RelatorioHome();
 ?>
 <main class="container">
     <div id="title">
-        <h1><i class="fa-solid fa-user-secret"></i> <?= $_SESSION['usuario_nome'] ?></h1>
+        <h1><i class="fa-solid fa-user-secret"></i> <?= $_SESSION['usuario']['nome'] ?></h1>
         <p>DASHBOARD</p>
     </div>
     <div id="resumo">

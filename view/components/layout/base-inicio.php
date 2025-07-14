@@ -1,5 +1,5 @@
 <?php
-    require_once '../../../controller/verificarAcesso.php';
+    require_once '../../../controller/AcessoController.php';
     VerificarAcesso($acesso);
 ?>
 

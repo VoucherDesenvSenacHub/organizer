@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . '/../../../model/UsuarioModel.php';
 $usuarioModel = new Usuario();
-$usuario = $usuarioModel->buscar_perfil($_SESSION['usuario_id']);
+$usuario = $usuarioModel->buscar_perfil($_SESSION['usuario']['id']);
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['id_usuario'])) {
@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if ($idade >= 18) {
             $envio = $usuarioModel->update($id, $nome, $telefone, $cpf, $data, $email);
             if ($envio) {
-                $usuario = $usuarioModel->buscar_perfil($_SESSION['usuario_id']);
+                $usuario = $usuarioModel->buscar_perfil($_SESSION['usuario']['id']);
             }
         } else {
             echo "<script>alert('Você precisa ter 18 anos ou mais para atualizar o cadastro.')</script>";
@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <button class="btn-fechar-popup fa-solid fa-xmark" onclick="fechar_popup('perfil-doador-popup')"></button>
         <div id="left" class="box">
             <div id="perfil">
-                <img src="<?= $_SESSION['usuario_foto'] ?>">
+                <img src="<?= $_SESSION['usuario']['foto'] ?>">
                 <p><?= $usuario->nome ?></p>
                 <!-- <p>email@blabla.com</p> -->
             </div>
@@ -53,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <div id="right" class="box">
             <h1>PERFIL</h1>
             <form action="#" method="POST" onsubmit="return confirm('Tem certeza que deseja alterar seus dados?')">
-                <input type="hidden" name="id_usuario" value="<?= $_SESSION['usuario_id'] ?>">
+                <input type="hidden" name="id_usuario" value="<?= $_SESSION['usuario']['id'] ?>">
                 <div class="input-group">
                     <div class="input-box">
                         <label for="nome_usuario">Nome</label>

@@ -8,7 +8,7 @@ require_once '../../components/layout/base-inicio.php';
 require_once '../../../model/ProjetoModel.php';
 $projetoModel = new Projeto();
 
-$doacoes = $projetoModel->buscarDoacao($_SESSION['usuario_id']);
+$doacoes = $projetoModel->buscarDoacao($_SESSION['usuario']['id']);
 ?>
 <section>
     <h1><i class="fa-solid fa-coins"></i> MINHAS DOAÇÕES</h1>

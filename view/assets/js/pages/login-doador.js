@@ -22,6 +22,12 @@ function verificarMensagem() {
     else if (mensagem === 'login') {
         mostrar_toast("toast-login")
     }
+
+    // Limpa o parâmetro da URL
+    if (window.history.replaceState) {
+        const urlSemParams = window.location.protocol + "//" + window.location.host + window.location.pathname;
+        window.history.replaceState({}, document.title, urlSemParams);
+    }
 }
 
 window.onload = function () {
@@ -34,11 +40,11 @@ const togglePassword = document.querySelector("#togglePassword");
 const password = document.querySelector("#senha");
 
 togglePassword.addEventListener("click", function () {
-  const type = password.type === "password" ? "text" : "password";
+    const type = password.type === "password" ? "text" : "password";
 
-  password.type = type;
+    password.type = type;
 
-  // this -> elemento
-  this.classList.toggle("fa-eye");
-  this.classList.toggle("fa-eye-slash");
+    // this -> elemento
+    this.classList.toggle("fa-eye");
+    this.classList.toggle("fa-eye-slash");
 });

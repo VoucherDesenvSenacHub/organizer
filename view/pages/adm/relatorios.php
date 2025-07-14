@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="card1">
                 <div class="icon">
                     Voluntários por Projeto
-                    <button onclick="clicar()"><img src="../../assets/images/icon-download-report.png" alt=""></button>
+                    <button onclick="clicar()"><img src="../../assets/images/pages/ong/relatorios/icon-download.png" alt=""></button>
                 </div>
                 <div class="graficos">
                     <?php
@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="card1">
                 <div class="icon">
                     Doações Mensais
-                    <button onclick="clicar()"><img src="../../assets/images/icon-download-report.png" alt=""></button>
+                    <button onclick="clicar()"><img src="../../assets/images/pages/ong/relatorios/icon-download.png" alt=""></button>
                 </div>
                 <div class="grafico-linhas">
                     <?php echo graficoLinhas([960, 720, 480, 240, 0], $largura, $altura, $doacoesMensais) ?>
@@ -57,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="card1">
                 <div class="icon">
                     Doações por projeto
-                    <button onclick="clicar()"><img src="../../assets/images/icon-download-report.png" alt=""></button>
+                    <button onclick="clicar()"><img src="../../assets/images/pages/ong/relatorios/icon-download.png" alt=""></button>
                 </div>
                 <div class="grafico-pizza">
                     <?php echo graficoPizza($largura, $altura, $doacoesPorProjeto) ?>
@@ -69,7 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="card1">
                 <div class="icon">
                     Doações/Voluntários por Projeto
-                    <button onclick="clicar()"><img src="../../assets/images/icon-download-report.png" alt=""></button>
+                    <button onclick="clicar()"><img src="../../assets/images/pages/ong/relatorios/icon-download.png" alt=""></button>
 
                 </div>
                 <div class="grafico-horizontal">
@@ -87,7 +87,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <!-- Fim doações voluntários por projeto -->
 
         <div id="download">
-            <img src="../../assets/images/icon.png" alt="">
+            <i class="fa-solid fa-download"></i>
             <p>Download Iniciado</p>
         </div>
 
