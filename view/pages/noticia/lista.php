@@ -1,4 +1,5 @@
 <?php
+session_start();
 $acesso = $_SESSION['perfil_usuario'] ?? 'visitante';
 $tituloPagina = 'Acompanhe Notícias | Organizer';
 $cssPagina = ['shared/catalogo.css'];
@@ -113,7 +114,7 @@ $perfil = $_SESSION['perfil_usuario'] ?? '';
                 </form>
             </div>
             <div id="imagem-top">
-                <img src="../../assets/images/pages/tela-noticia-world.png" alt="">
+                <img src="../../assets/images/pages/shared/mundo.png">
             </div>
         </section>
         <?php if (isset($_GET['pesquisa'])) {

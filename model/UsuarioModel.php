@@ -13,59 +13,56 @@ class Usuario
         $this->pdo->exec("SET time_zone = '-04:00'");
     }
 
-    function cadastro($nome, $telefone, $cpf, $data, $email, $senha)
-    {
-        try {
-            $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
-            $query = "INSERT INTO $this->tabela (nome, cpf, data_nascimento, email, telefone, senha)
-                          VALUES (:nome, :cpf, :data_nascimento, :email, :telefone, :senha)";
-            $stmt = $this->pdo->prepare($query);
-            $stmt->bindParam(':nome', $nome);
-            $stmt->bindParam(':cpf', $cpf);
-            $stmt->bindParam(':data_nascimento', $data);
-            $stmt->bindParam(':email', $email);
-            $stmt->bindParam(':telefone', $telefone);
-            $stmt->bindParam(':senha', $senhaHash);
-            $stmt->execute();
-            if ($stmt->rowCount() > 0) {
-                header('Location: login.php?msg=cadsucesso');
-            } else {
-                header('Location: cadastro.php');
-            }
-            exit;
-        } catch (PDOException $e) {
-            header('Location: cadastro.php?cadastro=erro');
-            exit;
-        }
-    }
-
-    function login($email, $senha)
+    function login($email)
     {
         $query = "SELECT * FROM $this->tabela WHERE email = :email";
         $stmt = $this->pdo->prepare($query);
         $stmt->bindParam(':email', $email);
         $stmt->execute();
-
-        if ($stmt->rowCount() > 0) {
-            $conta = $stmt->fetch(PDO::FETCH_ASSOC);
-
-            if (password_verify($senha, $conta['senha'])) {
-                // Iniciar sessão e guardar dados do doador
-                session_start();
-                $_SESSION['usuario_id'] = $conta['usuario_id'];
-                $_SESSION['usuario_nome'] = $conta['nome'];
-                $_SESSION['usuario_foto'] = $conta['foto_perfil'] ?? '../../assets/images/global/user-placeholder.jpg';
-                $_SESSION['usuario_adm'] = $conta['adm'];
-
-                header('Location: acesso.php');
-                exit;
-            }
-        }
-
-        // Login falhou (e-mail ou senha inválida)
-        header('Location: login.php?msg=logerro');
-        exit;
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
+
+    // Verificar se o usuário tem uma ONG!
+    function buscarOngUsuario($usuarioId)
+    {
+        $query = "SELECT ong_id FROM ongs WHERE responsavel_id = :id LIMIT 1";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindParam(':id', $usuarioId, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchColumn();
+    }
+
+    function cadastro($dados)
+    {
+        try {
+            $senhaHash = password_hash($dados['senha'], PASSWORD_DEFAULT);
+
+            $query = "INSERT INTO $this->tabela (nome, cpf, data_nascimento, email, telefone, senha)
+                  VALUES (:nome, :cpf, :data_nascimento, :email, :telefone, :senha)";
+
+            $stmt = $this->pdo->prepare($query);
+
+            $stmt->bindParam(':nome', $dados['nome']);
+            $stmt->bindParam(':cpf', $dados['cpf']);
+            $stmt->bindParam(':data_nascimento', $dados['data_nascimento']);
+            $stmt->bindParam(':email', $dados['email']);
+            $stmt->bindParam(':telefone', $dados['telefone']);
+            $stmt->bindParam(':senha', $senhaHash);
+
+            return $stmt->execute();
+        } catch (PDOException $e) {
+            return false; // qualquer erro retorna false
+        }
+    }
+
+    function primeiroAcesso($usuarioId, $escolha)
+    {
+        $query = "UPDATE $this->tabela SET $escolha = 1 WHERE usuario_id = :id";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindParam(':id', $usuarioId, PDO::PARAM_INT);
+        return $stmt->execute();
+    }
+
 
     // Listagem para o ADM
     function listar()

@@ -12,7 +12,7 @@ class Ong
         $this->pdo->exec("SET time_zone = '-04:00'");
     }
 
-    function criar($dados)
+    function criarOng($dados)
     {
         $query = "INSERT INTO $this->tabela (
             nome, cnpj, responsavel_id,
@@ -152,16 +152,6 @@ class Ong
         $stmt->execute();
         $stmt->setFetchMode(PDO::FETCH_CLASS, __CLASS__);
         return $stmt->fetch();
-    }
-
-    // Verificar se o usúario tem uma ONG!
-    function verificarExistenciaOng($id_responsavel)
-    {
-        $query = "SELECT ong_id FROM $this->tabela WHERE responsavel_id = :id LIMIT 1";
-        $stmt = $this->pdo->prepare($query);
-        $stmt->bindParam(':id', $id_responsavel, PDO::PARAM_INT);
-        $stmt->execute();
-        return $stmt->fetchColumn();
     }
 
 

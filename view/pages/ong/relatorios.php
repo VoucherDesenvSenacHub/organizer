@@ -15,16 +15,16 @@ require_once '../../components/popup/download.php';
             <div class="card1">
                 <div class="icon">
                     Voluntários por Projeto
-                    <button onclick="clicar()"><img src="../../assets/images/icon-download-report.png" alt=""></button>
+                    <button onclick="clicar()"><img src="../../assets/images/pages/ong/relatorios/icon-download.png" alt=""></button>
 
                 </div>
 
                 <div class="sub">
 
-                    <img src="../../assets/images/graph-vol-proj.png" alt="">
+                    <img src="../../assets/images/pages/ong/relatorios/grafico-1.png" alt="">
 
                     <div class="quadrado">
-                        <img src="../../assets/images/SquareFill.png" alt="">
+                        <img src="../../assets/images/pages/ong/relatorios/legenda-1.png" alt="">
                         <p>Voluntarios</p>
                     </div>
 
@@ -34,33 +34,33 @@ require_once '../../components/popup/download.php';
             <div class="card1">
                 <div class="icon">
                     Doações Mensais
-                    <button onclick="clicar()"><img src="../../assets/images/icon-download-report.png" alt=""></button>
+                    <button onclick="clicar()"><img src="../../assets/images/pages/ong/relatorios/icon-download.png" alt=""></button>
                 </div>
-                <img src="../../assets/images/grafico2.png" alt="">
+                <img src="../../assets/images/pages/ong/relatorios/grafico-2.png" alt="">
                 <div class="sub">
-                    <img src="../../assets/images/Legends2.png" alt="">
+                    <img src="../../assets/images/pages/ong/relatorios/legenda-2.png" alt="">
                 </div>
             </div>
 
             <div class="card1">
                 <div class="icon">
                     Doações por projeto
-                    <button onclick="clicar()"><img src="../../assets/images/icon-download-report.png" alt=""></button>
+                    <button onclick="clicar()"><img src="../../assets/images/pages/ong/relatorios/icon-download.png" alt=""></button>
                 </div>
-                <img src="../../assets//images/pie-graph.png" alt="" id="pie-graph">
+                <img src="../../assets//images/pages/ong/relatorios/grafico-3.png" alt="" id="pie-graph">
             </div>
 
             <div class="card1">
                 <div class="icon">
                     Doações/Voluntários por Projeto
-                    <button onclick="clicar()"><img src="../../assets/images/icon-download-report.png" alt=""></button>
+                    <button onclick="clicar()"><img src="../../assets/images/pages/ong/relatorios/icon-download.png" alt=""></button>
                 </div>
-                <img src="../../assets/images/volunt-doac-relat.png" alt="">
+                <img src="../../assets/images/pages/ong/relatorios/grafico-4.png" alt="">
 
                 <div class="quadrado2">
-                    <img src="../../assets/images/greenSquare.png" alt="">
+                    <img src="../../assets/images/pages/ong/relatorios/legenda-3.png" alt="">
                     <p>Doações</p>
-                    <img src="../../assets/images/blueSquare.png" alt="">
+                    <img src="../../assets/images/pages/ong/relatorios/legenda-4.png" alt="">
                     <p>Voluntários</p>
                 </div>
             </div>

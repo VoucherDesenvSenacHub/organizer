@@ -9,7 +9,7 @@ require_once '../../components/layout/base-inicio.php';
 
 <main class="container">
     <div id="title">
-        <h1><i class="fa-solid fa-user-secret"></i> <?= $_SESSION['usuario_nome'] ?></h1>
+        <h1><i class="fa-solid fa-user-secret"></i> <?= $_SESSION['usuario']['nome'] ?></h1>
         <p>DASHBOARD</p>
     </div>
     <div id="resumo">
@@ -77,6 +77,7 @@ require_once '../../components/layout/base-inicio.php';
                 <tbody>
                     <tr>
                         <td data-label="#">0</td>
+<<<<<<< HEAD
                         <td data-label="NOME">ONG 1</td>
                         <td data-label="PROJETOS">15</td>
                         <td data-label="CRIADO">12/05/2025</td>
@@ -85,10 +86,22 @@ require_once '../../components/layout/base-inicio.php';
                                 <input type="hidden" name="id" value="">
                                 <button class="fa-solid fa-pen-to-square"></button>
                             </form>
+=======
+                        <td data-label="NOME">Ong Amigos</td>
+                        <td data-label="PROJETOS">4</td>
+                        <td data-label="RESPONSAVEL">Gean</td>
+                        <td data-label="CRIADO">12/05/2025</td>
+                        <td>
+                            <!-- <form method="GET"> -->
+                            <input type="hidden" name="id" value="">
+                            <a href="../adm/ongs.php"> <button class="fa-solid fa-eye"></button></a>
+                            <!-- </form> -->
+>>>>>>> f13614b08d0b8b17031a1c03890181badcff1ab5
                         </td>
                     </tr>
                     <tr>
                         <td data-label="#">1</td>
+<<<<<<< HEAD
                         <td data-label="NOME">ONG 2</td>
                         <td data-label="PROJETOS">15</td>
                         <td data-label="CRIADO">12/05/2025</td>
@@ -97,10 +110,22 @@ require_once '../../components/layout/base-inicio.php';
                                 <input type="hidden" name="id" value="">
                                 <button class="fa-solid fa-pen-to-square"></button>
                             </form>
+=======
+                        <td data-label="NOME">Associação Natureza</td>
+                        <td data-label="PROJETOS">2</td>
+                        <td data-label="RESPONSAVEL">Eduarda</td>
+                        <td data-label="CRIADO">12/05/2025</td>
+                        <td>
+                            <!-- <form method="GET"> -->
+                            <input type="hidden" name="id" value="">
+                            <a href="../adm/ongs.php"> <button class="fa-solid fa-eye"></button></a>
+                            <!-- </form> -->
+>>>>>>> f13614b08d0b8b17031a1c03890181badcff1ab5
                         </td>
                     </tr>
                     <tr>
                         <td data-label="#">2</td>
+<<<<<<< HEAD
                         <td data-label="NOME">ONG 3</td>
                         <td data-label="PROJETOS">15</td>
                         <td data-label="CRIADO">12/05/2025</td>
@@ -109,6 +134,17 @@ require_once '../../components/layout/base-inicio.php';
                                 <input type="hidden" name="id" value="">
                                 <button class="fa-solid fa-pen-to-square"></button>
                             </form>
+=======
+                        <td data-label="NOME">SOS Estados</td>
+                        <td data-label="PROJETOS">6</td>
+                        <td data-label="RESPONSAVEL">Carlos</td>
+                        <td data-label="CRIADO">12/05/2025</td>
+                        <td>
+                            <!-- <form method="GET"> -->
+                            <input type="hidden" name="id" value="">
+                            <a href="../adm/ongs.php"> <button class="fa-solid fa-eye"></button></a>
+                            <!-- </form> -->
+>>>>>>> f13614b08d0b8b17031a1c03890181badcff1ab5
                         </td>
                     </tr>
                 </tbody>
@@ -131,19 +167,27 @@ require_once '../../components/layout/base-inicio.php';
                 <tbody>
                     <tr>
                         <td data-label="#">0</td>
-                        <td data-label="NOME">Projeto 1</td>
-                        <td data-label="ONG">ONG 1</td>
+                        <td data-label="NOME">Educação para Todos</td>
+                        <td data-label="ONG">Ong Amigos</td>
                         <td data-label="ARRECADADO">R$ 15.000</td>
                         <td data-label="CRIADO">12/05/2025</td>
                         <td>
+<<<<<<< HEAD
                             <form method="GET">
                                 <input type="hidden" name="id" value="">
                                 <button class="fa-solid fa-pen-to-square"></button>
                             </form>
+=======
+                            <!-- <form method="GET"> -->
+                            <input type="hidden" name="id" value="">
+                            <a href="../adm/projetos.php"> <button class="fa-solid fa-eye"></button></a>
+                            <!-- </form> -->
+>>>>>>> f13614b08d0b8b17031a1c03890181badcff1ab5
                         </td>
                     </tr>
                     <tr>
                         <td data-label="#">1</td>
+<<<<<<< HEAD
                         <td data-label="NOME">Projeto 2</td>
                         <td data-label="ONG">ONG 2</td>
                         <td data-label="ARRECADADO">R$ 15.000</td>
@@ -166,6 +210,30 @@ require_once '../../components/layout/base-inicio.php';
                                 <input type="hidden" name="id" value="">
                                 <button class="fa-solid fa-pen-to-square"></button>
                             </form>
+=======
+                        <td data-label="NOME">Vida Sustentável</td>
+                        <td data-label="ONG">Associação Natureza</td>
+                        <td data-label="ARRECADADO">R$ 5.000</td>
+                        <td data-label="CRIADO">12/05/2025</td>
+                        <td>
+                            <!-- <form method="GET"> -->
+                            <input type="hidden" name="id" value="">
+                            <a href="../adm/projetos.php"> <button class="fa-solid fa-eye"></button></a>
+                            <!-- </form> -->
+                        </td>
+                    </tr>
+                    <tr>
+                        <td data-label="#">2</td>
+                        <td data-label="NOME">Alimenta Comunidade</td>
+                        <td data-label="ONG">SOS Estados</td>
+                        <td data-label="ARRECADADO">R$ 500</td>
+                        <td data-label="CRIADO">12/05/2025</td>
+                        <td>
+                            <!-- <form method="GET"> -->
+                            <input type="hidden" name="id" value="">
+                            <a href="../adm/projetos.php"> <button class="fa-solid fa-eye"></button></a>
+                            <!-- </form> -->
+>>>>>>> f13614b08d0b8b17031a1c03890181badcff1ab5
                         </td>
                     </tr>
                 </tbody>
@@ -193,6 +261,7 @@ require_once '../../components/layout/base-inicio.php';
                         <td data-label="DOAÇÕES">R$ 5.000</td>
                         <td data-label="CRIADO">01/01/2025</td>
                         <td>
+<<<<<<< HEAD
                             <form method="GET">
                                 <input type="hidden" name="id" value="">
                                 <button class="fa-solid fa-pen-to-square"></button>
@@ -202,10 +271,22 @@ require_once '../../components/layout/base-inicio.php';
                     <tr>
                         <td data-label="#">2</td>
                         <td data-label="NOME">João</td>
+=======
+                            <!-- <form method="GET"> -->
+                            <input type="hidden" name="id" value="">
+                            <a href="../adm/doadores.php"> <button class="fa-solid fa-eye"></button></a>
+                            <!-- </form> -->
+                        </td>
+                    </tr>
+                    <tr>
+                        <td data-label="#">1</td>
+                        <td data-label="NOME">Eduarda</td>
+>>>>>>> f13614b08d0b8b17031a1c03890181badcff1ab5
                         <td data-label="EMAIL">joao@organizer.com</td>
                         <td data-label="DOAÇÕES">R$ 3.400</td>
                         <td data-label="CRIADO">01/01/2025</td>
                         <td>
+<<<<<<< HEAD
                             <form method="GET">
                                 <input type="hidden" name="id" value="">
                                 <button class="fa-solid fa-pen-to-square"></button>
@@ -223,6 +304,25 @@ require_once '../../components/layout/base-inicio.php';
                                 <input type="hidden" name="id" value="">
                                 <button class="fa-solid fa-pen-to-square"></button>
                             </form>
+=======
+                            <!-- <form method="GET"> -->
+                            <input type="hidden" name="id" value="">
+                            <a href="../adm/doadores.php"> <button class="fa-solid fa-eye"></button></a>
+                            <!-- </form> -->
+                        </td>
+                    </tr>
+                    <tr>
+                        <td data-label="#">2</td>
+                        <td data-label="NOME">Bruna</td>
+                        <td data-label="EMAIL">bruna@organizer.com</td>
+                        <td data-label="DOAÇÕES">R$ 20.000</td>
+                        <td data-label="CRIADO">01/01/2025</td>
+                        <td>
+                            <!-- <form method="GET"> -->
+                            <input type="hidden" name="id" value="">
+                            <a href="../adm/doadores.php"> <button class="fa-solid fa-eye"></button></a>
+                            <!-- </form> -->
+>>>>>>> f13614b08d0b8b17031a1c03890181badcff1ab5
                         </td>
                     </tr>
                 </tbody>

@@ -9,6 +9,12 @@ $ongModel = new Ong();
 $minhaOng = $ongModel->buscarPerfil($_SESSION['ong_id']);
 $dadosOng = $ongModel->buscarDados($_SESSION['ong_id']);
 ?>
+<!-- Toast -->
+<div id="toast-cadastro-ong" class="toast">
+    <i class="fa-regular fa-circle-check"></i>
+    Cadastro realizado com Sucesso!
+</div>
+
 <main class="container">
     <div id="title">
         <h1> <?= $minhaOng->nome ?></h1>
@@ -74,4 +80,9 @@ $dadosOng = $ongModel->buscarDados($_SESSION['ong_id']);
 <?php
 $jsPagina = [];
 require_once '../../components/layout/footer/footer-logado.php';
+// Ativar os toast
+if (isset($_SESSION['cadastro-ong'])) {
+    echo "<script>mostrar_toast('toast-cadastro-ong')</script>";
+    unset($_SESSION['cadastro-ong']);
+}
 ?>

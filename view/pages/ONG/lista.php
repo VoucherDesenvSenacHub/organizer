@@ -1,4 +1,5 @@
 <?php
+session_start();
 $acesso = $_SESSION['perfil_usuario'] ?? 'visitante';
 $tituloPagina = 'Descubra Ongs | Organizer';
 $cssPagina = ['shared/catalogo.css'];
@@ -14,8 +15,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['pesquisa'])) {
 }
 
 // Buscar os favoritos
-if (isset($_SESSION['usuario_id'])) {
-    $ongsFavoritas = $ongModel->listarFavoritas($_SESSION['usuario_id']);
+if (isset($_SESSION['usuario']['id'])) {
+    $ongsFavoritas = $ongModel->listarFavoritas($_SESSION['usuario']['id']);
 }
 
 $perfil = $_SESSION['perfil_usuario'] ?? '';
@@ -129,7 +130,7 @@ $perfil = $_SESSION['perfil_usuario'] ?? '';
                 </form>
             </div>
             <div id="imagem-top">
-                <img src="../../assets/images/pages/tela-ong-team.png" alt="">
+                <img src="../../assets/images/pages/shared/time.png">
             </div>
         </section>
         <?php if (isset($_GET['pesquisa'])) {
@@ -137,7 +138,7 @@ $perfil = $_SESSION['perfil_usuario'] ?? '';
         } ?>
         <section id="box-ongs">
             <?php foreach ($lista as $ong) {
-                $jaFavoritada = isset($_SESSION['usuario_id']) && in_array($ong->ong_id, $ongsFavoritas);
+                $jaFavoritada = isset($_SESSION['usuario']['id']) && in_array($ong->ong_id, $ongsFavoritas);
                 require '../../components/cards/card-ong.php';
             }
             ?>

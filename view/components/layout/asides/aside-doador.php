@@ -8,7 +8,7 @@
             <a href="../doador/apoios.php" title="Apoios"><i class="fa-solid fa-hand-holding-heart"></i><span>Apoios</span></a>
         </nav>
     </div>
-    <a id="btn-acesso" href="../visitante/acesso.php" title="Mudar Acesso"><img src="../../assets/images/icons/trocar-acesso.png"><span>Mudar Acesso</span></a>
+    <a id="btn-acesso" href="../visitante/acesso.php" title="Mudar Acesso"><img src="../../assets/images/icons/icon-trocar-acesso.png"><span>Mudar Acesso</span></a>
     <button id="btn-sair" title="Sair" onclick="abrir_popup('sair-da-conta-popup')">
         <i class="fa-solid fa-right-from-bracket"></i>
         <span>Sair</span>

@@ -1,7 +1,7 @@
 <div class="popup-fundo" id="login-obrigatorio-popup">
     <div class="container-popup">
         <div class="img">
-            <img src="../../assets/images/pages/requer-login.png">
+            <img src="../../assets/images/pages/visitante/login-obrigatorio.png">
         </div>
         <div class="msg">
             <h1>Para realizar essa ação<br><span>faça login</span></h1>

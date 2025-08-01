@@ -1,5 +1,6 @@
 body {
-    background-color: var(--cor-principal);
+    background: #1C3464;
+    background: linear-gradient(180deg, rgba(28, 52, 100, 1) 15%, rgb(46 82 148) 100%);
 }
 
 main {
@@ -68,18 +69,19 @@ form .input-group {
     transition: .3s;
     width: 100%;
 }
+
 .input-item input:focus {
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
 }
 
 /* Icone de ver senha */
 #togglePassword {
-  position: absolute;
-  right: 10px;
-  top: calc(50% - 4px);
-  transform: translateY(50%);
-  cursor: pointer;
-  color: #666;
+    position: absolute;
+    right: 10px;
+    top: calc(50% - 4px);
+    transform: translateY(50%);
+    cursor: pointer;
+    color: #666;
 }
 
 /* Área "Esqueci a senha" */

@@ -8,7 +8,7 @@
             <form action="#" method="POST" onsubmit="return confirm('Tem certeza que deseja remover seu apoio deste projeto?')">
                 <input type="hidden" name="projeto-desapoiar-id" value="<?= $_GET['id'] ?>">
                 <button class="btn btn-desapoiar" type="submit">
-                    <img src="../../assets/images/pages/icone-coracao-partido.png">
+                    <img src="../../assets/images/icons/icon-coracao-partido.png">
                     <span>REMOVER APOIO</span>
                 </button>
             </form>
@@ -19,7 +19,7 @@
             <form action="#" method="POST">
                 <input type="hidden" name="projeto-apoio-id" value="<?= $_GET['id'] ?>">
                 <button class="btn" type="submit">
-                    <img src="../../assets/images/pages/icone-apoio.png">
+                    <img src="../../assets/images/icons/icon-apoio.png">
                     <span>APOIAR PROJETO</span>
                 </button>
             </form>

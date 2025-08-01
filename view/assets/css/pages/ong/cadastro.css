@@ -1,34 +1,17 @@
-@import url(../shared/cadastro.css);
+@import url(../visitante/cadastro.css);
+
+body {
+    background: linear-gradient(180deg, aliceblue 15%, #c9dcff 100%);
+    min-height: 100vh;
+}
+
+section .container {
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
 
 section .container h1 {
     color: var(--cor-amarelo);
-}
-
-.mensagem {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    background-color: rgba(255, 77, 77, 0.361);
-    padding: 5px;
-    border-radius: 5px;
-    margin: 0 auto;
-}
-
-.mensagem i {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--cor-vermelho);
-    font-weight: 800;
-    border: 3px solid var(--cor-vermelho);
-    border-radius: 50%;
-    min-width: 30px;
-    min-height: 30px;
-}
-
-/* Esconder o botão do login */
-header .btn-login a {
-    display: none;
 }
 
 .line #linhaClara,
@@ -42,44 +25,24 @@ header .btn-login a {
 }
 
 .inputBox #descricao {
-    max-width: 300px;
+    width: 630px;
+    max-width: 630px;
     height: 140px;
     max-height: 140px;
-    background-color: rgba(0, 0, 0, 0.07);
+    background-color: rgba(0, 0, 0, 0.04);
     border: none;
     outline: none;
     border-radius: 4px;
     padding: 15px;
 }
 
-.inputBox .checkbox-group {
-    display: flex;
-    justify-content: space-around;
-    gap: 10px;
-    flex-wrap: wrap;
-}
-
-.inputBox .checkbox-group .item-check {
-    display: flex;
-    align-items: center;
-    gap: 3px;
-    transition: .3s;
-}
-.inputBox .checkbox-group .item-check:hover {
-    font-weight: 400;
-}
-
-.inputBox .checkbox-group .item-check input {
-    accent-color: var(--cor-amarelo-hover);
-}
-
-.inputBox .checkbox-group .item-check input:checked ~ label {
-    color: var(--cor-amarelo-hover);
-    font-weight: 500;
-}
-
 @media (max-width: 750px) {
     .line .item {
         font-size: 9px;
+    }
+
+    .inputBox #descricao {
+        width: 100%;
+        max-width: 100%;
     }
 }

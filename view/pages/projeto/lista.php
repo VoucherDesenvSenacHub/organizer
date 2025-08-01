@@ -1,4 +1,5 @@
 <?php
+session_start();
 $acesso = $_SESSION['perfil_usuario'] ?? 'visitante';
 $tituloPagina = 'Encontre Projetos | Organizer';
 $cssPagina = ['shared/catalogo.css'];
@@ -133,7 +134,7 @@ $perfil = $_SESSION['perfil_usuario'] ?? '';
                 </form>
             </div>
             <div id="imagem-top">
-                <img src="../../assets/images/pages/tela-projeto-kids.png" alt="">
+                <img src="../../assets/images/pages/shared/criancas.png">
             </div>
         </section>
         <?php if (isset($_GET['pesquisa'])) {

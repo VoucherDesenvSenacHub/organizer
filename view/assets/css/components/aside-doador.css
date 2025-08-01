@@ -120,7 +120,7 @@
     align-items: center;
     gap: 20px;
     padding: 0 13px;
-    position: fixed;
+    position: absolute;
     bottom: 15px;
     color: var(--cor-principal);
     width: 45px;
@@ -146,7 +146,7 @@
     align-items: center;
     gap: 20px;
     padding: 10px;
-    position: fixed;
+    position: absolute;
     bottom: 65px;
     color: var(--cor-principal);
     width: 45px;

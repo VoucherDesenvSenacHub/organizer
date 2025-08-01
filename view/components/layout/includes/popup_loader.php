@@ -19,6 +19,8 @@ switch ($perfil) {
         require_once __DIR__ . '/../../popup/perfil-doador.php';
         require_once __DIR__ . '/../../popup/nova-senha-doador.php';
         require_once __DIR__ . '/../../popup/logoff.php';
+        require_once __DIR__ . '/../../popup/aprovar-parceria.php';
+        require_once __DIR__ . '/../../popup/recusar-parceria.php';
         break;
         
     default:
