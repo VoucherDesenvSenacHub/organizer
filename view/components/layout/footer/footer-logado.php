@@ -25,15 +25,23 @@
                 <a href="https://www.instagram.com/senachubacademy/" target="_blank"><i class="fa-brands fa-square-instagram"></i></a>
             </div>
         </div>
-        <div class="item">
-            <h1>Criar uma Ong</h1>
-            <p>Já pensou em criar sua própria ONG? <br> Transforme ideias em impacto real com seu próprio projeto social.</p>
-            <form onsubmit="return confirm('Deseja realmente criar uma ONG com sua conta?')" action="../../../controller/UsuarioController.php?acao=primeiro-acesso" method="POST">
-                <input type="hidden" name="escolha" value="ong">
-                <button class="btn">Criar uma Ong</button>
-            </form>
-        </div>
-    </div>
+        <?php if(isset($_SESSION['usuario']['id']) and !$_SESSION['usuario']['acessos']['ong']): ?>
+            <div class="item">
+                <h1>Criar uma Ong</h1>
+                <p>Já pensou em criar sua própria ONG? <br> Transforme ideias em impacto real com seu próprio projeto social.</p>
+                <form onsubmit="return confirm('Deseja realmente criar uma ONG com sua conta?')" action="../../../controller/UsuarioController.php?acao=primeiro-acesso" method="POST">
+                    <input type="hidden" name="escolha" value="ong">
+                    <button class="btn">Criar uma Ong</button>
+                </form>
+            </div>
+        <?php elseif(!isset($_SESSION['usuario']['id'])): ?>
+            <div class="item">
+                <h1>Criar uma Ong</h1>
+                <p>Já pensou em criar sua própria ONG? <br> Transforme ideias em impacto real com seu próprio projeto social.</p>
+                <a href="../visitante/login.php"><button class="btn">Criar uma Ong</button></a>
+            </div>
+        <?php endif ?>
+    </div>  
 </footer>
 
 
