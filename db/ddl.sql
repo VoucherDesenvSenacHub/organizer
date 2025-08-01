@@ -16,7 +16,7 @@ CREATE TABLE usuarios (
     telefone VARCHAR(20) NOT NULL,
     senha VARCHAR(255) NOT NULL,
 -- Tipos e status de usuário
-    doador BOOLEAN DEFAULT TRUE,
+    doador BOOLEAN DEFAULT FALSE,
     ong BOOLEAN DEFAULT FALSE,
     adm BOOLEAN DEFAULT FALSE,
     status ENUM('ATIVO', 'INATIVO') NOT NULL DEFAULT 'ATIVO',
@@ -56,7 +56,7 @@ CREATE TABLE ongs (
     banco_id INT NOT NULL,
     agencia VARCHAR(10) NOT NULL,
     conta_numero VARCHAR(20) NOT NULL,
-    tipo_conta ENUM('CORRENTE', 'POUPANÇA') NOT NULL DEFAULT 'CORRENTE',
+    tipo_conta ENUM('CORRENTE', 'POUPANÇA') NOT NULL,
 -- Dados adicionais
     logo_url VARCHAR(255),
     descricao TEXT NOT NULL,
