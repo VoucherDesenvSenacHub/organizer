@@ -19,13 +19,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['pesquisa'])) {
     $lista = $projetoModel->buscarNome($pesquisa, $_SESSION['ong_id']);
 }
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['nome'])) {
-    $nome = $_POST['nome'];
-    $descricao = $_POST['descricao'];
-    $meta = $_POST['meta'];
-    $ong = $_SESSION['ong_id'];
-    $projetoModel->criar($nome, $descricao, $meta, $ong);
-}
+//CADASTRAR PROJETO
+// if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['nome'])) {
+//     $nome = $_POST['nome'];
+//     $descricao = $_POST['descricao'];
+//     $meta = $_POST['meta'];
+//     $ong = $_SESSION['ong_id'];
+//     $projetoModel->criar($nome, $descricao, $meta, $ong);
+// }
 
 //FORMULÁRIO DE CRIAÇÃO DE PROJETO (popup)
 $projeto = (object) [

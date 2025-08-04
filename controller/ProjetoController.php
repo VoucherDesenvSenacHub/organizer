@@ -1,33 +1,18 @@
 <?php
-require_once __DIR__ . '/../model/ProjetoModel.php';
-
+require_once __DIR__ . '/../../../autoload.php';
+require_once __DIR__ . '/Projeto/FavoritarProjetoController.php';
+require_once __DIR__ . '/Projeto/CadastrarProjetoController.php';
 session_start();
 
-$acao = $_GET['acao'] ?? $_POST['acao'] ?? null;
-
-$projetoModel = new Projeto();
+$acao = $_POST['acao'] ?? null;
 
 switch ($acao) {
     case 'favoritar':
-        $usuario_id = $_SESSION['usuario']['id'];
-        $projeto_id = $_POST['projeto-id-favorito'] ?? null;
-        if ($projeto_id) {
-            $favorito = $projetoModel->favoritarProjeto($usuario_id, $projeto_id);
-            if ($favorito) {
-                $_SESSION['favorito'] = true;
-            } else {
-                $_SESSION['favorito'] = false;
-            }
-
-            header('Location: ' . $_SERVER['HTTP_REFERER']);
-            exit;
-        } else {
-            echo "ID do projeto não fornecido.";
-        }
+        favoritarProjeto();
         break;
 
     case 'cadastro':
-        // Lógica para cadastrar
+        cadastrarProjeto();
         break;
 
     default:
