@@ -100,27 +100,6 @@ class Ong
         return $stmt->fetchAll(PDO::FETCH_CLASS, __CLASS__);
     }
 
-    function listarRecentes()
-    {
-        $query = "
-        SELECT
-            o.ong_id,
-            o.nome,
-            o.descricao,
-            o.logo_url,
-            (SELECT COUNT(*) FROM projetos p WHERE p.ong_id = o.ong_id) AS total_projetos,
-            (SELECT COUNT(*) FROM doacao_projeto dp
-                JOIN projetos p ON dp.projeto_id = p.projeto_id
-                WHERE p.ong_id = o.ong_id) AS total_doacoes
-        FROM $this->tabela o 
-        ORDER BY data_cadastro DESC LIMIT 6
-    ";
-
-        $stmt = $this->pdo->prepare($query);
-        $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_CLASS, __CLASS__);
-    }
-
     function buscarPerfil($id)
     {
         $query = "

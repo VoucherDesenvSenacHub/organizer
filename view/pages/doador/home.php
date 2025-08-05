@@ -6,16 +6,8 @@ $cssPagina = ['doador/home.css'];
 require_once '../../components/layout/base-inicio.php';
 
 require_once __DIR__ . '/../../../autoload.php';
-$projetoModel = new Projeto();
-$lista = $projetoModel->listarRecentes();
 $usuarioModel = new Usuario();
 $relatorio = $usuarioModel->RelatorioHome($_SESSION['usuario']['id']);
-
-if (isset($_SESSION['usuario']['id'])) {
-    $projetosFavoritos = $projetoModel->listarFavoritos($_SESSION['usuario']['id']);
-}
-
-$perfil = $_SESSION['perfil_usuario'] ?? '';
 ?>
 <section id="cabecalho">
     <h1>Olá, <?= implode(' ', array_slice(explode(' ', trim($usuario->nome)), 0, 2)) ?>.</h1>
@@ -63,15 +55,10 @@ $perfil = $_SESSION['perfil_usuario'] ?? '';
     </div>
 </section>
 <section class="container-cards">
-    <h2>PROJETOS RECENTES</h2>
+    <h2>PROJETOS EM DESTAQUES</h2>
     <div class="box-cards">
-            <?php foreach ($lista as $projeto) {
-                $jaFavoritado = isset($_SESSION['usuario']['id']) && in_array($projeto->projeto_id, $projetosFavoritos);
-                $valor_projeto = $projetoModel->buscarValor($projeto->projeto_id);
-                $barra = round(($valor_projeto / $projeto->meta) * 100);
-                require '../../components/cards/card-projeto.php';
-            } ?>
-            <!-- <div class="card-projeto">
+        <?php for ($i = 0; $i < 4; $i++) { ?>
+            <div class="card-projeto">
                 <div class="acoes-projeto">
                     <button class="btn-share fa-solid fa-share-nodes" onclick="abrir_popup('compartilhar-popup')"></button>
                     <button class="btn-like fa-solid fa-heart" onclick="abrir_popup('login-obrigatorio-popup')"></button>
@@ -90,7 +77,8 @@ $perfil = $_SESSION['perfil_usuario'] ?? '';
                     </div>
                 </div>
                 <a class="saiba-mais-projeto" href="../projeto/perfil.php?id=1">Saiba Mais</a>
-            </div> -->
+            </div>
+        <?php } ?>
     </div>
 </section>
 <!-- <section class="container-cards">
