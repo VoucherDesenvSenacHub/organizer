@@ -6,7 +6,7 @@ $btn_text = ($projeto->projeto_id) ? 'SALVAR ALTERAÇÃO' : 'CRIAR PROJETO';
 <div class="popup-fundo" id="editar-projeto-popup">
     <div class="container-popup">
         <button class="btn-fechar-popup fa-solid fa-xmark" onclick="fechar_popup('editar-projeto-popup')"></button>
-        <form action="#" method="POST">
+        <form action="../../../controller/projeto/CadastrarProjetoController.php" method="POST">
             <input type="hidden" name="id" value="<?= $projeto->projeto_id ?>">
             <div class="box-edit">
                 <h1><?= $acao ?></h1>

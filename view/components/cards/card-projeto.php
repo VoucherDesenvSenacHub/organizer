@@ -15,7 +15,7 @@ $logo_url = $projeto->logo_url ?? '../../assets/images/global/image-placeholder.
         <?php if (!isset($_SESSION['usuario']['id'])): ?>
             <button title="Favoritar" class="btn-like fa-solid fa-heart" onclick="abrir_popup('login-obrigatorio-popup')"></button>
         <?php else: ?>
-            <form action="../.././../controller/ProjetoController.php?acao=favoritar" method="POST">
+            <form action="../.././../controller/projeto/FavoritarProjetoController.php" method="POST">
                 <input type="hidden" name="projeto-id-favorito" value="<?= $id ?>">
                 <button title="Favoritar" class="btn-like fa-solid fa-heart <?= $classe ?>"></button>
             </form>

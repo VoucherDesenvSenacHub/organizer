@@ -1,13 +1,12 @@
 <?php
-require_once __DIR__ . '/../../model/ProjetoModel.php';
+require_once __DIR__ . '/../../model/OngModel.php';
 session_start();
 
-$projetoModel = new Projeto();
+$ongModel = new Ong();
 $usuario_id = $_SESSION['usuario']['id'];
-$projeto_id = $_POST['projeto-id-favorito'] ?? null;
-
-if ($projeto_id) {
-    $favorito = $projetoModel->favoritarProjeto($usuario_id, $projeto_id);
+$ong_id = $_POST['ong-id-favorito'] ?? null;
+if ($ong_id) {
+    $favorito = $ongModel->favoritarOng($usuario_id, $ong_id);
     if ($favorito) {
         $_SESSION['favorito'] = true;
     } else {
@@ -17,7 +16,7 @@ if ($projeto_id) {
     header('Location: ' . $_SERVER['HTTP_REFERER']);
     exit;
 } else {
-    echo "ID do projeto não fornecido.";
+    echo "ID da ONG não fornecido.";
 }
 header('Location: ' . $_SERVER['HTTP_REFERER'] . '?msg=favorito_erro');
 exit;

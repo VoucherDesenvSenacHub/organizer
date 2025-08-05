@@ -35,7 +35,7 @@ $logo_url = $ong->logo_url ?? '../../assets/images/global/image-placeholder.svg'
             <?php if (!isset($_SESSION['usuario']['id'])): ?>
                 <button title="Favoritar" id="like" class="fa-solid fa-heart" onclick="abrir_popup('login-obrigatorio-popup')"></button>
             <?php else: ?>
-                <form action="../.././../controller/OngController.php?acao=favoritar" method="POST">
+                <form action="../.././../controller/ong/FavoritarOngController.php" method="POST">
                     <input type="hidden" name="ong-id-favorito" value="<?= $id ?>">
                     <button title="Favoritar" id="like" class="fa-solid fa-heart <?= $classe ?>"></button>
                 </form>

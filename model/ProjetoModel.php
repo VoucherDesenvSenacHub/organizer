@@ -153,13 +153,8 @@ class Projeto
             $stmt->bindParam(':descricao', $descricao);
             $stmt->bindParam(':meta', $meta);
             $stmt->bindParam(':ong_id', $ong_id);
-            $stmt->execute();
-            if ($stmt->rowCount() > 0) {
-                header('Location: projetos.php?msg=sucesso');
-            } else {
-                header('Location: projetos.php');
-            }
-            exit;
+            return $stmt->execute();
+            
         } catch (PDOException $e) {
             header('Location: projetos.php?msg=erro');
             exit;
