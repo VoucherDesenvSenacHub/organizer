@@ -7,7 +7,7 @@ require_once '../../components//layout/base-inicio.php';
 require_once __DIR__ . '/../../../autoload.php';
 $ongModel = new Ong();
 
-$lista = $ongModel->listarCards();
+$lista = $ongModel->listarRecentes();
 // var_dump($lista);
 ?>
 <!-- COMEÇAR SEU CÓDIGO AQUI -->
@@ -32,7 +32,7 @@ $lista = $ongModel->listarCards();
 
     <section class="secoes" id="secao-2">
         <div class="container">
-            <h1>ONGS EM DESTAQUES</h1>
+            <h1>ONGS RECENTES</h1>
             <div class="box-ongs">
                 <?php foreach ($lista as $ong):
                     require '../../components/cards/card-ong.php';
