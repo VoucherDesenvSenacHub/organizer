@@ -8,6 +8,7 @@ require_once __DIR__ . '/../../../autoload.php';
 $ongModel = new Ong();
 $minhaOng = $ongModel->buscarPerfil($_SESSION['ong_id']);
 $dadosOng = $ongModel->buscarDados($_SESSION['ong_id']);
+
 ?>
 <!-- Toast -->
 <div id="toast-cadastro-ong" class="toast">
@@ -17,20 +18,20 @@ $dadosOng = $ongModel->buscarDados($_SESSION['ong_id']);
 
 <main class="container">
     <div id="title">
-        <h1> <?= $minhaOng->nome ?></h1>
+        <h1> <?= $minhaOng['nome'] ?></h1>
         <!-- <p>PAINEL</p> -->
     </div>
     <div id="resumo">
         <a class="resumo-item" href="relatorios.php">
-            <h3>R$ <?= number_format($dadosOng->qnt_doacoes, 0, ',', '.'); ?> <span>DOAÇÔES</span></h3>
+            <h3>R$ <?= number_format($dadosOng['qnt_doacoes'], 0, ',', '.'); ?> <span>DOAÇÔES</span></h3>
             <i class="fa-solid fa-coins"></i>
         </a>
         <a class="resumo-item" href="projetos.php">
-            <h3><?= $dadosOng->qnt_projeto ?> <span>PROJETOS</span></h3>
+            <h3><?= $dadosOng['qnt_projeto'] ?> <span>PROJETOS</span></h3>
             <i class="fa-solid fa-diagram-project"></i>
         </a>
         <a class="resumo-item" href="noticias.php">
-            <h3><?= $dadosOng->qnt_noticia ?> <span>NOTÍCIAS</span></h3>
+            <h3><?= $dadosOng['qnt_noticia'] ?> <span>NOTÍCIAS</span></h3>
             <i class="fa-solid fa-newspaper"></i>
         </a>
     </div>
