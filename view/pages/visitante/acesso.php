@@ -22,7 +22,7 @@ require_once __DIR__ . '/../../../autoload.php';
             <p>Escolha qual acesso você deseja:</p>
             <div class="forms">
                 <?php if ($_SESSION['usuario']['acessos']['doador']): ?>
-                    <form class="form-doador" action="../../../controller/UsuarioController.php?acao=acesso" method="POST">
+                    <form class="form-doador" action="../../../controller/Usuario/UsuarioAcessarSistema.php" method="POST">
                         <input type="hidden" name="perfil" value="doador">
                         <button>
                             <div class="img">
@@ -33,7 +33,7 @@ require_once __DIR__ . '/../../../autoload.php';
                     </form>
                 <?php endif; ?>
                 <?php if ($_SESSION['usuario']['acessos']['ong']): ?>
-                    <form class="form-ong" action="../../../controller/UsuarioController.php?acao=acesso" method="POST">
+                    <form class="form-ong" action="../../../controller/Usuario/UsuarioAcessarSistema.php" method="POST">
                         <input type="hidden" name="perfil" value="ong">
                         <button>
                             <div class="img">
@@ -44,7 +44,7 @@ require_once __DIR__ . '/../../../autoload.php';
                     </form>
                 <?php endif; ?>
                 <?php if ($_SESSION['usuario']['acessos']['adm']): ?>
-                    <form class="form-adm" action="../../../controller/UsuarioController.php?acao=acesso" method="POST">
+                    <form class="form-adm" action="../../../controller/Usuario/UsuarioAcessarSistema.php" method="POST">
                         <input type="hidden" name="perfil" value="adm">
                         <button>
                             <div class="img">

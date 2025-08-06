@@ -28,7 +28,7 @@ $usuarioModel = new Usuario();
                     <p>Login</p>
                 </div>
             </div>
-            <form id="form" action="../../../controller/UsuarioController.php?acao=cadastro" method="POST">
+            <form id="form" action="../../../controller/Usuario/UsuarioCadastroController.php" method="POST">
                 <div class="formBox">
                     <div class="inputBox">
                         <label for="nome">Nome Completo<span>*</span></label>
