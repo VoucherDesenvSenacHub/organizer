@@ -5,7 +5,7 @@ if (isset($_SESSION['usuario']['acessos']['ong']) and $_SESSION['usuario']['aces
     exit;
 };
 require_once __DIR__ . '/../../../autoload.php';
-$ongModel = new Ong();
+$ongModel = new OngModel();
 $bancoModel = new BancoModel();
 $lista_banco = $bancoModel->listar();
 ?>

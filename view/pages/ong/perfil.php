@@ -6,7 +6,7 @@ $cssPagina = ['ong/perfil.css'];
 require_once '../../components/layout/base-inicio.php';
 
 require_once __DIR__ . '/../../../autoload.php';
-$ongModel = new Ong();
+$ongModel = new OngModel();
 $projetoModel = new Projeto();
 $noticiaModel = new NoticiaModel();
 if (isset($_GET['id'])) {
