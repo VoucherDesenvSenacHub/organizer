@@ -33,6 +33,19 @@ class Projeto
         return $stmt->fetchAll();
     }
 
+    function listarRecentes()
+    {
+        $query = "SELECT p.projeto_id, p.nome, p.descricao, p.meta, 
+                      (SELECT i.logo_url FROM imagens_projeto i WHERE i.projeto_id = p.projeto_id ORDER BY i.id ASC LIMIT 1) AS logo_url
+                      FROM $this->tabela p
+                      ORDER BY data_cadastro DESC LIMIT 4";
+        $stmt = $this->pdo->prepare($query);
+
+        $stmt->execute();
+        $stmt->setFetchMode(PDO::FETCH_CLASS, __CLASS__);
+        return $stmt->fetchAll();
+    }
+
 
     function buscarPerfil($id)
     {
