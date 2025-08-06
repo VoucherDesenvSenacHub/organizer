@@ -6,9 +6,9 @@ $cssPagina = ['doador/home.css'];
 require_once '../../components/layout/base-inicio.php';
 
 require_once __DIR__ . '/../../../autoload.php';
-$projetoModel = new Projeto();
+$projetoModel = new ProjetoModel();
 $lista = $projetoModel->listarRecentes();
-$usuarioModel = new Usuario();
+$usuarioModel = new UsuarioModel();
 $relatorio = $usuarioModel->RelatorioHome($_SESSION['usuario']['id']);
 
 if (isset($_SESSION['usuario']['id'])) {

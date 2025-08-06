@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . "/../config/database.php";
 
-class Doador
+class DoadorModel
 {
     private $tabela = 'caddoador';
     private $pdo;

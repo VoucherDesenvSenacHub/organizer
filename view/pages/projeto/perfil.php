@@ -2,7 +2,7 @@
 ob_start();
 //Lógica e dependências primeiro
 require_once __DIR__ . '/../../../autoload.php';
-$projetoModel = new Projeto();
+$projetoModel = new ProjetoModel();
 $ongModel = new OngModel();
 
 //Definições da página

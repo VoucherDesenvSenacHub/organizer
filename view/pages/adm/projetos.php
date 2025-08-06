@@ -5,7 +5,7 @@ $cssPagina = ['adm/listagem.css']; //Colocar o arquivo .css
 require_once '../../components/layout/base-inicio.php';
 
 require_once __DIR__ . '/../../../autoload.php';
-$projetoModel = new Projeto();
+$projetoModel = new ProjetoModel();
 $lista = $projetoModel->listar();
 
 if ($_SERVER['REQUEST_METHOD'] = 'GET' && isset($_GET['pesquisa'])) {

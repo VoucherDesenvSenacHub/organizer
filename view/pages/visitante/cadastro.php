@@ -5,7 +5,7 @@ $cssPagina = ['visitante/cadastro.css'];
 require_once '../../components/layout/base-inicio.php';
 
 require_once __DIR__ . '/../../../autoload.php';
-$usuarioModel = new Usuario();
+$usuarioModel = new UsuarioModel();
 
 ?>
 <div id="toast-cadastro-erro" class="toast erro">

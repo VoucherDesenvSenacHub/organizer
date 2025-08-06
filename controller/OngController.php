@@ -32,7 +32,7 @@ switch ($acao) {
                 $_SESSION['perfil_usuario'] = 'ong';
                 $_SESSION['ong_id'] = $criar;
                 require_once __DIR__ . '/../model/UsuarioModel.php';
-                $usuarioModel = new Usuario();
+                $usuarioModel = new UsuarioModel();
                 $usuarioModel->primeiroAcesso($_SESSION['usuario']['id'], 'ong');
                 $_SESSION['usuario']['acessos']['ong'] = true;
                 $_SESSION['cadastro-ong'] = true;

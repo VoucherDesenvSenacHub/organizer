@@ -7,7 +7,7 @@ require_once '../../components/layout/base-inicio.php';
 
 require_once __DIR__ . '/../../../autoload.php';
 $ongModel = new OngModel();
-$projetoModel = new Projeto();
+$projetoModel = new ProjetoModel();
 $noticiaModel = new NoticiaModel();
 if (isset($_GET['id'])) {
     $id = $_GET['id'];

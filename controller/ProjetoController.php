@@ -5,7 +5,7 @@ session_start();
 
 $acao = $_GET['acao'] ?? $_POST['acao'] ?? null;
 
-$projetoModel = new Projeto();
+$projetoModel = new ProjetoModel();
 
 switch ($acao) {
     case 'favoritar':
