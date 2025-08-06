@@ -5,7 +5,7 @@ session_start();
 
 $acao = $_GET['acao'] ?? $_POST['acao'] ?? null;
 
-$ongModel = new Ong();
+$ongModel = new OngModel();
 
 switch ($acao) {
     case 'cadastrar':
