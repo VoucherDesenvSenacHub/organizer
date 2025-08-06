@@ -344,3 +344,20 @@ table tbody td button:hover {
         color: var(--cor-verde-barra);
     }
 }
+
+.botao-vermelho {
+    background-color: #e74c3c; /* vermelho */
+    color: #fff;
+    padding: 10px 16px;
+    border-radius: 6px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background 0.3s;
+}
+
+.botao-vermelho:hover {
+    background-color: #c0392b; /* vermelho mais escuro */
+    cursor: pointer;
+}
