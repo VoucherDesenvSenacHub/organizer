@@ -19,5 +19,5 @@ if ($perfilUsuario === 'ong') {
 
 // Leva para home do acesso escolhido
 $_SESSION['perfil_usuario'] = $perfilUsuario;
-header("Location: ../view/pages/{$perfilUsuario}/home.php");
+header("Location: ../../view/pages/{$perfilUsuario}/home.php");
 exit;

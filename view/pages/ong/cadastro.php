@@ -1,10 +1,15 @@
 <?php
 session_start();
-if (isset($_SESSION['usuario']['acessos']['ong']) and $_SESSION['usuario']['acessos']['ong']) {
+
+require_once __DIR__ . '/../../../autoload.php';
+
+$usuarioModel = new Usuario();
+$ongExiste = $usuarioModel->buscarOngUsuario($_SESSION['usuario']['id']);
+if ($ongExiste) {
     header("Location: ../visitante/acesso.php");
     exit;
 };
-require_once __DIR__ . '/../../../autoload.php';
+
 $ongModel = new Ong();
 $bancoModel = new BancoModel();
 $lista_banco = $bancoModel->listar();
@@ -159,6 +164,9 @@ $lista_banco = $bancoModel->listar();
                     </div>
                 </form>
             </div>
+            <a class="msg-sair" href="../visitante/acesso.php">
+                CADASTRAR DEPOIS
+            </a>
         </section>
     </main>
 

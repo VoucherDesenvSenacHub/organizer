@@ -32,7 +32,7 @@ if ($contaUsuario && password_verify($senha, $contaUsuario['senha'])) {
 
     // Se o usuário tentar acessar como ONG, mas ainda não completou o cadastro da ONG
     if (array_key_first($acessosUsuario) === 'ong' && !$usuarioModel->buscarOngUsuario($_SESSION['usuario']['id'])) {
-        header("Location: ../view/pages/ong/cadastro.php"); // Redireciona para o cadastro da ONG
+        header("Location: ../../view/pages/ong/cadastro.php"); // Redireciona para o cadastro da ONG
         exit;
     }
 

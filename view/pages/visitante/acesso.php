@@ -1,6 +1,14 @@
 <?php
 session_start();
+
+//Verificar se o usuário não têm nenhum tipo de acesso
+if (isset($_SESSION['usuario']) && empty(array_filter($_SESSION['usuario']['acessos']))) {
+    header('Location: primeiro-acesso.php');
+    exit;
+}
+
 $_SESSION['perfil_usuario'] = null;
+
 require_once __DIR__ . '/../../../autoload.php';
 ?>
 

@@ -5,6 +5,13 @@ body {
     min-height: 100vh;
 }
 
+section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 25px;
+}
+
 section .container {
     background-color: white;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
@@ -34,6 +41,22 @@ section .container h1 {
     outline: none;
     border-radius: 4px;
     padding: 15px;
+}
+
+.msg-sair {
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--cor-vermelho);
+    transition: 0.3s;
+    /* position: absolute; */
+    bottom: -50px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.msg-sair:hover {
+    filter: brightness(.9);
 }
 
 @media (max-width: 750px) {
