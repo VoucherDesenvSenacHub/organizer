@@ -63,17 +63,17 @@ ob_end_flush();
             <legend><i class="fa-solid fa-house-flag"></i> DADOS DA ONG</legend>
             <div class="form">
                 <label><span>Nome da ONG</span><input id="nome" name="nome" type="text" required
-                        value="<?= $perfil->nome ?>"></label>
+                        value="<?= $perfil['nome'] ?>"></label>
                 <label><span>CPNJ</span><input name="cnpj" id="cnpj" type="text" required
-                        value="<?= $perfil->cnpj ?>"></label>
+                        value="<?= $perfil['cnpj'] ?>"></label>
                 <label><span>Telefone</span><input name="telefone" id="telefone" type="text" required
-                        value="<?= $perfil->telefone ?>"></label>
-                <label><span>Email</span><input name="email" type="text" required value="<?= $perfil->email ?>"></label>
+                        value="<?= $perfil['telefone'] ?>"></label>
+                <label><span>Email</span><input name="email" type="text" required value="<?= $perfil['email'] ?>"></label>
             </div>
             <div class="form form-descricao">
                 <label>
                     <span>Descrição</span>
-                    <textarea name="descricao" required><?= $perfil->descricao ?></textarea>
+                    <textarea name="descricao" required><?= $perfil['descricao'] ?></textarea>
                 </label>
                 <!-- <div class="checkbox">
                     <span>Áreas de Atuação</span>
@@ -91,12 +91,12 @@ ob_end_flush();
             <legend><i class="fa-solid fa-location-dot"></i> DADOS DE ENDEREÇO</legend>
             <div class="form">
                 <label><span>CEP</span><input name="cep" id="cep" type="text" required
-                        value="<?= $perfil->cep ?>"></label>
-                <label><span>Rua</span><input name="rua" type="text" required value="<?= $perfil->rua ?>"></label>
+                        value="<?= $perfil['cep'] ?>"></label>
+                <label><span>Rua</span><input name="rua" type="text" required value="<?= $perfil['rua'] ?>"></label>
                 <label><span>Bairro</span><input id="bairro" name="bairro" type="text" required
-                        value="<?= $perfil->bairro ?>"></label>
+                        value="<?= $perfil['bairro'] ?>"></label>
                 <label><span>Cidade</span><input id="cidade" name="cidade" type="text" required
-                        value="<?= $perfil->cidade ?>"></label>
+                        value="<?= $perfil['cidade'] ?>"></label>
             </div>
         </fieldset>
         <fieldset>
@@ -106,22 +106,22 @@ ob_end_flush();
                     <span>Banco</span>
                     <select name="banco">
                         <?php foreach ($lista_banco as $banco): ?>
-                            <option value="<?= $banco->banco_id ?>" <?= ($perfil->banco_id === $banco->banco_id) ? 'selected' : '' ?>>
-                                <?= $banco->nome; ?>
+                            <option value="<?= $banco['banco_id'] ?>" <?= ($perfil['banco_id'] === $banco['banco_id']) ? 'selected' : '' ?>>
+                                <?= $banco['nome']; ?>
                             </option>
                         <?php endforeach; ?>
                     </select>
                 </label>
                 <label><span>Agência</span><input name="agencia" id="agencia" type="text" required
-                        value="<?= $perfil->agencia ?>"></label>
+                        value="<?= $perfil['agencia'] ?>"></label>
                 <label><span>Número da conta</span><input name="conta_numero" id="conta" type="text" required
-                        value="<?= $perfil->conta_numero ?>"></label>
+                        value="<?= $perfil['conta_numero'] ?>"></label>
                 <label>
                     <span>Tipo de Conta</span>
                     <select name="tipo_conta">
-                        <option value="POUPANÇA" <?= ($perfil->tipo_conta === 'POUPANÇA') ? 'selected' : '' ?>>Poupança
+                        <option value="POUPANÇA" <?= ($perfil['tipo_conta'] === 'POUPANÇA') ? 'selected' : '' ?>>Poupança
                         </option>
-                        <option value="CORRENTE" <?= ($perfil->tipo_conta === 'CORRENTE') ? 'selected' : '' ?>>Corrente
+                        <option value="CORRENTE" <?= ($perfil['tipo_conta'] === 'CORRENTE') ? 'selected' : '' ?>>Corrente
                         </option>
                     </select>
                 </label>
