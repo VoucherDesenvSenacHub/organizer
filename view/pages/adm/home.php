@@ -238,6 +238,6 @@ $solicitacoes = $adminModel->ContadoresSolicitacoes();
     </div>
 </main>
 <?php
-$jsPagina = [];
+$jsPagina = ['adm/solicitacoes.js'];
 require_once '../../components/layout/footer/footer-logado.php';
 ?>
