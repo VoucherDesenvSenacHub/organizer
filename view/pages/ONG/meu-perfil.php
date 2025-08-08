@@ -90,7 +90,7 @@ ob_end_flush();
         <fieldset>
             <legend><i class="fa-solid fa-location-dot"></i> DADOS DE ENDEREÇO</legend>
             <div class="form">
-                <label><span>CEP</span><input name="cep" id="cep" type="text" required
+                <label><span>CEP</span><input name="cep" id="cep" type="text" required 
                         value="<?= $perfil->cep ?>"></label>
                 <label><span>Rua</span><input name="rua" type="text" required value="<?= $perfil->rua ?>"></label>
                 <label><span>Bairro</span><input id="bairro" name="bairro" type="text" required
@@ -112,9 +112,9 @@ ob_end_flush();
                         <?php endforeach; ?>
                     </select>
                 </label>
-                <label><span>Agência</span><input name="agencia" id="agencia" type="text" required
+                <label><span>Agência</span><input name="agencia" id="agencia" type="text" required maxlength="6"
                         value="<?= $perfil->agencia ?>"></label>
-                <label><span>Número da conta</span><input name="conta_numero" id="conta" type="text" required
+                <label><span>Número da conta</span><input name="conta_numero" id="conta" type="text" required maxlength="15"
                         value="<?= $perfil->conta_numero ?>"></label>
                 <label>
                     <span>Tipo de Conta</span>
@@ -148,8 +148,8 @@ ob_end_flush();
     $("#telefone").mask("(00) 00000-0000");
     $("#cnpj").mask("00.000.000/0000-00");
     $("#cep").mask("00000-000");
-    $("#agencia").mask("0000-0");
-    $("#conta").mask("00000-00");
+    // $("#agencia").mask("0000-0");
+    // $("#conta").mask("00000-0");
     $("#nome").on("input", function() {
         var valor = $(this).val();
         $(this).val(valor.replace(/[^a-zA-ZÀ-ÿ\s]/g, ""));
