@@ -1,4 +1,5 @@
 <?php
+$projeto = (array) $projeto;
 $acao = ($projeto['projeto_id']) ? 'EDITAR PROJETO' : 'NOVO PROJETO';
 $btn_text = ($projeto['projeto_id']) ? 'SALVAR ALTERAÇÃO' : 'CRIAR PROJETO';
 // $meta = (int)$meta;

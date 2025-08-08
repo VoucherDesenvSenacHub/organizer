@@ -235,10 +235,10 @@ ob_end_flush();
                                 <div class="card-ong">
                                     <div class="perfil">
                                         <div class="logo">
-                                            <img src="<?= $ong->logo_url ?? '../../assets/images/global/image-placeholder.svg' ?>">
+                                            <img src="<?= $ong['logo_url'] ?? '../../assets/images/global/image-placeholder.svg' ?>">
                                         </div>
                                         <div class="nome">
-                                            <h2><?= $ong->nome ?></h2>
+                                            <h2><?= $ong['nome'] ?></h2>
                                             <!-- <p>Área de Atuação</p> -->
                                         </div>
                                     </div>

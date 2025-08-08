@@ -23,7 +23,9 @@ $dadosOng = $ongModel->buscarDados($_SESSION['ong_id']);
     </div>
     <div id="resumo">
         <a class="resumo-item" href="relatorios.php">
-            <h3>R$ <?= number_format($dadosOng['qnt_doacoes'], 0, ',', '.'); ?> <span>DOAÇÔES</span></h3>
+        <?php $qtd = $dadosOng['qnt_doacoes'] ?? 0; ?>
+<h3>
+    R$ <?= $qtd > 0 ? number_format($qtd, 0, ',', '.') : '-'; ?> <span>DOAÇÕES</span></h3>
             <i class="fa-solid fa-coins"></i>
         </a>
         <a class="resumo-item" href="projetos.php">
