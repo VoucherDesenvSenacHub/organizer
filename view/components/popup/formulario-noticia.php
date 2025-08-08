@@ -1,4 +1,5 @@
 <?php
+$noticia = (array) $noticia;
 $acao = ($noticia['noticia_id']) ? 'EDITAR NOTICIA' : 'NOVA NOTICIA';
 $btn_text = ($noticia['noticia_id']) ? 'SALVAR ALTERAÇÃO' : 'CRIAR NOTICIA';
 ?>
