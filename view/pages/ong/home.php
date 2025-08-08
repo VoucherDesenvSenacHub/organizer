@@ -29,6 +29,10 @@ $dadosOng = $ongModel->buscarDados($_SESSION['ong_id']);
             <h3><?= $dadosOng->qnt_projeto ?> <span>PROJETOS</span></h3>
             <i class="fa-solid fa-diagram-project"></i>
         </a>
+        <a class="resumo-item" href="relatorios.php">
+            <h3><?= $dadosOng->qnt_apoiador ?> <span>APOIADORES</span></h3>
+            <i class="fa-solid fa-hand-holding-heart"></i>
+        </a>
         <a class="resumo-item" href="noticias.php">
             <h3><?= $dadosOng->qnt_noticia ?> <span>NOTÍCIAS</span></h3>
             <i class="fa-solid fa-newspaper"></i>
