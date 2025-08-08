@@ -21,7 +21,7 @@ class Ong
             banco_id, agencia, conta_numero, tipo_conta,
             descricao
         ) VALUES (
-            :nome, :cnpj, :responsavel_id,
+            :nome, :cnpj, :xresponsavel_id,
             :telefone, :email,
             :cep, :rua, :bairro, :cidade,
             :banco_id, :agencia, :conta_numero, :tipo_conta,
@@ -163,6 +163,9 @@ class Ong
     function buscarDados($id)
     {
         $query = "SELECT 
+                    (SELECT COUNT(*) FROM apoios_projeto a
+                  INNER JOIN projetos p ON a.projeto_id = p.projeto_id 
+                  WHERE p.ong_id = :id) AS qnt_apoiador,
                     (SELECT COUNT(*) FROM projetos p WHERE p.ong_id = :id) AS qnt_projeto,
                     (SELECT COUNT(*) FROM noticias n WHERE n.ong_id = :id) AS qnt_noticia,
                     (SELECT SUM(dp.valor) FROM doacao_projeto dp 
