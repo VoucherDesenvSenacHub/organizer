@@ -108,7 +108,12 @@ $lista_banco = $bancoModel->listar();
                         </div>
                         <div class="inputBox">
                             <label for="rua">Rua<span>*</span></label>
-                            <input name="rua" id="rua" type="text" placeholder="Ex: Rui Barbosa,1436">
+                            <input name="rua" id="rua" type="text" placeholder="Ex: Rui Barbosa">
+                            <span class="visor"></span>
+                        </div>
+                        <div class="inputBox">
+                            <label for="numero">nº<span>*</span></label>
+                            <input name="numero" id="numero" type="text">
                             <span class="visor"></span>
                         </div>
                         <div class="inputBox">
@@ -119,6 +124,11 @@ $lista_banco = $bancoModel->listar();
                         <div class="inputBox">
                             <label for="cidade">Cidade<span>*</span></label>
                             <input name="cidade" id="cidade" type="text" placeholder="Campo Grande">
+                            <span class="visor"></span>
+                        </div>
+                        <div class="inputBox">
+                            <label for="estado">Estado<span>*</span></label>
+                            <input name="estado" id="estado" type="text" placeholder="MS">
                             <span class="visor"></span>
                         </div>
                         <div class="btnNextBack">
@@ -173,6 +183,7 @@ $lista_banco = $bancoModel->listar();
     <script src="../../assets/js/global/main.js"></script>
     <script src="../../assets/js/global/cadastro.js"></script>
     <script src="../../assets/js/pages/ong/cadastro.js"></script>
+    <script src="../../assets/js/pages/ong/cep.js"></script>
 
     <!-- Scripts de Mascaras -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
