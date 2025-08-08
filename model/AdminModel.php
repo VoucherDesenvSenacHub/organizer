@@ -22,4 +22,17 @@ class AdminModel
         $stmt->setFetchMode(PDO::FETCH_CLASS, __CLASS__);
         return $stmt->fetch();
     }
+
+    // Buscar contadores para os cards que tem na home adm
+    function ContadoresSolicitacoes()
+    {
+        $query = "SELECT
+                  (SELECT COUNT(*) FROM parcerias WHERE status = 'pendente') AS empresas,
+                  (SELECT COUNT(*) FROM ongs WHERE status = 'pendente') AS ongs,
+                  (SELECT COUNT(*) FROM projetos WHERE status = 'inativar') AS inativar;";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute();
+        $stmt->setFetchMode(PDO::FETCH_CLASS, __CLASS__);
+        return $stmt->fetch();
+    }
 }
