@@ -7,6 +7,7 @@ require_once '../../components/layout/base-inicio.php';
 require_once __DIR__ . '/../../../autoload.php';
 $adminModel = new AdminModel();
 $relatorio = $adminModel->RelatorioHome();
+$solicitacoes = $adminModel->ContadoresSolicitacoes();
 ?>
 <main class="container">
     <div id="title">
@@ -41,7 +42,7 @@ $relatorio = $adminModel->RelatorioHome();
                 <span>Aprove ou recuse solicitações de parcerias de empresas.</span>
                 <a href="parcerias.php">
                     <div><i class="fa-solid fa-handshake"></i>
-                        <p>5 Solicitações</p>
+                        <p><?= $solicitacoes->empresas ?> Solicitações</p>
                     </div>
                 </a>
             </div>
@@ -50,7 +51,7 @@ $relatorio = $adminModel->RelatorioHome();
                 <span>Aprove ou recuse cadastros de ONG’s novas no sistema.</span>
                 <a href="solicitacao-ong.php">
                     <div><i class="fa-solid fa-house-flag"></i>
-                        <p>5 Solicitações</p>
+                        <p><?= $solicitacoes->ongs ?> Solicitações</p>
                     </div>
                 </a>
             </div>
@@ -58,7 +59,7 @@ $relatorio = $adminModel->RelatorioHome();
                 <h4>INATIVAR</h4>
                 <span>Confirme a inativação do projeto solicitados pela ONG.</span>
                 <div><i class="fa-solid fa-trash-can"></i>
-                    <p>5 Solicitações</p>
+                    <p><?= $solicitacoes->inativar ?> Solicitações</p>
                 </div>
             </div>
         </fieldset>
