@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__ . "/../config/database.php";
-class Projeto
+class ProjetoModel
 {
     private $tabela = 'projetos';
     private $pdo;
@@ -169,8 +169,8 @@ class Projeto
             return $stmt->execute();
             
         } catch (PDOException $e) {
-            header('Location: projetos.php?msg=erro');
-            exit;
+            error_log("Erro ao inserir registro: " . $e->getMessage());
+            return false;
         }
     }
 
