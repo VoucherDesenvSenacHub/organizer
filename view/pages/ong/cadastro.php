@@ -100,7 +100,7 @@ $lista_banco = $bancoModel->listar();
                             <button class="btn" type="button" onclick="return proximo(2)">Próximo</button>
                         </div>
                     </div>
-                    <div class="formBox">
+                    <div class="formBox busca-cep">
                         <div class="inputBox">
                             <label for="cep">CEP<span>*</span></label>
                             <input name="cep" id="cep" type="text" placeholder="00000-000">
@@ -108,27 +108,27 @@ $lista_banco = $bancoModel->listar();
                         </div>
                         <div class="inputBox">
                             <label for="rua">Rua<span>*</span></label>
-                            <input name="rua" id="rua" type="text" placeholder="Ex: Rui Barbosa">
+                            <input name="rua" id="rua" type="text" placeholder="Ex: Rui Barbosa" readonly>
                             <span class="visor"></span>
                         </div>
                         <div class="inputBox">
-                            <label for="numero">nº<span>*</span></label>
+                            <label for="numero">Nº<span>*</span></label>
                             <input name="numero" id="numero" type="text">
                             <span class="visor"></span>
                         </div>
                         <div class="inputBox">
                             <label for="bairro">Bairro<span>*</span></label>
-                            <input name="bairro" id="bairro" type="text" placeholder="Ex: Centro">
+                            <input name="bairro" id="bairro" type="text" placeholder="Ex: Centro" readonly>
                             <span class="visor"></span>
                         </div>
                         <div class="inputBox">
                             <label for="cidade">Cidade<span>*</span></label>
-                            <input name="cidade" id="cidade" type="text" placeholder="Campo Grande">
+                            <input name="cidade" id="cidade" type="text" placeholder="Campo Grande" readonly>
                             <span class="visor"></span>
                         </div>
                         <div class="inputBox">
                             <label for="estado">Estado<span>*</span></label>
-                            <input name="estado" id="estado" type="text" placeholder="MS">
+                            <input name="estado" id="estado" type="text" placeholder="MS" readonly>
                             <span class="visor"></span>
                         </div>
                         <div class="btnNextBack">
