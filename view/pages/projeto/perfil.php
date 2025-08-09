@@ -46,8 +46,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_SESSION['perfil_usuario'] === 'do
         $valor = $_POST['outro-valor'];
     }
     if ($valor + $valor_projeto > $projeto->meta) {
-        echo "<script>alert('O valor ultrapassou a meta!! doe um valor menor.')</script>";
-    } else {
+        echo "<script>alert('O valor ultrapassou a meta!! Doe um valor menor.')</script>";
+    
+    } 
+    elseif($valor <= 0){
+        echo "<script>alert('Valor inválido!! Doe um valor maior.')</script>";
+    }
+    else {
         $doacao = $projetoModel->doacao($projeto->projeto_id, $_SESSION['usuario']['id'], $valor);
         if ($doacao > 0) {
             header("Location: perfil.php?id=$id&msg=doacao");
