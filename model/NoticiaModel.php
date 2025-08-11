@@ -55,6 +55,16 @@ class NoticiaModel
         return $stmt->fetchAll();
     }
 
+    function listarRecentes($id)
+    {
+        $query = "SELECT n.noticia_id, n.titulo, n.data_cadastro FROM $this->tabela n WHERE n.ong_id = :id ORDER BY data_cadastro DESC LIMIT 1";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+        $stmt->setFetchMode(PDO::FETCH_CLASS, __CLASS__);
+        return $stmt->fetchAll();
+    }
+
     function buscarId($id)
     {
         $query = "SELECT n.*, o.nome FROM $this->tabela n, ongs o WHERE noticia_id = :id AND n.ong_id = o.ong_id";

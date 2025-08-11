@@ -178,7 +178,6 @@ class Ong
         return $stmt->fetch();
     }
 
-
     function favoritarOng($usuario_id, $ong_id)
     {
         // Verifica se já está favoritada

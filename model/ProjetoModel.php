@@ -46,6 +46,19 @@ class Projeto
         return $stmt->fetchAll();
     }
 
+    function listarRecentesOng($id)
+    {
+        $query = "SELECT p.projeto_id, p.nome, p.descricao, p.meta, p.data_cadastro,
+                      (SELECT i.logo_url FROM imagens_projeto i WHERE i.projeto_id = p.projeto_id ORDER BY i.id ASC LIMIT 1) AS logo_url
+                      FROM $this->tabela p WHERE p.ong_id = :id
+                      ORDER BY data_cadastro DESC LIMIT 1";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+        $stmt->setFetchMode(PDO::FETCH_CLASS, __CLASS__);
+        return $stmt->fetchAll();
+    }
+
 
     function buscarPerfil($id)
     {
