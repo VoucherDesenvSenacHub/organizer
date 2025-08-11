@@ -16,7 +16,7 @@ class BancoModel
         $query = "SELECT * FROM $this->tabela";
         $stmt = $this->pdo->prepare($query);
         $stmt->execute();
-        $stmt->setFetchMode(PDO::FETCH_CLASS, __CLASS__);
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
         return $stmt->fetchAll();
     }
 }
