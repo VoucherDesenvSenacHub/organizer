@@ -92,11 +92,13 @@ ob_end_flush();
             <div class="form">
                 <label><span>CEP</span><input name="cep" id="cep" type="text" required 
                         value="<?= $perfil->cep ?>"></label>
-                <label><span>Rua</span><input name="rua" type="text" required value="<?= $perfil->rua ?>"></label>
-                <label><span>Bairro</span><input id="bairro" name="bairro" type="text" required
+                <label><span>Rua</span><input name="rua" id="rua" type="text" required readonly value="<?= $perfil->rua ?>"></label>
+                <label><span>nº</span><input name="numero" id="numero" type="text" required></label>
+                <label><span>Bairro</span><input id="bairro" name="bairro" type="text" required readonly
                         value="<?= $perfil->bairro ?>"></label>
-                <label><span>Cidade</span><input id="cidade" name="cidade" type="text" required
+                <label><span>Cidade</span><input id="cidade" name="cidade" type="text" required readonly
                         value="<?= $perfil->cidade ?>"></label>
+                <label><span>Estado</span><input id="estado" name="estado" type="text" required readonly></label>
             </div>
         </fieldset>
         <fieldset>
@@ -144,6 +146,7 @@ ob_end_flush();
 <!-- Mascaras -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
+<script src="../../assets/js/pages/ong/cep.js"></script>
 <script type="text/javascript">
     $("#telefone").mask("(00) 00000-0000");
     $("#cnpj").mask("00.000.000/0000-00");

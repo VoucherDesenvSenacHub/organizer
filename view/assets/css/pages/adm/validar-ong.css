@@ -73,6 +73,10 @@ main.container h1 {
     border-radius: 3px;
     color: var(--cor-principal);
 }
+.dados-ong .form input #numero,
+.dados-ong .form input #cep {
+    width: 50px;
+}
 
 .dados-ong .form label span,
 .dados-ong .form-descricao div span {
