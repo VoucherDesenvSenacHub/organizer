@@ -148,8 +148,8 @@ ob_end_flush();
     $("#telefone").mask("(00) 00000-0000");
     $("#cnpj").mask("00.000.000/0000-00");
     $("#cep").mask("00000-000");
-    $("#agencia").mask("0000-0");
-    $("#conta").mask("00000-00");
+    // $("#agencia").mask("0000-0");
+    // $("#conta").mask("00000-0");
     $("#nome").on("input", function() {
         var valor = $(this).val();
         $(this).val(valor.replace(/[^a-zA-ZÀ-ÿ\s]/g, ""));

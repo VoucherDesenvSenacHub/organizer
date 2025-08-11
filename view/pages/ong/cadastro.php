@@ -1,10 +1,15 @@
 <?php
 session_start();
-if (isset($_SESSION['usuario']['acessos']['ong']) and $_SESSION['usuario']['acessos']['ong']) {
+
+require_once __DIR__ . '/../../../autoload.php';
+
+$usuarioModel = new Usuario();
+$ongExiste = $usuarioModel->buscarOngUsuario($_SESSION['usuario']['id']);
+if ($ongExiste) {
     header("Location: ../visitante/acesso.php");
     exit;
 };
-require_once __DIR__ . '/../../../autoload.php';
+
 $ongModel = new Ong();
 $bancoModel = new BancoModel();
 $lista_banco = $bancoModel->listar();
@@ -95,7 +100,7 @@ $lista_banco = $bancoModel->listar();
                             <button class="btn" type="button" onclick="return proximo(2)">Próximo</button>
                         </div>
                     </div>
-                    <div class="formBox">
+                    <div class="formBox busca-cep">
                         <div class="inputBox">
                             <label for="cep">CEP<span>*</span></label>
                             <input name="cep" id="cep" type="text" placeholder="00000-000">
@@ -103,17 +108,27 @@ $lista_banco = $bancoModel->listar();
                         </div>
                         <div class="inputBox">
                             <label for="rua">Rua<span>*</span></label>
-                            <input name="rua" id="rua" type="text" placeholder="Ex: Rui Barbosa,1436">
+                            <input name="rua" id="rua" type="text" placeholder="Ex: Rui Barbosa" readonly>
+                            <span class="visor"></span>
+                        </div>
+                        <div class="inputBox">
+                            <label for="numero">Nº<span>*</span></label>
+                            <input name="numero" id="numero" type="text">
                             <span class="visor"></span>
                         </div>
                         <div class="inputBox">
                             <label for="bairro">Bairro<span>*</span></label>
-                            <input name="bairro" id="bairro" type="text" placeholder="Ex: Centro">
+                            <input name="bairro" id="bairro" type="text" placeholder="Ex: Centro" readonly>
                             <span class="visor"></span>
                         </div>
                         <div class="inputBox">
                             <label for="cidade">Cidade<span>*</span></label>
-                            <input name="cidade" id="cidade" type="text" placeholder="Campo Grande">
+                            <input name="cidade" id="cidade" type="text" placeholder="Campo Grande" readonly>
+                            <span class="visor"></span>
+                        </div>
+                        <div class="inputBox">
+                            <label for="estado">Estado<span>*</span></label>
+                            <input name="estado" id="estado" type="text" placeholder="MS" readonly>
                             <span class="visor"></span>
                         </div>
                         <div class="btnNextBack">
@@ -159,12 +174,16 @@ $lista_banco = $bancoModel->listar();
                     </div>
                 </form>
             </div>
+            <a class="msg-sair" href="../visitante/acesso.php">
+                CADASTRAR DEPOIS
+            </a>
         </section>
     </main>
 
     <script src="../../assets/js/global/main.js"></script>
     <script src="../../assets/js/global/cadastro.js"></script>
     <script src="../../assets/js/pages/ong/cadastro.js"></script>
+    <script src="../../assets/js/pages/ong/cep.js"></script>
 
     <!-- Scripts de Mascaras -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>

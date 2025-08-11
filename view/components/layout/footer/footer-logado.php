@@ -29,7 +29,7 @@
             <div class="item">
                 <h1>Criar uma Ong</h1>
                 <p>Já pensou em criar sua própria ONG? <br> Transforme ideias em impacto real com seu próprio projeto social.</p>
-                <form onsubmit="return confirm('Deseja realmente criar uma ONG com sua conta?')" action="../../../controller/UsuarioController.php?acao=primeiro-acesso" method="POST">
+                <form onsubmit="return confirm('Deseja realmente criar uma ONG com sua conta?')" action="../../../controller/Usuario/UsuarioPrimeiroAcessoController.php" method="POST">
                     <input type="hidden" name="escolha" value="ong">
                     <button class="btn">Criar uma Ong</button>
                 </form>

@@ -5,6 +5,13 @@ body {
     min-height: 100vh;
 }
 
+section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 25px;
+}
+
 section .container {
     background-color: white;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
@@ -36,6 +43,34 @@ section .container h1 {
     padding: 15px;
 }
 
+.msg-sair {
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--cor-vermelho);
+    transition: 0.3s;
+    /* position: absolute; */
+    bottom: -50px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.msg-sair:hover {
+    filter: brightness(.9);
+}
+
+
+.formBox.busca-cep .inputBox {
+    width: auto;
+}
+
+.formBox.busca-cep .inputBox:nth-child(2) {
+    width: 300px;
+}
+.formBox.busca-cep .inputBox:nth-child(3) {
+    width: 80px;
+}
+
 @media (max-width: 750px) {
     .line .item {
         font-size: 9px;
@@ -44,5 +79,23 @@ section .container h1 {
     .inputBox #descricao {
         width: 100%;
         max-width: 100%;
+    }
+
+    .formBox.busca-cep .inputBox {
+        flex: 1 1 230px;
+    }
+
+    .formBox.busca-cep .inputBox:nth-child(3),
+    .formBox.busca-cep .inputBox:nth-child(6){
+        max-width: 50px;
+    }
+
+    .formBox.busca-cep {
+        gap: 20px;
+    }
+
+    .inputBox #descricao {
+        height: 280px;
+        max-height: 320px;
     }
 }

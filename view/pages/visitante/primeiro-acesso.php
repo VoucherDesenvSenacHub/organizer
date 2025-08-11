@@ -28,7 +28,7 @@ require_once __DIR__ . '/../../../autoload.php';
                     <div>
                         <h1>DOADOR</h1>
                         <p>Ajude projetos sociais a crescerem e alcançarem mais pessoas.</p>
-                        <form onsubmit="return confirm('Confirmar sua escolha como Doador?')" action="../../../controller/UsuarioController.php?acao=primeiro-acesso" method="POST">
+                        <form onsubmit="return confirm('Confirmar sua escolha como Doador?')" action="../../../controller/Usuario/UsuarioPrimeiroAcessoController.php" method="POST">
                             <input type="hidden" name="escolha" value="doador">
                             <button class="btn">Ser um Doador</button>
                         </form>
@@ -39,7 +39,7 @@ require_once __DIR__ . '/../../../autoload.php';
                     <div>
                         <h1>ORGANIZAÇÃO</h1>
                         <p>Cadastre sua organização e divulgue projetos que fazem a diferença.</p>
-                        <form onsubmit="return confirm('Confirmar sua escolha como Organização?')" action="../../../controller/UsuarioController.php?acao=primeiro-acesso" method="POST">
+                        <form onsubmit="return confirm('Confirmar sua escolha como Organização?')" action="../../../controller/Usuario/UsuarioPrimeiroAcessoController.php" method="POST">
                             <input type="hidden" name="escolha" value="ong">
                             <button class="btn">Ser uma Organização</button>
                         </form>
