@@ -1,11 +1,6 @@
 <?php
 require_once __DIR__ . '/../../model/ProjetoModel.php';
-session_start();
-
-if (!isset($_SESSION['ong_id'])) {
-    header('Location: /login.php');
-    exit;
-}
+AuthService::verificaLoginOng();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nome = filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_SPECIAL_CHARS);
