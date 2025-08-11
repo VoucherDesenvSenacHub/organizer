@@ -19,8 +19,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['atualizar-ong'])) {
         'email' => $_POST['email'],
         'cep' => $_POST['cep'],
         'rua' => $_POST['rua'],
+        'numero' => $_POST['numero'],
         'bairro' => $_POST['bairro'],
         'cidade' => $_POST['cidade'],
+        'estado' => $_POST['estado'],
         'banco_id' => $_POST['banco'],
         'agencia' => $_POST['agencia'],
         'conta_numero' => $_POST['conta_numero'],
@@ -89,7 +91,7 @@ ob_end_flush();
         </fieldset>
         <fieldset>
             <legend><i class="fa-solid fa-location-dot"></i> DADOS DE ENDEREÇO</legend>
-            <div class="form">
+            <div class="form" id="form-endereco">
                 <label><span>CEP</span><input name="cep" id="cep" type="text" required 
                         value="<?= $perfil->cep ?>"></label>
                 <label><span>Rua</span><input name="rua" id="rua" type="text" required readonly value="<?= $perfil->rua ?>"></label>
