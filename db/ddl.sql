@@ -48,6 +48,8 @@ CREATE TABLE ongs (
     telefone VARCHAR(20) NOT NULL,
     email VARCHAR(255) NOT NULL,
 -- Endereço da ONG
+    estado VARCHAR(2) NOT NULL,
+    numero_casa VARCHAR(4) NOT NULL,
     cep VARCHAR(10) NOT NULL,
     rua VARCHAR(200) NOT NULL,
     bairro VARCHAR(100) NOT NULL,
