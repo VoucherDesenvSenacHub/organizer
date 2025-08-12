@@ -5,12 +5,16 @@ document.addEventListener("DOMContentLoaded", function () {
           const data = await response.json();
       
           if (data.erro) {
-            alert("CEP não encontrado");
+            alert("CEP não encontrado, Preencha os campos manualmente");
             console.error("CEP não encontrado.");
             document.getElementById("rua").value = null;
             document.getElementById("bairro").value = null;
             document.getElementById("cidade").value = null;
             document.getElementById("estado").value = null;
+            document.getElementById("rua").readOnly = false;
+            document.getElementById("bairro").readOnly = false;
+            document.getElementById("cidade").readOnly = false;
+            document.getElementById("estado").readOnly = false;
             return null;
           }
       
@@ -26,19 +30,25 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       }
       
-      // Exemplo de uso:
+      
       async function preencherFormulario() {
         const cep = document.getElementById("cep").value;
         const endereco = await buscarEnderecoPorCEP(cep);
       
         if (endereco) {
-          document.getElementById("rua").value = endereco.logradouro;
-          document.getElementById("bairro").value = endereco.bairro;
+          let rua = document.getElementById("rua");
+          let bairro = document.getElementById("bairro");
+          rua.value = endereco.logradouro;
+          bairro.value = endereco.bairro;
+          if (endereco.logradouro == "" && endereco.bairro == ""){
+            rua.readOnly = false;
+            bairro.readOnly = false;
+          }
           document.getElementById("cidade").value = endereco.localidade;
           document.getElementById("estado").value = endereco.uf;
         }
       }
       
-      // Adicione um evento para chamar a função ao sair do campo CEP (blur)
+      
       document.getElementById("cep").addEventListener("blur", preencherFormulario);    
     });
