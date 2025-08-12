@@ -54,7 +54,7 @@ $perfil = $_SESSION['perfil_usuario'] ?? '';
             <div id="logo-ong">
                 <img src="<?= $logo_url ?>">
                 <div class="btn-salvar">
-                    <button id="share" class="fa-solid fa-share-nodes" onclick="abrir_popup('compartilhar-popup')"></button>
+                    <button id="share" class="fa-solid fa-share-nodes" onclick="compartilhar('compartilhar-popup', <?=$id?>, 'ong')"></button>
                     <?php if (!isset($_SESSION['usuario']['id'])): ?>
                         <button title="Favoritar" id="like" class="fa-solid fa-heart" onclick="abrir_popup('login-obrigatorio-popup')"></button>
                     <?php elseif (!isset($_SESSION['perfil_usuario']) || $_SESSION['perfil_usuario'] === 'doador') : ?>

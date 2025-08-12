@@ -34,6 +34,7 @@ function abrir_popup(popupId) {
     }
 }
 
+
 // FECHAR O POPUP
 function fechar_popup(popupId) {
     const fundoPopup = document.getElementById(popupId);
@@ -102,6 +103,34 @@ function copiar_link_recusar(toast) {
         document.execCommand("copy");
         mostrar_toast(toast);
         fechar_popup('recusar-popup');
+    }
+}
+
+
+// EFEITO DE COMPARTILHAR
+
+function compartilhar(popupId, Id, tipo) {
+    const fundoPopup = document.getElementById(popupId);
+    const  input = document.getElementById("link-compartilhar");
+
+    if (tipo === 'projeto'){
+        input.value = `http://localhost/organizer/view/pages/projeto/perfil.php?id=${Id}`;
+    }else {
+        input.value = `http://localhost/organizer/view/pages/ong/perfil.php?id=${Id}`;
+    };
+    
+    
+    if (fundoPopup) {
+        fundoPopup.classList.toggle('ativo');
+
+        // Fecha o popup ao clicar fora dele
+        fundoPopup.addEventListener('click', (event) => {
+            if (event.target === fundoPopup) {
+                fundoPopup.classList.remove('ativo');
+            }
+        });
+    } else {
+        console.error(`Elemento com ID "${popupId}" não encontrado.`);
     }
 }
 

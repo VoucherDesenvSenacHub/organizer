@@ -31,7 +31,7 @@ $logo_url = $ong->logo_url ?? '../../assets/images/global/image-placeholder.svg'
     <div class="acoes-ong">
         <a href="../ong/perfil.php?id=<?= $ong->ong_id ?>" class="saiba-mais-ong">Saiba Mais</a>
         <div class="btn-salvar">
-            <button title="Compartilhar" id="share" class="fa-solid fa-share-nodes" onclick="abrir_popup('compartilhar-popup')"></button>
+            <button title="Compartilhar" id="share" class="fa-solid fa-share-nodes" onclick="compartilhar('compartilhar-popup',<?=$id?>, 'ong')"></button>
             <?php if (!isset($_SESSION['usuario']['id'])): ?>
                 <button title="Favoritar" id="like" class="fa-solid fa-heart" onclick="abrir_popup('login-obrigatorio-popup')"></button>
             <?php else: ?>
