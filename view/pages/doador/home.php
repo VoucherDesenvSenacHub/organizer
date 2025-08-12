@@ -10,6 +10,8 @@ $projetoModel = new Projeto();
 $lista = $projetoModel->listarRecentes();
 $usuarioModel = new Usuario();
 $relatorio = $usuarioModel->RelatorioHome($_SESSION['usuario']['id']);
+$doadorModel = new Doador();
+$listarDoacoesRecentes = $doadorModel->listarDoacoes($_SESSION['usuario']['id']);
 
 if (isset($_SESSION['usuario']['id'])) {
     $projetosFavoritos = $projetoModel->listarFavoritos($_SESSION['usuario']['id']);
@@ -30,16 +32,10 @@ $perfil = $_SESSION['perfil_usuario'] ?? '';
 <section id="acoes-doador">
     <h2>SUAS ATIVIDADES RECENTES</h2>
     <div class="box-cards">
-        <div class="card-acoes">
-            <div class="icon tp-doacao">
-                <img src="../../assets/images/icons/icon-dinheiro.png">
-            </div>
-            <div class="acoes-text">
-                <h4>Doação realizada</h4>
-                <p>Você doou R$ 50,00 para o Projeto “Educação para Todos”</p>
-                <span>04 de agosto de 2024, 14:21</span>
-            </div>
-        </div>
+        <?php foreach ($listarDoacoesRecentes as $doacao) {
+                $tipo = "doacao";
+                require '../../components/cards/card-atividades-noticias.php';
+            } ?>
         <div class="card-acoes">
             <div class="icon tp-salvar">
                 <img src="../../assets/images/icons/icon-coracao.png">

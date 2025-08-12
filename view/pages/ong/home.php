@@ -54,9 +54,11 @@ $dadosOng = $ongModel->buscarDados($_SESSION['ong_id']);
         <h4>SUAS ATIVIDADES RECENTES</h4>
         <div id="cards">
             <?php foreach ($listaProjetosRecentes as $projeto) {
+                $tipo = "projeto";
                 require '../../components/cards/card-atividades-projetos.php';
             } ?>
             <?php foreach ($listaNoticiasRecentes as $noticia) {
+                $tipo = "noticia";
                 require '../../components/cards/card-atividades-noticias.php';
             } ?>
         </div>
