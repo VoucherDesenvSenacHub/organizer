@@ -13,7 +13,7 @@
                 </button>
             </form>
             <!-- Se eu NÃO apoio -->
-        <?php else: ?>
+        <?php else:?>
             <h1>Deseja apoiar este projeto?</h1>
             <p>Mesmo sem contribuir com dinheiro agora, seu apoio é muito importante para inspirar outras pessoas!</p>
             <form action="#" method="POST">

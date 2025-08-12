@@ -18,11 +18,12 @@ if (isset($_SESSION['usuario']['id'])) {
 $perfil = $_SESSION['perfil_usuario'] ?? '';
 ?>
 <section id="cabecalho">
-    <h1>Olá, <?= implode(' ', array_slice(explode(' ', trim($usuario->nome)), 0, 2)) ?>.</h1>
+    <h1>Olá, <?= implode(' ', array_slice(explode(' ', trim($usuario['nome'])), 0, 2)) ?>.</h1>
     <p>Seja bem-vindo à sua área de doador.</p>
     <div id="info-doacao">
         <a class="item-info" href="doacoes.php">
-            <h3>R$ <?= number_format($relatorio->qnt_doacoes, 0, ',', '.'); ?> <span>MINHAS DOAÇÕES</span></h3>
+        <h3>
+    R$ <?= number_format($relatorio['qnt_doacoes'] ?? 0, 0, ',', '.'); ?> <span>MINHAS DOAÇÕES</span></h3>
             <i class="fa-solid fa-coins"></i>
         </a>
     </div>
@@ -66,9 +67,9 @@ $perfil = $_SESSION['perfil_usuario'] ?? '';
     <h2>PROJETOS RECENTES</h2>
     <div class="box-cards">
             <?php foreach ($lista as $projeto) {
-                $jaFavoritado = isset($_SESSION['usuario']['id']) && in_array($projeto->projeto_id, $projetosFavoritos);
-                $valor_projeto = $projetoModel->buscarValor($projeto->projeto_id);
-                $barra = round(($valor_projeto / $projeto->meta) * 100);
+                $jaFavoritado = isset($_SESSION['usuario']['id']) && in_array($projeto['projeto_id'], $projetosFavoritos);
+                $valor_projeto = $projetoModel->buscarValor($projeto['projeto_id']);
+                $barra = round(($valor_projeto / $projeto['meta']) * 100);
                 require '../../components/cards/card-projeto.php';
             } ?>
             <!-- <div class="card-projeto">

@@ -115,9 +115,11 @@ function compartilhar(popupId, Id, tipo) {
 
     if (tipo === 'projeto'){
         input.value = `http://localhost/organizer/view/pages/projeto/perfil.php?id=${Id}`;
-    }else {
+    }else if(tipo === 'ong') {
         input.value = `http://localhost/organizer/view/pages/ong/perfil.php?id=${Id}`;
-    };
+    }else{
+        input.value = `http://localhost/organizer/view/pages/noticia/perfil.php?id=${Id}`;
+    }
     
     
     if (fundoPopup) {
