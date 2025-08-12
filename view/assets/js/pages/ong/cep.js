@@ -43,6 +43,11 @@ document.addEventListener("DOMContentLoaded", function () {
           if (endereco.logradouro == "" && endereco.bairro == ""){
             rua.readOnly = false;
             bairro.readOnly = false;
+          }else {
+            document.getElementById("rua").readOnly = true;
+            document.getElementById("bairro").readOnly = true;
+            document.getElementById("cidade").readOnly = true;
+            document.getElementById("estado").readOnly = true;
           }
           document.getElementById("cidade").value = endereco.localidade;
           document.getElementById("estado").value = endereco.uf;
