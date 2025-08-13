@@ -63,6 +63,10 @@ main.container h1 {
     position: relative;
 }
 
+.dados-ong .form label.label-short {
+    max-width: 70px;
+}
+
 .dados-ong .form label input,
 .dados-ong .form label textarea,
 .dados-ong .form label select {
@@ -85,22 +89,6 @@ main.container h1 {
     font-size: 13px;
     color: var(--cor-amarelo);
 }
-
-#form-endereco {
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: space-around;
-}
-#numero {
-    width: 100px;
-}
-#estado {
-    width: 80px;
-}
-#cidade {
-    width: 300px;
-}
-
 
 /* Botões de Aprovar/Recusar */
 .btn-acoes {

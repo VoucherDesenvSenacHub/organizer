@@ -100,7 +100,7 @@ ob_end_flush();
         </fieldset>
         <fieldset>
             <legend><i class="fa-solid fa-location-dot"></i> DADOS DE ENDEREÇO</legend>
-            <div class="form" id="form-endereco">
+            <div class="form">
                 <label>
                     <span>CEP</span>
                     <input name="cep" id="cep" type="text" required value="<?= $perfil['cep'] ?>">
@@ -109,7 +109,7 @@ ob_end_flush();
                     <span>Rua</span>
                     <input name="rua" id="rua" type="text" required readonly value="<?= $perfil['rua'] ?>">
                 </label>
-                <label>
+                <label class="label-short">
                     <span>Nº</span>
                     <input name="numero" id="numero" type="text" required value="<?= $perfil['numero'] ?>">
                 </label>
@@ -121,7 +121,7 @@ ob_end_flush();
                     <span>Cidade</span>
                     <input id="cidade" name="cidade" type="text" required readonly value="<?= $perfil['cidade'] ?>">
                 </label>
-                <label>
+                <label class="label-short">
                     <span>Estado</span>
                     <input id="estado" name="estado" type="text" required readonly value="<?= $perfil['estado'] ?>">
                 </label>
