@@ -1,11 +1,8 @@
 <?php
 if (isset($_GET['id']) && isset($_SESSION['usuario']['id'])) {
     $jaApoiou = $projetoModel->usuarioJaApoiouProjeto($_SESSION['usuario']['id'], $_GET['id']);
-<<<<<<< HEAD
-=======
 } else {
     $jaApoiou = false;
->>>>>>> a597ac784696bb9e09c68a36a639b197df7862ff
 }
 if (isset($_GET['id']) && $projeto) {
     require_once 'partials/popups-projeto.php';
@@ -17,26 +14,10 @@ $iconApoio = $jaApoiou ? '<i class="fa-solid fa-heart-circle-check"></i>' : '<i 
 
 <div id="acoes">
     <?php if ($perfil === 'doador'): ?>
-<<<<<<< HEAD
-        <button class="btn" id="btn-doacao" onclick="abrir_popup('doacao-popup')">
-            <i class="fa-solid fa-hand-holding-dollar"></i> Quero Doar
-        </button>
-
-        <form action="../../../controller/Projeto/ApoiarProjetoController.php" method="POST">
-            <input type="hidden" name="<?= $jaApoiou ? 'projeto-desapoiar-id' : 'projeto-apoio-id' ?>" value="<?= $projeto->projeto_id ?>">
-            <button type="submit" class="btn" id="btn-apoio" onclick="abrir_popup('apoiar-popup')">
-                <?= $textoApoio ?> <?= $iconApoio ?>
-            </button>
-        </form>
-
-    <?php elseif ($perfil === 'ong'): ?>
-=======
         <button class="btn" id="btn-doacao" onclick="abrir_popup('doacao-popup')"><i class="fa-solid fa-hand-holding-dollar"></i> Quero Doar</button>
         <button class="btn" id="btn-apoio" onclick="abrir_popup('apoiar-popup')"><?= $textoApoio ?> <?= $iconApoio ?></button>
 
-        </form>
-            <?php elseif ($perfil === 'ong'): ?>
->>>>>>> a597ac784696bb9e09c68a36a639b197df7862ff
+    <?php elseif ($perfil === 'ong'): ?>
         <button class="btn" id="btn-editar" onclick="abrir_popup('editar-projeto-popup')">
             <i class="fa-solid fa-pen-to-square"></i> Editar
         </button>
