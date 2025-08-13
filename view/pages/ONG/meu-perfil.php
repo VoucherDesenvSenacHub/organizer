@@ -19,8 +19,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['atualizar-ong'])) {
         'email' => $_POST['email'],
         'cep' => $_POST['cep'],
         'rua' => $_POST['rua'],
+        'numero' => $_POST['numero'],
         'bairro' => $_POST['bairro'],
         'cidade' => $_POST['cidade'],
+        'estado' => $_POST['estado'],
         'banco_id' => $_POST['banco'],
         'agencia' => $_POST['agencia'],
         'conta_numero' => $_POST['conta_numero'],
@@ -62,13 +64,22 @@ ob_end_flush();
         <fieldset>
             <legend><i class="fa-solid fa-house-flag"></i> DADOS DA ONG</legend>
             <div class="form">
-                <label><span>Nome da ONG</span><input id="nome" name="nome" type="text" required
-                        value="<?= $perfil['nome'] ?>"></label>
-                <label><span>CPNJ</span><input name="cnpj" id="cnpj" type="text" required
-                        value="<?= $perfil['cnpj'] ?>"></label>
-                <label><span>Telefone</span><input name="telefone" id="telefone" type="text" required
-                        value="<?= $perfil['telefone'] ?>"></label>
-                <label><span>Email</span><input name="email" type="text" required value="<?= $perfil['email'] ?>"></label>
+                <label>
+                    <span>Nome da ONG</span>
+                    <input id="nome" name="nome" type="text" required value="<?= $perfil['nome'] ?>">
+                </label>
+                <label>
+                    <span>CPNJ</span>
+                    <input name="cnpj" id="cnpj" type="text" required value="<?= $perfil['cnpj'] ?>">
+                </label>
+                <label>
+                    <span>Telefone</span>
+                    <input name="telefone" id="telefone" type="text" required value="<?= $perfil['telefone'] ?>">
+                </label>
+                <label>
+                    <span>Email</span>
+                    <input name="email" type="text" required value="<?= $perfil['email'] ?>">
+                </label>
             </div>
             <div class="form form-descricao">
                 <label>
@@ -90,13 +101,30 @@ ob_end_flush();
         <fieldset>
             <legend><i class="fa-solid fa-location-dot"></i> DADOS DE ENDEREÇO</legend>
             <div class="form">
-                <label><span>CEP</span><input name="cep" id="cep" type="text" required
-                        value="<?= $perfil['cep'] ?>"></label>
-                <label><span>Rua</span><input name="rua" type="text" required value="<?= $perfil['rua'] ?>"></label>
-                <label><span>Bairro</span><input id="bairro" name="bairro" type="text" required
-                        value="<?= $perfil['bairro'] ?>"></label>
-                <label><span>Cidade</span><input id="cidade" name="cidade" type="text" required
-                        value="<?= $perfil['cidade'] ?>"></label>
+                <label>
+                    <span>CEP</span>
+                    <input name="cep" id="cep" type="text" required value="<?= $perfil['cep'] ?>">
+                </label>
+                <label>
+                    <span>Rua</span>
+                    <input name="rua" id="rua" type="text" required readonly value="<?= $perfil['rua'] ?>">
+                </label>
+                <label class="label-short">
+                    <span>Nº</span>
+                    <input name="numero" id="numero" type="text" required value="<?= $perfil['numero'] ?>">
+                </label>
+                <label>
+                    <span>Bairro</span>
+                    <input id="bairro" name="bairro" type="text" required readonly value="<?= $perfil['bairro'] ?>">
+                </label>
+                <label>
+                    <span>Cidade</span>
+                    <input id="cidade" name="cidade" type="text" required readonly value="<?= $perfil['cidade'] ?>">
+                </label>
+                <label class="label-short">
+                    <span>Estado</span>
+                    <input id="estado" name="estado" type="text" required readonly value="<?= $perfil['estado'] ?>">
+                </label>
             </div>
         </fieldset>
         <fieldset>
@@ -144,6 +172,7 @@ ob_end_flush();
 <!-- Mascaras -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
+<script src="../../assets/js/pages/ong/cep.js"></script>
 <script type="text/javascript">
     $("#telefone").mask("(00) 00000-0000");
     $("#cnpj").mask("00.000.000/0000-00");
