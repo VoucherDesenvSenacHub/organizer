@@ -138,7 +138,7 @@ $perfil = $_SESSION['perfil_usuario'] ?? '';
         } ?>
         <section id="box-ongs">
             <?php foreach ($lista as $ong) {
-                $jaFavoritada = isset($_SESSION['usuario']['id']) && in_array($ong->ong_id, $ongsFavoritas);
+                $jaFavoritada = isset($_SESSION['usuario']['id']) && in_array($ong['ong_id'], $ongsFavoritas);
                 require '../../components/cards/card-ong.php';
             }
             ?>
