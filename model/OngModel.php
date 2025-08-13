@@ -218,6 +218,17 @@ class Ong
         return $stmt->fetchAll(PDO::FETCH_COLUMN);
     }
 
+    function listarFavoritasRecentes($usuario_id)
+    {
+        $sql = "SELECT f.ong_id, f.data_favoritado, (SELECT o.nome FROM ongs o WHERE o.ong_id = f.ong_id ORDER BY f.ong_id ASC LIMIT 1) AS nome_ong FROM favoritos_ongs f 
+        WHERE usuario_id = :id
+        ORDER BY f.data_favoritado DESC LIMIT 1";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam(':id', $usuario_id, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_CLASS);
+    }
+
     function favoritosUsuario($usuario_id)
     {
         $query = "SELECT
