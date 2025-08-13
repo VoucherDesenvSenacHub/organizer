@@ -21,7 +21,7 @@ class Ong
             banco_id, agencia, conta_numero, tipo_conta,
             descricao
         ) VALUES (
-            :nome, :cnpj, :responsavel_id,
+            :nome, :cnpj, :xresponsavel_id,
             :telefone, :email,
             :cep, :rua, :bairro, :cidade,
             :banco_id, :agencia, :conta_numero, :tipo_conta,
@@ -165,6 +165,9 @@ class Ong
     function buscarDados($id)
     {
         $query = "SELECT 
+                    (SELECT COUNT(*) FROM apoios_projeto a
+                  INNER JOIN projetos p ON a.projeto_id = p.projeto_id 
+                  WHERE p.ong_id = :id) AS qnt_apoiador,
                     (SELECT COUNT(*) FROM projetos p WHERE p.ong_id = :id) AS qnt_projeto,
                     (SELECT COUNT(*) FROM noticias n WHERE n.ong_id = :id) AS qnt_noticia,
                     (SELECT SUM(dp.valor) FROM doacao_projeto dp 
@@ -176,7 +179,6 @@ class Ong
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
         return $stmt->fetch();
     }
-
 
     function favoritarOng($usuario_id, $ong_id)
     {
@@ -216,6 +218,17 @@ class Ong
         $stmt->bindParam(':id', $usuario_id, PDO::PARAM_INT);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_COLUMN);
+    }
+
+    function listarFavoritasRecentes($usuario_id)
+    {
+        $sql = "SELECT f.ong_id, f.data_favoritado, (SELECT o.nome FROM ongs o WHERE o.ong_id = f.ong_id ORDER BY f.ong_id ASC LIMIT 1) AS nome_ong FROM favoritos_ongs f 
+        WHERE usuario_id = :id
+        ORDER BY f.data_favoritado DESC LIMIT 1";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam(':id', $usuario_id, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_CLASS);
     }
 
     function favoritosUsuario($usuario_id)
