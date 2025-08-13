@@ -64,13 +64,22 @@ ob_end_flush();
         <fieldset>
             <legend><i class="fa-solid fa-house-flag"></i> DADOS DA ONG</legend>
             <div class="form">
-                <label><span>Nome da ONG</span><input id="nome" name="nome" type="text" required
-                        value="<?= $perfil['nome'] ?>"></label>
-                <label><span>CPNJ</span><input name="cnpj" id="cnpj" type="text" required
-                        value="<?= $perfil['cnpj'] ?>"></label>
-                <label><span>Telefone</span><input name="telefone" id="telefone" type="text" required
-                        value="<?= $perfil['telefone'] ?>"></label>
-                <label><span>Email</span><input name="email" type="text" required value="<?= $perfil['email'] ?>"></label>
+                <label>
+                    <span>Nome da ONG</span>
+                    <input id="nome" name="nome" type="text" required value="<?= $perfil['nome'] ?>">
+                </label>
+                <label>
+                    <span>CPNJ</span>
+                    <input name="cnpj" id="cnpj" type="text" required value="<?= $perfil['cnpj'] ?>">
+                </label>
+                <label>
+                    <span>Telefone</span>
+                    <input name="telefone" id="telefone" type="text" required value="<?= $perfil['telefone'] ?>">
+                </label>
+                <label>
+                    <span>Email</span>
+                    <input name="email" type="text" required value="<?= $perfil['email'] ?>">
+                </label>
             </div>
             <div class="form form-descricao">
                 <label>
@@ -92,15 +101,30 @@ ob_end_flush();
         <fieldset>
             <legend><i class="fa-solid fa-location-dot"></i> DADOS DE ENDEREÇO</legend>
             <div class="form" id="form-endereco">
-                <label><span>CEP</span><input name="cep" id="cep" type="text" required
-                        value="<?= $perfil['cep'] ?>"></label>
-                <label><span>Rua</span><input name="rua" id="rua" type="text" required readonly value="<?= $perfil['rua'] ?>"></label>
-                <label><span>nº</span><input name="numero" id="numero" type="text" required></label>
-                <label><span>Bairro</span><input id="bairro" name="bairro" type="text" required readonly
-                        value="<?= $perfil['bairro'] ?>"></label>
-                <label><span>Cidade</span><input id="cidade" name="cidade" type="text" required readonly
-                        value="<?= $perfil['cidade'] ?>"></label>
-                <label><span>Estado</span><input id="estado" name="estado" type="text" required readonly></label>
+                <label>
+                    <span>CEP</span>
+                    <input name="cep" id="cep" type="text" required value="<?= $perfil['cep'] ?>">
+                </label>
+                <label>
+                    <span>Rua</span>
+                    <input name="rua" id="rua" type="text" required readonly value="<?= $perfil['rua'] ?>">
+                </label>
+                <label>
+                    <span>Nº</span>
+                    <input name="numero" id="numero" type="text" required value="<?= $perfil['numero'] ?>">
+                </label>
+                <label>
+                    <span>Bairro</span>
+                    <input id="bairro" name="bairro" type="text" required readonly value="<?= $perfil['bairro'] ?>">
+                </label>
+                <label>
+                    <span>Cidade</span>
+                    <input id="cidade" name="cidade" type="text" required readonly value="<?= $perfil['cidade'] ?>">
+                </label>
+                <label>
+                    <span>Estado</span>
+                    <input id="estado" name="estado" type="text" required readonly value="<?= $perfil['estado'] ?>">
+                </label>
             </div>
         </fieldset>
         <fieldset>
