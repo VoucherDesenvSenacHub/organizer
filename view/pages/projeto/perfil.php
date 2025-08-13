@@ -63,7 +63,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_SESSION['perfil_usuario'] === 'do
 
 // Apoiar um projeto 
 
-
 // Buscar se é favorito
 if (isset($_SESSION['usuario']['id'])) {
     $projetosFavoritos = $projetoModel->listarFavoritos($_SESSION['usuario']['id']);
