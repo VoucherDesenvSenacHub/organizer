@@ -4,6 +4,9 @@ if (isset($_GET['id']) && isset($_SESSION['usuario']['id'])) {
 } else {
     $jaApoiou = false;
 }
+if (isset($_GET['id']) && $projeto) {
+    require_once 'partials/popups-projeto.php';
+}
 $perfil = $_SESSION['perfil_usuario'] ?? 'visitante';
 $textoApoio = $jaApoiou ? 'Apoiando' : 'Quero Apoiar';
 $iconApoio = $jaApoiou ? '<i class="fa-solid fa-heart-circle-check"></i>' : '<i class="fa-solid fa-hand-holding-heart"></i>';
@@ -13,6 +16,8 @@ $iconApoio = $jaApoiou ? '<i class="fa-solid fa-heart-circle-check"></i>' : '<i 
     <?php if ($perfil === 'doador'): ?>
         <button class="btn" id="btn-doacao" onclick="abrir_popup('doacao-popup')"><i class="fa-solid fa-hand-holding-dollar"></i> Quero Doar</button>
         <button class="btn" id="btn-apoio" onclick="abrir_popup('apoiar-popup')"><?= $textoApoio ?> <?= $iconApoio ?></button>
+
+        </form>
             <?php elseif ($perfil === 'ong'): ?>
         <button class="btn" id="btn-editar" onclick="abrir_popup('editar-projeto-popup')">
             <i class="fa-solid fa-pen-to-square"></i> Editar

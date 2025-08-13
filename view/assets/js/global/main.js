@@ -19,6 +19,8 @@ window.addEventListener('resize', () => {
 // EFEITO POPUP 
 function abrir_popup(popupId) {
     const fundoPopup = document.getElementById(popupId);
+
+    console.log("entrei no abrir popup")
     
     if (fundoPopup) {
         fundoPopup.classList.toggle('ativo');

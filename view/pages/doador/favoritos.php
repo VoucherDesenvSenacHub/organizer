@@ -9,7 +9,7 @@ require_once '../../../model/OngModel.php';
 $ongModel = new Ong();
 
 require_once '../../../model/ProjetoModel.php';
-$projetoModel = new ProjetoModel();
+$projetoModel = new Projeto();
 
 // Buscar os favoritos
 $listaOngs = $ongModel->favoritosUsuario($_SESSION['usuario']['id']);

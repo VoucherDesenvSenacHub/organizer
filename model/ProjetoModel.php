@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__ . "/../config/database.php";
-class ProjetoModel
+class Projeto
 {
     private $tabela = 'projetos';
     private $pdo;

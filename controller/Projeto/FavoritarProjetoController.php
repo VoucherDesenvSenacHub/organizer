@@ -2,7 +2,7 @@
 require_once __DIR__ . '/../../model/ProjetoModel.php';
 session_start();
 
-$projetoModel = new ProjetoModel();
+$projetoModel = new Projeto();
 $usuario_id = $_SESSION['usuario']['id'];
 $projeto_id = $_POST['projeto-id-favorito'] ?? null;
 

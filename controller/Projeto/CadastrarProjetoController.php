@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__ . '/../../model/ProjetoModel.php';
-require_once __DIR__ . '../../service/AuthService.php';
+require_once '../../service/AuthService.php';
 AuthService::verificaLoginOng();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $ong = $_SESSION['ong_id'];
 
     if ($nome && $descricao && $meta) {
-        $projetoModel = new ProjetoModel();
+        $projetoModel = new Projeto();
         $sucesso = $projetoModel->criar($nome, $descricao, $meta, $ong);
         if ($sucesso) {
             header('Location: ../../view/pages/ong/projetos.php?msg=sucesso');

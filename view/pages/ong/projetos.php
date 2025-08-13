@@ -10,7 +10,7 @@ require_once '../../components/layout/base-inicio.php';
 require_once __DIR__ . '/../../../autoload.php';
 
 //CARREGA CARDS DE PROJETOS
-$projetoModel = new ProjetoModel();
+$projetoModel = new Projeto();
 $lista = $projetoModel->listar($_SESSION['ong_id']);
 $temprojeto = $lista;
 //PESQUISAR PROJETO
