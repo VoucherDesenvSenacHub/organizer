@@ -8,10 +8,8 @@ $data = date('d/m/Y', strtotime($noticia->data_cadastro)) ?? '01/01/2025';
 $logo_url = $noticia->logo_url ?? '../../assets/images/global/image-placeholder.svg';
 
 ?>
-<div  class="card-noticia <?= $class ?>">
+<div class="card-noticia <?= $class ?>">
     <a href="../noticia/perfil.php?id=<?= $id ?>" class="card-noticia <?= $class ?>">
-
-
         <div class="textos">
             <h3><?= $titulo ?></h3>
             <p><?= $texto ?></p>
@@ -28,5 +26,4 @@ $logo_url = $noticia->logo_url ?? '../../assets/images/global/image-placeholder.
         <button class="btn-share fa-solid fa-share-nodes"
             onclick="compartilhar('compartilhar-popup', <?= $id ?>, 'noticia')"></button>
     </div>
-
 </div>

@@ -12,6 +12,7 @@
     background-color: white;
     cursor: pointer;
     transition: .3s;
+    position: relative;
 }
 
 div.card-noticia:hover {
@@ -101,8 +102,17 @@ div.card-noticia {
     position: absolute;
     top: 13px;
     right: 13px;
-    z-index: 10;
+    visibility: hidden;
+    opacity: 0;
+    transition: .3s;
 }
+
+.card-noticia:hover .acoes-noticia{
+    visibility: visible;
+    opacity: 1;
+    transition: .3s;
+}
+
 .card-noticia .acoes-noticia button {
     background: none;
     border: none;
@@ -114,20 +124,6 @@ div.card-noticia {
     color: #c2c2c2;
     font-size: 18px;
     cursor: pointer;
-    transition: .3s;
-}
-
-.card-notica .acoes-noticia .btn-share {
-    visibility: hidden;
-    transform: translateX(5px);
-    opacity: 0;
-    transition: .3s;
-}
-
-.card-noticia:hover .acoes-noticia .btn-share {
-    visibility: visible;
-    transform: translateX(0);
-    opacity: 1;
     transition: .3s;
 }
 
