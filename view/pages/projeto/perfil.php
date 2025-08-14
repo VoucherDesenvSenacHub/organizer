@@ -121,7 +121,7 @@ ob_end_flush();
                         } ?>
                     </div>
                     <div class="btn-salvar">
-                        <button id="share" class="fa-solid fa-share-nodes" onclick="abrir_popup('compartilhar-popup')"></button>
+                        <button id="share" class="fa-solid fa-share-nodes" onclick="compartilhar('compartilhar-popup', <?=$_GET['id']?>, 'projeto')"></button>
                         <?php if (!isset($_SESSION['usuario']['id'])): ?>
                             <button title="Favoritar" class="btn-like fa-solid fa-heart" onclick="abrir_popup('login-obrigatorio-popup')"></button>
 

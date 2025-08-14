@@ -52,7 +52,7 @@ if (isset($_SESSION['usuario']['id'])) {
                                   </div>';
                         } else {
                             foreach ($listaOngs as $ong) {
-                                $jaFavoritada = isset($_SESSION['usuario']['id']) && in_array($ong->ong_id, $ongsFavoritas);
+                                $jaFavoritada = isset($_SESSION['usuario']['id']) && in_array($ong['ong_id'], $ongsFavoritas);
                                 require '../../components/cards/card-ong.php';
                             }
                         }
@@ -67,9 +67,9 @@ if (isset($_SESSION['usuario']['id'])) {
                                   </div>';
                         } else {
                             foreach ($listaProjetos as $projeto) {
-                                $jaFavoritado = isset($_SESSION['usuario']['id']) && in_array($projeto->projeto_id, $projetosFavoritos);
-                                $valor_projeto = $projetoModel->buscarValor($projeto->projeto_id);
-                                $barra = round(($valor_projeto / $projeto->meta) * 100);
+                                $jaFavoritado = isset($_SESSION['usuario']['id']) && in_array($projeto['projeto_id'], $projetosFavoritos);
+                                $valor_projeto = $projetoModel->buscarValor($projeto['projeto_id']);
+                                $barra = round(($valor_projeto / $projeto['meta']) * 100);
                                 require '../../components/cards/card-projeto.php';
                             }
                         }

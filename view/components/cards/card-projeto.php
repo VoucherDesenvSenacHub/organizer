@@ -11,7 +11,7 @@ $logo_url = $projeto['logo_url'] ?? '../../assets/images/global/image-placeholde
 
 <div class="card-projeto <?= $class ?>">
     <div class="acoes-projeto">
-        <button class="btn-share fa-solid fa-share-nodes" onclick="abrir_popup('compartilhar-popup')"></button>
+            <button class="btn-share fa-solid fa-share-nodes" onclick="compartilhar('compartilhar-popup', <?=$id?>, 'projeto')"></button>
         <?php if (!isset($_SESSION['usuario']['id'])): ?>
             <button title="Favoritar" class="btn-like fa-solid fa-heart" onclick="abrir_popup('login-obrigatorio-popup')"></button>
         <?php else: ?>
