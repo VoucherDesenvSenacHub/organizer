@@ -6,8 +6,13 @@ require_once '../../components/layout/base-inicio.php';
 
 require_once __DIR__ . '/../../../autoload.php';
 $ongModel = new Ong();
+$projetoModel = new Projeto();
+$noticiaModel = new NoticiaModel();
+$listaNoticiasRecentes = $noticiaModel->listarRecentes($_SESSION['ong_id']);
+$listaProjetosRecentes = $projetoModel->listarRecentesOng($_SESSION['ong_id']);
 $minhaOng = $ongModel->buscarPerfil($_SESSION['ong_id']);
 $dadosOng = $ongModel->buscarDados($_SESSION['ong_id']);
+
 ?>
 <!-- Toast -->
 <div id="toast-cadastro-ong" class="toast">
@@ -17,31 +22,54 @@ $dadosOng = $ongModel->buscarDados($_SESSION['ong_id']);
 
 <main class="container">
     <div id="title">
-        <h1> <?= $minhaOng->nome ?></h1>
+        <h1> <?= $minhaOng['nome'] ?></h1>
         <!-- <p>PAINEL</p> -->
     </div>
     <div id="resumo">
         <a class="resumo-item" href="relatorios.php">
-            <h3>R$ <?= number_format($dadosOng->qnt_doacoes, 0, ',', '.'); ?> <span>DOAÇÔES</span></h3>
+        <?php $qtd = $dadosOng['qnt_doacoes'] ?? 0; ?>
+<h3>
+    R$ <?= number_format($qtd, 0, ',', '.'); ?> <span>DOAÇÕES</span></h3>
             <i class="fa-solid fa-coins"></i>
         </a>
         <a class="resumo-item" href="projetos.php">
-            <h3><?= $dadosOng->qnt_projeto ?> <span>PROJETOS</span></h3>
+            <h3><?= $dadosOng['qnt_projeto'] ?> <span>PROJETOS</span></h3>
             <i class="fa-solid fa-diagram-project"></i>
         </a>
+        <a class="resumo-item" href="relatorios.php">
+            <h3><?= $dadosOng['qnt_apoiador'] ?> <span>APOIADORES</span></h3>
+            <i class="fa-solid fa-hand-holding-heart"></i>
+        </a>
         <a class="resumo-item" href="noticias.php">
-            <h3><?= $dadosOng->qnt_noticia ?> <span>NOTÍCIAS</span></h3>
+            <h3><?= $dadosOng['qnt_noticia'] ?> <span>NOTÍCIAS</span></h3>
             <i class="fa-solid fa-newspaper"></i>
         </a>
     </div>
-    <nav id="nav-home">
+    <!-- <nav id="nav-home">
         <a href="noticias.php"><img src="../../assets/images/icons/gif-noticia.gif" alt=""><span>NOTÍCIAS</span></a>
         <a href="projetos.php"><img src="../../assets/images/icons/gif-projeto.gif" alt=""><span>PROJETOS</span></a>
         <a href="meu-perfil.php"><img src="../../assets/images/icons/gif-perfil.gif" alt=""><span>PERFIL</span></a>
-        <!-- <a href="apoiadores.php"><img src="../../assets/images/icons/gif-voluntario.gif" alt=""><span>APOIADORES</span></a> -->
+        <a href="apoiadores.php"><img src="../../assets/images/icons/gif-voluntario.gif" alt=""><span>APOIADORES</span></a>
         <a href="relatorios.php"><img src="../../assets/images/icons/gif-relatorio.gif" alt=""><span>RELATÓRIOS</span></a>
-    </nav>
+    </nav> -->
+
     <div id="atividades">
+        <h4>SUAS ATIVIDADES RECENTES</h4>
+        <div id="cards">
+            <?php foreach ($listaProjetosRecentes as $projeto) {
+                $tipo = "projeto";
+                require '../../components/cards/card-atividades-recentes.php';
+            } ?>
+            <?php foreach ($listaNoticiasRecentes as $noticia) {
+                $tipo = "noticia";
+                require '../../components/cards/card-atividades-recentes.php';
+            } ?>
+        </div>
+    </div>
+
+
+
+    <!-- <div id="atividades">
         <h4>SUAS ATIVIDADES RECENTES</h4>
         <div id="cards">
             <div class="card-acoes">
@@ -50,7 +78,7 @@ $dadosOng = $ongModel->buscarDados($_SESSION['ong_id']);
                 </div>
                 <div class="acoes-text">
                     <h4>Projeto Criado</h4>
-                    <p>Você criou o Projeto “Mais Amor”</p>
+                    <p>Você criou o Projeto “ >”</p>
                     <span>04 de agosto de 2024, 14:21</span>
                 </div>
             </div>
@@ -75,7 +103,7 @@ $dadosOng = $ongModel->buscarDados($_SESSION['ong_id']);
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 </main>
 <?php
 $jsPagina = [];

@@ -1,17 +1,17 @@
 <?php
-$id = $projeto->projeto_id ?? 'Erro';
+$id = $projeto['projeto_id'] ?? 'Erro';
 $class = $class ?? '';
-$nome = $projeto->nome ?? 'Nome do Projeto';
-$descricao =  mb_strimwidth($projeto->descricao, 0, 230, '...') ?? 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odit, explicabo magni? Laboriosam possimus voluptas recusandae blanditiis architecto dolorem tenetur odio, nisi molestiae facere quia facilis officia cumque dicta impedit minima.';
+$nome = $projeto['nome'] ?? 'Nome do Projeto';
+$descricao =  mb_strimwidth($projeto['descricao'], 0, 230, '...') ?? 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odit, explicabo magni? Laboriosam possimus voluptas recusandae blanditiis architecto dolorem tenetur odio, nisi molestiae facere quia facilis officia cumque dicta impedit minima.';
 $barra = $barra ?? '30';
 $jaFavoritado = $jaFavoritado ?? false;
 $classe = $jaFavoritado ? 'favoritado' : '';
-$logo_url = $projeto->logo_url ?? '../../assets/images/global/image-placeholder.svg';
+$logo_url = $projeto['logo_url'] ?? '../../assets/images/global/image-placeholder.svg';
 ?>
 
 <div class="card-projeto <?= $class ?>">
     <div class="acoes-projeto">
-        <button class="btn-share fa-solid fa-share-nodes" onclick="abrir_popup('compartilhar-popup')"></button>
+            <button class="btn-share fa-solid fa-share-nodes" onclick="compartilhar('compartilhar-popup', <?=$id?>, 'projeto')"></button>
         <?php if (!isset($_SESSION['usuario']['id'])): ?>
             <button title="Favoritar" class="btn-like fa-solid fa-heart" onclick="abrir_popup('login-obrigatorio-popup')"></button>
         <?php else: ?>

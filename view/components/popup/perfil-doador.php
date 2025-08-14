@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <div id="left" class="box">
             <div id="perfil">
                 <img src="<?= $_SESSION['usuario']['foto'] ?>">
-                <p><?= $usuario->nome ?></p>
+                <p><?= $usuario['nome'] ?></p>
                 <!-- <p>email@blabla.com</p> -->
             </div>
             <button class="btn" title="Sair" onclick="abrir_popup('sair-da-conta-popup')">
@@ -57,29 +57,29 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <div class="input-group">
                     <div class="input-box">
                         <label for="nome_usuario">Nome</label>
-                        <input name="nome_usuario" id="nome_usuario" type="text" value="<?= $usuario->nome ?>" required>
+                        <input name="nome_usuario" id="nome_usuario" type="text" value="<?= $usuario['nome'] ?>" required>
                         <i class="fa-solid fa-user"></i>
                     </div>
                     <div class="input-box inputM">
                         <label for="telefone_usuario">Telefone</label>
-                        <input name="telefone_usuario" id="telefone_usuario" type="tel" value="<?= $usuario->telefone ?>" required minlength="11">
+                        <input name="telefone_usuario" id="telefone_usuario" type="tel" value="<?= $usuario['telefone'] ?>" required minlength="11">
                         <i class="fa-solid fa-phone"></i>
                     </div>
                     <div class="input-box inputM">
                         <label for="cpf_usuario">CPF</label>
-                        <input name="cpf_usuario" id="cpf_usuario" type="text" value="<?= $usuario->cpf ?>" required minlength="14">
+                        <input name="cpf_usuario" id="cpf_usuario" type="text" value="<?= $usuario['cpf'] ?>" required minlength="14">
                         <i class="fa-regular fa-address-card"></i>
                     </div>
                     <div class="input-box">
                         <label for="datan">Data de Nascimento</label>
-                        <input name="data_usuario" id="datan" type="date" value="<?= $usuario->data_nascimento ?>" required>
+                        <input name="data_usuario" id="datan" type="date" value="<?= $usuario['data_nascimento'] ?>" required>
                         <i class="fa-solid fa-calendar-days"></i>
                     </div>
                 </div>
                 <h1>LOGIN</h1>
                 <div class="input-box">
                     <label for="email_usuario">Email</label>
-                    <input name="email_usuario" id="email_usuario" type="email" value="<?= $usuario->email ?>" required>
+                    <input name="email_usuario" id="email_usuario" type="email" value="<?= $usuario['email'] ?>" required>
                     <i class="fa-solid fa-envelope"></i>
                 </div>
                 <div id="acoes-perfil">

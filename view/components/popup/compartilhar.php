@@ -7,7 +7,7 @@
         <div class="msg">
             <h1>COMPARTILHAR</h1>
             <p>Copie o link e compartilhe com mais pessoas</p>
-            <input type="text" value="https://ong.projetos/4342.com" id="link-compartilhar" readonly>
+            <input type="text" value="" id="link-compartilhar" readonly>
             <button class="btn" onclick="copiar_link('toast-copiar')">COPIAR</button>
         </div>
     </div>

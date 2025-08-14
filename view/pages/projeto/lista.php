@@ -144,9 +144,9 @@ $perfil = $_SESSION['perfil_usuario'] ?? '';
         <section id="box-ongs">
             <!-- LISTAR CARDS PROJETOS -->
             <?php foreach ($lista as $projeto) {
-                $jaFavoritado = isset($_SESSION['usuario']['id']) && in_array($projeto->projeto_id, $projetosFavoritos);
-                $valor_projeto = $projetoModel->buscarValor($projeto->projeto_id);
-                $barra = round(($valor_projeto / $projeto->meta) * 100);
+                $jaFavoritado = isset($_SESSION['usuario']['id']) && in_array($projeto['projeto_id'], $projetosFavoritos);
+                $valor_projeto = $projetoModel->buscarValor($projeto['projeto_id']);
+                $barra = round(($valor_projeto / $projeto['meta']) * 100);
                 require '../../components/cards/card-projeto.php';
             } ?>
         </section>

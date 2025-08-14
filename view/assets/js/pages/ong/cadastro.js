@@ -31,9 +31,12 @@ function proximo(indice) {
     else if (indice === 3) {
         if (
             !validarCampo(input[4], 5, 'Digite um CEP válido.', 9) ||
-            !validarCampo(input[5], 6, 'Digite sua rua.', 5) ||
-            !validarCampo(input[6], 7, 'Digite seu bairro.', 5) ||
-            !validarCampo(input[7], 8, 'Digite sua cidade.', 5)
+            !validarCampo(input[5], 6, 'Digite sua rua.', 2) ||
+            !validarCampo(input[6], 7, 'Obrigatório.', 1) ||
+
+            !validarCampo(input[7], 8, 'Digite seu bairro.', 2) ||
+            !validarCampo(input[8], 9, 'Digite sua cidade.', 2) ||
+            !validarCampo(input[9], 10, 'Digite seu estado.', 2)
         ) {
             check[2].classList.remove('input-valid');
             return false;
@@ -64,8 +67,11 @@ function proximo(indice) {
         if (
             !validarCampo(input[4], 5, 'Digite um CEP válido.', 9) ||
             !validarCampo(input[5], 6, 'Digite sua rua.', 5) ||
-            !validarCampo(input[6], 7, 'Digite seu bairro.', 5) ||
-            !validarCampo(input[7], 8, 'Digite sua cidade.', 5)
+            !validarCampo(input[6], 7, 'Obrigatório.', 1) ||
+
+            !validarCampo(input[7], 8, 'Digite seu bairro.', 2) ||
+            !validarCampo(input[8], 9, 'Digite sua cidade.', 2) ||
+            !validarCampo(input[9], 10, 'Digite seu estado.', 2)
         ) {
             check[2].classList.remove('input-valid');
             moverPara(2, 25);
@@ -73,10 +79,10 @@ function proximo(indice) {
         }
 
         if (
-            !validarSelect(select[0], 9, 'Escolha um banco.') ||
-            !validarSelect(select[1], 10, 'Escolha o tipo da conta.') ||
-            !validarCampo(input[8], 11, 'Digite a agência corretamente.', 6) ||
-            !validarCampo(input[9], 12, 'Digite a conta corretamente.', 8)
+            !validarSelect(select[0], 11, 'Escolha um banco.') ||
+            !validarSelect(select[1], 12, 'Escolha o tipo da conta.') ||
+            !validarCampo(input[10], 13, 'Digite a agência corretamente.', 6) ||
+            !validarCampo(input[11], 14, 'Digite a conta corretamente.', 8)
         ) {
             check[3].classList.remove('input-valid');
             return false;

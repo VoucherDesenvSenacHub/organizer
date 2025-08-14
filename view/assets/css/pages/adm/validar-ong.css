@@ -63,6 +63,10 @@ main.container h1 {
     position: relative;
 }
 
+.dados-ong .form label.label-short {
+    max-width: 70px;
+}
+
 .dados-ong .form label input,
 .dados-ong .form label textarea,
 .dados-ong .form label select {

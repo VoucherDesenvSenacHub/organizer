@@ -69,8 +69,21 @@ class Doador
         $stmt = $this->pdo->prepare($query);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
-        $stmt->setFetchMode(PDO::FETCH_CLASS, __CLASS__);
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
         return $stmt->fetch();
+    }
+
+    function listarDoacoes($id)
+    {
+        $query = "SELECT dp.projeto_id, dp.usuario_id, dp.valor, dp.data_doacao, (SELECT p.nome FROM projetos p WHERE p.projeto_id = dp.projeto_id ORDER BY dp.projeto_id ASC LIMIT 1) AS nome_projeto FROM doacao_projeto dp
+        WHERE dp.usuario_id = :id
+        ORDER BY dp.data_doacao DESC LIMIT 1;
+        ";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+        $stmt->setFetchMode(PDO::FETCH_CLASS, __CLASS__);
+        return $stmt->fetchAll();
     }
 
     function update($id, $nome, $telefone, $cpf, $data, $email) {
