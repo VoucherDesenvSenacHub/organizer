@@ -56,8 +56,8 @@ class Ong
     {
         $query = "UPDATE $this->tabela
                   SET nome = :nome, cnpj = :cnpj, telefone = :telefone, 
-                  email = :email, cep = :cep, rua = :rua, bairro = :bairro, 
-                  cidade = :cidade, banco_id = :banco_id, agencia = :agencia,
+                  email = :email, cep = :cep, rua = :rua, numero = :numero, bairro = :bairro, 
+                  cidade = :cidade, estado = :estado, banco_id = :banco_id, agencia = :agencia,
                   conta_numero = :conta_numero, tipo_conta = :tipo_conta, descricao = :descricao
                   WHERE ong_id = :id";
         $stmt = $this->pdo->prepare($query);
@@ -67,8 +67,10 @@ class Ong
         $stmt->bindParam(':email', $dados['email']);
         $stmt->bindParam(':cep', $dados['cep']);
         $stmt->bindParam(':rua', $dados['rua']);
+        $stmt->bindParam(':numero', $dados['numero']);
         $stmt->bindParam(':bairro', $dados['bairro']);
         $stmt->bindParam(':cidade', $dados['cidade']);
+        $stmt->bindParam(':estado', $dados['estado']);
         $stmt->bindParam(':banco_id', $dados['banco_id'], PDO::PARAM_INT);
         $stmt->bindParam(':agencia', $dados['agencia']);
         $stmt->bindParam(':conta_numero', $dados['conta_numero']);
@@ -97,7 +99,7 @@ class Ong
 
         $stmt = $this->pdo->prepare($query);
         $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_CLASS, __CLASS__);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
     function listarRecentes()
@@ -118,7 +120,7 @@ class Ong
 
         $stmt = $this->pdo->prepare($query);
         $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_CLASS, __CLASS__);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
     function buscarPerfil($id)
@@ -135,7 +137,7 @@ class Ong
         $stmt = $this->pdo->prepare($query);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
-        $stmt->setFetchMode(PDO::FETCH_CLASS, __CLASS__);
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
         return $stmt->fetch();
     }
 
@@ -145,7 +147,7 @@ class Ong
         $stmt = $this->pdo->prepare($query);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
-        $stmt->setFetchMode(PDO::FETCH_CLASS, __CLASS__);
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
         return $stmt->fetch();
     }
 
@@ -155,7 +157,7 @@ class Ong
         $stmt = $this->pdo->prepare($query);
         $stmt->bindValue(':nome', "%{$nome}%", PDO::PARAM_STR);
         $stmt->execute();
-        $stmt->setFetchMode(PDO::FETCH_CLASS, __CLASS__);
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
         return $stmt->fetchAll();
     }
 
@@ -171,7 +173,7 @@ class Ong
         $stmt = $this->pdo->prepare($query);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
-        $stmt->setFetchMode(PDO::FETCH_CLASS, __CLASS__);
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
         return $stmt->fetch();
     }
 
@@ -234,7 +236,7 @@ class Ong
         $stmt = $this->pdo->prepare($query);
         $stmt->bindParam(':id', $usuario_id, PDO::PARAM_INT);
         $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_CLASS, __CLASS__);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
 
@@ -249,7 +251,7 @@ class Ong
         $stmt = $this->pdo->prepare($query);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
-        $stmt->setFetchMode(PDO::FETCH_CLASS, __CLASS__);
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
         return $stmt->fetchAll();
     }
 }

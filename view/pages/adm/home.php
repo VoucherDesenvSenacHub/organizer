@@ -16,19 +16,19 @@ $relatorio = $adminModel->RelatorioHome();
     <div id="resumo">
         <a href="ongs.php">
             <div class="resumo-item">
-                <h3><?= $relatorio->qnt_ongs ?> <span>ONGS</span></h3>
+                <h3><?= $relatorio['qnt_ongs'] ?> <span>ONGS</span></h3>
                 <i class="fa-solid fa-house-flag"></i>
             </div>
         </a>
         <a href="projetos.php">
             <div class="resumo-item">
-                <h3><?= $relatorio->qnt_projetos ?> <span>PROJETOS</span></h3>
+                <h3><?= $relatorio['qnt_projetos'] ?> <span>PROJETOS</span></h3>
                 <i class="fa-solid fa-diagram-project"></i>
             </div>
         </a>
         <a href="doadores.php">
             <div class="resumo-item">
-                <h3><?= $relatorio->qnt_usuarios ?> <span>DOADORES</span></h3>
+                <h3><?= $relatorio['qnt_usuarios'] ?> <span>DOADORES</span></h3>
                 <i class="fa-solid fa-users"></i>
             </div>
         </a>

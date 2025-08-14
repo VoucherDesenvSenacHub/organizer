@@ -1,23 +1,24 @@
 <?php
-$acao = ($projeto->projeto_id) ? 'EDITAR PROJETO' : 'NOVO PROJETO';
-$btn_text = ($projeto->projeto_id) ? 'SALVAR ALTERAÇÃO' : 'CRIAR PROJETO';
+$projeto = (array) $projeto;
+$acao = ($projeto['projeto_id']) ? 'EDITAR PROJETO' : 'NOVO PROJETO';
+$btn_text = ($projeto['projeto_id']) ? 'SALVAR ALTERAÇÃO' : 'CRIAR PROJETO';
 // $meta = (int)$meta;
 ?>
 <div class="popup-fundo" id="editar-projeto-popup">
     <div class="container-popup">
         <button class="btn-fechar-popup fa-solid fa-xmark" onclick="fechar_popup('editar-projeto-popup')"></button>
         <form action="../../../controller/projeto/CadastrarProjetoController.php" method="POST">
-            <input type="hidden" name="id" value="<?= $projeto->projeto_id ?>">
+            <input type="hidden" name="id" value="<?= $projeto['projeto_id'] ?>">
             <div class="box-edit">
                 <h1><?= $acao ?></h1>
                 <div class="input-group">
                     <div class="input-box">
                         <label for="nome">Nome<span>*</span></label>
-                        <input id="nome" name="nome" type="text" maxlength="50" value="<?= $projeto->nome ?>" required>
+                        <input id="nome" name="nome" type="text" maxlength="50" value="<?= $projeto['nome'] ?>" required>
                     </div>
                     <div class="input-box">
                         <label for="meta">Meta de Doação<span>*</span></label>
-                        <input id="meta" name="meta" type="number" placeholder="R$" value="<?= $projeto->meta ?>"
+                        <input id="meta" name="meta" type="number" placeholder="R$" value="<?= $projeto['meta'] ?>"
                             required>
                     </div>
                 </div>
@@ -27,7 +28,7 @@ $btn_text = ($projeto->projeto_id) ? 'SALVAR ALTERAÇÃO' : 'CRIAR PROJETO';
                 </div> -->
                 <div class="input-box">
                     <label for="descricao">Descrição<span>*</span></label>
-                    <textarea name="descricao" id="descricao" rows="8" required><?= $projeto->descricao ?></textarea>
+                    <textarea name="descricao" id="descricao" rows="8" required><?= $projeto['descricao'] ?></textarea>
                 </div>
             </div>
             <div class="box-edit">

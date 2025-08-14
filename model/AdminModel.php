@@ -19,7 +19,7 @@ class AdminModel
                   (SELECT COUNT(*) FROM usuarios u) AS qnt_usuarios;";
         $stmt = $this->pdo->prepare($query);
         $stmt->execute();
-        $stmt->setFetchMode(PDO::FETCH_CLASS, __CLASS__);
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
         return $stmt->fetch();
     }
 }

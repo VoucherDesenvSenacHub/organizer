@@ -142,7 +142,7 @@ $lista_banco = $bancoModel->listar();
                             <select name="banco">
                                 <option value="" disabled selected>Escolha</option>
                                 <?php foreach ($lista_banco as $banco): ?>
-                                    <option value="<?= $banco->banco_id ?>"><?= $banco->nome ?></option>
+                                    <option value="<?= $banco['banco_id'] ?>"><?= $banco['nome'] ?></option>
                                 <?php endforeach ?>
                             </select>
                             <span class="visor"></span>

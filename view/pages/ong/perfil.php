@@ -15,7 +15,7 @@ if (isset($_GET['id'])) {
     $projetos_ong = $projetoModel->listar($id);
     $noticias_ong = $noticiaModel->listarCards($id);
     $doadores_ong = $ongModel->buscarDoadores($id);
-    $logo_url = $ong->logo_url ?? '../../assets/images/global/image-placeholder.svg';
+    $logo_url = $ong['logo_url'] ?? '../../assets/images/global/image-placeholder.svg';
 }
 
 if (isset($_SESSION['usuario']['id'])) {
@@ -58,7 +58,7 @@ $perfil = $_SESSION['perfil_usuario'] ?? '';
                     <?php if (!isset($_SESSION['usuario']['id'])): ?>
                         <button title="Favoritar" id="like" class="fa-solid fa-heart" onclick="abrir_popup('login-obrigatorio-popup')"></button>
                     <?php elseif (!isset($_SESSION['perfil_usuario']) || $_SESSION['perfil_usuario'] === 'doador') : ?>
-                        <?php $classe = in_array($ong->ong_id, $ongsFavoritas) ? 'favoritado' : ''; ?>
+                        <?php $classe = in_array($ong['ong_id'], $ongsFavoritas) ? 'favoritado' : ''; ?>
                         <form action="../.././../controller/OngController.php?acao=favoritar" method="POST">
                             <input type="hidden" name="ong-id-favorito" value="<?= $id ?>">
                             <button title="Favoritar" id="like" class="fa-solid fa-heart <?= $classe ?>"></button>
@@ -67,24 +67,24 @@ $perfil = $_SESSION['perfil_usuario'] ?? '';
                 </div>
             </div>
             <div id="dados-ong" class="ong-card">
-                <h1 class="ong-nome"><?= $ong->nome ?></h1>
+                <h1 class="ong-nome"><?= $ong['nome'] ?></h1>
 
                 <div class="info-bloco arrecadado">
                     <span class="info-label">Arrecadado</span>
-                    <span class="info-valor">R$ <?= number_format($ong->total_arrecadado, 0, ',', '.'); ?></span>
+                    <span class="info-valor">R$ <?= number_format($ong['total_arrecadado'], 0, ',', '.'); ?></span>
                 </div>
 
                 <div class="info-resumo">
                     <div class="info-item">
-                        <span class="info-numero"><?= $ong->total_projetos ?></span>
+                        <span class="info-numero"><?= $ong['total_projetos'] ?></span>
                         <span class="info-texto">Projetos</span>
                     </div>
                     <div class="info-item">
-                        <span class="info-numero"><?= $ong->total_doacoes ?></span>
+                        <span class="info-numero"><?= $ong['total_doacoes'] ?></span>
                         <span class="info-texto">Doações Recebidas</span>
                     </div>
                     <div class="info-item">
-                        <span class="info-numero"><?= $ong->total_apoiadores ?></span>
+                        <span class="info-numero"><?= $ong['total_apoiadores'] ?></span>
                         <span class="info-texto">Apoiadores</span>
                     </div>
                 </div>
@@ -102,8 +102,8 @@ $perfil = $_SESSION['perfil_usuario'] ?? '';
                     <img src="../../assets/images/icons/icon-sobre.png">
                     <h3>Sobre</h3>
                 </div>
-                <small>Criada em <?= date('d/m/Y', strtotime($ong->data_cadastro)); ?></small>
-                <p><?= $ong->descricao ?></p>
+                <small>Criada em <?= date('d/m/Y', strtotime($ong['data_cadastro'])); ?></small>
+                <p><?= $ong['descricao'] ?></p>
             </div>
         </section>
         <section class="container-section" id="apoiadores">
@@ -157,9 +157,9 @@ $perfil = $_SESSION['perfil_usuario'] ?? '';
                             $class = 'tp-ong';
                         }
                         foreach ($projetos_ong as $projeto) {
-                            $valor_projeto = $projetoModel->buscarValor($projeto->projeto_id);
-                            $barra = round(($valor_projeto / $projeto->meta) * 100);
-                            $jaFavoritado = isset($_SESSION['usuario']['id']) && in_array($projeto->projeto_id, $projetosFavoritos);
+                            $valor_projeto = $projetoModel->buscarValor($projeto['projeto_id']);
+                            $barra = round(($valor_projeto / $projeto['meta']) * 100);
+                            $jaFavoritado = isset($_SESSION['usuario']['id']) && in_array($projeto['projeto_id'], $projetosFavoritos);
                             require '../../components/cards/card-projeto.php';
                         }
                     } else {
