@@ -49,7 +49,7 @@ $solicitacoes = $adminModel->ContadoresSolicitacoes();
             <div class="card-adm">
                 <h4>ONGS</h4>
                 <span>Aprove ou recuse cadastros de ONG’s novas no sistema.</span>
-                <a href="solicitacao-ong.php">
+                <a href="solicitacoes-ongs.php">
                     <div><i class="fa-solid fa-house-flag"></i>
                         <p><?= $solicitacoes->ongs ?> Solicitações</p>
                     </div>
@@ -58,9 +58,11 @@ $solicitacoes = $adminModel->ContadoresSolicitacoes();
             <div class="card-adm">
                 <h4>INATIVAR</h4>
                 <span>Confirme a inativação do projeto solicitados pela ONG.</span>
-                <div><i class="fa-solid fa-trash-can"></i>
-                    <p><?= $solicitacoes->inativar ?> Solicitações</p>
-                </div>
+                <a href="inativacoes.php">
+                    <div><i class="fa-solid fa-trash-can"></i>
+                        <p><?= $solicitacoes->inativar ?> Solicitações</p>
+                    </div>
+                </a>
             </div>
         </fieldset>
 
@@ -238,6 +240,6 @@ $solicitacoes = $adminModel->ContadoresSolicitacoes();
     </div>
 </main>
 <?php
-$jsPagina = ['adm/solicitacoes.js'];
+$jsPagina = [];
 require_once '../../components/layout/footer/footer-logado.php';
 ?>
