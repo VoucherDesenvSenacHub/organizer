@@ -6,10 +6,17 @@ $cssPagina = ['doador/home.css'];
 require_once '../../components/layout/base-inicio.php';
 
 require_once __DIR__ . '/../../../autoload.php';
+$ongModel = new Ong();
+$listarOngSalva = $ongModel->listarFavoritasRecentes($_SESSION['usuario']['id']);
+
 $projetoModel = new Projeto();
 $lista = $projetoModel->listarRecentes();
+$listarProjetoSalvo = $projetoModel->listarFavoritosRecentes($_SESSION['usuario']['id']);
+$listarApoiadores = $projetoModel->listarApoiadoresRecentes($_SESSION['usuario']['id']);
 $usuarioModel = new Usuario();
 $relatorio = $usuarioModel->RelatorioHome($_SESSION['usuario']['id']);
+$doadorModel = new Doador();
+$listarDoacoesRecentes = $doadorModel->listarDoacoes($_SESSION['usuario']['id']);
 
 if (isset($_SESSION['usuario']['id'])) {
     $projetosFavoritos = $projetoModel->listarFavoritos($_SESSION['usuario']['id']);
@@ -18,11 +25,12 @@ if (isset($_SESSION['usuario']['id'])) {
 $perfil = $_SESSION['perfil_usuario'] ?? '';
 ?>
 <section id="cabecalho">
-    <h1>Olá, <?= implode(' ', array_slice(explode(' ', trim($usuario->nome)), 0, 2)) ?>.</h1>
+    <h1>Olá, <?= implode(' ', array_slice(explode(' ', trim($usuario['nome'])), 0, 2)) ?>.</h1>
     <p>Seja bem-vindo à sua área de doador.</p>
     <div id="info-doacao">
         <a class="item-info" href="doacoes.php">
-            <h3>R$ <?= number_format($relatorio->qnt_doacoes, 0, ',', '.'); ?> <span>MINHAS DOAÇÕES</span></h3>
+        <h3>
+    R$ <?= number_format($relatorio['qnt_doacoes'] ?? 0, 0, ',', '.'); ?> <span>MINHAS DOAÇÕES</span></h3>
             <i class="fa-solid fa-coins"></i>
         </a>
     </div>
@@ -30,45 +38,39 @@ $perfil = $_SESSION['perfil_usuario'] ?? '';
 <section id="acoes-doador">
     <h2>SUAS ATIVIDADES RECENTES</h2>
     <div class="box-cards">
-        <div class="card-acoes">
-            <div class="icon tp-doacao">
-                <img src="../../assets/images/icons/icon-dinheiro.png">
-            </div>
-            <div class="acoes-text">
-                <h4>Doação realizada</h4>
-                <p>Você doou R$ 50,00 para o Projeto “Educação para Todos”</p>
-                <span>04 de agosto de 2024, 14:21</span>
-            </div>
-        </div>
-        <div class="card-acoes">
-            <div class="icon tp-salvar">
-                <img src="../../assets/images/icons/icon-coracao.png">
-            </div>
-            <div class="acoes-text">
-                <h4>Projeto Salvo</h4>
-                <p>Você favoritou o Projeto “Amigos da Natureza”</p>
-                <span>04 de agosto de 2024, 14:21</span>
-            </div>
-        </div>
-        <div class="card-acoes">
-            <div class="icon tp-apoiar">
-                <img src="../../assets/images/icons/icon-abraco.png">
-            </div>
-            <div class="acoes-text">
-                <h4>Projeto Apoiado</h4>
-                <p>Você apoiou o Projeto “Conecta Jovem”</p>
-                <span>04 de agosto de 2024, 14:21</span>
-            </div>
-        </div>
+        <?php foreach ($listarDoacoesRecentes as $doacao) {
+                $tipo = "doacao";
+                require '../../components/cards/card-atividades-recentes.php';
+            }
+            ?>
+            <?php  
+              foreach ($listarProjetoSalvo as $favoritos) {
+                $tipo = "projeto_salvo";
+                require '../../components/cards/card-atividades-recentes.php';
+              }
+            ?>
+            <?php  
+              foreach ($listarOngSalva as $ong) {
+                $tipo = "ong_salva";
+                require '../../components/cards/card-atividades-recentes.php';
+              }
+            ?>
+            <?php  
+              foreach ($listarApoiadores as $apoiador) {
+                $tipo = "apoiador";
+                require '../../components/cards/card-atividades-recentes.php';
+              }
+            ?>
+            
     </div>
 </section>
 <section class="container-cards">
     <h2>PROJETOS RECENTES</h2>
     <div class="box-cards">
             <?php foreach ($lista as $projeto) {
-                $jaFavoritado = isset($_SESSION['usuario']['id']) && in_array($projeto->projeto_id, $projetosFavoritos);
-                $valor_projeto = $projetoModel->buscarValor($projeto->projeto_id);
-                $barra = round(($valor_projeto / $projeto->meta) * 100);
+                $jaFavoritado = isset($_SESSION['usuario']['id']) && in_array($projeto['projeto_id'], $projetosFavoritos);
+                $valor_projeto = $projetoModel->buscarValor($projeto['projeto_id']);
+                $barra = round(($valor_projeto / $projeto['meta']) * 100);
                 require '../../components/cards/card-projeto.php';
             } ?>
             <!-- <div class="card-projeto">

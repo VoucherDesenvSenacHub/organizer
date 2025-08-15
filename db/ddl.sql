@@ -50,8 +50,10 @@ CREATE TABLE ongs (
 -- Endereço da ONG
     cep VARCHAR(10) NOT NULL,
     rua VARCHAR(200) NOT NULL,
+    numero VARCHAR(10) NOT NULL,
     bairro VARCHAR(100) NOT NULL,
     cidade VARCHAR(100) NOT NULL,
+    estado VARCHAR(2) NOT NULL,
 -- Dados bancários
     banco_id INT NOT NULL,
     agencia VARCHAR(10) NOT NULL,

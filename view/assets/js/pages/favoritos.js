@@ -8,4 +8,4 @@ function trocarAba(index) {
     cards.style.transform = `translateX(-${deslocamento}px)`;
     cards.style.height = `${altura}px`;
     index == 1 ? btn.classList.add('active') : btn.classList.remove('active');
-}
+};

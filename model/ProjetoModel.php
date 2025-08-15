@@ -29,7 +29,7 @@ class Projeto
         }
 
         $stmt->execute();
-        $stmt->setFetchMode(PDO::FETCH_CLASS, __CLASS__);
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
         return $stmt->fetchAll();
     }
 
@@ -42,6 +42,19 @@ class Projeto
         $stmt = $this->pdo->prepare($query);
 
         $stmt->execute();
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        return $stmt->fetchAll();
+    }
+
+    function listarRecentesOng($id)
+    {
+        $query = "SELECT p.projeto_id, p.nome, p.descricao, p.meta, p.data_cadastro,
+                      (SELECT i.logo_url FROM imagens_projeto i WHERE i.projeto_id = p.projeto_id ORDER BY i.id ASC LIMIT 1) AS logo_url
+                      FROM $this->tabela p WHERE p.ong_id = :id
+                      ORDER BY data_cadastro DESC LIMIT 1";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
         $stmt->setFetchMode(PDO::FETCH_CLASS, __CLASS__);
         return $stmt->fetchAll();
     }
@@ -53,7 +66,7 @@ class Projeto
         $stmt = $this->pdo->prepare($query);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
-        $stmt->setFetchMode(PDO::FETCH_CLASS, __CLASS__);
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
         return $stmt->fetch();
     }
 
@@ -76,7 +89,7 @@ class Projeto
             $stmt->bindValue(':nome', "%{$nome}%", PDO::PARAM_STR);
         }
         $stmt->execute();
-        $stmt->setFetchMode(PDO::FETCH_CLASS, __CLASS__);
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
         return $stmt->fetchAll();
     }
 
@@ -112,7 +125,7 @@ class Projeto
         $stmt = $this->pdo->prepare($query);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
-        $stmt->setFetchMode(PDO::FETCH_CLASS, __CLASS__);
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
         return $stmt->fetchAll();
     }
 
@@ -125,7 +138,7 @@ class Projeto
         $stmt = $this->pdo->prepare($query);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
-        $stmt->setFetchMode(PDO::FETCH_CLASS, __CLASS__);
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
         return $stmt->fetchAll();
     }
 
@@ -202,7 +215,7 @@ class Projeto
         $stmt = $this->pdo->prepare($query);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
-        $stmt->setFetchMode(PDO::FETCH_CLASS, __CLASS__);
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
         return $stmt->fetchAll();
     }
 
@@ -245,6 +258,17 @@ class Projeto
         return $stmt->fetchAll(PDO::FETCH_COLUMN);
     }
 
+    function listarFavoritosRecentes($usuario_id)
+    {
+        $sql = "SELECT f.projeto_id, f.data_favoritado, (SELECT p.nome FROM projetos p WHERE p.projeto_id = f.projeto_id ORDER BY f.projeto_id ASC LIMIT 1) AS nome_projeto FROM favoritos_projetos f 
+        WHERE f.usuario_id = :id 
+        ORDER BY f.data_favoritado DESC LIMIT 1";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam(':id', $usuario_id, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_CLASS);
+    }
+
     function favoritosUsuario($usuario_id)
     {
         $query = "SELECT p.projeto_id, p.nome, p.descricao, p.meta,
@@ -255,7 +279,7 @@ class Projeto
         $stmt = $this->pdo->prepare($query);
         $stmt->bindParam(':id', $usuario_id, PDO::PARAM_INT);
         $stmt->execute();
-        $stmt->setFetchMode(PDO::FETCH_CLASS, __CLASS__);
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
         return $stmt->fetchAll();
     }
 
@@ -265,7 +289,7 @@ class Projeto
         $stmt = $this->pdo->prepare($query);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
-        $stmt->setFetchMode(PDO::FETCH_CLASS, __CLASS__);
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
         return $stmt->fetchAll();
     }
 
@@ -276,6 +300,17 @@ class Projeto
         $stmt->bindParam(':usuario_id', $usuario_id, PDO::PARAM_INT);
         $stmt->bindParam(':projeto_id', $projeto_id, PDO::PARAM_INT);
         return $stmt->execute();
+    }
+
+    public function listarApoiadoresRecentes($usuario_id)
+    {
+        $sql = "SELECT a.projeto_id, a.data_apoio, (SELECT p.nome FROM projetos p WHERE p.projeto_id = a.projeto_id ORDER BY a.projeto_id ASC LIMIT 1) AS nome_projeto FROM apoios_projeto a
+        WHERE a.usuario_id = :id 
+        ORDER BY a.data_apoio DESC LIMIT 1";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam(':id', $usuario_id, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_CLASS);
     }
 
     public function desapoiarProjeto($usuario_id, $projeto_id)
@@ -298,7 +333,7 @@ class Projeto
         $stmt = $this->pdo->prepare($query);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
-        $stmt->setFetchMode(PDO::FETCH_CLASS, __CLASS__);
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
         return $stmt->fetchAll();
     }
 

@@ -61,7 +61,7 @@ ob_end_flush();
                 <div id="carousel-imgs">
                     <?php if ($imagens_noticia) {
                         foreach ($imagens_noticia as $imagem) {
-                            echo "<img src='$imagem->logo_url' class='carousel-item'>";
+                            echo "<img src=\"{$imagem['logo_url']}\" class=\"carousel-item\">";
                         }
                     } else {
                         echo "<img src='../../assets/images/global/image-placeholder.svg' class='carousel-item'>";
@@ -70,9 +70,9 @@ ob_end_flush();
             </section>
             <section class="area-materia">
                 <div class="titulo">
-                    <h1><?= $noticia->titulo ?></h1>
-                    <span><i class="fa-regular fa-clock"></i> <?= $noticia->data_cadastro ?></span>
-                    <a title="Ver Perfil da ONG" href="../ong/perfil.php?id=<?= $noticia->ong_id ?>"><i class="fa-solid fa-house-flag"></i> <?= $noticia->nome ?></a>
+                    <h1><?= $noticia['titulo'] ?></h1>
+                    <span><i class="fa-regular fa-clock"></i> <?= $noticia['data_cadastro'] ?></span>
+                    <a title="Ver Perfil da ONG" href="../ong/perfil.php?id=<?= $noticia['ong_id'] ?>"><i class="fa-solid fa-house-flag"></i> <?= $noticia['nome'] ?></a>
                 </div>
                 <!-- Botões de edição para a ONG -->
                 <?php if ($perfil == 'ong'): ?>
@@ -82,20 +82,20 @@ ob_end_flush();
                     </div>
                 <?php endif; ?>
                 <div class="texto">
-                    <p><?= $noticia->texto ?></p>
+                    <p><?= $noticia['texto'] ?></p>
                 </div>
                 <!-- Subtítulo -->
                 <div class="subtitulo">
                     <div class="sub-img">
                         <?php if ($imagem_subtitulo) {
-                            echo "<img src='$imagem_subtitulo->logo_url'>";
+                            echo "<img src=\"{$imagem_subtitulo['logo_url']}\">";
                         } else {
                             echo "<img src='../../assets/images/global/image-placeholder.svg'>";
                         } ?>
                     </div>
                     <div class="sub-texto">
-                        <h3><?= $noticia->subtitulo ?></h3>
-                        <p><?= $noticia->subtexto ?></p>
+                        <h3><?= $noticia['subtitulo'] ?></h3>
+                        <p><?= $noticia['subtexto'] ?></p>
                     </div>
                 </div>
             </section>
