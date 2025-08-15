@@ -17,13 +17,13 @@ class Ong
         $query = "INSERT INTO $this->tabela (
             nome, cnpj, responsavel_id,
             telefone, email,
-            cep, rua, bairro, cidade,
+            cep, rua, numero, bairro, cidade, estado,
             banco_id, agencia, conta_numero, tipo_conta,
             descricao
         ) VALUES (
-            :nome, :cnpj, :xresponsavel_id,
+            :nome, :cnpj, :responsavel_id,
             :telefone, :email,
-            :cep, :rua, :bairro, :cidade,
+            :cep, :rua, :numero, :bairro, :cidade, :estado,
             :banco_id, :agencia, :conta_numero, :tipo_conta,
             :descricao
         )";
@@ -37,8 +37,10 @@ class Ong
         $stmt->bindParam(':email', $dados['email']);
         $stmt->bindParam(':cep', $dados['cep']);
         $stmt->bindParam(':rua', $dados['rua']);
+        $stmt->bindParam(':numero', $dados['numero']);
         $stmt->bindParam(':bairro', $dados['bairro']);
         $stmt->bindParam(':cidade', $dados['cidade']);
+        $stmt->bindParam(':estado', $dados['estado']);
         $stmt->bindParam(':banco_id', $dados['banco_id'], PDO::PARAM_INT);
         $stmt->bindParam(':agencia', $dados['agencia']);
         $stmt->bindParam(':conta_numero', $dados['conta']);
