@@ -18,17 +18,23 @@ $solicitacoes = $adminModel->ListarSolicitacoesEmpresas();
                 <div class="card-solicitacao-empresa">
                     <div class="nome">
                         <div class="topo">
-                            <h3><?= htmlspecialchars($solicitacao['nome']) ?></h3>
-                            <small><?= htmlspecialchars($solicitacao['criadoEm']) ?></small>
+                            <h3><?= htmlspecialchars($solicitacao['nome'] ?? 'Nome não informado') ?></h3>
+                            <small><?= htmlspecialchars($solicitacao['criadoEm'] ?? '') ?></small>
                         </div>
-                        <small class="cnpj">Contato: <?= htmlspecialchars($solicitacao['contato']) ?></small><br>
-                        <p><?= htmlspecialchars($solicitacao['mensagem'] ?: 'Sem descrição informada') ?></p>
+                        <small class="cnpj">
+                            Contato: <?= htmlspecialchars($solicitacao['contato'] ?? 'Não informado') ?>
+                        </small><br>
+                        <p><?= htmlspecialchars($solicitacao['mensagem'] ?? 'Sem descrição informada') ?></p>
                     </div>
                     <div class="btn-acoes">
-                        <button class="btn btn-aprovar" data-id="<?= $solicitacao['id'] ?>" data-tipo="empresas">
+                        <button class="btn btn-aprovar"
+                                data-id="<?= $solicitacao['parceria_id'] ?? '' ?>"
+                                data-tipo="empresas">
                             APROVAR <i class="fa-solid fa-thumbs-up"></i>
                         </button>
-                        <button class="btn btn-recusar" data-id="<?= $solicitacao['id'] ?>" data-tipo="empresas">
+                        <button class="btn btn-recusar"
+                                data-id="<?= $solicitacao['parceria_id'] ?? '' ?>"
+                                data-tipo="empresas">
                             RECUSAR <i class="fa-solid fa-thumbs-down"></i>
                         </button>
                     </div>
