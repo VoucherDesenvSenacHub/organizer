@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/../model/OngModel.php';
+require_once '../../model/OngModel.php';
 session_start();
 $ongModel = new Ong();
 
@@ -27,7 +27,7 @@ $dados = [
             if ($criar) {
                 $_SESSION['perfil_usuario'] = 'ong';
                 $_SESSION['ong_id'] = $criar;
-                require_once __DIR__ . '/../model/UsuarioModel.php';
+                require_once '../../model/UsuarioModel.php';
                 $usuarioModel = new Usuario();
                 $usuarioModel->primeiroAcesso($_SESSION['usuario']['id'], 'ong');
                 $_SESSION['usuario']['acessos']['ong'] = true;
