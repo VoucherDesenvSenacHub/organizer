@@ -3,11 +3,12 @@ require_once __DIR__ . '/../../model/ProjetoModel.php';
 session_start();
 
 $projetoModel = new Projeto();
-$usuario_id = $_SESSION['usuario']['id'];
-$projeto_id = $_POST['projeto-id-favorito'] ?? null;
 
-if ($projeto_id) {
-    $favorito = $projetoModel->favoritarProjeto($usuario_id, $projeto_id);
+$usuarioId = $_SESSION['usuario']['id'];
+$projetoId = $_POST['projeto-id'] ?? null;
+
+if ($projetoId) {
+    $favorito = $projetoModel->favoritarProjeto($usuarioId, $projetoId);
     if ($favorito) {
         $_SESSION['favorito'] = true;
     } else {
@@ -19,5 +20,5 @@ if ($projeto_id) {
 } else {
     echo "ID do projeto não fornecido.";
 }
-header('Location: ' . $_SERVER['HTTP_REFERER'] . '?msg=favorito_erro');
+header('Location: ' . $_SERVER['HTTP_REFERER']);
 exit;

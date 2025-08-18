@@ -102,10 +102,9 @@ section#apresentacao {
     gap: 10px;
 }
 
-#dados-projeto #acoes button,
-#dados-projeto #acoes form {
+#dados-projeto #acoes button {
     transform: translateY(0);
-    width: 100%;
+    width: 50%;
 }
 
 #dados-projeto #acoes button:hover {

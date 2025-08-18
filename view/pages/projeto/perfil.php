@@ -27,18 +27,6 @@ if (isset($_GET['id'])) {
     }
 }
 
-// Editar o Projeto (ONG)
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_SESSION['perfil_usuario'] == 'ong' && isset($_POST['id'])) {
-    $id = $_POST['id'];
-    $nome = $_POST['nome'];
-    $descricao = $_POST['descricao'];
-    $meta = $_POST['meta'];
-    if ($meta < $valor_projeto) {
-        echo "<script>alert('Meta inválida: o valor deve ser maior do que o que já foi arrecadado.')</script>";
-    } else {
-        $projetoModel->editar($id, $nome, $descricao, $meta);
-    }
-}
 // Fazer doação (doador)
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_SESSION['perfil_usuario'] === 'doador' && isset($_POST['valor'])) {
     $valor = $_POST['valor'];
@@ -47,12 +35,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_SESSION['perfil_usuario'] === 'do
     }
     if ($valor + $valor_projeto > $projeto['meta']) {
         echo "<script>alert('O valor ultrapassou a meta!! Doe um valor menor.')</script>";
-    
-    } 
-    elseif($valor <= 0){
+    } elseif ($valor <= 0) {
         echo "<script>alert('Valor inválido!! Doe um valor maior.')</script>";
-    }
-    else {
+    } else {
         $doacao = $projetoModel->doacao($projeto['projeto_id'], $_SESSION['usuario']['id'], $valor);
         if ($doacao > 0) {
             header("Location: perfil.php?id=$id&msg=doacao");
@@ -60,8 +45,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_SESSION['perfil_usuario'] === 'do
         }
     }
 }
-
-// Apoiar um projeto 
 
 // Buscar se é favorito
 if (isset($_SESSION['usuario']['id'])) {
@@ -121,14 +104,14 @@ ob_end_flush();
                         } ?>
                     </div>
                     <div class="btn-salvar">
-                        <button id="share" class="fa-solid fa-share-nodes" onclick="compartilhar('compartilhar-popup', <?=$_GET['id']?>, 'projeto')"></button>
+                        <button class="btn-share fa-solid fa-share-nodes" onclick="compartilhar('compartilhar-popup', <?= $_GET['id'] ?>, 'projeto')"></button>
                         <?php if (!isset($_SESSION['usuario']['id'])): ?>
                             <button title="Favoritar" class="btn-like fa-solid fa-heart" onclick="abrir_popup('login-obrigatorio-popup')"></button>
 
                         <?php elseif (!isset($_SESSION['perfil_usuario']) || $_SESSION['perfil_usuario'] === 'doador') : ?>
                             <?php $classe = in_array($projeto['projeto_id'], $projetosFavoritos) ? 'favoritado' : ''; ?>
-                            <form action="../.././../controller/ProjetoController.php?acao=favoritar" method="POST">
-                                <input type="hidden" name="projeto-id-favorito" value="<?= $id ?>">
+                            <form action="../.././../controller/Projeto/FavoritarProjetoController.php" method="POST">
+                                <input type="hidden" name="projeto-id" value="<?= $id ?>">
                                 <button title="Favoritar" class="btn-like fa-solid fa-heart <?= $classe ?>"></button>
                             </form>
                         <?php endif; ?>
@@ -239,7 +222,8 @@ ob_end_flush();
 <?php
 $jsPagina = ['perfil-projeto.js'];
 require_once '../../components/layout/footer/footer-logado.php';
-// Ativar os toast
+
+// Toast do 'Favoritar'
 if (isset($_SESSION['favorito'])) {
     if ($_SESSION['favorito']) {
         echo "<script>mostrar_toast('toast-favorito')</script>";
@@ -247,5 +231,24 @@ if (isset($_SESSION['favorito'])) {
         echo "<script>mostrar_toast('toast-remover-favorito')</script>";
     }
     unset($_SESSION['favorito']);
+}
+// Toast do 'Apoiar'
+if (isset($_SESSION['apoiar'])) {
+    if ($_SESSION['apoiar']) {
+        echo "<script>mostrar_toast('toast-apoio')</script>";
+    } else {
+        echo "<script>mostrar_toast('toast-desapoio')</script>";
+    }
+    unset($_SESSION['apoiar']);
+}
+
+// Toast do 'Editar'
+if (isset($_SESSION['editar-projeto'])) {
+    if ($_SESSION['editar-projeto']) {
+        echo "<script>mostrar_toast('toast-projeto')</script>";
+    } else {
+        echo "<script>mostrar_toast('toast-projeto-erro')</script>";
+    }
+    unset($_SESSION['editar-projeto']);
 }
 ?>

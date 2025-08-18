@@ -1,12 +1,16 @@
 <?php
+// Verificar se o usuário apoia o projeto.
 if (isset($_GET['id']) && isset($_SESSION['usuario']['id'])) {
     $jaApoiou = $projetoModel->usuarioJaApoiouProjeto($_SESSION['usuario']['id'], $_GET['id']);
 } else {
     $jaApoiou = false;
 }
+
+// Carregar os Popups
 if (isset($_GET['id']) && $projeto) {
     require_once 'partials/popups-projeto.php';
 }
+
 $perfil = $_SESSION['perfil_usuario'] ?? 'visitante';
 $textoApoio = $jaApoiou ? 'Apoiando' : 'Quero Apoiar';
 $iconApoio = $jaApoiou ? '<i class="fa-solid fa-heart-circle-check"></i>' : '<i class="fa-solid fa-hand-holding-heart"></i>';

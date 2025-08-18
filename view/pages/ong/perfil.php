@@ -59,8 +59,8 @@ $perfil = $_SESSION['perfil_usuario'] ?? '';
                         <button title="Favoritar" id="like" class="fa-solid fa-heart" onclick="abrir_popup('login-obrigatorio-popup')"></button>
                     <?php elseif (!isset($_SESSION['perfil_usuario']) || $_SESSION['perfil_usuario'] === 'doador') : ?>
                         <?php $classe = in_array($ong['ong_id'], $ongsFavoritas) ? 'favoritado' : ''; ?>
-                        <form action="../.././../controller/OngController.php?acao=favoritar" method="POST">
-                            <input type="hidden" name="ong-id-favorito" value="<?= $id ?>">
+                        <form action="../.././../controller/Ong/FavoritarOngController.php" method="POST">
+                            <input type="hidden" name="ong-id" value="<?= $id ?>">
                             <button title="Favoritar" id="like" class="fa-solid fa-heart <?= $classe ?>"></button>
                         </form>
                     <?php endif; ?>

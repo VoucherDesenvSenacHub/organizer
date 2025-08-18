@@ -3,10 +3,12 @@ require_once __DIR__ . '/../../model/OngModel.php';
 session_start();
 
 $ongModel = new Ong();
-$usuario_id = $_SESSION['usuario']['id'];
-$ong_id = $_POST['ong-id-favorito'] ?? null;
-if ($ong_id) {
-    $favorito = $ongModel->favoritarOng($usuario_id, $ong_id);
+
+$usuarioId = $_SESSION['usuario']['id'];
+$ongId = $_POST['ong-id'] ?? null;
+
+if ($ongId) {
+    $favorito = $ongModel->favoritarOng($usuarioId, $ongId);
     if ($favorito) {
         $_SESSION['favorito'] = true;
     } else {
@@ -18,5 +20,5 @@ if ($ong_id) {
 } else {
     echo "ID da ONG não fornecido.";
 }
-header('Location: ' . $_SERVER['HTTP_REFERER'] . '?msg=favorito_erro');
+header('Location: ' . $_SERVER['HTTP_REFERER']);
 exit;

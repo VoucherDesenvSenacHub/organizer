@@ -31,13 +31,13 @@ $logo_url = $ong['logo_url'] ?? '../../assets/images/global/image-placeholder.sv
     <div class="acoes-ong">
         <a href="../ong/perfil.php?id=<?= $ong['ong_id'] ?>" class="saiba-mais-ong">Saiba Mais</a>
         <div class="btn-salvar">
-            <button title="Compartilhar" id="share" class="fa-solid fa-share-nodes" onclick="compartilhar('compartilhar-popup',<?=$id?>, 'ong')"></button>
+            <button title="Compartilhar" class="btn-share fa-solid fa-share-nodes" onclick="compartilhar('compartilhar-popup',<?=$id?>, 'ong')"></button>
             <?php if (!isset($_SESSION['usuario']['id'])): ?>
-                <button title="Favoritar" id="like" class="fa-solid fa-heart" onclick="abrir_popup('login-obrigatorio-popup')"></button>
+                <button title="Favoritar" class="btn-like fa-solid fa-heart" onclick="abrir_popup('login-obrigatorio-popup')"></button>
             <?php else: ?>
                 <form action="../.././../controller/ong/FavoritarOngController.php" method="POST">
-                    <input type="hidden" name="ong-id-favorito" value="<?= $id ?>">
-                    <button title="Favoritar" id="like" class="fa-solid fa-heart <?= $classe ?>"></button>
+                    <input type="hidden" name="ong-id" value="<?= $id ?>">
+                    <button title="Favoritar" class="btn-like fa-solid fa-heart <?= $classe ?>"></button>
                 </form>
             <?php endif; ?>
         </div>

@@ -19,7 +19,7 @@ window.addEventListener('resize', () => {
 // EFEITO POPUP 
 function abrir_popup(popupId) {
     const fundoPopup = document.getElementById(popupId);
-    
+
     if (fundoPopup) {
         fundoPopup.classList.toggle('ativo');
 
@@ -111,17 +111,17 @@ function copiar_link_recusar(toast) {
 
 function compartilhar(popupId, Id, tipo) {
     const fundoPopup = document.getElementById(popupId);
-    const  input = document.getElementById("link-compartilhar");
+    const input = document.getElementById("link-compartilhar");
 
-    if (tipo === 'projeto'){
+    if (tipo === 'projeto') {
         input.value = `http://localhost/organizer/view/pages/projeto/perfil.php?id=${Id}`;
-    }else if(tipo === 'ong') {
+    } else if (tipo === 'ong') {
         input.value = `http://localhost/organizer/view/pages/ong/perfil.php?id=${Id}`;
-    }else{
+    } else {
         input.value = `http://localhost/organizer/view/pages/noticia/perfil.php?id=${Id}`;
     }
-    
-    
+
+
     if (fundoPopup) {
         fundoPopup.classList.toggle('ativo');
 
@@ -182,21 +182,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
     formularios.forEach(form => {
         form.addEventListener('submit', (e) => {
-            setTimeout(() => {
-                if (form.dataset.enviado === 'true') return;
-                
-                if (!e.defaultPrevented) {
-                    form.dataset.enviado = 'true';
+            // Bloquear múltiplos envios
+            if (form.dataset.enviado === 'true') {
+                e.preventDefault();
+                return;
+            }
 
-                    const botoes = form.querySelectorAll('button[type=submit], input[type=submit]');
-                    botoes.forEach(botao => {
-                        botao.disabled = true;
-                        if (botao.innerText.trim().length > 0) {
-                            botao.innerText = 'Carregando...';
-                        }
-                    });
+            form.dataset.enviado = 'true';
+
+            const botoes = form.querySelectorAll('button[type=submit], input[type=submit]');
+
+            botoes.forEach(botao => {
+                if (botao.innerText.trim().length > 0) {
+                    botao.dataset.originalText = botao.innerText;
+                    botao.innerText = 'Carregando...';
                 }
-            }, 0);
+
+                botao.disabled = true;
+
+                // Reabilitar botão e permitir novo envio após 4 segundos
+                setTimeout(() => {
+                    botao.disabled = false;
+                    if (botao.dataset.originalText) {
+                        botao.innerText = botao.dataset.originalText;
+                    }
+                    form.dataset.enviado = 'false';
+                }, 4000);
+            });
         });
     });
 });
