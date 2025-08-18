@@ -1,5 +1,5 @@
 <?php
-$id = $projeto['projeto_id'] ?? 'Erro';
+$id = $projeto['projeto_id'] ?? null;
 $class = $class ?? '';
 $nome = $projeto['nome'] ?? 'Nome do Projeto';
 $descricao =  mb_strimwidth($projeto['descricao'], 0, 230, '...') ?? 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odit, explicabo magni? Laboriosam possimus voluptas recusandae blanditiis architecto dolorem tenetur odio, nisi molestiae facere quia facilis officia cumque dicta impedit minima.';
@@ -14,9 +14,9 @@ $logo_url = $projeto['logo_url'] ?? '../../assets/images/global/image-placeholde
             <button class="btn-share fa-solid fa-share-nodes" onclick="compartilhar('compartilhar-popup', <?=$id?>, 'projeto')"></button>
         <?php if (!isset($_SESSION['usuario']['id'])): ?>
             <button title="Favoritar" class="btn-like fa-solid fa-heart" onclick="abrir_popup('login-obrigatorio-popup')"></button>
-        <?php else: ?>
-            <form action="../.././../controller/ProjetoController.php?acao=favoritar" method="POST">
-                <input type="hidden" name="projeto-id-favorito" value="<?= $id ?>">
+        <?php elseif(!isset($_SESSION['perfil_usuario']) || $_SESSION['perfil_usuario'] === 'doador'): ?>
+            <form action="../.././../controller/Projeto/FavoritarProjetoController.php" method="POST">
+                <input type="hidden" name="projeto-id" value="<?= $id ?>">
                 <button title="Favoritar" class="btn-like fa-solid fa-heart <?= $classe ?>"></button>
             </form>
         <?php endif; ?>
