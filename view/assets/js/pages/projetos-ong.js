@@ -7,23 +7,3 @@ document.getElementById('fotos').addEventListener('change', function () {
     this.value = '';
   }
 });
-
-function getQueryParam(param) {
-  const urlParams = new URLSearchParams(window.location.search);
-  return urlParams.get(param);
-}
-
-function verificarMensagem() {
-  const mensagem = getQueryParam('msg');
-
-  if (mensagem === 'sucesso') {
-    mostrar_toast("toast-projeto");
-  }
-  else if (mensagem === 'erro') {
-    mostrar_toast("toast-projeto-erro");
-  }
-}
-
-window.onload = function () {
-  verificarMensagem();
-};

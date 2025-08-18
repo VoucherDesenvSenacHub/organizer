@@ -17,7 +17,6 @@ INSERT INTO usuarios (
     'ATIVO'
 );
 
-
 INSERT INTO usuarios (
     nome, cpf, data_nascimento, foto_perfil, email, telefone, senha, doador, ong, adm, status
 ) VALUES (
@@ -34,7 +33,6 @@ INSERT INTO usuarios (
     'ATIVO'
 );
 
-
 INSERT INTO usuarios (
     nome, cpf, data_nascimento, foto_perfil, email, telefone, senha, doador, ong, adm, status
 ) VALUES (
@@ -50,7 +48,6 @@ INSERT INTO usuarios (
     TRUE,
     'ATIVO'
 );
-
 
 INSERT INTO usuarios (
     nome, cpf, data_nascimento, foto_perfil, email, telefone, senha, doador, ong, adm, status
@@ -100,7 +97,6 @@ INSERT INTO usuarios (
     'ATIVO'
 );
 
-
 INSERT INTO usuarios (
     nome, cpf, data_nascimento, foto_perfil, email, telefone, senha,
     doador, ong, adm, status
@@ -117,7 +113,6 @@ INSERT INTO usuarios (
     TRUE,
     'ATIVO'
 );
-
 
 INSERT INTO usuarios (
     nome, cpf, data_nascimento, foto_perfil, email, telefone, senha,
@@ -153,12 +148,14 @@ INSERT INTO bancos (nome, codigo) VALUES
 ('C6 Bank S.A.', '336'),
 ('PagBank – PagSeguro Internet S.A.', '290');
 
+
+
 -- ================================
 -- INSERÇÃO DE DADOS NA TABELA ONGS
 -- ================================
 INSERT INTO ongs (
     nome, cnpj, responsavel_id, telefone, email,
-    cep, rua, bairro, cidade,
+    cep, rua, numero, bairro, cidade, estado,
     banco_id, agencia, conta_numero, tipo_conta,
     logo_url, descricao, status
 ) VALUES (
@@ -168,9 +165,11 @@ INSERT INTO ongs (
     '67991202907',
     'gean@organizer.com',
     '01001-001',
-    'Rua da Solidariedade',
-    'Centro',
+    'Praça da Sé',
+    '29',
+    'Sé',
     'São Paulo',
+    'SP',
     3,
     '1234-5',
     '45645-68',
@@ -182,7 +181,7 @@ INSERT INTO ongs (
 
 INSERT INTO ongs (
     nome, cnpj, responsavel_id, telefone, email,
-    cep, rua, bairro, cidade,
+    cep, rua, numero, bairro, cidade, estado,
     banco_id, agencia, conta_numero, tipo_conta,
     logo_url, descricao, status
 ) VALUES (
@@ -192,9 +191,11 @@ INSERT INTO ongs (
     '67198765432',
     'contato@esperancatodos.org',
     '79002-390',
-    'Rua Rui Barbosa, 1436',
+    'Rua Padre João Crippa',
+    '829',
     'Centro',
     'Campo Grande',
+    'MS',
     1,
     '1234-5',
     '67890-12',
@@ -204,10 +205,9 @@ INSERT INTO ongs (
     'ATIVO'
 );
 
-
 INSERT INTO ongs (
     nome, cnpj, responsavel_id, telefone, email,
-    cep, rua, bairro, cidade,
+    cep, rua, numero, bairro, cidade, estado,
     banco_id, agencia, conta_numero, tipo_conta,
     logo_url, descricao, status
 ) VALUES (
@@ -217,9 +217,11 @@ INSERT INTO ongs (
     '67992240989',
     'harmoniaplaneta@gmail.com',
     '79065-082',
-    'rua cvcf',
-    'centro',
-    'Água Clara',
+    'Rua Pacavira',
+    '542',
+    'Vila Moreninha II',
+    'Campo Grande',
+    'MS',
     2,
     '8000-0',
     '88888-88',
@@ -229,10 +231,9 @@ INSERT INTO ongs (
     'ATIVO'
 );
 
-
 INSERT INTO ongs (
     nome, cnpj, responsavel_id, telefone, email,
-    cep, rua, bairro, cidade,
+    cep, rua, numero, bairro, cidade, estado,
     banco_id, agencia, conta_numero, tipo_conta,
     logo_url, descricao, status
 ) VALUES (
@@ -242,9 +243,11 @@ INSERT INTO ongs (
     '11984561234',
     'contato@sementesdoamanha.org',
     '01156-000',
-    'Rua das Palmeiras, 1020',
-    'Jardim Esperança',
+    'Rua Tagipuru',
+    '019',
+    'Barra Funda',
     'São Paulo',
+    'SP',
     2,
     '5678-9',
     '11223-44',
@@ -254,10 +257,9 @@ INSERT INTO ongs (
     'ATIVO'
 );
 
-
 INSERT INTO ongs (
     nome, cnpj, responsavel_id, telefone, email,
-    cep, rua, bairro, cidade,
+    cep, rua, numero, bairro, cidade, estado,
     banco_id, agencia, conta_numero, tipo_conta,
     logo_url, descricao, status
 ) VALUES (
@@ -267,9 +269,11 @@ INSERT INTO ongs (
     '51997453321',
     'contato@sosrs.org',
     '90010-120',
-    'Rua Bento Gonçalves, 950',
+    'Avenida Presidente João Goulart',
+    '1293',
     'Centro Histórico',
     'Porto Alegre',
+    'RS',
     4,
     '4321-0',
     '55443-21',
@@ -279,20 +283,23 @@ INSERT INTO ongs (
     'ATIVO'
 );
 
-
 INSERT INTO ongs (
-    nome, cnpj, responsavel_id, telefone, email, cep, rua, bairro, cidade,
-    banco_id, agencia, conta_numero, tipo_conta, logo_url, descricao, status
+    nome, cnpj, responsavel_id, telefone, email, 
+    cep, rua, numero, bairro, cidade, estado,
+    banco_id, agencia, conta_numero, tipo_conta, 
+    logo_url, descricao, status
 ) VALUES (
     'Fundação Beija Flor',
     '70981237000144',
-    5,
+    6,
     '67998765544',
     'contato@patasdobem.org',
     '79080-120',
-    'Rua dos Girassóis',
-    'Jardim Moreninha',
+    'Rua Aliança',
+    '059',
+    'Jardim América',
     'Campo Grande',
+    'MS',
     1,
     '2020-9',
     '112233-44',
@@ -304,7 +311,9 @@ INSERT INTO ongs (
 
 
 
--- PROJETOS
+-- ================================
+-- INSERÇÃO DE DADOS NA TABELA PROJETOS
+-- ================================
 INSERT INTO projetos (
     nome, descricao, meta, status, ong_id
 ) VALUES (
@@ -314,7 +323,6 @@ INSERT INTO projetos (
     'ATIVO',
     1
 );
-
 
 INSERT INTO projetos (
     nome, descricao, meta, status, ong_id
@@ -326,7 +334,6 @@ INSERT INTO projetos (
     1
 );
 
-
 INSERT INTO projetos (
     nome, descricao, meta, status, ong_id
 ) VALUES (
@@ -336,7 +343,6 @@ INSERT INTO projetos (
     'ATIVO',
     1
 );
-
 
 INSERT INTO projetos (
     nome, descricao, meta, status, ong_id
@@ -348,7 +354,6 @@ INSERT INTO projetos (
     1
 );
 
-
 INSERT INTO projetos (
     nome, descricao, meta, status, ong_id
 ) VALUES (
@@ -358,7 +363,6 @@ INSERT INTO projetos (
     'ATIVO',
     2
 );
-
 
 INSERT INTO projetos (
     nome, descricao, meta, status, ong_id
@@ -380,7 +384,6 @@ INSERT INTO projetos (
     3
 );
 
-
 INSERT INTO projetos (
     nome, descricao, meta, status, ong_id
 ) VALUES (
@@ -393,7 +396,9 @@ INSERT INTO projetos (
 
 
 
--- Imagens dos projetos
+-- ================================
+-- INSERÇÃO DE IMAGENS PARA OS PROJETOS
+-- ================================
 INSERT INTO imagens_projeto (projeto_id, logo_url) VALUES
 (1, 'https://cdn.slidesharecdn.com/ss_thumbnails/educacaotodos-131202174705-phpapp01-thumbnail.jpg?width=640&height=640&fit=bounds'),
 (1, 'https://storage.googleapis.com/atados-v3/user-uploaded/images/3a437f8e-830d-4ebd-9320-eba5033438e5.jpg'),
@@ -410,7 +415,9 @@ INSERT INTO imagens_projeto (projeto_id, logo_url) VALUES
 
 
 
--- NÓTICIAS
+-- ================================
+-- INSERÇÃO DE DADOS NA TABELA NOTÍCIAS
+-- ================================
 INSERT INTO noticias (
     titulo, subtitulo, texto, subtexto, status, ong_id
 ) VALUES (
@@ -422,7 +429,6 @@ INSERT INTO noticias (
     1
 );
 
-
 INSERT INTO noticias (
     titulo, subtitulo, texto, subtexto, status, ong_id
 ) VALUES (
@@ -433,7 +439,6 @@ INSERT INTO noticias (
     'ATIVO',
     1
 );
-
 
 INSERT INTO noticias (
     titulo, subtitulo, texto, subtexto, status, ong_id
@@ -448,7 +453,9 @@ INSERT INTO noticias (
 
 
 
-
+-- ================================
+-- INSERÇÃO DE IMAGENS PARA AS NOTÍCIAS
+-- ================================
 INSERT INTO imagens_noticia (noticia_id, logo_url) VALUES
 (1, 'https://www.campusvilla.com.br/wp-content/uploads/2019/04/Doacao-Livros_ArmazemLiterario_Villa2019-21.jpg'),
 (2, 'https://navegantes.sc.gov.br/wp-content/uploads/2025/03/juntos-pelo-rio-capa-scaled.jpg'),
@@ -460,7 +467,9 @@ INSERT INTO imagens_noticia (noticia_id, logo_url) VALUES
 
 
 
-
+-- ================================
+-- INSERÇÃO DE DOAÇÕES PARA A TABELA DOACAO_PROJETO
+-- ================================
 -- Doações de Gean (usuario_id = 1)
 INSERT INTO doacao_projeto (projeto_id, usuario_id, valor) VALUES
 (1, 1, 500.00),
