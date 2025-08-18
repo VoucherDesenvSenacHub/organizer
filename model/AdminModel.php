@@ -36,14 +36,14 @@ class AdminModel
         return $stmt->fetch();
     }
 
-    // Buscar lista de solicitações de cada
+    // Buscar lista de solicitações de Empresas (parcerias)
     function ListarSolicitacoesEmpresas()
     {
-        $query = "SELECT id, nome, email as contato, descricao as mensagem, 
-                         DATE_FORMAT(created_at, '%d/%m/%Y') as criadoEm
+        $query = "SELECT parceria_id, email, telefone, cnpj, mensagem, 
+                         DATE_FORMAT(data_envio, '%d/%m/%Y') as criadoEm
                   FROM parcerias 
                   WHERE status = 'pendente' 
-                  ORDER BY created_at DESC";
+                  ORDER BY data_envio DESC";
         $stmt = $this->pdo->prepare($query);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -52,11 +52,11 @@ class AdminModel
     // Buscar lista de solicitações de ONGs
     function ListarSolicitacoesOngs()
     {
-        $query = "SELECT id, nome, responsavel, descricao as mensagem,
-                         DATE_FORMAT(created_at, '%d/%m/%Y') as criadoEm
+        $query = "SELECT ong_id, nome, responsavel_id, descricao as mensagem,
+                         DATE_FORMAT(data_cadastro, '%d/%m/%Y') as criadoEm
                   FROM ongs 
                   WHERE status = 'pendente' 
-                  ORDER BY created_at DESC";
+                  ORDER BY data_cadastro DESC";
         $stmt = $this->pdo->prepare($query);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -65,12 +65,12 @@ class AdminModel
     // Buscar lista de solicitações de inativação das ongs
     function ListarSolicitacoesInativar()
     {
-        $query = "SELECT p.id, p.nome as projeto, o.nome as ong, p.motivo_inativacao as motivo,
-                         DATE_FORMAT(p.updated_at, '%d/%m/%Y') as criadoEm
+        $query = "SELECT p.projeto_id, p.nome as projeto, o.nome as ong, p.meta as motivo,
+                         DATE_FORMAT(p.data_atualizacao, '%d/%m/%Y') as criadoEm
                   FROM projetos p
-                  INNER JOIN ongs o ON p.ong_id = o.id
+                  INNER JOIN ongs o ON p.ong_id = o.ong_id
                   WHERE p.status = 'inativar' 
-                  ORDER BY p.updated_at DESC";
+                  ORDER BY p.data_atualizacao DESC";
         $stmt = $this->pdo->prepare($query);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -102,15 +102,15 @@ class AdminModel
             switch ($tipo) {
                 case 'empresas':
                     $status = $acao === 'approve' ? 'aprovado' : 'recusado';
-                    $query = "UPDATE parcerias SET status = ? WHERE id = ?";
+                    $query = "UPDATE parcerias SET status = ? WHERE parceria_id = ?";
                     break;
                 case 'ongs':
                     $status = $acao === 'approve' ? 'ativo' : 'recusado';
-                    $query = "UPDATE ongs SET status = ? WHERE id = ?";
+                    $query = "UPDATE ongs SET status = ? WHERE ong_id = ?";
                     break;
                 case 'inativar':
                     $status = $acao === 'approve' ? 'inativo' : 'ativo';
-                    $query = "UPDATE projetos SET status = ? WHERE id = ?";
+                    $query = "UPDATE projetos SET status = ? WHERE projeto_id = ?";
                     break;
                 default:
                     return false;

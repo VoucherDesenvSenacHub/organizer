@@ -25,12 +25,13 @@ $solicitacoes = $adminModel->ListarSolicitacoesOngs();
                         <p><?= htmlspecialchars($solicitacao['mensagem'] ?: 'Sem descrição informada') ?></p>
                     </div>
                     <div class="btn-acoes">
-                        <button class="btn btn-aprovar" data-id="<?= $solicitacao['id'] ?>" data-tipo="ongs">
+                        <button class="btn btn-aprovar" data-id="<?= $solicitacao['ong_id'] ?>" data-tipo="ongs">
                             APROVAR <i class="fa-solid fa-thumbs-up"></i>
                         </button>
-                        <button class="btn btn-recusar" data-id="<?= $solicitacao['id'] ?>" data-tipo="ongs">
+                        <button class="btn btn-recusar" data-id="<?= $solicitacao['ong_id'] ?>" data-tipo="ongs">
                             RECUSAR <i class="fa-solid fa-thumbs-down"></i>
                         </button>
+
                     </div>
                 </div>
             <?php endforeach; ?>
