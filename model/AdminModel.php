@@ -76,6 +76,25 @@ class AdminModel
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    // Inserir nova solicitação de parceria
+    function CriarSolicitacaoParceria($dados)
+    {
+        try {
+            $query = "INSERT INTO parcerias (nome, email, cnpj, telefone, descricao, status, created_at) 
+                      VALUES (?, ?, ?, ?, ?, 'pendente', NOW())";
+            $stmt = $this->pdo->prepare($query);
+            return $stmt->execute([
+                $dados['nome'],
+                $dados['email'],
+                $dados['cnpj'],
+                $dados['telefone'],
+                $dados['mensagem']
+            ]);
+        } catch (Exception $e) {
+            return false;
+        }
+    }
+
     // Aprovar/Recusar solicitação
     function ProcessarSolicitacao($tipo, $id, $acao)
     {
