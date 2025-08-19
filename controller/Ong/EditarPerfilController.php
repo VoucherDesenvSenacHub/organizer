@@ -75,5 +75,7 @@ class EditarPerfilController
 // Instanciar o controller e processar a requisição
 $controller = new EditarPerfilController();
 
-// Se for POST, processar a atualização
-$controller->atualizarPerfil();
+// se for POST: processar a atualização
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $controller->atualizarPerfil();
+}
