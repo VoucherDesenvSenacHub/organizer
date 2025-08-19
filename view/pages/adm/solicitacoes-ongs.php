@@ -1,7 +1,7 @@
 <?php
 $acesso = 'adm';
 $tituloPagina = 'Solicitações ONGs | Organizer';
-$cssPagina = ['adm/solicitacoes.css'];
+$cssPagina = ['adm/solicitacoes.css', 'modal-confirmacao.css'];
 require_once '../../components/layout/base-inicio.php';
 
 require_once __DIR__ . '/../../../autoload.php';
@@ -40,6 +40,6 @@ $solicitacoes = $adminModel->ListarSolicitacoesOngs();
 </main>
 
 <?php
-$jsPagina = ['adm/solicitacoes-ongs.js'];
+$jsPagina = ['modal-confirmacao.js', 'adm/solicitacoes-ongs.js'];
 require_once '../../components/layout/footer/footer-logado.php';
 ?>

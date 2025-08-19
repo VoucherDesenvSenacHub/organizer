@@ -1,13 +1,14 @@
 <?php
 $acesso = 'adm';
 $tituloPagina = 'Inativações | Organizer';
-$cssPagina = ['adm/solicitacoes.css'];
+$cssPagina = ['adm/solicitacoes.css', 'modal-confirmacao.css'];
 require_once '../../components/layout/base-inicio.php';
 
 require_once __DIR__ . '/../../../autoload.php';
 $adminModel = new AdminModel();
 $solicitacoes = $adminModel->ListarSolicitacoesInativar();
 ?>
+
 <main class="container">
     <h1><i class="fa-solid fa-trash-can"></i> SOLICITAÇÕES DE INATIVAÇÃO</h1>
     <div class="box-cards">
@@ -22,13 +23,14 @@ $solicitacoes = $adminModel->ListarSolicitacoesInativar();
                             <small><?= htmlspecialchars($solicitacao['criadoEm']) ?></small>
                         </div>
                         <small class="cnpj">ONG: <?= htmlspecialchars($solicitacao['ong']) ?></small><br>
-                        <p><strong>Motivo:</strong> <?= htmlspecialchars($solicitacao['motivo'] ?: 'Não informado') ?></p>
+                        <p><strong>Meta:</strong> <?= htmlspecialchars($solicitacao['meta'] ?: 'Não informado') ?></p>
+                        <p><strong>Descrição:</strong> <?= htmlspecialchars($solicitacao['descricao'] ?: 'Não informado') ?></p>
                     </div>
                     <div class="btn-acoes">
-                        <button class="btn btn-aprovar" data-id="<?= $solicitacao['id'] ?>" data-tipo="inativar">
+                        <button class="btn btn-aprovar" data-id="<?= $solicitacao['projeto_id'] ?>" data-tipo="inativar">
                             CONFIRMAR <i class="fa-solid fa-check"></i>
                         </button>
-                        <button class="btn btn-recusar" data-id="<?= $solicitacao['id'] ?>" data-tipo="inativar">
+                        <button class="btn btn-recusar" data-id="<?= $solicitacao['projeto_id'] ?>" data-tipo="inativar">
                             CANCELAR <i class="fa-solid fa-times"></i>
                         </button>
                     </div>
@@ -39,6 +41,6 @@ $solicitacoes = $adminModel->ListarSolicitacoesInativar();
 </main>
 
 <?php
-$jsPagina = ['adm/inativacoes.js'];
+$jsPagina = ['modal-confirmacao.js', 'adm/inativacoes.js'];
 require_once '../../components/layout/footer/footer-logado.php';
 ?>

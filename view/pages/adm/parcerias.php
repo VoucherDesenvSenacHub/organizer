@@ -1,7 +1,7 @@
 <?php
 $acesso = 'adm';
 $tituloPagina = 'Parcerias | Organizer';
-$cssPagina = ['adm/solicitacoes.css'];
+$cssPagina = ['adm/solicitacoes.css', 'modal-confirmacao.css'];
 require_once '../../components/layout/base-inicio.php';
 
 require_once __DIR__ . '/../../../autoload.php';
@@ -49,6 +49,6 @@ $solicitacoes = $adminModel->ListarSolicitacoesEmpresas();
     </div>
 </main>
 <?php
-$jsPagina = ['adm/parcerias.js'];
+$jsPagina = ['modal-confirmacao.js', 'adm/parcerias.js'];
 require_once '../../components/layout/footer/footer-logado.php';
 ?>
