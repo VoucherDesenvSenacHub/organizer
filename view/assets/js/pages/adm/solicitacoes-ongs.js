@@ -10,9 +10,11 @@ document.addEventListener('DOMContentLoaded', function() {
             const id = this.dataset.id;
             const tipo = this.dataset.tipo;
             
-            if (confirm('Aprovar cadastro da ONG?')) {
-                processarSolicitacao(id, tipo, 'approve', this);
-            }
+            mostrarModalConfirmacao(
+                'Aprovar ONG',
+                'Tem certeza que deseja APROVAR o cadastro desta ONG?',
+                () => processarSolicitacao(id, tipo, 'approve', this)
+            );
         });
     });
     
@@ -22,9 +24,11 @@ document.addEventListener('DOMContentLoaded', function() {
             const id = this.dataset.id;
             const tipo = this.dataset.tipo;
             
-            if (confirm('Recusar cadastro da ONG?')) {
-                processarSolicitacao(id, tipo, 'reject', this);
-            }
+            mostrarModalConfirmacao(
+                'Recusar ONG',
+                'Tem certeza que deseja RECUSAR o cadastro desta ONG?',
+                () => processarSolicitacao(id, tipo, 'reject', this)
+            );
         });
     });
 });
@@ -35,7 +39,7 @@ function processarSolicitacao(id, tipo, acao, button) {
     
     buttons.forEach(btn => btn.disabled = true);
     
-    fetch('../../controller/SolicitacoesController.php', {
+    fetch('../../../controller/SolicitacoesController.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ tipo: tipo, id: parseInt(id), acao: acao })
