@@ -28,8 +28,8 @@ class AdminModel
     {
         $query = "SELECT
                   (SELECT COUNT(*) FROM parcerias WHERE status = 'pendente') AS empresas,
-                  (SELECT COUNT(*) FROM ongs WHERE status = 'pendente') AS ongs,
-                  (SELECT COUNT(*) FROM projetos WHERE status = 'inativar') AS inativar;";
+                  (SELECT COUNT(*) FROM ongs WHERE status = 'PENDENTE') AS ongs,
+                  (SELECT COUNT(*) FROM projetos WHERE status = 'PENDENTE') AS inativar;";
         $stmt = $this->pdo->prepare($query);
         $stmt->execute();
         $stmt->setFetchMode(PDO::FETCH_CLASS, __CLASS__);
@@ -39,7 +39,7 @@ class AdminModel
     // Buscar lista de solicitações de Empresas (parcerias)
     function ListarSolicitacoesEmpresas()
     {
-        $query = "SELECT parceria_id, email, telefone, cnpj, mensagem, 
+        $query = "SELECT parceria_id, nome, email, telefone, cnpj, mensagem, 
                          DATE_FORMAT(data_envio, '%d/%m/%Y') as criadoEm
                   FROM parcerias 
                   WHERE status = 'pendente' 
