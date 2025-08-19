@@ -52,11 +52,12 @@ class AdminModel
     // Buscar lista de solicitações de ONGs
     function ListarSolicitacoesOngs()
     {
-        $query = "SELECT ong_id, nome, responsavel_id, descricao as mensagem,
-                         DATE_FORMAT(data_cadastro, '%d/%m/%Y') as criadoEm
-                  FROM ongs 
-                  WHERE status = 'pendente' 
-                  ORDER BY data_cadastro DESC";
+        $query = "SELECT o.ong_id, o.nome, u.nome as responsavel, o.descricao as mensagem,
+                         DATE_FORMAT(o.data_cadastro, '%d/%m/%Y') as criadoEm
+                  FROM ongs o
+                  INNER JOIN usuarios u ON o.responsavel_id = u.usuario_id
+                  WHERE o.status = 'PENDENTE' 
+                  ORDER BY o.data_cadastro DESC";
         $stmt = $this->pdo->prepare($query);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -65,16 +66,22 @@ class AdminModel
     // Buscar lista de solicitações de inativação das ongs
     function ListarSolicitacoesInativar()
     {
-        $query = "SELECT p.projeto_id, p.nome as projeto, o.nome as ong, p.meta as motivo,
-                         DATE_FORMAT(p.data_atualizacao, '%d/%m/%Y') as criadoEm
-                  FROM projetos p
-                  INNER JOIN ongs o ON p.ong_id = o.ong_id
-                  WHERE p.status = 'inativar' 
-                  ORDER BY p.data_atualizacao DESC";
+        $query = "SELECT p.projeto_id, 
+                     p.nome AS projeto, 
+                     o.nome AS ong, 
+                     p.meta AS meta,
+                     p.descricao AS descricao,
+                     DATE_FORMAT(p.data_atualizacao, '%d/%m/%Y') AS criadoEm
+              FROM projetos p
+              INNER JOIN ongs o ON p.ong_id = o.ong_id
+              WHERE p.status = 'PENDENTE'
+              ORDER BY p.data_atualizacao DESC";
+
         $stmt = $this->pdo->prepare($query);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
 
     // Inserir nova solicitação de parceria
     function CriarSolicitacaoParceria($dados)
@@ -101,23 +108,24 @@ class AdminModel
         try {
             switch ($tipo) {
                 case 'empresas':
-                    $status = $acao === 'approve' ? 'aprovado' : 'recusado';
-                    $query = "UPDATE parcerias SET status = ? WHERE parceria_id = ?";
+                    $status = $acao === 'approve' ? 'aprovada' : 'recusada';
+                    $query = "UPDATE parcerias SET status = ? WHERE parceria_id = ? AND status = 'pendente'";
                     break;
                 case 'ongs':
-                    $status = $acao === 'approve' ? 'ativo' : 'recusado';
-                    $query = "UPDATE ongs SET status = ? WHERE ong_id = ?";
+                    $status = $acao === 'approve' ? 'ATIVO' : 'INATIVO';
+                    $query = "UPDATE ongs SET status = ? WHERE ong_id = ? AND status = 'PENDENTE'";
                     break;
                 case 'inativar':
-                    $status = $acao === 'approve' ? 'inativo' : 'ativo';
-                    $query = "UPDATE projetos SET status = ? WHERE projeto_id = ?";
+                    $status = $acao === 'approve' ? 'INATIVO' : 'ATIVO';
+                    $query = "UPDATE projetos SET status = ? WHERE projeto_id = ? AND status = 'PENDENTE'";
                     break;
                 default:
                     return false;
             }
 
             $stmt = $this->pdo->prepare($query);
-            return $stmt->execute([$status, $id]);
+            $stmt->execute([$status, $id]);
+            return $stmt->rowCount() > 0;
         } catch (Exception $e) {
             return false;
         }
