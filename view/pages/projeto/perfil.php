@@ -14,13 +14,14 @@ require_once '../../components/layout/base-inicio.php';
 
 //Processamento de dados
 if (isset($_GET['id'])) {
-    $id = $_GET['id'];
-    $projeto = $projetoModel->buscarPerfil($id);
-    $valor_projeto = $projetoModel->buscarValor($id);
-    $qntdoadores = $projetoModel->contarDoadores($id);
-    $doadores_projeto = $projetoModel->buscarDoadores($id);
-    $apoiadores_projeto = $projetoModel->buscarApoiadores($id);
-    $imagens_projeto = $projetoModel->buscarImagens($id);
+    $IdProjeto = $_GET['id'];
+    $projeto = $projetoModel->buscarPerfilProjeto($IdProjeto);
+    
+    $valor_projeto = $projetoModel->buscarValor($IdProjeto);
+    $qntdoadores = $projetoModel->contarDoadores($IdProjeto);
+    $doadores_projeto = $projetoModel->buscarDoadores($IdProjeto);
+    $apoiadores_projeto = $projetoModel->buscarApoiadores($IdProjeto);
+    $imagens_projeto = $projetoModel->buscarImagens($IdProjeto);
     if ($projeto) {
         $ong = $ongModel->buscarPerfil($projeto['ong_id']);
         $barra = round(($valor_projeto / $projeto['meta']) * 100);
@@ -40,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_SESSION['perfil_usuario'] === 'do
     } else {
         $doacao = $projetoModel->doacao($projeto['projeto_id'], $_SESSION['usuario']['id'], $valor);
         if ($doacao > 0) {
-            header("Location: perfil.php?id=$id&msg=doacao");
+            header("Location: perfil.php?id=$IdProjeto&msg=doacao");
             exit;
         }
     }
@@ -111,7 +112,7 @@ ob_end_flush();
                         <?php elseif (!isset($_SESSION['perfil_usuario']) || $_SESSION['perfil_usuario'] === 'doador') : ?>
                             <?php $classe = in_array($projeto['projeto_id'], $projetosFavoritos) ? 'favoritado' : ''; ?>
                             <form action="../.././../controller/Projeto/FavoritarProjetoController.php" method="POST">
-                                <input type="hidden" name="projeto-id" value="<?= $id ?>">
+                                <input type="hidden" name="projeto-id" value="<?= $IdProjeto ?>">
                                 <button title="Favoritar" class="btn-like fa-solid fa-heart <?= $classe ?>"></button>
                             </form>
                         <?php endif; ?>

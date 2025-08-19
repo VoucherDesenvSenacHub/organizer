@@ -12,25 +12,45 @@ class Projeto
         $this->pdo->exec("SET time_zone = '-04:00'");
     }
 
-    function listar($id = null)
+    function listarCardsProjetos($IdOng = null)
     {
-        if ($id) {
-            $query = "SELECT p.projeto_id, p.nome, p.descricao, p.meta, 
-                      (SELECT i.logo_url FROM imagens_projeto i WHERE i.projeto_id = p.projeto_id ORDER BY i.id ASC LIMIT 1) AS logo_url
-                      FROM $this->tabela p
-                      WHERE ong_id = :id";
+        if ($IdOng) {
+            $query = "SELECT p.projeto_id, p.nome, p.descricao, p.meta, i.logo_url, ROUND(COALESCE(SUM(dp.valor), 0) / p.meta * 100) AS barra
+                        FROM $this->tabela p
+                        LEFT JOIN imagens_projeto i 
+                            ON i.projeto_id = p.projeto_id
+                            AND i.id = (SELECT MIN(id) FROM imagens_projeto WHERE projeto_id = p.projeto_id)
+                        LEFT JOIN doacao_projeto dp 
+                            ON dp.projeto_id = p.projeto_id
+                        WHERE ong_id = :id
+                        GROUP BY p.projeto_id, p.nome, p.descricao, p.meta, i.logo_url";
             $stmt = $this->pdo->prepare($query);
-            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+            $stmt->bindParam(':id', $IdOng, PDO::PARAM_INT);
         } else {
-            $query = "SELECT p.projeto_id, p.nome, p.descricao, p.meta,
-                      (SELECT i.logo_url FROM imagens_projeto i WHERE i.projeto_id = p.projeto_id ORDER BY i.id ASC LIMIT 1) AS logo_url
-                      FROM $this->tabela p";
+            $query = "SELECT p.projeto_id, p.nome, p.descricao, p.meta, i.logo_url, ROUND(COALESCE(SUM(dp.valor), 0) / p.meta * 100) AS barra
+                        FROM $this->tabela p
+                        LEFT JOIN imagens_projeto i 
+                            ON i.projeto_id = p.projeto_id
+                            AND i.id = (SELECT MIN(id) FROM imagens_projeto WHERE projeto_id = p.projeto_id)
+                        LEFT JOIN doacao_projeto dp 
+                            ON dp.projeto_id = p.projeto_id
+                        GROUP BY p.projeto_id, p.nome, p.descricao, p.meta, i.logo_url";
             $stmt = $this->pdo->prepare($query);
         }
 
         $stmt->execute();
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
         return $stmt->fetchAll();
+    }
+
+    function buscarPerfilProjeto($id)
+    {
+        $query = "SELECT projeto_id, nome, meta, descricao, data_cadastro, ong_id FROM $this->tabela WHERE projeto_id = :id";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        return $stmt->fetch();
     }
 
     function listarRecentes()
@@ -59,16 +79,6 @@ class Projeto
         return $stmt->fetchAll();
     }
 
-
-    function buscarPerfil($id)
-    {
-        $query = "SELECT projeto_id, nome, meta, descricao, data_cadastro, ong_id FROM $this->tabela WHERE projeto_id = :id";
-        $stmt = $this->pdo->prepare($query);
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-        $stmt->execute();
-        $stmt->setFetchMode(PDO::FETCH_ASSOC);
-        return $stmt->fetch();
-    }
 
     function buscarNome($nome, $ong_id = null)
     {
