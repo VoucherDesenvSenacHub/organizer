@@ -10,9 +10,11 @@ document.addEventListener('DOMContentLoaded', function() {
             const id = this.dataset.id;
             const tipo = this.dataset.tipo;
             
-            if (confirm('Aprovar parceria com a empresa?')) {
-                processarSolicitacao(id, tipo, 'approve', this);
-            }
+            mostrarModalConfirmacao(
+                'Aprovar Parceria',
+                'Tem certeza que deseja APROVAR a parceria com esta empresa?',
+                () => processarSolicitacao(id, tipo, 'approve', this)
+            );
         });
     });
     
@@ -22,9 +24,11 @@ document.addEventListener('DOMContentLoaded', function() {
             const id = this.dataset.id;
             const tipo = this.dataset.tipo;
             
-            if (confirm('Recusar parceria com a empresa?')) {
-                processarSolicitacao(id, tipo, 'reject', this);
-            }
+            mostrarModalConfirmacao(
+                'Recusar Parceria',
+                'Tem certeza que deseja RECUSAR a parceria com esta empresa?',
+                () => processarSolicitacao(id, tipo, 'reject', this)
+            );
         });
     });
 });
@@ -35,7 +39,7 @@ function processarSolicitacao(id, tipo, acao, button) {
     
     buttons.forEach(btn => btn.disabled = true);
     
-    fetch('../../controller/SolicitacoesController.php', {
+    fetch('../../../controller/SolicitacoesController.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ tipo: tipo, id: parseInt(id), acao: acao })
