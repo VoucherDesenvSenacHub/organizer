@@ -22,19 +22,24 @@ $solicitacoes = $adminModel->ListarSolicitacoesEmpresas();
                             <small><?= htmlspecialchars($solicitacao['criadoEm'] ?? '') ?></small>
                         </div>
                         <small class="cnpj">
-                            Contato: <?= htmlspecialchars($solicitacao['contato'] ?? 'Não informado') ?>
+                            CNPJ: <?= htmlspecialchars($solicitacao['cnpj'] ?? 'Não informado') ?>
                         </small><br>
-                        <p><?= htmlspecialchars($solicitacao['mensagem'] ?? 'Sem descrição informada') ?></p>
+                        <small class="cnpj">
+                            Contato: <?= htmlspecialchars($solicitacao['telefone'] ?? 'Não informado') ?>
+                        </small><br>
+                        <div>
+                            Mensagem: <b><?= htmlspecialchars($solicitacao['mensagem'] ?? 'Sem descrição informada') ?></b>
+                        </div><br>
                     </div>
-                    <div class="btn-acoes">
+                    <div class="btn-acoes" style="bottom: 0; margin: 10px;">
                         <button class="btn btn-aprovar"
-                                data-id="<?= $solicitacao['parceria_id'] ?? '' ?>"
-                                data-tipo="empresas">
+                            data-id="<?= $solicitacao['parceria_id'] ?? '' ?>"
+                            data-tipo="empresas">
                             APROVAR <i class="fa-solid fa-thumbs-up"></i>
                         </button>
                         <button class="btn btn-recusar"
-                                data-id="<?= $solicitacao['parceria_id'] ?? '' ?>"
-                                data-tipo="empresas">
+                            data-id="<?= $solicitacao['parceria_id'] ?? '' ?>"
+                            data-tipo="empresas">
                             RECUSAR <i class="fa-solid fa-thumbs-down"></i>
                         </button>
                     </div>
