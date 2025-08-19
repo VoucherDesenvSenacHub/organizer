@@ -10,6 +10,29 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+// Aplicar máscaras aos campos
+$(document).ready(function() {
+    $("#telefone").mask("(00) 00000-0000");
+    $("#cnpj").mask("00.000.000/0000-00");
+    $("#cep").mask("00000-000");
+    
+    // Validações para campos de texto (apenas letras)
+    $("#nome").on("input", function() {
+        var valor = $(this).val();
+        $(this).val(valor.replace(/[^a-zA-ZÀ-ÿ\s]/g, ""));
+    });
+    
+    $("#bairro").on("input", function() {
+        var valor = $(this).val();
+        $(this).val(valor.replace(/[^a-zA-ZÀ-ÿ\s]/g, ""));
+    });
+    
+    $("#cidade").on("input", function() {
+        var valor = $(this).val();
+        $(this).val(valor.replace(/[^a-zA-ZÀ-ÿ\s]/g, ""));
+    });
+});
+
 // Remover máscara dos campos antes de enviar
 $("#form").submit(function(event) {
     $("#telefone").unmask();
