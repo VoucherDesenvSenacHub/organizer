@@ -131,10 +131,7 @@ ob_end_flush();
                                 echo "<img src='../../assets/images/global/image-placeholder.svg' class='carousel-item-big'>";
                             } ?>
                         </div>
-                        <!-- <div class="btn-salvar">
-                            <button id="share" class="fa-solid fa-share-nodes" onclick="abrir_popup('compartilhar-popup')"></button>
-                            <button id="like" class="fa-solid fa-heart" onclick="abrir_popup('login-obrigatorio-popup')"></button>
-                        </div> -->
+
                     </div>
                 </div>
             </div>
