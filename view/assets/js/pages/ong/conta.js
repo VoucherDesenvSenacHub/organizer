@@ -67,3 +67,22 @@ $("#conta").on("input", function () {
     $(this).val(valor);
 });
 
+// Função para inativar ONG
+function inativarOng() {
+    if (confirm('ATENÇÃO: Tem certeza que deseja INATIVAR sua ONG? Esta ação irá desativar sua conta permanentemente e você não poderá mais acessar o sistema. Esta ação não pode ser desfeita.')) {
+        // Criar formulário para enviar requisição POST
+        const form = document.createElement('form');
+        form.method = 'POST';
+        form.action = '../../../controller/Ong/InativarOngController.php';
+        
+        const input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = 'inativar-ong';
+        input.value = 'true';
+        
+        form.appendChild(input);
+        document.body.appendChild(form);
+        form.submit();
+    }
+}
+
