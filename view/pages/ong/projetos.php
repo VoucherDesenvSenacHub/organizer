@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['pesquisa'])) {
 }
 
 //FORMULÁRIO DE CRIAÇÃO DE PROJETO (popup)
-$projeto = (object) [
+$PerfilProjeto = (object) [
     'projeto_id' => null,
     'nome' => '',
     'meta' => '',

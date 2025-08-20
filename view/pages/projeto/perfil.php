@@ -29,18 +29,6 @@ if (isset($_SESSION['usuario']['id'])) {
 require_once 'partials/toast-projeto.php';
 ob_end_flush();
 ?>
-<!-- 
-    Toast de Favoritar
--->
-<div id="toast-favorito" class="toast">
-    <i class="fa-solid fa-heart"></i>
-    Adicionado aos favoritos!
-</div>
-<div id="toast-remover-favorito" class="toast erro">
-    <i class="fa-solid fa-heart-crack"></i>
-    Removido dos favoritos!
-</div>
-
 <main>
     <div class="container" id="container-principal">
         <?php if (!isset($_GET['id']) || empty($PerfilProjeto['projeto_id'])): ?>
@@ -198,33 +186,6 @@ ob_end_flush();
 <?php
 $jsPagina = ['perfil-projeto.js'];
 require_once '../../components/layout/footer/footer-logado.php';
-
-// Toast do 'Favoritar'
-if (isset($_SESSION['favorito'])) {
-    if ($_SESSION['favorito']) {
-        echo "<script>mostrar_toast('toast-favorito')</script>";
-    } else {
-        echo "<script>mostrar_toast('toast-remover-favorito')</script>";
-    }
-    unset($_SESSION['favorito']);
-}
-// Toast do 'Apoiar'
-if (isset($_SESSION['apoiar'])) {
-    if ($_SESSION['apoiar']) {
-        echo "<script>mostrar_toast('toast-apoio')</script>";
-    } else {
-        echo "<script>mostrar_toast('toast-desapoio')</script>";
-    }
-    unset($_SESSION['apoiar']);
-}
-
-// Toast do 'Editar'
-if (isset($_SESSION['editar-projeto'])) {
-    if ($_SESSION['editar-projeto']) {
-        echo "<script>mostrar_toast('toast-projeto')</script>";
-    } else {
-        echo "<script>mostrar_toast('toast-projeto-erro')</script>";
-    }
-    unset($_SESSION['editar-projeto']);
-}
+// Chamar a lógica dos toasts
+require_once 'partials/alertas-toast.php';
 ?>

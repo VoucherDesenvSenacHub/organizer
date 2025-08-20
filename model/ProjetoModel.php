@@ -100,6 +100,18 @@ class Projeto
         return $stmt->fetchAll();
     }
 
+    function realizarDoacaoProjeto($projeto_id, $usuario_id, $valor)
+    {
+        $query = 'INSERT INTO doacao_projeto (projeto_id, usuario_id, valor)
+                  VALUES (:projeto, :doador, :valor)';
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindParam(':projeto', $projeto_id);
+        $stmt->bindParam(':doador', $usuario_id);
+        $stmt->bindParam(':valor', $valor);
+        $stmt->execute();
+        return $stmt->rowCount();
+    }
+
 
 
     function buscarNome($nome, $ong_id = null)
@@ -172,18 +184,6 @@ class Projeto
             // error_log("Erro ao inserir registro: " . $e->getMessage());
             return false;
         }
-    }
-
-    function doacao($projeto_id, $usuario_id, $valor)
-    {
-        $query = 'INSERT INTO doacao_projeto (projeto_id, usuario_id, valor)
-                  VALUES (:projeto, :doador, :valor)';
-        $stmt = $this->pdo->prepare($query);
-        $stmt->bindParam(':projeto', $projeto_id);
-        $stmt->bindParam(':doador', $usuario_id);
-        $stmt->bindParam(':valor', $valor);
-        $stmt->execute();
-        return $stmt->rowCount();
     }
 
     function buscarDoacao($id)

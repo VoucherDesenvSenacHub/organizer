@@ -5,7 +5,8 @@
         <form action="../../../controller/Projeto/DoarProjetoController.php" method="POST">
             <div id="radio-group">
                 <input type="hidden" name="projeto-id" value="<?= $IdProjeto ?>">
-                <input type="text" name="projeto-id" value="<?= $PerfilProjeto['valor_arrecadado'] ?>">
+                <input type="hidden" name="valor-arrecadado" value="<?= $PerfilProjeto['valor_arrecadado'] ?>">
+                <input type="hidden" name="meta" value="<?= $PerfilProjeto['meta'] ?>">
                 <label>
                     <input type="radio" name="valor-doacao" value="10" required>
                     <span>R$ 10</span>

@@ -1,18 +1,35 @@
 <?php
-// Fazer doação (doador)
+require_once __DIR__ . '/../../model/ProjetoModel.php';
+session_start();
+
+$projetoModel = new Projeto();
+
 if (isset($_POST['valor-doacao'])) {
-    $valor = $_POST['valor-doacao'];
-    if ($valor == 'outro') {
-        $valor = $_POST['valor-personalizado'];
+    // Dados do Projeto
+    $IdProjeto = $_POST['projeto-id'];
+    $ValorArrecadado = $_POST['valor-arrecadado'];
+    $ValorMeta = $_POST['meta'];
+
+    // Pegar a doação
+    $ValorDoacao = $_POST['valor-doacao'];
+    if ($ValorDoacao == 'outro') {
+        $ValorDoacao = $_POST['valor-personalizado'];
     }
-    if ($valor + $projeto['valor_arrecadado'] > $projeto['meta']) {
-        echo "<script>alert('O valor ultrapassou a meta!! Doe um valor menor.')</script>";
-    } elseif ($valor <= 0) {
-        echo "<script>alert('Valor inválido!! Doe um valor maior.')</script>";
+    if ($ValorDoacao + $ValorArrecadado > $ValorMeta) {
+        echo "<script>alert('O valor ultrapassou a meta!! Doe um valor menor.');window.history.back();</script>";
+        exit;
+    } elseif ($ValorDoacao <= 0) {
+        echo "<script>alert('Valor inválido!! Doe um valor maior.');window.history.back();</script>";
+        exit;
     } else {
-        $doacao = $projetoModel->doacao($projeto['projeto_id'], $_SESSION['usuario']['id'], $valor);
-        if ($doacao > 0) {
-            header("Location: perfil.php?id=$IdProjeto&msg=doacao");
+        $resultadoDoacao = $projetoModel->realizarDoacaoProjeto($IdProjeto, $_SESSION['usuario']['id'], $ValorDoacao);
+        if ($resultadoDoacao > 0) {
+            $_SESSION['doar-projeto'] = true;
+            header('Location: ' . $_SERVER['HTTP_REFERER']);
+            exit;
+        } else {
+            $_SESSION['doar-projeto'] = false;
+            header('Location: ' . $_SERVER['HTTP_REFERER']);
             exit;
         }
     }
