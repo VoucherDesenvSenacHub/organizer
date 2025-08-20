@@ -3,6 +3,29 @@
  * Funcionalidade para enviar formulário de parceria na home do visitante
  */
 
+// Funções para controlar os popups
+function abrir_popup_empresas(id){
+    const popup_empresas = document.getElementById(id);
+    popup_empresas.classList.add('ativo');
+
+    popup_empresas.addEventListener('click', (event) => {
+        if (event.target === popup_empresas) {
+            popup_empresas.classList.remove('ativo');
+        }
+    });
+}
+
+function abrir_popup_form(id){
+    const form_empresas = document.getElementById(id);
+    form_empresas.classList.add('ativo');
+
+    form_empresas.addEventListener('click', (event) => {
+        if (event.target === form_empresas) {
+            form_empresas.classList.remove('ativo');
+        }
+    });
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('formParceiro');
     
