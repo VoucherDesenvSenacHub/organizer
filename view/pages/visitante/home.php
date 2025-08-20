@@ -102,7 +102,7 @@ $lista = $ongModel->listarRecentes();
         <div class="conteiner-forma">
             <h2 class="titulo">Solicitação de Parceria</h2>
             <form id="formParceiro">
-                <label class="Nome" for="nome">Nome da Empresa</label>
+                <label class="Email" for="nome">Nome da Empresa</label>
                 <input type="text" id="nome" maxlength="100" placeholder="Ex: Coca-Cola Brasil" required>
 
                 <label class="Email" for="email">E-mail</label>
