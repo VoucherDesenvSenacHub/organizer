@@ -78,7 +78,10 @@ ob_end_flush();
                 <?php if ($perfil == 'ong'): ?>
                     <div class="area-acoes">
                         <button class="btn" onclick="abrir_popup('editar-noticia-popup')"><i class="fa-solid fa-pen-to-square"></i> Editar</button>
-                        <button class="btn"><i class="fa-solid fa-trash-can"></i> Inativar</button>
+                        <form onsubmit="return confirm('Tem certeza que deseja inativar..')" action="../../../controller/Noticia/InativarNoticiaController.php" method="POST">
+                            <input type="hidden" name="noticia-id" value=<?=$id?>>
+                            <button class="btn"><i class="fa-solid fa-trash-can"></i> Inativar</button>
+                        </form>
                     </div>
                 <?php endif; ?>
                 <div class="texto">
