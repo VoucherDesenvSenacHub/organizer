@@ -26,11 +26,11 @@ class InativarOngController
                     header('Location: ../../auth/login.php?msg=ong_inativada');
                     exit;
                 } else {
-                    header('Location: ../../view/pages/ong/meu-perfil.php?erro=inativacao_falhou');
+                    header('Location: ../../view/pages/ong/meu-perfil.php?inativar=erro');
                     exit;
                 }
             } catch (Exception $e) {
-                header('Location: ../../view/pages/ong/meu-perfil.php?erro=inativacao_falhou');
+                header('Location: ../../view/pages/ong/meu-perfil.php?inativar=erro');
                 exit;
             }
         }
