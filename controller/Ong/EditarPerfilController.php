@@ -1,6 +1,9 @@
 <?php
 require_once __DIR__ . '/../../autoload.php';
-session_start();
+
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 class EditarPerfilController
 {
@@ -17,17 +20,17 @@ class EditarPerfilController
     {
         $perfil = $this->ongModel->buscarId($_SESSION['ong_id']);
         $lista_banco = $this->bancoModel->listar();
-        
+
         // Definir variáveis globais para a view
         $GLOBALS['perfil'] = $perfil;
         $GLOBALS['lista_banco'] = $lista_banco;
-        
+
         return [
             'perfil' => $perfil,
             'bancos' => $lista_banco
         ];
     }
-    
+
     public function inicializar()
     {
         $this->buscarDados();
