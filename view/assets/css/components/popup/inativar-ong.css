@@ -52,6 +52,7 @@
 
 #inativar-ong-popup .btn-cancelar:hover {
     background-color: var(--cor-cinza-hover);
+    color: var(--cor-cinza);
 }
 
 #inativar-ong-popup .btn-confirmar {
@@ -62,6 +63,7 @@
 
 #inativar-ong-popup .btn-confirmar:hover {
     background-color: var(--cor-vermelho-hover);
+    color: var(--cor-vermelho);
 }
 
 #inativar-ong-popup .btn {

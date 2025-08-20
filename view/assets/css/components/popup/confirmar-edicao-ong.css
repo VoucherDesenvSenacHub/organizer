@@ -43,6 +43,7 @@
 
 #confirmar-edicao-popup .btn-cancelar:hover {
     background-color: var(--cor-cinza-hover);
+    color: var(--cor-cinza);
 }
 
 #confirmar-edicao-popup .btn-confirmar {
