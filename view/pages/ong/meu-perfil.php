@@ -21,10 +21,18 @@ ob_end_flush();
     <i class="fa-solid fa-triangle-exclamation"></i>
     Falha ao atualizar ONG!
 </div>
+<!-- Toast da Inativação -->
+<div id="toast-inativar-sucesso" class="toast">
+    <i class="fa-regular fa-circle-check"></i>
+    ONG inativada com Sucesso!
+</div>
+<div id="toast-inativar-erro" class="toast erro">
+    <i class="fa-solid fa-triangle-exclamation"></i>
+    Falha ao inativar ONG!
+</div>
 <!-- Inicio do Container -->
 <main class="container">
-    <form id="form" class="dados-ong" action="../../../controller/Ong/EditarPerfilController.php" method="POST"
-        onsubmit="return confirm('Tem certeza que deseja alterar esses dados da ONG?')">
+    <form id="form" class="dados-ong" action="../../../controller/Ong/EditarPerfilController.php" method="POST">
         <input type="hidden" name="atualizar-ong" value="true">
         <fieldset>
             <legend><i class="fa-solid fa-house-flag"></i> DADOS DA ONG</legend>
@@ -134,6 +142,13 @@ ob_end_flush();
         </div>
     </form>
 </main>
+
+<!-- Modal de Inativação -->
+<?php require_once '../../components/popup/inativar-ong.php'; ?>
+
+<!-- Modal de Confirmação de Edição -->
+<?php require_once '../../components/popup/confirmar-edicao-ong.php'; ?>
+
 <?php
 $jsPagina = ['ong/conta.js'];
 require_once '../../components/layout/footer/footer-logado.php';
