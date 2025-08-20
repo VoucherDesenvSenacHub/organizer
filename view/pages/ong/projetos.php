@@ -19,23 +19,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['pesquisa'])) {
     $lista = $projetoModel->buscarNome($pesquisa, $_SESSION['ong_id']);
 }
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['nome'])) {
-    $nome = $_POST['nome'];
-    $descricao = $_POST['descricao'];
-    $meta = $_POST['meta'];
-    $ong = $_SESSION['ong_id'];
-    $projetoModel->criar($nome, $descricao, $meta, $ong);
-}
-
 //FORMULÁRIO DE CRIAÇÃO DE PROJETO (popup)
 $projeto = (object) [
-    'projeto_id' => '',
+    'projeto_id' => null,
     'nome' => '',
     'meta' => '',
     'descricao' => ''
 ];
 require_once __DIR__ . '/../../components/popup/formulario-projeto.php';
 ob_end_flush();
+
 ?>
 <div id="toast-projeto" class="toast">
     <i class="fa-regular fa-circle-check"></i>
@@ -51,7 +44,7 @@ ob_end_flush();
     <div class="container">
         <div class="topo">
             <h1><i class="fa-solid fa-diagram-project"></i> MEUS PROJETOS</h1>
-            <form id="form-busca" action="projetos.php" method="GET">
+            <form id="form-busca" action="#" method="GET">
                 <input type="text" name="pesquisa" placeholder="Busque um Projeto">
                 <button class="btn" type="submit"><i class="fa-solid fa-search"></i></button>
             </form>
@@ -82,4 +75,13 @@ ob_end_flush();
 <?php
 $jsPagina = ['projetos-ong.js'];
 require_once '../../components/layout/footer/footer-logado.php';
+
+if (isset($_SESSION['criar-projeto'])) {
+    if ($_SESSION['criar-projeto']) {
+        echo "<script>mostrar_toast('toast-projeto')</script>";
+    } else {
+        echo "<script>mostrar_toast('toast-projeto-erro')</script>";
+    }
+    unset($_SESSION['criar-projeto']);
+}
 ?>

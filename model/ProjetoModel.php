@@ -143,52 +143,38 @@ class Projeto
     }
 
 
-    function editar($id, $nome, $descricao, $meta)
+    public function editar($id, $nome, $descricao, $meta)
     {
         try {
             $query = "UPDATE $this->tabela
-                          SET nome = :nome, descricao = :descricao, meta = :meta
-                          WHERE projeto_id = :id";
+                      SET nome = :nome, descricao = :descricao, meta = :meta
+                      WHERE projeto_id = :id";
             $stmt = $this->pdo->prepare($query);
             $stmt->bindParam(':nome', $nome);
             $stmt->bindParam(':descricao', $descricao);
             $stmt->bindParam(':meta', $meta);
             $stmt->bindParam(':id', $id);
-            $stmt->execute();
-
-            if ($stmt->rowCount() > 0) {
-                header("Location: perfil.php?id=$id&msg=sucesso");
-            } else {
-                header("Location: perfil.php?id=$id");
-            }
-            exit;
+            return $stmt->execute();
         } catch (PDOException $e) {
-            // echo "Erro no UPDATE: " . $e->getMessage();
-            header("Location: perfil.php?id=$id&msg=erro");
-            exit;
+            return false;
         }
     }
+
 
     function criar($nome, $descricao, $meta, $ong_id)
     {
         try {
             $query = "INSERT INTO $this->tabela (nome, descricao, meta, ong_id)
-                          VALUES (:nome, :descricao, :meta, :ong_id)";
+                      VALUES (:nome, :descricao, :meta, :ong_id)";
             $stmt = $this->pdo->prepare($query);
             $stmt->bindParam(':nome', $nome);
             $stmt->bindParam(':descricao', $descricao);
             $stmt->bindParam(':meta', $meta);
             $stmt->bindParam(':ong_id', $ong_id);
-            $stmt->execute();
-            if ($stmt->rowCount() > 0) {
-                header('Location: projetos.php?msg=sucesso');
-            } else {
-                header('Location: projetos.php');
-            }
-            exit;
+            return $stmt->execute();
         } catch (PDOException $e) {
-            header('Location: projetos.php?msg=erro');
-            exit;
+            // error_log("Erro ao inserir registro: " . $e->getMessage());
+            return false;
         }
     }
 
@@ -234,7 +220,10 @@ class Projeto
             // Já favoritado → desfavorita
             $sql = "DELETE FROM favoritos_projetos WHERE usuario_id = :id AND projeto_id = :projeto_id";
             $stmt = $this->pdo->prepare($sql);
-            $stmt->execute([':id' => $usuario_id, ':projeto_id' => $projeto_id]);
+            $stmt->execute([
+                ':id' => $usuario_id,
+                ':projeto_id' => $projeto_id
+            ]);
             return false; // desfavoritado
         } else {
             // Não favoritado → adiciona

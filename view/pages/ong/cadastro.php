@@ -63,7 +63,7 @@ $lista_banco = $bancoModel->listar();
                         <p>Banco</p>
                     </div>
                 </div>
-                <form id="form" action="../../../controller/OngController.php?acao=cadastrar" method="POST">
+                <form id="form" action="../../../controller/Ong/CadastrarOngController.php" method="POST">
                     <div class="formBox">
                         <div class="inputBox">
                             <label for="nome">Razão Social<span>*</span></label>

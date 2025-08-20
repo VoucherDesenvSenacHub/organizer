@@ -144,11 +144,11 @@
     transition: .3s;
 }
 
-.btn-salvar button#share:hover {
+.btn-salvar button.btn-share:hover {
     color: #45BEE6;
 }
 
-.btn-salvar button#like:hover {
+.btn-salvar button.btn-like:hover {
     color: hotpink;
 }
 
