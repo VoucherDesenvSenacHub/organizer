@@ -55,7 +55,7 @@ ob_end_flush();
         } ?>
         <!-- CARDS DE PROJETOS -->
         <div class="area-cards">
-            <?php
+            <?php   
             if ($lista) {
                 $class = 'tp-ong';
                 foreach ($lista as $projeto) {
