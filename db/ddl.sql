@@ -205,3 +205,22 @@ CREATE TABLE apoios_projeto (
     CONSTRAINT fk_apoio_usuario FOREIGN KEY (usuario_id) REFERENCES usuarios(usuario_id) ON DELETE CASCADE ON UPDATE CASCADE,
     CONSTRAINT fk_apoio_projeto FOREIGN KEY (projeto_id) REFERENCES projetos(projeto_id) ON DELETE CASCADE ON UPDATE CASCADE
 );
+
+-- ================================
+-- TABELA DE PARCERIAS (EMPRESAS)
+-- ================================
+CREATE TABLE parcerias (
+    parceria_id INT PRIMARY KEY AUTO_INCREMENT,
+-- Dados da empresa
+    nome VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    cnpj VARCHAR(18) NOT NULL,
+    telefone VARCHAR(20) NOT NULL,
+    descricao TEXT,
+-- Status da solicitação
+    status ENUM('pendente', 'aprovada', 'recusada') NOT NULL DEFAULT 'pendente',
+-- Datas de controle
+    data_envio TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
