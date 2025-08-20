@@ -7,7 +7,7 @@ if (isset($_GET['id']) && isset($_SESSION['usuario']['id'])) {
 }
 
 // Carregar os Popups
-if (isset($_GET['id']) && $projeto) {
+if (isset($_GET['id']) && $PerfilProjeto) {
     require_once 'partials/popups-projeto.php';
 }
 

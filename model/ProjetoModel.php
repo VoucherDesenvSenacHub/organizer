@@ -43,41 +43,63 @@ class Projeto
         return $stmt->fetchAll();
     }
 
-    function buscarPerfilProjeto($id)
+    function buscarPerfilProjeto($IdProjeto)
     {
-        $query = "SELECT projeto_id, nome, meta, descricao, data_cadastro, ong_id FROM $this->tabela WHERE projeto_id = :id";
+        $query = "SELECT p.projeto_id, p.nome, p.meta, p.descricao, p.data_cadastro,
+        p.ong_id, o.nome AS nome_ong, o.logo_url as logo_ong, 
+        COALESCE(SUM(dp.valor), 0) AS valor_arrecadado,
+        ROUND(COALESCE(SUM(dp.valor), 0) / p.meta * 100) AS barra
+        FROM $this->tabela p
+        INNER JOIN ongs o
+            ON o.ong_id = p.ong_id
+        LEFT JOIN doacao_projeto dp 
+            ON dp.projeto_id = p.projeto_id
+        WHERE p.projeto_id = :id";
         $stmt = $this->pdo->prepare($query);
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->bindParam(':id', $IdProjeto, PDO::PARAM_INT);
         $stmt->execute();
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
         return $stmt->fetch();
     }
 
-    function listarRecentes()
+    function buscarDoadoresProjeto($IdProjeto)
     {
-        $query = "SELECT p.projeto_id, p.nome, p.descricao, p.meta, 
-                      (SELECT i.logo_url FROM imagens_projeto i WHERE i.projeto_id = p.projeto_id ORDER BY i.id ASC LIMIT 1) AS logo_url
-                      FROM $this->tabela p
-                      ORDER BY data_cadastro DESC LIMIT 4";
+        $query = "SELECT u.nome, SUM(dp.valor) as valor_doado, COUNT(dp.valor) as qtd_doacoes FROM doacao_projeto dp
+                  INNER JOIN projetos p USING (projeto_id)
+                  INNER JOIN usuarios u USING (usuario_id)
+                  WHERE p.projeto_id = :id
+                  GROUP BY nome
+                  ORDER BY 2 DESC";
         $stmt = $this->pdo->prepare($query);
-
+        $stmt->bindParam(':id', $IdProjeto, PDO::PARAM_INT);
         $stmt->execute();
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
         return $stmt->fetchAll();
     }
 
-    function listarRecentesOng($id)
+    function buscarApoiadoresProjeto($IdProjeto)
     {
-        $query = "SELECT p.projeto_id, p.nome, p.descricao, p.meta, p.data_cadastro,
-                      (SELECT i.logo_url FROM imagens_projeto i WHERE i.projeto_id = p.projeto_id ORDER BY i.id ASC LIMIT 1) AS logo_url
-                      FROM $this->tabela p WHERE p.ong_id = :id
-                      ORDER BY data_cadastro DESC LIMIT 1";
+        $query = "SELECT u.nome, a.data_apoio from apoios_projeto a
+                  INNER JOIN usuarios u USING(usuario_id)
+                  WHERE projeto_id = :id
+                  ORDER BY data_apoio DESC";
         $stmt = $this->pdo->prepare($query);
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->bindParam(':id', $IdProjeto, PDO::PARAM_INT);
         $stmt->execute();
-        $stmt->setFetchMode(PDO::FETCH_CLASS, __CLASS__);
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
         return $stmt->fetchAll();
     }
+
+    function buscarImagensProjeto($IdProjeto)
+    {
+        $query = "SELECT logo_url FROM imagens_projeto WHERE projeto_id = :id";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindParam(':id', $IdProjeto, PDO::PARAM_INT);
+        $stmt->execute();
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        return $stmt->fetchAll();
+    }
+
 
 
     function buscarNome($nome, $ong_id = null)
@@ -114,43 +136,7 @@ class Projeto
         return $resultado['total'] ?? 0;
     }
 
-    function contarDoadores($id)
-    {
-        $query = "SELECT COUNT(*) AS total FROM doacao_projeto WHERE projeto_id = :id";
-        $stmt = $this->pdo->prepare($query);
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-        $stmt->execute();
-        $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
-        return $resultado['total'] ?? 0;
-    }
 
-    function buscarDoadores($id)
-    {
-        $query = "SELECT u.nome, SUM(dp.valor) as valor_doado FROM doacao_projeto dp
-                  INNER JOIN projetos p USING (projeto_id)
-                  INNER JOIN usuarios u USING (usuario_id)
-                  WHERE p.projeto_id = :id
-                  GROUP BY nome
-                  ORDER BY 2 DESC";
-        $stmt = $this->pdo->prepare($query);
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-        $stmt->execute();
-        $stmt->setFetchMode(PDO::FETCH_ASSOC);
-        return $stmt->fetchAll();
-    }
-
-    function buscarApoiadores($id)
-    {
-        $query = "SELECT u.nome, a.data_apoio from apoios_projeto a
-                  INNER JOIN usuarios u USING(usuario_id)
-                  WHERE projeto_id = :id
-                  ORDER BY data_apoio DESC";
-        $stmt = $this->pdo->prepare($query);
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-        $stmt->execute();
-        $stmt->setFetchMode(PDO::FETCH_ASSOC);
-        return $stmt->fetchAll();
-    }
 
 
     public function editar($id, $nome, $descricao, $meta)
@@ -282,15 +268,6 @@ class Projeto
         return $stmt->fetchAll();
     }
 
-    function buscarImagens($id)
-    {
-        $query = "SELECT logo_url FROM imagens_projeto WHERE projeto_id = :id";
-        $stmt = $this->pdo->prepare($query);
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-        $stmt->execute();
-        $stmt->setFetchMode(PDO::FETCH_ASSOC);
-        return $stmt->fetchAll();
-    }
 
     public function apoiarProjeto($usuario_id, $projeto_id)
     {
@@ -347,5 +324,31 @@ class Projeto
         $stmt->bindParam(':projeto_id', $projeto_id, PDO::PARAM_INT);
         $stmt->execute();
         return $stmt->fetch();
+    }
+
+    function listarRecentes()
+    {
+        $query = "SELECT p.projeto_id, p.nome, p.descricao, p.meta, 
+                      (SELECT i.logo_url FROM imagens_projeto i WHERE i.projeto_id = p.projeto_id ORDER BY i.id ASC LIMIT 1) AS logo_url
+                      FROM $this->tabela p
+                      ORDER BY data_cadastro DESC LIMIT 4";
+        $stmt = $this->pdo->prepare($query);
+
+        $stmt->execute();
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        return $stmt->fetchAll();
+    }
+
+    function listarRecentesOng($id)
+    {
+        $query = "SELECT p.projeto_id, p.nome, p.descricao, p.meta, p.data_cadastro,
+                      (SELECT i.logo_url FROM imagens_projeto i WHERE i.projeto_id = p.projeto_id ORDER BY i.id ASC LIMIT 1) AS logo_url
+                      FROM $this->tabela p WHERE p.ong_id = :id
+                      ORDER BY data_cadastro DESC LIMIT 1";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+        $stmt->setFetchMode(PDO::FETCH_CLASS, __CLASS__);
+        return $stmt->fetchAll();
     }
 }
