@@ -52,6 +52,16 @@ try {
     }
 } catch (Exception $e) {
     http_response_code(500);
-    echo json_encode(['error' => 'Erro interno do servidor']);
+    if (strpos($e->getMessage(), 'Duplicate entry') !== false) {
+        if (strpos($e->getMessage(), 'email') !== false) {
+            echo json_encode(['error' => 'Este email já possui uma solicitação cadastrada.']);
+        } elseif (strpos($e->getMessage(), 'cnpj') !== false) {
+            echo json_encode(['error' => 'Este CNPJ já possui uma solicitação cadastrada.']);
+        } else {
+            echo json_encode(['error' => 'Dados duplicados encontrados.']);
+        }
+    } else {
+        echo json_encode(['error' => 'Erro interno do servidor']);
+    }
 }
 ?>
