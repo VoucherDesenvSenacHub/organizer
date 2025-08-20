@@ -150,6 +150,6 @@ ob_end_flush();
 <?php require_once '../../components/popup/confirmar-edicao-ong.php'; ?>
 
 <?php
-$jsPagina = ['ong/conta.js'];
+$jsPagina = ['ong/conta.js', 'ong/cep.js'];
 require_once '../../components/layout/footer/footer-logado.php';
 ?>
