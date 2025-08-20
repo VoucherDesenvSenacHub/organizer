@@ -87,8 +87,8 @@ class AdminModel
     function CriarSolicitacaoParceria($dados)
     {
         try {
-            $query = "INSERT INTO parcerias (nome, email, cnpj, telefone, descricao, status, created_at) 
-                      VALUES (?, ?, ?, ?, ?, 'pendente', NOW())";
+            $query = "INSERT INTO parcerias (nome, email, cnpj, telefone, mensagem, status) 
+                      VALUES (?, ?, ?, ?, ?, 'pendente')";
             $stmt = $this->pdo->prepare($query);
             return $stmt->execute([
                 $dados['nome'],
@@ -98,6 +98,7 @@ class AdminModel
                 $dados['mensagem']
             ]);
         } catch (Exception $e) {
+            error_log("Erro em CriarSolicitacaoParceria: " . $e->getMessage());
             return false;
         }
     }
