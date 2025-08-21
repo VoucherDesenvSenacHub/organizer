@@ -112,29 +112,44 @@ section#top-info {
 
 /* Filtro: Status */
 #form-filtro #esc-status {
-    width: 85px;
+    /* width: 95px; */
+    width: fit-content;
 }
 #form-filtro #esc-status:hover {
     height: calc(40px * 3);
-    width: 158px;
+    width: fit-content;
+    /* width: 158px; */
+}
+
+/* Filtro:  Quantidade projetos */
+#form-filtro #esc-q-projetos {
+    width: fit-content;
+}
+#form-filtro #esc-q-projetos:hover {
+    height: calc(40px * 3);
+    /* width: 154px; */
+    width: fit-content;
 }
 
 /* Filtro: Categoria */
 #form-filtro #esc-categoria {
-    width: 115px;
+    width: fit-content;
 }
 #form-filtro #esc-categoria:hover {
     height: calc(40px * 7);
-    width: 154px;
+    /* width: 154px; */
+    width: fit-content;
 }
 
 /* Filtro: Região */
 #form-filtro #esc-regiao {
-    width: 90px;
+    /* width: 90px; */
+    width: fit-content;
 }
 #form-filtro #esc-regiao:hover {
     height: calc(40px * 6);
-    width: 145px;
+    /* width: 145px; */
+    width: fit-content;
 }
 
 /* Área barra de pesquisa */

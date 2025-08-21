@@ -89,41 +89,8 @@ $perfil = $_SESSION['perfil_usuario'] ?? null;
                                     <input type="checkbox" name="ambiente" id="ambiente">
                                     <label for="ambiente">Meio Ambiente</label>
                                 </li>
-                                <li>
-                                    <input type="checkbox" name="animal" id="animal">
-                                    <label for="animal">Proteção Animal</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" name="direitos" id="direitos">
-                                    <label for="direitos">Direitos Humanos</label>
-                                </li>
                             </ul>
-                            <ul class="drop" id="esc-regiao">
-                                <li>
-                                    <p>Região</p>
-                                    <i class="fa-solid fa-angle-down"></i>
-                                </li>
-                                <li>
-                                    <input type="checkbox" name="centro-oeste" id="centro-oeste">
-                                    <label for="centro-oeste">Centro-Oeste</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" name="norte" id="norte">
-                                    <label for="norte">Norte</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" name="nordeste" id="nordeste">
-                                    <label for="nordeste">Nordeste</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" name="sudeste" id="sudeste">
-                                    <label for="sudeste">Sudeste</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" name="sul" id="sul">
-                                    <label for="sul">Sul</label>
-                                </li>
-                            </ul>
+                            
                         </div>
                         <button class="btn">Filtrar</button>
                     </form>
