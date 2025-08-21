@@ -3,7 +3,6 @@ ob_start();
 //Lógica e dependências primeiro
 require_once __DIR__ . '/../../../autoload.php';
 $projetoModel = new Projeto();
-$ongModel = new Ong();
 
 //Definições da página
 session_start();
@@ -14,78 +13,47 @@ require_once '../../components/layout/base-inicio.php';
 
 //Processamento de dados
 if (isset($_GET['id'])) {
-    $id = $_GET['id'];
-    $projeto = $projetoModel->buscarPerfil($id);
-    $valor_projeto = $projetoModel->buscarValor($id);
-    $qntdoadores = $projetoModel->contarDoadores($id);
-    $doadores_projeto = $projetoModel->buscarDoadores($id);
-    $apoiadores_projeto = $projetoModel->buscarApoiadores($id);
-    $imagens_projeto = $projetoModel->buscarImagens($id);
-    if ($projeto) {
-        $ong = $ongModel->buscarPerfil($projeto['ong_id']);
-        $barra = round(($valor_projeto / $projeto['meta']) * 100);
-    }
+    $IdProjeto = $_GET['id'];
+    $PerfilProjeto = $projetoModel->buscarPerfilProjeto($IdProjeto);
+    $DoadoresProjeto = $projetoModel->buscarDoadoresProjeto($IdProjeto);
+    $ApoiadoresProjeto = $projetoModel->buscarApoiadoresProjeto($IdProjeto);
+    $ImagensProjeto = $projetoModel->buscarImagensProjeto($IdProjeto);
+    // $valor_projeto = $projetoModel->buscarValor($IdProjeto);
 }
 
-// Fazer doação (doador)
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_SESSION['perfil_usuario'] === 'doador' && isset($_POST['valor'])) {
-    $valor = $_POST['valor'];
-    if ($valor == 'outro') {
-        $valor = $_POST['outro-valor'];
-    }
-    if ($valor + $valor_projeto > $projeto['meta']) {
-        echo "<script>alert('O valor ultrapassou a meta!! Doe um valor menor.')</script>";
-    } elseif ($valor <= 0) {
-        echo "<script>alert('Valor inválido!! Doe um valor maior.')</script>";
-    } else {
-        $doacao = $projetoModel->doacao($projeto['projeto_id'], $_SESSION['usuario']['id'], $valor);
-        if ($doacao > 0) {
-            header("Location: perfil.php?id=$id&msg=doacao");
-            exit;
-        }
-    }
+//Chamar os Toasts e Popups 
+if (!empty($PerfilProjeto['projeto_id'])) {
+    require_once 'partials/toast-projeto.php';
+    require_once 'partials/popups-projeto.php';
 }
 
-// Buscar se é favorito
-if (isset($_SESSION['usuario']['id'])) {
+//Verificar se o doador marcou este projeto como favorito
+if (isset($_SESSION['usuario']['id']) && $_SESSION['perfil_usuario'] === 'doador') {
     $projetosFavoritos = $projetoModel->listarFavoritos($_SESSION['usuario']['id']);
 }
-
-require_once 'partials/toast-projeto.php';
 ob_end_flush();
 ?>
-<!-- 
-    Toast de Favoritar
--->
-<div id="toast-favorito" class="toast">
-    <i class="fa-solid fa-heart"></i>
-    Adicionado aos favoritos!
-</div>
-<div id="toast-remover-favorito" class="toast erro">
-    <i class="fa-solid fa-heart-crack"></i>
-    Removido dos favoritos!
-</div>
 <main>
     <div class="container" id="container-principal">
-        <?php if (!isset($_GET['id']) || !$projeto): ?>
+        <?php if (!isset($_GET['id']) || empty($PerfilProjeto['projeto_id'])): ?>
             <h2>ERRO AO ENCONTRAR PROJETO!</h2>
         <?php else: ?>
             <section id="apresentacao" class="container-section">
                 <div id="dados-projeto">
-                    <h1><?= $projeto['nome'] ?></h1>
+                    <h1><?= $PerfilProjeto['nome'] ?></h1>
                     <div id="valor-arrecadado">
-                        <h3>Arrecadado: <span>R$ <?= number_format($valor_projeto, 0, ',', '.'); ?></span></h3>
+                        <h3>Arrecadado: <span>R$ <?= number_format($PerfilProjeto['valor_arrecadado'], 0, ',', '.'); ?></span></h3>
                         <div class="barra-doacao">
                             <div class="barra">
-                                <div class="barra-verde" style="width: <?= $barra ?>%;"></div>
+                                <div class="barra-verde" style="width: <?= $PerfilProjeto['barra'] ?>%;"></div>
                             </div>
                         </div>
                     </div>
                     <div id="progresso">
-                        <p>Meta: <span>R$ <?= number_format($projeto['meta'], 0, ',', '.'); ?></span></p>
-                        <p>Status: <span>(<?= $barra ?>% alcançado)</span></p>
-                        <p><span><?= $qntdoadores ?></span> Doações Recebidas</p>
-                        <p><span><?= count($apoiadores_projeto) ?></span> Apoios Recebidos</p>
+                        <p>Meta: <span>R$ <?= number_format($PerfilProjeto['meta'], 0, ',', '.'); ?></span></p>
+                        <p>Status: <span>(<?= $PerfilProjeto['barra'] ?>% alcançado)</span></p>
+                        <p><span><?= array_sum(array_column($DoadoresProjeto, 'qtd_doacoes')); ?></span> Doações Recebidas</p>
+                        <p><span><?= count($ApoiadoresProjeto) ?></span> Apoios Recebidos</p>
                     </div>
                     <!-- Botão de Acões do Projeto -->
                     <?php require_once 'partials/acoes-projeto.php'; ?>
@@ -95,8 +63,8 @@ ob_end_flush();
                 </div>
                 <div id="carousel" class="carousel">
                     <div id="carousel-imgs" class="carousel-imgs">
-                        <?php if ($imagens_projeto) {
-                            foreach ($imagens_projeto as $imagem) {
+                        <?php if ($ImagensProjeto) {
+                            foreach ($ImagensProjeto as $imagem) {
                                 echo "<img src='{$imagem['logo_url']}' class='carousel-item'>";
                             }
                         } else {
@@ -111,7 +79,7 @@ ob_end_flush();
                         <?php elseif (!isset($_SESSION['perfil_usuario']) || $_SESSION['perfil_usuario'] === 'doador') : ?>
                             <?php $classe = in_array($projeto['projeto_id'], $projetosFavoritos) ? 'favoritado' : ''; ?>
                             <form action="../.././../controller/Projeto/FavoritarProjetoController.php" method="POST">
-                                <input type="hidden" name="projeto-id" value="<?= $id ?>">
+                                <input type="hidden" name="projeto-id" value="<?= $IdProjeto ?>">
                                 <button title="Favoritar" class="btn-like fa-solid fa-heart <?= $classe ?>"></button>
                             </form>
                         <?php endif; ?>
@@ -123,8 +91,8 @@ ob_end_flush();
                     <button class="btn-fechar-popup fa-solid fa-xmark" onclick="fechar_popup('carousel-popup')"></button>
                     <div id="carousel-big" class="carousel">
                         <div id="carousel-big-imgs" class="carousel-imgs">
-                            <?php if ($imagens_projeto) {
-                                foreach ($imagens_projeto as $imagem) {
+                            <?php if ($ImagensProjeto) {
+                                foreach ($ImagensProjeto as $imagem) {
                                     echo "<img src='{$imagem['logo_url']}' class='carousel-item-big'>";
                                 }
                             } else {
@@ -159,15 +127,15 @@ ob_end_flush();
                 <div id="principal-painel">
                     <div id="control-painel">
                         <div class="container-painel active">
-                            <span id="data-criacao">Criado em <?= date('d/m/Y', strtotime($projeto['data_cadastro'])); ?></span>
-                            <p><?= $projeto['descricao'] ?></p>
+                            <span id="data-criacao">Criado em <?= date('d/m/Y', strtotime($PerfilProjeto['data_cadastro'])); ?></span>
+                            <p><?= $PerfilProjeto['descricao'] ?></p>
                         </div>
                         <div class="container-painel area-doador-voluntario">
                             <h3><i class="fa-solid fa-hand-holding-dollar"></i> DOADORES DESTE PROJETO</h3>
                             <div class="box-cards">
                                 <?php
-                                if ($doadores_projeto) {
-                                    foreach ($doadores_projeto as $doador) {
+                                if ($DoadoresProjeto) {
+                                    foreach ($DoadoresProjeto as $doador) {
                                         require '../../components/cards/card-doador.php';
                                     }
                                 } else {
@@ -180,8 +148,8 @@ ob_end_flush();
                             <h3><i class="fa-solid fa-hand-holding-heart"></i> APOIADORES DESTE PROJETO</h3>
                             <div class="box-cards">
                                 <?php
-                                if ($apoiadores_projeto) {
-                                    foreach ($apoiadores_projeto as $apoiador) {
+                                if ($ApoiadoresProjeto) {
+                                    foreach ($ApoiadoresProjeto as $apoiador) {
                                         require '../../components/cards/card-apoiador.php';
                                     }
                                 } else {
@@ -196,15 +164,15 @@ ob_end_flush();
                                 <div class="card-ong">
                                     <div class="perfil">
                                         <div class="logo">
-                                            <img src="<?= $ong['logo_url'] ?? '../../assets/images/global/image-placeholder.svg' ?>">
+                                            <img src="<?= $PerfilProjeto['logo_ong'] ?? '../../assets/images/global/image-placeholder.svg' ?>">
                                         </div>
                                         <div class="nome">
-                                            <h2><?= $ong['nome'] ?></h2>
+                                            <h2><?= $PerfilProjeto['nome_ong'] ?></h2>
                                             <!-- <p>Área de Atuação</p> -->
                                         </div>
                                     </div>
                                     <div class="acoes-ong">
-                                        <a href="../ong/perfil.php?id=<?= $projeto['ong_id'] ?>" class="saiba-mais-ong">Conhecer ONG</a>
+                                        <a href="../ong/perfil.php?id=<?= $PerfilProjeto['ong_id'] ?>" class="saiba-mais-ong">Conhecer ONG</a>
                                     </div>
                                 </div>
                             </div>
@@ -219,33 +187,6 @@ ob_end_flush();
 <?php
 $jsPagina = ['perfil-projeto.js'];
 require_once '../../components/layout/footer/footer-logado.php';
-
-// Toast do 'Favoritar'
-if (isset($_SESSION['favorito'])) {
-    if ($_SESSION['favorito']) {
-        echo "<script>mostrar_toast('toast-favorito')</script>";
-    } else {
-        echo "<script>mostrar_toast('toast-remover-favorito')</script>";
-    }
-    unset($_SESSION['favorito']);
-}
-// Toast do 'Apoiar'
-if (isset($_SESSION['apoiar'])) {
-    if ($_SESSION['apoiar']) {
-        echo "<script>mostrar_toast('toast-apoio')</script>";
-    } else {
-        echo "<script>mostrar_toast('toast-desapoio')</script>";
-    }
-    unset($_SESSION['apoiar']);
-}
-
-// Toast do 'Editar'
-if (isset($_SESSION['editar-projeto'])) {
-    if ($_SESSION['editar-projeto']) {
-        echo "<script>mostrar_toast('toast-projeto')</script>";
-    } else {
-        echo "<script>mostrar_toast('toast-projeto-erro')</script>";
-    }
-    unset($_SESSION['editar-projeto']);
-}
+// Chamar a lógica dos toasts
+require_once 'partials/alertas-toast.php';
 ?>

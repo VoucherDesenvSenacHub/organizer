@@ -11,7 +11,7 @@ require_once __DIR__ . '/../../../autoload.php';
 
 //CARREGA CARDS DE PROJETOS
 $projetoModel = new Projeto();
-$lista = $projetoModel->listar($_SESSION['ong_id']);
+$lista = $projetoModel->listarCardsProjetos($_SESSION['ong_id']);
 $temprojeto = $lista;
 //PESQUISAR PROJETO
 if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['pesquisa'])) {
@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['pesquisa'])) {
 }
 
 //FORMULÁRIO DE CRIAÇÃO DE PROJETO (popup)
-$projeto = (object) [
+$PerfilProjeto = (object) [
     'projeto_id' => null,
     'nome' => '',
     'meta' => '',
@@ -57,10 +57,7 @@ ob_end_flush();
         <div class="area-cards">
             <?php   
             if ($lista) {
-                $class = 'tp-ong';
                 foreach ($lista as $projeto) {
-                    $valor_projeto = $projetoModel->buscarValor($projeto['projeto_id']);
-                    $barra = round(($valor_projeto / $projeto['meta']) * 100);
                     require '../../components/cards/card-projeto.php';
                 }
             }
