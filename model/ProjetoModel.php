@@ -314,4 +314,19 @@ class Projeto
         $stmt->execute();
         return $stmt->fetch();
     }
+    public function inativarProjeto($projeto_Id, $motivo, $escolha) {
+        $sql = "UPDATE projetos
+                SET status = 'inativado',
+                    motivo = :motivo,
+                    escolha = :escolha
+                WHERE projeto_id = :id";
+        $stmt = $this->pdo->prepare($sql);
+        return $stmt->execute([
+            ':id' => $projeto_Id,
+            ':motivo' => $motivo,
+            ':escolha' => $escolha
+        ]);
+    }
 }
+
+    

@@ -1,14 +1,27 @@
 <?php
-$perfil = $_SESSION['perfil_usuario'] ?? 'visitante';
-?>
+session_start();
+require_once __DIR__ . '/../../../autoload.php';
 
-<?php if ($perfil === 'ong'): ?>
-    <div id="acoes">
-        <a href="meu-perfil.php"><button class="btn" id="btn-editar"><i class="fa-solid fa-pen-to-square"></i> Editar</button></a>
-        <button class="btn" id="btn-inativar"><i class="fa-solid fa-ban"></i> Inativar</button>
-    </div>
-<?php elseif ($perfil === 'adm'): ?>
-    <div id="acoes">
-        <button class="btn adm-inativar" id="btn-inativar"><i class="fa-solid fa-ban"></i> Inativar</button>
-    </div>
-<?php endif; ?>
+$projetoModel = new Projeto();
+
+if ($_SESSION['perfil_usuario'] !== 'ong') {
+    header("Location: home.php");
+    exit;
+}
+
+if ($_POST['acao'] === 'inativar_projeto' && !empty($_POST['projeto_id'])) {
+    $projetoId = intval($_POST['projeto_id']);
+    $motivo    = trim($_POST['motivo'] ?? '');
+    $escolha   = trim($_POST['escolha'] ?? '');
+
+    $sucesso = $projetoModel->inativarProjeto($projetoId, $motivo, $escolha);
+
+    if ($sucesso) {
+        $_SESSION['popup'] = "Solicitação de inativação enviada com sucesso!";
+    } else {
+        $_SESSION['popup'] = "Erro ao inativar o projeto. Tente novamente.";
+    }
+
+    header("Location: home.php");
+    exit;
+}

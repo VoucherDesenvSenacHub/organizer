@@ -1,8 +1,9 @@
 <?php
 session_start();
-$acesso = $_SESSION['perfil_usuario'] ?? 'visitante';
+$perfil = $_SESSION['perfil_usuario'] ?? 'visitante';
 $tituloPagina = 'Sobre a ONG | Organizer';
 $cssPagina = ['ong/perfil.css'];
+$projeto_id = $projeto['projeto_id'] ?? null;
 require_once '../../components/layout/base-inicio.php';
 
 require_once __DIR__ . '/../../../autoload.php';
@@ -185,3 +186,25 @@ if (isset($_SESSION['favorito'])) {
     unset($_SESSION['favorito']);
 }
 ?>
+
+<?php
+$perfil = $_SESSION['perfil_usuario'] ?? 'visitante';
+$projeto_id = $projeto['projeto_id'] ?? null;
+?>
+
+<?php if ($perfil === 'ong' && $projeto_id): ?>
+    <div id="acoes">
+        <a href="meu-perfil.php">
+            <button class="btn" id="btn-editar">
+                <i class="fa-solid fa-pen-to-square"></i> Editar Projeto
+            </button>
+        </a>
+
+        <a href="inativar-projeto.php?id=<?= $projeto_id ?>">
+            <button type="button" class="btn btn-danger" id="btn-inativar">
+                <i class="fa-solid fa-trash"></i> Inativar Projeto
+            </button>
+        </a>
+    </div>
+<?php endif; ?>
+

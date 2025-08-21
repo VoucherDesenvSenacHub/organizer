@@ -12,17 +12,17 @@
     // $user = 'root';
     // $password = 'ABfifqyKxrpFnVSdyjIUOAQKKHjgZkct'; 
 
-    // $host = 'db4free.net';
-    // $port = 3306;
-    // $dbname = 'organizerr';
-    // $user = 'organizerr';
-    // $password = '@Senac123'; 
+    $host = 'db4free.net';
+    $port = 3306;
+    $dbname = 'organizerr';
+    $user = 'organizerr';
+    $password = '@Senac123'; 
 
-    $host = 'centerbeam.proxy.rlwy.net';
-    $port = 28838;
-    $dbname = 'organizer';
-    $user = 'root';
-    $password = 'GxbLQsKICwpVBaOQegbVxZvLHfgSIorV'; 
+    // $host = 'centerbeam.proxy.rlwy.net';
+    // $port = 28838;
+    // $dbname = 'organizer';
+    // $user = 'root';
+    // $password = 'GxbLQsKICwpVBaOQegbVxZvLHfgSIorV'; 
     
     try {
         $pdo = new PDO("mysql:host=$host;port=$port;dbname=$dbname;charset=utf8", $user, $password);

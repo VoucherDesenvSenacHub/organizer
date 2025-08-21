@@ -1,4 +1,22 @@
 <?php
+session_start();
+$popup = $_SESSION['popup'] ?? null;
+unset($_SESSION['popup']);
+?>
+
+<?php if ($popup): ?>
+    <div id="popup" class="popup">
+        <?= htmlspecialchars($popup) ?>
+    </div>
+
+    <script>
+        setTimeout(() => {
+            document.getElementById("popup").style.display = "none";
+        }, 4000);
+    </script>
+<?php endif; ?>
+
+<?php
 $acesso = 'ong';
 $tituloPagina = 'Home | Organizer';
 $cssPagina = ['ong/home.css'];
