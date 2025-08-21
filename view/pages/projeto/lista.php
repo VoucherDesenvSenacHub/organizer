@@ -9,17 +9,18 @@ require_once __DIR__ . '/../../../autoload.php';
 $projetoModel = new Projeto();
 $lista = $projetoModel->listarCardsProjetos();
 
-if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['pesquisa'])) {
+if (isset($_GET['pesquisa'])) {
     $pesquisa = $_GET['pesquisa'];
     $lista = $projetoModel->buscarNome($pesquisa);
 }
 
-// Buscar os favoritos
-if (isset($_SESSION['usuario']['id'])) {
+//Verificar se o doador marcou este projeto como favorito
+if (isset($_SESSION['usuario']['id']) && $_SESSION['perfil_usuario'] === 'doador') {
     $projetosFavoritos = $projetoModel->listarFavoritos($_SESSION['usuario']['id']);
+    $jaFavoritado = in_array($projeto['projeto_id'], $projetosFavoritos);
 }
 
-$perfil = $_SESSION['perfil_usuario'] ?? '';
+$perfil = $_SESSION['perfil_usuario'] ?? null;
 
 ?>
 <!-- 
@@ -144,7 +145,6 @@ $perfil = $_SESSION['perfil_usuario'] ?? '';
         <section id="box-ongs">
             <!-- LISTAR CARDS PROJETOS -->
             <?php foreach ($lista as $projeto) {
-                $jaFavoritado = isset($_SESSION['usuario']['id']) && in_array($projeto['projeto_id'], $projetosFavoritos);
                 require '../../components/cards/card-projeto.php';
             } ?>
         </section>

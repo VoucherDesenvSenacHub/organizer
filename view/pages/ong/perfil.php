@@ -22,9 +22,9 @@ if (isset($_SESSION['usuario']['id'])) {
     $projetosFavoritos = $projetoModel->listarFavoritos($_SESSION['usuario']['id']);
 }
 
-// Buscar se é favorito
-if (isset($_SESSION['usuario']['id'])) {
-    $ongsFavoritas = $ongModel->listarFavoritas($_SESSION['usuario']['id']);
+//Verificar se o doador marcou este projeto como favorito
+if (isset($_SESSION['usuario']['id']) && $_SESSION['perfil_usuario'] === 'doador') {
+    $projetosFavoritos = $projetoModel->listarFavoritos($_SESSION['usuario']['id']);
 }
 
 $perfil = $_SESSION['perfil_usuario'] ?? '';

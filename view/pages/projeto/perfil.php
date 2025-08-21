@@ -21,12 +21,16 @@ if (isset($_GET['id'])) {
     // $valor_projeto = $projetoModel->buscarValor($IdProjeto);
 }
 
-// Buscar se é favorito
-if (isset($_SESSION['usuario']['id'])) {
-    $projetosFavoritos = $projetoModel->listarFavoritos($_SESSION['usuario']['id']);
+//Chamar os Toasts e Popups 
+if (!empty($PerfilProjeto['projeto_id'])) {
+    require_once 'partials/toast-projeto.php';
+    require_once 'partials/popups-projeto.php';
 }
 
-require_once 'partials/toast-projeto.php';
+//Verificar se o doador marcou este projeto como favorito
+if (isset($_SESSION['usuario']['id']) && $_SESSION['perfil_usuario'] === 'doador') {
+    $projetosFavoritos = $projetoModel->listarFavoritos($_SESSION['usuario']['id']);
+}
 ob_end_flush();
 ?>
 <main>

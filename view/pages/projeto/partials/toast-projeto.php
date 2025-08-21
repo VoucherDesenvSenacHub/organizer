@@ -11,7 +11,8 @@ switch ($perfil):
             <i class="fa-solid fa-triangle-exclamation"></i>
             Falha ao salvar Projeto!
         </div>
-    <?php
+    <?php break;
+
     case 'doador': ?>
         <!-- Toast para 'Doação do Projeto' -->
         <div id="toast-doacao" class="toast">
@@ -42,6 +43,6 @@ switch ($perfil):
             <i class="fa-solid fa-triangle-exclamation"></i>
             Você não apoia mais este Projeto!
         </div>
-<?php
+<?php break;
 endswitch;
 ?>
