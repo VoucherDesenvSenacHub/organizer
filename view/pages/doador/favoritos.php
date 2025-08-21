@@ -16,10 +16,8 @@ $listaOngs = $ongModel->favoritosUsuario($_SESSION['usuario']['id']);
 $listaProjetos = $projetoModel->favoritosUsuario($_SESSION['usuario']['id']);
 
 // Pintar o icone de favoritos
-if (isset($_SESSION['usuario']['id'])) {
-    $ongsFavoritas = $ongModel->listarFavoritas($_SESSION['usuario']['id']);
-    $projetosFavoritos = $projetoModel->listarFavoritos($_SESSION['usuario']['id']);
-}
+$ongsFavoritas = $ongModel->listarFavoritas($_SESSION['usuario']['id']);
+$projetosFavoritos = $projetoModel->listarFavoritos($_SESSION['usuario']['id']);
 
 ?>
 <!-- 
@@ -67,7 +65,6 @@ if (isset($_SESSION['usuario']['id'])) {
                                   </div>';
                         } else {
                             foreach ($listaProjetos as $projeto) {
-                                $jaFavoritado = isset($_SESSION['usuario']['id']) && in_array($projeto['projeto_id'], $projetosFavoritos);
                                 require '../../components/cards/card-projeto.php';
                             }
                         }

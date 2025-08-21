@@ -17,7 +17,6 @@ if (isset($_GET['pesquisa'])) {
 //Verificar se o doador marcou este projeto como favorito
 if (isset($_SESSION['usuario']['id']) && $_SESSION['perfil_usuario'] === 'doador') {
     $projetosFavoritos = $projetoModel->listarFavoritos($_SESSION['usuario']['id']);
-    $jaFavoritado = in_array($projeto['projeto_id'], $projetosFavoritos);
 }
 
 $perfil = $_SESSION['perfil_usuario'] ?? null;
