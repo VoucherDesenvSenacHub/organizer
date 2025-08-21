@@ -22,6 +22,9 @@ $solicitacoes = $adminModel->ListarSolicitacoesEmpresas();
                             <small><?= htmlspecialchars($solicitacao['criadoEm'] ?? '') ?></small>
                         </div>
                         <small class="cnpj">
+                            Email: <?= htmlspecialchars($solicitacao['email'] ?? 'Não informado') ?>
+                        </small><br>
+                        <small class="cnpj">
                             CNPJ: <?= htmlspecialchars($solicitacao['cnpj'] ?? 'Não informado') ?>
                         </small><br>
                         <small class="cnpj">
