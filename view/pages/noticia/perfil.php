@@ -16,27 +16,6 @@ if (isset($_GET['id'])) {
     $imagem_subtitulo = $noticiaModel->imagemSubtitulo($id);
 }
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $id = $_POST['id'];
-    $titulo = $_POST['titulo'];
-    $subtitulo = $_POST['subtitulo'];
-    $texto = $_POST['texto'];
-    $subtexto = $_POST['subtexto'];
-    try {
-        $update = $noticiaModel->editar($id, $titulo, $subtitulo, $texto, $subtexto);
-        if ($update > 0) {
-            header("Location: perfil.php?id=$id&upd=sucesso");
-            exit;
-        } else {
-            header("Location: perfil.php?id=aaaa");
-            exit;
-        }
-    } catch (PDOException $e) {
-        header("Location: perfil.php?id=$id&upd=erro");
-        exit;
-    }
-}
-
 $perfil = $_SESSION['perfil_usuario'] ?? '';
 if ($perfil == 'ong' && isset($noticia) && $noticia) {
     require_once '../../components/popup/formulario-noticia.php';
