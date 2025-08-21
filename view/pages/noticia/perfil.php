@@ -75,7 +75,7 @@ ob_end_flush();
                     <a title="Ver Perfil da ONG" href="../ong/perfil.php?id=<?= $noticia['ong_id'] ?>"><i class="fa-solid fa-house-flag"></i> <?= $noticia['nome'] ?></a>
                 </div>
                 <!-- Botões de edição para a ONG -->
-                <?php if ($perfil == 'ong'): ?>
+                <?php if ($perfil === 'ong' && $noticia['ong_id'] === $_SESSION['ong_id']): ?>
                     <div class="area-acoes">
                         <button class="btn" onclick="abrir_popup('editar-noticia-popup')"><i class="fa-solid fa-pen-to-square"></i> Editar</button>
                         <button class="btn"><i class="fa-solid fa-trash-can"></i> Inativar</button>
