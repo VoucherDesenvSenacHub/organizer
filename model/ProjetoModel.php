@@ -138,16 +138,6 @@ class Projeto
     }
 
 
-    function buscarValor($id)
-    {
-        $query = "SELECT SUM(valor) AS total FROM doacao_projeto WHERE projeto_id = :id";
-        $stmt = $this->pdo->prepare($query);
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-        $stmt->execute();
-        $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
-        return $resultado['total'] ?? 0;
-    }
-
 
 
 

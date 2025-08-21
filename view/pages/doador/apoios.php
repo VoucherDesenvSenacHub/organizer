@@ -34,7 +34,6 @@ $projetosFavoritos = $projetoModel->listarFavoritos($_SESSION['usuario']['id']);
                           </div>';
                 } else {
                     foreach ($lista as $projeto) {
-                        $jaFavoritado = isset($_SESSION['usuario']['id']) && in_array($projeto['projeto_id'], $projetosFavoritos);
                         require '../../components/cards/card-projeto.php';
                     }
                 }

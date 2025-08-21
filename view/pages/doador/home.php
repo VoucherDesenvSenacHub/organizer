@@ -18,9 +18,9 @@ $relatorio = $usuarioModel->RelatorioHome($_SESSION['usuario']['id']);
 $doadorModel = new Doador();
 $listarDoacoesRecentes = $doadorModel->listarDoacoes($_SESSION['usuario']['id']);
 
-if (isset($_SESSION['usuario']['id'])) {
-    $projetosFavoritos = $projetoModel->listarFavoritos($_SESSION['usuario']['id']);
-}
+
+$projetosFavoritos = $projetoModel->listarFavoritos($_SESSION['usuario']['id']);
+
 
 $perfil = $_SESSION['perfil_usuario'] ?? '';
 ?>
@@ -80,7 +80,6 @@ $perfil = $_SESSION['perfil_usuario'] ?? '';
     <h2>PROJETOS RECENTES</h2>
     <div class="box-cards">
         <?php foreach ($lista as $projeto) {
-            $jaFavoritado = isset($_SESSION['usuario']['id']) && in_array($projeto['projeto_id'], $projetosFavoritos);
             require '../../components/cards/card-projeto.php';
         } ?>
         <!-- <div class="card-projeto">

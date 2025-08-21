@@ -18,13 +18,10 @@ if (isset($_GET['id'])) {
     $logo_url = $ong['logo_url'] ?? '../../assets/images/global/image-placeholder.svg';
 }
 
-if (isset($_SESSION['usuario']['id'])) {
-    $projetosFavoritos = $projetoModel->listarFavoritos($_SESSION['usuario']['id']);
-}
-
 //Verificar se o doador marcou este projeto como favorito
 if (isset($_SESSION['usuario']['id']) && $_SESSION['perfil_usuario'] === 'doador') {
     $projetosFavoritos = $projetoModel->listarFavoritos($_SESSION['usuario']['id']);
+    $ongsFavoritas = $ongModel->listarFavoritas($_SESSION['usuario']['id']);
 }
 
 $perfil = $_SESSION['perfil_usuario'] ?? '';
@@ -154,7 +151,6 @@ $perfil = $_SESSION['perfil_usuario'] ?? '';
                     <?php
                     if ($projetos_ong) {
                         foreach ($projetos_ong as $projeto) {
-                            $jaFavoritado = isset($_SESSION['usuario']['id']) && in_array($projeto['projeto_id'], $projetosFavoritos);
                             require '../../components/cards/card-projeto.php';
                         }
                     } else {

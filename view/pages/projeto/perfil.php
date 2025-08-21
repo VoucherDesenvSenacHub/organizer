@@ -18,7 +18,6 @@ if (isset($_GET['id'])) {
     $DoadoresProjeto = $projetoModel->buscarDoadoresProjeto($IdProjeto);
     $ApoiadoresProjeto = $projetoModel->buscarApoiadoresProjeto($IdProjeto);
     $ImagensProjeto = $projetoModel->buscarImagensProjeto($IdProjeto);
-    // $valor_projeto = $projetoModel->buscarValor($IdProjeto);
 }
 
 //Chamar os Toasts e Popups 
