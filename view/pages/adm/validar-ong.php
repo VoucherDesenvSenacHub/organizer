@@ -25,7 +25,7 @@ require_once '../../components/layout/base-inicio.php';
                     <small><input type="checkbox">Tecnologia</small>
                     <small><input type="checkbox">Educação</small>
                     <small><input type="checkbox">Cultura</small>
-                    <small><input type="checkbox">Proteção Animal</small>
+                    <!-- <small><input type="checkbox">Proteção Animal</small> -->
                 </div>
             </div>
         </fieldset>
