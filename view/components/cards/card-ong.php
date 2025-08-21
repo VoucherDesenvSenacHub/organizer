@@ -34,7 +34,7 @@ $logo_url = $ong['logo_url'] ?? '../../assets/images/global/image-placeholder.sv
             <button title="Compartilhar" class="btn-share fa-solid fa-share-nodes" onclick="compartilhar('compartilhar-popup',<?=$id?>, 'ong')"></button>
             <?php if (!isset($_SESSION['usuario']['id'])): ?>
                 <button title="Favoritar" class="btn-like fa-solid fa-heart" onclick="abrir_popup('login-obrigatorio-popup')"></button>
-            <?php else: ?>
+            <?php elseif(!isset($_SESSION['perfil_usuario']) || $_SESSION['perfil_usuario'] === 'doador'): ?>
                 <form action="../.././../controller/ong/FavoritarOngController.php" method="POST">
                     <input type="hidden" name="ong-id" value="<?= $id ?>">
                     <button title="Favoritar" class="btn-like fa-solid fa-heart <?= $classe ?>"></button>

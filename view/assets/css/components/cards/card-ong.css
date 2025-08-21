@@ -161,9 +161,3 @@
         max-height: none;
     }
 }
-
-
-/* Card para adm (tirar o botão de like) */
-.card-ong.tp-adm .btn-salvar form {
-    display: none;
-}
