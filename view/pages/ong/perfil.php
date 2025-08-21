@@ -10,11 +10,11 @@ $ongModel = new Ong();
 $projetoModel = new Projeto();
 $noticiaModel = new NoticiaModel();
 if (isset($_GET['id'])) {
-    $id = $_GET['id'];
-    $ong = $ongModel->buscarPerfil($id);
-    $projetos_ong = $projetoModel->listar($id);
-    $noticias_ong = $noticiaModel->listarCards($id);
-    $doadores_ong = $ongModel->buscarDoadores($id);
+    $IdOng = $_GET['id'];
+    $ong = $ongModel->buscarPerfil($IdOng);
+    $projetos_ong = $projetoModel->listarCardsProjetos($IdOng);
+    $noticias_ong = $noticiaModel->listarCards($IdOng);
+    $doadores_ong = $ongModel->buscarDoadores($IdOng);
     $logo_url = $ong['logo_url'] ?? '../../assets/images/global/image-placeholder.svg';
 }
 
@@ -22,9 +22,9 @@ if (isset($_SESSION['usuario']['id'])) {
     $projetosFavoritos = $projetoModel->listarFavoritos($_SESSION['usuario']['id']);
 }
 
-// Buscar se é favorito
-if (isset($_SESSION['usuario']['id'])) {
-    $ongsFavoritas = $ongModel->listarFavoritas($_SESSION['usuario']['id']);
+//Verificar se o doador marcou este projeto como favorito
+if (isset($_SESSION['usuario']['id']) && $_SESSION['perfil_usuario'] === 'doador') {
+    $projetosFavoritos = $projetoModel->listarFavoritos($_SESSION['usuario']['id']);
 }
 
 $perfil = $_SESSION['perfil_usuario'] ?? '';
@@ -54,7 +54,7 @@ $perfil = $_SESSION['perfil_usuario'] ?? '';
             <div id="logo-ong">
                 <img src="<?= $logo_url ?>">
                 <div class="btn-salvar">
-                    <button id="share" class="fa-solid fa-share-nodes" onclick="compartilhar('compartilhar-popup', <?=$id?>, 'ong')"></button>
+                    <button id="share" class="fa-solid fa-share-nodes" onclick="compartilhar('compartilhar-popup', <?=$IdOng?>, 'ong')"></button>
                     <?php if (!isset($_SESSION['usuario']['id'])): ?>
                         <button title="Favoritar" id="like" class="fa-solid fa-heart" onclick="abrir_popup('login-obrigatorio-popup')"></button>
                     <?php elseif (!isset($_SESSION['perfil_usuario']) || $_SESSION['perfil_usuario'] === 'doador') : ?>
@@ -153,12 +153,7 @@ $perfil = $_SESSION['perfil_usuario'] ?? '';
                 <div class="mini-cards">
                     <?php
                     if ($projetos_ong) {
-                        if (isset($_SESSION['perfil_usuario']) && ($_SESSION['perfil_usuario'] === 'adm' || $_SESSION['perfil_usuario'] === 'ong')) {
-                            $class = 'tp-ong';
-                        }
                         foreach ($projetos_ong as $projeto) {
-                            $valor_projeto = $projetoModel->buscarValor($projeto['projeto_id']);
-                            $barra = round(($valor_projeto / $projeto['meta']) * 100);
                             $jaFavoritado = isset($_SESSION['usuario']['id']) && in_array($projeto['projeto_id'], $projetosFavoritos);
                             require '../../components/cards/card-projeto.php';
                         }
