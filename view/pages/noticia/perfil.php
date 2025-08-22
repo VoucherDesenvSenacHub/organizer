@@ -87,4 +87,13 @@ ob_end_flush();
 <?php
 $jsPagina = ['noticia/perfil.js'];
 require_once '../../components/layout/footer/footer-logado.php';
+// Ativar os toast
+if (isset($_SESSION['editar-noticia'])) {
+    if ($_SESSION['editar-noticia']) {
+        echo "<script>mostrar_toast('toast-noticia')</script>";
+    } else {
+        echo "<script>mostrar_toast('toast-noticia-erro')</script>";
+    }
+    unset($_SESSION['editar-noticia']);
+}
 ?>

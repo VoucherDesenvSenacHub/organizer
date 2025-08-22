@@ -7,7 +7,7 @@ $btn_text = ($noticia['noticia_id']) ? 'SALVAR ALTERAÇÃO' : 'CRIAR NOTICIA';
     <div class="container-popup">
         <button class="btn-fechar-popup fa-solid fa-xmark" onclick="fechar_popup('editar-noticia-popup')"></button>
         <form action="../../../controller/Noticia/GerenciarNoticiaController.php" method="POST">
-            <input type="hidden" name="id" value="<?= $noticia['noticia_id'] ?>">
+            <input type="hidden" name="noticia-id" value="<?= $noticia['noticia_id'] ?>">
             <div class="box-edit">
                 <h1><?= $acao ?></h1>
                 <div class="input-box">

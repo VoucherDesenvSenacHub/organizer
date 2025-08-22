@@ -15,8 +15,8 @@ if (!$_POST['projeto-id']) {
     $IdOng = $_SESSION['ong_id'];
 
     if ($NomeProjeto && $DescricaoProjeto && $MetaProjeto) {
-        $sucesso = $projetoModel->criar($NomeProjeto, $DescricaoProjeto, $MetaProjeto, $IdOng);
-        if ($sucesso) {
+        $projetoCriado  = $projetoModel->criar($NomeProjeto, $DescricaoProjeto, $MetaProjeto, $IdOng);
+        if ($projetoCriado) {
             $_SESSION['criar-projeto'] = true;
             header('Location: ' . $_SERVER['HTTP_REFERER']);
             exit;

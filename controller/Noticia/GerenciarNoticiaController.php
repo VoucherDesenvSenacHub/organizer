@@ -5,37 +5,37 @@ AuthService::verificaLoginOng();
 
 $noticiaModel = new NoticiaModel();
 
-// Validação dos inputs
-$inputs = filter_input_array(INPUT_POST, [
-    'titulo'    => FILTER_SANITIZE_SPECIAL_CHARS,
-    'texto'     => FILTER_SANITIZE_SPECIAL_CHARS,
-    'subtitulo' => FILTER_SANITIZE_SPECIAL_CHARS,
-    'subtexto'  => FILTER_SANITIZE_SPECIAL_CHARS,
-    'id'        => FILTER_VALIDATE_INT,
-]);
+// Pegar os dados
+$TituloNoticia    = filter_input(INPUT_POST, 'titulo', FILTER_SANITIZE_SPECIAL_CHARS);
+$SubtituloNoticia = filter_input(INPUT_POST, 'subtitulo', FILTER_SANITIZE_SPECIAL_CHARS);
+$TextoNoticia     = filter_input(INPUT_POST, 'texto', FILTER_SANITIZE_SPECIAL_CHARS);
+$SubtextoNoticia  = filter_input(INPUT_POST, 'subtexto', FILTER_SANITIZE_SPECIAL_CHARS);
 
-$titulo    = $inputs['titulo']    ?? null;
-$texto     = $inputs['texto']     ?? null;
-$subtitulo = $inputs['subtitulo'] ?? null;
-$subtexto  = $inputs['subtexto']  ?? null;
-$noticiaId = $inputs['id']        ?? null;
-
-$ongId = $_SESSION['ong_id'] ?? null;
 // Criar uma Notícia
-if (!$noticiaId) {
-    if ($titulo && $texto && $subtitulo && $subtexto) {
-        $noticiaModel->criar($titulo, $subtitulo, $texto, $subtexto, $ongId);
-        $_SESSION['criar-noticia'] = true;
+if (!$_POST['noticia-id']) {
+    $IdOng = $_SESSION['ong_id'];
+
+    if ($TituloNoticia && $SubtituloNoticia && $TextoNoticia && $SubtextoNoticia) {
+        $noticiaCriada = $noticiaModel->criar($TituloNoticia, $SubtituloNoticia, $TextoNoticia, $SubtextoNoticia, $IdOng);
+        if ($noticiaCriada) {
+            $_SESSION['criar-noticia'] = true;
+            header('Location: ' . $_SERVER['HTTP_REFERER']);
+            exit;
+        }
     }
     $_SESSION['criar-noticia'] = false;
+    header('Location: ' . $_SERVER['HTTP_REFERER']);
+    exit;
 }
 // Editar uma Notícia
 else {
-    $edicao = $noticiaModel->editar($noticiaId, $titulo, $subtitulo, $texto, $subtexto);
-    $_SESSION['editar-noticia'] = (bool) $edicao;
-    header('Location: ../../view/pages/noticia/perfil.php?id=' . $noticiaId);
+    $IdNoticia = $_POST['noticia-id'];
+    $noticiaEditada = $noticiaModel->editar($IdNoticia, $TituloNoticia, $SubtituloNoticia, $TextoNoticia, $SubtextoNoticia);
+    if ($noticiaEditada) {
+        $_SESSION['editar-noticia'] = true;
+    } else {
+        $_SESSION['editar-noticia'] = false;
+    }
+    header('Location: ' . $_SERVER['HTTP_REFERER']);
     exit;
 }
-
-header('Location: ' . $_SERVER['HTTP_REFERER']);
-exit;

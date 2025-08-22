@@ -14,30 +14,38 @@ class NoticiaModel
 
     function criar($titulo, $subtitulo, $texto, $subtexto, $id)
     {
-        $query = "INSERT INTO $this->tabela (titulo, subtitulo, texto, subtexto, ong_id)
-                          VALUES (:titulo, :subtitulo, :texto, :subtexto, :ong_id)";
-        $stmt = $this->pdo->prepare($query);
-        $stmt->bindParam(':titulo', $titulo);
-        $stmt->bindParam(':subtitulo', $subtitulo);
-        $stmt->bindParam(':texto', $texto);
-        $stmt->bindParam(':subtexto', $subtexto);
-        $stmt->bindParam(':ong_id', $id, PDO::PARAM_INT);
-        $stmt->execute();
+        try {
+            $query = "INSERT INTO $this->tabela (titulo, subtitulo, texto, subtexto, ong_id)
+                      VALUES (:titulo, :subtitulo, :texto, :subtexto, :ong_id)";
+            $stmt = $this->pdo->prepare($query);
+            $stmt->bindParam(':titulo', $titulo);
+            $stmt->bindParam(':subtitulo', $subtitulo);
+            $stmt->bindParam(':texto', $texto);
+            $stmt->bindParam(':subtexto', $subtexto);
+            $stmt->bindParam(':ong_id', $id, PDO::PARAM_INT);
+            return $stmt->execute();
+        } catch (PDOException $e) {
+            return false;
+        }
     }
 
     function editar($id, $titulo, $subtitulo, $texto, $subtexto)
     {
-        $query = "UPDATE $this->tabela
+        try {
+            $query = "UPDATE $this->tabela
                           SET titulo = :titulo, subtitulo = :subtitulo, texto = :texto, subtexto = :subtexto
                           WHERE noticia_id = :id";
-        $stmt = $this->pdo->prepare($query);
-        $stmt->bindParam(':titulo', $titulo);
-        $stmt->bindParam(':subtitulo', $subtitulo);
-        $stmt->bindParam(':texto', $texto);
-        $stmt->bindParam(':subtexto', $subtexto);
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-        $stmt->execute();
-        return $stmt->rowCount();
+            $stmt = $this->pdo->prepare($query);
+            $stmt->bindParam(':titulo', $titulo);
+            $stmt->bindParam(':subtitulo', $subtitulo);
+            $stmt->bindParam(':texto', $texto);
+            $stmt->bindParam(':subtexto', $subtexto);
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+            $stmt->execute();
+            return $stmt->rowCount();
+        } catch (PDOException $e) {
+            return false;
+        }
     }
 
     function listar($id = null)
@@ -143,7 +151,7 @@ class NoticiaModel
                   INNER JOIN ongs o ON n.ong_id = o.ong_id
                   WHERE o.ong_id = :ong_id
                   AND n.status = 'INATIVO'";
-            
+
             $stmt = $this->pdo->prepare($query);
             $stmt->bindValue(':ong_id', $ong_id, PDO::PARAM_INT);
         } else {

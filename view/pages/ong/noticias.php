@@ -68,7 +68,6 @@ ob_end_flush();
         <div class="area-cards">
             <?php
             if ($lista) {
-                $class = 'tp-ong';
                 foreach ($lista as $noticia) {
                     require '../../components/cards/card-noticia.php';
                 }
@@ -83,4 +82,13 @@ ob_end_flush();
 <?php
 $jsPagina = ['ong/noticias.js'];
 require_once '../../components/layout/footer/footer-logado.php';
+// Ativar os toast
+if (isset($_SESSION['criar-noticia'])) {
+    if ($_SESSION['criar-noticia']) {
+        echo "<script>mostrar_toast('toast-noticia')</script>";
+    } else {
+        echo "<script>mostrar_toast('toast-noticia-erro')</script>";
+    }
+    unset($_SESSION['criar-noticia']);
+}
 ?>
