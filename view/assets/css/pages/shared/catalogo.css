@@ -126,7 +126,7 @@ section#top-info {
     width: fit-content;
 }
 #form-filtro #esc-q-projetos:hover {
-    height: calc(40px * 3);
+    height: calc(40px * 4);
     /* width: 154px; */
     width: fit-content;
 }
