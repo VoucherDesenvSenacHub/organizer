@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 require_once __DIR__ . '/../../../autoload.php';
 
 $usuarioModel = new Usuario();
@@ -63,7 +62,7 @@ $lista_banco = $bancoModel->listar();
                         <p>Banco</p>
                     </div>
                 </div>
-                <form id="form" action="../../../controller/Ong/CadastrarOngController.php" method="POST">
+                <form id="form" action="../../../controller/Ong/GerenciarOngController.php" method="POST">
                     <div class="formBox">
                         <div class="inputBox">
                             <label for="nome">Razão Social<span>*</span></label>

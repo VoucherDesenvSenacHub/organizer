@@ -54,15 +54,19 @@ class Ong
         return false;
     }
 
-    function editar($dados)
+    public function editar($id, $dados)
     {
-        $query = "UPDATE $this->tabela
-                  SET nome = :nome, cnpj = :cnpj, telefone = :telefone, 
-                  email = :email, cep = :cep, rua = :rua, numero = :numero, bairro = :bairro, 
-                  cidade = :cidade, estado = :estado, banco_id = :banco_id, agencia = :agencia,
-                  conta_numero = :conta_numero, tipo_conta = :tipo_conta, descricao = :descricao
-                  WHERE ong_id = :id";
+        $query = "UPDATE {$this->tabela}
+                SET nome = :nome, cnpj = :cnpj, telefone = :telefone,
+                    email = :email, cep = :cep, rua = :rua, numero = :numero,
+                    bairro = :bairro, cidade = :cidade, estado = :estado,
+                    banco_id = :banco_id, agencia = :agencia,
+                    conta_numero = :conta_numero, tipo_conta = :tipo_conta,
+                    descricao = :descricao
+                WHERE ong_id = :id";
+
         $stmt = $this->pdo->prepare($query);
+
         $stmt->bindParam(':nome', $dados['nome']);
         $stmt->bindParam(':cnpj', $dados['cnpj']);
         $stmt->bindParam(':telefone', $dados['telefone']);
@@ -75,10 +79,11 @@ class Ong
         $stmt->bindParam(':estado', $dados['estado']);
         $stmt->bindParam(':banco_id', $dados['banco_id'], PDO::PARAM_INT);
         $stmt->bindParam(':agencia', $dados['agencia']);
-        $stmt->bindParam(':conta_numero', $dados['conta_numero']);
+        $stmt->bindParam(':conta_numero', $dados['conta']); // 👈 usar 'conta' do POST
         $stmt->bindParam(':tipo_conta', $dados['tipo_conta']);
         $stmt->bindParam(':descricao', $dados['descricao']);
-        $stmt->bindParam(':id', $dados['ong_id'], PDO::PARAM_INT);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT); // 👈 usar o $IdOng do controller
+
         $stmt->execute();
         return $stmt->rowCount();
     }

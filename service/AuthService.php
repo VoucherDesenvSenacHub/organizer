@@ -1,9 +1,9 @@
 <?php
 
 class AuthService {
-    public static function verificaLoginOng() {
+    public static function verificaLoginUsuario() {
         session_start();
-        if (!isset($_SESSION['ong_id'])) {
+        if (!isset($_SESSION['usuario'])) {
             header('Location: /login.php');
             exit;
         }

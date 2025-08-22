@@ -4,47 +4,12 @@ $acesso = 'ong';
 $tituloPagina = 'Meu Perfil | Organizer';
 $cssPagina = ['adm/validar-ong.css'];
 require_once '../../components/layout/base-inicio.php';
-
 require_once __DIR__ . '/../../../autoload.php';
+
 $ongModel = new Ong();
 $bancoModel = new BancoModel();
 $lista_banco = $bancoModel->listar();
 $perfil = $ongModel->buscarId($_SESSION['ong_id']);
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['atualizar-ong'])) {
-    $dados = [
-        'nome' => $_POST['nome'],
-        'cnpj' => $_POST['cnpj'],
-        'telefone' => $_POST['telefone'],
-        'email' => $_POST['email'],
-        'cep' => $_POST['cep'],
-        'rua' => $_POST['rua'],
-        'numero' => $_POST['numero'],
-        'bairro' => $_POST['bairro'],
-        'cidade' => $_POST['cidade'],
-        'estado' => $_POST['estado'],
-        'banco_id' => $_POST['banco'],
-        'agencia' => $_POST['agencia'],
-        'conta_numero' => $_POST['conta_numero'],
-        'tipo_conta' => $_POST['tipo_conta'],
-        'descricao' => $_POST['descricao'],
-        'ong_id' => $_SESSION['ong_id']
-    ];
-
-    try {
-        $update = $ongModel->editar($dados);
-        if ($update > 0) {
-            header('Location: meu-perfil.php?upd=sucesso');
-            exit;
-        } else {
-            header('Location: meu-perfil.php');
-            exit;
-        }
-    } catch (PDOException $e) {
-        header('Location: meu-perfil.php?upd=erro');
-        exit;
-    }
-}
 ob_end_flush();
 ?>
 <!-- Toast do Update -->
@@ -58,9 +23,9 @@ ob_end_flush();
 </div>
 <!-- Inicio do Container -->
 <main class="container">
-    <form id="form" class="dados-ong" action="meu-perfil.php" method="POST"
+    <form id="form" class="dados-ong" action="../../../controller/Ong/GerenciarOngController.php" method="POST"
         onsubmit="return confirm('Tem certeza que deseja alterar esses dados da ONG?')">
-        <input type="hidden" name="atualizar-ong" value="true">
+        <input type="hidden" name="ong-id" value="<?= $_SESSION['ong_id'] ?>">
         <fieldset>
             <legend><i class="fa-solid fa-house-flag"></i> DADOS DA ONG</legend>
             <div class="form">
@@ -142,7 +107,7 @@ ob_end_flush();
                 </label>
                 <label><span>Agência</span><input name="agencia" id="agencia" type="text" required
                         value="<?= $perfil['agencia'] ?>"></label>
-                <label><span>Número da conta</span><input name="conta_numero" id="conta" type="text" required
+                <label><span>Número da conta</span><input name="conta" id="conta" type="text" required
                         value="<?= $perfil['conta_numero'] ?>"></label>
                 <label>
                     <span>Tipo de Conta</span>
