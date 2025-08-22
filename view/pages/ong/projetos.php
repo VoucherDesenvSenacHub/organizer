@@ -20,11 +20,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['pesquisa'])) {
 }
 
 //FORMULÁRIO DE CRIAÇÃO DE PROJETO (popup)
-$PerfilProjeto = (object) [
+$PerfilProjeto = [
     'projeto_id' => null,
-    'nome' => '',
-    'meta' => '',
-    'descricao' => ''
+    'nome' => null,
+    'meta' => null,
+    'descricao' => null,
+    'valor_arrecadado' => null
 ];
 require_once __DIR__ . '/../../components/popup/formulario-projeto.php';
 ob_end_flush();
@@ -55,7 +56,7 @@ ob_end_flush();
         } ?>
         <!-- CARDS DE PROJETOS -->
         <div class="area-cards">
-            <?php   
+            <?php
             if ($lista) {
                 foreach ($lista as $projeto) {
                     require '../../components/cards/card-projeto.php';

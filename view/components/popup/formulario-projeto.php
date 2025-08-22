@@ -9,6 +9,7 @@ $btn_text = ($PerfilProjeto['projeto_id']) ? 'SALVAR ALTERAÇÃO' : 'CRIAR PROJE
         <button class="btn-fechar-popup fa-solid fa-xmark" onclick="fechar_popup('editar-projeto-popup')"></button>
         <form action="../../../controller/Projeto/GerenciarProjetoController.php" method="POST">
             <input type="hidden" name="projeto-id" value="<?= $PerfilProjeto['projeto_id'] ?>">
+            <input type="hidden" name="valor-arrecadado" value="<?= $PerfilProjeto['valor_arrecadado'] ?>">
             <div class="box-edit">
                 <h1><?= $acao ?></h1>
                 <div class="input-group">

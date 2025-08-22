@@ -12,15 +12,3 @@ if (fotosInput && qtImg) {
         }
     });
 }
-
-// Ativar os toast com base nos parametros
-window.addEventListener('DOMContentLoaded', () => {
-    const params = new URLSearchParams(window.location.search);
-    const msg = params.get('msg');
-
-    if (msg === 'sucesso') {
-        mostrar_toast('toast-noticia');
-    } else if (msg === 'erro') {
-        mostrar_toast('toast-noticia-erro');
-    }
-});
