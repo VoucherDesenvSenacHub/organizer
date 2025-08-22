@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . "/../../../autoload.php";
+require_once "../../autoload.php";
 session_start();
 
 $ongModel = new Ong();
