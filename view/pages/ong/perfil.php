@@ -29,6 +29,13 @@ if (isset($_SESSION['usuario']['id'])) {
 }
 
 $perfil = $_SESSION['perfil_usuario'] ?? '';
+
+// Verificar se o usuário é da ONG dona do projeto
+$projetoPertenceOng = false;
+if ($perfil === 'ong' && $projeto_id && isset($_SESSION['ong_id'])) {
+    $projetoInfo = $projetoModel->buscarPerfil($projeto_id);
+    $projetoPertenceOng = ($projetoInfo['ong_id'] == $_SESSION['ong_id']);
+}
 ?>
 <!-- 
     Toast de Favoritar
@@ -173,6 +180,23 @@ $perfil = $_SESSION['perfil_usuario'] ?? '';
     </div>
 </main>
 
+<?php if ($projetoPertenceOng): ?>
+    <div id="acoes">
+        <a href="editar-projeto.php?id=<?= $projeto_id ?>">
+            <button class="btn" id="btn-editar">
+                <i class="fa-solid fa-pen-to-square"></i> Editar Projeto
+            </button>
+        </a>
+
+        <button type="button" class="btn btn-danger" id="btn-inativar" onclick="abrir_popup('inativar-projeto-popup')">
+            <i class="fa-solid fa-trash"></i> Inativar Projeto
+        </button>
+    </div>
+    
+    <!-- Incluir o popup de inativação -->
+    <?php include 'inativar-projeto.php'; ?>
+<?php endif; ?>
+
 <?php
 $jsPagina = [];
 require_once '../../components/layout/footer/footer-logado.php';
@@ -187,24 +211,19 @@ if (isset($_SESSION['favorito'])) {
 }
 ?>
 
-<?php
-$perfil = $_SESSION['perfil_usuario'] ?? 'visitante';
-$projeto_id = $projeto['projeto_id'] ?? null;
-?>
+<script>
+function abrir_popup(id) {
+    document.getElementById(id).style.display = 'flex';
+}
 
-<?php if ($perfil === 'ong' && $projeto_id): ?>
-    <div id="acoes">
-        <a href="meu-perfil.php">
-            <button class="btn" id="btn-editar">
-                <i class="fa-solid fa-pen-to-square"></i> Editar Projeto
-            </button>
-        </a>
+function fechar_popup(id) {
+    document.getElementById(id).style.display = 'none';
+}
 
-        <a href="inativar-projeto.php?id=<?= $projeto_id ?>">
-            <button type="button" class="btn btn-danger" id="btn-inativar">
-                <i class="fa-solid fa-trash"></i> Inativar Projeto
-            </button>
-        </a>
-    </div>
-<?php endif; ?>
-
+// Fechar popup clicando fora dele
+document.addEventListener('click', function(e) {
+    if (e.target.classList.contains('popup-fundo')) {
+        e.target.style.display = 'none';
+    }
+});
+</script>

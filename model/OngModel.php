@@ -252,4 +252,22 @@ class Ong
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
         return $stmt->fetchAll();
     }
+    public function solicitarInativacaoProjeto($projetoId, $ongId, $motivo = null, $escolha = null)
+{
+    $sql = "UPDATE projetos 
+            SET status = 'inativacao_solicitada', 
+                motivo_inativacao = :motivo,
+                escolha = :escolha
+            WHERE projeto_id = :projeto_id 
+              AND ong_id = :ong_id";
+
+    $stmt = $this->pdo->prepare($sql);
+    return $stmt->execute([
+        ':motivo'     => $motivo,
+        ':escolha'    => $escolha,
+        ':projeto_id' => $projetoId,
+        ':ong_id'     => $ongId
+    ]);
+}
+
 }

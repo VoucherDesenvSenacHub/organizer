@@ -1,36 +1,54 @@
 <?php
-require_once __DIR__ . '/../model/ProjetoModel.php';
-
+ob_start();
 session_start();
 
-$acao = $_GET['acao'] ?? $_POST['acao'] ?? null;
+require_once __DIR__ . '/../../../autoload.php';
 
+$acao  = $_POST['acao'] ?? $_GET['acao'] ?? null;
+$ongId = $_SESSION['ong_id'] ?? null;
+
+$ongModel     = new Ong();
 $projetoModel = new Projeto();
 
 switch ($acao) {
-    case 'favoritar':
-        $usuario_id = $_SESSION['usuario']['id'];
-        $projeto_id = $_POST['projeto-id-favorito'] ?? null;
-        if ($projeto_id) {
-            $favorito = $projetoModel->favoritarProjeto($usuario_id, $projeto_id);
-            if ($favorito) {
-                $_SESSION['favorito'] = true;
-            } else {
-                $_SESSION['favorito'] = false;
-            }
+    case 'inativar':
+        $projetoId = (int)($_POST['projeto_id'] ?? 0);
+        $motivo    = trim($_POST['motivo'] ?? '');
+        $escolha   = $_POST['escolha'] ?? null;
 
-            header('Location: ' . $_SERVER['HTTP_REFERER']);
-            exit;
+        if ($ongId && $projetoId > 0) {
+            $ok = $ongModel->solicitarInativacaoProjeto(
+                $projetoId,
+                $ongId,
+                $motivo !== '' ? $motivo : null,
+                $escolha ?: null
+            );
+
+            if ($ok) {
+                $_SESSION['popup'] = "Solicitação de inativação enviada com sucesso.";
+            } else {
+                $_SESSION['popup'] = "Não foi possível enviar a solicitação. Verifique os dados.";
+            }
         } else {
-            echo "ID do projeto não fornecido.";
+            $_SESSION['popup'] = "Dados inválidos para inativação.";
         }
+
+        header("Location: /pages/ong/home.php");
+        exit;
+
+    case 'editar':
+        // Exemplo de ação editar
         break;
 
-    case 'cadastro':
-        // Lógica para cadastrar
+    case 'excluir':
+        // Exemplo de ação excluir
+        break;
+
+    case 'apoiar':
+        // Exemplo de ação apoiar
         break;
 
     default:
-        header('Location: ../view/login.php');
+        header("Location: /pages/ong/home.php");
         exit;
 }
