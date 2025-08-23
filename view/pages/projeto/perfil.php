@@ -76,7 +76,7 @@ ob_end_flush();
                             <button title="Favoritar" class="btn-like fa-solid fa-heart" onclick="abrir_popup('login-obrigatorio-popup')"></button>
 
                         <?php elseif (!isset($_SESSION['perfil_usuario']) || $_SESSION['perfil_usuario'] === 'doador') : ?>
-                            <?php $classe = in_array($projeto['projeto_id'], $projetosFavoritos) ? 'favoritado' : ''; ?>
+                            <?php $classe = in_array($IdProjeto, $projetosFavoritos) ? 'favoritado' : ''; ?>
                             <form action="../.././../controller/Projeto/FavoritarProjetoController.php" method="POST">
                                 <input type="hidden" name="projeto-id" value="<?= $IdProjeto ?>">
                                 <button title="Favoritar" class="btn-like fa-solid fa-heart <?= $classe ?>"></button>

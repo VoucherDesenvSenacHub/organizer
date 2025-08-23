@@ -269,4 +269,19 @@ class Ong
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
         return $stmt->fetchAll();
     }
+    function ultimasAcoes($IdOng)
+    {
+        $query = "SELECT p.projeto_id, p.nome, DATE_FORMAT(p.data_cadastro, '%d/%m/%Y') AS p_data,
+        n.noticia_id, n.titulo, DATE_FORMAT(n.data_cadastro, '%d/%m/%Y') AS n_data
+        FROM 
+            (SELECT * FROM projetos WHERE ong_id = :id ORDER BY data_cadastro DESC LIMIT 1) p
+        LEFT JOIN 
+            (SELECT * FROM noticias WHERE ong_id = :id ORDER BY data_cadastro DESC LIMIT 1) n
+        ON p.ong_id = n.ong_id";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindParam(':id', $IdOng, PDO::PARAM_INT);
+        $stmt->execute();
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        return $stmt->fetchAll();
+    }
 }

@@ -10,7 +10,7 @@ $ongModel = new Ong();
 $listarOngSalva = $ongModel->listarFavoritasRecentes($_SESSION['usuario']['id']);
 
 $projetoModel = new Projeto();
-$lista = $projetoModel->listarRecentes();
+$lista = $projetoModel->listarCardsProjetos('recentes');
 $listarProjetoSalvo = $projetoModel->listarFavoritosRecentes($_SESSION['usuario']['id']);
 $listarApoiadores = $projetoModel->listarApoiadoresRecentes($_SESSION['usuario']['id']);
 $usuarioModel = new Usuario();

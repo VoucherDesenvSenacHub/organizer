@@ -7,7 +7,7 @@ require_once '../../components/layout/base-inicio.php';
 
 require_once __DIR__ . '/../../../autoload.php';
 $projetoModel = new Projeto();
-$lista = $projetoModel->listarCardsProjetos();
+$lista = $projetoModel->listarCardsProjetos(2);
 
 if (isset($_GET['pesquisa'])) {
     $pesquisa = $_GET['pesquisa'];

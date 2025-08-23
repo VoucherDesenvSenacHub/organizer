@@ -6,12 +6,10 @@ require_once '../../components/layout/base-inicio.php';
 
 require_once __DIR__ . '/../../../autoload.php';
 $ongModel = new Ong();
-$projetoModel = new Projeto();
-$noticiaModel = new NoticiaModel();
-$listaNoticiasRecentes = $noticiaModel->listarRecentes($_SESSION['ong_id']);
-$listaProjetosRecentes = $projetoModel->listarRecentesOng($_SESSION['ong_id']);
+$IdOng = $_SESSION['ong_id'];
 $minhaOng = $ongModel->buscarPerfil($_SESSION['ong_id']);
 $dadosOng = $ongModel->buscarDados($_SESSION['ong_id']);
+$UltimasAcoes = $ongModel->ultimasAcoes($IdOng);
 
 ?>
 <!-- Toast -->
@@ -27,9 +25,9 @@ $dadosOng = $ongModel->buscarDados($_SESSION['ong_id']);
     </div>
     <div id="resumo">
         <a class="resumo-item" href="relatorios.php">
-        <?php $qtd = $dadosOng['qnt_doacoes'] ?? 0; ?>
-<h3>
-    R$ <?= number_format($qtd, 0, ',', '.'); ?> <span>DOAÇÕES</span></h3>
+            <?php $qtd = $dadosOng['qnt_doacoes'] ?? 0; ?>
+            <h3>
+                R$ <?= number_format($qtd, 0, ',', '.'); ?> <span>DOAÇÕES</span></h3>
             <i class="fa-solid fa-coins"></i>
         </a>
         <a class="resumo-item" href="projetos.php">
@@ -53,19 +51,17 @@ $dadosOng = $ongModel->buscarDados($_SESSION['ong_id']);
         <a href="relatorios.php"><img src="../../assets/images/icons/gif-relatorio.gif" alt=""><span>RELATÓRIOS</span></a>
     </nav> -->
 
-    <div id="atividades">
-        <h4>SUAS ATIVIDADES RECENTES</h4>
-        <div id="cards">
-            <?php foreach ($listaProjetosRecentes as $projeto) {
-                $tipo = "projeto";
-                require '../../components/cards/card-atividades-recentes.php';
-            } ?>
-            <?php foreach ($listaNoticiasRecentes as $noticia) {
-                $tipo = "noticia";
-                require '../../components/cards/card-atividades-recentes.php';
-            } ?>
+    <?php
+    if ($UltimasAcoes): ?>
+        <div id="atividades">
+            <h4>SUAS ATIVIDADES RECENTES</h4>
+            <div id="cards">
+                <?php foreach ($UltimasAcoes as $teste) {
+                    require '../../components/cards/card-recentes.php';
+                } ?>
+            </div>
         </div>
-    </div>
+    <?php endif ?>
 
 
 
