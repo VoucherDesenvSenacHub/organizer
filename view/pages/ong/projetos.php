@@ -11,12 +11,12 @@ require_once __DIR__ . '/../../../autoload.php';
 
 //CARREGA CARDS DE PROJETOS
 $projetoModel = new Projeto();
-$lista = $projetoModel->listarCardsProjetos($_SESSION['ong_id']);
-$temprojeto = $lista;
+$IdOng = $_SESSION['ong_id'];
+$lista = $projetoModel->listarCardsProjetos('ong', $IdOng);
 //PESQUISAR PROJETO
 if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['pesquisa'])) {
     $pesquisa = $_GET['pesquisa'];
-    $lista = $projetoModel->buscarNome($pesquisa, $_SESSION['ong_id']);
+    $lista = $projetoModel->listarCardsProjetos('pesquisa', ['ong_id' => $IdOng, 'pesquisa' => $pesquisa]);
 }
 
 //FORMULÁRIO DE CRIAÇÃO DE PROJETO (popup)
@@ -61,8 +61,7 @@ ob_end_flush();
                 foreach ($lista as $projeto) {
                     require '../../components/cards/card-projeto.php';
                 }
-            }
-            if (isset($temprojeto) && !$temprojeto) {
+            } else {
                 echo 'Você ainda não tem nenhum projeto :(';
             }
             ?>

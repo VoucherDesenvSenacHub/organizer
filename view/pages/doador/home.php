@@ -6,21 +6,17 @@ $cssPagina = ['doador/home.css'];
 require_once '../../components/layout/base-inicio.php';
 
 require_once __DIR__ . '/../../../autoload.php';
-$ongModel = new Ong();
-$listarOngSalva = $ongModel->listarFavoritasRecentes($_SESSION['usuario']['id']);
+
+// Pegar os dados do Doador
+$doadorModel = new DoadorModel();
+$IdDoador = $_SESSION['usuario']['id'];
+$relatorio = $doadorModel->RelatorioHome($IdDoador);
+$UltimasAtividades = $doadorModel->ultimasAtividadesDoador($IdDoador);
+
 
 $projetoModel = new Projeto();
-$lista = $projetoModel->listarRecentes();
-$listarProjetoSalvo = $projetoModel->listarFavoritosRecentes($_SESSION['usuario']['id']);
-$listarApoiadores = $projetoModel->listarApoiadoresRecentes($_SESSION['usuario']['id']);
-$usuarioModel = new Usuario();
-$relatorio = $usuarioModel->RelatorioHome($_SESSION['usuario']['id']);
-$doadorModel = new Doador();
-$listarDoacoesRecentes = $doadorModel->listarDoacoes($_SESSION['usuario']['id']);
-
-
+$lista = $projetoModel->listarCardsProjetos('recentes');
 $projetosFavoritos = $projetoModel->listarFavoritos($_SESSION['usuario']['id']);
-
 
 $perfil = $_SESSION['perfil_usuario'] ?? '';
 ?>
@@ -47,37 +43,18 @@ $perfil = $_SESSION['perfil_usuario'] ?? '';
         </a>
     </div>
 </section>
-<section id="acoes-doador">
-    <h2>SUAS ATIVIDADES RECENTES</h2>
-    <div class="box-cards">
-        <?php foreach ($listarDoacoesRecentes as $doacao) {
-            $tipo = "doacao";
-            require '../../components/cards/card-atividades-recentes.php';
-        }
-        ?>
-        <?php
-        foreach ($listarProjetoSalvo as $favoritos) {
-            $tipo = "projeto_salvo";
-            require '../../components/cards/card-atividades-recentes.php';
-        }
-        ?>
-        <?php
-        foreach ($listarOngSalva as $ong) {
-            $tipo = "ong_salva";
-            require '../../components/cards/card-atividades-recentes.php';
-        }
-        ?>
-        <?php
-        foreach ($listarApoiadores as $apoiador) {
-            $tipo = "apoiador";
-            require '../../components/cards/card-atividades-recentes.php';
-        }
-        ?>
-
-    </div>
-</section>
+<?php if ($UltimasAtividades): ?>
+    <section class="container-cards">
+        <h4>SUAS ATIVIDADES RECENTES</h4>
+        <div class="box-cards">
+            <?php foreach ($UltimasAtividades as $atividade) {
+                require '../../components/cards/card-atividades-doador.php';
+            } ?>
+        </div>
+    </section>
+<?php endif ?>
 <section class="container-cards">
-    <h2>PROJETOS RECENTES</h2>
+    <h4>PROJETOS RECENTES</h4>
     <div class="box-cards">
         <?php foreach ($lista as $projeto) {
             require '../../components/cards/card-projeto.php';

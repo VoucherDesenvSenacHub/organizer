@@ -7,11 +7,11 @@ require_once '../../components/layout/base-inicio.php';
 
 require_once __DIR__ . '/../../../autoload.php';
 $ongModel = new Ong();
-$lista = $ongModel->listarCards();
+$lista = $ongModel->listarCardsOngs();
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['pesquisa'])) {
     $pesquisa = $_GET['pesquisa'];
-    $lista = $ongModel->buscarNome($pesquisa);
+    $lista = $ongModel->listarCardsOngs('pesquisa', ['pesquisa' => $pesquisa]);
 }
 
 // Buscar os favoritos

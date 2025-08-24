@@ -1,6 +1,5 @@
 <?php
 ob_start();
-//Lógica e dependências primeiro
 require_once __DIR__ . '/../../../autoload.php';
 $projetoModel = new Projeto();
 
@@ -64,7 +63,7 @@ ob_end_flush();
                     <div id="carousel-imgs" class="carousel-imgs">
                         <?php if ($ImagensProjeto) {
                             foreach ($ImagensProjeto as $imagem) {
-                                echo "<img src='{$imagem['logo_url']}' class='carousel-item'>";
+                                echo "<img src='{$imagem['caminho']}' class='carousel-item'>";
                             }
                         } else {
                             echo "<img src='../../assets/images/global/image-placeholder.svg' class='carousel-item'>";
@@ -76,7 +75,7 @@ ob_end_flush();
                             <button title="Favoritar" class="btn-like fa-solid fa-heart" onclick="abrir_popup('login-obrigatorio-popup')"></button>
 
                         <?php elseif (!isset($_SESSION['perfil_usuario']) || $_SESSION['perfil_usuario'] === 'doador') : ?>
-                            <?php $classe = in_array($projeto['projeto_id'], $projetosFavoritos) ? 'favoritado' : ''; ?>
+                            <?php $classe = in_array($IdProjeto, $projetosFavoritos) ? 'favoritado' : ''; ?>
                             <form action="../.././../controller/Projeto/FavoritarProjetoController.php" method="POST">
                                 <input type="hidden" name="projeto-id" value="<?= $IdProjeto ?>">
                                 <button title="Favoritar" class="btn-like fa-solid fa-heart <?= $classe ?>"></button>
@@ -92,7 +91,7 @@ ob_end_flush();
                         <div id="carousel-big-imgs" class="carousel-imgs">
                             <?php if ($ImagensProjeto) {
                                 foreach ($ImagensProjeto as $imagem) {
-                                    echo "<img src='{$imagem['logo_url']}' class='carousel-item-big'>";
+                                    echo "<img src='{$imagem['caminho']}' class='carousel-item-big'>";
                                 }
                             } else {
                                 echo "<img src='../../assets/images/global/image-placeholder.svg' class='carousel-item-big'>";
@@ -116,7 +115,8 @@ ob_end_flush();
                         <img src="../../assets/images/icons/icon-apoio.png" alt="">
                         <h3>Apoiadores</h3>
                     </div>
-                    <?php if (!isset($_SESSION['perfil_usuario']) || $_SESSION['perfil_usuario'] !== 'ong'): ?>
+                    <?php if ($_SESSION['perfil_usuario'] === 'ong' && $_SESSION['ong_id'] === $PerfilProjeto['ong_id']): ?>
+                    <?php else: ?>
                         <div class="icon-title">
                             <img src="../../assets/images/icons/icon-medalha.png" alt="">
                             <h3>Responsável</h3>
@@ -157,13 +157,14 @@ ob_end_flush();
                                 ?>
                             </div>
                         </div>
-                        <?php if (!isset($_SESSION['perfil_usuario']) || $_SESSION['perfil_usuario'] !== 'ong'): ?>
+                        <?php if ($_SESSION['perfil_usuario'] === 'ong' && $_SESSION['ong_id'] === $PerfilProjeto['ong_id']): ?>
+                        <?php else: ?>
                             <div class="container-painel area-doador-voluntario">
                                 <h3><i class="fa-solid fa-house-flag"></i> ONG RESPONSÁVEL</h3>
                                 <div class="card-ong">
                                     <div class="perfil">
                                         <div class="logo">
-                                            <img src="<?= $PerfilProjeto['logo_ong'] ?? '../../assets/images/global/image-placeholder.svg' ?>">
+                                            <img src="<?= $PerfilProjeto['caminho'] ?? '../../assets/images/global/image-placeholder.svg' ?>">
                                         </div>
                                         <div class="nome">
                                             <h2><?= $PerfilProjeto['nome_ong'] ?></h2>

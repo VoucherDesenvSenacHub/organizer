@@ -1,5 +1,4 @@
 <?php
-
 $acesso = 'doador';
 $tituloPagina = 'Favoritos | Organizer';
 $cssPagina = ['doador/favoritos.css'];
@@ -11,9 +10,11 @@ $ongModel = new Ong();
 require_once '../../../model/ProjetoModel.php';
 $projetoModel = new Projeto();
 
+$IdUsuario = $_SESSION['usuario']['id'];
+
 // Buscar os favoritos
-$listaOngs = $ongModel->favoritosUsuario($_SESSION['usuario']['id']);
-$listaProjetos = $projetoModel->favoritosUsuario($_SESSION['usuario']['id']);
+$listaOngs = $ongModel->listarCardsOngs('favoritas', $IdUsuario);
+$listaProjetos = $projetoModel->listarCardsProjetos('favoritos', $IdUsuario);
 
 // Pintar o icone de favoritos
 $ongsFavoritas = $ongModel->listarFavoritas($_SESSION['usuario']['id']);

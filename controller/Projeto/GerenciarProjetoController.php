@@ -14,6 +14,11 @@ $MetaProjeto = filter_input(INPUT_POST, 'meta', FILTER_VALIDATE_FLOAT);
 if (!$_POST['projeto-id']) {
     $IdOng = $_SESSION['ong_id'];
 
+    if($MetaProjeto <= 0) {
+        echo "<script>alert('Valor Inválido! Adicione uma meta maior.');window.history.back();</script>";
+        exit;
+    }
+
     if ($NomeProjeto && $DescricaoProjeto && $MetaProjeto) {
         $projetoCriado  = $projetoModel->criar($NomeProjeto, $DescricaoProjeto, $MetaProjeto, $IdOng);
         if ($projetoCriado) {

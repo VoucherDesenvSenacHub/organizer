@@ -9,36 +9,22 @@ require_once __DIR__ . '/../../../autoload.php';
 $noticiaModel = new NoticiaModel();
 
 // Pegar as noticias
-$lista = $noticiaModel->listarCards($_SESSION['ong_id']);
-$temnoticia = $lista;
+$IdOng = $_SESSION['ong_id'];
+$lista = $noticiaModel->listarCardsNoticias('ong', $IdOng);
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['pesquisa'])) {
     $pesquisa = $_GET['pesquisa'];
-    $lista = $noticiaModel->buscarNome($pesquisa, $_SESSION['ong_id']);
+    $lista = $noticiaModel->listarCardsNoticias('pesquisa', ['ong_id' => $IdOng, 'pesquisa' => $pesquisa]);
 }
 // Criar a Noticia
-$noticia = (object) [
-    'noticia_id' => '',
-    'titulo' => '',
-    'subtitulo' => '',
-    'texto' => '',
-    'subtexto' => ''
+$PerfilNoticia = (object) [
+    'noticia_id' => null,
+    'titulo' => null,
+    'subtitulo' => null,
+    'texto' => null,
+    'subtexto' => null
 ];
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['titulo'])) {
-    $titulo = $_POST['titulo'];
-    $subtitulo = $_POST['subtitulo'];
-    $texto = $_POST['texto'];
-    $subtexto = $_POST['subtexto'];
-    $id = $_SESSION['ong_id'];
-    try {
-        $criar = $noticiaModel->criar($titulo, $subtitulo, $texto, $subtexto, $id);
-        header("Location: noticias.php?msg=sucesso");
-        exit;
-    } catch (PDOException) {
-        header("Location: noticias.php?msg=erro");
-        exit;
-    }
-}
+
 require_once '../../components/popup/formulario-noticia.php';
 ob_end_flush();
 ?>
@@ -71,8 +57,7 @@ ob_end_flush();
                 foreach ($lista as $noticia) {
                     require '../../components/cards/card-noticia.php';
                 }
-            }
-            if (isset($temnoticia) && !$temnoticia) {
+            } else {
                 echo 'Você ainda não publicou nenhuma notícia :(';
             }
             ?>

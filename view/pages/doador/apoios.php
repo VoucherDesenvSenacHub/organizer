@@ -4,8 +4,11 @@ $tituloPagina = 'Apoios | Organizer';
 $cssPagina = ['doador/apoios.css'];
 require_once '../../components/layout/base-inicio.php';
 require_once __DIR__ . '/../../../autoload.php';
+
 $projetoModel = new Projeto();
-$lista = $projetoModel->buscarCardsApoiados($_SESSION['usuario']['id']);
+
+$IdUsuario = $_SESSION['usuario']['id'];
+$lista = $projetoModel->listarCardsProjetos('apoiados' , $IdUsuario);
 
 $projetosFavoritos = $projetoModel->listarFavoritos($_SESSION['usuario']['id']);
 
