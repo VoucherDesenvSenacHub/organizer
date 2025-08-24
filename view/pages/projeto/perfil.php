@@ -115,7 +115,7 @@ ob_end_flush();
                         <img src="../../assets/images/icons/icon-apoio.png" alt="">
                         <h3>Apoiadores</h3>
                     </div>
-                    <?php if ($_SESSION['perfil_usuario'] === 'ong' && $_SESSION['ong_id'] === $PerfilProjeto['ong_id']): ?>
+                    <?php if (isset($_SESSION['perfil_usuario']) && $_SESSION['perfil_usuario'] === 'ong' && $_SESSION['ong_id'] === $PerfilProjeto['ong_id']): ?>
                     <?php else: ?>
                         <div class="icon-title">
                             <img src="../../assets/images/icons/icon-medalha.png" alt="">
@@ -157,7 +157,7 @@ ob_end_flush();
                                 ?>
                             </div>
                         </div>
-                        <?php if ($_SESSION['perfil_usuario'] === 'ong' && $_SESSION['ong_id'] === $PerfilProjeto['ong_id']): ?>
+                        <?php if (isset($_SESSION['perfil_usuario']) && $_SESSION['perfil_usuario'] === 'ong' && $_SESSION['ong_id'] === $PerfilProjeto['ong_id']): ?>
                         <?php else: ?>
                             <div class="container-painel area-doador-voluntario">
                                 <h3><i class="fa-solid fa-house-flag"></i> ONG RESPONSÁVEL</h3>
