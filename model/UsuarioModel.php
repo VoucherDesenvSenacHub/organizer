@@ -142,17 +142,4 @@ class Usuario
         $idade = $hoje->diff($dataNascimento)->y;
         return $idade;
     }
-
-    // Relatorios para a home do doador
-    function RelatorioHome($id)
-    {
-        $query = "SELECT sum(valor) as qnt_doacoes
-                  FROM doacao_projeto dp
-                  WHERE usuario_id = :id;";
-        $stmt = $this->pdo->prepare($query);
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-        $stmt->execute();
-        $stmt->setFetchMode(PDO::FETCH_ASSOC);
-        return $stmt->fetch();
-    }
 }

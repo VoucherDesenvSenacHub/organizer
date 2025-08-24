@@ -9,7 +9,7 @@ $ongModel = new Ong();
 $IdOng = $_SESSION['ong_id'];
 $minhaOng = $ongModel->buscarPerfil($_SESSION['ong_id']);
 $dadosOng = $ongModel->buscarDados($_SESSION['ong_id']);
-$UltimasAcoes = $ongModel->ultimasAcoes($IdOng);
+$UltimasAtividades = $ongModel->ultimasAtividadesOng($IdOng);
 
 ?>
 <!-- Toast -->
@@ -43,6 +43,7 @@ $UltimasAcoes = $ongModel->ultimasAcoes($IdOng);
             <i class="fa-solid fa-newspaper"></i>
         </a>
     </div>
+    <!-- REMOVIDO POIS ESTAVA SE REPETINDO MUITO A MESMA NAVEGAÇÃO -->
     <!-- <nav id="nav-home">
         <a href="noticias.php"><img src="../../assets/images/icons/gif-noticia.gif" alt=""><span>NOTÍCIAS</span></a>
         <a href="projetos.php"><img src="../../assets/images/icons/gif-projeto.gif" alt=""><span>PROJETOS</span></a>
@@ -50,21 +51,17 @@ $UltimasAcoes = $ongModel->ultimasAcoes($IdOng);
         <a href="apoiadores.php"><img src="../../assets/images/icons/gif-voluntario.gif" alt=""><span>APOIADORES</span></a>
         <a href="relatorios.php"><img src="../../assets/images/icons/gif-relatorio.gif" alt=""><span>RELATÓRIOS</span></a>
     </nav> -->
-
     <?php
-    if ($UltimasAcoes): ?>
-        <div id="atividades">
-            <h4>SUAS ATIVIDADES RECENTES</h4>
-            <div id="cards">
-                <?php foreach ($UltimasAcoes as $teste) {
-                    require '../../components/cards/card-recentes.php';
+    if ($UltimasAtividades): ?>
+        <section id="atividades-recentes">
+            <h4>ATIVIDADES RECENTES</h4>
+            <div class="box-cards">
+                <?php foreach ($UltimasAtividades as $atividade) {
+                    require '../../components/cards/card-atividades-ong.php';
                 } ?>
             </div>
-        </div>
+        </section>
     <?php endif ?>
-
-
-
     <!-- <div id="atividades">
         <h4>SUAS ATIVIDADES RECENTES</h4>
         <div id="cards">

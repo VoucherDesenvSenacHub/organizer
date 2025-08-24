@@ -222,17 +222,6 @@ class Ong
         return $stmt->fetchAll(PDO::FETCH_COLUMN);
     }
 
-    function listarFavoritasRecentes($usuario_id)
-    {
-        $sql = "SELECT f.ong_id, f.data_favoritado, (SELECT o.nome FROM ongs o WHERE o.ong_id = f.ong_id ORDER BY f.ong_id ASC LIMIT 1) AS nome_ong FROM favoritos_ongs f 
-        WHERE usuario_id = :id
-        ORDER BY f.data_favoritado DESC LIMIT 1";
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->bindParam(':id', $usuario_id, PDO::PARAM_INT);
-        $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_CLASS);
-    }
-
     function favoritosUsuario($usuario_id)
     {
         $query = "SELECT
@@ -269,15 +258,10 @@ class Ong
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
         return $stmt->fetchAll();
     }
-    function ultimasAcoes($IdOng)
+    
+    function ultimasAtividadesOng($IdOng)
     {
-        $query = "SELECT p.projeto_id, p.nome, DATE_FORMAT(p.data_cadastro, '%d/%m/%Y') AS p_data,
-        n.noticia_id, n.titulo, DATE_FORMAT(n.data_cadastro, '%d/%m/%Y') AS n_data
-        FROM 
-            (SELECT * FROM projetos WHERE ong_id = :id ORDER BY data_cadastro DESC LIMIT 1) p
-        LEFT JOIN 
-            (SELECT * FROM noticias WHERE ong_id = :id ORDER BY data_cadastro DESC LIMIT 1) n
-        ON p.ong_id = n.ong_id";
+        $query = "SELECT * FROM vw_atividades_recentes_ong WHERE ong_id = :id ORDER BY data_registro DESC";
         $stmt = $this->pdo->prepare($query);
         $stmt->bindParam(':id', $IdOng, PDO::PARAM_INT);
         $stmt->execute();
