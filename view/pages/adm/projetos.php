@@ -10,7 +10,7 @@ $lista = $projetoModel->listarCardsProjetos();
 
 if ($_SERVER['REQUEST_METHOD'] = 'GET' && isset($_GET['pesquisa'])) {
     $pesquisa = $_GET['pesquisa'];
-    $lista = $projetoModel->buscarNome($pesquisa);
+    $lista = $projetoModel->listarCardsProjetos('pesquisa', ['pesquisa' => $pesquisa]);
 }
 ?>
 

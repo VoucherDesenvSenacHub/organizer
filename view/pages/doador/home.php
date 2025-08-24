@@ -18,7 +18,6 @@ $projetoModel = new Projeto();
 $lista = $projetoModel->listarCardsProjetos('recentes');
 $projetosFavoritos = $projetoModel->listarFavoritos($_SESSION['usuario']['id']);
 
-
 $perfil = $_SESSION['perfil_usuario'] ?? '';
 ?>
 <!-- Toast de Favoritar -->

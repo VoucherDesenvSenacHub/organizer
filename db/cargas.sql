@@ -1,133 +1,176 @@
 -- ================================
+-- INSERÇÃO DE IMAGENS PARA OS (PROJETOS - NOTÍCIAS - ONGS - USÚARIOS)
+-- ================================
+INSERT INTO imagens (caminho) values
+-- IMAGENS PARA PROJETOS
+('https://cdn.slidesharecdn.com/ss_thumbnails/educacaotodos-131202174705-phpapp01-thumbnail.jpg?width=640&height=640&fit=bounds'),
+('https://storage.googleapis.com/atados-v3/user-uploaded/images/3a437f8e-830d-4ebd-9320-eba5033438e5.jpg'),
+('https://www.ubes.org.br/ubesnovo/wp-content/uploads/2018/04/ProblemasDaEducacaoDestaque-1-719x480.jpg'),
+('https://portalsustentabilidade.com/wp-content/uploads/2022/03/Design-sem-nome-5-e1646419237102.jpg'),
+('https://s1.static.brasilescola.uol.com.br/be/conteudo/images/sustentabilidade.jpg'),
+('https://i.ytimg.com/vi/Qky8NVaAfK8/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLBTelxuigbP2nhh0yjAOgqGw-yQeA'),
+('https://cajamar.sp.gov.br/noticias/wp-content/uploads/sites/2/2020/04/site_cuidando_de_quem_cuida.jpg'),
+('https://s2-redeglobo.glbimg.com/CEVPb42FgioPvuINbIkDu-ielic=/0x0:1600x900/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_b58693ed41d04a39826739159bf600a0/internal_photos/bs/2020/H/h/eFLBbmSLqxIrOAIXyZgQ/istock-1075972590-red.jpg'),
+('https://mediospublicos.uy/wp-content/uploads/avion-de-papel_16x9.png'),
+('https://lbv.org/wp-content/uploads/2023/12/flat_campanha_alimento-800_0.jpg'),
+('https://static.wixstatic.com/media/e84587_c0672bfc82594f1c8ab9b12db949bf5b~mv2.png/v1/fill/w_1000,h_500,al_c,q_90,usm_0.66_1.00_0.01/e84587_c0672bfc82594f1c8ab9b12db949bf5b~mv2.png'),
+('https://www.crieodontologia.com.br/wp-content/uploads/2018/02/06.02-Artigo-Higiene-bucal-na-terceira-idade-entenda-os-cuidados-necessarios.jpg'),
+-- IMAGENS PARA NOTÍCIAS
+('https://www.campusvilla.com.br/wp-content/uploads/2019/04/Doacao-Livros_ArmazemLiterario_Villa2019-21.jpg'),
+('https://www.campusvilla.com.br/wp-content/uploads/2019/04/Doacao-Livros_ArmazemLiterario_Villa2019-22.jpg'),
+('https://www.campusvilla.com.br/wp-content/uploads/2019/04/Doacao-Livros_ArmazemLiterario_Villa2019-29.jpg'),
+('https://navegantes.sc.gov.br/wp-content/uploads/2025/03/juntos-pelo-rio-capa-scaled.jpg'),
+('https://navegantes.sc.gov.br/wp-content/uploads/2025/03/IMG_2122-1376x917.jpg'),
+('https://cronos-media.sesisenaisp.org.br/api/media/1-0/files?img=img_4_210324_b0cf7edf-5e5b-475c-8f69-f1f7a03407c6_o.jpg'),
+-- IMAGENS PARA ONGS
+('https://www.portaladesso.com.br/images/noticia/img_3671_foto_2.jpg'),
+('https://sasp.com.br/wp-content/uploads/2020/04/acaosocial.jpg'),
+('https://img.freepik.com/vetores-premium/sustentabilidade-salve-a-terra-proteja-o-planeta-dia-do-meio-ambiente_822713-79.jpg'),
+('https://imagens.ebc.com.br/0iaeH_3bqaOnsrNzoGjkZuz01pE=/754x0/smart/https://radios.ebc.com.br/sites/default/files/thumbnails/image/sementes_0.jpg'),
+('https://sosenchentes.rs.gov.br/upload/recortes/202309/19160547_1450_GD.png'),
+('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh8KZO_tHfb95xYL3TiffzHtiA1lahqwnrPofiZD6GV51reFIakWZjnsJlpiuFl1pJcwi0fSk0K9PaNdcfpQ-gC6J-AMvVc4zMesed2sTfJ0-MvCLPSutx5mvDt6Umol92nU3OnzzQRqm0/s1600/marca+funda%25C3%25A7%25C3%25A3o+michel-01.jpg'),
+-- IMAGENS PARA USÚARIOS
+('https://avatars.githubusercontent.com/u/172551721?v=4'),
+('https://avatars.githubusercontent.com/u/161078050?v=4'),
+('https://avatars.githubusercontent.com/u/177282034?v=4'),
+('https://avatars.githubusercontent.com/u/172551770?v=4'),
+('https://avatars.githubusercontent.com/u/172551684?v=4'),
+('https://avatars.githubusercontent.com/u/177282041?v=4'),
+('https://avatars.githubusercontent.com/u/62699659?s=60&v=4'),
+('https://avatars.githubusercontent.com/u/172556334?v=4');
+
+
+
+-- ================================
 -- INSERÇÃO DE DADOS NA TABELA USÚARIOS
 -- ================================
 INSERT INTO usuarios (
-    nome, cpf, data_nascimento, foto_perfil, email, telefone, senha, doador, ong, adm, status
+    nome, cpf, data_nascimento, imagem_id, email, telefone, senha, doador, ong, adm, status
 ) VALUES (
     'Gean Augusto',
     '00100200305',
     '2003-07-28',
-    'https://avatars.githubusercontent.com/u/172551721?v=4',
+    25,
     'gean@organizer.com',
     '67991202907',
     '$2y$10$AJjK477ZpcxLxe9jowzCJuxBLs8nsYgHsU2QF41BauggY3vfxmDSG',
     TRUE,
-    FALSE,
+    TRUE,
     TRUE,
     'ATIVO'
 );
 
 INSERT INTO usuarios (
-    nome, cpf, data_nascimento, foto_perfil, email, telefone, senha, doador, ong, adm, status
+    nome, cpf, data_nascimento, imagem_id, email, telefone, senha, doador, ong, adm, status
 ) VALUES (
     'Filipe Correia',
     '00000012345',
     '1993-11-03',
-    'https://avatars.githubusercontent.com/u/161078050?v=4',
+    26,
     'filipe@organizer.com',
     '67991233362',
     '$2y$10$AJjK477ZpcxLxe9jowzCJuxBLs8nsYgHsU2QF41BauggY3vfxmDSG',
     TRUE,
-    FALSE,
+    TRUE,
     TRUE,
     'ATIVO'
 );
 
 INSERT INTO usuarios (
-    nome, cpf, data_nascimento, foto_perfil, email, telefone, senha, doador, ong, adm, status
+    nome, cpf, data_nascimento, imagem_id, email, telefone, senha, doador, ong, adm, status
 ) VALUES (
     'Daniel',
     '07825982185',
     '2025-06-15',
-    'https://avatars.githubusercontent.com/u/177282034?v=4',
+    27,
     'daniel@organizer.com',
     '67992240987',
     '$2y$10$AJjK477ZpcxLxe9jowzCJuxBLs8nsYgHsU2QF41BauggY3vfxmDSG',
     TRUE,
-    FALSE,
+    TRUE,
     TRUE,
     'ATIVO'
 );
 
 INSERT INTO usuarios (
-    nome, cpf, data_nascimento, foto_perfil, email, telefone, senha, doador, ong, adm, status
+    nome, cpf, data_nascimento, imagem_id, email, telefone, senha, doador, ong, adm, status
 ) VALUES (
     'Bruna Cavalheiro Borges',
     '07999339105',
     '2007-05-26',
-    'https://avatars.githubusercontent.com/u/172551770?v=4',
+    28,
     'bruna@organizer.com',
     '67999232384',
     '$2y$10$AJjK477ZpcxLxe9jowzCJuxBLs8nsYgHsU2QF41BauggY3vfxmDSG',
     TRUE,
-    FALSE,
+    TRUE,
     TRUE,
     'ATIVO'
 );
 
 INSERT INTO usuarios (
-    nome, cpf, data_nascimento, foto_perfil, email, telefone, senha, doador, ong, adm, status
+    nome, cpf, data_nascimento, imagem_id, email, telefone, senha, doador, ong, adm, status
 ) VALUES (
     'Duda Tawany',
     '13297423322',
     '2007-04-20',
-    'https://avatars.githubusercontent.com/u/172551684?v=4',
+    29,
     'duda@organizer.com',
     '67992163882',
     '$2y$10$AJjK477ZpcxLxe9jowzCJuxBLs8nsYgHsU2QF41BauggY3vfxmDSG',
     TRUE,
-    FALSE,
+    TRUE,
     TRUE,
     'ATIVO'
 );
 
 INSERT INTO usuarios (
-    nome, cpf, data_nascimento, foto_perfil, email, telefone, senha, doador, ong, adm, status
+    nome, cpf, data_nascimento, imagem_id, email, telefone, senha, doador, ong, adm, status
 ) VALUES (
     'Vitor Coronel',
     '10000980000',
     '2004-01-01',
-    'https://avatars.githubusercontent.com/u/177282041?v=4',
+    30,
     'vitor@organizer.com',
     '67982175519',
     '$2y$10$AJjK477ZpcxLxe9jowzCJuxBLs8nsYgHsU2QF41BauggY3vfxmDSG',
     TRUE,
-    FALSE,
+    TRUE,
     TRUE,
     'ATIVO'
 );
 
 INSERT INTO usuarios (
-    nome, cpf, data_nascimento, foto_perfil, email, telefone, senha,
+    nome, cpf, data_nascimento, imagem_id, email, telefone, senha,
     doador, ong, adm, status
 ) VALUES (
     'Adercio Barbuio Junior',
     '12345677700',
     '1974-10-26',
-    'https://avatars.githubusercontent.com/u/62699659?s=60&v=4',
+    31,
     'adercio@organizer.com',
     '67992663558',
     '$2y$10$AJjK477ZpcxLxe9jowzCJuxBLs8nsYgHsU2QF41BauggY3vfxmDSG',
-    TRUE,
     FALSE,
-    TRUE,
+    FALSE,
+    FALSE,
     'ATIVO'
 );
 
 INSERT INTO usuarios (
-    nome, cpf, data_nascimento, foto_perfil, email, telefone, senha,
+    nome, cpf, data_nascimento, imagem_id, email, telefone, senha,
     doador, ong, adm, status
 ) VALUES (
-    'Eduardo Silva Oliveira Filho',
-    '11111113245',
-    '2007-11-28',
-    'https://avatars.githubusercontent.com/u/177282096?v=4',
-    'eduardo@organizer.com',
-    '67111111111',
+    'Giovana Vitória Gomes',
+    '70149596464',
+    '2008-10-10',
+    32,
+    'giovana@organizer.com',
+    '67998047393',
     '$2y$10$AJjK477ZpcxLxe9jowzCJuxBLs8nsYgHsU2QF41BauggY3vfxmDSG',
-    TRUE,
     FALSE,
-    TRUE,
+    FALSE,
+    FALSE,
     'ATIVO'
 );
 
@@ -157,7 +200,7 @@ INSERT INTO ongs (
     nome, cnpj, responsavel_id, telefone, email,
     cep, rua, numero, bairro, cidade, estado,
     banco_id, agencia, conta_numero, tipo_conta,
-    logo_url, descricao, status
+    imagem_id, descricao, status
 ) VALUES (
     'Associação Amigos do Bem',
     '12.345.678/0001-90',
@@ -174,7 +217,7 @@ INSERT INTO ongs (
     '1234-5',
     '45645-68',
     'POUPANÇA',
-    'https://www.portaladesso.com.br/images/noticia/img_3671_foto_2.jpg',
+    19,
     'A Associação Amigos do Bem é uma organização não governamental sem fins lucrativos que atua há mais de 20 anos na promoção da inclusão social e no combate à pobreza em regiões de extrema vulnerabilidade. Nossa missão é transformar vidas por meio da educação, saúde, geração de renda e acesso à cidadania. Desenvolvemos projetos sustentáveis que impactam milhares de pessoas, promovendo o desenvolvimento humano e a autonomia das comunidades atendidas. Com uma equipe dedicada e parcerias com empresas e voluntários, acreditamos que é possível construir um futuro mais justo, solidário e com oportunidades para todos.',
     'ATIVO'
 );
@@ -183,7 +226,7 @@ INSERT INTO ongs (
     nome, cnpj, responsavel_id, telefone, email,
     cep, rua, numero, bairro, cidade, estado,
     banco_id, agencia, conta_numero, tipo_conta,
-    logo_url, descricao, status
+    imagem_id, descricao, status
 ) VALUES (
     'Associação Esperança para Todos',
     '11111111111111',
@@ -200,7 +243,7 @@ INSERT INTO ongs (
     '1234-5',
     '67890-12',
     'CORRENTE',
-    'https://sasp.com.br/wp-content/uploads/2020/04/acaosocial.jpg',
+    20,
     'Somos uma organização sem fins lucrativos dedicada a promover o acesso à educação de qualidade para crianças e adolescentes em situação de vulnerabilidade social. Atuamos por meio de oficinas, reforço escolar e programas de incentivo à leitura.',
     'ATIVO'
 );
@@ -209,7 +252,7 @@ INSERT INTO ongs (
     nome, cnpj, responsavel_id, telefone, email,
     cep, rua, numero, bairro, cidade, estado,
     banco_id, agencia, conta_numero, tipo_conta,
-    logo_url, descricao, status
+    imagem_id, descricao, status
 ) VALUES (
     'Planeta em Harmonia',
     '89997777777777',
@@ -226,7 +269,7 @@ INSERT INTO ongs (
     '8000-0',
     '88888-88',
     'CORRENTE',
-    'https://img.freepik.com/vetores-premium/sustentabilidade-salve-a-terra-proteja-o-planeta-dia-do-meio-ambiente_822713-79.jpg',
+    21,
     'Planeta em Harmonia é uma organização sem fins lucrativos dedicada à promoção da sustentabilidade ambiental e à conscientização ecológica. Nossa missão é inspirar ações que preservem os recursos naturais, promovam a educação ambiental e incentivem práticas responsáveis que contribuam para um futuro equilibrado entre o ser humano e a natureza. Acreditamos que um planeta saudável começa com pequenas atitudes e grandes propósitos.',
     'ATIVO'
 );
@@ -235,7 +278,7 @@ INSERT INTO ongs (
     nome, cnpj, responsavel_id, telefone, email,
     cep, rua, numero, bairro, cidade, estado,
     banco_id, agencia, conta_numero, tipo_conta,
-    logo_url, descricao, status
+    imagem_id, descricao, status
 ) VALUES (
     'Instituto Sementes do Amanhã',
     '22334455000166',
@@ -252,7 +295,7 @@ INSERT INTO ongs (
     '5678-9',
     '11223-44',
     'POUPANÇA',
-    'https://imagens.ebc.com.br/0iaeH_3bqaOnsrNzoGjkZuz01pE=/754x0/smart/https://radios.ebc.com.br/sites/default/files/thumbnails/image/sementes_0.jpg',
+    22,
     'O Instituto Sementes do Amanhã é uma entidade sem fins lucrativos que atua na promoção da inclusão social, educação ambiental e desenvolvimento comunitário em áreas urbanas e rurais. Fundado com o propósito de plantar ideias que florescem em oportunidades, o Instituto desenvolve projetos que visam transformar realidades por meio da capacitação de jovens, oficinas de empreendedorismo sustentável, hortas comunitárias e ações educativas voltadas à preservação do meio ambiente.\n\nNossa equipe é formada por profissionais engajados e voluntários apaixonados por fazer a diferença. Acreditamos que cada pessoa tem o potencial de impactar positivamente a sociedade quando lhe são oferecidas as ferramentas certas. Com parcerias públicas e privadas, buscamos fortalecer comunidades e estimular a cidadania ativa. Cada ação do Instituto é guiada pelo compromisso com a ética, a empatia e a sustentabilidade, sempre mirando um futuro mais justo e próspero para todos.',
     'ATIVO'
 );
@@ -261,7 +304,7 @@ INSERT INTO ongs (
     nome, cnpj, responsavel_id, telefone, email,
     cep, rua, numero, bairro, cidade, estado,
     banco_id, agencia, conta_numero, tipo_conta,
-    logo_url, descricao, status
+    imagem_id, descricao, status
 ) VALUES (
     'SOS Rio Grande do Sul',
     '44556677000188',
@@ -278,7 +321,7 @@ INSERT INTO ongs (
     '4321-0',
     '55443-21',
     'CORRENTE',
-    'https://sosenchentes.rs.gov.br/upload/recortes/202309/19160547_1450_GD.png',
+    23,
     'A SOS Rio Grande do Sul é uma organização humanitária sem fins lucrativos criada com o objetivo de prestar assistência imediata e contínua às vítimas de desastres naturais, especialmente enchentes e temporais que atingem diversas regiões do estado. Surgida a partir da solidariedade de voluntários e profissionais comprometidos, a ONG atua com agilidade na arrecadação e distribuição de donativos, alimentos, roupas, kits de higiene e materiais de limpeza para famílias desalojadas e comunidades afetadas.\n\nAlém da ajuda emergencial, a SOS RS também desenvolve projetos de reconstrução de moradias, apoio psicológico às vítimas e capacitação de lideranças comunitárias para enfrentamento de futuras crises. Acreditamos que a união, a empatia e a ação coordenada são fundamentais para superar momentos difíceis e reconstruir vidas com dignidade. Com o apoio da população e de instituições parceiras, seguimos firmes na missão de cuidar de quem mais precisa em tempos de calamidade.',
     'ATIVO'
 );
@@ -287,7 +330,7 @@ INSERT INTO ongs (
     nome, cnpj, responsavel_id, telefone, email, 
     cep, rua, numero, bairro, cidade, estado,
     banco_id, agencia, conta_numero, tipo_conta, 
-    logo_url, descricao, status
+    imagem_id, descricao, status
 ) VALUES (
     'Fundação Beija Flor',
     '70981237000144',
@@ -304,7 +347,7 @@ INSERT INTO ongs (
     '2020-9',
     '112233-44',
     'CORRENTE',
-    'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh8KZO_tHfb95xYL3TiffzHtiA1lahqwnrPofiZD6GV51reFIakWZjnsJlpiuFl1pJcwi0fSk0K9PaNdcfpQ-gC6J-AMvVc4zMesed2sTfJ0-MvCLPSutx5mvDt6Umol92nU3OnzzQRqm0/s1600/marca+funda%25C3%25A7%25C3%25A3o+michel-01.jpg',
+    24,
     'A Patas do Bem é uma organização sem fins lucrativos voltada para a proteção, acolhimento e reabilitação de animais abandonados, vítimas de maus-tratos e negligência. Nossa missão é garantir dignidade, cuidado e um novo lar para cães e gatos em situação de vulnerabilidade. Atuamos com resgates, atendimentos veterinários, vacinação, castração e adoção responsável. Também desenvolvemos campanhas de conscientização sobre posse responsável, combate ao abandono e bem-estar animal. Com a ajuda de voluntários e doadores, mantemos um abrigo seguro, amoroso e estruturado para dezenas de animais. Acreditamos que todo animal merece carinho, respeito e uma segunda chance. Se cada um fizer um pouco, juntos podemos transformar muitas vidas — de quatro patas.',
     'ATIVO'
 );
@@ -397,25 +440,6 @@ INSERT INTO projetos (
 
 
 -- ================================
--- INSERÇÃO DE IMAGENS PARA OS PROJETOS
--- ================================
-INSERT INTO imagens_projeto (projeto_id, logo_url) VALUES
-(1, 'https://cdn.slidesharecdn.com/ss_thumbnails/educacaotodos-131202174705-phpapp01-thumbnail.jpg?width=640&height=640&fit=bounds'),
-(1, 'https://storage.googleapis.com/atados-v3/user-uploaded/images/3a437f8e-830d-4ebd-9320-eba5033438e5.jpg'),
-(1, 'https://www.ubes.org.br/ubesnovo/wp-content/uploads/2018/04/ProblemasDaEducacaoDestaque-1-719x480.jpg'),
-(2, 'https://portalsustentabilidade.com/wp-content/uploads/2022/03/Design-sem-nome-5-e1646419237102.jpg'),
-(2, 'https://s1.static.brasilescola.uol.com.br/be/conteudo/images/sustentabilidade.jpg'),
-(3, 'https://cajamar.sp.gov.br/noticias/wp-content/uploads/sites/2/2020/04/site_cuidando_de_quem_cuida.jpg'),
-(4, 'https://s2-redeglobo.glbimg.com/CEVPb42FgioPvuINbIkDu-ielic=/0x0:1600x900/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_b58693ed41d04a39826739159bf600a0/internal_photos/bs/2020/H/h/eFLBbmSLqxIrOAIXyZgQ/istock-1075972590-red.jpg'),
-(2, 'https://i.ytimg.com/vi/Qky8NVaAfK8/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLBTelxuigbP2nhh0yjAOgqGw-yQeA'),
-(6, 'https://lbv.org/wp-content/uploads/2023/12/flat_campanha_alimento-800_0.jpg'),
-(5, 'https://mediospublicos.uy/wp-content/uploads/avion-de-papel_16x9.png'),
-(7, 'https://static.wixstatic.com/media/e84587_c0672bfc82594f1c8ab9b12db949bf5b~mv2.png/v1/fill/w_1000,h_500,al_c,q_90,usm_0.66_1.00_0.01/e84587_c0672bfc82594f1c8ab9b12db949bf5b~mv2.png'),
-(8, 'https://www.crieodontologia.com.br/wp-content/uploads/2018/02/06.02-Artigo-Higiene-bucal-na-terceira-idade-entenda-os-cuidados-necessarios.jpg');
-
-
-
--- ================================
 -- INSERÇÃO DE DADOS NA TABELA NOTÍCIAS
 -- ================================
 INSERT INTO noticias (
@@ -454,45 +478,61 @@ INSERT INTO noticias (
 
 
 -- ================================
--- INSERÇÃO DE IMAGENS PARA AS NOTÍCIAS
+-- RELACIONAR IMAGEM AO PROJETO
 -- ================================
-INSERT INTO imagens_noticia (noticia_id, logo_url) VALUES
-(1, 'https://www.campusvilla.com.br/wp-content/uploads/2019/04/Doacao-Livros_ArmazemLiterario_Villa2019-21.jpg'),
-(2, 'https://navegantes.sc.gov.br/wp-content/uploads/2025/03/juntos-pelo-rio-capa-scaled.jpg'),
-(1, 'https://www.campusvilla.com.br/wp-content/uploads/2019/04/Doacao-Livros_ArmazemLiterario_Villa2019-22.jpg'),
-(1, 'https://www.campusvilla.com.br/wp-content/uploads/2019/04/Doacao-Livros_ArmazemLiterario_Villa2019-29.jpg'),
-(2, 'https://navegantes.sc.gov.br/wp-content/uploads/2025/03/IMG_2122-1376x917.jpg'),
-(3, 'https://cronos-media.sesisenaisp.org.br/api/media/1-0/files?img=img_4_210324_b0cf7edf-5e5b-475c-8f69-f1f7a03407c6_o.jpg');
+INSERT INTO imagens_projetos (projeto_id, imagem_id) VALUES
+(1, 1),
+(1, 2),
+(1, 3),
+(2, 4),
+(2, 5),
+(2, 6),
+(3, 7),
+(4, 8),
+(5, 9),
+(6, 10),
+(7, 11),
+(8, 12);
 
+-- ================================
+-- RELACIONAR IMAGEM A NOTÍCIA
+-- ================================
+INSERT INTO imagens_noticias (noticia_id, imagem_id) VALUES
+(1, 13),
+(1, 14),
+(1, 15),
+(2, 16),
+(2, 17),
+(3, 18);
 
 
 
 -- ================================
--- INSERÇÃO DE DOAÇÕES PARA A TABELA DOACAO_PROJETO
+-- INSERÇÃO DE DOAÇÕES PARA A TABELA DOACOES_PROJETO
 -- ================================
 -- Doações de Gean (usuario_id = 1)
-INSERT INTO doacao_projeto (projeto_id, usuario_id, valor) VALUES
-(1, 1, 500.00),
-(1, 1, 3000.00),
-(1, 1, 150.00),
-(2, 1, 3000.00);
+INSERT INTO doacoes_projetos (projeto_id, usuario_id, valor, data_doacao) VALUES
+(1, 1, 500.00, NOW()),
+(1, 1, 3000.00, NOW() + INTERVAL 5 SECOND),
+(1, 1, 150.00, NOW() + INTERVAL 10 SECOND),
+(2, 1, 3000.00, NOW() + INTERVAL 15 SECOND);
 
 -- Doações de Bruna (usuario_id = 2)
-INSERT INTO doacao_projeto (projeto_id, usuario_id, valor) VALUES
-(3, 2, 11000.00),
-(1, 2, 100.00);
+INSERT INTO doacoes_projetos (projeto_id, usuario_id, valor, data_doacao) VALUES
+(3, 2, 11000.00, NOW() + INTERVAL 20 SECOND),
+(1, 2, 100.00, NOW() + INTERVAL 25 SECOND);
 
 -- Doações de Daniel (usuario_id = 3)
-INSERT INTO doacao_projeto (projeto_id, usuario_id, valor) VALUES
-(5, 3, 2800.00),
-(2, 3, 250.00);
+INSERT INTO doacoes_projetos (projeto_id, usuario_id, valor, data_doacao) VALUES
+(5, 3, 2800.00, NOW() + INTERVAL 30 SECOND),
+(2, 3, 250.00, NOW() + INTERVAL 35 SECOND);
 
 -- Doações de Filipe (usuario_id = 4)
-INSERT INTO doacao_projeto (projeto_id, usuario_id, valor) VALUES
-(4, 4, 1300.00),
-(6, 4, 120.00);
+INSERT INTO doacoes_projetos (projeto_id, usuario_id, valor, data_doacao) VALUES
+(4, 4, 1300.00, NOW() + INTERVAL 40 SECOND),
+(6, 4, 120.00, NOW() + INTERVAL 45 SECOND);
 
 -- Doações de Duda (usuario_id = 5)
-INSERT INTO doacao_projeto (projeto_id, usuario_id, valor) VALUES
-(7, 5, 300.00),
-(3, 5, 310.00);
+INSERT INTO doacoes_projetos (projeto_id, usuario_id, valor, data_doacao) VALUES
+(7, 5, 300.00, NOW() + INTERVAL 50 SECOND),
+(3, 5, 310.00, NOW() + INTERVAL 55 SECOND);

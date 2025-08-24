@@ -2,7 +2,6 @@
 $PerfilProjeto = (array) $PerfilProjeto;
 $acao = ($PerfilProjeto['projeto_id']) ? 'EDITAR PROJETO' : 'NOVO PROJETO';
 $btn_text = ($PerfilProjeto['projeto_id']) ? 'SALVAR ALTERAÇÃO' : 'CRIAR PROJETO';
-// $meta = (int)$meta;
 ?>
 <div class="popup-fundo" id="editar-projeto-popup">
     <div class="container-popup">

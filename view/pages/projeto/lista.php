@@ -7,11 +7,11 @@ require_once '../../components/layout/base-inicio.php';
 
 require_once __DIR__ . '/../../../autoload.php';
 $projetoModel = new Projeto();
-$lista = $projetoModel->listarCardsProjetos(2);
+$lista = $projetoModel->listarCardsProjetos();
 
 if (isset($_GET['pesquisa'])) {
     $pesquisa = $_GET['pesquisa'];
-    $lista = $projetoModel->buscarNome($pesquisa);
+    $lista = $projetoModel->listarCardsProjetos('pesquisa', ['pesquisa' => $pesquisa]);
 }
 
 //Verificar se o doador marcou este projeto como favorito

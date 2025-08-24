@@ -33,6 +33,6 @@ endswitch;
     <div class="text">
         <h4><?= $titulo ?></h4>
         <p><?= $texto ?></p>
-        <span><?= $atividade['data_registro'] ?></span>
+        <span><?= date('d/m/Y H:i', strtotime($atividade['data_registro'])) ?></span>
     </div>
 </div>

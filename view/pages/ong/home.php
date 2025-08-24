@@ -7,8 +7,7 @@ require_once '../../components/layout/base-inicio.php';
 require_once __DIR__ . '/../../../autoload.php';
 $ongModel = new Ong();
 $IdOng = $_SESSION['ong_id'];
-$minhaOng = $ongModel->buscarPerfil($_SESSION['ong_id']);
-$dadosOng = $ongModel->buscarDados($_SESSION['ong_id']);
+$DashboardOng = $ongModel->dashboardOng($IdOng);
 $UltimasAtividades = $ongModel->ultimasAtividadesOng($IdOng);
 
 ?>
@@ -20,26 +19,25 @@ $UltimasAtividades = $ongModel->ultimasAtividadesOng($IdOng);
 
 <main class="container">
     <div id="title">
-        <h1> <?= $minhaOng['nome'] ?></h1>
+        <h1> <?= $DashboardOng['nome'] ?></h1>
         <!-- <p>PAINEL</p> -->
     </div>
     <div id="resumo">
         <a class="resumo-item" href="relatorios.php">
-            <?php $qtd = $dadosOng['qnt_doacoes'] ?? 0; ?>
-            <h3>
-                R$ <?= number_format($qtd, 0, ',', '.'); ?> <span>DOAÇÕES</span></h3>
+            <?php $TotalDoacao = $DashboardOng['total_doacoes'] ?? 0; ?>
+            <h3>R$ <?= number_format($TotalDoacao, 0, ',', '.'); ?> <span>DOAÇÕES</span></h3>
             <i class="fa-solid fa-coins"></i>
         </a>
         <a class="resumo-item" href="projetos.php">
-            <h3><?= $dadosOng['qnt_projeto'] ?> <span>PROJETOS</span></h3>
+            <h3><?= $DashboardOng['total_projetos'] ?> <span>PROJETOS</span></h3>
             <i class="fa-solid fa-diagram-project"></i>
         </a>
         <a class="resumo-item" href="relatorios.php">
-            <h3><?= $dadosOng['qnt_apoiador'] ?> <span>APOIADORES</span></h3>
+            <h3><?= $DashboardOng['total_apoios'] ?> <span>APOIADORES</span></h3>
             <i class="fa-solid fa-hand-holding-heart"></i>
         </a>
         <a class="resumo-item" href="noticias.php">
-            <h3><?= $dadosOng['qnt_noticia'] ?> <span>NOTÍCIAS</span></h3>
+            <h3><?= $DashboardOng['total_noticias'] ?> <span>NOTÍCIAS</span></h3>
             <i class="fa-solid fa-newspaper"></i>
         </a>
     </div>

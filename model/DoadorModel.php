@@ -28,7 +28,7 @@ class DoadorModel
     function RelatorioHome($id)
     {
         $query = "SELECT sum(valor) as qnt_doacoes
-                  FROM doacao_projeto dp
+                  FROM doacoes_projetos dp
                   WHERE usuario_id = :id;";
         $stmt = $this->pdo->prepare($query);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
