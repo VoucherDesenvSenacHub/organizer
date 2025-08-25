@@ -90,11 +90,6 @@ section#apresentacao {
     transform: translateY(0);
 }
 
-#logo-ong .btn-salvar button {
-    background-color: rgba(0, 0, 0, 0.5);
-    color: aliceblue;
-}
-
 /* Informações da ONG */
 .ong-card {
     height: 100%;

@@ -6,7 +6,7 @@ $cssPagina = ['doador/doacoes.css'];
 require_once '../../components/layout/base-inicio.php';
 
 require_once '../../../model/ProjetoModel.php';
-$projetoModel = new Projeto();
+$projetoModel = new ProjetoModel();
 
 $doacoes = $projetoModel->buscarDoacao($_SESSION['usuario']['id']);
 ?>

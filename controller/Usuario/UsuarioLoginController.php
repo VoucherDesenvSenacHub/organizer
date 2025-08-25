@@ -4,7 +4,7 @@ require_once __DIR__ . '/../../model/UsuarioModel.php';
 
 session_start(); // Inicia a sessão para armazenar os dados do usuário após o login
 
-$usuarioModel = new Usuario();
+$usuarioModel = new UsuarioModel();
 
 $email = $_POST['email'];
 $senha = $_POST['senha'];

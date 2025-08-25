@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__ . "/../config/database.php";
-class Ong
+class OngModel
 {
     private $tabela = 'ongs';
     private $pdo;

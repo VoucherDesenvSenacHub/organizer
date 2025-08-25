@@ -3,14 +3,14 @@ session_start();
 
 require_once __DIR__ . '/../../../autoload.php';
 
-$usuarioModel = new Usuario();
+$usuarioModel = new UsuarioModel();
 $ongExiste = $usuarioModel->buscarOngUsuario($_SESSION['usuario']['id']);
 if ($ongExiste) {
     header("Location: ../visitante/acesso.php");
     exit;
 };
 
-$ongModel = new Ong();
+$ongModel = new OngModel();
 $bancoModel = new BancoModel();
 $lista_banco = $bancoModel->listar();
 ?>
