@@ -15,7 +15,7 @@ $FotoNoticia = $noticia['caminho'] ?? '../../assets/images/global/image-placehol
             <p><?= $TextoNoticia ?></p>
             <div class="info">
                 <p><i class="fa-solid fa-house-flag"></i> <?= $NomeOng ?></p>
-                <p><i class="fa-regular fa-clock"></i> <?= $DataNoticia ?></p>
+                <p><i class="fa-regular fa-clock"></i> <?= date('d/m/Y', strtotime($DataNoticia)) ?></p>
             </div>
         </div>
         <div class="imagem-noticia">
@@ -23,7 +23,6 @@ $FotoNoticia = $noticia['caminho'] ?? '../../assets/images/global/image-placehol
         </div>
     </a>
     <div class="acoes-noticia">
-        <button class="btn-share fa-solid fa-share-nodes"
-            onclick="compartilhar('compartilhar-popup', <?= $IdNoticia ?>, 'noticia')"></button>
+        <button title="Compartilhar" class="btn-share fa-solid fa-share-nodes" onclick="compartilhar('compartilhar-popup', <?= $IdNoticia ?>, 'noticia')"></button>
     </div>
 </div>

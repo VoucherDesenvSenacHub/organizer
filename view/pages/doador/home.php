@@ -14,7 +14,7 @@ $relatorio = $doadorModel->RelatorioHome($IdDoador);
 $UltimasAtividades = $doadorModel->ultimasAtividadesDoador($IdDoador);
 
 
-$projetoModel = new Projeto();
+$projetoModel = new ProjetoModel();
 $lista = $projetoModel->listarCardsProjetos('recentes');
 $projetosFavoritos = $projetoModel->listarFavoritos($_SESSION['usuario']['id']);
 

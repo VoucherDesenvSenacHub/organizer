@@ -1,7 +1,7 @@
 <?php
 ob_start();
 require_once __DIR__ . '/../../../autoload.php';
-$projetoModel = new Projeto();
+$projetoModel = new ProjetoModel();
 
 //Definições da página
 session_start();

@@ -3,7 +3,7 @@ require_once __DIR__ . '/../../model/UsuarioModel.php';
 
 session_start();
 
-$usuarioModel = new Usuario();
+$usuarioModel = new UsuarioModel();
 
 $perfilUsuario = $_POST['perfil'];
 

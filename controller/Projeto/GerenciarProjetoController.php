@@ -3,7 +3,7 @@ require_once __DIR__ . '/../../model/ProjetoModel.php';
 require_once '../../service/AuthService.php';
 AuthService::verificaLoginOng();
 
-$projetoModel = new Projeto();
+$projetoModel = new ProjetoModel();
 
 // Pegar os dados
 $NomeProjeto = filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_SPECIAL_CHARS);

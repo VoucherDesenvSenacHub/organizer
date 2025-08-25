@@ -5,7 +5,7 @@ $cssPagina = ['doador/apoios.css'];
 require_once '../../components/layout/base-inicio.php';
 require_once __DIR__ . '/../../../autoload.php';
 
-$projetoModel = new Projeto();
+$projetoModel = new ProjetoModel();
 
 $IdUsuario = $_SESSION['usuario']['id'];
 $lista = $projetoModel->listarCardsProjetos('apoiados' , $IdUsuario);

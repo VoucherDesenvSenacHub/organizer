@@ -5,10 +5,10 @@ $cssPagina = ['doador/favoritos.css'];
 require_once '../../components/layout/base-inicio.php';
 
 require_once '../../../model/OngModel.php';
-$ongModel = new Ong();
+$ongModel = new OngModel();
 
 require_once '../../../model/ProjetoModel.php';
-$projetoModel = new Projeto();
+$projetoModel = new ProjetoModel();
 
 $IdUsuario = $_SESSION['usuario']['id'];
 

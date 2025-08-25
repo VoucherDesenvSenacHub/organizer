@@ -5,7 +5,7 @@ $cssPagina = ['ong/home.css'];
 require_once '../../components/layout/base-inicio.php';
 
 require_once __DIR__ . '/../../../autoload.php';
-$ongModel = new Ong();
+$ongModel = new OngModel();
 $IdOng = $_SESSION['ong_id'];
 $DashboardOng = $ongModel->dashboardOng($IdOng);
 $UltimasAtividades = $ongModel->ultimasAtividadesOng($IdOng);
