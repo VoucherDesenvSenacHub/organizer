@@ -25,6 +25,6 @@
 }
 
 .navegacao a.active {
-    /* background-color: var(--cor-amarelo); */
-    background-color: red;
+    background-color: var(--cor-amarelo);
+    /* background-color: red; */
 }
