@@ -30,6 +30,17 @@ $btn_text = ($PerfilProjeto['projeto_id']) ? 'SALVAR ALTERAÇÃO' : 'CRIAR PROJE
                     <label for="descricao">Descrição<span>*</span></label>
                     <textarea name="descricao" id="descricao" rows="8" required><?= $PerfilProjeto['descricao'] ?></textarea>
                 </div>
+                <div class="input-box">
+                    <label>Categoria do Projeto<span>*</span></label>
+                    <div class="categorias">
+                        <label><input type="checkbox" name="categorias[]" value="Educacao"> Educação</label>
+                        <label><input type="checkbox" name="categorias[]" value="Saude"> Saúde</label>
+                        <label><input type="checkbox" name="categorias[]" value="Esporte"> Esporte</label>
+                        <label><input type="checkbox" name="categorias[]" value="Cultura"> Cultura</label>
+                        <label><input type="checkbox" name="categorias[]" value="Tecnologia"> Tecnologia</label>
+                        <label><input type="checkbox" name="categorias[]" value="Meio Ambiente"> Meio Ambiente</label>
+                    </div>
+                </div>
             </div>
             <div class="box-edit">
                 <div class="input-box">

@@ -70,3 +70,31 @@ main .container .area-cards {
         justify-content: center;
     }
 }
+
+.categorias {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 5px;
+}
+
+.categorias label {
+    display: flex;
+    align-items: center;
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 1px 3px; 
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    font-size: 14px;
+}
+
+.categorias input[type="checkbox"] {
+    margin-right: 6px;
+}
+
+.categorias label:hover {
+    background: #eef5ff;
+    border-color: #007bff;
+}
