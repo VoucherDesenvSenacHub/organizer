@@ -1,0 +1,30 @@
+/* Botões de navegação */
+.navegacao {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.navegacao a {
+    text-decoration: none;
+    color: var(--cor-principal);
+    background-color: white;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    transition: .3s;
+}
+
+.navegacao a:hover {
+    filter: brightness(.95);
+    transform: translateY(-2px);
+}
+
+.navegacao a.active {
+    /* background-color: var(--cor-amarelo); */
+    background-color: red;
+}

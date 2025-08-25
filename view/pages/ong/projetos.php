@@ -6,18 +6,21 @@ $tituloPagina = 'Projetos | Organizer';
 $cssPagina = ['ong/listagem.css'];
 require_once '../../components/layout/base-inicio.php';
 
-//IMPORT CLASSES
 require_once __DIR__ . '/../../../autoload.php';
 
 //CARREGA CARDS DE PROJETOS
 $projetoModel = new ProjetoModel();
 $IdOng = $_SESSION['ong_id'];
-$lista = $projetoModel->listarCardsProjetos('ong', $IdOng);
-//PESQUISAR PROJETO
-if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['pesquisa'])) {
-    $pesquisa = $_GET['pesquisa'];
-    $lista = $projetoModel->listarCardsProjetos('pesquisa', ['ong_id' => $IdOng, 'pesquisa' => $pesquisa]);
+$paginaAtual = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
+$tipo = 'ong';
+$valor = ['ong_id' => $IdOng, 'pagina' => $paginaAtual];
+if (isset($_GET['pesquisa'])) {
+    $tipo = 'pesquisa';
+    $valor['pesquisa'] = $_GET['pesquisa'];
 }
+$lista = $projetoModel->listarCardsProjetos($tipo, $valor);
+$totalRegistros = $projetoModel->paginacaoProjetos($tipo, $valor);
+$paginas = ceil($totalRegistros / 8);
 
 //FORMULÁRIO DE CRIAÇÃO DE PROJETO (popup)
 $PerfilProjeto = [
@@ -52,7 +55,7 @@ ob_end_flush();
             <button class="btn btn-novo" onclick="abrir_popup('editar-projeto-popup')">NOVO PROJETO +</button>
         </div>
         <?php if (isset($_GET['pesquisa'])) {
-            echo "<p id='qnt-busca'><i class='fa-solid fa-search'></i> " . count($lista) . " Projetos Encontrados</p>";
+            echo "<p id='qnt-busca'><i class='fa-solid fa-search'></i> " . $totalRegistros . " Projetos Encontrados</p>";
         } ?>
         <!-- CARDS DE PROJETOS -->
         <div class="area-cards">
@@ -66,6 +69,16 @@ ob_end_flush();
             }
             ?>
         </div>
+        <?php if ($paginas > 1): ?>
+            <nav class="navegacao">
+                <?php for ($i = 1; $i <= $paginas; $i++): ?>
+                    <a href="?pagina=<?= $i ?><?= isset($_GET['pesquisa']) ? '&pesquisa=' . urlencode($_GET['pesquisa']) : '' ?>"
+                        class="<?= $i === $paginaAtual ? 'active' : '' ?>">
+                        <?= $i ?>
+                    </a>
+                <?php endfor; ?>
+            </nav>
+        <?php endif; ?>
     </div>
 </main>
 

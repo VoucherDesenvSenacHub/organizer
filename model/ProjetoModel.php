@@ -15,6 +15,9 @@ class ProjetoModel
     function listarCardsProjetos(string $tipo = '', $valor = [])
     {
         $params = [];
+        $limit = $valor['limit'] ?? 8; 
+        $pagina = $valor['pagina'] ?? 1;
+        $offset = ($pagina - 1) * 8;
 
         switch ($tipo) {
             // Buscar os Projetos pelo nome
@@ -29,7 +32,7 @@ class ProjetoModel
             // Buscar os Projetos de uma ONG
             case 'ong':
                 $query = "SELECT * FROM vw_card_projetos v WHERE ong_id = :ong_id";
-                $params[':ong_id'] = $valor;
+                $params[':ong_id'] = $valor['ong_id'];
                 break;
             // Buscar os Projetos favoritos do Usúario
             case 'favoritos':
@@ -50,11 +53,12 @@ class ProjetoModel
                 $limit = 4;
                 $query = "SELECT v.*, p.data_cadastro FROM vw_card_projetos v
                 JOIN projetos p USING(projeto_id)
-                ORDER BY data_cadastro DESC LIMIT {$limit}";
+                ORDER BY data_cadastro DESC";
                 break;
             default:
                 $query = "SELECT * FROM vw_card_projetos v";
         }
+        $query .= " LIMIT {$limit} OFFSET {$offset}";
 
         $stmt = $this->pdo->prepare($query);
         foreach ($params as $key => $value) {
@@ -65,25 +69,31 @@ class ProjetoModel
     }
 
 
-    function selectProjetos($where, $params, $order = '', $limit)
+    function paginacaoProjetos(string $tipo = '', $valor = [])
     {
-        $query = "SELECT * FROM vw_card_projetos $where $order";
-        if ($limit) {
-            $query .= " LIMIT :limit";
+        $params = [];
+        switch ($tipo) {
+            case 'pesquisa':
+                $query = "SELECT COUNT(*) AS total FROM vw_card_projetos WHERE nome LIKE :nome";
+                $params[':nome'] = "%{$valor['pesquisa']}%";
+                if (!empty($valor['ong_id'])) {
+                    $query .= " AND ong_id = :ong_id";
+                    $params[':ong_id'] = $valor['ong_id'];
+                }
+                break;
+            default:
+                $query = "SELECT COUNT(*) AS total FROM vw_card_projetos";
         }
 
         $stmt = $this->pdo->prepare($query);
         foreach ($params as $key => $value) {
             $stmt->bindValue($key, $value, is_int($value) ? PDO::PARAM_INT : PDO::PARAM_STR);
         }
-        // Condição para buscar os projetos da ONG
-        if ($limit) {
-            $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
-        }
         $stmt->execute();
-        $stmt->setFetchMode(PDO::FETCH_ASSOC);
-        return $stmt->fetchAll();
+        $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $resultado['total'];
     }
+
 
     function buscarPerfilProjeto($IdProjeto)
     {

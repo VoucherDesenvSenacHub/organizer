@@ -12,7 +12,7 @@ $noticiaModel = new NoticiaModel();
 if (isset($_GET['id'])) {
     $IdOng = $_GET['id'];
     $PerfilOng = $ongModel->buscarPerfilOng($IdOng);
-    $projetos_ong = $projetoModel->listarCardsProjetos('ong', $IdOng);
+    $projetos_ong = $projetoModel->listarCardsProjetos('ong', ['ong_id' => $IdOng, 'limit' => 50]);
     $noticias_ong = $noticiaModel->listarCardsNoticias('ong', $IdOng);
     $doadores_ong = $ongModel->buscarDoadores($IdOng);
     $FotoOng = $PerfilOng['caminho'] ?? '../../assets/images/global/image-placeholder.svg';
@@ -51,7 +51,7 @@ $perfil = $_SESSION['perfil_usuario'] ?? '';
             <div id="logo-ong">
                 <img src="<?= $FotoOng ?>">
                 <div class="btn-salvar">
-                    <button title="Compartilhar" class="btn-share fa-solid fa-share-nodes" onclick="compartilhar('compartilhar-popup', <?=$IdOng?>, 'ong')"></button>
+                    <button title="Compartilhar" class="btn-share fa-solid fa-share-nodes" onclick="compartilhar('compartilhar-popup', <?= $IdOng ?>, 'ong')"></button>
                     <?php if (!isset($_SESSION['usuario']['id'])): ?>
                         <button title="Favoritar" class="btn-like fa-solid fa-heart" onclick="abrir_popup('login-obrigatorio-popup')"></button>
                     <?php elseif (!isset($_SESSION['perfil_usuario']) || $_SESSION['perfil_usuario'] === 'doador') : ?>
