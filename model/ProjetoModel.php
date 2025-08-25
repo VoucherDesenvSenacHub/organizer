@@ -15,7 +15,7 @@ class ProjetoModel
     function listarCardsProjetos(string $tipo = '', $valor = [])
     {
         $params = [];
-        $limit = $valor['limit'] ?? 8; 
+        $limit = $valor['limit'] ?? 8;
         $pagina = $valor['pagina'] ?? 1;
         $offset = ($pagina - 1) * 8;
 
@@ -83,6 +83,10 @@ class ProjetoModel
                 break;
             default:
                 $query = "SELECT COUNT(*) AS total FROM vw_card_projetos";
+                if (!empty($valor['ong_id'])) {
+                    $query .= " WHERE ong_id = :ong_id";
+                    $params[':ong_id'] = $valor['ong_id'];
+                }
         }
 
         $stmt = $this->pdo->prepare($query);
