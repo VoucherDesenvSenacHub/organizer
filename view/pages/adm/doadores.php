@@ -5,7 +5,7 @@ $cssPagina = ['adm/doadores.css'];
 require_once '../../components/layout/base-inicio.php';
 
 require_once __DIR__ . '/../../../autoload.php';
-$usuarioModel = new Usuario();
+$usuarioModel = new UsuarioModel();
 $lista = $usuarioModel->listar();
 
 if ($_SERVER['REQUEST_METHOD'] = 'GET' && isset($_GET['pesquisa'])) {

@@ -1,20 +1,12 @@
 <?php
 $acesso = 'visitante';
 $tituloPagina = 'Cadastro | Organizer';
-$cssPagina = ['shared/cadastro.css'];
+$cssPagina = ['visitante/cadastro.css'];
 require_once '../../components/layout/base-inicio.php';
 
 require_once __DIR__ . '/../../../autoload.php';
-$usuarioModel = new Usuario();
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $nome = $_POST['nome'];
-    $telefone = $_POST['telefone'];
-    $cpf = $_POST['cpf'];
-    $data_nascimento = $_POST['data_nascimento'];
-    $email = $_POST['email'];
-    $senha = $_POST['senha'];
-    $usuarioModel->cadastro($nome, $telefone, $cpf, $data_nascimento, $email, $senha);
-}
+$usuarioModel = new UsuarioModel();
+
 ?>
 <div id="toast-cadastro-erro" class="toast erro">
     <i class="fa-solid fa-triangle-exclamation"></i>
@@ -36,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <p>Login</p>
                 </div>
             </div>
-            <form id="form" action="cadastro.php" method="POST">
+            <form id="form" action="../../../controller/Usuario/UsuarioCadastroController.php" method="POST">
                 <div class="formBox">
                     <div class="inputBox">
                         <label for="nome">Nome Completo<span>*</span></label>
@@ -108,6 +100,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </script>
 
 <?php
-$jsPagina = ['cadastro-doador.js'];
+$jsPagina = ['usuario/cadastro.js'];
 require_once '../../components/layout/footer/footer-visitante.php';
 ?>

@@ -58,15 +58,11 @@
     color: var(--cor-principal);
 }
 
-/* SECTION */
-section#acoes-doador {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 5px;
-}
-
-section#acoes-doador .box-cards {
-    gap: 10px;
+/* SECTIONS */
+section h4 {
+    color: var(--cor-azul-escuro);
+    font-size: 14px;
+    font-weight: 600;
 }
 
 section.container-cards {
@@ -75,18 +71,11 @@ section.container-cards {
     gap: 10px;
 }
 
-
-section h2 {
-    color: var(--cor-azul-escuro);
-    font-size: 14px;
-    font-weight: 600;
-}
-
 section .box-cards {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    gap: 30px 10px;
+    gap: 10px;
 }
 
 @media (max-width: 400px) {

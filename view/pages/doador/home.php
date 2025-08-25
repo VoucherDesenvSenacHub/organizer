@@ -6,59 +6,60 @@ $cssPagina = ['doador/home.css'];
 require_once '../../components/layout/base-inicio.php';
 
 require_once __DIR__ . '/../../../autoload.php';
-$usuarioModel = new Usuario();
-$relatorio = $usuarioModel->RelatorioHome($_SESSION['usuario_id']);
+
+// Pegar os dados do Doador
+$doadorModel = new DoadorModel();
+$IdDoador = $_SESSION['usuario']['id'];
+$relatorio = $doadorModel->RelatorioHome($IdDoador);
+$UltimasAtividades = $doadorModel->ultimasAtividadesDoador($IdDoador);
+
+
+$projetoModel = new ProjetoModel();
+$lista = $projetoModel->listarCardsProjetos('recentes');
+$projetosFavoritos = $projetoModel->listarFavoritos($_SESSION['usuario']['id']);
+
+$perfil = $_SESSION['perfil_usuario'] ?? '';
 ?>
+<!-- Toast de Favoritar -->
+<div id="toast-favorito" class="toast">
+    <i class="fa-solid fa-heart"></i>
+    Adicionado aos favoritos!
+</div>
+<div id="toast-remover-favorito" class="toast erro">
+    <i class="fa-solid fa-heart-crack"></i>
+    Removido dos favoritos!
+</div>
+<!-- 
+    Ínicio da Página
+-->
 <section id="cabecalho">
-    <h1>Olá, <?= implode(' ', array_slice(explode(' ', trim($usuario->nome)), 0, 2)) ?>.</h1>
+    <h1>Olá, <?= implode(' ', array_slice(explode(' ', trim($usuario['nome'])), 0, 2)) ?>.</h1>
     <p>Seja bem-vindo à sua área de doador.</p>
     <div id="info-doacao">
         <a class="item-info" href="doacoes.php">
-            <h3>R$ <?= number_format($relatorio->qnt_doacoes, 0, ',', '.'); ?> <span>MINHAS DOAÇÕES</span></h3>
+            <h3>
+                R$ <?= number_format($relatorio['qnt_doacoes'] ?? 0, 0, ',', '.'); ?> <span>MINHAS DOAÇÕES</span></h3>
             <i class="fa-solid fa-coins"></i>
         </a>
     </div>
 </section>
-<section id="acoes-doador">
-    <h2>SUAS ATIVIDADES RECENTES</h2>
-    <div class="box-cards">
-        <div class="card-acoes">
-            <div class="icon tp-doacao">
-                <img src="../../assets/images/pages/home-doador/icon-dinheiro.png">
-            </div>
-            <div class="acoes-text">
-                <h4>Doação realizada</h4>
-                <p>Você doou R$ 50,00 para o Projeto “Educação para Todos”</p>
-                <span>04 de agosto de 2024, 14:21</span>
-            </div>
+<?php if ($UltimasAtividades): ?>
+    <section class="container-cards">
+        <h4>SUAS ATIVIDADES RECENTES</h4>
+        <div class="box-cards">
+            <?php foreach ($UltimasAtividades as $atividade) {
+                require '../../components/cards/card-atividades-doador.php';
+            } ?>
         </div>
-        <div class="card-acoes">
-            <div class="icon tp-salvar">
-                <img src="../../assets/images/pages/home-doador/icon-coracao.png">
-            </div>
-            <div class="acoes-text">
-                <h4>Projeto Salvo</h4>
-                <p>Você favoritou o Projeto “Amigos da Natureza”</p>
-                <span>04 de agosto de 2024, 14:21</span>
-            </div>
-        </div>
-        <div class="card-acoes">
-            <div class="icon tp-apoiar">
-                <img src="../../assets/images/pages/home-doador/icon-abraco.png">
-            </div>
-            <div class="acoes-text">
-                <h4>Voluntariado Escrito</h4>
-                <p>Você se inscreveu na ONG “Ajuda Animal”</p>
-                <span>04 de agosto de 2024, 14:21</span>
-            </div>
-        </div>
-    </div>
-</section>
+    </section>
+<?php endif ?>
 <section class="container-cards">
-    <h2>PROJETOS EM DESTAQUES</h2>
+    <h4>PROJETOS RECENTES</h4>
     <div class="box-cards">
-        <?php for ($i = 0; $i < 4; $i++) { ?>
-            <div class="card-projeto">
+        <?php foreach ($lista as $projeto) {
+            require '../../components/cards/card-projeto.php';
+        } ?>
+        <!-- <div class="card-projeto">
                 <div class="acoes-projeto">
                     <button class="btn-share fa-solid fa-share-nodes" onclick="abrir_popup('compartilhar-popup')"></button>
                     <button class="btn-like fa-solid fa-heart" onclick="abrir_popup('login-obrigatorio-popup')"></button>
@@ -77,8 +78,7 @@ $relatorio = $usuarioModel->RelatorioHome($_SESSION['usuario_id']);
                     </div>
                 </div>
                 <a class="saiba-mais-projeto" href="../projeto/perfil.php?id=1">Saiba Mais</a>
-            </div>
-        <?php } ?>
+            </div> -->
     </div>
 </section>
 <!-- <section class="container-cards">
@@ -118,4 +118,13 @@ $relatorio = $usuarioModel->RelatorioHome($_SESSION['usuario_id']);
 <?php
 $jsPagina = [];
 require_once '../../components/layout/footer/footer-logado.php';
+// Ativar os toast
+if (isset($_SESSION['favorito'])) {
+    if ($_SESSION['favorito']) {
+        echo "<script>mostrar_toast('toast-favorito')</script>";
+    } else {
+        echo "<script>mostrar_toast('toast-remover-favorito')</script>";
+    }
+    unset($_SESSION['favorito']);
+}
 ?>

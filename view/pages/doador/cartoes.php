@@ -4,6 +4,7 @@ $tituloPagina = 'Cartões | Organizer'; // Definir o título da página
 $cssPagina = ["doador/cartoes.css"]; //Colocar o arquivo .css (exemplo: 'ONG/cadastro.css')
 require_once '../../components/layout/base-inicio.php';
 ?>
+
 <body>
     <!-- COMEÇAR SEU CÓDIGO AQUI -->
     <div class="conteiner">
@@ -14,21 +15,27 @@ require_once '../../components/layout/base-inicio.php';
                 <div class="cartoes-container">
                     <!-- Cartão 1 -->
                     <div onclick="abrir_popup('popup-excluir-cartao')" class="cartao" data-cartao-id="1">
-                        <div class="nome-cartao"><i class="fa-solid fa-credit-card"></i><h3>Cartão</h3></div>
+                        <div class="nome-cartao"><i class="fa-solid fa-credit-card"></i>
+                            <h3>Cartão</h3>
+                        </div>
                         <div class="numero-cartao">***** ***** ***** 7501</div>
                         <div class="validade">Data de validade 02/31</div>
                     </div>
 
                     <!-- Cartão 2 -->
                     <div onclick="abrir_popup('popup-excluir-cartao')" class="cartao" data-cartao-id="2">
-                        <div class="nome-cartao"><i class="fa-solid fa-credit-card"></i><h3>Cartão</h3></div>
+                        <div class="nome-cartao"><i class="fa-solid fa-credit-card"></i>
+                            <h3>Cartão</h3>
+                        </div>
                         <div class="numero-cartao">***** ***** ***** 9503</div>
                         <div class="validade">Data de validade 05/25</div>
                     </div>
 
                     <!-- Cartão 3 -->
                     <div onclick="abrir_popup('popup-excluir-cartao')" class="cartao" data-cartao-id="3">
-                        <div class="nome-cartao"><i class="fa-solid fa-credit-card"></i><h3>Cartão</h3></div>
+                        <div class="nome-cartao"><i class="fa-solid fa-credit-card"></i>
+                            <h3>Cartão</h3>
+                        </div>
                         <div class="numero-cartao">***** ***** ***** 8523</div>
                         <div class="validade">Data de validade 01/27</div>
                     </div>
@@ -61,7 +68,7 @@ require_once '../../components/layout/base-inicio.php';
 
                 <div class="input-grupo">
                     <label>CVV</label>
-                    <input  id="CVV"type="text" placeholder="CVV" class="cvv">
+                    <input id="CVV" type="text" placeholder="CVV" class="cvv">
                 </div>
             </div>
 
@@ -73,10 +80,10 @@ require_once '../../components/layout/base-inicio.php';
                 <button class="add-button" id="addButton">
                     <span class="button-text">ADICIONAR</span>
                     <div class="loader"></div>
-                        <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
-                            <circle class="checkmark-circle" cx="26" cy="26" r="25" fill="none" />
-                            <path class="checkmark-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
-                        </svg>
+                    <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                        <circle class="checkmark-circle" cx="26" cy="26" r="25" fill="none" />
+                        <path class="checkmark-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
+                    </svg>
                 </button>
             </div>
         </div>
@@ -116,7 +123,6 @@ require_once '../../components/layout/base-inicio.php';
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
 <script type="text/javascript">
-
     $("#number-cartao").mask("0000 0000 0000 0000");
     $("#CVV").mask("000");
 </script>

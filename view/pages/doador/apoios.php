@@ -4,10 +4,13 @@ $tituloPagina = 'Apoios | Organizer';
 $cssPagina = ['doador/apoios.css'];
 require_once '../../components/layout/base-inicio.php';
 require_once __DIR__ . '/../../../autoload.php';
-$projetoModel = new Projeto();
-$lista = $projetoModel->buscarCardsApoiados($_SESSION['usuario_id']);
 
-$projetosFavoritos = $projetoModel->listarFavoritos($_SESSION['usuario_id']);
+$projetoModel = new ProjetoModel();
+
+$IdUsuario = $_SESSION['usuario']['id'];
+$lista = $projetoModel->listarCardsProjetos('apoiados' , $IdUsuario);
+
+$projetosFavoritos = $projetoModel->listarFavoritos($_SESSION['usuario']['id']);
 
 ?>
 <!-- 
@@ -34,9 +37,6 @@ $projetosFavoritos = $projetoModel->listarFavoritos($_SESSION['usuario_id']);
                           </div>';
                 } else {
                     foreach ($lista as $projeto) {
-                        $jaFavoritado = isset($_SESSION['usuario_id']) && in_array($projeto->projeto_id, $projetosFavoritos);
-                        $valor_projeto = $projetoModel->buscarValor($projeto->projeto_id);
-                        $barra = round(($valor_projeto / $projeto->meta) * 100);
                         require '../../components/cards/card-projeto.php';
                     }
                 }

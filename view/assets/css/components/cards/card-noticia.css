@@ -12,11 +12,17 @@
     background-color: white;
     cursor: pointer;
     transition: .3s;
+    position: relative;
 }
 
-.card-noticia:hover {
-    box-shadow: rgba(60, 64, 67, 0.5) 0px 1px 2px 0px, rgba(60, 64, 67, 0.3) 0px 2px 6px 2px;
+div.card-noticia:hover {
     transform: translateY(-3px);
+}
+
+div.card-noticia {
+    border:none;
+    box-shadow: none;
+    padding: 0;
 }
 
 /* Título, Descrição e Info */
@@ -87,4 +93,39 @@
     .card-noticia .textos p {
         font-size: 12px;
     }
+}
+
+/* COMPARTILHAR NOTICA */
+.card-noticia .acoes-noticia {
+    font-size: 18px;
+    position: absolute;
+    top: 13px;
+    right: 13px;
+    visibility: hidden;
+    opacity: 0;
+    transition: .3s;
+}
+
+.card-noticia:hover .acoes-noticia{
+    visibility: visible;
+    opacity: 1;
+    transition: .3s;
+}
+
+.card-noticia .acoes-noticia button {
+    background: none;
+    border: none;
+    width: 28px;
+    height: 28px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 50%;
+    background-color: white;
+    color: #c2c2c2;
+    font-size: 18px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.card-noticia .acoes-noticia button.btn-share:hover {
+    color: #45BEE6;
 }

@@ -5,13 +5,13 @@ $cssPagina = ['adm/listagem.css']; //Colocar o arquivo .css
 require_once '../../components/layout/base-inicio.php';
 
 require_once __DIR__ . '/../../../autoload.php';
-$ongModel = new Ong();
-$lista = $ongModel->listarCards();
+$ongModel = new OngModel();
+$lista = $ongModel->listarCardsOngs();
 $temong = $lista;
 
 if ($_SERVER['REQUEST_METHOD'] = 'GET' && isset($_GET['pesquisa'])) {
     $pesquisa = $_GET['pesquisa'];
-    $lista = $ongModel->buscarNome($pesquisa);
+    $lista = $ongModel->listarCardsOngs('pesquisa', ['pesquisa' => $pesquisa]);
 }
 ?>
 
@@ -32,11 +32,10 @@ if ($_SERVER['REQUEST_METHOD'] = 'GET' && isset($_GET['pesquisa'])) {
         <section id="box-ongs">
             <?php
             if ($lista) {
-                $class = 'tp-adm';
                 foreach ($lista as $ong) {
                     require '../../components/cards/card-ong.php';
                 }
-            } 
+            }
             if (isset($temong) && !$temong) {
                 echo '<p>Nenhuma ONG cadastrada!</p>';
             }

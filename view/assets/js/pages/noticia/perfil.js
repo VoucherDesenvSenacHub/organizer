@@ -22,15 +22,3 @@ window.addEventListener('resize', () => {
     const offset = -currentIndex * larguraAtual;
     divNoticia.style.transform = `translateX(${offset}px)`;
 });
-
-// Ativar os toast com base nos parametros
-window.addEventListener('DOMContentLoaded', () => {
-    const params = new URLSearchParams(window.location.search);
-    const upd = params.get('upd');
-
-    if (upd === 'sucesso') {
-        mostrar_toast('toast-noticia');
-    } else if (upd === 'erro') {
-        mostrar_toast('toast-noticia-erro');
-    }
-});

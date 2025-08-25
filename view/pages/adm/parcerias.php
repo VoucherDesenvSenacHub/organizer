@@ -1,12 +1,9 @@
 <?php
 $acesso = 'adm';
 $tituloPagina = 'Parcerias | Organizer';
-$cssPagina = ['adm/solicitacoes.css', '..\components\popup\parcerias.css'];
+$cssPagina = ['adm/solicitacoes.css'];
 require_once '../../components/layout/base-inicio.php';
 ?>
-<head>
-  <link rel="stylesheet" href="../popup/recusar-parceria.css">
-</head>
 <main class="container">
     <h1><i class="fa-solid fa-handshake"></i> SOLICITAÇÃO DE PARCERIAS</h1>
     <div class="box-cards">
