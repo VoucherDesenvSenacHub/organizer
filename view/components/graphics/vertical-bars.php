@@ -14,8 +14,30 @@
      */
 
 
-    function graficoBarrasVerticais($indices, $width, $height, $dados){
+    function graficoBarrasVerticais($width, $height, $dados){
 
+        /*
+        Necessário extrair as quantidades de apoiadores que vêm através do array $dados, identificar o maior valor,
+        arredondar para o primeiro decimal acima e dividir os índices para impressão lateral.
+        */
+        $mediaIndices = 0;
+        for($i = 0; $i<sizeof($dados); $i++){
+            $mediaIndices += $dados[$i][1];
+        }
+        $mediaIndices = ($mediaIndices/sizeof($dados)*10)/2;
+        $indicesVert = array();
+        if($mediaIndices % 5 == 0){
+            $divisao = $mediaIndices / 5;
+        }else if ($mediaIndices % 4 == 0){
+            $divisao = $mediaIndices / 4;
+        }else if ($mediaIndices % 3 == 0){
+            $divisao = $mediaIndices / 3;
+        }
+        while($mediaIndices >=0){
+            array_push($indicesVert, $mediaIndices);
+            $mediaIndices -= $divisao;
+        }
+        
         // Traça as linhas horizontais e índices
 
         $mi=0;
@@ -33,13 +55,14 @@
         $linhasHorizontais = '';
         $barrasVerticais = '';
         $limite = $width-1;
-        $divisoes = (int)($alturaUtil/(sizeof($indices)-1)); // Calcula a altura das divisões baseada na altura útil
+        $divisoes = (int)($alturaUtil/(sizeof($indicesVert)-1)); // Calcula a altura das divisões baseada na altura útil
         for($i = 1; $i <=$alturaUtil; $i+=$divisoes){
             $width > 200 ? $yDash = $i : $yDash = $i;
             $iText = $yDash+6;
             $linhasHorizontais = $linhasHorizontais."
             <line x1='$xDash' y1='$yDash' x2='$width' y2='$yDash' style='stroke: gray; stroke-dasharray: 3 '/>
-            <text x='0' y='$iText' textlenght='7'>$indices[$mi]</text>";
+            <text x='0' y='$iText' textlenght='7'>$indicesVert[$i]</text>";
+            
             $mi++;
         }
 
@@ -51,11 +74,10 @@
         ";
 
         //Desenha as barras verticais
-
         
         $larguraBarra = $width * 0.065;
         for($i = 0; $i<sizeof($dados); $i++){
-            $pontoY = $alturaUtil-(($dados[$i][1]*$alturaUtil)/$indices[0]); //Calcula a altura da barra vertical? 
+            $pontoY = $alturaUtil-(($dados[$i][1]*$alturaUtil)/$indicesVert[0]); //Calcula a altura da barra vertical? 
             $pontoTextoBase = $pontoX-($divisoesHorizontais/2.5);
             $width >240 ? $pontoTextoBase+=15 : $pontoTextoBase+=5;
             $xTextoTopo = $pontoX-5;
@@ -76,8 +98,7 @@
             $linhasHorizontais
             $linhasVerticais
             $barrasVerticais
-            </svg>
-                
+            </svg>                
         ";
 
     }
