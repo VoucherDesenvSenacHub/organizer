@@ -14,7 +14,7 @@ $IdUsuario = $_SESSION['usuario']['id'];
 
 // Buscar os favoritos
 $listaOngs = $ongModel->listarCardsOngs('favoritas', $IdUsuario);
-$listaProjetos = $projetoModel->listarCardsProjetos('favoritos', $IdUsuario);
+$listaProjetos = $projetoModel->listarCardsProjetos('favoritos', ['usuario' => $IdUsuario, 'limit' => 50]);
 
 // Pintar o icone de favoritos
 $ongsFavoritas = $ongModel->listarFavoritas($_SESSION['usuario']['id']);
