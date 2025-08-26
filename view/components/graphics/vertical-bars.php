@@ -5,7 +5,6 @@
     /**
      * Sumary of graficoBarrasVerticais
      * 
-     * @param array $indices Lista de índices a serem colocados na primeira coluna vertical em ordem decrescente
      * @param int $width Largura em pixels da área da imagem do gráfico
      * @param int $height Altura em pixels da área da imagem do gráfico
      * @param array $dados Lista de dados para preenchimento do grafico
@@ -25,18 +24,18 @@
             $mediaIndices += $dados[$i][1];
         }
         $mediaIndices = ($mediaIndices/sizeof($dados)*10)/2;
-        $indicesVert = array();
-        if($mediaIndices % 5 == 0){
-            $divisao = $mediaIndices / 5;
-        }else if ($mediaIndices % 4 == 0){
-            $divisao = $mediaIndices / 4;
-        }else if ($mediaIndices % 3 == 0){
-            $divisao = $mediaIndices / 3;
-        }
-        while($mediaIndices >=0){
-            array_push($indicesVert, $mediaIndices);
-            $mediaIndices -= $divisao;
-        }
+        $indicesVert = [$mediaIndices, (int)($mediaIndices/2), 0];
+        // if($mediaIndices % 5 == 0){
+        //     $divisao = $mediaIndices / 5;
+        // }else if ($mediaIndices % 4 == 0){
+        //     $divisao = $mediaIndices / 4;
+        // }else if ($mediaIndices % 3 == 0){
+        //     $divisao = $mediaIndices / 3;
+        // }
+        // while($mediaIndices >=0){
+        //     array_push($indicesVert, $mediaIndices);
+        //     $mediaIndices -= $divisao;
+        // }
         
         // Traça as linhas horizontais e índices
 
