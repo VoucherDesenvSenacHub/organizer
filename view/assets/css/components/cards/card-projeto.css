@@ -39,6 +39,15 @@
     gap: 8px;
 }
 
+.card-projeto .info-projeto p {
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 25px;
+}
+
 .card-projeto .info-projeto h5 {
     line-height: 1.1;
 }
@@ -55,6 +64,7 @@
     display: flex;
     align-items: center;
     gap: 8px;
+    
 }
 
 .card-projeto .barra-doacao span {
