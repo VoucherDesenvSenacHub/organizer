@@ -38,7 +38,7 @@ if (isset($_SESSION['usuario']['id']) && $_SESSION['perfil_usuario'] === 'doador
 <!-- 
     Ínicio da Página
 -->
-<main <?php if ($acesso == 'doador') echo 'class="usuario-logado"'; ?>>
+<main <?php if ($acesso === 'doador') echo 'class="usuario-logado"'; ?>>
     <div class="container" id="container-catalogo">
         <section id="top-info">
             <div id="info">

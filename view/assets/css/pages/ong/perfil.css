@@ -2,13 +2,12 @@
 
 @import url(../doador/fazer-doacao.css);
 
-#main-doador #container-principal {
-    /* background-color: red; */
+#container-principal #tela-principal {
     box-shadow: none;
-    padding: 0;
+    padding: 30px 10px;
 }
 
-#container-principal {
+#tela-principal {
     background-color: white;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     padding: 50px 10px;
@@ -320,20 +319,16 @@ section#apresentacao {
         font-size: 20px;
     }
 
-    #container-principal {
+    #tela-principal {
         padding-inline: 5px;
     }
     
 }
 
 /* Visão do doador: */
-main.usuario-logado #container-principal {
-    padding: 0;
+main.usuario-logado #tela-principal {
     box-shadow: none;
-}
-
-#main-doador #container-conteudo {
-    padding-inline: 10px;
+    padding: 30px 10px;
 }
 
 /* Botões de Editar e Inativar */

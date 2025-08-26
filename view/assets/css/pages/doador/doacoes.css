@@ -1,3 +1,8 @@
+main.conteudo-principal section {
+    min-height: calc(100vh - 60px);
+    padding: 30px 20px;
+}
+
 section {
     display: flex;
     flex-direction: column;

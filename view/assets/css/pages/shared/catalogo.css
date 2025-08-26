@@ -237,15 +237,17 @@ section#box-ongs {
 }
 
 /* Se o usuário for um doador: */
-.usuario-logado {
-    padding: 0;
+main.usuario-logado {
+    padding: 20px;
+    /* min-height: calc(100vh - 60px); */
 }
 
-.usuario-logado #container-catalogo {
+main.usuario-logado #container-catalogo {
     background: none;    
     padding: 0;
+    min-height: calc(100vh - 100px);
 }
 
-.usuario-logado section#box-ongs {
+main.usuario-logado section#box-ongs {
     gap: 30px 10px;
 }

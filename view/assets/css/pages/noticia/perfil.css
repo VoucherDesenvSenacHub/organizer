@@ -1,4 +1,4 @@
-#main-doador .container-noticia {
+#container-principal .container-noticia {
     /* background-color: red; */
     box-shadow: none;
     padding: 0;
@@ -166,11 +166,6 @@ section.area-materia {
 }
 
 /* Visão do doador */
-main.usuario-logado .container-noticia {
-    padding: 0;
-    box-shadow: none;
-}
-
-#main-doador .container #container-conteudo {
-    padding-inline: 10px;
+#container-principal main.usuario-logado  .container-noticia {
+    padding: 30px 10px;
 }

@@ -19,20 +19,8 @@ $listaProjetos = $projetoModel->listarCardsProjetos('favoritos', ['usuario' => $
 // Pintar o icone de favoritos
 $ongsFavoritas = $ongModel->listarFavoritas($_SESSION['usuario']['id']);
 $projetosFavoritos = $projetoModel->listarFavoritos($_SESSION['usuario']['id']);
-
 ?>
-<!-- 
-    Toast de Favoritar
--->
-<div id="toast-favorito" class="toast">
-    <i class="fa-solid fa-heart"></i>
-    Adicionado aos favoritos!
-</div>
-<div id="toast-remover-favorito" class="toast erro">
-    <i class="fa-solid fa-heart-crack"></i>
-    Removido dos favoritos!
-</div>
-<main>
+<main class="conteudo-principal">
     <section class="secoes" id="secao-2">
         <div class="container">
             <h1><i class="fa-solid fa-heart"></i> MEUS FAVORITOS</h1>
@@ -74,11 +62,18 @@ $projetosFavoritos = $projetoModel->listarFavoritos($_SESSION['usuario']['id']);
                 </div>
             </div>
         </div>
-
-        </div>
-
     </section>
 </main>
+
+<!-- Toasts -->
+<div id="toast-favorito" class="toast">
+    <i class="fa-solid fa-heart"></i>
+    Adicionado aos favoritos!
+</div>
+<div id="toast-remover-favorito" class="toast erro">
+    <i class="fa-solid fa-heart-crack"></i>
+    Removido dos favoritos!
+</div>
 
 <?php
 $jsPagina = ['favoritos.js']; //Colocar o arquivo .js

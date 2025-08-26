@@ -12,12 +12,14 @@
     width: 100%;
 }
 
-#container-principal {
+#tela-principal {
     background-color: white;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     padding: 50px 10px;
     flex-direction: column;
     gap: 30px;
+    min-height: calc(100vh - 60px);
+    justify-content: flex-start;
 }
 
 /* PRIMEIRA SECTION */
@@ -387,7 +389,7 @@ section#apresentacao {
 }
 
 @media (max-width: 455px) {
-    #container-principal {
+    #tela-principal {
         padding: 50px 5px;
     }
 
@@ -400,15 +402,9 @@ section#apresentacao {
     }
 }
 
-/* container  */
-#main-doador #container-principal {
-    /* background-color: red; */
+#container-principal #tela-principal {
+    padding: 30px 10px;
     box-shadow: none;
-    padding: 0;
-}
-
-#main-doador .container #container-conteudo {
-    padding-inline: 10px;
 }
 
 /* Botões de Editar e Inativar */

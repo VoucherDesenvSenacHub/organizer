@@ -1,6 +1,4 @@
-        </div><!-- Fecha a div#container-conteudo -->
-    </div><!-- Fecha a div.container -->
-</main>
+
 
 <footer>
     <div class="container">
@@ -43,7 +41,9 @@
         <?php endif ?>
     </div>  
 </footer>
-
+        </div><!-- Fecha a div#container-conteudo -->
+    </div><!-- Fecha a div.container -->
+</main>
 
 <!-- Arquivo JS Principal -->
 <script src="../../assets/js/global/main.js"></script>
