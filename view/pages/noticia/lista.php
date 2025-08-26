@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] = 'GET' && isset($_GET['pesquisa'])) {
 
 ?>
 
-<main <?php if ($acesso == 'doador') echo 'class="usuario-logado"'; ?>>
+<main <?php if (isset($_SESSION['usuario']['id'])) echo 'class="usuario-logado"'; ?>>
     <div class="container" id="container-catalogo">
         <section id="top-info">
             <div id="info">

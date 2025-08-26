@@ -32,7 +32,7 @@ $perfil = $_SESSION['perfil_usuario'] ?? '';
     <i class="fa-solid fa-heart-crack"></i>
     Removido dos favoritos!
 </div>
-<main <?php if ($perfil == 'doador') echo 'class="usuario-logado"'; ?>>
+<main <?php if (isset($_SESSION['usuario']['id'])) echo 'class="usuario-logado"'; ?>>
     <div class="container" id="container-catalogo">
         <section id="top-info">
             <div id="info">

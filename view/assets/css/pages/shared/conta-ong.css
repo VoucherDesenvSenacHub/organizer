@@ -1,3 +1,14 @@
+main.conteudo-principal {
+    height: auto;
+}
+
+main.conteudo-principal section {
+    min-height: calc(100vh - 60px);
+    padding: 30px 20px;
+    width: 100%;
+    transition: .3s;
+}
+
 main.container {
     /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
     width: 100%;
@@ -142,8 +153,8 @@ main.container h1 {
     gap: 3px;
 }
 
-/* @media (max-width: 700px) {
-    main.container {
+@media (max-width: 600px) {
+    main.conteudo-principal section {
         padding-inline: 10px;
     }
-} */
+}

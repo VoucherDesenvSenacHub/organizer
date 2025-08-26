@@ -22,7 +22,7 @@ if ($acesso === 'ong' && isset($PerfilNoticia) && $PerfilNoticia) {
 }
 ob_end_flush();
 ?>
-<main <?php if ($acesso === 'doador') echo 'class="usuario-logado"'; ?>>
+<main <?php if (isset($_SESSION['usuario']['id'])) echo 'class="usuario-logado"'; ?>>
     <div class="container-noticia">
         <?php if (!isset($_GET['id']) || !$PerfilNoticia): ?>
             <h2 style="text-align: center;">ERRO AO ENCONTRAR NOTÍCIA!</h2>
