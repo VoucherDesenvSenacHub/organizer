@@ -19,23 +19,29 @@
         Necessário extrair as quantidades de apoiadores que vêm através do array $dados, identificar o maior valor,
         arredondar para o primeiro decimal acima e dividir os índices para impressão lateral.
         */
+
+        // Calcula uma média das quantidades de apoiadores dos projetos da ONG para determinar o índice máximo do gráfico
         $mediaIndices = 0;
-        for($i = 0; $i<sizeof($dados); $i++){
-            $mediaIndices += $dados[$i][1];
+        $indicesVert = array();
+        if(sizeof($dados)>1){
+            for($i = 0; $i<sizeof($dados); $i++){
+                $mediaIndices += $dados[$i][1];
+            }
+            // Cria um array com os índices a serem utilizados de acordo com a divisão exata possível 
+            if($mediaIndices % 5 == 0){
+                $divisao = $mediaIndices / 5;
+            }else if ($mediaIndices % 4 == 0){
+                $divisao = $mediaIndices / 4;
+            }else if ($mediaIndices % 3 == 0){
+                $divisao = $mediaIndices / 3;
+            }
+            while($mediaIndices >=0){
+                array_push($indicesVert, $mediaIndices);
+                $mediaIndices -= $divisao;
+            }
+        }else {
+            $indicesVert = [50, 25, 0];
         }
-        $mediaIndices = ($mediaIndices/sizeof($dados)*10)/2;
-        $indicesVert = [$mediaIndices, (int)($mediaIndices/2), 0];
-        // if($mediaIndices % 5 == 0){
-        //     $divisao = $mediaIndices / 5;
-        // }else if ($mediaIndices % 4 == 0){
-        //     $divisao = $mediaIndices / 4;
-        // }else if ($mediaIndices % 3 == 0){
-        //     $divisao = $mediaIndices / 3;
-        // }
-        // while($mediaIndices >=0){
-        //     array_push($indicesVert, $mediaIndices);
-        //     $mediaIndices -= $divisao;
-        // }
         
         // Traça as linhas horizontais e índices
 
@@ -60,8 +66,7 @@
             $iText = $yDash+6;
             $linhasHorizontais = $linhasHorizontais."
             <line x1='$xDash' y1='$yDash' x2='$width' y2='$yDash' style='stroke: gray; stroke-dasharray: 3 '/>
-            <text x='0' y='$iText' textlenght='7'>$indicesVert[$i]</text>";
-            
+            <text x='0' y='$iText' textlenght='7'>$indicesVert[$mi]</text>";            
             $mi++;
         }
 
