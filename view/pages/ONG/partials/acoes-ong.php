@@ -2,49 +2,64 @@
 session_start();
 require_once __DIR__ . '/../../../autoload.php';
 
-$projetoModel = new Projeto();
-
+// Verificar se o usuário está logado como ONG
 if ($_SESSION['perfil_usuario'] !== 'ong') {
-    header("Location: home.php");
+    $_SESSION['popup'] = "Acesso não autorizado.";
+    header("Location: ../../view/pages/ong/home.php");
     exit;
 }
 
-if ($_POST['acao'] === 'inativar_projeto' && !empty($_POST['projeto_id'])) {
-    $projetoId = intval($_POST['projeto_id']);
-    $motivo    = trim($_POST['motivo'] ?? '');
-    $escolha   = trim($_POST['escolha'] ?? '');
+// Verificar se a ação é para inativar projeto
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['acao'] ?? '') === 'inativar_projeto') {
     
-    // Validações adicionais
-    if (empty($motivo) ){
-        $_SESSION['popup'] = "Por favor, informe o motivo da inativação.";
-        header("Location: " . $_SERVER['HTTP_REFERER']);
+    // Validar dados recebidos
+    $projetoId = filter_input(INPUT_POST, 'projeto_id', FILTER_VALIDATE_INT);
+    $motivo = trim($_POST['motivo'] ?? '');
+    $escolha = trim($_POST['escolha'] ?? '');
+    
+    if (!$projetoId || empty($motivo) || empty($escolha)) {
+        $_SESSION['popup'] = "Dados incompletos para inativação do projeto.";
+        header("Location: " . ($_SERVER['HTTP_REFERER'] ?? '../../view/pages/ong/home.php'));
         exit;
     }
     
-    if (empty($escolha)) {
-        $_SESSION['popup'] = "Por favor, selecione uma categoria para a inativação.";
-        header("Location: " . $_SERVER['HTTP_REFERER']);
-        exit;
-    }
-
+    $projetoModel = new Projeto();
+    $ongModel = new Ong();
+    
     // Verificar se o projeto pertence à ONG do usuário logado
     $projetoInfo = $projetoModel->buscarPerfil($projetoId);
-    $ongIdUsuario = $_SESSION['ong_id'];
+    
+    if (!$projetoInfo) {
+        $_SESSION['popup'] = "Projeto não encontrado.";
+        header("Location: ../../view/pages/ong/home.php");
+        exit;
+    }
+    
+    $ongIdUsuario = $_SESSION['ong_id'] ?? 0;
     
     if ($projetoInfo['ong_id'] != $ongIdUsuario) {
         $_SESSION['popup'] = "Você não tem permissão para inativar este projeto.";
-        header("Location: home.php");
+        header("Location: ../../view/pages/ong/home.php");
         exit;
     }
 
-    $sucesso = $projetoModel->inativarProjeto($projetoId, $motivo, $escolha);
-
-    if ($sucesso) {
-        $_SESSION['popup'] = "Solicitação de inativação enviada com sucesso!";
-    } else {
-        $_SESSION['popup'] = "Erro ao inativar o projeto. Tente novamente.";
+    // Tentar inativar o projeto
+    try {
+        $sucesso = $projetoModel->inativarProjeto($projetoId, $motivo, $escolha);
+        
+        if ($sucesso) {
+            $_SESSION['popup'] = "Projeto inativado com sucesso!";
+        } else {
+            $_SESSION['popup'] = "Erro ao inativar o projeto. Tente novamente.";
+        }
+    } catch (Exception $e) {
+        $_SESSION['popup'] = "Erro ao processar a solicitação: " . $e->getMessage();
     }
-
-    header("Location: projetos.php");
+    
+    header("Location: ../../view/pages/ong/projetos.php");
+    exit;
+} else {
+    $_SESSION['popup'] = "Ação não permitida.";
+    header("Location: ../../view/pages/ong/home.php");
     exit;
 }

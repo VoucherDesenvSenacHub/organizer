@@ -316,6 +316,21 @@ class Projeto
     }
     public function inativarProjeto($projetoId, $motivo, $escolha) {
         try {
+            // Primeiro verificar se o projeto existe e está ativo
+            $checkSql = "SELECT projeto_id, status FROM projetos WHERE projeto_id = :id";
+            $checkStmt = $this->pdo->prepare($checkSql);
+            $checkStmt->execute([':id' => $projetoId]);
+            $projeto = $checkStmt->fetch(PDO::FETCH_ASSOC);
+            
+            if (!$projeto) {
+                throw new Exception("Projeto não encontrado.");
+            }
+            
+            if ($projeto['status'] === 'inativado') {
+                throw new Exception("Este projeto já está inativado.");
+            }
+            
+            // Atualizar o projeto
             $sql = "UPDATE projetos 
                     SET status = 'inativado', 
                         motivo_inativacao = :motivo, 
@@ -324,14 +339,17 @@ class Projeto
                     WHERE projeto_id = :id";
             
             $stmt = $this->pdo->prepare($sql);
-            return $stmt->execute([
+            $resultado = $stmt->execute([
                 ':id' => $projetoId,
                 ':motivo' => $motivo,
                 ':escolha' => $escolha
             ]);
+            
+            return $resultado && $stmt->rowCount() > 0;
+            
         } catch (PDOException $e) {
             error_log("Erro ao inativar projeto: " . $e->getMessage());
-            return false;
+            throw new Exception("Erro no banco de dados ao inativar projeto.");
         }
     }
 }

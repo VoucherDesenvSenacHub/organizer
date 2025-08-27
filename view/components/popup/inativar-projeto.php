@@ -40,7 +40,7 @@
                     <label for="motivo">Motivo<span>*</span></label>
                     <textarea name="motivo" id="motivo" rows="6" required></textarea>
                 </div>
-                <button onsubmit="" type="submit" class="btn">INATIVAR O PROJETO <i class="fa-solid fa-floppy-disk"></i></button>
+                <button type="submit" class="btn">INATIVAR O PROJETO <i class="fa-solid fa-floppy-disk"></i></button>
             </div>
         </form>
     </div>
