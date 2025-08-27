@@ -45,7 +45,7 @@ ob_end_flush();
                     <a title="Ver Perfil da ONG" href="../ong/perfil.php?id=<?= $PerfilNoticia['ong_id'] ?>"><i class="fa-solid fa-house-flag"></i> <?= $PerfilNoticia['nome'] ?></a>
                 </div>
                 <!-- Botões de edição para a ONG -->
-                <?php if ($acesso === 'ong' && $PerfilNoticia['ong_id'] === $_SESSION['ong_id']): ?>
+                <?php if ($acesso === 'ong' && $PerfilNoticia['ong_id'] === $_SESSION['ong_id'] && $PerfilNoticia['status'] === 'ATIVO'): ?>
                     <div class="area-acoes">
                         <button class="btn" onclick="abrir_popup('editar-noticia-popup')"><i class="fa-solid fa-pen-to-square"></i> Editar</button>
                         <form onsubmit="return confirm('Tem certeza que deseja inativar..')" action="../../../controller/Noticia/InativarNoticiaController.php" method="POST">

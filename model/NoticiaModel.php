@@ -50,12 +50,19 @@ class NoticiaModel
 
     function buscarPerfilNoticia($IdNoticia)
     {
-        $query = "SELECT n.*, o.nome FROM $this->tabela n, ongs o WHERE noticia_id = :id AND n.ong_id = o.ong_id";
+        $query = "SELECT n.noticia_id, n.titulo, n.subtitulo, n.texto, n.subtexto, 
+                        n.data_cadastro, n.status, 
+                        o.ong_id, o.nome
+                FROM {$this->tabela} n
+                INNER JOIN ongs o ON n.ong_id = o.ong_id
+                WHERE n.noticia_id = :id
+                LIMIT 1";
+
         $stmt = $this->pdo->prepare($query);
-        $stmt->bindParam(':id', $IdNoticia, PDO::PARAM_INT);
+        $stmt->bindValue(':id', $IdNoticia, PDO::PARAM_INT);
         $stmt->execute();
-        $stmt->setFetchMode(PDO::FETCH_ASSOC);
-        return $stmt->fetch();
+
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
     function listarCardsNoticias(string $tipo = '', $valor = [], $limit = null)
