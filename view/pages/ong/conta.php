@@ -5,52 +5,17 @@ $tituloPagina = 'Meu Perfil | Organizer';
 $cssPagina = ['shared/conta-ong.css'];
 require_once '../../components/layout/base-inicio.php';
 
-require_once __DIR__ . '/../../../autoload.php';
-$ongModel = new OngModel();
-$bancoModel = new BancoModel();
-$lista_banco = $bancoModel->listar();
-$perfil = $ongModel->buscarId($_SESSION['ong_id']);
+require_once __DIR__ . '/../../../controller/Ong/EditarPerfilController.php';
+$controller = new EditarPerfilController();
+$dados = $controller->buscarDados();
+$perfil = $dados['perfil'];
+$lista_banco = $dados['bancos'];
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['atualizar-ong'])) {
-    $dados = [
-        'nome' => $_POST['nome'],
-        'cnpj' => $_POST['cnpj'],
-        'telefone' => $_POST['telefone'],
-        'email' => $_POST['email'],
-        'cep' => $_POST['cep'],
-        'rua' => $_POST['rua'],
-        'numero' => $_POST['numero'],
-        'bairro' => $_POST['bairro'],
-        'cidade' => $_POST['cidade'],
-        'estado' => $_POST['estado'],
-        'banco_id' => $_POST['banco'],
-        'agencia' => $_POST['agencia'],
-        'conta_numero' => $_POST['conta_numero'],
-        'tipo_conta' => $_POST['tipo_conta'],
-        'descricao' => $_POST['descricao'],
-        'ong_id' => $_SESSION['ong_id']
-    ];
-
-    try {
-        $update = $ongModel->editar($dados);
-        if ($update > 0) {
-            header('Location: conta.php?upd=sucesso');
-            exit;
-        } else {
-            header('Location: conta.php');
-            exit;
-        }
-    } catch (PDOException $e) {
-        header('Location: conta.php?upd=erro');
-        exit;
-    }
-}
 ob_end_flush();
 ?>
 <main class="container conteudo-principal">
     <section>
-        <form id="form" class="dados-ong" action="conta.php" method="POST"
-            onsubmit="return confirm('Tem certeza que deseja alterar esses dados da ONG?')">
+        <form id="form" class="dados-ong" action="../../../controller/Ong/EditarPerfilController.php" method="POST">
             <input type="hidden" name="atualizar-ong" value="true">
             <fieldset>
                 <legend><i class="fa-solid fa-house-flag"></i> DADOS DA ONG</legend>
@@ -156,11 +121,21 @@ ob_end_flush();
             </fieldset> -->
             <div class="btn-acoes">
                 <button class="btn" type="submit">SALVAR ALTERAÇÕES <i class="fa-solid fa-floppy-disk"></i></button>
-                <button class="btn" type="button">INATIVAR MINHA ONG <i class="fa-solid fa-ban"></i></button>
+                <button class="btn" type="button" onclick="inativarOng()">INATIVAR MINHA ONG <i class="fa-solid fa-ban"></i></button>
             </div>
         </form>
     </section>
 </main>
+
+<!-- Toast da Inativação -->
+<div id="toast-inativar-sucesso" class="toast">
+    <i class="fa-regular fa-circle-check"></i>
+    ONG inativada com Sucesso!
+</div>
+<div id="toast-inativar-erro" class="toast erro">
+    <i class="fa-solid fa-triangle-exclamation"></i>
+    Falha ao inativar ONG!
+</div>
 
 <!-- Toasts -->
 <div id="toast-ong-sucesso" class="toast">
@@ -172,30 +147,12 @@ ob_end_flush();
     Falha ao atualizar ONG!
 </div>
 
-<!-- Mascaras -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
-<script src="../../assets/js/pages/ong/cep.js"></script>
-<script type="text/javascript">
-    $("#telefone").mask("(00) 00000-0000");
-    $("#cnpj").mask("00.000.000/0000-00");
-    $("#cep").mask("00000-000");
-    // $("#agencia").mask("0000-0");
-    // $("#conta").mask("00000-0");
-    $("#nome").on("input", function() {
-        var valor = $(this).val();
-        $(this).val(valor.replace(/[^a-zA-ZÀ-ÿ\s]/g, ""));
-    });
-    $("#bairro").on("input", function() {
-        var valor = $(this).val();
-        $(this).val(valor.replace(/[^a-zA-ZÀ-ÿ\s]/g, ""));
-    });
-    $("#cidade").on("input", function() {
-        var valor = $(this).val();
-        $(this).val(valor.replace(/[^a-zA-ZÀ-ÿ\s]/g, ""));
-    });
-</script>
+<!-- Modal de Inativação -->
+<?php require_once '../../components/popup/inativar-ong.php'; ?>
+<!-- Modal de Confirmação de Edição -->
+<?php require_once '../../components/popup/confirmar-edicao-ong.php'; ?>
+
 <?php
-$jsPagina = ['ong/conta.js'];
+$jsPagina = ['ong/conta.js', 'ong/cep.js'];
 require_once '../../components/layout/footer/footer-logado.php';
 ?>
