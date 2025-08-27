@@ -58,16 +58,6 @@
 }
 
 
-.card-projeto .info-projeto p {
-    display: -webkit-box;
-    -webkit-line-clamp: 5;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    margin-bottom: 25px;
-}
-
-
 .card-projeto .barra-doacao span {
     font-size: 11px;
     font-weight: 500;
