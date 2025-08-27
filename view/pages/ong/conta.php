@@ -34,14 +34,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['atualizar-ong'])) {
     try {
         $update = $ongModel->editar($dados);
         if ($update > 0) {
-            header('Location: meu-perfil.php?upd=sucesso');
+            header('Location: conta.php?upd=sucesso');
             exit;
         } else {
-            header('Location: meu-perfil.php');
+            header('Location: conta.php');
             exit;
         }
     } catch (PDOException $e) {
-        header('Location: meu-perfil.php?upd=erro');
+        header('Location: conta.php?upd=erro');
         exit;
     }
 }
