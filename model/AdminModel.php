@@ -27,7 +27,7 @@ class AdminModel
     function ContadoresSolicitacoes()
     {
         $query = "SELECT
-                  (SELECT COUNT(*) FROM parcerias WHERE status = 'pendente') AS empresas,
+                  (SELECT COUNT(*) FROM parcerias WHERE status = 'PENDENTE') AS empresas,
                   (SELECT COUNT(*) FROM ongs WHERE status = 'PENDENTE') AS ongs,
                   (SELECT COUNT(*) FROM projetos WHERE status = 'PENDENTE') AS inativar;";
         $stmt = $this->pdo->prepare($query);
@@ -42,7 +42,7 @@ class AdminModel
         $query = "SELECT parceria_id, nome, email, telefone, cnpj, mensagem, 
                          DATE_FORMAT(data_envio, '%d/%m/%Y') as criadoEm
                   FROM parcerias 
-                  WHERE status = 'pendente' 
+                  WHERE status = 'PENDENTE' 
                   ORDER BY data_envio DESC";
         $stmt = $this->pdo->prepare($query);
         $stmt->execute();
@@ -88,7 +88,7 @@ class AdminModel
     {
         try {
             $query = "INSERT INTO parcerias (nome, email, cnpj, telefone, mensagem, status) 
-                      VALUES (?, ?, ?, ?, ?, 'pendente')";
+                      VALUES (?, ?, ?, ?, ?, 'PENDENTE')";
             $stmt = $this->pdo->prepare($query);
             return $stmt->execute([
                 $dados['nome'],
@@ -109,8 +109,8 @@ class AdminModel
         try {
             switch ($tipo) {
                 case 'empresas':
-                    $status = $acao === 'approve' ? 'aprovada' : 'recusada';
-                    $query = "UPDATE parcerias SET status = ? WHERE parceria_id = ? AND status = 'pendente'";
+                    $status = $acao === 'approve' ? 'APROVADDA' : 'RECUSADA';
+                    $query = "UPDATE parcerias SET status = ? WHERE parceria_id = ? AND status = 'PENDENTE'";
                     break;
                 case 'ongs':
                     $status = $acao === 'approve' ? 'ATIVO' : 'INATIVO';

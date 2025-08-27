@@ -222,11 +222,10 @@ CREATE TABLE parcerias (
     email VARCHAR(255) NOT NULL,
     cnpj VARCHAR(18) NOT NULL,
     telefone VARCHAR(20) NOT NULL,
-    descricao TEXT,
+    mensagem TEXT,
 -- Status da solicitação
-    status ENUM('pendente', 'aprovada', 'recusada') NOT NULL DEFAULT 'pendente',
+    status ENUM('PENDENTE', 'APROVADA', 'RECUSADA') NOT NULL DEFAULT 'PENDENTE',
 -- Datas de controle
     data_envio TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+    data_atualizacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
