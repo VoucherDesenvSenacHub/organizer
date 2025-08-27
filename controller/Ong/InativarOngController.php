@@ -8,7 +8,7 @@ class InativarOngController
 
     public function __construct()
     {
-        $this->ongModel = new Ong();
+        $this->ongModel = new OngModel();
     }
 
     public function inativarOng()
@@ -26,11 +26,11 @@ class InativarOngController
                     header('Location: ../../auth/login.php?msg=ong_inativada');
                     exit;
                 } else {
-                    header('Location: ../../view/pages/ong/meu-perfil.php?inativar=erro');
+                    header('Location: ../../view/pages/ong/conta.php?inativar=erro');
                     exit;
                 }
             } catch (Exception $e) {
-                header('Location: ../../view/pages/ong/meu-perfil.php?inativar=erro');
+                header('Location: ../../view/pages/ong/conta.php?inativar=erro');
                 exit;
             }
         }

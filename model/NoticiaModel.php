@@ -14,127 +14,132 @@ class NoticiaModel
 
     function criar($titulo, $subtitulo, $texto, $subtexto, $id)
     {
-        $query = "INSERT INTO $this->tabela (titulo, subtitulo, texto, subtexto, ong_id)
-                          VALUES (:titulo, :subtitulo, :texto, :subtexto, :ong_id)";
-        $stmt = $this->pdo->prepare($query);
-        $stmt->bindParam(':titulo', $titulo);
-        $stmt->bindParam(':subtitulo', $subtitulo);
-        $stmt->bindParam(':texto', $texto);
-        $stmt->bindParam(':subtexto', $subtexto);
-        $stmt->bindParam(':ong_id', $id, PDO::PARAM_INT);
-        $stmt->execute();
+        try {
+            $query = "INSERT INTO $this->tabela (titulo, subtitulo, texto, subtexto, ong_id)
+                      VALUES (:titulo, :subtitulo, :texto, :subtexto, :ong_id)";
+            $stmt = $this->pdo->prepare($query);
+            $stmt->bindParam(':titulo', $titulo);
+            $stmt->bindParam(':subtitulo', $subtitulo);
+            $stmt->bindParam(':texto', $texto);
+            $stmt->bindParam(':subtexto', $subtexto);
+            $stmt->bindParam(':ong_id', $id, PDO::PARAM_INT);
+            return $stmt->execute();
+        } catch (PDOException $e) {
+            return false;
+        }
     }
 
     function editar($id, $titulo, $subtitulo, $texto, $subtexto)
     {
-        $query = "UPDATE $this->tabela
+        try {
+            $query = "UPDATE $this->tabela
                           SET titulo = :titulo, subtitulo = :subtitulo, texto = :texto, subtexto = :subtexto
                           WHERE noticia_id = :id";
-        $stmt = $this->pdo->prepare($query);
-        $stmt->bindParam(':titulo', $titulo);
-        $stmt->bindParam(':subtitulo', $subtitulo);
-        $stmt->bindParam(':texto', $texto);
-        $stmt->bindParam(':subtexto', $subtexto);
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-        $stmt->execute();
-        return $stmt->rowCount();
-    }
-
-    function listar($id = null)
-    {
-        if ($id) {
-            $query = "SELECT * FROM $this->tabela WHERE ong_id = :id";
             $stmt = $this->pdo->prepare($query);
+            $stmt->bindParam(':titulo', $titulo);
+            $stmt->bindParam(':subtitulo', $subtitulo);
+            $stmt->bindParam(':texto', $texto);
+            $stmt->bindParam(':subtexto', $subtexto);
             $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-        } else {
-            $query = "SELECT * FROM $this->tabela";
-            $stmt = $this->pdo->prepare($query);
+            $stmt->execute();
+            return $stmt->rowCount();
+        } catch (PDOException $e) {
+            return false;
         }
-        $stmt->execute();
-        $stmt->setFetchMode(PDO::FETCH_ASSOC);
-        return $stmt->fetchAll();
     }
 
-    function listarRecentes($id)
-    {
-        $query = "SELECT n.noticia_id, n.titulo, n.data_cadastro FROM $this->tabela n WHERE n.ong_id = :id ORDER BY data_cadastro DESC LIMIT 1";
-        $stmt = $this->pdo->prepare($query);
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-        $stmt->execute();
-        $stmt->setFetchMode(PDO::FETCH_CLASS, __CLASS__);
-        return $stmt->fetchAll();
-    }
-
-    function buscarId($id)
+    function buscarPerfilNoticia($IdNoticia)
     {
         $query = "SELECT n.*, o.nome FROM $this->tabela n, ongs o WHERE noticia_id = :id AND n.ong_id = o.ong_id";
         $stmt = $this->pdo->prepare($query);
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->bindParam(':id', $IdNoticia, PDO::PARAM_INT);
         $stmt->execute();
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
         return $stmt->fetch();
     }
 
-    function buscarNome($titulo, $ong_id = null)
+    function listarCardsNoticias(string $tipo = '', $valor = [], $limit = null)
     {
-        if ($ong_id) {
-            $query = "SELECT noticia_id, titulo, subtitulo, texto, subtexto, n.data_cadastro, nome,
-                      (SELECT i.logo_url FROM imagens_noticia i WHERE i.noticia_id = n.noticia_id ORDER BY i.id ASC LIMIT 1) AS logo_url
-                      FROM noticias n, ongs o
-                      WHERE titulo LIKE :titulo AND n.ong_id = o.ong_id AND o.ong_id = :ong_id";
-            $stmt = $this->pdo->prepare($query);
-            $stmt->bindValue(':titulo', "%{$titulo}%", PDO::PARAM_STR);
-            $stmt->bindValue(':ong_id', $ong_id, PDO::PARAM_INT);
-        } else {
-            $query = "SELECT noticia_id, titulo, subtitulo, texto, subtexto, n.data_cadastro, nome,
-                      (SELECT i.logo_url FROM imagens_noticia i WHERE i.noticia_id = n.noticia_id ORDER BY i.id ASC LIMIT 1) AS logo_url
-                      FROM noticias n, ongs o
-                      WHERE titulo LIKE :titulo AND n.ong_id = o.ong_id";
-            $stmt = $this->pdo->prepare($query);
-            $stmt->bindValue(':titulo', "%{$titulo}%", PDO::PARAM_STR);
-        }
-        $stmt->execute();
-        $stmt->setFetchMode(PDO::FETCH_ASSOC);
-        return $stmt->fetchAll();
-    }
+        $params = [];
 
-    function listarCards($ong_id = null)
-    {
-        if ($ong_id) {
-            $query = "SELECT noticia_id, titulo, subtitulo, texto, subtexto, n.data_cadastro, nome,
-                      (SELECT i.logo_url FROM imagens_noticia i WHERE i.noticia_id = n.noticia_id ORDER BY i.id ASC LIMIT 1) AS logo_url
-                      FROM noticias n, ongs o
-                      WHERE n.ong_id = o.ong_id AND o.ong_id = :ong_id";
-            $stmt = $this->pdo->prepare($query);
-            $stmt->bindValue(':ong_id', $ong_id, PDO::PARAM_INT);
-        } else {
-            $query = "SELECT noticia_id, titulo, subtitulo, texto, subtexto, n.data_cadastro, nome,
-                      (SELECT i.logo_url FROM imagens_noticia i WHERE i.noticia_id = n.noticia_id ORDER BY i.id ASC LIMIT 1) AS logo_url
-                      FROM noticias n, ongs o
-                      WHERE n.ong_id = o.ong_id";
-            $stmt = $this->pdo->prepare($query);
+        switch ($tipo) {
+            // Buscar as Notícias pelo título
+            case 'pesquisa':
+                $query = "SELECT * FROM vw_card_noticias WHERE titulo LIKE :titulo";
+                if (!empty($valor['ong_id'])) {
+                    $query .= " AND ong_id = :ong_id";
+                    $params[':ong_id'] = $valor['ong_id'];
+                }
+                $params[':titulo'] = "%{$valor['pesquisa']}%";
+                break;
+            // Buscar as Notícias de uma ONG
+            case 'ong':
+                $query = "SELECT * FROM vw_card_noticias v WHERE ong_id = :ong_id";
+                $params[':ong_id'] = $valor;
+                break;
+            default:
+                $query = "SELECT * FROM vw_card_noticias v";
+        }
+
+        $stmt = $this->pdo->prepare($query);
+        foreach ($params as $key => $value) {
+            $stmt->bindValue($key, $value, is_int($value) ? PDO::PARAM_INT : PDO::PARAM_STR);
         }
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    function buscarImagens($id)
+    function listarCardsInativos($ong_id = null)
     {
-        $query = "SELECT logo_url FROM imagens_noticia WHERE noticia_id = :id";
+        if ($ong_id) {
+            $query = "SELECT n.noticia_id, n.titulo, n.subtitulo, n.texto, n.subtexto, n.data_cadastro, o.nome,
+                         (SELECT i.logo_url 
+                          FROM imagens_noticia i 
+                          WHERE i.noticia_id = n.noticia_id 
+                          ORDER BY i.id ASC 
+                          LIMIT 1) AS logo_url
+                  FROM noticias n
+                  INNER JOIN ongs o ON n.ong_id = o.ong_id
+                  WHERE o.ong_id = :ong_id
+                  AND n.status = 'INATIVO'";
+
+            $stmt = $this->pdo->prepare($query);
+            $stmt->bindValue(':ong_id', $ong_id, PDO::PARAM_INT);
+        } else {
+            $query = "SELECT n.noticia_id, n.titulo, n.subtitulo, n.texto, n.subtexto, n.data_cadastro, o.nome,
+                         (SELECT i.logo_url 
+                          FROM imagens_noticia i 
+                          WHERE i.noticia_id = n.noticia_id 
+                          ORDER BY i.id ASC 
+                          LIMIT 1) AS logo_url
+                  FROM noticias n
+                  INNER JOIN ongs o ON n.ong_id = o.ong_id
+                  WHERE n.status = 'INATIVO'";
+            $stmt = $this->pdo->prepare($query);
+        }
+
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+
+    function buscarImagensNoticia($IdNoticia)
+    {
+        $query = "SELECT caminho FROM imagens JOIN imagens_noticias i USING(imagem_id) WHERE noticia_id = :id";
         $stmt = $this->pdo->prepare($query);
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->bindParam(':id', $IdNoticia, PDO::PARAM_INT);
         $stmt->execute();
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
         return $stmt->fetchAll();
     }
 
-    function ImagemSubtitulo($id)
+    function inativarNoticia($id)
     {
-        $query = "SELECT logo_url FROM imagens_noticia i WHERE noticia_id = :id ORDER BY i.id DESC LIMIT 1";
+        $query = "UPDATE {$this->tabela} set status= 'INATIVO' WHERE noticia_id = :id";
         $stmt = $this->pdo->prepare($query);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
-        $stmt->setFetchMode(PDO::FETCH_ASSOC);
-        return $stmt->fetch();
+
+        return $stmt->rowCount() > 0;
     }
 }

@@ -4,24 +4,16 @@ $tituloPagina = 'Apoios | Organizer';
 $cssPagina = ['doador/apoios.css'];
 require_once '../../components/layout/base-inicio.php';
 require_once __DIR__ . '/../../../autoload.php';
-$projetoModel = new Projeto();
-$lista = $projetoModel->buscarCardsApoiados($_SESSION['usuario']['id']);
+
+$projetoModel = new ProjetoModel();
+
+$IdUsuario = $_SESSION['usuario']['id'];
+$lista = $projetoModel->listarCardsProjetos('apoiados', $IdUsuario);
 
 $projetosFavoritos = $projetoModel->listarFavoritos($_SESSION['usuario']['id']);
 
 ?>
-<!-- 
-    Toast de Favoritar
--->
-<div id="toast-favorito" class="toast">
-    <i class="fa-solid fa-heart"></i>
-    Adicionado aos favoritos!
-</div>
-<div id="toast-remover-favorito" class="toast erro">
-    <i class="fa-solid fa-heart-crack"></i>
-    Removido dos favoritos!
-</div>
-<main>
+<main class="conteudo-principal">
     <section>
         <div class="container">
             <h1><i class="fa-solid fa-hand-holding-heart"></i> MEUS APOIOS</h1>
@@ -34,9 +26,6 @@ $projetosFavoritos = $projetoModel->listarFavoritos($_SESSION['usuario']['id']);
                           </div>';
                 } else {
                     foreach ($lista as $projeto) {
-                        $jaFavoritado = isset($_SESSION['usuario']['id']) && in_array($projeto['projeto_id'], $projetosFavoritos);
-                        $valor_projeto = $projetoModel->buscarValor($projeto['projeto_id']);
-                        $barra = round(($valor_projeto / $projeto['meta']) * 100);
                         require '../../components/cards/card-projeto.php';
                     }
                 }
@@ -45,6 +34,16 @@ $projetosFavoritos = $projetoModel->listarFavoritos($_SESSION['usuario']['id']);
         </div>
     </section>
 </main>
+
+<!-- Toasts -->
+<div id="toast-favorito" class="toast">
+    <i class="fa-solid fa-heart"></i>
+    Adicionado aos favoritos!
+</div>
+<div id="toast-remover-favorito" class="toast erro">
+    <i class="fa-solid fa-heart-crack"></i>
+    Removido dos favoritos!
+</div>
 
 <?php
 $jsPagina = [''];

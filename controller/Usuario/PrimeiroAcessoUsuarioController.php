@@ -4,7 +4,7 @@ require_once __DIR__ . '/../../model/UsuarioModel.php';
 
 session_start();
 
-$usuarioModel = new Usuario();
+$usuarioModel = new UsuarioModel();
 
 // Obtém a escolha feita pelo usuário (doador ou ong)
 $escolhaUsuario = $_POST['escolha'];

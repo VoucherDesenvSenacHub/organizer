@@ -1,38 +1,39 @@
 <?php
-$id = $projeto['projeto_id'] ?? null;
-$class = $class ?? '';
-$nome = $projeto['nome'] ?? 'Nome do Projeto';
-$descricao =  mb_strimwidth($projeto['descricao'], 0, 230, '...') ?? 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odit, explicabo magni? Laboriosam possimus voluptas recusandae blanditiis architecto dolorem tenetur odio, nisi molestiae facere quia facilis officia cumque dicta impedit minima.';
-$barra = $barra ?? '30';
-$jaFavoritado = $jaFavoritado ?? false;
+// Pegar os dados do Projeto e tratar possíveis erros
+$IdProjeto = $projeto['projeto_id'] ?? null;
+$FotoProjeto = $projeto['caminho'] ?? '../../assets/images/global/image-placeholder.svg';
+$NomeProjeto = $projeto['nome'] ?? 'Nome do Projeto';
+$DescricaoProjeto =  mb_strimwidth($projeto['descricao'], 0, 220, '...') ?? 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odit, explicabo magni? Laboriosam possimus voluptas recusandae blanditiis architecto dolorem tenetur odio, nisi molestiae facere quia facilis officia cumque dicta impedit minima.';
+$BarraProjeto = $projeto['barra'] ?? '30';
+// Verificar se o Doador favoritou o Projeto
+$jaFavoritado = in_array($projeto['projeto_id'], $projetosFavoritos ?? []) ?? false;
 $classe = $jaFavoritado ? 'favoritado' : '';
-$logo_url = $projeto['logo_url'] ?? '../../assets/images/global/image-placeholder.svg';
 ?>
 
-<div class="card-projeto <?= $class ?>">
+<div class="card-projeto">
     <div class="acoes-projeto">
-            <button class="btn-share fa-solid fa-share-nodes" onclick="compartilhar('compartilhar-popup', <?=$id?>, 'projeto')"></button>
+        <button title="Compartilhar" class="btn-share fa-solid fa-share-nodes" onclick="compartilhar('compartilhar-popup', <?= $IdProjeto ?>, 'projeto')"></button>
         <?php if (!isset($_SESSION['usuario']['id'])): ?>
             <button title="Favoritar" class="btn-like fa-solid fa-heart" onclick="abrir_popup('login-obrigatorio-popup')"></button>
-        <?php elseif(!isset($_SESSION['perfil_usuario']) || $_SESSION['perfil_usuario'] === 'doador'): ?>
+        <?php elseif (!isset($_SESSION['perfil_usuario']) || $_SESSION['perfil_usuario'] === 'doador'): ?>
             <form action="../.././../controller/Projeto/FavoritarProjetoController.php" method="POST">
-                <input type="hidden" name="projeto-id" value="<?= $id ?>">
+                <input type="hidden" name="projeto-id" value="<?= $IdProjeto ?>">
                 <button title="Favoritar" class="btn-like fa-solid fa-heart <?= $classe ?>"></button>
             </form>
         <?php endif; ?>
     </div>
     <div class="img-projeto">
-        <img src="<?= $logo_url ?>">
+        <img src="<?= $FotoProjeto ?>">
     </div>
     <div class="info-projeto">
-        <h5><?= $nome ?></h5>
-        <p><?= $descricao ?></p>
+        <h5><?= $NomeProjeto ?></h5>
+        <p><?= $DescricaoProjeto ?></p>
         <div class="barra-doacao">
-            <span><?= $barra ?>%</span>
+            <span><?= $BarraProjeto ?>%</span>
             <div class="barra">
-                <div class="barra-verde" style="width: <?= $barra ?>%;"></div>
+                <div class="barra-verde" style="width: <?= $BarraProjeto ?>%;"></div>
             </div>
         </div>
     </div>
-    <a class="saiba-mais-projeto" href="../projeto/perfil.php?id=<?= $id ?>">Saiba Mais</a>
+    <a class="saiba-mais-projeto" href="../projeto/perfil.php?id=<?= $IdProjeto ?>">Saiba Mais</a>
 </div>

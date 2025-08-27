@@ -12,7 +12,7 @@ class EditarPerfilController
 
     public function __construct()
     {
-        $this->ongModel = new Ong();
+        $this->ongModel = new OngModel();
         $this->bancoModel = new BancoModel();
     }
 
@@ -61,14 +61,14 @@ class EditarPerfilController
             try {
                 $update = $this->ongModel->editar($dados);
                 if ($update > 0) {
-                    header('Location: ../../view/pages/ong/meu-perfil.php?upd=sucesso');
+                    header('Location: ../../view/pages/ong/conta.php?upd=sucesso');
                     exit;
                 } else {
-                    header('Location: ../../view/pages/ong/meu-perfil.php');
+                    header('Location: ../../view/pages/ong/conta.php');
                     exit;
                 }
             } catch (PDOException $e) {
-                header('Location: ../../view/pages/ong/meu-perfil.php?upd=erro');
+                header('Location: ../../view/pages/ong/conta.php?upd=erro');
                 exit;
             }
         }
