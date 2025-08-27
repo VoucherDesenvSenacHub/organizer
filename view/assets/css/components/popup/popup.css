@@ -6,6 +6,7 @@
 @import url(logoff.css);
 @import url(perfil-doador.css);
 @import url(nova-senha-doador.css);
+@import url(parcerias.css);
 
 .popup-fundo {
     position: fixed;

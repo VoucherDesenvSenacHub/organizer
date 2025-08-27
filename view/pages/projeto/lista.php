@@ -1,29 +1,32 @@
 <?php
+session_start();
 $acesso = $_SESSION['perfil_usuario'] ?? 'visitante';
 $tituloPagina = 'Encontre Projetos | Organizer';
 $cssPagina = ['shared/catalogo.css'];
 require_once '../../components/layout/base-inicio.php';
 
 require_once __DIR__ . '/../../../autoload.php';
-$projetoModel = new Projeto();
-$lista = $projetoModel->listar();
+$projetoModel = new ProjetoModel();
 
-if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['pesquisa'])) {
-    $pesquisa = $_GET['pesquisa'];
-    $lista = $projetoModel->buscarNome($pesquisa);
+$paginaAtual = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
+$tipo = '';
+$valor = ['pagina' => $paginaAtual];
+
+if (isset($_GET['pesquisa'])) {
+    $tipo = 'pesquisa';
+    $valor['pesquisa'] = $_GET['pesquisa'];
 }
 
-// Buscar os favoritos
-if (isset($_SESSION['usuario_id'])) {
-    $projetosFavoritos = $projetoModel->listarFavoritos($_SESSION['usuario_id']);
+$lista = $projetoModel->listarCardsProjetos($tipo, $valor);
+$totalRegistros = $projetoModel->paginacaoProjetos($tipo, $valor);
+$paginas = ceil($totalRegistros / 8);
+
+//Verificar se o doador marcou este projeto como favorito
+if (isset($_SESSION['usuario']['id']) && $_SESSION['perfil_usuario'] === 'doador') {
+    $projetosFavoritos = $projetoModel->listarFavoritos($_SESSION['usuario']['id']);
 }
-
-$perfil = $_SESSION['perfil_usuario'] ?? '';
-
 ?>
-<!-- 
-    Toast de Favoritar
--->
+<!-- Toast de Favoritar -->
 <div id="toast-favorito" class="toast">
     <i class="fa-solid fa-heart"></i>
     Adicionado aos favoritos!
@@ -35,7 +38,7 @@ $perfil = $_SESSION['perfil_usuario'] ?? '';
 <!-- 
     Ínicio da Página
 -->
-<main <?php if ($perfil == 'doador') echo 'class="usuario-logado"'; ?>>
+<main class="<?= isset($_SESSION['usuario']['id']) ? 'usuario-logado' : 'visitante' ?>">
     <div class="container" id="container-catalogo">
         <section id="top-info">
             <div id="info">
@@ -133,30 +136,29 @@ $perfil = $_SESSION['perfil_usuario'] ?? '';
                 </form>
             </div>
             <div id="imagem-top">
-                <img src="../../assets/images/pages/tela-projeto-kids.png" alt="">
+                <img src="../../assets/images/pages/shared/criancas.png">
             </div>
         </section>
         <?php if (isset($_GET['pesquisa'])) {
-            echo "<p class='qnt-busca'><i class='fa-solid fa-search'></i> " . count($lista) . " Projetos Encontrados</p>";
+            echo "<p class='qnt-busca'><i class='fa-solid fa-search'></i> " . $totalRegistros . " Projetos Encontrados</p>";
         } ?>
 
         <section id="box-ongs">
             <!-- LISTAR CARDS PROJETOS -->
             <?php foreach ($lista as $projeto) {
-                $jaFavoritado = isset($_SESSION['usuario_id']) && in_array($projeto->projeto_id, $projetosFavoritos);
-                $valor_projeto = $projetoModel->buscarValor($projeto->projeto_id);
-                $barra = round(($valor_projeto / $projeto->meta) * 100);
                 require '../../components/cards/card-projeto.php';
             } ?>
         </section>
-        <nav id="navegacao">
-            <a class="active" href="#">1</a>
-            <a href="#">2</a>
-            <a href="#">3</a>
-            <a href="#">4</a>
-            <a href="#">5</a>
-            <a href="#">></a>
-        </nav>
+        <?php if ($paginas > 1): ?>
+            <nav class="navegacao">
+                <?php for ($i = 1; $i <= $paginas; $i++): ?>
+                    <a href="?pagina=<?= $i ?><?= isset($_GET['pesquisa']) ? '&pesquisa=' . urlencode($_GET['pesquisa']) : '' ?>"
+                        class="<?= $i === $paginaAtual ? 'active' : '' ?>">
+                        <?= $i ?>
+                    </a>
+                <?php endfor; ?>
+            </nav>
+        <?php endif; ?>
     </div>
 </main>
 

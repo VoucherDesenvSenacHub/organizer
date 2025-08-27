@@ -14,7 +14,7 @@
         </nav>
         <div id="doador-nav">
             <button id="img-doador" onclick="abrir_popup('perfil-doador-popup')" title="Meu Perfil">
-                <img src="<?= $_SESSION['usuario_foto'] ?>" alt="">
+                <img src="<?= $_SESSION['usuario']['foto'] ?>" alt="">
             </button>
             <button onclick="menu_mobile()" id="hamburguer"></button>
         </div>
@@ -22,7 +22,7 @@
 </header>
 
 <!-- ASIDE -->
-<main id="main-doador">
+<main id="container-principal">
     <div class="container">
         <?php require_once __DIR__ . '/../asides/aside-adm.php'; ?>
         <div id="container-conteudo">

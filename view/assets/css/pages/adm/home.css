@@ -3,26 +3,25 @@
     font-weight: bold;
 }
 
-main.container {
-    /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
-    background-color: white;
-    /* padding: 50px 30px; */
+main.conteudo-principal > section {
+    min-height: calc(100vh - 60px);
+    padding: 30px 20px;
+    display: flex;
     flex-direction: column;
-    align-items: start;
-    gap: 40px;
+    gap: 30px;
 }
 
 a {
     text-decoration: none;
 }
 
-#container-conteudo .container h1 {
+.conteudo-principal h1 {
     /* color: var(--cor-roxo-adm); */
     text-transform: uppercase;
     font-size: 24px;
 }
 
-#container-conteudo .container h1 i {
+.conteudo-principal h1 i {
     color: var(--cor-roxo-adm);
 }
 
