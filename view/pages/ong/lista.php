@@ -18,21 +18,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['pesquisa'])) {
 if (isset($_SESSION['usuario']['id'])) {
     $ongsFavoritas = $ongModel->listarFavoritas($_SESSION['usuario']['id']);
 }
-
-$perfil = $_SESSION['perfil_usuario'] ?? '';
 ?>
-<!-- 
-    Toast de Favoritar
--->
-<div id="toast-favorito" class="toast">
-    <i class="fa-solid fa-heart"></i>
-    Adicionado aos favoritos!
-</div>
-<div id="toast-remover-favorito" class="toast erro">
-    <i class="fa-solid fa-heart-crack"></i>
-    Removido dos favoritos!
-</div>
-<main <?php if (isset($_SESSION['usuario']['id'])) echo 'class="usuario-logado"'; ?>>
+<main class="<?= isset($_SESSION['usuario']['id']) ? 'usuario-logado' : 'visitante' ?>">
     <div class="container" id="container-catalogo">
         <section id="top-info">
             <div id="info">
@@ -153,6 +140,16 @@ $perfil = $_SESSION['perfil_usuario'] ?? '';
         </nav>
     </div>
 </main>
+
+<!-- Toasts -->
+<div id="toast-favorito" class="toast">
+    <i class="fa-solid fa-heart"></i>
+    Adicionado aos favoritos!
+</div>
+<div id="toast-remover-favorito" class="toast erro">
+    <i class="fa-solid fa-heart-crack"></i>
+    Removido dos favoritos!
+</div>
 
 <?php
 $jsPagina = [];

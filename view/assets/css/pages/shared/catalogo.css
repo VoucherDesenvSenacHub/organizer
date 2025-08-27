@@ -236,6 +236,11 @@ section#box-ongs {
     }
 }
 
+
+main.visitante {
+    min-height: calc(100vh - 60px);
+}
+
 /* Se o usuário for um doador: */
 main.usuario-logado {
     padding: 20px;

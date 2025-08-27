@@ -407,6 +407,12 @@ section#apresentacao {
     box-shadow: none;
 }
 
+@media (max-width: 500px) {
+    #container-principal #tela-principal {
+        padding-top: 70px;
+    }
+}
+
 /* Botões de Editar e Inativar */
 #dados-projeto #acoes #btn-editar {
     background-color: #FFCC00;

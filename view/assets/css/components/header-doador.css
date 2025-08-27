@@ -71,12 +71,6 @@ header #img-doador img {
     animation: gradiente-scroll 3s infinite linear reverse;
 }
 
-/* @media (max-width: 400px) {
-    .container #container-conteudo {
-        margin-left: 50px;
-    }
-} */
-
 @media (max-width: 500px) {
     /* .container #container-conteudo {
         margin-left: 0;
@@ -86,7 +80,8 @@ header #img-doador img {
         padding-left: 0;
     }
 
-    .container #container-conteudo {
-        padding-top: 35px;
+    main.conteudo-principal>section {
+        padding-inline: 10px !important;
+        padding-top: 70px !important;
     }
 }

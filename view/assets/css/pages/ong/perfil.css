@@ -331,6 +331,12 @@ main.usuario-logado #tela-principal {
     padding: 30px 10px;
 }
 
+@media (max-width: 500px) {
+    main.usuario-logado #tela-principal {
+        padding-top: 70px !important;
+    }
+}
+
 /* Botões de Editar e Inativar */
 #dados-ong #acoes #btn-editar {
     background-color: #FFCC00;
