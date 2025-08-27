@@ -9,3 +9,8 @@ function trocarAba(index) {
     cards.style.height = `${altura}px`;
     index == 1 ? btn.classList.add('active') : btn.classList.remove('active');
 };
+
+// Chama assim que a página carregar
+window.addEventListener('DOMContentLoaded', () => {
+    trocarAba(0);
+});

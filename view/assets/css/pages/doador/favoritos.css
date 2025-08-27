@@ -74,7 +74,8 @@ main.conteudo-principal section {
 #principal {
     /* display: flex; */
     width: 100%;
-    /* overflow: hidden; */
+    overflow: hidden;
+    padding: 2px 0;
 }
 
 #control-box {
