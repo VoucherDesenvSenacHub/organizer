@@ -3,7 +3,7 @@
 $IdProjeto = $projeto['projeto_id'] ?? null;
 $FotoProjeto = $projeto['caminho'] ?? '../../assets/images/global/image-placeholder.svg';
 $NomeProjeto = $projeto['nome'] ?? 'Nome do Projeto';
-$DescricaoProjeto =  mb_strimwidth($projeto['descricao'], 0, 230, '...') ?? 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odit, explicabo magni? Laboriosam possimus voluptas recusandae blanditiis architecto dolorem tenetur odio, nisi molestiae facere quia facilis officia cumque dicta impedit minima.';
+$DescricaoProjeto =  mb_strimwidth($projeto['descricao'], 0, 220, '...') ?? 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odit, explicabo magni? Laboriosam possimus voluptas recusandae blanditiis architecto dolorem tenetur odio, nisi molestiae facere quia facilis officia cumque dicta impedit minima.';
 $BarraProjeto = $projeto['barra'] ?? '30';
 // Verificar se o Doador favoritou o Projeto
 $jaFavoritado = in_array($projeto['projeto_id'], $projetosFavoritos ?? []) ?? false;
