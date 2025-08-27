@@ -31,40 +31,42 @@ if (isset($_GET['id'])) {
 }
 ?>
 
-<main>
-    <div class="container">
-        <div class="top">
-            <h1><i class="fa-solid fa-users"></i> PAINEL DE DOADORES</h1>
-            <form id="form-busca" action="doadores.php" method="GET">
-                <input type="text" name="pesquisa" placeholder="Busque um doador">
-                <button class="btn" type="submit"><i class="fa-solid fa-search"></i></button>
-            </form>
-        </div>
-        <!-- Quantidade da busca -->
-        <?php if (isset($_GET['pesquisa'])) {
-            echo "<p class='qnt-busca'><i class='fa-solid fa-search'></i> " . count($lista) . " Doadores Encontrados</p>";
-        } ?>
+<main class="conteudo-principal">
+    <section>
+        <div class="container">
+            <div class="top">
+                <h1><i class="fa-solid fa-users"></i> PAINEL DE DOADORES</h1>
+                <form id="form-busca" action="doadores.php" method="GET">
+                    <input type="text" name="pesquisa" placeholder="Busque um doador">
+                    <button class="btn" type="submit"><i class="fa-solid fa-search"></i></button>
+                </form>
+            </div>
+            <!-- Quantidade da busca -->
+            <?php if (isset($_GET['pesquisa'])) {
+                echo "<p class='qnt-busca'><i class='fa-solid fa-search'></i> " . count($lista) . " Doadores Encontrados</p>";
+            } ?>
 
-        <section id="box-ongs">
-            <?php
-            if ($lista) {
-                foreach ($lista as $doador) {
-                    require '../../components/cards/card-doador-adm.php';
+            <section id="box-ongs">
+                <?php
+                if ($lista) {
+                    foreach ($lista as $doador) {
+                        require '../../components/cards/card-doador-adm.php';
+                    }
+                } else {
+                    echo '<p>Nenhum Doador cadastrado!</p>';
                 }
-            } else {
-                echo '<p>Nenhum Doador cadastrado!</p>';
-            }
-            ?>
-        </section>
-        <nav id="navegacao">
-            <a class="active" href="#">1</a>
-            <a href="#">2</a>
-            <a href="#">3</a>
-            <a href="#">4</a>
-            <a href="#">5</a>
-            <a href="#">></a>
-        </nav>
-    </div>
+                ?>
+            </section>
+            <nav id="navegacao">
+                <a class="active" href="#">1</a>
+                <a href="#">2</a>
+                <a href="#">3</a>
+                <a href="#">4</a>
+                <a href="#">5</a>
+                <a href="#">></a>
+            </nav>
+        </div>
+    </section>
 </main>
 <!-- Mascara do popup de ver perfil -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>

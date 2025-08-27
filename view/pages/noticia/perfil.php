@@ -17,22 +17,12 @@ if (isset($_GET['id'])) {
     $ImagensNoticia = $PerfilNoticiaModel->buscarImagensNoticia($IdNoticia);
 }
 
-$perfil = $_SESSION['perfil_usuario'] ?? '';
-if ($perfil == 'ong' && isset($PerfilNoticia) && $PerfilNoticia) {
+if ($acesso === 'ong' && isset($PerfilNoticia) && $PerfilNoticia) {
     require_once '../../components/popup/formulario-noticia.php';
 }
 ob_end_flush();
 ?>
-<div id="toast-noticia" class="toast">
-    <i class="fa-regular fa-circle-check"></i>
-    Notícia atualizada com sucesso!
-</div>
-<div id="toast-noticia-erro" class="toast erro">
-    <i class="fa-solid fa-triangle-exclamation"></i>
-    Falha ao atualizar notícia!
-</div>
-
-<main <?php if ($perfil == 'doador') echo 'class="usuario-logado"'; ?>>
+<main <?php if (isset($_SESSION['usuario']['id'])) echo 'class="usuario-logado"'; ?>>
     <div class="container-noticia">
         <?php if (!isset($_GET['id']) || !$PerfilNoticia): ?>
             <h2 style="text-align: center;">ERRO AO ENCONTRAR NOTÍCIA!</h2>
@@ -55,7 +45,7 @@ ob_end_flush();
                     <a title="Ver Perfil da ONG" href="../ong/perfil.php?id=<?= $PerfilNoticia['ong_id'] ?>"><i class="fa-solid fa-house-flag"></i> <?= $PerfilNoticia['nome'] ?></a>
                 </div>
                 <!-- Botões de edição para a ONG -->
-                <?php if ($perfil === 'ong' && $PerfilNoticia['ong_id'] === $_SESSION['ong_id']): ?>
+                <?php if ($acesso === 'ong' && $PerfilNoticia['ong_id'] === $_SESSION['ong_id']): ?>
                     <div class="area-acoes">
                         <button class="btn" onclick="abrir_popup('editar-noticia-popup')"><i class="fa-solid fa-pen-to-square"></i> Editar</button>
                         <form onsubmit="return confirm('Tem certeza que deseja inativar..')" action="../../../controller/Noticia/InativarNoticiaController.php" method="POST">
@@ -86,6 +76,17 @@ ob_end_flush();
         <?php endif; ?>
     </div>
 </main>
+
+<!-- Toasts -->
+<div id="toast-noticia" class="toast">
+    <i class="fa-regular fa-circle-check"></i>
+    Notícia atualizada com sucesso!
+</div>
+<div id="toast-noticia-erro" class="toast erro">
+    <i class="fa-solid fa-triangle-exclamation"></i>
+    Falha ao atualizar notícia!
+</div>
+
 <?php
 $jsPagina = ['noticia/perfil.js'];
 require_once '../../components/layout/footer/footer-logado.php';

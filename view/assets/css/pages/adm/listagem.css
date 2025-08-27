@@ -1,4 +1,9 @@
-main .container {
+main.conteudo-principal > section {
+    min-height: calc(100vh - 60px);
+    padding: 30px 20px;
+}
+
+main.conteudo-principal section > .container {
     flex-direction: column;
     /* padding: 40px 0px; */
     gap: 30px;

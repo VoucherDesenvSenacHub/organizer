@@ -28,6 +28,35 @@ $PerfilNoticia = (object) [
 require_once '../../components/popup/formulario-noticia.php';
 ob_end_flush();
 ?>
+<main class="conteudo-principal">
+    <section>
+        <div class="container">
+            <div class="topo">
+                <h1><i class="fa-solid fa-newspaper"></i> MINHAS NOTÍCIAS</h1>
+                <form id="form-busca" action="noticias.php" method="GET">
+                    <input type="text" name="pesquisa" placeholder="Busque uma notícia">
+                    <button class="btn" type="submit"><i class="fa-solid fa-search"></i></button>
+                </form>
+                <button class="btn btn-novo" onclick="abrir_popup('editar-noticia-popup')">NOVA NOTÍCIA +</button>
+            </div>
+            <?php if (isset($_GET['pesquisa'])) {
+                echo "<p id='qnt-busca'><i class='fa-solid fa-search'></i> " . count($lista) . " Notícias Encontradas</p>";
+            } ?>
+            <div class="area-cards">
+                <?php
+                if ($lista) {
+                    foreach ($lista as $noticia) {
+                        require '../../components/cards/card-noticia.php';
+                    }
+                } else {
+                    echo 'Você ainda não publicou nenhuma notícia :(';
+                }
+                ?>
+            </div>
+        </div>
+    </section>
+</main>
+
 <!-- Toasts -->
 <div id="toast-noticia" class="toast">
     <i class="fa-regular fa-circle-check"></i>
@@ -38,32 +67,6 @@ ob_end_flush();
     Falha ao criar Notícia!
 </div>
 
-<main>
-    <div class="container">
-        <div class="topo">
-            <h1><i class="fa-solid fa-newspaper"></i> MINHAS NOTÍCIAS</h1>
-            <form id="form-busca" action="noticias.php" method="GET">
-                <input type="text" name="pesquisa" placeholder="Busque uma notícia">
-                <button class="btn" type="submit"><i class="fa-solid fa-search"></i></button>
-            </form>
-            <button class="btn btn-novo" onclick="abrir_popup('editar-noticia-popup')">NOVA NOTÍCIA +</button>
-        </div>
-        <?php if (isset($_GET['pesquisa'])) {
-            echo "<p id='qnt-busca'><i class='fa-solid fa-search'></i> " . count($lista) . " Notícias Encontradas</p>";
-        } ?>
-        <div class="area-cards">
-            <?php
-            if ($lista) {
-                foreach ($lista as $noticia) {
-                    require '../../components/cards/card-noticia.php';
-                }
-            } else {
-                echo 'Você ainda não publicou nenhuma notícia :(';
-            }
-            ?>
-        </div>
-    </div>
-</main>
 <?php
 $jsPagina = ['ong/noticias.js'];
 require_once '../../components/layout/footer/footer-logado.php';

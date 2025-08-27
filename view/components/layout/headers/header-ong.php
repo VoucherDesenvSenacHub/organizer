@@ -22,7 +22,7 @@
 </header>
 
 <!-- ASIDE -->
-<main id="main-doador">
+<main id="container-principal">
     <div class="container">
         <?php require_once __DIR__ . '/../asides/aside-ong.php'; ?>
         <div id="container-conteudo">

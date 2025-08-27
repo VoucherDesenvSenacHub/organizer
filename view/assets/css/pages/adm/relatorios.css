@@ -1,5 +1,10 @@
 /* Utilizar essa folha de estilo para as páginas que utilizarem os gráficos renderizados */
 
+.conteudo-principal > section {
+    min-height: calc(100vh - 60px);
+    padding: 30px 20px;
+} 
+
 #principal {
     display: flex;
     justify-content: start;

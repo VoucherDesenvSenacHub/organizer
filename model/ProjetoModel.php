@@ -17,7 +17,7 @@ class ProjetoModel
         $params = [];
         $limit = $valor['limit'] ?? 8;
         $pagina = $valor['pagina'] ?? 1;
-        $offset = ($pagina - 1) * 8;
+        $offset = ($pagina - 1) * $limit;
 
         switch ($tipo) {
             // Buscar os Projetos pelo nome
@@ -39,7 +39,7 @@ class ProjetoModel
                 $query = "SELECT v.*, f.usuario_id FROM vw_card_projetos v
                 JOIN favoritos_projetos f USING (projeto_id)
                 WHERE usuario_id = :usuario_id ORDER BY data_favoritado DESC";
-                $params[':usuario_id'] = $valor;
+                $params[':usuario_id'] = $valor['usuario'];
                 break;
             // Buscar os Projetos favoritos do Usúario
             case 'apoiados':
