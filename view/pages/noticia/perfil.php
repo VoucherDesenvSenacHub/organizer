@@ -48,7 +48,7 @@ ob_end_flush();
                 <?php if ($acesso === 'ong' && $PerfilNoticia['ong_id'] === $_SESSION['ong_id'] && $PerfilNoticia['status'] === 'ATIVO'): ?>
                     <div class="area-acoes">
                         <button class="btn" onclick="abrir_popup('editar-noticia-popup')"><i class="fa-solid fa-pen-to-square"></i> Editar</button>
-                        <form onsubmit="return confirm('Tem certeza que deseja inativar..')" action="../../../controller/Noticia/InativarNoticiaController.php" method="POST">
+                        <form onsubmit="return confirm('Esta notícia será inativada permanentemente.')" action="../../../controller/Noticia/InativarNoticiaController.php" method="POST">
                             <input type="hidden" name="noticia-id" value=<?= $IdNoticia ?>>
                             <button class="btn"><i class="fa-solid fa-trash-can"></i> Inativar</button>
                         </form>
