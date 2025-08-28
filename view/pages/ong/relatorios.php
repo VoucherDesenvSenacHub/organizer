@@ -19,11 +19,13 @@ $apoiadores = new ProjetoModel();
 $novasOngs = new OngModel();
 $listaUsuarios = $projetos->buscarUsuarios();
 $listaApoiadores = $apoiadores->buscarApoiadoresProjeto(1);
+$contagem_projetos = $projetos->contarProjetos(3);
 $listagem_projetos = $projetos->listarProjetos(3);
 $todosProjetos = $projetos->listarTodosProjetos();
-// echo "<pre>";
-// print_r($todosProjetos);
-// echo "</pre>";
+echo pdfVoluntariosPorProjeto($listagem_projetos);
+echo "<pre>";
+print_r($listagem_projetos);
+echo "</pre>";
 $load = false;
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $largura = $_POST['largura'];
@@ -48,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                 <div class="graficos">
                 <?php
-                    echo graficoBarrasVerticais($largura, $altura, $listagem_projetos);
+                    echo graficoBarrasVerticais($largura, $altura, $contagem_projetos);
                 ?>
                 </div>
             </div>

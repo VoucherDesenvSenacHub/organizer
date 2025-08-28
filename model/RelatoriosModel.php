@@ -11,7 +11,7 @@ class RelatoriosModel {
         $this->pdo->exec("SET time_zone = '-04:00'");
     }
 
-    function listarProjetos($id) {
+    function contarProjetos($id) {
         $query = "SELECT p.projeto_id, p.nome, p.status 
                       FROM projetos p
                       WHERE ong_id = :id";
@@ -43,7 +43,39 @@ class RelatoriosModel {
             }
         }
         return $dados;
+    }
 
+    function listarProjetos($id) {
+        $query = "SELECT p.projeto_id, p.nome, p.status 
+                      FROM projetos p
+                      WHERE ong_id = :id";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $dados = array();
+        if($stmt->rowCount() === 0){
+            $dados = [["Não existe projeto cadastrado"]];
+        }else{
+            foreach($stmt as $p){
+                $query = "SELECT u.nome, a.data_apoio from apoios_projetos a
+                INNER JOIN usuarios u USING(usuario_id)
+                WHERE projeto_id = :id
+                ORDER BY data_apoio DESC";
+                $stmt = $this->pdo->prepare($query);
+                $stmt->bindParam(':id', $p["projeto_id"], PDO::PARAM_INT);
+                $stmt->execute();
+                $stmt->setFetchMode(PDO::FETCH_ASSOC);
+                $listaVoluntarios = $stmt->fetchAll();
+                if($p["status"] === "ATIVO"){
+                    array_push($dados, $listaVoluntarios);
+                }
+            }
+            if(sizeof($dados) === 0){
+                $dados = [["Não existem projetos ativos nessa ONG"]];
+            }
+        }
+        return $dados;
     }
 
     function buscarUsuarios(){
