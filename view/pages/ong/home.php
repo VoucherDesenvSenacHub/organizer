@@ -55,8 +55,31 @@ $UltimasAtividades = $ongModel->ultimasAtividadesOng($IdOng);
                 </div>
             </section>
         <?php endif ?>
+
+        <div class="upload_imagem_perfil">
+            <h1>Finalizar cadastro</h1>
+
+            <h3>Adicione uma foto de perfil</h3>
+            <form action="upload.php" method="POST" enctype="multipart/form-data">
+                <label for="image">
+                    <div class="input_label">
+                        <p>Procurar Imagem</p>
+                    </div>
+                </label>
+                <input type="file" id="image" name="imagem" accept="image/*" required>
+                <button type="submit">Enviar</button>
+            </form>
+            <span id="imageName">Nenhum arquivo selecionado</span>
+        </div>
     </section>
 </main>
+<script>
+    const image = document.getElementById("image");
+    const imageName = document.getElementById("imageName");
+    image.addEventListener("change", function() {
+  imageName.textContent = image.files[0]?.name || "Nenhum arquivo selecionado";
+});
+</script>
 
 <!-- Toast -->
 <div id="toast-cadastro-ong" class="toast">
