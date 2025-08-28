@@ -31,7 +31,7 @@ if (isset($_SESSION['usuario']['id'])) {
                         <div class="ul-group">
                             <ul class="drop" id="esc-status">
                                 <li>
-                                    <p>Ordenar por</p>
+                                    <p>Ordem</p>
                                     <i class="fa-solid fa-angle-down"></i>
                                 </li>
                                 <li>
@@ -45,7 +45,7 @@ if (isset($_SESSION['usuario']['id'])) {
                             </ul>
                             <ul class="drop" id="esc-q-projetos">
                                 <li>
-                                    <p>Quantidade de projetos</p>
+                                    <p>Quantidade</p>
                                     <i class="fa-solid fa-angle-down"></i>
                                 </li>
                                 <li>

@@ -55,11 +55,11 @@ if (isset($_SESSION['usuario']['id']) && $_SESSION['perfil_usuario'] === 'doador
                                 </li>
                                 <li>
                                     <input type="checkbox" name="em-andamento" id="em-andamento">
-                                    <label for="em-andamento">Em andamento</label>
+                                    <label for="em-andamento">Ativos</label>
                                 </li>
                                 <li>
                                     <input type="checkbox" name="concluido" id="concluido">
-                                    <label for="concluido">Concluído</label>
+                                    <label for="concluido">Finalizados</label>
                                 </li>
                             </ul>
                             <ul class="drop" id="esc-categoria">

@@ -113,32 +113,29 @@ section#top-info {
 /* Filtro: Status */
 #form-filtro #esc-status {
     /* width: 95px; */
-    width: fit-content;
+    width: 95px;
 }
 #form-filtro #esc-status:hover {
     height: calc(40px * 3);
-    width: fit-content;
-    /* width: 158px; */
+    width: 150px;
 }
 
 /* Filtro:  Quantidade projetos */
 #form-filtro #esc-q-projetos {
-    width: fit-content;
+    width: 130px;
 }
 #form-filtro #esc-q-projetos:hover {
     height: calc(40px * 3);
-    /* width: 154px; */
-    width: fit-content;
+    width: 150px;
 }
 
 /* Filtro: Categoria */
 #form-filtro #esc-categoria {
-    width: fit-content;
+    width: 149px;
 }
 #form-filtro #esc-categoria:hover {
     height: calc(40px * 7);
-    /* width: 154px; */
-    width: fit-content;
+    width: 154px;   
 }
 
 /* Filtro: Região */
@@ -241,9 +238,14 @@ section#box-ongs {
         gap: 5px;
     }
 
-    #form-filtro #esc-status:hover {
-        width: 235px;
+    #form-filtro #esc-status,
+    #form-filtro #esc-q-projetos {
+        width: 150px;
     }
+
+    /* #form-filtro #esc-status:hover {
+        width: 235px;
+    } */
 
     #form-filtro #esc-categoria:hover,
     #form-filtro #esc-regiao:hover {
