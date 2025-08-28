@@ -2,8 +2,9 @@
     color: var(--cor-azul);
 }
 
-#container-conteudo {
-    overflow: hidden;
+main.conteudo-principal section {
+    min-height: calc(100vh - 60px);
+    padding: 30px 20px;
 }
 
 /* Botões ONGS e PROJETOS */
@@ -73,7 +74,8 @@
 #principal {
     /* display: flex; */
     width: 100%;
-    /* overflow: hidden; */
+    overflow: hidden;
+    padding: 2px 0;
 }
 
 #control-box {

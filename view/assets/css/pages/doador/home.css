@@ -3,6 +3,14 @@
     font-weight: bold;
 }
 
+main.conteudo-principal section {
+    min-height: calc(100vh - 60px);
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
 #cabecalho h1 {
     font-size: 24px;
 }
@@ -58,39 +66,28 @@
     color: var(--cor-principal);
 }
 
-/* SECTION */
-section#acoes-doador {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 5px;
-}
-
-section#acoes-doador .box-cards {
-    gap: 10px;
-}
-
-section.container-cards {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-
-section h2 {
+/* SECTIONS */
+div h4 {
     color: var(--cor-azul-escuro);
     font-size: 14px;
     font-weight: 600;
 }
 
-section .box-cards {
+div.container-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+div .box-cards {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    gap: 30px 10px;
+    gap: 10px;
 }
 
 @media (max-width: 400px) {
-    section#cabecalho {
+    div#cabecalho {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -98,7 +95,7 @@ section .box-cards {
 }
 
 @media (max-width: 895px) {
-    section h2 {
+    div h2 {
         text-align: center;
     }
 }

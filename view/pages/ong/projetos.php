@@ -6,30 +6,75 @@ $tituloPagina = 'Projetos | Organizer';
 $cssPagina = ['ong/listagem.css'];
 require_once '../../components/layout/base-inicio.php';
 
-//IMPORT CLASSES
 require_once __DIR__ . '/../../../autoload.php';
 
 //CARREGA CARDS DE PROJETOS
-$projetoModel = new Projeto();
-$lista = $projetoModel->listarCardsProjetos($_SESSION['ong_id']);
-$temprojeto = $lista;
-//PESQUISAR PROJETO
-if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['pesquisa'])) {
-    $pesquisa = $_GET['pesquisa'];
-    $lista = $projetoModel->buscarNome($pesquisa, $_SESSION['ong_id']);
+$projetoModel = new ProjetoModel();
+$IdOng = $_SESSION['ong_id'];
+$paginaAtual = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
+$tipo = 'ong';
+$valor = ['ong_id' => $IdOng, 'pagina' => $paginaAtual];
+if (isset($_GET['pesquisa'])) {
+    $tipo = 'pesquisa';
+    $valor['pesquisa'] = $_GET['pesquisa'];
 }
+$lista = $projetoModel->listarCardsProjetos($tipo, $valor);
+$totalRegistros = $projetoModel->paginacaoProjetos($tipo, $valor);
+$paginas = ceil($totalRegistros / 8);
 
 //FORMULÁRIO DE CRIAÇÃO DE PROJETO (popup)
-$PerfilProjeto = (object) [
+$PerfilProjeto = [
     'projeto_id' => null,
-    'nome' => '',
-    'meta' => '',
-    'descricao' => ''
+    'nome' => null,
+    'meta' => null,
+    'descricao' => null,
+    'valor_arrecadado' => null
 ];
 require_once __DIR__ . '/../../components/popup/formulario-projeto.php';
 ob_end_flush();
 
 ?>
+<main class="conteudo-principal">
+    <section>
+        <div class="container">
+            <div class="topo">
+                <h1><i class="fa-solid fa-diagram-project"></i> MEUS PROJETOS</h1>
+                <form id="form-busca" action="#" method="GET">
+                    <input type="text" name="pesquisa" placeholder="Busque um Projeto">
+                    <button class="btn" type="submit"><i class="fa-solid fa-search"></i></button>
+                </form>
+                <button class="btn btn-novo" onclick="abrir_popup('editar-projeto-popup')">NOVO PROJETO +</button>
+            </div>
+            <?php if (isset($_GET['pesquisa'])) {
+                echo "<p id='qnt-busca'><i class='fa-solid fa-search'></i> " . $totalRegistros . " Projetos Encontrados</p>";
+            } ?>
+            <!-- CARDS DE PROJETOS -->
+            <div class="area-cards">
+                <?php
+                if ($lista) {
+                    foreach ($lista as $projeto) {
+                        require '../../components/cards/card-projeto.php';
+                    }
+                } else {
+                    echo 'Você ainda não tem nenhum projeto :(';
+                }
+                ?>
+            </div>
+            <?php if ($paginas > 1): ?>
+                <nav class="navegacao">
+                    <?php for ($i = 1; $i <= $paginas; $i++): ?>
+                        <a href="?pagina=<?= $i ?><?= isset($_GET['pesquisa']) ? '&pesquisa=' . urlencode($_GET['pesquisa']) : '' ?>"
+                            class="<?= $i === $paginaAtual ? 'active' : '' ?>">
+                            <?= $i ?>
+                        </a>
+                    <?php endfor; ?>
+                </nav>
+            <?php endif; ?>
+        </div>
+    </section>
+</main>
+
+<!-- Toasts -->
 <div id="toast-projeto" class="toast">
     <i class="fa-regular fa-circle-check"></i>
     Projeto criado com sucesso!
@@ -38,36 +83,6 @@ ob_end_flush();
     <i class="fa-solid fa-triangle-exclamation"></i>
     Falha ao criar Projeto!
 </div>
-
-<!--CONTEÚDO PRINCIPAL DA PÁGINA-->
-<main>
-    <div class="container">
-        <div class="topo">
-            <h1><i class="fa-solid fa-diagram-project"></i> MEUS PROJETOS</h1>
-            <form id="form-busca" action="#" method="GET">
-                <input type="text" name="pesquisa" placeholder="Busque um Projeto">
-                <button class="btn" type="submit"><i class="fa-solid fa-search"></i></button>
-            </form>
-            <button class="btn btn-novo" onclick="abrir_popup('editar-projeto-popup')">NOVO PROJETO +</button>
-        </div>
-        <?php if (isset($_GET['pesquisa'])) {
-            echo "<p id='qnt-busca'><i class='fa-solid fa-search'></i> " . count($lista) . " Projetos Encontrados</p>";
-        } ?>
-        <!-- CARDS DE PROJETOS -->
-        <div class="area-cards">
-            <?php   
-            if ($lista) {
-                foreach ($lista as $projeto) {
-                    require '../../components/cards/card-projeto.php';
-                }
-            }
-            if (isset($temprojeto) && !$temprojeto) {
-                echo 'Você ainda não tem nenhum projeto :(';
-            }
-            ?>
-        </div>
-    </div>
-</main>
 
 <?php
 $jsPagina = ['projetos-ong.js'];

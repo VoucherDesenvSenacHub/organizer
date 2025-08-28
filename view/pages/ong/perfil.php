@@ -6,82 +6,66 @@ $cssPagina = ['ong/perfil.css'];
 require_once '../../components/layout/base-inicio.php';
 
 require_once __DIR__ . '/../../../autoload.php';
-$ongModel = new Ong();
-$projetoModel = new Projeto();
+$ongModel = new OngModel();
+$projetoModel = new ProjetoModel();
 $noticiaModel = new NoticiaModel();
 if (isset($_GET['id'])) {
     $IdOng = $_GET['id'];
-    $ong = $ongModel->buscarPerfil($IdOng);
-    $projetos_ong = $projetoModel->listarCardsProjetos($IdOng);
-    $noticias_ong = $noticiaModel->listarCards($IdOng);
+    $PerfilOng = $ongModel->buscarPerfilOng($IdOng);
+    $projetos_ong = $projetoModel->listarCardsProjetos('ong', ['ong_id' => $IdOng, 'limit' => 50]);
+    $noticias_ong = $noticiaModel->listarCardsNoticias('ong', $IdOng);
     $doadores_ong = $ongModel->buscarDoadores($IdOng);
-    $logo_url = $ong['logo_url'] ?? '../../assets/images/global/image-placeholder.svg';
+    $FotoOng = $PerfilOng['caminho'] ?? '../../assets/images/global/image-placeholder.svg';
 }
 
 //Verificar se o doador marcou este projeto como favorito
-if (isset($_SESSION['usuario']['id']) && $_SESSION['perfil_usuario'] === 'doador') {
+if ($acesso === 'doador') {
     $projetosFavoritos = $projetoModel->listarFavoritos($_SESSION['usuario']['id']);
     $ongsFavoritas = $ongModel->listarFavoritas($_SESSION['usuario']['id']);
 }
-
-$perfil = $_SESSION['perfil_usuario'] ?? '';
 ?>
-<!-- 
-    Toast de Favoritar
--->
-<div id="toast-favorito" class="toast">
-    <i class="fa-solid fa-heart"></i>
-    Adicionado aos favoritos!
-</div>
-<div id="toast-remover-favorito" class="toast erro">
-    <i class="fa-solid fa-heart-crack"></i>
-    Removido dos favoritos!
-</div>
-<!-- 
-    Ínicio da Página
--->
-<main <?php if ($perfil == 'doador') echo 'class="usuario-logado"'; ?>>
-    <div class="container" id="container-principal">
+<main <?php if ($acesso === 'doador') echo 'class="usuario-logado"'; ?>>
+    <div class="container" id="tela-principal">
         <?php
-        if (!isset($_GET['id']) || !$ong) {
+        if (!isset($_GET['id']) || !$PerfilOng) {
             exit('<h2>ERRO AO ENCONTRAR ONG!</h2>');
         }
         ?>
         <section id="apresentacao" class="container-section">
             <div id="logo-ong">
-                <img src="<?= $logo_url ?>">
+                <img src="<?= $FotoOng ?>">
                 <div class="btn-salvar">
-                    <button id="share" class="fa-solid fa-share-nodes" onclick="compartilhar('compartilhar-popup', <?=$IdOng?>, 'ong')"></button>
+                    <button title="Compartilhar" class="btn-share fa-solid fa-share-nodes" onclick="compartilhar('compartilhar-popup', <?= $IdOng ?>, 'ong')"></button>
                     <?php if (!isset($_SESSION['usuario']['id'])): ?>
-                        <button title="Favoritar" id="like" class="fa-solid fa-heart" onclick="abrir_popup('login-obrigatorio-popup')"></button>
+                        <button title="Favoritar" class="btn-like fa-solid fa-heart" onclick="abrir_popup('login-obrigatorio-popup')"></button>
                     <?php elseif (!isset($_SESSION['perfil_usuario']) || $_SESSION['perfil_usuario'] === 'doador') : ?>
-                        <?php $classe = in_array($ong['ong_id'], $ongsFavoritas) ? 'favoritado' : ''; ?>
+                        <?php $classe = in_array($PerfilOng['ong_id'], $ongsFavoritas) ? 'favoritado' : ''; ?>
                         <form action="../.././../controller/Ong/FavoritarOngController.php" method="POST">
-                            <input type="hidden" name="ong-id" value="<?= $id ?>">
-                            <button title="Favoritar" id="like" class="fa-solid fa-heart <?= $classe ?>"></button>
+                            <input type="hidden" name="ong-id" value="<?= $IdOng ?>">
+                            <button title="Favoritar" class="btn-like fa-solid fa-heart <?= $classe ?>"></button>
                         </form>
                     <?php endif; ?>
                 </div>
             </div>
             <div id="dados-ong" class="ong-card">
-                <h1 class="ong-nome"><?= $ong['nome'] ?></h1>
+                <h1 class="ong-nome"><?= $PerfilOng['nome'] ?></h1>
 
                 <div class="info-bloco arrecadado">
                     <span class="info-label">Arrecadado</span>
-                    <span class="info-valor">R$ <?= number_format($ong['total_arrecadado'], 0, ',', '.'); ?></span>
+                    <span class="info-valor">R$ <?= number_format($PerfilOng['total_arrecadado'], 0, ',', '.'); ?></span>
                 </div>
 
                 <div class="info-resumo">
                     <div class="info-item">
-                        <span class="info-numero"><?= $ong['total_projetos'] ?></span>
+                        <span class="info-numero"><?= $PerfilOng['total_projetos'] ?></span>
                         <span class="info-texto">Projetos</span>
                     </div>
                     <div class="info-item">
-                        <span class="info-numero"><?= $ong['total_doacoes'] ?></span>
+                        <span class="info-numero"><?= $PerfilOng['total_doacoes'] ?></span>
                         <span class="info-texto">Doações Recebidas</span>
                     </div>
                     <div class="info-item">
-                        <span class="info-numero"><?= $ong['total_apoiadores'] ?></span>
+                        <span class="info-numero"><?= $PerfilOng['total_apoiadores'] ?></span>
                         <span class="info-texto">Apoiadores</span>
                     </div>
                 </div>
@@ -99,8 +83,8 @@ $perfil = $_SESSION['perfil_usuario'] ?? '';
                     <img src="../../assets/images/icons/icon-sobre.png">
                     <h3>Sobre</h3>
                 </div>
-                <small>Criada em <?= date('d/m/Y', strtotime($ong['data_cadastro'])); ?></small>
-                <p><?= $ong['descricao'] ?></p>
+                <small>Criada em <?= date('d/m/Y', strtotime($PerfilOng['data_cadastro'])); ?></small>
+                <p><?= $PerfilOng['descricao'] ?></p>
             </div>
         </section>
         <section class="container-section" id="apoiadores">
@@ -162,6 +146,16 @@ $perfil = $_SESSION['perfil_usuario'] ?? '';
         </section>
     </div>
 </main>
+
+<!-- Toasts -->
+<div id="toast-favorito" class="toast">
+    <i class="fa-solid fa-heart"></i>
+    Adicionado aos favoritos!
+</div>
+<div id="toast-remover-favorito" class="toast erro">
+    <i class="fa-solid fa-heart-crack"></i>
+    Removido dos favoritos!
+</div>
 
 <?php
 $jsPagina = [];

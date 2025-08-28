@@ -2,7 +2,7 @@
 require_once __DIR__ . '/../../model/OngModel.php';
 session_start();
 
-$ongModel = new Ong();
+$ongModel = new OngModel();
 
 $usuarioId = $_SESSION['usuario']['id'];
 $ongId = $_POST['ong-id'] ?? null;

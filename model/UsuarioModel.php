@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . "/../config/database.php";
 
-class Usuario
+class UsuarioModel
 {
     private $tabela = 'usuarios';
     private $pdo;
@@ -15,7 +15,10 @@ class Usuario
 
     function login($email)
     {
-        $query = "SELECT * FROM $this->tabela WHERE email = :email";
+        $query = "SELECT usuario_id, status, nome, email, senha, doador, ong, adm, i.caminho
+        FROM $this->tabela 
+        LEFT JOIN imagens i USING(imagem_id)
+        WHERE email = :email";
         $stmt = $this->pdo->prepare($query);
         $stmt->bindParam(':email', $email);
         $stmt->execute();
@@ -67,7 +70,8 @@ class Usuario
     // Listagem para o ADM
     function listar()
     {
-        $query = "SELECT * FROM $this->tabela";
+        $query = "SELECT u.*, i.caminho FROM $this->tabela u
+        LEFT JOIN imagens i USING(imagem_id)";
         $stmt = $this->pdo->prepare($query);
         $stmt->execute();
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
@@ -76,7 +80,9 @@ class Usuario
 
     function buscar_perfil($id)
     {
-        $query = "SELECT * FROM $this->tabela WHERE usuario_id = :id";
+        $query = "SELECT u.*, i.caminho FROM $this->tabela u
+        LEFT JOIN imagens i USING(imagem_id)
+        WHERE usuario_id = :id";
         $stmt = $this->pdo->prepare($query);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
@@ -86,7 +92,9 @@ class Usuario
 
     function buscarNome($nome)
     {
-        $query = "SELECT * FROM $this->tabela WHERE nome LIKE :nome";
+        $query = "SELECT u.*, i.caminho FROM $this->tabela u
+        LEFT JOIN imagens i USING(imagem_id)
+        WHERE nome LIKE :nome";
         $stmt = $this->pdo->prepare($query);
         $stmt->bindValue(':nome', "%{$nome}%", PDO::PARAM_STR);
         $stmt->execute();
@@ -141,18 +149,5 @@ class Usuario
         $hoje = new DateTime();
         $idade = $hoje->diff($dataNascimento)->y;
         return $idade;
-    }
-
-    // Relatorios para a home do doador
-    function RelatorioHome($id)
-    {
-        $query = "SELECT sum(valor) as qnt_doacoes
-                  FROM doacao_projeto dp
-                  WHERE usuario_id = :id;";
-        $stmt = $this->pdo->prepare($query);
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-        $stmt->execute();
-        $stmt->setFetchMode(PDO::FETCH_ASSOC);
-        return $stmt->fetch();
     }
 }

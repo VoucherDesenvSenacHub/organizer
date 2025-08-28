@@ -1,9 +1,9 @@
 <?php
 // Pegar os dados do Projeto e tratar possíveis erros
 $IdProjeto = $projeto['projeto_id'] ?? null;
-$LogoProjeto = $projeto['logo_url'] ?? '../../assets/images/global/image-placeholder.svg';
+$FotoProjeto = $projeto['caminho'] ?? '../../assets/images/global/image-placeholder.svg';
 $NomeProjeto = $projeto['nome'] ?? 'Nome do Projeto';
-$DescricaoProjeto =  mb_strimwidth($projeto['descricao'], 0, 230, '...') ?? 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odit, explicabo magni? Laboriosam possimus voluptas recusandae blanditiis architecto dolorem tenetur odio, nisi molestiae facere quia facilis officia cumque dicta impedit minima.';
+$DescricaoProjeto =  mb_strimwidth($projeto['descricao'], 0, 220, '...') ?? 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odit, explicabo magni? Laboriosam possimus voluptas recusandae blanditiis architecto dolorem tenetur odio, nisi molestiae facere quia facilis officia cumque dicta impedit minima.';
 $BarraProjeto = $projeto['barra'] ?? '30';
 // Verificar se o Doador favoritou o Projeto
 $jaFavoritado = in_array($projeto['projeto_id'], $projetosFavoritos ?? []) ?? false;
@@ -12,7 +12,7 @@ $classe = $jaFavoritado ? 'favoritado' : '';
 
 <div class="card-projeto">
     <div class="acoes-projeto">
-        <button class="btn-share fa-solid fa-share-nodes" onclick="compartilhar('compartilhar-popup', <?= $IdProjeto ?>, 'projeto')"></button>
+        <button title="Compartilhar" class="btn-share fa-solid fa-share-nodes" onclick="compartilhar('compartilhar-popup', <?= $IdProjeto ?>, 'projeto')"></button>
         <?php if (!isset($_SESSION['usuario']['id'])): ?>
             <button title="Favoritar" class="btn-like fa-solid fa-heart" onclick="abrir_popup('login-obrigatorio-popup')"></button>
         <?php elseif (!isset($_SESSION['perfil_usuario']) || $_SESSION['perfil_usuario'] === 'doador'): ?>
@@ -23,7 +23,7 @@ $classe = $jaFavoritado ? 'favoritado' : '';
         <?php endif; ?>
     </div>
     <div class="img-projeto">
-        <img src="<?= $LogoProjeto ?>">
+        <img src="<?= $FotoProjeto ?>">
     </div>
     <div class="info-projeto">
         <h5><?= $NomeProjeto ?></h5>

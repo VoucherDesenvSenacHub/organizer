@@ -1,23 +1,23 @@
 <?php
-$nome = $doador['nome'] ?? 'Nome do Usuário';
-$email = $doador['email'] ?? 'usuario@email.com';
-$data = date('d/m/Y H:i', strtotime($doador['data_cadastro'])) ?? '01/01/2025';
-$id = $doador['usuario_id'];
-$logo_url = $doador['foto_perfil'] ?? '../../assets/images/global/user-placeholder.jpg';
+$NomeUsuario = $doador['nome'] ?? 'Nome do Usuário';
+$EmailUsuario = $doador['email'] ?? 'usuario@email.com';
+$DataCadastro = date('d/m/Y H:i', strtotime($doador['data_cadastro'])) ?? '00/00/0000';
+$IdUsuario = $doador['usuario_id'];
+$FotoUsuario = $doador['caminho'] ?? '../../assets/images/global/user-placeholder.jpg';
 ?>
 <div class="card-doadores">
     <div class="dados">
         <div class="img">
-            <img src="<?= $logo_url ?>">
+            <img src="<?= $FotoUsuario ?>">
         </div>
         <div class="info">
-            <p><?= $nome ?></p>
-            <span><?= $email ?></span>
+            <p><?= $NomeUsuario ?></p>
+            <span><?= $EmailUsuario ?></span>
         </div>
     </div>
-    <small><?= $data ?></small>
+    <small><?= $DataCadastro ?></small>
     <form action="doadores.php" method="GET">
-        <input type="hidden" name="id" value="<?= $id ?>">
+        <input type="hidden" name="id" value="<?= $IdUsuario ?>">
         <button type="submit">
             <i class="fa-solid fa-eye"></i>
         </button>

@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__ . '/../../../model/UsuarioModel.php';
-$usuarioModel = new Usuario();
+$usuarioModel = new UsuarioModel();
 $usuario = $usuarioModel->buscar_perfil($_SESSION['usuario']['id']);
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {

@@ -1,37 +1,26 @@
 <?php
-
 $acesso = 'doador';
 $tituloPagina = 'Favoritos | Organizer';
 $cssPagina = ['doador/favoritos.css'];
 require_once '../../components/layout/base-inicio.php';
 
 require_once '../../../model/OngModel.php';
-$ongModel = new Ong();
+$ongModel = new OngModel();
 
 require_once '../../../model/ProjetoModel.php';
-$projetoModel = new Projeto();
+$projetoModel = new ProjetoModel();
+
+$IdUsuario = $_SESSION['usuario']['id'];
 
 // Buscar os favoritos
-$listaOngs = $ongModel->favoritosUsuario($_SESSION['usuario']['id']);
-$listaProjetos = $projetoModel->favoritosUsuario($_SESSION['usuario']['id']);
+$listaOngs = $ongModel->listarCardsOngs('favoritas', $IdUsuario);
+$listaProjetos = $projetoModel->listarCardsProjetos('favoritos', ['usuario' => $IdUsuario, 'limit' => 50]);
 
 // Pintar o icone de favoritos
 $ongsFavoritas = $ongModel->listarFavoritas($_SESSION['usuario']['id']);
 $projetosFavoritos = $projetoModel->listarFavoritos($_SESSION['usuario']['id']);
-
 ?>
-<!-- 
-    Toast de Favoritar
--->
-<div id="toast-favorito" class="toast">
-    <i class="fa-solid fa-heart"></i>
-    Adicionado aos favoritos!
-</div>
-<div id="toast-remover-favorito" class="toast erro">
-    <i class="fa-solid fa-heart-crack"></i>
-    Removido dos favoritos!
-</div>
-<main>
+<main class="conteudo-principal">
     <section class="secoes" id="secao-2">
         <div class="container">
             <h1><i class="fa-solid fa-heart"></i> MEUS FAVORITOS</h1>
@@ -73,11 +62,18 @@ $projetosFavoritos = $projetoModel->listarFavoritos($_SESSION['usuario']['id']);
                 </div>
             </div>
         </div>
-
-        </div>
-
     </section>
 </main>
+
+<!-- Toasts -->
+<div id="toast-favorito" class="toast">
+    <i class="fa-solid fa-heart"></i>
+    Adicionado aos favoritos!
+</div>
+<div id="toast-remover-favorito" class="toast erro">
+    <i class="fa-solid fa-heart-crack"></i>
+    Removido dos favoritos!
+</div>
 
 <?php
 $jsPagina = ['favoritos.js']; //Colocar o arquivo .js

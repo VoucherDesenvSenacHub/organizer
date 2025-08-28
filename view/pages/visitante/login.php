@@ -6,7 +6,7 @@ require_once '../../components/layout/base-inicio.php';
 ?>
 <main>
     <div id="container-login" class="container">
-        <form action="../../../controller/Usuario/UsuarioLoginController.php" method="POST">
+        <form action="../../../controller/Usuario/LoginUsuarioController.php" method="POST">
             <h1>FAÇA SEU LOGIN</h1>
             <div class="input-group">
                 <div class="input-item">
