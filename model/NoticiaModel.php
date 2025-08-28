@@ -140,6 +140,10 @@ class NoticiaModel
         return $stmt->fetchAll();
     }
 
+    public function ultimoId() {
+        return $this->pdo->lastInsertId();
+    }
+
     function inativarNoticia($id)
     {
         $query = "UPDATE {$this->tabela} set status= 'INATIVO' WHERE noticia_id = :id";

@@ -1,11 +1,20 @@
 <?php
+if (!isset($noticiaModel)) {
+    require_once __DIR__ . '../../model/NoticiaModel.php';
+    $noticiaModel = new NoticiaModel();
+}
 // Pegar os dados da Notícia e tratar possíveis erros
+
 $IdNoticia = $noticia['noticia_id'] ?? null;
 $TituloNoticia = $noticia['titulo'] ?? 'Titulo Da Matéria';
-$TextoNoticia = mb_strimwidth($noticia['texto'], 0, 150, '...') ?? 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odit, explicabo magni? Laboriosam possimus voluptas recusandae blanditiis architecto dolorem tenetur odio, nisi molestiae facere quia facilis officia cumque dicta impedit minima.';
+$TextoNoticia = mb_strimwidth($noticia['texto'], 0, 150, '...') ?? 'Lorem ipsum...';
 $NomeOng = $noticia['ong_nome'] ?? 'Nome da Ong';
 $DataNoticia = $noticia['data_cadastro'] ?? '00/00/0000';
-$FotoNoticia = $noticia['caminho'] ?? '../../assets/images/global/image-placeholder.svg';
+
+// Buscar a primeira imagem da notícia
+$imagens = $noticiaModel->buscarImagensNoticia($IdNoticia);
+$FotoNoticia = $imagens[0]['caminho'] ?? '../../assets/images/global/image-placeholder.svg';
+?>
 
 ?>
 <div class="card-noticia">
