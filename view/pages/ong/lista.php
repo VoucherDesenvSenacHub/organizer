@@ -9,6 +9,34 @@ require_once __DIR__ . '/../../../autoload.php';
 $ongModel = new OngModel();
 $lista = $ongModel->listarCardsOngs();
 
+// Filtrar
+if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['filtro'])) {
+    $filtros = [];
+
+    if (isset($_GET['recentes'])) {
+        $filtros['tempo'] = 'mais-recentes';
+    } elseif (isset($_GET['antigos'])) {
+        $filtros['tempo'] = 'mais-antigos';
+    }
+
+    if (isset($_GET['1'])) {
+        $filtros['quantidade'] = '1';
+    } elseif (isset($_GET['3-5'])) {
+        $filtros['quantidade'] = '3-5';
+    } elseif (isset($_GET['5+'])) {
+        $filtros['quantidade'] = '5+';
+    }
+
+    $ongs = $ongModel->filtrarOngs($filtros);
+
+    if ($ongs) {
+        $lista = $ongs;
+    } else {
+        $_SESSION['mensagem'] = "Nenhuma ONG encontrada com os filtros selecionados.";
+    }
+}
+
+// Buscar pela pesquisa
 if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['pesquisa'])) {
     $pesquisa = $_GET['pesquisa'];
     $lista = $ongModel->listarCardsOngs('pesquisa', ['pesquisa' => $pesquisa]);
@@ -27,6 +55,7 @@ if (isset($_SESSION['usuario']['id'])) {
                     <h1>DESCUBRA AS ONGS</h1>
                     <p>Explore organizações que estão fazendo a diferença e saiba como você pode contribuir.</p>
                     <form id="form-filtro" action="lista.php" method="GET">
+                        <input type="hidden" name="filtro" value="1">
                         <!-- ### -->
                         <div class="ul-group">
                             <ul class="drop" id="esc-status">
@@ -35,12 +64,12 @@ if (isset($_SESSION['usuario']['id'])) {
                                     <i class="fa-solid fa-angle-down"></i>
                                 </li>
                                 <li>
-                                    <input type="checkbox" name="em-andamento" id="em-andamento">
-                                    <label for="em-andamento">mais recentes</label>
+                                    <input type="checkbox" name="recentes" id="em-andamento">
+                                    <label for="antigos">Mais recentes</label>
                                 </li>
                                 <li>
-                                    <input type="checkbox" name="concluido" id="concluido">
-                                    <label for="concluido">mais antigos</label>
+                                    <input type="checkbox" name="antigos" id="concluido">
+                                    <label for="antigos">Mais antigos</label>
                                 </li>
                             </ul>
                             <ul class="drop" id="esc-q-projetos">
@@ -49,20 +78,19 @@ if (isset($_SESSION['usuario']['id'])) {
                                     <i class="fa-solid fa-angle-down"></i>
                                 </li>
                                 <li>
-                                    <input type="checkbox" name="educacao" id="educacao">
-                                    <label for="educacao">1 projeto</label>
+                                    <input type="checkbox" name="1" id="educacao">
+                                    <label for="1">1 projeto</label>
                                 </li>
                                 <li>
-                                    <input type="checkbox" name="saude" id="saude">
-                                    <label for="saude">3 à 5 projetos</label>
+                                    <input type="checkbox" name="3-5" id="saude">
+                                    <label for="3-5">3 à 5 projetos</label>
                                 </li>
                                 <li>
-                                    <input type="checkbox" name="esporte" id="esporte">
-                                    <label for="esporte">5 ou mais projetos</label>
+                                    <input type="checkbox" name="5+" id="esporte">
+                                    <label for="5+">5+</label>
                                 </li>
-                                
                             </ul>
-                            
+
                         </div>
                         <button class="btn">Filtrar</button>
                     </form>

@@ -246,4 +246,41 @@ class OngModel
         $stmt->execute();
         return $stmt->rowCount();
     }
+
+    function filtrarOngs(array $filtros = []): array
+    {
+        $sql = "SELECT * FROM vw_card_ongs";
+
+        // Filtro de quantidade de projetos
+        $having = "";
+        if (isset($filtros['quantidade'])) {
+            switch ($filtros['quantidade']) {
+                case '1':
+                    $having = " HAVING total_projetos = 1";
+                    break;
+                case '3-5':
+                    $having = " HAVING total_projetos BETWEEN 3 AND 5";
+                    break;
+                case '5+':
+                    $having = " HAVING total_projetos >= 5";
+                    break;
+            }
+        }
+
+        // Ordenação por data de cadastro da ONG 
+        $orderBy = " ORDER BY nome ASC";
+        if (isset($filtros['tempo'])) {
+            if ($filtros['tempo'] === 'mais-recentes') {
+                $orderBy = " ORDER BY data_cadastro DESC";
+            } elseif ($filtros['tempo'] === 'mais-antigos') {
+                $orderBy = " ORDER BY data_cadastro ASC";
+            }
+        }
+
+        $sql .= $having . $orderBy;
+
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
 }
