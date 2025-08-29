@@ -23,6 +23,7 @@ $contagem_projetos = $projetos->contarProjetos(3);
 $listagem_projetos = $projetos->listarProjetos(3);
 $todosProjetos = $projetos->listarTodosProjetos();
 echo pdfVoluntariosPorProjeto($listagem_projetos);
+// echo $listagem_projetos[0][0]['nome'];
 echo "<pre>";
 print_r($listagem_projetos);
 echo "</pre>";

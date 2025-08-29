@@ -53,6 +53,7 @@ class RelatoriosModel {
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $listaProjetos = $stmt->fetchAll();
         $dados = array();
         if($stmt->rowCount() === 0){
             $dados = [["Não existe projeto cadastrado"]];
@@ -75,7 +76,7 @@ class RelatoriosModel {
                 $dados = [["Não existem projetos ativos nessa ONG"]];
             }
         }
-        return $dados;
+        return [$dados, $listaProjetos];
     }
 
     function buscarUsuarios(){
