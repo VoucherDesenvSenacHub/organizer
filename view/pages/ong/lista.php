@@ -19,12 +19,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['filtro'])) {
         $filtros['tempo'] = 'mais-antigos';
     }
 
-    if (isset($_GET['1'])) {
-        $filtros['quantidade'] = '1';
-    } elseif (isset($_GET['3-5'])) {
-        $filtros['quantidade'] = '3-5';
-    } elseif (isset($_GET['5+'])) {
-        $filtros['quantidade'] = '5+';
+    if (isset($_GET['1-3'])) {
+        $filtros['quantidade'] = '1-3';
+    } elseif (isset($_GET['4+'])) {
+        $filtros['quantidade'] = '4+';
     }
 
     $ongs = $ongModel->filtrarOngs($filtros);
@@ -65,7 +63,7 @@ if (isset($_SESSION['usuario']['id'])) {
                                 </li>
                                 <li>
                                     <input type="checkbox" name="recentes" id="em-andamento">
-                                    <label for="antigos">Mais recentes</label>
+                                    <label for="recentes">Mais recentes</label>
                                 </li>
                                 <li>
                                     <input type="checkbox" name="antigos" id="concluido">
@@ -78,16 +76,12 @@ if (isset($_SESSION['usuario']['id'])) {
                                     <i class="fa-solid fa-angle-down"></i>
                                 </li>
                                 <li>
-                                    <input type="checkbox" name="1" id="educacao">
-                                    <label for="1">1 projeto</label>
+                                    <input type="checkbox" name="1-3">
+                                    <label for="1-3">1 à 3 projetos</label>
                                 </li>
                                 <li>
-                                    <input type="checkbox" name="3-5" id="saude">
-                                    <label for="3-5">3 à 5 projetos</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" name="5+" id="esporte">
-                                    <label for="5+">5+</label>
+                                    <input type="checkbox" name="4+">
+                                    <label for="4+">4+</label>
                                 </li>
                             </ul>
 

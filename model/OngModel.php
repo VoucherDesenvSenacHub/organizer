@@ -255,14 +255,11 @@ class OngModel
         $having = "";
         if (isset($filtros['quantidade'])) {
             switch ($filtros['quantidade']) {
-                case '1':
-                    $having = " HAVING total_projetos = 1";
+                case '1-3':
+                    $having = " HAVING total_projetos BETWEEN 1 AND 3";
                     break;
-                case '3-5':
-                    $having = " HAVING total_projetos BETWEEN 3 AND 5";
-                    break;
-                case '5+':
-                    $having = " HAVING total_projetos >= 5";
+                case '4+':
+                    $having = " HAVING total_projetos >= 4";
                     break;
             }
         }
@@ -270,10 +267,13 @@ class OngModel
         // Ordenação por data de cadastro da ONG 
         $orderBy = " ORDER BY nome ASC";
         if (isset($filtros['tempo'])) {
-            if ($filtros['tempo'] === 'mais-recentes') {
-                $orderBy = " ORDER BY data_cadastro DESC";
-            } elseif ($filtros['tempo'] === 'mais-antigos') {
-                $orderBy = " ORDER BY data_cadastro ASC";
+            switch ($filtros['tempo']) {
+                case 'mais-recentes':
+                    $orderBy = " ORDER BY data_cadastro DESC";
+                    break;
+                case 'mais-antigos':
+                    $orderBy = " ORDER BY data_cadastro ASC";
+                    break;
             }
         }
 
