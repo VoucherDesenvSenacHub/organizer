@@ -101,7 +101,7 @@ CREATE TABLE projetos (
     data_atualizacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 -- Relacionamento com ONG
     ong_id INT NOT NULL,
-    FOREIGN KEY (ong_id) REFERENCES ongs(ong_id) ON DELETE CASCADE
+        FOREIGN KEY (ong_id) REFERENCES ongs(ong_id) ON DELETE CASCADE
 );
 
 -- ================================

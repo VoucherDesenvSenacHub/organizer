@@ -195,13 +195,14 @@ class ProjetoModel
     function criar($nome, $descricao, $meta, $ong_id)
     {
         try {
-            $query = "INSERT INTO $this->tabela (nome, descricao, meta, ong_id)
+            $query = "INSERT INTO $this->tabela (nome, descricao, meta, ong_id, c)
                       VALUES (:nome, :descricao, :meta, :ong_id)";
             $stmt = $this->pdo->prepare($query);
             $stmt->bindParam(':nome', $nome);
             $stmt->bindParam(':descricao', $descricao);
             $stmt->bindParam(':meta', $meta);
             $stmt->bindParam(':ong_id', $ong_id);
+            $stmt->bindParam(':categoriaProjetoId', $ong_id);
             return $stmt->execute();
         } catch (PDOException $e) {
             // error_log("Erro ao inserir registro: " . $e->getMessage());
@@ -298,5 +299,13 @@ class ProjetoModel
         $stmt->bindParam(':projeto_id', $projeto_id, PDO::PARAM_INT);
         $stmt->execute();
         return $stmt->fetch();
+    }
+
+
+    public function categorias(){
+        $query = "SELECT * FROM categoria_projeto";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 }

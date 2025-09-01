@@ -33,12 +33,12 @@ $btn_text = ($PerfilProjeto['projeto_id']) ? 'SALVAR ALTERAÇÃO' : 'CRIAR PROJE
                 <div class="input-box">
                     <label>Categoria do Projeto<span>*</span></label>
                     <div class="categorias">
-                        <label><input type="checkbox" name="categorias[]" value="Educacao"> Educação</label>
-                        <label><input type="checkbox" name="categorias[]" value="Saude"> Saúde</label>
-                        <label><input type="checkbox" name="categorias[]" value="Esporte"> Esporte</label>
-                        <label><input type="checkbox" name="categorias[]" value="Cultura"> Cultura</label>
-                        <label><input type="checkbox" name="categorias[]" value="Tecnologia"> Tecnologia</label>
-                        <label><input type="checkbox" name="categorias[]" value="Meio Ambiente"> Meio Ambiente</label>
+                        <label><input type="checkbox" name="categorias[]" value="1" data-id="<?= $solicitacao['categoriaProjetoId'] ?>" data-tipo="Educação"?> Educação</label>
+                        <label><input type="checkbox" name="categorias[]" value="2" data-id="<?= $solicitacao['categoriaProjetoId'] ?>" data-tipo="Saúde"?> Saúde</label>
+                        <label><input type="checkbox" name="categorias[]" value="3" data-id="<?= $solicitacao['categoriaProjetoId'] ?>" data-tipo="Esporte"?> Esporte</label>
+                        <label><input type="checkbox" name="categorias[]" value="4" data-id="<?= $solicitacao['categoriaProjetoId'] ?>" data-tipo="Cultura"?> Cultura</label>
+                        <label><input type="checkbox" name="categorias[]" value="5"data-id="<?= $solicitacao['categoriaProjetoId'] ?>" data-tipo="Tecnologia"?> Tecnologia</label>
+                        <label><input type="checkbox" name="categorias[]" value="6" data-id="<?= $solicitacao['categoriaProjetoId'] ?>" data-tipo="Meio Ambiente"?> Meio Ambiente</label>
                     </div>
                 </div>
             </div>
