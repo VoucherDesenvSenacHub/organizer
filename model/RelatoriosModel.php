@@ -46,37 +46,21 @@ class RelatoriosModel {
     }
 
     function listarProjetos($id) {
-        $query = "SELECT p.projeto_id, p.nome, p.status 
-                      FROM projetos p
-                      WHERE ong_id = :id";
+        $query = "SELECT p.projeto_id, p.nome AS nome_projeto, p.status, p.ong_id, u.usuario_id,
+                    u.nome AS nome_usuario, u.telefone FROM projetos p
+                INNER JOIN apoios_projetos ap ON p.projeto_id = ap.projeto_id
+                INNER JOIN usuarios u ON ap.usuario_id = u.usuario_id
+                WHERE p.status = 'ATIVO' AND p.ong_id = :ong_id
+                ORDER BY p.projeto_id, u.nome";
         $stmt = $this->pdo->prepare($query);
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->bindParam(':ong_id', $id, PDO::PARAM_INT);
         $stmt->execute();
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
-        $listaProjetos = $stmt->fetchAll();
-        $dados = array();
-        if($stmt->rowCount() === 0){
-            $dados = [["Não existe projeto cadastrado"]];
-        }else{
-            foreach($stmt as $p){
-                $query = "SELECT u.nome, a.data_apoio from apoios_projetos a
-                INNER JOIN usuarios u USING(usuario_id)
-                WHERE projeto_id = :id
-                ORDER BY data_apoio DESC";
-                $stmt = $this->pdo->prepare($query);
-                $stmt->bindParam(':id', $p["projeto_id"], PDO::PARAM_INT);
-                $stmt->execute();
-                $stmt->setFetchMode(PDO::FETCH_ASSOC);
-                $listaVoluntarios = $stmt->fetchAll();
-                if($p["status"] === "ATIVO"){
-                    array_push($dados, $listaVoluntarios);
-                }
-            }
-            if(sizeof($dados) === 0){
-                $dados = [["Não existem projetos ativos nessa ONG"]];
-            }
+        if ($stmt->rowCount() > 0){
+            return $stmt->fetchAll();
+        }else {
+            return "Não há projetos ativos cadastrados para essa ONG";
         }
-        return [$dados, $listaProjetos];
     }
 
     function buscarUsuarios(){
@@ -116,6 +100,13 @@ class RelatoriosModel {
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
         $stmt->setFetchMode(PDO::FETCH_CLASS, __CLASS__);
+        return $stmt->fetchAll();
+    }
+    function listarTabelas(){
+        $query = "SELECT * from usuarios";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute();
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
         return $stmt->fetchAll();
     }
 }
