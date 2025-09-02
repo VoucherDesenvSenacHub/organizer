@@ -28,8 +28,7 @@ class AdminModel
     {
         $query = "SELECT
                   (SELECT COUNT(*) FROM parcerias WHERE status = 'PENDENTE') AS empresas,
-                  (SELECT COUNT(*) FROM ongs WHERE status = 'PENDENTE') AS ongs,
-                  (SELECT COUNT(*) FROM projetos WHERE status = 'PENDENTE') AS inativar;";
+                  (SELECT COUNT(*) FROM ongs WHERE status = 'PENDENTE') AS ongs;";
         $stmt = $this->pdo->prepare($query);
         $stmt->execute();
         $stmt->setFetchMode(PDO::FETCH_CLASS, __CLASS__);
@@ -63,25 +62,6 @@ class AdminModel
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    // Buscar lista de solicitações de inativação das ongs
-    function ListarSolicitacoesInativar()
-    {
-        $query = "SELECT p.projeto_id, 
-                     p.nome AS projeto, 
-                     o.nome AS ong, 
-                     p.meta AS meta,
-                     p.descricao AS descricao,
-                     DATE_FORMAT(p.data_atualizacao, '%d/%m/%Y') AS criadoEm
-              FROM projetos p
-              INNER JOIN ongs o ON p.ong_id = o.ong_id
-              WHERE p.status = 'PENDENTE'
-              ORDER BY p.data_atualizacao DESC";
-
-        $stmt = $this->pdo->prepare($query);
-        $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    }
-
 
     // Inserir nova solicitação de parceria
     function CriarSolicitacaoParceria($dados)
@@ -109,16 +89,12 @@ class AdminModel
         try {
             switch ($tipo) {
                 case 'empresas':
-                    $status = $acao === 'approve' ? 'APROVADDA' : 'RECUSADA';
+                    $status = $acao === 'approve' ? 'APROVADA' : 'RECUSADA';
                     $query = "UPDATE parcerias SET status = ? WHERE parceria_id = ? AND status = 'PENDENTE'";
                     break;
                 case 'ongs':
                     $status = $acao === 'approve' ? 'ATIVO' : 'INATIVO';
                     $query = "UPDATE ongs SET status = ? WHERE ong_id = ? AND status = 'PENDENTE'";
-                    break;
-                case 'inativar':
-                    $status = $acao === 'approve' ? 'INATIVO' : 'ATIVO';
-                    $query = "UPDATE projetos SET status = ? WHERE projeto_id = ? AND status = 'PENDENTE'";
                     break;
                 default:
                     return false;

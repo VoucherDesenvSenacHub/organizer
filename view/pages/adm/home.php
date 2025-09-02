@@ -56,15 +56,15 @@ $solicitacoes = $adminModel->ContadoresSolicitacoes();
                         </div>
                     </a>
                 </div>
-                <div class="card-adm">
+                <!-- <div class="card-adm">
                     <h4>INATIVAR</h4>
                     <span>Confirme a inativação do projeto solicitados pela ONG.</span>
-                <a href="inativacoes.php">
+                    <a href="inativacoes.php">
                         <div><i class="fa-solid fa-trash-can"></i>
                             <p><?= $solicitacoes->inativar ?> Solicitações</p>
                         </div>
-                </a>
-                </div>
+                    </a>
+                </div> -->
             </fieldset>
 
             <fieldset id="section-ong">
