@@ -32,7 +32,7 @@ $listagem_projetos = $projetos->listarProjetos(1);
     <h2><?php echo $cp[0] ?></h2>
     <table>
         <thead>
-            <th>Apoiadores</th>
+            <th><td>Apoiadores</td></th>
         </thead>
         <tbody>
             <?php foreach($listagem_projetos as $lp) {
@@ -42,10 +42,16 @@ $listagem_projetos = $projetos->listarProjetos(1);
             $contador ++;
         }}?>
         </tbody>
+        <tfoot>
+            <tr>
+                <td><?php
+        echo "Total de apoiadores: ".$contador;
+        $contador = 0; ?></td>
+            </tr>
+
+        </tfoot>
     </table>
     <?php
-        echo "Total de apoiadores: ".$contador;
-        $contador = 0;
     }
 
 
