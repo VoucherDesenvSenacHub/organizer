@@ -1,21 +1,23 @@
-main .container {
-    /* padding: 50px 30px; */
-    background-color: white;
-    /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
+main.conteudo-principal section {
+    min-height: calc(100vh - 60px);
+    padding: 30px 20px;
+}
+
+main.conteudo-principal .container {
     flex-direction: column;
-    gap: 40px;
+    gap: 30px;
     transition: .3s;
 }
 
-main .container h1 {
+main.conteudo-principal .container h1 {
     font-size: 24px;
 }
 
-main .container h1 i {
+main.conteudo-principal .container h1 i {
     color: var(--cor-amarelo-hover);
 }
 
-main .container .topo {
+main.conteudo-principal .container .topo {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -24,7 +26,7 @@ main .container .topo {
     gap: 15px;
 }
 
-main .container .topo .btn-novo {
+main.conteudo-principal .container .topo .btn-novo {
     background-color: var(--cor-verde-barra);
 }
 
@@ -57,7 +59,7 @@ main .container .topo .btn-novo {
 }
 
 /* ARÉA DOS CARDS */
-main .container .area-cards {
+main.conteudo-principal .container .area-cards {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
@@ -66,7 +68,7 @@ main .container .area-cards {
 }
 
 @media (max-width: 500px) {
-    main .container .topo {
+    main.conteudo-principal .container .topo {
         justify-content: center;
     }
 }

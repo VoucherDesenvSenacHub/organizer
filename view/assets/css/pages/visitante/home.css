@@ -390,7 +390,6 @@ a {
   border-radius: 10px;
   padding: 20px;
   width: 600px;
-  height: 500px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
@@ -436,6 +435,8 @@ a {
   padding: 10px;
   margin-bottom: 15px;
   font-size: 14px;
+  max-width: 560px;
+  max-height: 76px;
 }
 
 #body-empresas input::placeholder,

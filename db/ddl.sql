@@ -2,6 +2,18 @@ CREATE DATABASE organizer;
 USE organizer;
 
 -- ================================
+-- TABELAS PARA GUARDAR TODOS OS CAMINHOS DE IMAGENS
+-- ================================
+CREATE TABLE imagens (
+    imagem_id INT AUTO_INCREMENT PRIMARY KEY,
+-- Caminho da imagem
+    caminho VARCHAR(255) NOT NULL,
+-- Controle de data
+    data_upload TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    data_atualizacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+-- ================================
 -- TABELA DOS USUÁRIOS
 -- ================================
 CREATE TABLE usuarios (
@@ -10,19 +22,21 @@ CREATE TABLE usuarios (
     nome VARCHAR(255) NOT NULL,
     cpf VARCHAR(11) UNIQUE NOT NULL,
     data_nascimento DATE NOT NULL,
-    foto_perfil VARCHAR(255),
+    imagem_id INT NULL,
 -- Contato e autenticação
     email VARCHAR(255) UNIQUE NOT NULL,
     telefone VARCHAR(20) NOT NULL,
     senha VARCHAR(255) NOT NULL,
 -- Tipos e status de usuário
-    doador BOOLEAN DEFAULT TRUE,
+    doador BOOLEAN DEFAULT FALSE,
     ong BOOLEAN DEFAULT FALSE,
     adm BOOLEAN DEFAULT FALSE,
     status ENUM('ATIVO', 'INATIVO') NOT NULL DEFAULT 'ATIVO',
 -- Datas de controle
     data_cadastro TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    data_atualizacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+    data_atualizacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+-- Relacionamentos
+    CONSTRAINT fk_imagem_usuario FOREIGN KEY (imagem_id) REFERENCES imagens(imagem_id) ON DELETE SET NULL
 );
 
 -- ================================
@@ -43,22 +57,24 @@ CREATE TABLE ongs (
 -- Identificação da ONG
     nome VARCHAR(255) NOT NULL,
     cnpj VARCHAR(18) NOT NULL UNIQUE,
-    responsavel_id INT NOT NULL,
+    responsavel_id INT NOT NULL UNIQUE,
 -- Contato da ONG
     telefone VARCHAR(20) NOT NULL,
     email VARCHAR(255) NOT NULL,
 -- Endereço da ONG
     cep VARCHAR(10) NOT NULL,
     rua VARCHAR(200) NOT NULL,
+    numero VARCHAR(10) NOT NULL,
     bairro VARCHAR(100) NOT NULL,
     cidade VARCHAR(100) NOT NULL,
+    estado VARCHAR(2) NOT NULL,
 -- Dados bancários
     banco_id INT NOT NULL,
     agencia VARCHAR(10) NOT NULL,
     conta_numero VARCHAR(20) NOT NULL,
-    tipo_conta ENUM('CORRENTE', 'POUPANÇA') NOT NULL DEFAULT 'CORRENTE',
+    tipo_conta ENUM('CORRENTE', 'POUPANÇA') NOT NULL,
 -- Dados adicionais
-    logo_url VARCHAR(255),
+    imagem_id INT NULL,
     descricao TEXT NOT NULL,
     status ENUM('ATIVO', 'INATIVO') NOT NULL DEFAULT 'ATIVO',
 -- Datas de controle
@@ -66,7 +82,8 @@ CREATE TABLE ongs (
     data_atualizacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 -- Relacionamentos
     CONSTRAINT fk_responsavel FOREIGN KEY (responsavel_id) REFERENCES usuarios(usuario_id),
-    CONSTRAINT fk_banco FOREIGN KEY (banco_id) REFERENCES bancos(banco_id)
+    CONSTRAINT fk_banco FOREIGN KEY (banco_id) REFERENCES bancos(banco_id),
+    CONSTRAINT fk_imagem_ong FOREIGN KEY (imagem_id) REFERENCES imagens(imagem_id) ON DELETE SET NULL
 );
 
 -- ================================
@@ -110,7 +127,7 @@ CREATE TABLE noticias (
 -- ================================
 -- TABELA DE DOAÇÕES PARA O PROJETO
 -- ================================
-CREATE TABLE doacao_projeto (
+CREATE TABLE doacoes_projetos (
     id INT PRIMARY KEY AUTO_INCREMENT,
 -- Relacionamentos
     projeto_id INT NOT NULL,
@@ -158,39 +175,30 @@ CREATE TABLE favoritos_ongs (
 );
 
 -- ================================
--- TABELA DE IMAGENS DE PROJETOS
+-- TABELAS DE RELACIONAMENTOS PARA IMAGENS DO PROJETO E NOTÍCIAS
 -- ================================
-CREATE TABLE imagens_projeto (
+CREATE TABLE imagens_projetos (
     id INT AUTO_INCREMENT PRIMARY KEY,
--- Relacionamento com projeto
+-- Relacionamentos com projeto e a imagem
     projeto_id INT NOT NULL,
--- Imagem
-    logo_url VARCHAR(255) NOT NULL,
--- Controle de data
-    data_upload TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
--- Chave estrangeira
-    FOREIGN KEY (projeto_id) REFERENCES projetos(projeto_id) ON DELETE CASCADE ON UPDATE CASCADE
+    imagem_id INT NOT NULL,
+    FOREIGN KEY (projeto_id) REFERENCES projetos(projeto_id) ON DELETE CASCADE,
+    FOREIGN KEY (imagem_id) REFERENCES imagens(imagem_id) ON DELETE CASCADE
 );
 
--- ================================
--- TABELA DE IMAGENS DE NOTÍCIAS
--- ================================
-CREATE TABLE imagens_noticia (
+CREATE TABLE imagens_noticias (
     id INT AUTO_INCREMENT PRIMARY KEY,
--- Relacionamento com notícia
+-- Relacionamentos com notícia e a imagem
     noticia_id INT NOT NULL,
--- Imagem
-    logo_url VARCHAR(255) NOT NULL,
--- Controle de data
-    data_upload TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
--- Chave estrangeira
-    FOREIGN KEY (noticia_id) REFERENCES noticias(noticia_id) ON DELETE CASCADE ON UPDATE CASCADE
+    imagem_id INT NOT NULL,
+    FOREIGN KEY (noticia_id) REFERENCES noticias(noticia_id) ON DELETE CASCADE,
+    FOREIGN KEY (imagem_id) REFERENCES imagens(imagem_id) ON DELETE CASCADE
 );
 
 -- ================================
 -- TABELA DE APOIOS A PROJETOS
 -- ================================
-CREATE TABLE apoios_projeto (
+CREATE TABLE apoios_projetos (
     id INT AUTO_INCREMENT PRIMARY KEY,
 -- Relacionamentos
     usuario_id INT NOT NULL,
@@ -202,4 +210,22 @@ CREATE TABLE apoios_projeto (
 -- Chaves estrangeiras
     CONSTRAINT fk_apoio_usuario FOREIGN KEY (usuario_id) REFERENCES usuarios(usuario_id) ON DELETE CASCADE ON UPDATE CASCADE,
     CONSTRAINT fk_apoio_projeto FOREIGN KEY (projeto_id) REFERENCES projetos(projeto_id) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+-- ================================
+-- TABELA DE PARCERIAS (EMPRESAS)
+-- ================================
+CREATE TABLE parcerias (
+    parceria_id INT PRIMARY KEY AUTO_INCREMENT,
+-- Dados da empresa
+    nome VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    cnpj VARCHAR(18) NOT NULL,
+    telefone VARCHAR(20) NOT NULL,
+    mensagem TEXT,
+-- Status da solicitação
+    status ENUM('PENDENTE', 'APROVADA', 'RECUSADA') NOT NULL DEFAULT 'PENDENTE',
+-- Datas de controle
+    data_envio TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    data_atualizacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );

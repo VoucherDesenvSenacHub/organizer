@@ -1,12 +1,10 @@
-#container-conteudo .container {
-    /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
-    width: 100%;
-    background-color: white;
-    justify-content: start;
-    /* padding: 50px 30px; */
+main.conteudo-principal > section {
+    min-height: calc(100vh - 60px);
+    padding: 30px 20px;
+    display: flex;
     flex-direction: column;
-    align-items: start;
-    gap: 40px;
+    gap: 30px;
+    justify-content: start;
 }
 
 #title {
@@ -66,8 +64,67 @@
     color: var(--cor-amarelo);
 }
 
-/* Sessão: Navegação */
-#nav-home {
+
+/* Sessão: Atividades Recentes */
+#atividades-recentes > h4 {
+    font-size: 14px;
+    color: var(--cor-amarelo-hover);
+}
+
+#atividades-recentes .box-cards {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 5px;
+}
+.upload_imagem_perfil h1 {
+    font-size: 26px;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+.upload_imagem_perfil h3 {
+    margin-bottom: 10px;
+}
+.upload_imagem_perfil {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    box-shadow: rgba(50, 50, 93, 0.35) 0px 2px 5px 1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    border-radius: 5px;
+    padding: 20px;
+}
+.upload_imagem_perfil form input {
+    display: none;
+}
+
+.upload_imagem_perfil form {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.upload_imagem_perfil form label .input_label {
+    padding: 10px;
+    background-color: rgb(255, 255, 255);
+    border: dashed 2px rgb(184, 184, 184);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: .3s;
+}
+.upload_imagem_perfil form label .input_label:hover {
+    box-shadow: rgba(50, 50, 93, 0.35) 0px 2px 5px 1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+.upload_imagem_perfil form button {
+    color: white;
+    padding: 5px 15px 5px 15px;
+    margin: 0px;
+    border-radius: 5px;
+    border: none;
+    background-color: var(--cor-amarelo);
+}
+
+
+/* ===================== REMOVIDO POIS ESTAVA SE REPETINDO MUITO A MESMA NAVEGAÇÃO ===================== */
+/* #nav-home {
     display: flex;
     gap: 15px;
     justify-content: space-between;
@@ -101,30 +158,4 @@
 #nav-home a span {
     font-size: 15px;
     font-weight: 600;
-}
-
-/* Sessão: Atividades */
-#atividades {
-    width: 100%;
-}
-
-#atividades > h4 {
-    font-size: 14px;
-    color: var(--cor-amarelo-hover);
-}
-
-#atividades #cards {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-    margin-top: 5px;
-}
-
-#atividades .icon.tp-doacao img {
-    width: 80%;
-}
-
-#atividades .card-acoes .icon {
-    background: none;
-    box-shadow: none;
-}
+} */

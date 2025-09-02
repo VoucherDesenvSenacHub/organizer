@@ -7,14 +7,14 @@
         <nav id="nav-bar">
             <ul>
                 <li><a href="../ong/home.php">Home</a></li>
-                <li><a href="../ong/projetos.php">Projetos</a></li>
-                <li><a href="../ong/noticias.php">Notícias</a></li>
-                <li><a href="../ong/relatorios.php">Relatórios</a></li>
+                <li><a href="../ong/lista.php">Ongs</a></li>
+                <li><a href="../projeto/lista.php">Projetos</a></li>
+                <li><a href="../noticia/lista.php">Notícias</a></li>
             </ul>
         </nav>
         <div id="doador-nav">
             <button id="img-doador" onclick="abrir_popup('perfil-doador-popup')" title="Meu Perfil">
-                <img src="<?= $_SESSION['usuario_foto'] ?>" alt="">
+                <img src="<?= $_SESSION['usuario']['foto'] ?>" alt="">
             </button>
             <button onclick="menu_mobile()" id="hamburguer"></button>
         </div>
@@ -22,7 +22,7 @@
 </header>
 
 <!-- ASIDE -->
-<main id="main-doador">
+<main id="container-principal">
     <div class="container">
         <?php require_once __DIR__ . '/../asides/aside-ong.php'; ?>
         <div id="container-conteudo">

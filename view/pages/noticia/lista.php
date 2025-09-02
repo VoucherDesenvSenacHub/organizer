@@ -1,4 +1,5 @@
 <?php
+session_start();
 $acesso = $_SESSION['perfil_usuario'] ?? 'visitante';
 $tituloPagina = 'Acompanhe Notícias | Organizer';
 $cssPagina = ['shared/catalogo.css'];
@@ -6,16 +7,16 @@ require_once '../../components/layout/base-inicio.php';
 
 require_once __DIR__ . '/../../../autoload.php';
 $noticiaModel = new NoticiaModel();
-$lista = $noticiaModel->listarCards();
+$lista = $noticiaModel->listarCardsNoticias();
 
 if ($_SERVER['REQUEST_METHOD'] = 'GET' && isset($_GET['pesquisa'])) {
     $pesquisa = $_GET['pesquisa'];
-    $lista = $noticiaModel->buscarNome($pesquisa);
+    $lista = $noticiaModel->listarCardsNoticias('pesquisa', ['pesquisa' => $pesquisa]);
 }
-$perfil = $_SESSION['perfil_usuario'] ?? '';
+
 ?>
 
-<main <?php if ($perfil == 'doador') echo 'class="usuario-logado"'; ?>>
+<main class="<?= isset($_SESSION['usuario']['id']) ? 'usuario-logado' : 'visitante' ?>">
     <div class="container" id="container-catalogo">
         <section id="top-info">
             <div id="info">
@@ -113,7 +114,7 @@ $perfil = $_SESSION['perfil_usuario'] ?? '';
                 </form>
             </div>
             <div id="imagem-top">
-                <img src="../../assets/images/pages/tela-noticia-world.png" alt="">
+                <img src="../../assets/images/pages/shared/mundo.png">
             </div>
         </section>
         <?php if (isset($_GET['pesquisa'])) {

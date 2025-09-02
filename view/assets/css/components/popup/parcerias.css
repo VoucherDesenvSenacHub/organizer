@@ -1,0 +1,41 @@
+.popup-parceria {
+    background-color: rgba(0, 0, 0, 0.2) !important;
+}
+
+.popup-parceria .container-popup {
+    background-color: aliceblue;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+}
+
+.popup-parceria .container-popup .msg {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.popup-parceria .container-popup h1 {
+    color: var(--cor-amarelo);
+    font-size: 24px;
+}
+ 
+.popup-parceria .container-popup p {
+    color: var(--cor-principal);
+}
+
+
+/* 
+CORES
+*/
+.popup-parceria i {
+    font-size: 50px;
+}
+
+.popup-parceria#aprovar-popup i {
+    color: var(--cor-verde);
+}
+.popup-parceria#recusar-popup i {
+    color: var(--cor-vermelho);
+}

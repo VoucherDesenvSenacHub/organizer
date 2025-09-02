@@ -25,3 +25,4 @@ CREATE TABLE empresas_parceiras (
 -- Tabela: Doações para ONG
 
 
+

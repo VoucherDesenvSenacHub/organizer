@@ -4,7 +4,6 @@
     /* top: 60px; */
     width: 65px;
     flex-shrink: 0;
-    min-height: calc(100vh - 60px);
     height: 100%;
     padding: 10px;
     display: flex;
@@ -120,7 +119,7 @@
     align-items: center;
     gap: 20px;
     padding: 0 13px;
-    position: fixed;
+    position: absolute;
     bottom: 15px;
     color: var(--cor-principal);
     width: 45px;
@@ -146,7 +145,7 @@
     align-items: center;
     gap: 20px;
     padding: 10px;
-    position: fixed;
+    position: absolute;
     bottom: 65px;
     color: var(--cor-principal);
     width: 45px;

@@ -55,7 +55,9 @@
     display: flex;
     align-items: center;
     gap: 8px;
+    
 }
+
 
 .card-projeto .barra-doacao span {
     font-size: 11px;
@@ -149,14 +151,4 @@
 
 .card-projeto .acoes-projeto button.favoritado {
     color: hotpink;
-}
-
-
-/* TIPOS DE CARD */
-/* .card-projeto.tp-ong {
-    height: auto;
-} */
-
-.card-projeto.tp-ong .acoes-projeto form {
-    display: none;
 }

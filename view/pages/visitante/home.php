@@ -5,9 +5,9 @@ $cssPagina = ['visitante/home.css'];
 require_once '../../components//layout/base-inicio.php';
 
 require_once __DIR__ . '/../../../autoload.php';
-$ongModel = new Ong();
+$ongModel = new OngModel();
 
-$lista = $ongModel->listarCards();
+$lista = $ongModel->listarCardsOngs('recentes');
 // var_dump($lista);
 ?>
 <!-- COMEÇAR SEU CÓDIGO AQUI -->
@@ -25,14 +25,14 @@ $lista = $ongModel->listarCards();
                 <a href="#secao-2"><button class="btn">Conhecer</button></a>
             </div>
             <div id="area-img">
-                <img src="../../assets/images//pages/child.png" alt="">
+                <img src="../../assets/images/pages/visitante/criancas.png" alt="">
             </div>
         </div>
     </section>
 
     <section class="secoes" id="secao-2">
         <div class="container">
-            <h1>ONGS EM DESTAQUES</h1>
+            <h1>ONGS RECENTES</h1>
             <div class="box-ongs">
                 <?php foreach ($lista as $ong):
                     require '../../components/cards/card-ong.php';
@@ -69,22 +69,22 @@ $lista = $ongModel->listarCards();
         <h1 class="h1u">Conheça empresas que nos apoiam</h1>
         <div class="grid">
             <div class="card">
-                <img src="../../assets/images/image 171.png" alt="Faber-Castell">
+                <img src="../../assets/images/pages/visitante/empresas/empresa-1.png">
             </div>
             <div class="card">
-                <img src="../../assets/images/image 170.png" alt="Nu">
+                <img src="../../assets/images/pages/visitante/empresas/empresa-2.png">
             </div>
             <div class="card">
-                <img src="../../assets/images/image 173.png" alt="Pedigree">
+                <img src="../../assets/images/pages/visitante/empresas/empresa-3.png">
             </div>
             <div class="card">
-                <img src="../../assets/images/image 172.png" alt="Cielo">
+                <img src="../../assets/images/pages/visitante/empresas/empresa-4.png">
             </div>
             <div class="card">
-                <img src="../../assets/images/image 174.png" alt="Coral">
+                <img src="../../assets/images/pages/visitante/empresas/empresa-5.png">
             </div>
             <div class="card">
-                <img src="../../assets/images/imagem_2024-07-26_200350433-removebg-preview 1.png" alt="Guaraná">
+                <img src="../../assets/images/pages/visitante/empresas/empresa-6.png">
             </div>
         </div>
         <div class="pagination">
@@ -101,16 +101,18 @@ $lista = $ongModel->listarCards();
     <div id="body-forma" class="popup-fundo">
         <div class="conteiner-forma">
             <h2 class="titulo">Solicitação de Parceria</h2>
-            <form id="formParceiro" action=""
-                onsubmit="mensagem_enviada('toast-mensagem-enviada', 'body-forma'); return false;">
+            <form id="formParceiro">
+                <label class="Email" for="nome">Nome da Empresa</label>
+                <input type="text" id="nome" maxlength="100" placeholder="Ex: Coca-Cola Brasil" required>
+
                 <label class="Email" for="email">E-mail</label>
-                <input type="text" id="email" maxlength="100" placeholder="Exemplo@gmail.com:" required>
+                <input type="email" id="email" maxlength="100" placeholder="Exemplo@gmail.com" required>
 
                 <label class="Telefone" for="telefone">Telefone</label>
-                <input type="text" id="telefone" maxlength="11" placeholder="(00)00000-0000" required>
+                <input type="tel" id="telefone" maxlength="15" placeholder="(00)00000-0000" required>
 
                 <label class="Cnpj" for="cnpj">CNPJ</label>
-                <input type="text" id="cnpj" maxlength="11" placeholder="000.000.000-00" required>
+                <input type="text" id="cnpj" maxlength="18" placeholder="00.000.000/0000-00" required>
 
                 <label class="mens" for="mensagem">Mensagem</label>
                 <textarea id="mensagem"
@@ -131,13 +133,11 @@ $lista = $ongModel->listarCards();
         <i class="fa-regular fa-circle-check"></i>
         Mensagem enviada com sucesso!
     </div>
-    <script>
-        document.getElementById("formParceiro").addEventListener("submit", function(event) {
-            event.preventDefault();
-            this.reset();
-        });
-    </script>
+    <div id="toast-erro" class="toast erro">
+        <i class="fa-solid fa-triangle-exclamation"></i>
+        <span id="erro-mensagem">Erro ao enviar mensagem!</span>
+    </div>
     <?php
-    $jsPagina = ['home-doador.js']; //Colocar o arquivo .js
+    $jsPagina = ['visitante/home-parceria.js'];
     require_once '../../components/layout/footer/footer-visitante.php';
     ?>
