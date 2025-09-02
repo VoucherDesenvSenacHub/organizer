@@ -30,23 +30,23 @@ class NoticiaModel
     }
 
     function editar($id, $titulo, $subtitulo, $texto, $subtexto)
-    {
-        try {
-            $query = "UPDATE $this->tabela
-                          SET titulo = :titulo, subtitulo = :subtitulo, texto = :texto, subtexto = :subtexto
-                          WHERE noticia_id = :id";
-            $stmt = $this->pdo->prepare($query);
-            $stmt->bindParam(':titulo', $titulo);
-            $stmt->bindParam(':subtitulo', $subtitulo);
-            $stmt->bindParam(':texto', $texto);
-            $stmt->bindParam(':subtexto', $subtexto);
-            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-            $stmt->execute();
-            return $stmt->rowCount();
-        } catch (PDOException $e) {
-            return false;
-        }
+{
+    try {
+        $query = "UPDATE $this->tabela
+                      SET titulo = :titulo, subtitulo = :subtitulo, texto = :texto, subtexto = :subtexto
+                      WHERE noticia_id = :id";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindParam(':titulo', $titulo);
+        $stmt->bindParam(':subtitulo', $subtitulo);
+        $stmt->bindParam(':texto', $texto);
+        $stmt->bindParam(':subtexto', $subtexto);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        return $stmt->execute(); // true ou false
+    } catch (PDOException $e) {
+        return false;
     }
+}
+
 
     function buscarPerfilNoticia($IdNoticia)
     {
@@ -72,7 +72,7 @@ class NoticiaModel
         switch ($tipo) {
             // Buscar as Notícias pelo título
             case 'pesquisa':
-                $query = "SELECT * FROM vw_card_noticias WHERE titulo LIKE :titulo";
+                $query = "SELECT * FROM vw_card_noticias WHERE status = 'ATIVO' AND titulo LIKE :titulo";
                 if (!empty($valor['ong_id'])) {
                     $query .= " AND ong_id = :ong_id";
                     $params[':ong_id'] = $valor['ong_id'];
@@ -81,7 +81,7 @@ class NoticiaModel
                 break;
             // Buscar as Notícias de uma ONG
             case 'ong':
-                $query = "SELECT * FROM vw_card_noticias v WHERE ong_id = :ong_id";
+                $query = "SELECT * FROM vw_card_noticias v WHERE status = 'ATIVO' AND ong_id = :ong_id";
                 $params[':ong_id'] = $valor;
                 break;
             default:

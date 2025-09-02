@@ -26,14 +26,18 @@ if (empty($_POST['noticia-id'])) {
 
             // Upload de imagens (se houver)
             if (!empty($_FILES['fotos']['name'][0])) {
+                $pasta = __DIR__ . '/../../view/assets/images/';
+            if (!is_dir($pasta)) {
+                mkdir($pasta, 0777, true);
+             }
                 foreach ($_FILES['fotos']['name'] as $i => $nome) {
                     if ($_FILES['fotos']['error'][$i] === UPLOAD_ERR_OK) {
                         $tmp   = $_FILES['fotos']['tmp_name'][$i];
                         $novoNome = uniqid() . '-' . basename($nome);
-                        $destino  = __DIR__ . '/../../upload/imagens/' . $novoNome;
+                        $destino  = __DIR__ . '/../../view/assets/images/' . $novoNome;
 
                         if (move_uploaded_file($tmp, $destino)) {
-                            $IdImagem = $imagemModel->salvar('upload/imagens/' . $novoNome);
+                            $IdImagem = $imagemModel->salvar('view/assets/images/' . $novoNome);
                             $imagemModel->vincularNaNoticia($IdImagem, $IdNoticia);
                         }
                     }
@@ -57,31 +61,34 @@ else {
     $noticiaEditada = $noticiaModel->editar($IdNoticia, $TituloNoticia, $SubtituloNoticia, $TextoNoticia, $SubtextoNoticia);
 
     if ($noticiaEditada) {
-        // Apaga imagens antigas (para substituir pelas novas)
-        $imagemModel->deletarPorNoticia($IdNoticia);
-
-        // Upload de novas imagens (se houver)
+        // Só mexe nas imagens se houver upload novo
         if (!empty($_FILES['fotos']['name'][0])) {
+            // Apaga imagens antigas
+            $imagemModel->deletarPorNoticia($IdNoticia);
+    
+            // Salva as novas
             foreach ($_FILES['fotos']['name'] as $i => $nome) {
                 if ($_FILES['fotos']['error'][$i] === UPLOAD_ERR_OK) {
                     $tmp   = $_FILES['fotos']['tmp_name'][$i];
                     $novoNome = uniqid() . '-' . basename($nome);
-                    $destino  = __DIR__ . '/../../upload/imagens/' . $novoNome;
-
+                    $destino  = __DIR__ . '/../../view/assets/images/' . $novoNome;
+    
                     if (move_uploaded_file($tmp, $destino)) {
-                        $IdImagem = $imagemModel->salvar('upload/imagens/' . $novoNome);
+                        $IdImagem = $imagemModel->salvar('view/assets/images/' . $novoNome);
                         $imagemModel->vincularNaNoticia($IdImagem, $IdNoticia);
                     }
                 }
             }
         }
-
+    
         $_SESSION['editar-noticia'] = true;
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
+            exit;
     } else {
         $_SESSION['editar-noticia'] = false;
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
+            exit;
     }
 
-    header('Location: ' . $_SERVER['HTTP_REFERER']);
-    exit;
 }
 

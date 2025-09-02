@@ -27,7 +27,7 @@ $FotoNoticia = $imagens[0]['caminho'] ?? '../../assets/images/global/image-place
             </div>
         </div>
         <div class="imagem-noticia">
-            <img src="<?= $FotoNoticia ?>">
+            <img src="../../../<?= $FotoNoticia ?>">
         </div>
     </a>
     <div class="acoes-noticia">
