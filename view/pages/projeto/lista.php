@@ -18,6 +18,28 @@ if (isset($_GET['pesquisa'])) {
 }
 
 $lista = $projetoModel->listarCardsProjetos($tipo, $valor);
+
+
+if (isset($_GET['filtro'])) {
+    $mapaCategorias = [
+        'educacao'   => 1,
+        'saude'      => 2,
+        'esporte'    => 3,
+        'cultura'    => 4,
+        'tecnologia' => 5,
+        'ambiente'   => 6
+    ];
+
+    $categoriasSelecionadas = [];
+    foreach ($mapaCategorias as $nome => $id) {
+        if (isset($_GET[$nome])) {
+            $categoriasSelecionadas[] = $id;
+        }
+    }
+
+    $lista = $projetoModel->filtrarPorCategorias($categoriasSelecionadas, $paginaAtual);
+}
+
 $totalRegistros = $projetoModel->paginacaoProjetos($tipo, $valor);
 $paginas = ceil($totalRegistros / 8);
 
@@ -46,22 +68,9 @@ if (isset($_SESSION['usuario']['id']) && $_SESSION['perfil_usuario'] === 'doador
                     <h1>ENCONTRE PROJETOS</h1>
                     <p>Explore projetos inspiradores e apoie causas e faça a diferença hoje mesmo.</p>
                     <form id="form-filtro" action="lista.php" method="GET">
+                        <input type="hidden" name="filtro" value="1">
                         <!-- ### -->
                         <div class="ul-group">
-                            <ul class="drop" id="esc-status">
-                                <li>
-                                    <p>Status</p>
-                                    <i class="fa-solid fa-angle-down"></i>
-                                </li>
-                                <li>
-                                    <input type="checkbox" name="em-andamento" id="em-andamento">
-                                    <label for="em-andamento">Ativos</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" name="concluido" id="concluido">
-                                    <label for="concluido">Finalizados</label>
-                                </li>
-                            </ul>
                             <ul class="drop" id="esc-categoria">
                                 <li>
                                     <p>Categoria</p>
@@ -92,7 +101,7 @@ if (isset($_SESSION['usuario']['id']) && $_SESSION['perfil_usuario'] === 'doador
                                     <label for="ambiente">Meio Ambiente</label>
                                 </li>
                             </ul>
-                            
+
                         </div>
                         <button class="btn">Filtrar</button>
                     </form>

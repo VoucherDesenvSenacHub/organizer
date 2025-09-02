@@ -299,4 +299,36 @@ class ProjetoModel
         $stmt->execute();
         return $stmt->fetch();
     }
+
+    public function filtrarPorCategorias(array $categorias, int $pagina = 1): array
+    {
+        $sql = "SELECT v.projeto_id, v.nome, v.descricao, v.caminho, v.barra, v.ong_id,
+                   GROUP_CONCAT(c.nome SEPARATOR ', ') as categorias
+            FROM vw_card_projetos v
+            INNER JOIN categorias_projetos cp ON v.projeto_id = cp.projeto_id
+            INNER JOIN categorias c ON cp.id_categoria = c.id_categoria";
+
+        $params = [];
+
+        if (!empty($categorias)) {
+            $placeholders = [];
+            foreach ($categorias as $i => $catId) {
+                $placeholders[] = ":cat{$i}";
+                $params[":cat{$i}"] = $catId;
+            }
+            $sql .= " WHERE c.id_categoria IN (" . implode(',', $placeholders) . ")";
+        }
+
+        $sql .= " GROUP BY v.projeto_id, v.nome, v.descricao, v.caminho, v.barra, v.ong_id";
+
+        // Paginação
+        $limite = 8;
+        $offset = ($pagina - 1) * $limite;
+        $sql .= " LIMIT {$limite} OFFSET {$offset}";
+
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute($params);
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
