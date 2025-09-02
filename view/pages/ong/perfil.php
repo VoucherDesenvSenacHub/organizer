@@ -19,29 +19,13 @@ if (isset($_GET['id'])) {
 }
 
 //Verificar se o doador marcou este projeto como favorito
-if (isset($_SESSION['usuario']['id']) && $_SESSION['perfil_usuario'] === 'doador') {
+if ($acesso === 'doador') {
     $projetosFavoritos = $projetoModel->listarFavoritos($_SESSION['usuario']['id']);
     $ongsFavoritas = $ongModel->listarFavoritas($_SESSION['usuario']['id']);
 }
-
-$perfil = $_SESSION['perfil_usuario'] ?? '';
 ?>
-<!-- 
-    Toast de Favoritar
--->
-<div id="toast-favorito" class="toast">
-    <i class="fa-solid fa-heart"></i>
-    Adicionado aos favoritos!
-</div>
-<div id="toast-remover-favorito" class="toast erro">
-    <i class="fa-solid fa-heart-crack"></i>
-    Removido dos favoritos!
-</div>
-<!-- 
-    Ínicio da Página
--->
-<main <?php if ($perfil == 'doador') echo 'class="usuario-logado"'; ?>>
-    <div class="container" id="container-principal">
+<main <?php if ($acesso === 'doador') echo 'class="usuario-logado"'; ?>>
+    <div class="container" id="tela-principal">
         <?php
         if (!isset($_GET['id']) || !$PerfilOng) {
             exit('<h2>ERRO AO ENCONTRAR ONG!</h2>');
@@ -57,7 +41,7 @@ $perfil = $_SESSION['perfil_usuario'] ?? '';
                     <?php elseif (!isset($_SESSION['perfil_usuario']) || $_SESSION['perfil_usuario'] === 'doador') : ?>
                         <?php $classe = in_array($PerfilOng['ong_id'], $ongsFavoritas) ? 'favoritado' : ''; ?>
                         <form action="../.././../controller/Ong/FavoritarOngController.php" method="POST">
-                            <input type="hidden" name="ong-id" value="<?= $id ?>">
+                            <input type="hidden" name="ong-id" value="<?= $IdOng ?>">
                             <button title="Favoritar" class="btn-like fa-solid fa-heart <?= $classe ?>"></button>
                         </form>
                     <?php endif; ?>
@@ -162,6 +146,16 @@ $perfil = $_SESSION['perfil_usuario'] ?? '';
         </section>
     </div>
 </main>
+
+<!-- Toasts -->
+<div id="toast-favorito" class="toast">
+    <i class="fa-solid fa-heart"></i>
+    Adicionado aos favoritos!
+</div>
+<div id="toast-remover-favorito" class="toast erro">
+    <i class="fa-solid fa-heart-crack"></i>
+    Removido dos favoritos!
+</div>
 
 <?php
 $jsPagina = [];

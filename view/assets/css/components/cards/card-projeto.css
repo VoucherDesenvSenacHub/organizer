@@ -55,7 +55,9 @@
     display: flex;
     align-items: center;
     gap: 8px;
+    
 }
+
 
 .card-projeto .barra-doacao span {
     font-size: 11px;

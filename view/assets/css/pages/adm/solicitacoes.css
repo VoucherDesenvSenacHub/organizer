@@ -1,21 +1,16 @@
-main.container {
-    /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
-    background-color: white;
-    /* padding: 50px 30px; */
+.conteudo-principal > section {
+    display: flex;
     flex-direction: column;
-    align-items: start;
-    justify-content: start;
     gap: 30px;
-    transition: .3s;
-    width: 100%;
+    min-height: calc(100vh - 60px);
+    padding: 30px 20px;
 } 
 
-main.container h1 {
+.conteudo-principal h1 {
     font-size: 24px;
-    text-align: center;
 }
 
-main.container h1 i {
+.conteudo-principal h1 i {
     color: var(--cor-roxo-adm);
 }
 

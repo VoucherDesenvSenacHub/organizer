@@ -26,13 +26,13 @@ if (!empty($PerfilProjeto['projeto_id'])) {
 }
 
 //Verificar se o doador marcou este projeto como favorito
-if (isset($_SESSION['usuario']['id']) && $_SESSION['perfil_usuario'] === 'doador') {
+if ($acesso === 'doador') {
     $projetosFavoritos = $projetoModel->listarFavoritos($_SESSION['usuario']['id']);
 }
 ob_end_flush();
 ?>
-<main>
-    <div class="container" id="container-principal">
+<main <?php if ($acesso === 'doador') echo 'class="usuario-logado"'; ?>>
+    <div class="container" id="tela-principal">
         <?php if (!isset($_GET['id']) || empty($PerfilProjeto['projeto_id'])): ?>
             <h2>ERRO AO ENCONTRAR PROJETO!</h2>
         <?php else: ?>

@@ -1,0 +1,78 @@
+/* POPUP DE INATIVAR ONG */
+#inativar-ong-popup {
+    background-color: rgba(0, 0, 0, 0.1);
+    padding: 8px;
+}
+
+#inativar-ong-popup .container-popup {
+    padding: 20px;
+    background-color: white;
+    color: var(--cor-principal);
+    max-width: 500px;
+}
+
+#inativar-ong-popup h1 {
+    font-size: 20px;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 15px;
+    color: var(--cor-vermelho);
+}
+
+#inativar-ong-popup p {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+#inativar-ong-popup p strong {
+    color: var(--cor-vermelho);
+}
+
+#inativar-ong-popup ul {
+    margin: 15px 0;
+    padding-left: 20px;
+}
+
+#inativar-ong-popup ul li {
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+#inativar-ong-popup .btn-acoes-modal {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+#inativar-ong-popup .btn-cancelar {
+    background-color: var(--cor-cinza);
+    color: white;
+    flex: 1;
+}
+
+#inativar-ong-popup .btn-cancelar:hover {
+    background-color: var(--cor-cinza-hover);
+    color: var(--cor-cinza);
+}
+
+#inativar-ong-popup .btn-confirmar {
+    background-color: var(--cor-vermelho);
+    color: white;
+    flex: 1;
+}
+
+#inativar-ong-popup .btn-confirmar:hover {
+    background-color: var(--cor-vermelho-hover);
+    color: var(--cor-vermelho);
+}
+
+#inativar-ong-popup .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px;
+    border-radius: 4px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}

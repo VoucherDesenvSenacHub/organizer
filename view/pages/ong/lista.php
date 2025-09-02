@@ -18,21 +18,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['pesquisa'])) {
 if (isset($_SESSION['usuario']['id'])) {
     $ongsFavoritas = $ongModel->listarFavoritas($_SESSION['usuario']['id']);
 }
-
-$perfil = $_SESSION['perfil_usuario'] ?? '';
 ?>
-<!-- 
-    Toast de Favoritar
--->
-<div id="toast-favorito" class="toast">
-    <i class="fa-solid fa-heart"></i>
-    Adicionado aos favoritos!
-</div>
-<div id="toast-remover-favorito" class="toast erro">
-    <i class="fa-solid fa-heart-crack"></i>
-    Removido dos favoritos!
-</div>
-<main <?php if ($perfil == 'doador') echo 'class="usuario-logado"'; ?>>
+<main class="<?= isset($_SESSION['usuario']['id']) ? 'usuario-logado' : 'visitante' ?>">
     <div class="container" id="container-catalogo">
         <section id="top-info">
             <div id="info">
@@ -44,82 +31,38 @@ $perfil = $_SESSION['perfil_usuario'] ?? '';
                         <div class="ul-group">
                             <ul class="drop" id="esc-status">
                                 <li>
-                                    <p>Status</p>
+                                    <p>Ordem</p>
                                     <i class="fa-solid fa-angle-down"></i>
                                 </li>
                                 <li>
                                     <input type="checkbox" name="em-andamento" id="em-andamento">
-                                    <label for="em-andamento">Em andamento</label>
+                                    <label for="em-andamento">mais recentes</label>
                                 </li>
                                 <li>
                                     <input type="checkbox" name="concluido" id="concluido">
-                                    <label for="concluido">Concluído</label>
+                                    <label for="concluido">mais antigos</label>
                                 </li>
                             </ul>
-                            <ul class="drop" id="esc-categoria">
+                            <ul class="drop" id="esc-q-projetos">
                                 <li>
-                                    <p>Categoria</p>
+                                    <p>Quantidade</p>
                                     <i class="fa-solid fa-angle-down"></i>
                                 </li>
                                 <li>
                                     <input type="checkbox" name="educacao" id="educacao">
-                                    <label for="educacao">Educação</label>
+                                    <label for="educacao">1 projeto</label>
                                 </li>
                                 <li>
                                     <input type="checkbox" name="saude" id="saude">
-                                    <label for="saude">Saúde</label>
+                                    <label for="saude">3 à 5 projetos</label>
                                 </li>
                                 <li>
                                     <input type="checkbox" name="esporte" id="esporte">
-                                    <label for="esporte">Esporte</label>
+                                    <label for="esporte">5 ou mais projetos</label>
                                 </li>
-                                <li>
-                                    <input type="checkbox" name="cultura" id="cultura">
-                                    <label for="cultura">Cultura</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" name="tecnologia" id="tecnologia">
-                                    <label for="tecnologia">Tecnologia</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" name="ambiente" id="ambiente">
-                                    <label for="ambiente">Meio Ambiente</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" name="animal" id="animal">
-                                    <label for="animal">Proteção Animal</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" name="direitos" id="direitos">
-                                    <label for="direitos">Direitos Humanos</label>
-                                </li>
+                                
                             </ul>
-                            <ul class="drop" id="esc-regiao">
-                                <li>
-                                    <p>Região</p>
-                                    <i class="fa-solid fa-angle-down"></i>
-                                </li>
-                                <li>
-                                    <input type="checkbox" name="centro-oeste" id="centro-oeste">
-                                    <label for="centro-oeste">Centro-Oeste</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" name="norte" id="norte">
-                                    <label for="norte">Norte</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" name="nordeste" id="nordeste">
-                                    <label for="nordeste">Nordeste</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" name="sudeste" id="sudeste">
-                                    <label for="sudeste">Sudeste</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" name="sul" id="sul">
-                                    <label for="sul">Sul</label>
-                                </li>
-                            </ul>
+                            
                         </div>
                         <button class="btn">Filtrar</button>
                     </form>
@@ -153,6 +96,16 @@ $perfil = $_SESSION['perfil_usuario'] ?? '';
         </nav>
     </div>
 </main>
+
+<!-- Toasts -->
+<div id="toast-favorito" class="toast">
+    <i class="fa-solid fa-heart"></i>
+    Adicionado aos favoritos!
+</div>
+<div id="toast-remover-favorito" class="toast erro">
+    <i class="fa-solid fa-heart-crack"></i>
+    Removido dos favoritos!
+</div>
 
 <?php
 $jsPagina = [];
