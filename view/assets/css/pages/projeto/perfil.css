@@ -419,11 +419,11 @@ section#apresentacao {
     /* color: #912B2B; */
 }
 
-#dados-projeto #acoes #btn-concluir {
-    background-color: var(--cor-verde-barra);
+#dados-projeto #acoes #btn-finalizar {
+    background-color: var(--cor-ciano);
 }
 
-#dados-projeto #acoes #btn-concluir img {
+#dados-projeto #acoes #btn-finalizar img {
     width: 17px;
 }
 

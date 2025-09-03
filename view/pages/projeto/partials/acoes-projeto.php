@@ -16,10 +16,10 @@ if (isset($jaApoiou)) {
         <?php break;
         case 'ong': if ( $PerfilProjeto['ong_id'] === $_SESSION['ong_id']): ?>
             <button class="btn" id="btn-editar" onclick="abrir_popup('editar-projeto-popup')"><i class="fa-solid fa-pen-to-square"></i> Editar</button>
-            <button class="btn" id="btn-concluir" onclick="abrir_popup('inativar-projeto-popup')"><img src="../../assets/images/icons/meta.png"> Finalizar</button>
+            <button class="btn" id="btn-finalizar" onclick="abrir_popup('finalizar-projeto-popup')"><img src="../../assets/images/icons/meta.png"> Finalizar</button>
         <?php endif; break;
         case 'adm': ?>
-            <button class="btn adm-inativar" id="btn-concluir" onclick="abrir_popup('inativar-projeto-popup')"><img src="../../assets/images/icons/meta.png"> Finalizar</button>
+            <button class="btn adm-inativar" id="btn-finalizar" onclick="abrir_popup('finalizar-projeto-popup')"><img src="../../assets/images/icons/meta.png"> Finalizar</button>
         <?php break;
         default: ?>
             <button class="btn" id="btn-doacao" onclick="abrir_popup('login-obrigatorio-popup')"><i class="fa-solid fa-hand-holding-dollar"></i> Quero Doar</button>
