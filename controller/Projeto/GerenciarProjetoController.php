@@ -5,6 +5,7 @@ AuthService::verificaLoginOng();
 
 $projetoModel = new ProjetoModel();
 
+
 // Pegar os dados
 $NomeProjeto = filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_SPECIAL_CHARS);
 $DescricaoProjeto = filter_input(INPUT_POST, 'descricao', FILTER_SANITIZE_SPECIAL_CHARS);
@@ -13,6 +14,7 @@ $MetaProjeto = filter_input(INPUT_POST, 'meta', FILTER_VALIDATE_FLOAT);
 // Criar um Projeto
 if (!$_POST['projeto-id']) {
     $IdOng = $_SESSION['ong_id'];
+    $categoriaProjetoId = $_POST['categoria'];
 
     if($MetaProjeto <= 0) {
         echo "<script>alert('Valor Inválido! Adicione uma meta maior.');window.history.back();</script>";
@@ -20,7 +22,7 @@ if (!$_POST['projeto-id']) {
     }
 
     if ($NomeProjeto && $DescricaoProjeto && $MetaProjeto) {
-        $projetoCriado  = $projetoModel->criar($NomeProjeto, $DescricaoProjeto, $MetaProjeto, $IdOng);
+        $projetoCriado  = $projetoModel->criar($NomeProjeto, $DescricaoProjeto, $MetaProjeto, $IdOng, $categoriaProjetoId);
         if ($projetoCriado) {
             $_SESSION['criar-projeto'] = true;
             header('Location: ' . $_SERVER['HTTP_REFERER']);

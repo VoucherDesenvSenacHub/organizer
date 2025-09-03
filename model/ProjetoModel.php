@@ -192,20 +192,20 @@ class ProjetoModel
     }
 
 
-    function criar($nome, $descricao, $meta, $ong_id)
+    function criar($nome, $descricao, $meta, $ong_id, $categoriaProjetoId)
     {
         try {
-            $query = "INSERT INTO $this->tabela (nome, descricao, meta, ong_id, c)
-                      VALUES (:nome, :descricao, :meta, :ong_id)";
+            $query = "INSERT INTO $this->tabela (nome, descricao, meta, ong_id, categoriaProjetoId)
+                      VALUES (:nome, :descricao, :meta, :ong_id, :categoriaProjetoId)";
             $stmt = $this->pdo->prepare($query);
             $stmt->bindParam(':nome', $nome);
             $stmt->bindParam(':descricao', $descricao);
             $stmt->bindParam(':meta', $meta);
             $stmt->bindParam(':ong_id', $ong_id);
-            $stmt->bindParam(':categoriaProjetoId', $ong_id);
+            $stmt->bindParam(':categoriaProjetoId', $categoriaProjetoId);
             return $stmt->execute();
         } catch (PDOException $e) {
-            // error_log("Erro ao inserir registro: " . $e->getMessage());
+            error_log("Erro ao inserir registro: " . $e->getMessage());
             return false;
         }
     }

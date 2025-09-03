@@ -31,16 +31,17 @@ $btn_text = ($PerfilProjeto['projeto_id']) ? 'SALVAR ALTERAÇÃO' : 'CRIAR PROJE
                     <textarea name="descricao" id="descricao" rows="8" required><?= $PerfilProjeto['descricao'] ?></textarea>
                 </div>
                 <div class="input-box">
-                    <label>Categoria do Projeto<span>*</span></label>
-                    <div class="categorias">
-                        <label><input type="checkbox" name="categorias[]" value="1" data-id="<?= $solicitacao['categoriaProjetoId'] ?>" data-tipo="Educação"?> Educação</label>
-                        <label><input type="checkbox" name="categorias[]" value="2" data-id="<?= $solicitacao['categoriaProjetoId'] ?>" data-tipo="Saúde"?> Saúde</label>
-                        <label><input type="checkbox" name="categorias[]" value="3" data-id="<?= $solicitacao['categoriaProjetoId'] ?>" data-tipo="Esporte"?> Esporte</label>
-                        <label><input type="checkbox" name="categorias[]" value="4" data-id="<?= $solicitacao['categoriaProjetoId'] ?>" data-tipo="Cultura"?> Cultura</label>
-                        <label><input type="checkbox" name="categorias[]" value="5"data-id="<?= $solicitacao['categoriaProjetoId'] ?>" data-tipo="Tecnologia"?> Tecnologia</label>
-                        <label><input type="checkbox" name="categorias[]" value="6" data-id="<?= $solicitacao['categoriaProjetoId'] ?>" data-tipo="Meio Ambiente"?> Meio Ambiente</label>
-                    </div>
-                </div>
+                <label for="categoria">Categoria do Projeto<span>*</span></label>
+                <select id="categoria" name="categoria" required>
+                    <option value="">Selecione uma categoria</option>
+                    <option value="1" <?= ($PerfilProjeto['categoriaProjetoId'] ?? '') == 1 ? 'selected' : '' ?>>Educação</option>
+                    <option value="2" <?= ($PerfilProjeto['categoriaProjetoId'] ?? '') == 2 ? 'selected' : '' ?>>Saúde</option>
+                    <option value="3" <?= ($PerfilProjeto['categoriaProjetoId'] ?? '') == 3 ? 'selected' : '' ?>>Esporte</option>
+                    <option value="4" <?= ($PerfilProjeto['categoriaProjetoId'] ?? '') == 4 ? 'selected' : '' ?>>Cultura</option>
+                    <option value="5" <?= ($PerfilProjeto['categoriaProjetoId'] ?? '') == 5 ? 'selected' : '' ?>>Tecnologia</option>
+                    <option value="6" <?= ($PerfilProjeto['categoriaProjetoId'] ?? '') == 6 ? 'selected' : '' ?>>Meio Ambiente</option>
+                </select>
+            </div>
             </div>
             <div class="box-edit">
                 <div class="input-box">
