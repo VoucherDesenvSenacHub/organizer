@@ -331,4 +331,28 @@ class ProjetoModel
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function paginacaoFiltroCategorias(array $categorias): int
+    {
+        $sql = "SELECT COUNT(DISTINCT v.projeto_id) as total
+            FROM vw_card_projetos v
+            INNER JOIN categorias_projetos cp ON v.projeto_id = cp.projeto_id
+            INNER JOIN categorias c ON cp.id_categoria = c.id_categoria";
+
+        $params = [];
+
+        if (!empty($categorias)) {
+            $placeholders = [];
+            foreach ($categorias as $i => $catId) {
+                $placeholders[] = ":cat{$i}";
+                $params[":cat{$i}"] = $catId;
+            }
+            $sql .= " WHERE c.id_categoria IN (" . implode(',', $placeholders) . ")";
+        }
+
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute($params);
+
+        return (int) $stmt->fetchColumn();
+    }
 }

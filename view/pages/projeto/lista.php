@@ -8,42 +8,59 @@ require_once '../../components/layout/base-inicio.php';
 require_once __DIR__ . '/../../../autoload.php';
 $projetoModel = new ProjetoModel();
 
+$mapaCategorias = [
+    'educacao'   => 1,
+    'saude'      => 2,
+    'esporte'    => 3,
+    'cultura'    => 4,
+    'tecnologia' => 5,
+    'ambiente'   => 6
+];
+
 $paginaAtual = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
-$tipo = '';
-$valor = ['pagina' => $paginaAtual];
 
+// Definir modo
+$modo = 'padrao';
 if (isset($_GET['pesquisa'])) {
-    $tipo = 'pesquisa';
-    $valor['pesquisa'] = $_GET['pesquisa'];
+    $modo = 'pesquisa';
+} elseif (isset($_GET['filtro'])) {
+    $modo = 'filtro';
 }
 
-$lista = $projetoModel->listarCardsProjetos($tipo, $valor);
+// Listar projetos conforme o modo
+switch ($modo) {
+    case 'pesquisa':
+        $valor = [
+            'pagina'   => $paginaAtual,
+            'pesquisa' => $_GET['pesquisa']
+        ];
+        $lista = $projetoModel->listarCardsProjetos('pesquisa', $valor);
+        $totalRegistros = $projetoModel->paginacaoProjetos('pesquisa', $valor);
+        break;
 
-
-if (isset($_GET['filtro'])) {
-    $mapaCategorias = [
-        'educacao'   => 1,
-        'saude'      => 2,
-        'esporte'    => 3,
-        'cultura'    => 4,
-        'tecnologia' => 5,
-        'ambiente'   => 6
-    ];
-
-    $categoriasSelecionadas = [];
-    foreach ($mapaCategorias as $nome => $id) {
-        if (isset($_GET[$nome])) {
-            $categoriasSelecionadas[] = $id;
+    case 'filtro':
+        $categoriasSelecionadas = [];
+        foreach ($mapaCategorias as $nome => $id) {
+            if (isset($_GET[$nome])) {
+                $categoriasSelecionadas[] = $id;
+            }
         }
-    }
 
-    $lista = $projetoModel->filtrarPorCategorias($categoriasSelecionadas, $paginaAtual);
+        $lista = $projetoModel->filtrarPorCategorias($categoriasSelecionadas, $paginaAtual);
+        $totalRegistros = $projetoModel->paginacaoFiltroCategorias($categoriasSelecionadas);
+        break;
+
+    default: // padrão, sem filtro ou busca
+        $valor = ['pagina' => $paginaAtual];
+        $lista = $projetoModel->listarCardsProjetos('', $valor);
+        $totalRegistros = $projetoModel->paginacaoProjetos('', $valor);
+        break;
 }
 
-$totalRegistros = $projetoModel->paginacaoProjetos($tipo, $valor);
+// Calcular páginas
 $paginas = ceil($totalRegistros / 8);
 
-//Verificar se o doador marcou este projeto como favorito
+// Verificar se o doador marcou este projeto como favorito
 if (isset($_SESSION['usuario']['id']) && $_SESSION['perfil_usuario'] === 'doador') {
     $projetosFavoritos = $projetoModel->listarFavoritos($_SESSION['usuario']['id']);
 }
@@ -76,30 +93,14 @@ if (isset($_SESSION['usuario']['id']) && $_SESSION['perfil_usuario'] === 'doador
                                     <p>Categoria</p>
                                     <i class="fa-solid fa-angle-down"></i>
                                 </li>
-                                <li>
-                                    <input type="checkbox" name="educacao" id="educacao">
-                                    <label for="educacao">Educação</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" name="saude" id="saude">
-                                    <label for="saude">Saúde</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" name="esporte" id="esporte">
-                                    <label for="esporte">Esporte</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" name="cultura" id="cultura">
-                                    <label for="cultura">Cultura</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" name="tecnologia" id="tecnologia">
-                                    <label for="tecnologia">Tecnologia</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" name="ambiente" id="ambiente">
-                                    <label for="ambiente">Meio Ambiente</label>
-                                </li>
+
+                                <?php foreach ($mapaCategorias as $nome => $id): ?>
+                                    <li>
+                                        <input type="checkbox" name="<?= $nome ?>" id="<?= $nome ?>"
+                                            <?= isset($_GET[$nome]) ? 'checked' : '' ?>>
+                                        <label for="<?= $nome ?>"><?= ucfirst($nome) ?></label>
+                                    </li>
+                                <?php endforeach; ?>
                             </ul>
 
                         </div>
@@ -115,7 +116,7 @@ if (isset($_SESSION['usuario']['id']) && $_SESSION['perfil_usuario'] === 'doador
                 <img src="../../assets/images/pages/shared/criancas.png">
             </div>
         </section>
-        <?php if (isset($_GET['pesquisa'])) {
+        <?php if (isset($_GET['pesquisa']) || isset($_GET['filtro'])) {
             echo "<p class='qnt-busca'><i class='fa-solid fa-search'></i> " . $totalRegistros . " Projetos Encontrados</p>";
         } ?>
 
