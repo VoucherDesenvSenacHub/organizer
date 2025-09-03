@@ -88,3 +88,25 @@ if (fotosInput && qtImg) {
         }
     });
 }
+
+
+
+
+// FINALIZAR O PROJETO
+
+const outroMotivoRadio = document.getElementById('outro-motivo');
+const boxMotivo = document.querySelector('.box-motivo');
+const textareaMotivo = document.getElementById('motivo');
+const radios = document.querySelectorAll('input[name="motivo-finalizar"]');
+
+radios.forEach(radio => {
+    radio.addEventListener('change', () => {
+        if (outroMotivoRadio.checked) {
+            boxMotivo.style.display = 'block';
+            textareaMotivo.setAttribute('required', 'required');
+        } else {
+            boxMotivo.style.display = 'none';
+            textareaMotivo.removeAttribute('required');
+        }
+    });
+});
