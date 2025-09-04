@@ -10,19 +10,19 @@ $projetoModel = new ProjetoModel();
 $NomeProjeto = filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_SPECIAL_CHARS);
 $DescricaoProjeto = filter_input(INPUT_POST, 'descricao', FILTER_SANITIZE_SPECIAL_CHARS);
 $MetaProjeto = filter_input(INPUT_POST, 'meta', FILTER_VALIDATE_FLOAT);
+$CategoriaIdProjeto = filter_input(INPUT_POST, 'categoria', FILTER_VALIDATE_INT);
 
 // Criar um Projeto
 if (!$_POST['projeto-id']) {
     $IdOng = $_SESSION['ong_id'];
-    $categoriaProjetoId = $_POST['categoria'];
 
     if($MetaProjeto <= 0) {
         echo "<script>alert('Valor Inválido! Adicione uma meta maior.');window.history.back();</script>";
         exit;
     }
 
-    if ($NomeProjeto && $DescricaoProjeto && $MetaProjeto) {
-        $projetoCriado  = $projetoModel->criar($NomeProjeto, $DescricaoProjeto, $MetaProjeto, $IdOng, $categoriaProjetoId);
+    if ($NomeProjeto && $DescricaoProjeto && $MetaProjeto && $CategoriaIdProjeto) {
+        $projetoCriado  = $projetoModel->criar($NomeProjeto, $DescricaoProjeto, $MetaProjeto, $CategoriaIdProjeto, $IdOng);
         if ($projetoCriado) {
             $_SESSION['criar-projeto'] = true;
             header('Location: ' . $_SERVER['HTTP_REFERER']);
@@ -42,7 +42,7 @@ else {
         echo "<script>alert('Meta inválida: o valor deve ser maior do que o que já foi arrecadado.');window.history.back();</script>";
         exit;
     } else {
-        $edicao = $projetoModel->editar($IdProjeto, $NomeProjeto, $DescricaoProjeto, $MetaProjeto);
+        $edicao = $projetoModel->editar($IdProjeto, $NomeProjeto, $DescricaoProjeto, $MetaProjeto, $CategoriaIdProjeto);
         if ($edicao) {
             $_SESSION['editar-projeto'] = true;
         } else {

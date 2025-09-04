@@ -42,6 +42,21 @@ INSERT INTO imagens (caminho) values
 
 
 -- ================================
+-- INSERÇÃO DE DADOS NA TABELA CATEGORIAS
+-- ================================
+INSERT INTO categorias (nome) VALUES
+('Educação'),
+('Saúde'),
+('Meio Ambiente'),
+('Tecnologia e Inovação'),
+('Cultura e Artes'),
+('Esporte e Lazer'),
+('Assistência Social'),
+('Direitos Humanos'),
+('Segurança e Defesa');
+
+
+-- ================================
 -- INSERÇÃO DE DADOS NA TABELA USÚARIOS
 -- ================================
 INSERT INTO usuarios (
@@ -358,81 +373,89 @@ INSERT INTO ongs (
 -- INSERÇÃO DE DADOS NA TABELA PROJETOS
 -- ================================
 INSERT INTO projetos (
-    nome, descricao, meta, status, ong_id
+    nome, descricao, meta, categoria_id, status, ong_id
 ) VALUES (
     'Educação para Todos',
     'Nosso projeto visa democratizar o acesso à educação de qualidade para comunidades em situação de vulnerabilidade social. Serão oferecidas aulas de reforço escolar, oficinas de leitura, inclusão digital e apoio psicológico. A ONG contará com voluntários especializados e parcerias com escolas locais para garantir uma educação mais justa e inclusiva.',
     15000.00,
+    1,
     'ATIVO',
     1
 );
 
 INSERT INTO projetos (
-    nome, descricao, meta, status, ong_id
+    nome, descricao, meta, categoria_id, status, ong_id
 ) VALUES (
     'Vida Sustentável',
     'O projeto Vida Sustentável tem como objetivo conscientizar e capacitar famílias de baixa renda sobre práticas sustentáveis no dia a dia. Através de oficinas sobre reciclagem, hortas comunitárias, compostagem e economia de água e energia, buscamos promover uma transformação ambiental e social nas comunidades atendidas.',
     5000.00,
+    3,
     'ATIVO',
     1
 );
 
 INSERT INTO projetos (
-    nome, descricao, meta, status, ong_id
+    nome, descricao, meta, categoria_id, status, ong_id
 ) VALUES (
     'Cuidando de Quem Cuida',
     'Com foco no apoio a cuidadores de idosos e pessoas com deficiência, este projeto oferece capacitações, suporte psicológico, grupos de apoio e atividades de lazer. A iniciativa reconhece a importância dos cuidadores e busca melhorar sua qualidade de vida, saúde emocional e valorização dentro do contexto familiar e social.',
     30000.00,
+    5,
     'ATIVO',
     1
 );
 
 INSERT INTO projetos (
-    nome, descricao, meta, status, ong_id
+    nome, descricao, meta, categoria_id, status, ong_id
 ) VALUES (
     'Tecnologia para o Bem',
     'A proposta deste projeto é oferecer cursos gratuitos de programação, robótica, e outras tecnologias para jovens em situação de risco social. Além das aulas, os participantes terão acesso a mentorias, eventos de tecnologia e oportunidades de estágio em empresas parceiras, abrindo portas para um futuro promissor no mercado de TI.',
     13000.00,
+    2,
     'ATIVO',
     1
 );
 
 INSERT INTO projetos (
-    nome, descricao, meta, status, ong_id
+    nome, descricao, meta, categoria_id, status, ong_id
 ) VALUES (
     'Biblioteca Comunitária Esperança',
     'Nosso projeto visa montar uma biblioteca comunitária em Campo Grande, oferecendo acesso gratuito a livros, oficinas de leitura e contação de histórias para crianças e adolescentes da comunidade. Com sua ajuda, poderemos adquirir livros, estantes e materiais didáticos.',
     3000.00,
+    1,
     'ATIVO',
     2
 );
 
 INSERT INTO projetos (
-    nome, descricao, meta, status, ong_id
+    nome, descricao, meta, categoria_id, status, ong_id
 ) VALUES (
     'Alimenta Comunidade',
     'O projeto Alimenta Comunidade tem como objetivo distribuir cestas básicas mensalmente para 100 famílias em situação de vulnerabilidade. Além dos alimentos, oferecemos oficinas sobre aproveitamento integral dos alimentos e nutrição básica. Sua doação fará a diferença no prato de muitas famílias!',
     8000.00,
+    1,
     'ATIVO',
     2
 );
 
 INSERT INTO projetos (
-    nome, descricao, meta, status, ong_id
+    nome, descricao, meta, categoria_id, status, ong_id
 ) VALUES (
     'Conecta Jovem',
     'O Conecta Jovem oferece cursos gratuitos de informática básica, introdução à programação e internet segura para adolescentes de comunidades periféricas. A meta é capacitar 60 jovens em 3 meses, preparando-os para oportunidades no mercado digital. Com sua ajuda, compraremos computadores, pagaremos instrutores e garantiremos acesso à internet.',
     2000.00,
+    8,
     'ATIVO',
     3
 );
 
 INSERT INTO projetos (
-    nome, descricao, meta, status, ong_id
+    nome, descricao, meta, categoria_id, status, ong_id
 ) VALUES (
     'Sorrisos na Melhor Idade',
     'Este projeto tem como objetivo arrecadar fundos para realizar uma tarde de cuidados, lazer e atividades para 40 idosos em um lar de acolhimento. Com a verba, vamos oferecer corte de cabelo, manicure, música ao vivo, lanche especial e lembrancinhas personalizadas.\n\nQueremos proporcionar momentos de carinho e atenção para quem tantas vezes é esquecido. Um pequeno gesto pode transformar o dia — e a autoestima — de muitos.',
     2300.00,
+    4,
     'ATIVO',
     3
 );

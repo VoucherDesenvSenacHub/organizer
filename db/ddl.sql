@@ -50,6 +50,14 @@ CREATE TABLE bancos (
 );
 
 -- ================================
+-- TABELA DAS CATEGORIAS
+-- ================================
+CREATE TABLE categorias (
+    categoria_id INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(100) NOT NULL
+);
+
+-- ================================
 -- TABELA DAS ONGS
 -- ================================
 CREATE TABLE ongs (
@@ -95,13 +103,15 @@ CREATE TABLE projetos (
     nome VARCHAR(255) NOT NULL,
     descricao TEXT NOT NULL,
     meta DECIMAL(10, 2) NOT NULL,
+    categoria_id INT NOT NULL,
 -- Status e controle
     status ENUM('ATIVO', 'INATIVO', 'FINALIZADO') NOT NULL DEFAULT 'ATIVO',
     data_cadastro TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     data_atualizacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 -- Relacionamento com ONG
     ong_id INT NOT NULL,
-        FOREIGN KEY (ong_id) REFERENCES ongs(ong_id) ON DELETE CASCADE
+    FOREIGN KEY (categoria_id) REFERENCES categorias(categoria_id),
+    FOREIGN KEY (ong_id) REFERENCES ongs(ong_id) ON DELETE CASCADE
 );
 
 -- ================================

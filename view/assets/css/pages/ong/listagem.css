@@ -72,12 +72,3 @@ main.conteudo-principal .container .area-cards {
         justify-content: center;
     }
 }
-
-/* CATEGORIAS */
-#categoria {
-    width: 100%;
-    padding: 8px;
-    border-radius: 8px;
-    border: 1px solid #ddd;
-    font-size: 14px;
-}

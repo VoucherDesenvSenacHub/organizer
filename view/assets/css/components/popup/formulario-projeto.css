@@ -85,7 +85,8 @@
 }
 
 #editar-projeto-popup .input-box input:focus,
-#editar-projeto-popup .input-box textarea:focus {
+#editar-projeto-popup .input-box textarea:focus,
+#editar-projeto-popup .input-box #categorias:focus {
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
 }
 
@@ -93,6 +94,19 @@
     min-width: 500px;
 }
 
+/* Categorias */
+#editar-projeto-popup .input-box #categorias {
+    background-color: rgba(0, 0, 0, 0.07);
+    border: none;
+    outline: none;
+    padding: 8px;
+    border-radius: 3px;
+    transition: .3s;
+}
+
+
+
+/* Imagem */
 #editar-projeto-popup .container-popup form .qt-img {
     display: flex;
     justify-content: space-between;

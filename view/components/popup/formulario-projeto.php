@@ -31,17 +31,17 @@ $btn_text = ($PerfilProjeto['projeto_id']) ? 'SALVAR ALTERAÇÃO' : 'CRIAR PROJE
                     <textarea name="descricao" id="descricao" rows="8" required><?= $PerfilProjeto['descricao'] ?></textarea>
                 </div>
                 <div class="input-box">
-                <label for="categoria">Categoria do Projeto<span>*</span></label>
-                <select id="categoria" name="categoria" required>
-                    <option value="">Selecione uma categoria</option>
-                    <option value="1" <?= ($PerfilProjeto['categoriaProjetoId'] ?? '') == 1 ? 'selected' : '' ?>>Educação</option>
-                    <option value="2" <?= ($PerfilProjeto['categoriaProjetoId'] ?? '') == 2 ? 'selected' : '' ?>>Saúde</option>
-                    <option value="3" <?= ($PerfilProjeto['categoriaProjetoId'] ?? '') == 3 ? 'selected' : '' ?>>Esporte</option>
-                    <option value="4" <?= ($PerfilProjeto['categoriaProjetoId'] ?? '') == 4 ? 'selected' : '' ?>>Cultura</option>
-                    <option value="5" <?= ($PerfilProjeto['categoriaProjetoId'] ?? '') == 5 ? 'selected' : '' ?>>Tecnologia</option>
-                    <option value="6" <?= ($PerfilProjeto['categoriaProjetoId'] ?? '') == 6 ? 'selected' : '' ?>>Meio Ambiente</option>
-                </select>
-            </div>
+                    <label for="categoria">Categoria<span>*</span></label>
+                    <select id="categorias" name="categoria" required>
+                        <option value="" disabled selected>Selecione</option>
+                        <?php foreach ($Categorias as $categoria): ?>
+                            <option value="<?= $categoria['categoria_id'] ?>"
+                                <?= ($PerfilProjeto['categoria_id'] == $categoria['categoria_id']) ? 'selected' : '' ?>>
+                                <?= $categoria['nome'] ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
             </div>
             <div class="box-edit">
                 <div class="input-box">
