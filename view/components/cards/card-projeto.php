@@ -5,6 +5,7 @@ $FotoProjeto = $projeto['caminho'] ?? '../../assets/images/global/image-placehol
 $NomeProjeto = $projeto['nome'] ?? 'Nome do Projeto';
 $DescricaoProjeto =  mb_strimwidth($projeto['descricao'], 0, 220, '...') ?? 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odit, explicabo magni? Laboriosam possimus voluptas recusandae blanditiis architecto dolorem tenetur odio, nisi molestiae facere quia facilis officia cumque dicta impedit minima.';
 $BarraProjeto = $projeto['barra'] ?? '30';
+$StatusProjeto = $projeto['status'] ?? 'ATIVO';
 // Verificar se o Doador favoritou o Projeto
 $jaFavoritado = in_array($projeto['projeto_id'], $projetosFavoritos ?? []) ?? false;
 $classe = $jaFavoritado ? 'favoritado' : '';
@@ -24,6 +25,11 @@ $classe = $jaFavoritado ? 'favoritado' : '';
     </div>
     <div class="img-projeto">
         <img src="<?= $FotoProjeto ?>">
+        <?php if ($StatusProjeto === 'INATIVO'): ?>
+            <div class="badge-inativo">INATIVO</div>
+        <?php elseif ($StatusProjeto === 'FINALIZADO'): ?>
+            <div class="badge-finalizado">FINALIZADO</div>
+        <?php endif; ?>
     </div>
     <div class="info-projeto">
         <h5><?= $NomeProjeto ?></h5>
