@@ -20,6 +20,7 @@
     min-height: 130px;
     background-color: #eff1f3;
     aspect-ratio: 16 / 10;
+    position: relative;
 }
 
 .card-projeto .img-projeto img {
@@ -151,4 +152,32 @@
 
 .card-projeto .acoes-projeto button.favoritado {
     color: hotpink;
+}
+
+/* Badge Inativo */
+.card-projeto .img-projeto .badge-inativo {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #dc3545;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 3px;
+    font-size: 12px;
+    font-weight: bold;
+    z-index: 10;
+}
+
+/* Badge Finalizado */
+.card-projeto .img-projeto .badge-finalizado {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #28a745;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 3px;
+    font-size: 12px;
+    font-weight: bold;
+    z-index: 10;
 }
