@@ -6,6 +6,7 @@ $TextoNoticia = mb_strimwidth($noticia['texto'], 0, 150, '...') ?? 'Lorem ipsum 
 $NomeOng = $noticia['ong_nome'] ?? 'Nome da Ong';
 $DataNoticia = $noticia['data_cadastro'] ?? '00/00/0000';
 $FotoNoticia = $noticia['caminho'] ?? '../../assets/images/global/image-placeholder.svg';
+$StatusNoticia = $noticia['status'] ?? 'ATIVO';
 
 ?>
 <div class="card-noticia">
@@ -21,6 +22,9 @@ $FotoNoticia = $noticia['caminho'] ?? '../../assets/images/global/image-placehol
         <div class="imagem-noticia">
             <img src="<?= $FotoNoticia ?>">
         </div>
+        <?php if ($StatusNoticia === 'INATIVO'): ?>
+            <div class="badge-inativo">INATIVO</div>
+        <?php endif; ?>
     </a>
     <div class="acoes-noticia">
         <button title="Compartilhar" class="btn-share fa-solid fa-share-nodes" onclick="compartilhar('compartilhar-popup', <?= $IdNoticia ?>, 'noticia')"></button>
