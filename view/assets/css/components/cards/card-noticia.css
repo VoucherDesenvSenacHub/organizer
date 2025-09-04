@@ -129,3 +129,17 @@ div.card-noticia {
 .card-noticia .acoes-noticia button.btn-share:hover {
     color: #45BEE6;
 }
+
+/* Badge Inativo */
+.card-noticia .badge-inativo {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #dc3545;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 3px;
+    font-size: 12px;
+    font-weight: bold;
+    z-index: 10;
+}
