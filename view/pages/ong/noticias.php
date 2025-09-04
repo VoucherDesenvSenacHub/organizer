@@ -10,11 +10,20 @@ $noticiaModel = new NoticiaModel();
 
 // Pegar as noticias
 $IdOng = $_SESSION['ong_id'];
-$lista = $noticiaModel->listarCardsNoticias('ong', $IdOng);
+$status = $_GET['status'] ?? null;
+$valor = ['ong_id' => $IdOng];
+if ($status) {
+    $valor['status'] = $status;
+}
+$lista = $noticiaModel->listarCardsNoticias('ong', $valor);
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['pesquisa'])) {
     $pesquisa = $_GET['pesquisa'];
-    $lista = $noticiaModel->listarCardsNoticias('pesquisa', ['ong_id' => $IdOng, 'pesquisa' => $pesquisa]);
+    $valorPesquisa = ['ong_id' => $IdOng, 'pesquisa' => $pesquisa];
+    if ($status) {
+        $valorPesquisa['status'] = $status;
+    }
+    $lista = $noticiaModel->listarCardsNoticias('pesquisa', $valorPesquisa);
 }
 // Criar a Noticia
 $PerfilNoticia = (object) [
@@ -33,8 +42,16 @@ ob_end_flush();
         <div class="container">
             <div class="topo">
                 <h1><i class="fa-solid fa-newspaper"></i> MINHAS NOTÍCIAS</h1>
+                <form id="form-filtro" action="noticias.php" method="GET">
+                    <select name="status" onchange="this.form.submit()">
+                        <option value="">Todos os Status</option>
+                        <option value="ATIVO" <?= (isset($_GET['status']) && $_GET['status'] == 'ATIVO') ? 'selected' : '' ?>>Ativo</option>
+                        <option value="INATIVO" <?= (isset($_GET['status']) && $_GET['status'] == 'INATIVO') ? 'selected' : '' ?>>Inativo</option>
+                    </select>
+                </form>
                 <form id="form-busca" action="noticias.php" method="GET">
-                    <input type="text" name="pesquisa" placeholder="Busque uma notícia">
+                    <input type="text" name="pesquisa" placeholder="Busque uma notícia" value="<?= $_GET['pesquisa'] ?? '' ?>">
+                    <input type="hidden" name="status" value="<?= $_GET['status'] ?? '' ?>">
                     <button class="btn" type="submit"><i class="fa-solid fa-search"></i></button>
                 </form>
                 <button class="btn btn-novo" onclick="abrir_popup('editar-noticia-popup')">NOVA NOTÍCIA +</button>
@@ -49,7 +66,14 @@ ob_end_flush();
                         require '../../components/cards/card-noticia.php';
                     }
                 } else {
-                    echo 'Você ainda não publicou nenhuma notícia :(';
+                    $status = $_GET['status'] ?? '';
+                    if ($status === 'ATIVO') {
+                        echo 'Você não tem notícias ativas no momento.';
+                    } elseif ($status === 'INATIVO') {
+                        echo 'Você não tem notícias inativas no momento.';
+                    } else {
+                        echo 'Você ainda não publicou nenhuma notícia :(';
+                    }
                 }
                 ?>
             </div>
