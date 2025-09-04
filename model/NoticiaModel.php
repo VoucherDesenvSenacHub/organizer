@@ -68,24 +68,41 @@ class NoticiaModel
     function listarCardsNoticias(string $tipo = '', $valor = [], $limit = null)
     {
         $params = [];
+        $statusFilter = !empty($valor['status']) ? $valor['status'] : null;
 
         switch ($tipo) {
             // Buscar as Notícias pelo título
             case 'pesquisa':
-                $query = "SELECT * FROM vw_card_noticias WHERE status = 'ATIVO' AND titulo LIKE :titulo";
+                $query = "SELECT * FROM vw_card_noticias WHERE titulo LIKE :titulo";
                 if (!empty($valor['ong_id'])) {
                     $query .= " AND ong_id = :ong_id";
                     $params[':ong_id'] = $valor['ong_id'];
+                }
+                if ($statusFilter) {
+                    $query .= " AND status = :status";
+                    $params[':status'] = $statusFilter;
+                } else {
+                    $query .= " AND status = 'ATIVO'";
                 }
                 $params[':titulo'] = "%{$valor['pesquisa']}%";
                 break;
             // Buscar as Notícias de uma ONG
             case 'ong':
-                $query = "SELECT * FROM vw_card_noticias v WHERE status = 'ATIVO' AND ong_id = :ong_id";
-                $params[':ong_id'] = $valor;
+                $query = "SELECT * FROM vw_card_noticias WHERE ong_id = :ong_id";
+                if ($statusFilter) {
+                    $query .= " AND status = :status";
+                    $params[':status'] = $statusFilter;
+                }
+                $params[':ong_id'] = $valor['ong_id'] ?? $valor;
                 break;
             default:
-                $query = "SELECT * FROM vw_card_noticias v";
+                $query = "SELECT * FROM vw_card_noticias";
+                if ($statusFilter) {
+                    $query .= " WHERE status = :status";
+                    $params[':status'] = $statusFilter;
+                } else {
+                    $query .= " WHERE status = 'ATIVO'";
+                }
         }
 
         $stmt = $this->pdo->prepare($query);
