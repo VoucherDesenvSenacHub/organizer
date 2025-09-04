@@ -171,9 +171,9 @@ fieldset legend {
     border-bottom: 4px solid var(--cor-roxo-adm);
 }
 
-.card-adm:last-child h4 {
+/* .card-adm:last-child h4 {
     border-bottom: 4px solid var(--cor-vermelho);
-}
+} */
 
 .card-adm:nth-child(3) h4 {
     border-bottom: 4px solid var(--cor-amarelo-hover);
@@ -195,9 +195,9 @@ fieldset legend {
     filter: brightness(.93);
 }
 
-.card-adm:last-child div {
+/* .card-adm:last-child div {
     background-color: var(--cor-vermelho);
-}
+} */
 
 .card-adm:nth-child(3) div {
     background-color: var(--cor-amarelo-hover);
