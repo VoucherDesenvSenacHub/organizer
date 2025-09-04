@@ -19,6 +19,11 @@ if (isset($_GET['id'])) {
     $ImagensProjeto = $projetoModel->buscarImagensProjeto($IdProjeto);
 }
 
+if ($acesso === 'ong') {
+    $categoriaModel = new CategoriaModel();
+    $Categorias = $categoriaModel->buscarCategorias();
+}
+
 //Chamar os Toasts e Popups 
 if (!empty($PerfilProjeto['projeto_id'])) {
     require_once 'partials/toast-projeto.php';

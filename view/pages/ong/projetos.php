@@ -22,12 +22,17 @@ $lista = $projetoModel->listarCardsProjetos($tipo, $valor);
 $totalRegistros = $projetoModel->paginacaoProjetos($tipo, $valor);
 $paginas = ceil($totalRegistros / 8);
 
+// Buscar as categorias
+$categoriaModel = new CategoriaModel();
+$Categorias = $categoriaModel->buscarCategorias();
+
 //FORMULÁRIO DE CRIAÇÃO DE PROJETO (popup)
 $PerfilProjeto = [
     'projeto_id' => null,
     'nome' => null,
-    'meta' => null,
     'descricao' => null,
+    'meta' => null,
+    'categoria_id' => null,
     'valor_arrecadado' => null
 ];
 require_once __DIR__ . '/../../components/popup/formulario-projeto.php';
