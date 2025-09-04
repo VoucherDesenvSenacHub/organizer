@@ -17,8 +17,8 @@ require_once '../../../model/RelatoriosModel.php';
 
 $projetos = new RelatoriosModel();
 $listaUsuarios = $projetos->buscarUsuarios();
-$contagem_projetos = $projetos->contarProjetos(1);
-$listagem_projetos = $projetos->listarProjetos(1);
+$contagem_projetos = $projetos->contarProjetos(3);
+$listagem_projetos = $projetos->listarProjetos(3);
 // $todosProjetos = $projetos->listarTodosProjetos();
 // $listarTabela = $projetos->listarTabelas();
 // echo pdfVoluntariosPorProjeto($listagem_projetos);
@@ -30,6 +30,8 @@ $listagem_projetos = $projetos->listarProjetos(1);
 <h1>Relatório de apoiadores</h1>
 <hr>
 <?php 
+    echo graficoBarrasVerticais(600, 320, $contagem_projetos);
+    echo '<hr>';
     $contador = 0;
     foreach ($contagem_projetos as $cp){ ?>
     <h2><?php echo $cp[0] ?></h2>
@@ -54,4 +56,5 @@ $listagem_projetos = $projetos->listarProjetos(1);
 
         </tfoot>
     </table>
+    <hr>
     <?php } ?>
