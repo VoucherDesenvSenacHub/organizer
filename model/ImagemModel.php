@@ -1,4 +1,4 @@
-<?php
+g<?php
 require_once __DIR__ . '../../autoload.php';
 
 class ImagemModel
@@ -14,7 +14,7 @@ class ImagemModel
     /**
      * Salva uma imagem no banco
      */
-    public function salvar(string $caminho)
+    public function salvarCaminhoImagem(string $caminho)
     {
         $sql = "INSERT INTO imagens (caminho, data_upload) VALUES (:caminho, NOW())";
         $stmt = $this->pdo->prepare($sql);

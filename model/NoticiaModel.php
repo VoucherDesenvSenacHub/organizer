@@ -23,29 +23,32 @@ class NoticiaModel
             $stmt->bindParam(':texto', $texto);
             $stmt->bindParam(':subtexto', $subtexto);
             $stmt->bindParam(':ong_id', $id, PDO::PARAM_INT);
-            return $stmt->execute();
+            if ($stmt->execute()) {
+                return $this->pdo->lastInsertId();
+            }
+            return false;
         } catch (PDOException $e) {
             return false;
         }
     }
 
     function editar($id, $titulo, $subtitulo, $texto, $subtexto)
-{
-    try {
-        $query = "UPDATE $this->tabela
+    {
+        try {
+            $query = "UPDATE $this->tabela
                       SET titulo = :titulo, subtitulo = :subtitulo, texto = :texto, subtexto = :subtexto
                       WHERE noticia_id = :id";
-        $stmt = $this->pdo->prepare($query);
-        $stmt->bindParam(':titulo', $titulo);
-        $stmt->bindParam(':subtitulo', $subtitulo);
-        $stmt->bindParam(':texto', $texto);
-        $stmt->bindParam(':subtexto', $subtexto);
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-        return $stmt->execute(); // true ou false
-    } catch (PDOException $e) {
-        return false;
+            $stmt = $this->pdo->prepare($query);
+            $stmt->bindParam(':titulo', $titulo);
+            $stmt->bindParam(':subtitulo', $subtitulo);
+            $stmt->bindParam(':texto', $texto);
+            $stmt->bindParam(':subtexto', $subtexto);
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+            return $stmt->execute(); // true ou false
+        } catch (PDOException $e) {
+            return false;
+        }
     }
-}
 
 
     function buscarPerfilNoticia($IdNoticia)
@@ -138,10 +141,6 @@ class NoticiaModel
         $stmt->execute();
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
         return $stmt->fetchAll();
-    }
-
-    public function ultimoId() {
-        return $this->pdo->lastInsertId();
     }
 
     function inativarNoticia($id)

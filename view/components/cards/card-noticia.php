@@ -1,18 +1,15 @@
 <?php
-
 // Pegar os dados da Notícia e tratar possíveis erros
-
 $IdNoticia = $noticia['noticia_id'] ?? null;
 $TituloNoticia = $noticia['titulo'] ?? 'Titulo Da Matéria';
-$TextoNoticia = (isset($noticia) && is_array($noticia) && isset($noticia['texto']))
+$TextoNoticia = is_array($noticia) && isset($noticia['texto'])
     ? mb_strimwidth($noticia['texto'], 0, 150, '...')
     : 'Lorem ipsum...';
 $NomeOng = $noticia['ong_nome'] ?? 'Nome da Ong';
 $DataNoticia = $noticia['data_cadastro'] ?? '00/00/0000';
-
-// Buscar a primeira imagem da notícia
-$imagens = $noticiaModel->buscarImagensNoticia($IdNoticia);
-$FotoNoticia = $imagens[0]['caminho'] ?? '../../assets/images/global/image-placeholder.svg';
+$FotoNoticia = $noticia['caminho']
+    ? '../../../' . $noticia['caminho']
+    : '../../assets/images/global/image-placeholder.svg';
 ?>
 
 
@@ -27,7 +24,7 @@ $FotoNoticia = $imagens[0]['caminho'] ?? '../../assets/images/global/image-place
             </div>
         </div>
         <div class="imagem-noticia">
-            <img src="../../../<?= $FotoNoticia ?>">
+            <img src="<?= $FotoNoticia ?>">
         </div>
     </a>
     <div class="acoes-noticia">
