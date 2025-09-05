@@ -23,7 +23,10 @@ class NoticiaModel
             $stmt->bindParam(':texto', $texto);
             $stmt->bindParam(':subtexto', $subtexto);
             $stmt->bindParam(':ong_id', $id, PDO::PARAM_INT);
-            return $stmt->execute();
+            if ($stmt->execute()) {
+                return $this->pdo->lastInsertId();
+            }
+            return false;
         } catch (PDOException $e) {
             return false;
         }
@@ -33,20 +36,20 @@ class NoticiaModel
     {
         try {
             $query = "UPDATE $this->tabela
-                          SET titulo = :titulo, subtitulo = :subtitulo, texto = :texto, subtexto = :subtexto
-                          WHERE noticia_id = :id";
+                      SET titulo = :titulo, subtitulo = :subtitulo, texto = :texto, subtexto = :subtexto
+                      WHERE noticia_id = :id";
             $stmt = $this->pdo->prepare($query);
             $stmt->bindParam(':titulo', $titulo);
             $stmt->bindParam(':subtitulo', $subtitulo);
             $stmt->bindParam(':texto', $texto);
             $stmt->bindParam(':subtexto', $subtexto);
             $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-            $stmt->execute();
-            return $stmt->rowCount();
+            return $stmt->execute(); // true ou false
         } catch (PDOException $e) {
             return false;
         }
     }
+
 
     function buscarPerfilNoticia($IdNoticia)
     {

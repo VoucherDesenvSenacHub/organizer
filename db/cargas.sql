@@ -16,12 +16,12 @@ INSERT INTO imagens (caminho) values
 ('https://static.wixstatic.com/media/e84587_c0672bfc82594f1c8ab9b12db949bf5b~mv2.png/v1/fill/w_1000,h_500,al_c,q_90,usm_0.66_1.00_0.01/e84587_c0672bfc82594f1c8ab9b12db949bf5b~mv2.png'),
 ('https://www.crieodontologia.com.br/wp-content/uploads/2018/02/06.02-Artigo-Higiene-bucal-na-terceira-idade-entenda-os-cuidados-necessarios.jpg'),
 -- IMAGENS PARA NOTÍCIAS
-('https://www.campusvilla.com.br/wp-content/uploads/2019/04/Doacao-Livros_ArmazemLiterario_Villa2019-21.jpg'),
-('https://www.campusvilla.com.br/wp-content/uploads/2019/04/Doacao-Livros_ArmazemLiterario_Villa2019-22.jpg'),
-('https://www.campusvilla.com.br/wp-content/uploads/2019/04/Doacao-Livros_ArmazemLiterario_Villa2019-29.jpg'),
-('https://navegantes.sc.gov.br/wp-content/uploads/2025/03/juntos-pelo-rio-capa-scaled.jpg'),
-('https://navegantes.sc.gov.br/wp-content/uploads/2025/03/IMG_2122-1376x917.jpg'),
-('https://cronos-media.sesisenaisp.org.br/api/media/1-0/files?img=img_4_210324_b0cf7edf-5e5b-475c-8f69-f1f7a03407c6_o.jpg'),
+('upload/images/noticias/doacao_livros001.jpg'),
+('upload/images/noticias/doacao_livros002.jpg'),
+('upload/images/noticias/doacao_livros003.jpg'),
+('upload/images/noticias/coleta_lixo001.jpg'),
+('upload/images/noticias/coleta_lixo002.jpg'),
+('upload/images/noticias/doe-alimentos001.jpg'),
 -- IMAGENS PARA ONGS
 ('https://www.portaladesso.com.br/images/noticia/img_3671_foto_2.jpg'),
 ('https://sasp.com.br/wp-content/uploads/2020/04/acaosocial.jpg'),
