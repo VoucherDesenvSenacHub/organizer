@@ -44,16 +44,16 @@ INSERT INTO imagens (caminho) values
 -- ================================
 -- INSERÇÃO DE DADOS NA TABELA CATEGORIAS
 -- ================================
-INSERT INTO categorias (nome) VALUES
-('Educação'),
-('Saúde'),
-('Meio Ambiente'),
-('Tecnologia e Inovação'),
-('Cultura e Artes'),
-('Esporte e Lazer'),
-('Assistência Social'),
-('Direitos Humanos'),
-('Segurança e Defesa');
+INSERT INTO categorias (nome, cor) VALUES
+('Educação', '#2196F3'),
+('Saúde', '#EF6EB1'),
+('Meio Ambiente', '#30AD1A'),
+('Tecnologia e Inovação', '#9C27B0'),
+('Cultura e Artes', '#FF9800'),
+('Esporte e Lazer', '#FFC107'),
+('Assistência Social', '#F44336'),
+('Direitos Humanos', '#1976D2'),
+('Segurança e Defesa', '#616161');
 
 
 -- ================================
@@ -400,7 +400,7 @@ INSERT INTO projetos (
     'Cuidando de Quem Cuida',
     'Com foco no apoio a cuidadores de idosos e pessoas com deficiência, este projeto oferece capacitações, suporte psicológico, grupos de apoio e atividades de lazer. A iniciativa reconhece a importância dos cuidadores e busca melhorar sua qualidade de vida, saúde emocional e valorização dentro do contexto familiar e social.',
     30000.00,
-    5,
+    2,
     'ATIVO',
     1
 );
@@ -411,7 +411,7 @@ INSERT INTO projetos (
     'Tecnologia para o Bem',
     'A proposta deste projeto é oferecer cursos gratuitos de programação, robótica, e outras tecnologias para jovens em situação de risco social. Além das aulas, os participantes terão acesso a mentorias, eventos de tecnologia e oportunidades de estágio em empresas parceiras, abrindo portas para um futuro promissor no mercado de TI.',
     13000.00,
-    2,
+    4,
     'ATIVO',
     1
 );
@@ -422,7 +422,7 @@ INSERT INTO projetos (
     'Biblioteca Comunitária Esperança',
     'Nosso projeto visa montar uma biblioteca comunitária em Campo Grande, oferecendo acesso gratuito a livros, oficinas de leitura e contação de histórias para crianças e adolescentes da comunidade. Com sua ajuda, poderemos adquirir livros, estantes e materiais didáticos.',
     3000.00,
-    1,
+    7,
     'ATIVO',
     2
 );
@@ -433,7 +433,7 @@ INSERT INTO projetos (
     'Alimenta Comunidade',
     'O projeto Alimenta Comunidade tem como objetivo distribuir cestas básicas mensalmente para 100 famílias em situação de vulnerabilidade. Além dos alimentos, oferecemos oficinas sobre aproveitamento integral dos alimentos e nutrição básica. Sua doação fará a diferença no prato de muitas famílias!',
     8000.00,
-    1,
+    8,
     'ATIVO',
     2
 );
@@ -444,7 +444,7 @@ INSERT INTO projetos (
     'Conecta Jovem',
     'O Conecta Jovem oferece cursos gratuitos de informática básica, introdução à programação e internet segura para adolescentes de comunidades periféricas. A meta é capacitar 60 jovens em 3 meses, preparando-os para oportunidades no mercado digital. Com sua ajuda, compraremos computadores, pagaremos instrutores e garantiremos acesso à internet.',
     2000.00,
-    8,
+    6,
     'ATIVO',
     3
 );
@@ -455,7 +455,7 @@ INSERT INTO projetos (
     'Sorrisos na Melhor Idade',
     'Este projeto tem como objetivo arrecadar fundos para realizar uma tarde de cuidados, lazer e atividades para 40 idosos em um lar de acolhimento. Com a verba, vamos oferecer corte de cabelo, manicure, música ao vivo, lanche especial e lembrancinhas personalizadas.\n\nQueremos proporcionar momentos de carinho e atenção para quem tantas vezes é esquecido. Um pequeno gesto pode transformar o dia — e a autoestima — de muitos.',
     2300.00,
-    4,
+    2,
     'ATIVO',
     3
 );
