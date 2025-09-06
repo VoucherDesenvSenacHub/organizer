@@ -107,8 +107,7 @@ class OngModel
             // Buscar as Ongs mais recentes
             case 'recentes':
                 $limit = 6;
-                $query = "SELECT v.*, o.data_cadastro FROM vw_card_ongs v
-                JOIN ongs o USING(ong_id)
+                $query = "SELECT * FROM vw_card_ongs v
                 ORDER BY data_cadastro DESC LIMIT {$limit}";
                 break;
             default:

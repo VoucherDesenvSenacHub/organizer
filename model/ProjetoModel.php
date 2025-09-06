@@ -101,7 +101,7 @@ class ProjetoModel
 
     function buscarPerfilProjeto($IdProjeto)
     {
-        $query = "SELECT p.projeto_id, p.nome, p.meta, p.descricao, p.data_cadastro,
+        $query = "SELECT p.projeto_id, p.nome, p.descricao, p.meta, p.categoria_id, p.data_cadastro,
         p.ong_id, o.nome AS nome_ong, i.caminho, 
         COALESCE(SUM(dp.valor), 0) AS valor_arrecadado,
         ROUND(COALESCE(SUM(dp.valor), 0) / p.meta * 100) AS barra
@@ -174,16 +174,17 @@ class ProjetoModel
 
 
 
-    public function editar($id, $nome, $descricao, $meta)
+    public function editar($id, $nome, $descricao, $meta, $categoria_id)
     {
         try {
             $query = "UPDATE $this->tabela
-                      SET nome = :nome, descricao = :descricao, meta = :meta
+                      SET nome = :nome, descricao = :descricao, meta = :meta, categoria_id = :categoria_id
                       WHERE projeto_id = :id";
             $stmt = $this->pdo->prepare($query);
             $stmt->bindParam(':nome', $nome);
             $stmt->bindParam(':descricao', $descricao);
             $stmt->bindParam(':meta', $meta);
+            $stmt->bindParam(':categoria_id', $categoria_id);
             $stmt->bindParam(':id', $id);
             return $stmt->execute();
         } catch (PDOException $e) {
@@ -192,19 +193,20 @@ class ProjetoModel
     }
 
 
-    function criar($nome, $descricao, $meta, $ong_id)
+    function criar($nome, $descricao, $meta, $categoria_id, $ong_id)
     {
         try {
-            $query = "INSERT INTO $this->tabela (nome, descricao, meta, ong_id)
-                      VALUES (:nome, :descricao, :meta, :ong_id)";
+            $query = "INSERT INTO $this->tabela (nome, descricao, meta, categoria_id, ong_id)
+                      VALUES (:nome, :descricao, :meta, :categoria_id, :ong_id)";
             $stmt = $this->pdo->prepare($query);
             $stmt->bindParam(':nome', $nome);
             $stmt->bindParam(':descricao', $descricao);
             $stmt->bindParam(':meta', $meta);
+            $stmt->bindParam(':categoria_id', $categoria_id);
             $stmt->bindParam(':ong_id', $ong_id);
             return $stmt->execute();
         } catch (PDOException $e) {
-            // error_log("Erro ao inserir registro: " . $e->getMessage());
+            error_log("Erro ao inserir registro: " . $e->getMessage());
             return false;
         }
     }
