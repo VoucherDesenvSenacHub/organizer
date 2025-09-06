@@ -5,12 +5,15 @@ $FotoProjeto = $projeto['caminho'] ?? '../../assets/images/global/image-placehol
 $NomeProjeto = $projeto['nome'] ?? 'Nome do Projeto';
 $DescricaoProjeto =  mb_strimwidth($projeto['descricao'], 0, 220, '...') ?? 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odit, explicabo magni? Laboriosam possimus voluptas recusandae blanditiis architecto dolorem tenetur odio, nisi molestiae facere quia facilis officia cumque dicta impedit minima.';
 $BarraProjeto = $projeto['barra'] ?? '30';
+$CategoriaProjeto = $projeto['categoria'] ?? 'Inválido';
+$CorCategoria = $projeto['cor'] ?? '#9E9E9E';
 // Verificar se o Doador favoritou o Projeto
 $jaFavoritado = in_array($projeto['projeto_id'], $projetosFavoritos ?? []) ?? false;
 $classe = $jaFavoritado ? 'favoritado' : '';
 ?>
 
 <div class="card-projeto">
+    <span class="categoria" style="background-color: <?= $CorCategoria ?>;"><?= $CategoriaProjeto ?></span>
     <div class="acoes-projeto">
         <button title="Compartilhar" class="btn-share fa-solid fa-share-nodes" onclick="compartilhar('compartilhar-popup', <?= $IdProjeto ?>, 'projeto')"></button>
         <?php if (!isset($_SESSION['usuario']['id'])): ?>
