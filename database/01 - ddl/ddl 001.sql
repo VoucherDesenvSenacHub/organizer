@@ -229,8 +229,8 @@ CREATE TABLE parcerias (
     parceria_id INT PRIMARY KEY AUTO_INCREMENT,
 -- Dados da empresa
     nome VARCHAR(255) NOT NULL,
+    cnpj VARCHAR(14) NOT NULL UNIQUE,
     email VARCHAR(255) NOT NULL,
-    cnpj VARCHAR(18) NOT NULL,
     telefone VARCHAR(20) NOT NULL,
     mensagem TEXT,
 -- Status da solicitação
