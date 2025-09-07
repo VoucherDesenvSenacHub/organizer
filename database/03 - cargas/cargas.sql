@@ -559,3 +559,16 @@ INSERT INTO doacoes_projetos (projeto_id, usuario_id, valor, data_doacao) VALUES
 INSERT INTO doacoes_projetos (projeto_id, usuario_id, valor, data_doacao) VALUES
 (7, 5, 300.00, NOW() + INTERVAL 50 SECOND),
 (3, 5, 310.00, NOW() + INTERVAL 55 SECOND);
+
+
+
+-- ================================
+-- INSERÇÃO DE EMPRESAS PARCEIRAS
+-- ================================
+INSERT INTO parcerias (nome, cnpj, email, telefone, descricao, mensagem, status) VALUES
+('Nubank', '12345678000101', 'contato@nubank.com', '1140028922', 'Banco digital focado em experiência do usuário', 'Temos interesse em parcerias estratégicas.', 'APROVADA'),
+('Faber-Castell', '23456789000102', 'parcerias@faber-castell.com', '1134567890', 'Fabricante de materiais de escrita e artísticos', 'Gostaríamos de apoiar projetos educacionais e culturais.', 'APROVADA'),
+('Cielo', '34567890000103', 'contato@cielo.com', '1121003200', 'Empresa de soluções de pagamento eletrônico', 'Interessados em iniciativas de inclusão financeira.', 'APROVADA'),
+('Pedigree', '45678900000104', 'parcerias@pedigree.com', '11998765432', 'Marca de ração e produtos para cães', 'Podemos colaborar com projetos de proteção animal.', 'PENDENTE'),
+('Coral', '56789000000105', 'contato@coral.com', '1133445566', 'Fabricante de tintas e soluções para pintura', 'Queremos apoiar projetos de melhoria de espaços comunitários.', 'PENDENTE'),
+('Guaraná Antarctica', '67890000000106', 'parcerias@guarana.com', '11987654321', 'Bebida brasileira de renome nacional', 'Interessados em patrocínios e parcerias promocionais.', 'APROVADA');
