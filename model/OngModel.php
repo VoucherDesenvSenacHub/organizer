@@ -87,9 +87,6 @@ class OngModel
     function listarCardsOngs(string $tipo = '', $valor = [])
     {
         $params = [];
-        $limit = $valor['limit'] ?? 6;
-        $pagina = $valor['pagina'] ?? 1;
-        $offset = ($pagina - 1) * $limit;
         switch ($tipo) {
             // Buscar as Ongs pelo nome
             case 'pesquisa':
@@ -111,12 +108,11 @@ class OngModel
             case 'recentes':
                 $limit = 6;
                 $query = "SELECT * FROM vw_card_ongs v
-                ORDER BY data_cadastro DESC";
+                ORDER BY data_cadastro DESC LIMIT {$limit}";
                 break;
             default:
                 $query = "SELECT * FROM vw_card_ongs v";
         }
-        $query .= " LIMIT {$limit} OFFSET {$offset}";
 
         $stmt = $this->pdo->prepare($query);
         foreach ($params as $key => $value) {
@@ -124,31 +120,6 @@ class OngModel
         }
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    }
-
-    function paginacaoOngs(string $tipo = '', $valor = [])
-    {
-        $params = [];
-        switch ($tipo) {
-            case 'pesquisa':
-                $query = "SELECT COUNT(*) AS total FROM vw_card_ongs WHERE nome LIKE :nome";
-                $params[':nome'] = "%{$valor['pesquisa']}%";
-                if (!empty($valor['ong_id'])) {
-                    $query .= " AND ong_id = :ong_id";
-                    $params[':ong_id'] = $valor['ong_id'];
-                }
-                break;
-            default:
-                $query = "SELECT COUNT(*) AS total FROM vw_card_ongs";
-        }
-
-        $stmt = $this->pdo->prepare($query);
-        foreach ($params as $key => $value) {
-            $stmt->bindValue($key, $value, is_int($value) ? PDO::PARAM_INT : PDO::PARAM_STR);
-        }
-        $stmt->execute();
-        $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
-        return (int)$resultado['total'];
     }
 
     function buscarPerfilOng($id)
