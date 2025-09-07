@@ -31,7 +31,7 @@ require_once '../../components//layout/base-inicio.php';
                         </div>
                         <div class="texto">
                             <h4><?= htmlspecialchars($parceria['nome']) ?></h4>
-                            <p><?= htmlspecialchars($parceria['mensagem']) ?></p>
+                            <p><?= htmlspecialchars($parceria['descricao']) ?></p>
                             <span class="data-parceria">
                                 <i class="fa-solid fa-calendar"></i>
                                 Parceiro desde <?= $parceria['data_aprovacao'] ?>

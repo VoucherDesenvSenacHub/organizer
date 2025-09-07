@@ -231,7 +231,7 @@ CREATE TABLE parcerias (
     nome VARCHAR(255) NOT NULL,
     cnpj VARCHAR(14) NOT NULL UNIQUE,
     email VARCHAR(255) NOT NULL,
-    telefone VARCHAR(20) NOT NULL,
+    telefone VARCHAR(11) NOT NULL,
     mensagem TEXT,
 -- Status da solicitação
     status ENUM('PENDENTE', 'APROVADA', 'RECUSADA') NOT NULL DEFAULT 'PENDENTE',

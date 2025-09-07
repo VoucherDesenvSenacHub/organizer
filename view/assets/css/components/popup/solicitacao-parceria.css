@@ -30,7 +30,7 @@
 }
 
 /* Formulário */
-form {
+#parceria-popup form {
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -38,24 +38,24 @@ form {
     transition: .3s;
 }
 
-form .form-group {
+#parceria-popup form .form-group {
     display: flex;
     flex-direction: column;
     width: 100%;
 }
 
-form .form-group label {
+#parceria-popup form .form-group label {
     font-size: 14px;
     font-weight: 500;
 }
 
-form .form-group label span {
+#parceria-popup form .form-group label span {
     color: var(--cor-vermelho);
 }
 
 /* Inputs */
-form .form-group input,
-form .form-group textarea {
+#parceria-popup form .form-group input,
+#parceria-popup form .form-group textarea {
     padding: 8px;
     border: none;
     outline: none;
@@ -64,19 +64,19 @@ form .form-group textarea {
     color: #444;
 }
 
-form .form-group input:focus,
-form .form-group textarea:focus {
+#parceria-popup form .form-group input:focus,
+#parceria-popup form .form-group textarea:focus {
     border-color: #aaa;
 }
 
-form .form-group textarea {
+#parceria-popup form .form-group textarea {
     resize: vertical;
     min-height: 100px;
     max-height: 200px;
 }
 
 /* Botões */
-form .form-btns {
+#parceria-popup form .form-btns {
     display: flex;
     gap: 10px;
     margin-top: 15px;
@@ -85,16 +85,16 @@ form .form-btns {
     white-space: nowrap;
 }
 
-form .form-btns .btn-cancelar {
+#parceria-popup form .form-btns .btn-cancelar {
     background-color: #f8f9fa;
 }
 
 @media (max-width: 400px) {
-    form {
+    #parceria-popup form {
         padding: 20px 10px;
     }
 
-    form .form-btns .btn {
+    #parceria-popup form .form-btns .btn {
         flex: 1;
     }
 }

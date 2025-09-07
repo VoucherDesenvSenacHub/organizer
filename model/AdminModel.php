@@ -26,7 +26,7 @@ class AdminModel
     // Buscar parcerias aprovadas para exibição pública
     function ListarParceriasAprovadas()
     {
-        $query = "SELECT parceria_id, nome, email, telefone, cnpj, mensagem, 
+        $query = "SELECT parceria_id, nome, email, telefone, cnpj, descricao, 
                          DATE_FORMAT(data_envio, '%d/%m/%Y') as data_aprovacao
                   FROM parcerias 
                   WHERE status = 'APROVADA' 
