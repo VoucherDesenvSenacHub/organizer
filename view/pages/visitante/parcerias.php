@@ -7,7 +7,6 @@ $cssPagina = ['visitante/parcerias.css'];
 //Buscar parcerias aprovadas
 $adminModel = new AdminModel();
 $parcerias = $adminModel->ListarParceriasAprovadas();
-
 require_once '../../components//layout/base-inicio.php';
 ?>
 <main class="container">
@@ -63,7 +62,8 @@ require_once '../../components//layout/base-inicio.php';
 <div class="popup-fundo" id="parceria-enviada">
     <div class="container-popup">
         <button class="btn-fechar-popup fa-solid fa-xmark" onclick="fechar_popup('parceria-enviada')"></button>
-        <h1>Deu certo</h1>
+        <i class="fa-solid fa-thumbs-up"></i>
+        <p>Solicitação de parceria enviada com sucesso! Nossa equipe entrará em contato em breve.</p>
     </div>
 </div>
 

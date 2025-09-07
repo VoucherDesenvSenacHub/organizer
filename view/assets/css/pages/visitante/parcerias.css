@@ -183,6 +183,26 @@ section.parceiros h3 {
     transform: translateY(-2px);
 }
 
+/* Modal de sucesso na solicitação */
+#parceria-enviada .container-popup {
+    background-color: white;
+    flex-direction: column;
+    align-items: center;
+    max-width: 450px;
+}
+
+#parceria-enviada .container-popup i {
+    color: var(--cor-verde-barra);
+    font-size: 45px;
+}
+
+#parceria-enviada .container-popup p {
+    text-align: center;
+    color: var(--cor-principal);
+    font-weight: 500;
+}
+
+
 @media (max-width: 1230px) {
     main {
         padding-inline: 15px;

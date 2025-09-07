@@ -49,15 +49,30 @@ document.querySelector('#parceria-popup form').addEventListener('submit', async 
         mensagem: document.getElementById('mensagem').value,
     };
 
-    const response = await fetch(this.action, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-    });
+    try {
+        const response = await fetch(this.action, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        });
 
-    const result = await response.json();
-    console.log(result);
-    // alert(result.success ? result.message : result.error);
+        const result = await response.json();
+        
+        if (result.success) {
+            // Fechar o popup
+            fechar_popup('parceria-popup');
+            // Limpar o formulário
+            this.reset();
+            // Redirecionar para a página de parcerias para mostrar a mensagem de sucesso
+            window.location.href = 'parcerias.php';
+        } else {
+            // Mostrar erro
+            alert('Erro: ' + result.error);
+        }
+    } catch (error) {
+        console.error('Erro ao enviar solicitação:', error);
+        alert('Erro ao enviar solicitação. Tente novamente.');
+    }
 });
