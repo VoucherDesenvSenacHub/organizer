@@ -147,7 +147,6 @@ $paginas = (int)ceil($totalRegistros / 6);
         <?php endif; ?>
     </div>
 </main>
-
 <?php
 $jsPagina = [];
 require_once '../../components/layout/footer/footer-logado.php';
