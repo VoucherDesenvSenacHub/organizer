@@ -108,3 +108,71 @@ function inativarOng() {
     abrir_popup('inativar-ong-popup');
 }
 
+// Upload de foto de perfil com drag & drop
+document.addEventListener('DOMContentLoaded', function() {
+    const fotoInput = document.getElementById('fotoPerfil');
+    const previewImage = document.getElementById('previewImage');
+    const uploadArea = document.getElementById('uploadArea');
+    const fotoPreview = document.getElementById('fotoPreview');
+    const btnRemover = document.getElementById('btnRemover');
+
+    // Função para processar arquivo
+    function processarArquivo(file) {
+        if (file && file.type.startsWith('image/')) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                previewImage.src = e.target.result;
+                uploadArea.style.display = 'none';
+                fotoPreview.style.display = 'block';
+            };
+            reader.readAsDataURL(file);
+        }
+    }
+
+    // Event listeners
+    if (fotoInput) {
+        fotoInput.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            processarArquivo(file);
+        });
+    }
+
+    if (uploadArea) {
+        // Clique para abrir seletor
+        uploadArea.addEventListener('click', function() {
+            fotoInput.click();
+        });
+
+        // Drag & Drop
+        uploadArea.addEventListener('dragover', function(e) {
+            e.preventDefault();
+            uploadArea.classList.add('dragover');
+        });
+
+        uploadArea.addEventListener('dragleave', function(e) {
+            e.preventDefault();
+            uploadArea.classList.remove('dragover');
+        });
+
+        uploadArea.addEventListener('drop', function(e) {
+            e.preventDefault();
+            uploadArea.classList.remove('dragover');
+            
+            const files = e.dataTransfer.files;
+            if (files.length > 0) {
+                fotoInput.files = files;
+                processarArquivo(files[0]);
+            }
+        });
+    }
+
+    if (btnRemover) {
+        btnRemover.addEventListener('click', function(e) {
+            e.stopPropagation();
+            uploadArea.style.display = 'flex';
+            fotoPreview.style.display = 'none';
+            fotoInput.value = '';
+        });
+    }
+});
+

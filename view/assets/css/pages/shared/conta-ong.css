@@ -125,6 +125,7 @@ main.container h1 {
     min-height: 150px;
     max-height: 400px;
     max-width: 1095px;
+    resize: vertical;
 }
 
 .dados-ong .form-descricao label {
@@ -153,8 +154,128 @@ main.container h1 {
     gap: 3px;
 }
 
+/* Estilos para upload de foto de perfil */
+.form-foto-perfil i {
+    border: none !important;
+}
+
+.upload-area {
+    max-width: 400px;
+    height: 200px;
+    border: 2px dashed var(--cor-amarelo);
+    color: var(--cor-amarelo-hover);
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition: 0.3s;
+    text-align: center;
+}
+
+.upload-area:hover {
+    border-color: var(--cor-amarelo-hover);
+    transform: translateY(-2px);
+    /* box-shadow: 0 8px 25px rgba(255, 193, 7, 0.2); */
+}
+
+.upload-area.dragover {
+    border-color: var(--cor-verde-barra);
+    background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+    transform: scale(1.02);
+}
+
+.upload-area i {
+    font-size: 48px;
+    margin-bottom: 15px;
+    opacity: 0.8;
+    transition: all 0.3s ease;
+}
+
+.upload-area:hover i {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+.foto-preview {
+    position: relative;
+    max-width: 400px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.foto-preview:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.foto-preview img {
+    width: 100%;
+    height: auto;
+    display: block;
+    max-height: 300px;
+    object-fit: cover;
+}
+
+.btn-remover {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(220, 53, 69, 0.9);
+    color: aliceblue;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    transition: 0.3s;
+    opacity: 0;
+}
+
+.foto-preview:hover .btn-remover {
+    opacity: 1;
+}
+
+.btn-remover:hover {
+    background: var(--cor-vermelho);
+}
+
 @media (max-width: 600px) {
     main.conteudo-principal section {
         padding-inline: 10px;
+    }
+    
+    .upload-area {
+        height: 150px;
+        max-width: 100%;
+    }
+    
+    .upload-area i {
+        font-size: 36px;
+        margin-bottom: 10px;
+    }
+    
+    .upload-area p {
+        font-size: 14px;
+    }
+    
+    .foto-preview {
+        max-width: 100%;
+    }
+
+    .btn-acoes {
+        flex-wrap: wrap;
+    }
+
+    .btn-acoes button {
+        flex: 1 1 225px;
     }
 }
