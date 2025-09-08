@@ -8,7 +8,10 @@ require_once '../../components/layout/base-inicio.php';
 require_once __DIR__ . '/../../../autoload.php';
 $noticiaModel = new NoticiaModel();
 
+// Paginação
+$paginaAtual = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
 $tipo = '';
+$valor = ['pagina' => $paginaAtual];
 
 if (isset($_GET['pesquisa'])) {
     $tipo = 'pesquisa';
@@ -16,6 +19,8 @@ if (isset($_GET['pesquisa'])) {
 }
 
 $lista = $noticiaModel->listarCardsNoticias($tipo, $valor);
+$totalRegistros = $noticiaModel->paginacaoNoticias($tipo, $valor);
+$paginas = (int)ceil($totalRegistros / 6);
 
 ?>
 
@@ -121,7 +126,7 @@ $lista = $noticiaModel->listarCardsNoticias($tipo, $valor);
             </div>
         </section>
         <?php if (isset($_GET['pesquisa'])) {
-            echo "<p class='qnt-busca'><i class='fa-solid fa-search'></i> " . count($lista) . " Notícias Encontradas</p>";
+            echo "<p class='qnt-busca'><i class='fa-solid fa-search'></i> " . $totalRegistros . " Notícias Encontradas</p>";
         } ?>
 
         <section id="box-ongs">
@@ -130,6 +135,16 @@ $lista = $noticiaModel->listarCardsNoticias($tipo, $valor);
                 require '../../components/cards/card-noticia.php';
             } ?>
         </section>
+        <?php if ($paginas > 1): ?>
+            <nav class="navegacao">
+                <?php for ($i = 1; $i <= $paginas; $i++): ?>
+                    <a href="?pagina=<?= $i ?><?= isset($_GET['pesquisa']) ? '&pesquisa=' . urlencode($_GET['pesquisa']) : '' ?>"
+                        class="<?= $i === $paginaAtual ? 'active' : '' ?>">
+                        <?= $i ?>
+                    </a>
+                <?php endfor; ?>
+            </nav>
+        <?php endif; ?>
     </div>
 </main>
 <?php

@@ -8,7 +8,10 @@ require_once '../../components/layout/base-inicio.php';
 require_once __DIR__ . '/../../../autoload.php';
 $ongModel = new OngModel();
 
+// Paginação
+$paginaAtual = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
 $tipo = '';
+$valor = ['pagina' => $paginaAtual];
 
 if (isset($_GET['pesquisa'])) {
     $tipo = 'pesquisa';
@@ -16,6 +19,8 @@ if (isset($_GET['pesquisa'])) {
 }
 
 $lista = $ongModel->listarCardsOngs($tipo, $valor);
+$totalRegistros = $ongModel->paginacaoOngs($tipo, $valor);
+$paginas = (int)ceil($totalRegistros / 6);
 
 // Buscar os favoritos
 if (isset($_SESSION['usuario']['id'])) {
@@ -80,7 +85,7 @@ if (isset($_SESSION['usuario']['id'])) {
             </div>
         </section>
         <?php if (isset($_GET['pesquisa'])) {
-            echo "<p class='qnt-busca'><i class='fa-solid fa-search'></i> " . count($lista) . " ONGS Encontradas</p>";
+            echo "<p class='qnt-busca'><i class='fa-solid fa-search'></i> " . $totalRegistros . " ONGS Encontradas</p>";
         } ?>
         <section id="box-ongs">
             <?php foreach ($lista as $ong) {
@@ -89,6 +94,16 @@ if (isset($_SESSION['usuario']['id'])) {
             }
             ?>
         </section>
+        <?php if ($paginas > 1): ?>
+            <nav class="navegacao">
+                <?php for ($i = 1; $i <= $paginas; $i++): ?>
+                    <a href="?pagina=<?= $i ?><?= isset($_GET['pesquisa']) ? '&pesquisa=' . urlencode($_GET['pesquisa']) : '' ?>"
+                        class="<?= $i === $paginaAtual ? 'active' : '' ?>">
+                        <?= $i ?>
+                    </a>
+                <?php endfor; ?>
+            </nav>
+        <?php endif; ?>
     </div>
 </main>
 
