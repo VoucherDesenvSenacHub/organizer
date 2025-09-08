@@ -15,8 +15,24 @@ ob_end_flush();
 ?>
 <main class="container conteudo-principal">
     <section>
-        <form id="form" class="dados-ong" action="../../../controller/Ong/EditarPerfilController.php" method="POST">
+        <form id="form" class="dados-ong" action="../../../controller/Ong/EditarPerfilController.php" method="POST" enctype="multipart/form-data">
             <input type="hidden" name="atualizar-ong" value="true">
+            <fieldset>
+                <legend><i class="fa-solid fa-image"></i> FOTO DA ONG</legend>
+                <div class="form-foto-perfil">
+                    <div class="upload-area" id="uploadArea">
+                        <input type="file" id="fotoPerfil" name="foto_perfil" accept="image/*" style="display: none;">
+                        <i class="fa-solid fa-cloud-upload-alt"></i>
+                        <p>Clique para escolher uma foto ou arraste aqui</p>
+                    </div>
+                    <div class="foto-preview" id="fotoPreview" style="display: none;">
+                        <img id="previewImage" src="" alt="Preview da foto">
+                        <button type="button" class="btn-remover" id="btnRemover">
+                            <i class="fa-solid fa-trash-can"></i>
+                        </button>
+                    </div>
+                </div>
+            </fieldset>
             <fieldset>
                 <legend><i class="fa-solid fa-house-flag"></i> DADOS DA ONG</legend>
                 <div class="form">
