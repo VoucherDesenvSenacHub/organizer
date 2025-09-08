@@ -68,11 +68,32 @@ class UsuarioModel
 
 
     // Listagem para o ADM
-    function listar()
+    function listar(string $tipo = '', $valor = [])
     {
-        $query = "SELECT u.*, i.caminho FROM $this->tabela u
-        LEFT JOIN imagens i USING(imagem_id)";
+        $params = [];
+        $limit = $valor['limit'] ?? 14;
+        $pagina = $valor['pagina'] ?? 1;
+        $offset = ($pagina - 1) * $limit;
+        
+        switch ($tipo) {
+            // Buscar usuários pelo nome
+            case 'pesquisa':
+                $query = "SELECT u.*, i.caminho FROM $this->tabela u
+                LEFT JOIN imagens i USING(imagem_id)
+                WHERE nome LIKE :nome";
+                $params[':nome'] = "%{$valor['pesquisa']}%";
+                break;
+            default:
+                $query = "SELECT u.*, i.caminho FROM $this->tabela u
+                LEFT JOIN imagens i USING(imagem_id)";
+        }
+        
+        $query .= " LIMIT {$limit} OFFSET {$offset}";
+        
         $stmt = $this->pdo->prepare($query);
+        foreach ($params as $key => $value) {
+            $stmt->bindValue($key, $value, is_int($value) ? PDO::PARAM_INT : PDO::PARAM_STR);
+        }
         $stmt->execute();
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
         return $stmt->fetchAll();
@@ -100,6 +121,27 @@ class UsuarioModel
         $stmt->execute();
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
         return $stmt->fetchAll();
+    }
+
+    function paginacaoUsuarios(string $tipo = '', $valor = [])
+    {
+        $params = [];
+        switch ($tipo) {
+            case 'pesquisa':
+                $query = "SELECT COUNT(*) AS total FROM $this->tabela WHERE nome LIKE :nome";
+                $params[':nome'] = "%{$valor['pesquisa']}%";
+                break;
+            default:
+                $query = "SELECT COUNT(*) AS total FROM $this->tabela";
+        }
+
+        $stmt = $this->pdo->prepare($query);
+        foreach ($params as $key => $value) {
+            $stmt->bindValue($key, $value, is_int($value) ? PDO::PARAM_INT : PDO::PARAM_STR);
+        }
+        $stmt->execute();
+        $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
+        return (int)$resultado['total'];
     }
 
     function update($id, $nome, $telefone, $cpf, $data, $email)
