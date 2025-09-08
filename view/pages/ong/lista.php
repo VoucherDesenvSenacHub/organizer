@@ -7,12 +7,15 @@ require_once '../../components/layout/base-inicio.php';
 
 require_once __DIR__ . '/../../../autoload.php';
 $ongModel = new OngModel();
-$lista = $ongModel->listarCardsOngs();
 
-if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['pesquisa'])) {
-    $pesquisa = $_GET['pesquisa'];
-    $lista = $ongModel->listarCardsOngs('pesquisa', ['pesquisa' => $pesquisa]);
+$tipo = '';
+
+if (isset($_GET['pesquisa'])) {
+    $tipo = 'pesquisa';
+    $valor['pesquisa'] = $_GET['pesquisa'];
 }
+
+$lista = $ongModel->listarCardsOngs($tipo, $valor);
 
 // Buscar os favoritos
 if (isset($_SESSION['usuario']['id'])) {
@@ -86,14 +89,6 @@ if (isset($_SESSION['usuario']['id'])) {
             }
             ?>
         </section>
-        <nav id="navegacao">
-            <a class="active" href="#">1</a>
-            <a href="#">2</a>
-            <a href="#">3</a>
-            <a href="#">4</a>
-            <a href="#">5</a>
-            <a href="#">></a>
-        </nav>
     </div>
 </main>
 

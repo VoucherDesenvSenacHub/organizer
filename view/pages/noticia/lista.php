@@ -7,12 +7,15 @@ require_once '../../components/layout/base-inicio.php';
 
 require_once __DIR__ . '/../../../autoload.php';
 $noticiaModel = new NoticiaModel();
-$lista = $noticiaModel->listarCardsNoticias();
 
-if ($_SERVER['REQUEST_METHOD'] = 'GET' && isset($_GET['pesquisa'])) {
-    $pesquisa = $_GET['pesquisa'];
-    $lista = $noticiaModel->listarCardsNoticias('pesquisa', ['pesquisa' => $pesquisa]);
+$tipo = '';
+
+if (isset($_GET['pesquisa'])) {
+    $tipo = 'pesquisa';
+    $valor['pesquisa'] = $_GET['pesquisa'];
 }
+
+$lista = $noticiaModel->listarCardsNoticias($tipo, $valor);
 
 ?>
 
@@ -127,17 +130,8 @@ if ($_SERVER['REQUEST_METHOD'] = 'GET' && isset($_GET['pesquisa'])) {
                 require '../../components/cards/card-noticia.php';
             } ?>
         </section>
-        <nav id="navegacao">
-            <a class="active" href="#">1</a>
-            <a href="#">2</a>
-            <a href="#">3</a>
-            <a href="#">4</a>
-            <a href="#">5</a>
-            <a href="#">></a>
-        </nav>
     </div>
 </main>
-
 <?php
 $jsPagina = [];
 require_once '../../components/layout/footer/footer-logado.php';
