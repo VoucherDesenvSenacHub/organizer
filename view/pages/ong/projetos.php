@@ -90,7 +90,7 @@ ob_end_flush();
 </div>
 
 <?php
-$jsPagina = ['projetos-ong.js'];
+$jsPagina = ['ong/projetos.js'];
 require_once '../../components/layout/footer/footer-logado.php';
 
 if (isset($_SESSION['criar-projeto'])) {
