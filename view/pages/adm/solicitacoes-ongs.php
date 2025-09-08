@@ -40,6 +40,6 @@ $solicitacoes = $adminModel->ListarSolicitacoesOngs();
 </main>
 
 <?php
-$jsPagina = ['modal-confirmacao.js', 'adm/solicitacoes-ongs.js'];
+$jsPagina = ['adm/modal-confirmacao.js', 'adm/solicitacoes-ongs.js'];
 require_once '../../components/layout/footer/footer-logado.php';
 ?>
