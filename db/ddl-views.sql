@@ -12,7 +12,7 @@ CREATE OR REPLACE VIEW vw_card_ongs AS
 -- VIEW PARA BUSCAR OS CARDS DO PROJETO
 -- ================================
 CREATE OR REPLACE VIEW vw_card_projetos AS
-    SELECT p.projeto_id, p.nome, p.descricao, i.caminho, c.nome AS categoria, c.cor,
+    SELECT p.projeto_id, p.nome, p.descricao, i.caminho, c.categoria_id, c.nome AS categoria, c.cor,
         ROUND(COALESCE(SUM(dp.valor), 0) / p.meta * 100) AS barra, p.ong_id
     FROM projetos p
         LEFT JOIN imagens i

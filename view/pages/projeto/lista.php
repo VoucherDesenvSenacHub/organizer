@@ -10,56 +10,25 @@ $projetoModel = new ProjetoModel();
 $categoriaModel = new CategoriaModel();
 $categorias = $categoriaModel->buscarCategorias();
 
-$mapaCategorias = [];
-foreach ($categorias as $categoria) {
-    $nomeCategoria = strtolower(trim($categoria['nome']));
-    $mapaCategorias[$nomeCategoria] = $categoria['categoria_id'];
-}
+// Receber dados do controller
+$controllerData = $_SESSION['controller_filtro'] ?? [];
+$lista = $controllerData['lista'] ?? [];
+$totalRegistros = $controllerData['totalRegistros'] ?? 0;
+$paginaAtual = $controllerData['paginaAtual'] ?? 1;
+$categoriasSelecionadas = $controllerData['categoriasSelecionadas'] ?? [];
+$pesquisa = $controllerData['pesquisa'] ?? '';
+unset($_SESSION['controller_filtro']);
 
-$paginaAtual = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
-
-// Definir modo
-$modo = 'padrao';
-if (isset($_GET['pesquisa'])) {
-    $modo = 'pesquisa';
-} elseif (isset($_GET['filtro'])) {
-    $modo = 'filtro';
-}
-
-// Listar projetos conforme o modo
-switch ($modo) {
-    case 'pesquisa':
-        $valor = [
-            'pagina'   => $paginaAtual,
-            'pesquisa' => $_GET['pesquisa']
-        ];
-        $lista = $projetoModel->listarCardsProjetos('pesquisa', $valor);
-        $totalRegistros = $projetoModel->paginacaoProjetos('pesquisa', $valor);
-        break;
-
-    case 'filtro':
-        $categoriasSelecionadas = [];
-        foreach ($categorias as $categoria) {
-            if (isset($_GET["cat_{$categoria['categoria_id']}"])) {
-                $categoriasSelecionadas[] = $categoria['categoria_id'];
-            }
-        }
-        var_dump($categoriasSelecionadas);
-
-        $lista = $projetoModel->filtrarPorCategorias($categoriasSelecionadas, $paginaAtual);
-        $totalRegistros = $projetoModel->paginacaoFiltroCategorias($categoriasSelecionadas);
-        break;
-
-    default: // padrão, sem filtro ou busca
-        $valor = ['pagina' => $paginaAtual];
-        $lista = $projetoModel->listarCardsProjetos('', $valor);
-        $totalRegistros = $projetoModel->paginacaoProjetos('', $valor);
-        break;
+// Se não houve filtro ou pesquisa, carregar lista padrão
+if (empty($lista)) {
+    $paginaAtual = 1;
+    $valor = ['pagina' => $paginaAtual];
+    $lista = $projetoModel->listarCardsProjetos('', $valor);
+    $totalRegistros = $projetoModel->paginacaoProjetos('', $valor);
 }
 
 // Calcular páginas
 $paginas = ceil($totalRegistros / 8);
-
 // Verificar se o doador marcou este projeto como favorito
 if (isset($_SESSION['usuario']['id']) && $_SESSION['perfil_usuario'] === 'doador') {
     $projetosFavoritos = $projetoModel->listarFavoritos($_SESSION['usuario']['id']);
@@ -84,7 +53,7 @@ if (isset($_SESSION['usuario']['id']) && $_SESSION['perfil_usuario'] === 'doador
                 <div>
                     <h1>ENCONTRE PROJETOS</h1>
                     <p>Explore projetos inspiradores e apoie causas e faça a diferença hoje mesmo.</p>
-                    <form id="form-filtro" action="lista.php" method="GET">
+                    <form id="form-filtro" action="../../../controller/Projeto/FiltrarProjetoController.php" method="GET">
                         <input type="hidden" name="filtro" value="1">
                         <!-- ### -->
                         <div class="ul-group">
@@ -97,7 +66,7 @@ if (isset($_SESSION['usuario']['id']) && $_SESSION['perfil_usuario'] === 'doador
                                 <?php foreach ($categorias as $categoria): ?>
                                     <li>
                                         <input type="checkbox" name="cat_<?= $categoria['categoria_id'] ?>" id="cat_<?= $categoria['categoria_id'] ?>"
-                                            <?= isset($_GET["cat_{$categoria['categoria_id']}"]) ? 'checked' : '' ?>>
+                                            <?= in_array($categoria['categoria_id'], $categoriasSelecionadas) ? 'checked' : '' ?>>
                                         <label for="cat_<?= $categoria['categoria_id'] ?>"><?= ucfirst($categoria['nome']) ?></label>
                                     </li>
                                 <?php endforeach; ?>
@@ -107,8 +76,8 @@ if (isset($_SESSION['usuario']['id']) && $_SESSION['perfil_usuario'] === 'doador
                         <button class="btn">Filtrar</button>
                     </form>
                 </div>
-                <form id="form-busca" action="lista.php" method="GET">
-                    <input type="text" name="pesquisa" placeholder="Busque um projeto">
+                <form id="form-busca" action="../../../controller/Projeto/FiltrarProjetoController.php" method="GET">
+                    <input type="text" name="pesquisa" placeholder="Busque um projeto" value="<?= htmlspecialchars($pesquisa) ?>">
                     <button class="btn" type="submit"><i class="fa-solid fa-search"></i></button>
                 </form>
             </div>
@@ -116,9 +85,11 @@ if (isset($_SESSION['usuario']['id']) && $_SESSION['perfil_usuario'] === 'doador
                 <img src="../../assets/images/pages/shared/criancas.png">
             </div>
         </section>
-        <?php if (isset($_GET['pesquisa']) || isset($_GET['filtro'])) {
-            echo "<p class='qnt-busca'><i class='fa-solid fa-search'></i> " . $totalRegistros . " Projetos Encontrados</p>";
-        } ?>
+        <?php if (!empty($pesquisa) || !empty($categoriasSelecionadas)): ?>
+            <p class='qnt-busca'>
+                <i class='fa-solid fa-search'></i> <?= $totalRegistros ?> Projetos Encontrados
+            </p>
+        <?php endif; ?>
 
         <section id="box-ongs">
             <!-- LISTAR CARDS PROJETOS -->

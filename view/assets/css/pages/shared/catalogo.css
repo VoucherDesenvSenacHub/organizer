@@ -137,9 +137,9 @@ section#top-info {
 }
 
 #form-filtro #esc-categoria:hover {
-    height: calc(40px * 9);
+    height: calc(40px * 10);
     overflow: hidden;
-    width: 154px;
+    width: 220px;
 }
 
 /* Filtro: Região */

@@ -170,10 +170,6 @@ class ProjetoModel
         return $stmt->rowCount();
     }
 
-
-
-
-
     public function editar($id, $nome, $descricao, $meta, $categoria_id)
     {
         try {
@@ -306,7 +302,6 @@ class ProjetoModel
     {
         $sql = "SELECT * FROM vw_card_projetos";
         $params = [];
-
         if (!empty($categorias)) {
             $placeholders = [];
             foreach ($categorias as $i => $catId) {
