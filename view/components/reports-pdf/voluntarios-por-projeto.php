@@ -1,27 +1,11 @@
 <?php
 $acesso = 'ong';
 require_once '../../components/graphics/vertical-bars.php';
-require_once '../../components/graphics/line-graphic.php';
-require_once '../../components/graphics/horizontal-double-bars.php';
-require_once '../../components/graphics/pie-graph.php';
-require_once '../../components/graphics/calcula-graficos.php';
-require_once '../../../model/Relatorios.php';
 require_once '../../../model/RelatoriosModel.php';
 
 $projetos = new RelatoriosModel();
-$listaUsuarios = $projetos->buscarUsuarios();
-$contagem_projetos = $projetos->contarProjetos(3);
-$listagem_projetos = $projetos->listarProjetos(3);
-// $todosProjetos = $projetos->listarTodosProjetos();
-// $listarTabela = $projetos->listarTabelas();
-// echo pdfVoluntariosPorProjeto($listagem_projetos);
-// echo $listagem_projetos[0][0]['nome'];
-// echo "<pre>";
-// print_r($listagem_projetos);
-// echo "</pre>";
-$pagina = "
-
-";
+$contagem_projetos = $projetos->contarProjetos(4);
+$listagem_projetos = $projetos->listarProjetos(4);
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -36,7 +20,7 @@ $pagina = "
         body {
             margin: 0;
             padding: 0;
-            /* width: 800px; */
+            width: 800px;
             font-family: Arial, Helvetica, sans-serif;
             font-size: 1em;
         }
