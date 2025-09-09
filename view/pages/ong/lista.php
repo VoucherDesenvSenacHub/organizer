@@ -7,37 +7,18 @@ require_once '../../components/layout/base-inicio.php';
 
 require_once __DIR__ . '/../../../autoload.php';
 $ongModel = new OngModel();
-$lista = $ongModel->listarCardsOngs();
 
-// Filtrar
-if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['filtro'])) {
-    $filtros = [];
+// Receber dados do controller
+$controllerData = $_SESSION['controller_ongs'] ?? [];
+$lista = $controllerData['lista'] ?? [];
+$filtros = $controllerData['filtros'] ?? [];
+$pesquisa = $controllerData['pesquisa'] ?? '';
+$paginaAtual = $controllerData['paginaAtual'] ?? 1;
+unset($_SESSION['controller_ongs']);
 
-    if (isset($_GET['recentes'])) {
-        $filtros['tempo'] = 'mais-recentes';
-    } elseif (isset($_GET['antigos'])) {
-        $filtros['tempo'] = 'mais-antigos';
-    }
-
-    if (isset($_GET['1-3'])) {
-        $filtros['quantidade'] = '1-3';
-    } elseif (isset($_GET['4+'])) {
-        $filtros['quantidade'] = '4+';
-    }
-
-    $ongs = $ongModel->filtrarOngs($filtros);
-
-    if ($ongs) {
-        $lista = $ongs;
-    } else {
-        $_SESSION['mensagem'] = "Nenhuma ONG encontrada com os filtros selecionados.";
-    }
-}
-
-// Buscar pela pesquisa
-if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['pesquisa'])) {
-    $pesquisa = $_GET['pesquisa'];
-    $lista = $ongModel->listarCardsOngs('pesquisa', ['pesquisa' => $pesquisa]);
+// Se lista estiver vazia (nenhum filtro ou pesquisa), carregar padrão
+if (empty($lista)) {
+    $lista = $ongModel->listarCardsOngs();
 }
 
 // Buscar os favoritos
@@ -52,7 +33,7 @@ if (isset($_SESSION['usuario']['id'])) {
                 <div>
                     <h1>DESCUBRA AS ONGS</h1>
                     <p>Explore organizações que estão fazendo a diferença e saiba como você pode contribuir.</p>
-                    <form id="form-filtro" action="lista.php" method="GET">
+                    <form id="form-filtro" action="../../../controller/Ong/FiltrarOngController.php" method="POST">
                         <input type="hidden" name="filtro" value="1">
                         <!-- ### -->
                         <div class="ul-group">
@@ -89,7 +70,7 @@ if (isset($_SESSION['usuario']['id'])) {
                         <button class="btn">Filtrar</button>
                     </form>
                 </div>
-                <form id="form-busca" action="lista.php" method="GET">
+                <form id="form-busca" action="../../../controller/Ong/FiltrarOngController.php" method="POST">
                     <input type="text" name="pesquisa" placeholder="Busque uma ONG">
                     <button class="btn" type="submit"><i class="fa-solid fa-search"></i></button>
                 </form>
