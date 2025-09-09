@@ -304,12 +304,7 @@ class ProjetoModel
 
     public function filtrarPorCategorias(array $categorias, int $pagina = 1): array
     {
-        $sql = "SELECT v.projeto_id, v.nome, v.descricao, v.caminho, v.barra, v.ong_id,
-                   GROUP_CONCAT(c.nome SEPARATOR ', ') as categorias
-            FROM vw_card_projetos v
-            INNER JOIN categorias_projetos cp ON v.projeto_id = cp.projeto_id
-            INNER JOIN categorias c ON cp.id_categoria = c.id_categoria";
-
+        $sql = "SELECT * FROM vw_card_projetos";
         $params = [];
 
         if (!empty($categorias)) {
@@ -318,10 +313,8 @@ class ProjetoModel
                 $placeholders[] = ":cat{$i}";
                 $params[":cat{$i}"] = $catId;
             }
-            $sql .= " WHERE c.id_categoria IN (" . implode(',', $placeholders) . ")";
+            $sql .= " WHERE categoria_id IN (" . implode(',', $placeholders) . ")";
         }
-
-        $sql .= " GROUP BY v.projeto_id, v.nome, v.descricao, v.caminho, v.barra, v.ong_id";
 
         // Paginação
         $limite = 8;
@@ -336,11 +329,7 @@ class ProjetoModel
 
     public function paginacaoFiltroCategorias(array $categorias): int
     {
-        $sql = "SELECT COUNT(DISTINCT v.projeto_id) as total
-            FROM vw_card_projetos v
-            INNER JOIN categorias_projetos cp ON v.projeto_id = cp.projeto_id
-            INNER JOIN categorias c ON cp.id_categoria = c.id_categoria";
-
+        $sql = "SELECT COUNT(*) as total FROM vw_card_projetos";
         $params = [];
 
         if (!empty($categorias)) {
@@ -349,7 +338,7 @@ class ProjetoModel
                 $placeholders[] = ":cat{$i}";
                 $params[":cat{$i}"] = $catId;
             }
-            $sql .= " WHERE c.id_categoria IN (" . implode(',', $placeholders) . ")";
+            $sql .= " WHERE categoria_id IN (" . implode(',', $placeholders) . ")";
         }
 
         $stmt = $this->pdo->prepare($sql);

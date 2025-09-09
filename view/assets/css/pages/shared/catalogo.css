@@ -106,7 +106,7 @@ section#top-info {
     background-color: white;
 }
 
-#form-filtro ul li:nth-child(2){
+#form-filtro ul li:nth-child(2) {
     border-top: .1px solid rgba(0, 0, 0, 0.1);
 }
 
@@ -115,6 +115,7 @@ section#top-info {
     /* width: 95px; */
     width: 95px;
 }
+
 #form-filtro #esc-status:hover {
     height: calc(40px * 3);
     width: 150px;
@@ -124,6 +125,7 @@ section#top-info {
 #form-filtro #esc-q-projetos {
     width: 130px;
 }
+
 #form-filtro #esc-q-projetos:hover {
     height: calc(40px * 3);
     width: 150px;
@@ -133,9 +135,11 @@ section#top-info {
 #form-filtro #esc-categoria {
     width: 149px;
 }
+
 #form-filtro #esc-categoria:hover {
-    height: calc(40px * 7);
-    width: 154px;   
+    height: calc(40px * 9);
+    overflow: hidden;
+    width: 154px;
 }
 
 /* Filtro: Região */
@@ -143,8 +147,9 @@ section#top-info {
     /* width: 90px; */
     width: fit-content;
 }
+
 #form-filtro #esc-regiao:hover {
-    height: calc(40px * 6);
+    height: calc(40px * 9);
     /* width: 145px; */
     width: fit-content;
 }
@@ -157,7 +162,7 @@ section#top-info {
     width: 100%;
 }
 
-#form-busca  input {
+#form-busca input {
     background-color: white;
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
     border: none;
@@ -168,7 +173,7 @@ section#top-info {
     width: 100%;
 }
 
-#form-busca  .btn {
+#form-busca .btn {
     font-size: 20px;
     padding: 0;
     width: 50px;
@@ -265,7 +270,7 @@ main.usuario-logado {
 }
 
 main.usuario-logado #container-catalogo {
-    background: none;    
+    background: none;
     padding: 0;
     min-height: calc(100vh - 100px);
 }

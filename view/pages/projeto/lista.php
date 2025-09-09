@@ -7,15 +7,14 @@ require_once '../../components/layout/base-inicio.php';
 
 require_once __DIR__ . '/../../../autoload.php';
 $projetoModel = new ProjetoModel();
+$categoriaModel = new CategoriaModel();
+$categorias = $categoriaModel->buscarCategorias();
 
-$mapaCategorias = [
-    'educacao'   => 1,
-    'saude'      => 2,
-    'esporte'    => 3,
-    'cultura'    => 4,
-    'tecnologia' => 5,
-    'ambiente'   => 6
-];
+$mapaCategorias = [];
+foreach ($categorias as $categoria) {
+    $nomeCategoria = strtolower(trim($categoria['nome']));
+    $mapaCategorias[$nomeCategoria] = $categoria['categoria_id'];
+}
 
 $paginaAtual = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
 
@@ -40,11 +39,12 @@ switch ($modo) {
 
     case 'filtro':
         $categoriasSelecionadas = [];
-        foreach ($mapaCategorias as $nome => $id) {
-            if (isset($_GET[$nome])) {
-                $categoriasSelecionadas[] = $id;
+        foreach ($categorias as $categoria) {
+            if (isset($_GET["cat_{$categoria['categoria_id']}"])) {
+                $categoriasSelecionadas[] = $categoria['categoria_id'];
             }
         }
+        var_dump($categoriasSelecionadas);
 
         $lista = $projetoModel->filtrarPorCategorias($categoriasSelecionadas, $paginaAtual);
         $totalRegistros = $projetoModel->paginacaoFiltroCategorias($categoriasSelecionadas);
@@ -94,11 +94,11 @@ if (isset($_SESSION['usuario']['id']) && $_SESSION['perfil_usuario'] === 'doador
                                     <i class="fa-solid fa-angle-down"></i>
                                 </li>
 
-                                <?php foreach ($mapaCategorias as $nome => $id): ?>
+                                <?php foreach ($categorias as $categoria): ?>
                                     <li>
-                                        <input type="checkbox" name="<?= $nome ?>" id="<?= $nome ?>"
-                                            <?= isset($_GET[$nome]) ? 'checked' : '' ?>>
-                                        <label for="<?= $nome ?>"><?= ucfirst($nome) ?></label>
+                                        <input type="checkbox" name="cat_<?= $categoria['categoria_id'] ?>" id="cat_<?= $categoria['categoria_id'] ?>"
+                                            <?= isset($_GET["cat_{$categoria['categoria_id']}"]) ? 'checked' : '' ?>>
+                                        <label for="cat_<?= $categoria['categoria_id'] ?>"><?= ucfirst($categoria['nome']) ?></label>
                                     </li>
                                 <?php endforeach; ?>
                             </ul>
