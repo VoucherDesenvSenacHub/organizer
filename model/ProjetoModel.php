@@ -301,4 +301,8 @@ class ProjetoModel
         $stmt->execute();
         return $stmt->fetch();
     }
+    public function getLastInsertId() {
+        return $this->pdo->lastInsertId();
+    }
+    
 }

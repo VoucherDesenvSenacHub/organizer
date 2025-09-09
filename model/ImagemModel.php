@@ -63,4 +63,34 @@ class ImagemModel
         $stmt->bindValue(':noticia_id', $idNoticia);
         return $stmt->execute();
     }
+
+    public function vincularNoProjeto(int $idImagem, int $idProjeto)
+{
+    $sql = "INSERT INTO imagens_projetos (projeto_id, imagem_id) 
+            VALUES (:projeto_id, :imagem_id)";
+    $stmt = $this->pdo->prepare($sql);
+    $stmt->bindValue(':projeto_id', $idProjeto);
+    $stmt->bindValue(':imagem_id', $idImagem);
+    return $stmt->execute();
+}
+
+public function listarPorProjeto(int $idProjeto)
+{
+    $sql = "SELECT i.* 
+            FROM imagens i
+            INNER JOIN imagens_projetos ip ON ip.imagem_id = i.imagem_id
+            WHERE ip.projeto_id = :projeto_id";
+    $stmt = $this->pdo->prepare($sql);
+    $stmt->bindValue(':projeto_id', $idProjeto);
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+public function deletarPorProjeto(int $idProjeto)
+{
+    $sql = "DELETE FROM imagens_projetos WHERE projeto_id = :projeto_id";
+    $stmt = $this->pdo->prepare($sql);
+    $stmt->bindValue(':projeto_id', $idProjeto);
+    return $stmt->execute();
+}
 }

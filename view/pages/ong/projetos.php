@@ -55,16 +55,22 @@ ob_end_flush();
             } ?>
             <!-- CARDS DE PROJETOS -->
             <div class="area-cards">
-                <?php
+            <?php
                 if ($lista) {
-                    foreach ($lista as $projeto) {
-                        require '../../components/cards/card-projeto.php';
-                    }
+                    foreach ($lista as $index => $projeto) {
+                    // Buscar imagens do projeto
+                    $imagens = $projetoModel->buscarImagensProjeto($projeto['projeto_id']);
+            
+                    // Passa para o card
+                    $projeto['imagens'] = $imagens;
+
+                    require '../../components/cards/card-projeto.php';
+                }
                 } else {
                     echo 'Você ainda não tem nenhum projeto :(';
                 }
                 ?>
-            </div>
+</div>
             <?php if ($paginas > 1): ?>
                 <nav class="navegacao">
                     <?php for ($i = 1; $i <= $paginas; $i++): ?>
