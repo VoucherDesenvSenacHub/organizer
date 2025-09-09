@@ -76,7 +76,7 @@ $projetosFavoritos = $projetoModel->listarFavoritos($_SESSION['usuario']['id']);
 </div>
 
 <?php
-$jsPagina = ['favoritos.js']; //Colocar o arquivo .js
+$jsPagina = ['doador/favoritos.js']; //Colocar o arquivo .js
 require_once '../../components/layout/footer/footer-logado.php';
 // Ativar os toast
 if (isset($_SESSION['favorito'])) {

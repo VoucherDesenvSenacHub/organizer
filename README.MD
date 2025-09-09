@@ -82,7 +82,7 @@ organizer/
 │
 ├── config/              # Configurações do sistema (ex: banco de dados)
 ├── controller/          # Controladores que gerenciam a lógica da aplicação
-├── db/                  # Scripts e arquivos relacionados ao banco de dados
+├── database/                  # Scripts e arquivos relacionados ao banco de dados
 ├── model/               # Modelos que representam dados e regras de negócio
 ├── view/                # Arquivos da interface do usuário
 │   ├── assets/          # Arquivos estáticos (CSS, JS, imagens) organizados por perfil e componentes

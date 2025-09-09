@@ -1,3 +1,5 @@
+@import url(modal-confirmacao.css);
+
 .conteudo-principal > section {
     display: flex;
     flex-direction: column;

@@ -31,7 +31,7 @@ ob_end_flush();
                 <div id="carousel-imgs">
                     <?php if ($ImagensNoticia) {
                         foreach ($ImagensNoticia as $imagem) {
-                            echo "<img src=\"{$imagem['caminho']}\" class=\"carousel-item\">";
+                            echo "<img src=\"../../../{$imagem['caminho']}\" class=\"carousel-item\">";
                         }
                     } else {
                         echo "<img src='../../assets/images/global/image-placeholder.svg' class='carousel-item'>";
@@ -62,7 +62,7 @@ ob_end_flush();
                     <div class="sub-img">
                         <?php if ($ImagensNoticia) {
                             $ultimaImagem = end($ImagensNoticia);
-                            echo "<img src=\"{$ultimaImagem['caminho']}\">";
+                            echo "<img src=\"../../../{$ultimaImagem['caminho']}\">";
                         } else {
                             echo "<img src='../../assets/images/global/image-placeholder.svg'>";
                         } ?>

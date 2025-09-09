@@ -7,12 +7,20 @@ require_once '../../components/layout/base-inicio.php';
 
 require_once __DIR__ . '/../../../autoload.php';
 $noticiaModel = new NoticiaModel();
-$lista = $noticiaModel->listarCardsNoticias();
 
-if ($_SERVER['REQUEST_METHOD'] = 'GET' && isset($_GET['pesquisa'])) {
-    $pesquisa = $_GET['pesquisa'];
-    $lista = $noticiaModel->listarCardsNoticias('pesquisa', ['pesquisa' => $pesquisa]);
+// Paginação
+$paginaAtual = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
+$tipo = '';
+$valor = ['pagina' => $paginaAtual];
+
+if (isset($_GET['pesquisa'])) {
+    $tipo = 'pesquisa';
+    $valor['pesquisa'] = $_GET['pesquisa'];
 }
+
+$lista = $noticiaModel->listarCardsNoticias($tipo, $valor);
+$totalRegistros = $noticiaModel->paginacaoNoticias($tipo, $valor);
+$paginas = (int)ceil($totalRegistros / 6);
 
 ?>
 
@@ -118,7 +126,7 @@ if ($_SERVER['REQUEST_METHOD'] = 'GET' && isset($_GET['pesquisa'])) {
             </div>
         </section>
         <?php if (isset($_GET['pesquisa'])) {
-            echo "<p class='qnt-busca'><i class='fa-solid fa-search'></i> " . count($lista) . " Notícias Encontradas</p>";
+            echo "<p class='qnt-busca'><i class='fa-solid fa-search'></i> " . $totalRegistros . " Notícias Encontradas</p>";
         } ?>
 
         <section id="box-ongs">
@@ -127,17 +135,18 @@ if ($_SERVER['REQUEST_METHOD'] = 'GET' && isset($_GET['pesquisa'])) {
                 require '../../components/cards/card-noticia.php';
             } ?>
         </section>
-        <nav id="navegacao">
-            <a class="active" href="#">1</a>
-            <a href="#">2</a>
-            <a href="#">3</a>
-            <a href="#">4</a>
-            <a href="#">5</a>
-            <a href="#">></a>
-        </nav>
+        <?php if ($paginas > 1): ?>
+            <nav class="navegacao">
+                <?php for ($i = 1; $i <= $paginas; $i++): ?>
+                    <a href="?pagina=<?= $i ?><?= isset($_GET['pesquisa']) ? '&pesquisa=' . urlencode($_GET['pesquisa']) : '' ?>"
+                        class="<?= $i === $paginaAtual ? 'active' : '' ?>">
+                        <?= $i ?>
+                    </a>
+                <?php endfor; ?>
+            </nav>
+        <?php endif; ?>
     </div>
 </main>
-
 <?php
 $jsPagina = [];
 require_once '../../components/layout/footer/footer-logado.php';

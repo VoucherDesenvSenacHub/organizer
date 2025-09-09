@@ -6,12 +6,20 @@ require_once '../../components/layout/base-inicio.php';
 
 require_once __DIR__ . '/../../../autoload.php';
 $usuarioModel = new UsuarioModel();
-$lista = $usuarioModel->listar();
+
+$paginaAtual = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
+$tipo = '';
+$valor = ['pagina' => $paginaAtual];
 
 if ($_SERVER['REQUEST_METHOD'] = 'GET' && isset($_GET['pesquisa'])) {
     $pesquisa = $_GET['pesquisa'];
-    $lista = $usuarioModel->buscarNome($pesquisa);
+    $tipo = 'pesquisa';
+    $valor = ['pesquisa' => $pesquisa, 'pagina' => $paginaAtual];
 }
+
+$lista = $usuarioModel->listar($tipo, $valor);
+$totalRegistros = $usuarioModel->paginacaoUsuarios($tipo, $valor);
+$paginas = ceil($totalRegistros / 14);
 
 // Abrir o popup e ver o perfil do doador
 if (isset($_GET['id'])) {
@@ -43,28 +51,30 @@ if (isset($_GET['id'])) {
             </div>
             <!-- Quantidade da busca -->
             <?php if (isset($_GET['pesquisa'])) {
-                echo "<p class='qnt-busca'><i class='fa-solid fa-search'></i> " . count($lista) . " Doadores Encontrados</p>";
+                echo "<p class='qnt-busca'><i class='fa-solid fa-search'></i> " . $totalRegistros . " Doadores Encontrados</p>";
             } ?>
 
             <section id="box-ongs">
                 <?php
-                if ($lista) {
+                if (isset($lista) && empty($lista)) {
+                    echo '<p>Nenhum Doador cadastrado!</p>';
+                } else {
                     foreach ($lista as $doador) {
                         require '../../components/cards/card-doador-adm.php';
                     }
-                } else {
-                    echo '<p>Nenhum Doador cadastrado!</p>';
                 }
                 ?>
             </section>
-            <nav id="navegacao">
-                <a class="active" href="#">1</a>
-                <a href="#">2</a>
-                <a href="#">3</a>
-                <a href="#">4</a>
-                <a href="#">5</a>
-                <a href="#">></a>
-            </nav>
+            <?php if ($paginas > 1): ?>
+                <nav class="navegacao">
+                    <?php for ($i = 1; $i <= $paginas; $i++): ?>
+                        <a href="?pagina=<?= $i ?><?= isset($_GET['pesquisa']) ? '&pesquisa=' . urlencode($_GET['pesquisa']) : '' ?>"
+                            class="<?= $i === $paginaAtual ? 'active' : '' ?>">
+                            <?= $i ?>
+                        </a>
+                    <?php endfor; ?>
+                </nav>
+            <?php endif; ?>
         </div>
     </section>
 </main>

@@ -23,7 +23,10 @@ class NoticiaModel
             $stmt->bindParam(':texto', $texto);
             $stmt->bindParam(':subtexto', $subtexto);
             $stmt->bindParam(':ong_id', $id, PDO::PARAM_INT);
-            return $stmt->execute();
+            if ($stmt->execute()) {
+                return $this->pdo->lastInsertId();
+            }
+            return false;
         } catch (PDOException $e) {
             return false;
         }
@@ -33,20 +36,20 @@ class NoticiaModel
     {
         try {
             $query = "UPDATE $this->tabela
-                          SET titulo = :titulo, subtitulo = :subtitulo, texto = :texto, subtexto = :subtexto
-                          WHERE noticia_id = :id";
+                      SET titulo = :titulo, subtitulo = :subtitulo, texto = :texto, subtexto = :subtexto
+                      WHERE noticia_id = :id";
             $stmt = $this->pdo->prepare($query);
             $stmt->bindParam(':titulo', $titulo);
             $stmt->bindParam(':subtitulo', $subtitulo);
             $stmt->bindParam(':texto', $texto);
             $stmt->bindParam(':subtexto', $subtexto);
             $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-            $stmt->execute();
-            return $stmt->rowCount();
+            return $stmt->execute(); // true ou false
         } catch (PDOException $e) {
             return false;
         }
     }
+
 
     function buscarPerfilNoticia($IdNoticia)
     {
@@ -69,6 +72,9 @@ class NoticiaModel
     {
         $params = [];
         $statusFilter = !empty($valor['status']) ? $valor['status'] : null;
+        $limite = $valor['limit'] ?? ($limit ?? 6);
+        $pagina = $valor['pagina'] ?? 1;
+        $offset = ($pagina - 1) * $limite;
 
         switch ($tipo) {
             // Buscar as Notícias pelo título
@@ -104,6 +110,7 @@ class NoticiaModel
                     $query .= " WHERE status = 'ATIVO'";
                 }
         }
+        $query .= " LIMIT {$limite} OFFSET {$offset}";
 
         $stmt = $this->pdo->prepare($query);
         foreach ($params as $key => $value) {
@@ -111,6 +118,31 @@ class NoticiaModel
         }
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    function paginacaoNoticias(string $tipo = '', $valor = [])
+    {
+        $params = [];
+        switch ($tipo) {
+            case 'pesquisa':
+                $query = "SELECT COUNT(*) AS total FROM vw_card_noticias WHERE status = 'ATIVO' AND titulo LIKE :titulo";
+                $params[':titulo'] = "%{$valor['pesquisa']}%";
+                if (!empty($valor['ong_id'])) {
+                    $query .= " AND ong_id = :ong_id";
+                    $params[':ong_id'] = $valor['ong_id'];
+                }
+                break;
+            default:
+                $query = "SELECT COUNT(*) AS total FROM vw_card_noticias WHERE status = 'ATIVO'";
+        }
+
+        $stmt = $this->pdo->prepare($query);
+        foreach ($params as $key => $value) {
+            $stmt->bindValue($key, $value, is_int($value) ? PDO::PARAM_INT : PDO::PARAM_STR);
+        }
+        $stmt->execute();
+        $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
+        return (int)$resultado['total'];
     }
 
     function listarCardsInativos($ong_id = null)

@@ -16,12 +16,12 @@ INSERT INTO imagens (caminho) values
 ('https://static.wixstatic.com/media/e84587_c0672bfc82594f1c8ab9b12db949bf5b~mv2.png/v1/fill/w_1000,h_500,al_c,q_90,usm_0.66_1.00_0.01/e84587_c0672bfc82594f1c8ab9b12db949bf5b~mv2.png'),
 ('https://www.crieodontologia.com.br/wp-content/uploads/2018/02/06.02-Artigo-Higiene-bucal-na-terceira-idade-entenda-os-cuidados-necessarios.jpg'),
 -- IMAGENS PARA NOTÍCIAS
-('https://www.campusvilla.com.br/wp-content/uploads/2019/04/Doacao-Livros_ArmazemLiterario_Villa2019-21.jpg'),
-('https://www.campusvilla.com.br/wp-content/uploads/2019/04/Doacao-Livros_ArmazemLiterario_Villa2019-22.jpg'),
-('https://www.campusvilla.com.br/wp-content/uploads/2019/04/Doacao-Livros_ArmazemLiterario_Villa2019-29.jpg'),
-('https://navegantes.sc.gov.br/wp-content/uploads/2025/03/juntos-pelo-rio-capa-scaled.jpg'),
-('https://navegantes.sc.gov.br/wp-content/uploads/2025/03/IMG_2122-1376x917.jpg'),
-('https://cronos-media.sesisenaisp.org.br/api/media/1-0/files?img=img_4_210324_b0cf7edf-5e5b-475c-8f69-f1f7a03407c6_o.jpg'),
+('upload/images/noticias/doacao_livros001.jpg'),
+('upload/images/noticias/doacao_livros002.jpg'),
+('upload/images/noticias/doacao_livros003.jpg'),
+('upload/images/noticias/coleta_lixo001.jpg'),
+('upload/images/noticias/coleta_lixo002.jpg'),
+('upload/images/noticias/doe-alimentos001.jpg'),
 -- IMAGENS PARA ONGS
 ('https://www.portaladesso.com.br/images/noticia/img_3671_foto_2.jpg'),
 ('https://sasp.com.br/wp-content/uploads/2020/04/acaosocial.jpg'),
@@ -44,16 +44,16 @@ INSERT INTO imagens (caminho) values
 -- ================================
 -- INSERÇÃO DE DADOS NA TABELA CATEGORIAS
 -- ================================
-INSERT INTO categorias (nome) VALUES
-('Educação'),
-('Saúde'),
-('Meio Ambiente'),
-('Tecnologia e Inovação'),
-('Cultura e Artes'),
-('Esporte e Lazer'),
-('Assistência Social'),
-('Direitos Humanos'),
-('Segurança e Defesa');
+INSERT INTO categorias (nome, cor) VALUES
+('Educação', '#2196F3'),
+('Saúde', '#EF6EB1'),
+('Meio Ambiente', '#30AD1A'),
+('Tecnologia e Inovação', '#9C27B0'),
+('Cultura e Artes', '#FF9800'),
+('Esporte e Lazer', '#FFC107'),
+('Assistência Social', '#F44336'),
+('Direitos Humanos', '#1976D2'),
+('Segurança e Defesa', '#616161');
 
 
 -- ================================
@@ -400,7 +400,7 @@ INSERT INTO projetos (
     'Cuidando de Quem Cuida',
     'Com foco no apoio a cuidadores de idosos e pessoas com deficiência, este projeto oferece capacitações, suporte psicológico, grupos de apoio e atividades de lazer. A iniciativa reconhece a importância dos cuidadores e busca melhorar sua qualidade de vida, saúde emocional e valorização dentro do contexto familiar e social.',
     30000.00,
-    5,
+    2,
     'ATIVO',
     1
 );
@@ -411,7 +411,7 @@ INSERT INTO projetos (
     'Tecnologia para o Bem',
     'A proposta deste projeto é oferecer cursos gratuitos de programação, robótica, e outras tecnologias para jovens em situação de risco social. Além das aulas, os participantes terão acesso a mentorias, eventos de tecnologia e oportunidades de estágio em empresas parceiras, abrindo portas para um futuro promissor no mercado de TI.',
     13000.00,
-    2,
+    4,
     'ATIVO',
     1
 );
@@ -422,7 +422,7 @@ INSERT INTO projetos (
     'Biblioteca Comunitária Esperança',
     'Nosso projeto visa montar uma biblioteca comunitária em Campo Grande, oferecendo acesso gratuito a livros, oficinas de leitura e contação de histórias para crianças e adolescentes da comunidade. Com sua ajuda, poderemos adquirir livros, estantes e materiais didáticos.',
     3000.00,
-    1,
+    7,
     'ATIVO',
     2
 );
@@ -433,7 +433,7 @@ INSERT INTO projetos (
     'Alimenta Comunidade',
     'O projeto Alimenta Comunidade tem como objetivo distribuir cestas básicas mensalmente para 100 famílias em situação de vulnerabilidade. Além dos alimentos, oferecemos oficinas sobre aproveitamento integral dos alimentos e nutrição básica. Sua doação fará a diferença no prato de muitas famílias!',
     8000.00,
-    1,
+    8,
     'ATIVO',
     2
 );
@@ -444,7 +444,7 @@ INSERT INTO projetos (
     'Conecta Jovem',
     'O Conecta Jovem oferece cursos gratuitos de informática básica, introdução à programação e internet segura para adolescentes de comunidades periféricas. A meta é capacitar 60 jovens em 3 meses, preparando-os para oportunidades no mercado digital. Com sua ajuda, compraremos computadores, pagaremos instrutores e garantiremos acesso à internet.',
     2000.00,
-    8,
+    6,
     'ATIVO',
     3
 );
@@ -455,7 +455,7 @@ INSERT INTO projetos (
     'Sorrisos na Melhor Idade',
     'Este projeto tem como objetivo arrecadar fundos para realizar uma tarde de cuidados, lazer e atividades para 40 idosos em um lar de acolhimento. Com a verba, vamos oferecer corte de cabelo, manicure, música ao vivo, lanche especial e lembrancinhas personalizadas.\n\nQueremos proporcionar momentos de carinho e atenção para quem tantas vezes é esquecido. Um pequeno gesto pode transformar o dia — e a autoestima — de muitos.',
     2300.00,
-    4,
+    2,
     'ATIVO',
     3
 );
@@ -559,3 +559,16 @@ INSERT INTO doacoes_projetos (projeto_id, usuario_id, valor, data_doacao) VALUES
 INSERT INTO doacoes_projetos (projeto_id, usuario_id, valor, data_doacao) VALUES
 (7, 5, 300.00, NOW() + INTERVAL 50 SECOND),
 (3, 5, 310.00, NOW() + INTERVAL 55 SECOND);
+
+
+
+-- ================================
+-- INSERÇÃO DE EMPRESAS PARCEIRAS
+-- ================================
+INSERT INTO parcerias (nome, cnpj, email, telefone, descricao, mensagem, status) VALUES
+('Nubank', '12345678000101', 'contato@nubank.com', '1140028922', 'Banco digital focado em experiência do usuário', 'Temos interesse em parcerias estratégicas.', 'APROVADA'),
+('Faber-Castell', '23456789000102', 'parcerias@faber-castell.com', '1134567890', 'Fabricante de materiais de escrita e artísticos', 'Gostaríamos de apoiar projetos educacionais e culturais.', 'APROVADA'),
+('Cielo', '34567890000103', 'contato@cielo.com', '1121003200', 'Empresa de soluções de pagamento eletrônico', 'Interessados em iniciativas de inclusão financeira.', 'APROVADA'),
+('Pedigree', '45678900000104', 'parcerias@pedigree.com', '11998765432', 'Marca de ração e produtos para cães', 'Podemos colaborar com projetos de proteção animal.', 'PENDENTE'),
+('Coral', '56789000000105', 'contato@coral.com', '1133445566', 'Fabricante de tintas e soluções para pintura', 'Queremos apoiar projetos de melhoria de espaços comunitários.', 'PENDENTE'),
+('Guaraná Antarctica', '67890000000106', 'parcerias@guarana.com', '11987654321', 'Bebida brasileira de renome nacional', 'Interessados em patrocínios e parcerias promocionais.', 'APROVADA');

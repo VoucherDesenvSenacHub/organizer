@@ -23,6 +23,19 @@ class AdminModel
         return $stmt->fetch();
     }
 
+    // Buscar parcerias aprovadas para exibição pública
+    function ListarParceriasAprovadas()
+    {
+        $query = "SELECT parceria_id, nome, email, telefone, cnpj, descricao, 
+                         DATE_FORMAT(data_envio, '%d/%m/%Y') as data_aprovacao
+                  FROM parcerias 
+                  WHERE status = 'APROVADA' 
+                  ORDER BY data_envio DESC";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     // Buscar contadores para os cards que tem na home adm
     function ContadoresSolicitacoes()
     {
@@ -67,13 +80,13 @@ class AdminModel
     function CriarSolicitacaoParceria($dados)
     {
         try {
-            $query = "INSERT INTO parcerias (nome, email, cnpj, telefone, mensagem, status) 
+            $query = "INSERT INTO parcerias (nome, cnpj, email, telefone, mensagem, status) 
                       VALUES (?, ?, ?, ?, ?, 'PENDENTE')";
             $stmt = $this->pdo->prepare($query);
             return $stmt->execute([
                 $dados['nome'],
-                $dados['email'],
                 $dados['cnpj'],
+                $dados['email'],
                 $dados['telefone'],
                 $dados['mensagem']
             ]);

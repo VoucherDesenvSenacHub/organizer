@@ -190,7 +190,7 @@ ob_end_flush();
 </main>
 
 <?php
-$jsPagina = ['perfil-projeto.js'];
+$jsPagina = ['projeto/perfil.js'];
 require_once '../../components/layout/footer/footer-logado.php';
 // Chamar a lógica dos toasts
 require_once 'partials/alertas-toast.php';
