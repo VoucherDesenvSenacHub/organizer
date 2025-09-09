@@ -23,78 +23,138 @@ class ProjetoModel
         switch ($tipo) {
             // Buscar os Projetos pelo nome
             case 'pesquisa':
-                $query = "SELECT * FROM vw_card_projetos WHERE nome LIKE :nome";
+                $query = "SELECT *, 
+                         CASE 
+                             WHEN barra >= 100 THEN 'FINALIZADO'
+                             ELSE status 
+                         END as status_real
+                         FROM vw_card_projetos WHERE nome LIKE :nome";
                 if (!empty($valor['ong_id'])) {
                     $query .= " AND ong_id = :ong_id";
                     $params[':ong_id'] = $valor['ong_id'];
                 }
                 if ($statusFilter) {
-                    $query .= " AND status = :status";
-                    $params[':status'] = $statusFilter;
+                    if ($statusFilter === 'FINALIZADO') {
+                        $query .= " AND barra >= 100";
+                    } else {
+                        $query .= " AND status = :status AND barra < 100";
+                        $params[':status'] = $statusFilter;
+                    }
                 } else {
                     $query .= " AND status = 'ATIVO'";
                 }
                 $params[':nome'] = "%{$valor['pesquisa']}%";
                 break;
+                
             // Buscar os Projetos de uma ONG
             case 'ong':
-                $query = "SELECT * FROM vw_card_projetos WHERE ong_id = :ong_id";
+                $query = "SELECT *, 
+                         CASE 
+                             WHEN barra >= 100 THEN 'FINALIZADO'
+                             ELSE status 
+                         END as status_real
+                         FROM vw_card_projetos WHERE ong_id = :ong_id";
                 if ($statusFilter) {
-                    $query .= " AND status = :status";
-                    $params[':status'] = $statusFilter;
+                    if ($statusFilter === 'FINALIZADO') {
+                        $query .= " AND barra >= 100";
+                    } else {
+                        $query .= " AND status = :status AND barra < 100";
+                        $params[':status'] = $statusFilter;
+                    }
                 }
                 $params[':ong_id'] = $valor['ong_id'];
                 break;
-            // Buscar os Projetos favoritos do Usúario
+                
+            // Buscar os Projetos favoritos do Usuário
             case 'favoritos':
-                $query = "SELECT v.*, f.usuario_id FROM vw_card_projetos v
-                JOIN favoritos_projetos f USING (projeto_id)
-                WHERE usuario_id = :usuario_id";
+                $query = "SELECT v.*, f.usuario_id,
+                         CASE 
+                             WHEN v.barra >= 100 THEN 'FINALIZADO'
+                             ELSE v.status 
+                         END as status_real
+                         FROM vw_card_projetos v
+                         JOIN favoritos_projetos f USING (projeto_id)
+                         WHERE usuario_id = :usuario_id";
                 if ($statusFilter) {
-                    $query .= " AND v.status = :status";
-                    $params[':status'] = $statusFilter;
+                    if ($statusFilter === 'FINALIZADO') {
+                        $query .= " AND v.barra >= 100";
+                    } else {
+                        $query .= " AND v.status = :status AND v.barra < 100";
+                        $params[':status'] = $statusFilter;
+                    }
                 } else {
                     $query .= " AND v.status = 'ATIVO'";
                 }
                 $query .= " ORDER BY data_favoritado DESC";
                 $params[':usuario_id'] = $valor['usuario'];
                 break;
-            // Buscar os Projetos favoritos do Usúario
+                
+            // Buscar os Projetos apoiados pelo usuário
             case 'apoiados':
-                $query = "SELECT v.*, f.usuario_id FROM vw_card_projetos v
-                JOIN apoios_projetos f USING (projeto_id)
-                WHERE usuario_id = :usuario_id";
+                $query = "SELECT v.*, f.usuario_id,
+                         CASE 
+                             WHEN v.barra >= 100 THEN 'FINALIZADO'
+                             ELSE v.status 
+                         END as status_real
+                         FROM vw_card_projetos v
+                         JOIN apoios_projetos f USING (projeto_id)
+                         WHERE usuario_id = :usuario_id";
                 if ($statusFilter) {
-                    $query .= " AND v.status = :status";
-                    $params[':status'] = $statusFilter;
+                    if ($statusFilter === 'FINALIZADO') {
+                        $query .= " AND v.barra >= 100";
+                    } else {
+                        $query .= " AND v.status = :status AND v.barra < 100";
+                        $params[':status'] = $statusFilter;
+                    }
                 } else {
                     $query .= " AND v.status = 'ATIVO'";
                 }
                 $query .= " ORDER BY data_apoio DESC";
-                $params[':usuario_id'] = $valor;
+                $params[':usuario_id'] = $valor['usuario'];
                 break;
+                
             // Buscar os Projetos mais recentes
             case 'recentes':
                 $limit = 4;
-                $query = "SELECT v.*, p.data_cadastro FROM vw_card_projetos v
-                JOIN projetos p USING(projeto_id)";
+                $query = "SELECT v.*, p.data_cadastro,
+                         CASE 
+                             WHEN v.barra >= 100 THEN 'FINALIZADO'
+                             ELSE v.status 
+                         END as status_real
+                         FROM vw_card_projetos v
+                         JOIN projetos p USING(projeto_id)";
                 if ($statusFilter) {
-                    $query .= " WHERE v.status = :status";
-                    $params[':status'] = $statusFilter;
+                    if ($statusFilter === 'FINALIZADO') {
+                        $query .= " WHERE v.barra >= 100";
+                    } else {
+                        $query .= " WHERE v.status = :status AND v.barra < 100";
+                        $params[':status'] = $statusFilter;
+                    }
                 } else {
                     $query .= " WHERE v.status = 'ATIVO'";
                 }
                 $query .= " ORDER BY data_cadastro DESC";
                 break;
+                
             default:
-                $query = "SELECT * FROM vw_card_projetos";
+                $query = "SELECT *, 
+                         CASE 
+                             WHEN barra >= 100 THEN 'FINALIZADO'
+                             ELSE status 
+                         END as status_real
+                         FROM vw_card_projetos";
                 if ($statusFilter) {
-                    $query .= " WHERE status = :status";
-                    $params[':status'] = $statusFilter;
+                    if ($statusFilter === 'FINALIZADO') {
+                        $query .= " WHERE barra >= 100";
+                    } else {
+                        $query .= " WHERE status = :status AND barra < 100";
+                        $params[':status'] = $statusFilter;
+                    }
                 } else {
                     $query .= " WHERE status = 'ATIVO'";
                 }
         }
+        
         $query .= " LIMIT {$limit} OFFSET {$offset}";
 
         $stmt = $this->pdo->prepare($query);
@@ -105,12 +165,13 @@ class ProjetoModel
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-
     function paginacaoProjetos(string $tipo = '', $valor = [])
     {
         $params = [];
         $statusFilter = !empty($valor['status']) ? $valor['status'] : null;
+        
         switch ($tipo) {
+            // Buscar os Projetos pelo nome
             case 'pesquisa':
                 $query = "SELECT COUNT(*) AS total FROM vw_card_projetos WHERE nome LIKE :nome";
                 if (!empty($valor['ong_id'])) {
@@ -118,30 +179,95 @@ class ProjetoModel
                     $params[':ong_id'] = $valor['ong_id'];
                 }
                 if ($statusFilter) {
-                    $query .= " AND status = :status";
-                    $params[':status'] = $statusFilter;
+                    if ($statusFilter === 'FINALIZADO') {
+                        $query .= " AND barra >= 100";
+                    } else {
+                        $query .= " AND status = :status AND barra < 100";
+                        $params[':status'] = $statusFilter;
+                    }
                 } else {
                     $query .= " AND status = 'ATIVO'";
                 }
                 $params[':nome'] = "%{$valor['pesquisa']}%";
                 break;
+                
+            // Buscar os Projetos de uma ONG
+            case 'ong':
+                $query = "SELECT COUNT(*) AS total FROM vw_card_projetos WHERE ong_id = :ong_id";
+                if ($statusFilter) {
+                    if ($statusFilter === 'FINALIZADO') {
+                        $query .= " AND barra >= 100";
+                    } else {
+                        $query .= " AND status = :status AND barra < 100";
+                        $params[':status'] = $statusFilter;
+                    }
+                }
+                $params[':ong_id'] = $valor['ong_id'];
+                break;
+                
+            // Buscar os Projetos favoritos do Usuário
+            case 'favoritos':
+                $query = "SELECT COUNT(*) AS total FROM vw_card_projetos v
+                         JOIN favoritos_projetos f USING (projeto_id)
+                         WHERE usuario_id = :usuario_id";
+                if ($statusFilter) {
+                    if ($statusFilter === 'FINALIZADO') {
+                        $query .= " AND v.barra >= 100";
+                    } else {
+                        $query .= " AND v.status = :status AND v.barra < 100";
+                        $params[':status'] = $statusFilter;
+                    }
+                } else {
+                    $query .= " AND v.status = 'ATIVO'";
+                }
+                $params[':usuario_id'] = $valor['usuario'];
+                break;
+                
+            // Buscar os Projetos apoiados pelo Usuário
+            case 'apoiados':
+                $query = "SELECT COUNT(*) AS total FROM vw_card_projetos v
+                         JOIN apoios_projetos f USING (projeto_id)
+                         WHERE usuario_id = :usuario_id";
+                if ($statusFilter) {
+                    if ($statusFilter === 'FINALIZADO') {
+                        $query .= " AND v.barra >= 100";
+                    } else {
+                        $query .= " AND v.status = :status AND v.barra < 100";
+                        $params[':status'] = $statusFilter;
+                    }
+                } else {
+                    $query .= " AND v.status = 'ATIVO'";
+                }
+                $params[':usuario_id'] = $valor['usuario'];
+                break;
+                
+            // Buscar os Projetos mais recentes
+            case 'recentes':
+                $query = "SELECT COUNT(*) AS total FROM vw_card_projetos v
+                         JOIN projetos p USING(projeto_id)";
+                if ($statusFilter) {
+                    if ($statusFilter === 'FINALIZADO') {
+                        $query .= " WHERE v.barra >= 100";
+                    } else {
+                        $query .= " WHERE v.status = :status AND v.barra < 100";
+                        $params[':status'] = $statusFilter;
+                    }
+                } else {
+                    $query .= " WHERE v.status = 'ATIVO'";
+                }
+                break;
+                
             default:
                 $query = "SELECT COUNT(*) AS total FROM vw_card_projetos";
-                $conditions = [];
-                if (!empty($valor['ong_id'])) {
-                    $conditions[] = "ong_id = :ong_id";
-                    $params[':ong_id'] = $valor['ong_id'];
-                }
                 if ($statusFilter) {
-                    $conditions[] = "status = :status";
-                    $params[':status'] = $statusFilter;
-                } elseif ($tipo === 'ong') {
-                    // For ong, don't filter by status by default, show all
+                    if ($statusFilter === 'FINALIZADO') {
+                        $query .= " WHERE barra >= 100";
+                    } else {
+                        $query .= " WHERE status = :status AND barra < 100";
+                        $params[':status'] = $statusFilter;
+                    }
                 } else {
-                    $conditions[] = "status = 'ATIVO'";
-                }
-                if ($conditions) {
-                    $query .= " WHERE " . implode(" AND ", $conditions);
+                    $query .= " WHERE status = 'ATIVO'";
                 }
         }
 
@@ -153,7 +279,6 @@ class ProjetoModel
         $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
         return $resultado['total'];
     }
-
 
     function buscarPerfilProjeto($IdProjeto)
     {
@@ -226,10 +351,6 @@ class ProjetoModel
         return $stmt->rowCount();
     }
 
-
-
-
-
     public function editar($id, $nome, $descricao, $meta, $categoria_id)
     {
         try {
@@ -247,7 +368,6 @@ class ProjetoModel
             return false;
         }
     }
-
 
     function criar($nome, $descricao, $meta, $categoria_id, $ong_id)
     {
@@ -283,7 +403,6 @@ class ProjetoModel
         return $stmt->fetchAll();
     }
 
-
     function favoritarProjeto($usuario_id, $projeto_id)
     {
         // Verifica se já está favoritado
@@ -315,7 +434,6 @@ class ProjetoModel
         }
     }
 
-
     function listarFavoritos($usuario_id)
     {
         $sql = "SELECT projeto_id FROM favoritos_projetos WHERE usuario_id = :id";
@@ -324,7 +442,6 @@ class ProjetoModel
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_COLUMN);
     }
-
 
     public function apoiarProjeto($usuario_id, $projeto_id)
     {
@@ -344,7 +461,6 @@ class ProjetoModel
         return $stmt->execute();
     }
 
-
     public function usuarioJaApoiouProjeto($usuario_id, $projeto_id)
     {
         $query = "SELECT 1 FROM apoios_projetos
@@ -358,3 +474,4 @@ class ProjetoModel
         return $stmt->fetch();
     }
 }
+?>
