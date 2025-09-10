@@ -71,7 +71,7 @@ if (isset($_SESSION['usuario']['id'])) {
                     </form>
                 </div>
                 <form id="form-busca" action="../../../controller/Ong/BuscarOngController.php" method="POST">
-                    <input type="text" name="pesquisa" placeholder="Busque uma ONG">
+                    <input type="text" name="pesquisa" placeholder="Busque uma ONG" value="<?= htmlspecialchars($pesquisa) ?>">
                     <button class="btn" type="submit"><i class="fa-solid fa-search"></i></button>
                 </form>
             </div>
