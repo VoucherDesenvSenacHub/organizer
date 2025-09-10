@@ -44,7 +44,7 @@ $paginas = ceil($totalRegistros / 8);
 // Criar URLs de paginação
 $urlsPaginacao = [];
 for ($i = 1; $i <= $paginas; $i++) {
-    $url = "../../../controller/Projeto/FiltrarProjetoController.php?pagina={$i}";
+    $url = "../../../controller/Projeto/BuscarProjetoController.php?pagina={$i}";
     if (!empty($pesquisa)) $url .= "&pesquisa=" . urlencode($pesquisa);
     if (!empty($categoriasSelecionadas)) {
         $url .= "&filtro=1";
@@ -79,7 +79,7 @@ if (isset($_SESSION['usuario']['id']) && $_SESSION['perfil_usuario'] === 'doador
                 <div>
                     <h1>ENCONTRE PROJETOS</h1>
                     <p>Explore projetos inspiradores e apoie causas e faça a diferença hoje mesmo.</p>
-                    <form id="form-filtro" action="../../../controller/Projeto/FiltrarProjetoController.php" method="GET">
+                    <form id="form-filtro" action="../../../controller/Projeto/BuscarProjetoController.php" method="GET">
                         <input type="hidden" name="filtro" value="1">
                         <!-- ### -->
                         <div class="ul-group">
@@ -103,7 +103,7 @@ if (isset($_SESSION['usuario']['id']) && $_SESSION['perfil_usuario'] === 'doador
                         <button class="btn">Filtrar</button>
                     </form>
                 </div>
-                <form id="form-busca" action="../../../controller/Projeto/FiltrarProjetoController.php" method="GET">
+                <form id="form-busca" action="../../../controller/Projeto/BuscarProjetoController.php" method="GET">
                     <input type="text" name="pesquisa" placeholder="Busque um projeto" value="<?= htmlspecialchars($pesquisa) ?>">
                     <button class="btn" type="submit"><i class="fa-solid fa-search"></i></button>
                 </form>

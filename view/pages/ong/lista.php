@@ -33,7 +33,7 @@ if (isset($_SESSION['usuario']['id'])) {
                 <div>
                     <h1>DESCUBRA AS ONGS</h1>
                     <p>Explore organizações que estão fazendo a diferença e saiba como você pode contribuir.</p>
-                    <form id="form-filtro" action="../../../controller/Ong/FiltrarOngController.php" method="POST">
+                    <form id="form-filtro" action="../../../controller/Ong/BuscarOngController.php" method="POST">
                         <input type="hidden" name="filtro" value="1">
                         <!-- ### -->
                         <div class="ul-group">
@@ -43,11 +43,11 @@ if (isset($_SESSION['usuario']['id'])) {
                                     <i class="fa-solid fa-angle-down"></i>
                                 </li>
                                 <li>
-                                    <input type="checkbox" name="recentes" id="em-andamento">
+                                    <input type="checkbox" name="recentes" id="recentes" <?= ($filtros['tempo'] ?? '') === 'mais-recentes' ? 'checked' : '' ?>>
                                     <label for="recentes">Mais recentes</label>
                                 </li>
                                 <li>
-                                    <input type="checkbox" name="antigos" id="concluido">
+                                    <input type="checkbox" name="antigos" id="antigos" <?= ($filtros['tempo'] ?? '') === 'mais-antigos' ? 'checked' : '' ?>>
                                     <label for="antigos">Mais antigos</label>
                                 </li>
                             </ul>
@@ -57,11 +57,11 @@ if (isset($_SESSION['usuario']['id'])) {
                                     <i class="fa-solid fa-angle-down"></i>
                                 </li>
                                 <li>
-                                    <input type="checkbox" name="1-3">
+                                    <input type="checkbox" name="1-3" id="1-3" <?= ($filtros['quantidade'] ?? '') === '1-3' ? 'checked' : '' ?>>
                                     <label for="1-3">1 à 3 projetos</label>
                                 </li>
                                 <li>
-                                    <input type="checkbox" name="4+">
+                                    <input type="checkbox" name="4+" id="4+" <?= ($filtros['quantidade'] ?? '') === '4+' ? 'checked' : '' ?>>
                                     <label for="4+">4+</label>
                                 </li>
                             </ul>
@@ -70,7 +70,7 @@ if (isset($_SESSION['usuario']['id'])) {
                         <button class="btn">Filtrar</button>
                     </form>
                 </div>
-                <form id="form-busca" action="../../../controller/Ong/FiltrarOngController.php" method="POST">
+                <form id="form-busca" action="../../../controller/Ong/BuscarOngController.php" method="POST">
                     <input type="text" name="pesquisa" placeholder="Busque uma ONG">
                     <button class="btn" type="submit"><i class="fa-solid fa-search"></i></button>
                 </form>
@@ -111,7 +111,7 @@ if (isset($_SESSION['usuario']['id'])) {
 </div>
 
 <?php
-$jsPagina = [];
+$jsPagina = ['ong/lista-cards.js'];
 require_once '../../components/layout/footer/footer-logado.php';
 // Ativar os toast
 if (isset($_SESSION['favorito'])) {
