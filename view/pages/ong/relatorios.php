@@ -1,5 +1,7 @@
 <?php
 $acesso = 'ong';
+// $idOngLogada = $_SESSION['ong_id'];
+$idOngLogada = 3;
 $tituloPagina = 'Relatórios | Organizer'; // Definir o título da página
 $cssPagina = ["ong/relatorios.css"]; //Colocar o arquivo .css (exemplo: 'ONG/cadastro.css')
 require_once '../../components/layout/base-inicio.php';
@@ -9,55 +11,13 @@ require_once '../../components/graphics/line-graphic.php';
 require_once '../../components/graphics/horizontal-double-bars.php';
 require_once '../../components/graphics/pie-graph.php';
 require_once '../../components/graphics/calcula-graficos.php';
-require_once '../../../model/Relatorios.php';
 require_once '../../../model/RelatoriosModel.php';
+require_once '../../../model/Relatorios.php';
 
 $projetos = new RelatoriosModel();
 $listaUsuarios = $projetos->buscarUsuarios();
-$contagem_projetos = $projetos->contarProjetos(1);
-$listagem_projetos = $projetos->listarProjetos(1);
-// $todosProjetos = $projetos->listarTodosProjetos();
-// $listarTabela = $projetos->listarTabelas();
-// echo pdfVoluntariosPorProjeto($listagem_projetos);
-// echo $listagem_projetos[0][0]['nome'];
-// echo "<pre>";
-// print_r($listagem_projetos);
-// echo "</pre>";
-?>
-<h1>Relatório de apoiadores</h1>
-<hr>
-<?php 
-    $contador = 0;
-    foreach ($contagem_projetos as $cp){ ?>
-    <h2><?php echo $cp[0] ?></h2>
-    <table>
-        <thead>
-            <th><td>Apoiadores</td></th>
-        </thead>
-        <tbody>
-            <?php foreach($listagem_projetos as $lp) {
-                if($cp[0] == $lp['nome_projeto']){ ?>
-            <tr><td><?php echo $lp['nome_usuario']; ?></td></tr>
-            <?php 
-            $contador ++;
-        }}?>
-        </tbody>
-        <tfoot>
-            <tr>
-                <td><?php
-        echo "Total de apoiadores: ".$contador;
-        $contador = 0; ?></td>
-            </tr>
-
-        </tfoot>
-    </table>
-    <?php
-    }
-
-
-// echo "<pre>";
-// print_r($listagem_projetos);
-// echo "</pre>";
+$contagem_projetos = $projetos->contarProjetos($idOngLogada);
+$listagem_projetos = $projetos->listarProjetos($idOngLogada);
 $load = false;
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $largura = $_POST['largura'];
@@ -76,8 +36,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="card1">
                 <div class="icon">
                     Voluntários por Projeto
-                    <button onclick="clicar()"><img src="../../assets/images/pages/ong/relatorios/icon-download.png" alt=""></button>
-
+                    <form action="../../components/reports-pdf/pdf-generator.php" method="POST">
+                        <input type="hidden" value="<?= $idOngLogada ?>" name="id-ong" id="id-ong">
+                        <input type="hidden" value="voluntarios-por-projeto.php" name="relatorio" id="relatorio">
+                        <button onclick="clicar()">
+                            <img src="../../assets/images/pages/ong/relatorios/icon-download.png" alt="">
+                        </button>
+                    </form>
                 </div>
 
                 <div class="graficos">

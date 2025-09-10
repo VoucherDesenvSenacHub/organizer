@@ -4,9 +4,15 @@
 
     require_once '../../../dompdf/autoload.inc.php';
     $dompdf = new Dompdf();
+
+    if($_SERVER['REQUEST_METHOD'] === "POST"):
+        $idOng = $_POST['id-ong'];
+        $relatorio = $_POST['relatorio'];
+        // $html = "<h1>$idOng</h1>";
+    endif;
     
     ob_start();
-    include ("voluntarios-por-projeto.php");
+    include ($relatorio);
     $html = ob_get_clean();
 
     $option = new Options();
@@ -17,5 +23,5 @@
 
     $dompdf->render();
 
-    $dompdf->stream("teste-html.pdf");
+    $dompdf->stream("Relatorio.pdf");
 ?>
