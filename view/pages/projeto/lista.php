@@ -3,32 +3,58 @@ session_start();
 $acesso = $_SESSION['perfil_usuario'] ?? 'visitante';
 $tituloPagina = 'Encontre Projetos | Organizer';
 $cssPagina = ['shared/catalogo.css'];
-require_once '../../components/layout/base-inicio.php';
 
+require_once '../../components/layout/base-inicio.php';
 require_once __DIR__ . '/../../../autoload.php';
+
 $projetoModel = new ProjetoModel();
 $categoriaModel = new CategoriaModel();
 $categorias = $categoriaModel->buscarCategorias();
 
-// Receber dados do controller
+// Receber dados do controller ou padrão
 $controllerData = $_SESSION['controller_filtro'] ?? [];
+unset($_SESSION['controller_filtro']);
+
 $lista = $controllerData['lista'] ?? [];
 $totalRegistros = $controllerData['totalRegistros'] ?? 0;
 $paginaAtual = $controllerData['paginaAtual'] ?? 1;
 $categoriasSelecionadas = $controllerData['categoriasSelecionadas'] ?? [];
 $pesquisa = $controllerData['pesquisa'] ?? '';
-unset($_SESSION['controller_filtro']);
 
-// Se não houve filtro ou pesquisa, carregar lista padrão
+
+// Se não teve filtro ou pesquisa, carregar lista padrão
 if (empty($lista)) {
-    $paginaAtual = 1;
+    $paginaAtual = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
+    if ($paginaAtual < 1) $paginaAtual = 1;
+
     $valor = ['pagina' => $paginaAtual];
     $lista = $projetoModel->listarCardsProjetos('', $valor);
     $totalRegistros = $projetoModel->paginacaoProjetos('', $valor);
 }
 
+// Marcar categorias como checked
+$categoriasComChecked = [];
+foreach ($categorias as $cat) {
+    $categoriasComChecked[$cat['categoria_id']] = in_array($cat['categoria_id'], $categoriasSelecionadas);
+}
+
 // Calcular páginas
 $paginas = ceil($totalRegistros / 8);
+
+// Criar URLs de paginação
+$urlsPaginacao = [];
+for ($i = 1; $i <= $paginas; $i++) {
+    $url = "../../../controller/Projeto/FiltrarProjetoController.php?pagina={$i}";
+    if (!empty($pesquisa)) $url .= "&pesquisa=" . urlencode($pesquisa);
+    if (!empty($categoriasSelecionadas)) {
+        $url .= "&filtro=1";
+        foreach ($categoriasSelecionadas as $catId) {
+            $url .= "&cat_{$catId}=1";
+        }
+    }
+    $urlsPaginacao[$i] = $url;
+}
+
 // Verificar se o doador marcou este projeto como favorito
 if (isset($_SESSION['usuario']['id']) && $_SESSION['perfil_usuario'] === 'doador') {
     $projetosFavoritos = $projetoModel->listarFavoritos($_SESSION['usuario']['id']);
@@ -65,8 +91,9 @@ if (isset($_SESSION['usuario']['id']) && $_SESSION['perfil_usuario'] === 'doador
 
                                 <?php foreach ($categorias as $categoria): ?>
                                     <li>
-                                        <input type="checkbox" name="cat_<?= $categoria['categoria_id'] ?>" id="cat_<?= $categoria['categoria_id'] ?>"
-                                            <?= in_array($categoria['categoria_id'], $categoriasSelecionadas) ? 'checked' : '' ?>>
+                                        <input type="checkbox" name="cat_<?= $categoria['categoria_id'] ?>"
+                                            id="cat_<?= $categoria['categoria_id'] ?>"
+                                            <?= $categoriasComChecked[$categoria['categoria_id']] ? 'checked' : '' ?>>
                                         <label for="cat_<?= $categoria['categoria_id'] ?>"><?= ucfirst($categoria['nome']) ?></label>
                                     </li>
                                 <?php endforeach; ?>
@@ -99,12 +126,13 @@ if (isset($_SESSION['usuario']['id']) && $_SESSION['perfil_usuario'] === 'doador
         </section>
         <?php if ($paginas > 1): ?>
             <nav class="navegacao">
-                <?php for ($i = 1; $i <= $paginas; $i++): ?>
-                    <a href="?pagina=<?= $i ?><?= isset($_GET['pesquisa']) ? '&pesquisa=' . urlencode($_GET['pesquisa']) : '' ?>"
-                        class="<?= $i === $paginaAtual ? 'active' : '' ?>">
-                        <?= $i ?>
-                    </a>
-                <?php endfor; ?>
+                <?php if ($paginas > 1): ?>
+                    <nav class="navegacao">
+                        <?php foreach ($urlsPaginacao as $i => $url): ?>
+                            <a href="<?= $url ?>" class="<?= $i === $paginaAtual ? 'active' : '' ?>"><?= $i ?></a>
+                        <?php endforeach; ?>
+                    </nav>
+                <?php endif; ?>
             </nav>
         <?php endif; ?>
     </div>

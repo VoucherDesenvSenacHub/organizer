@@ -22,17 +22,25 @@ $pesquisa = $_GET['pesquisa'] ?? '';
 
 // Lógica para decidir quais dados buscar
 if (!empty($pesquisa)) {
+    // Caso pesquisa
     $valor = [
         'pagina' => $paginaAtual,
         'pesquisa' => $pesquisa
     ];
     $lista = $projetoModel->listarCardsProjetos('pesquisa', $valor);
     $totalRegistros = $projetoModel->paginacaoProjetos('pesquisa', $valor);
-} 
-if (!empty($categoriasSelecionadas)) {
+
+} elseif (!empty($categoriasSelecionadas)) {
+    // Caso filtro
     $lista = $projetoModel->filtrarPorCategorias($categoriasSelecionadas, $paginaAtual);
     $totalRegistros = $projetoModel->paginacaoFiltroCategorias($categoriasSelecionadas);
-} 
+
+} else {
+    // Caso padrão (sem pesquisa/filtro)
+    $valor = ['pagina' => $paginaAtual];
+    $lista = $projetoModel->listarCardsProjetos('', $valor);
+    $totalRegistros = $projetoModel->paginacaoProjetos('', $valor);
+}
 
 // Guardar dados para a view
 $_SESSION['controller_filtro'] = [
