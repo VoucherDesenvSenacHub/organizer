@@ -55,7 +55,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="card1">
                 <div class="icon">
                     Doações Mensais
-                    <button onclick="clicar()"><img src="../../assets/images/pages/ong/relatorios/icon-download.png" alt=""></button>
+                    <form action="../../components/reports-pdf/pdf-generator.php" method="POST">
+                        <input type="hidden" value="<?= $idOngLogada ?>" name="id-ong" id="id-ong">
+                        <input type="hidden" value="doacoes-mensais.php" name="relatorio" id="relatorio">
+                        <button onclick="clicar()"><img src="../../assets/images/pages/ong/relatorios/icon-download.png" alt=""></button>
+                    </form>
                 </div>
                 <div class="grafico-linhas">
                     <?php echo graficoLinhas([960, 720, 480, 240, 0], $largura, $altura, $doacoesMensais) ?>
