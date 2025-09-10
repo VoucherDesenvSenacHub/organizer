@@ -12,9 +12,12 @@ $projetoModel = new ProjetoModel();
 
 $IdUsuario = $_SESSION['usuario']['id'];
 
+$paginaAtual = isset($_GET['pagina']) ? (int) $_GET['pagina'] : 1;
+$valor = ['pagina' => $paginaAtual, 'usuario_id' => $IdUsuario];
+
 // Buscar os favoritos
-$listaOngs = $ongModel->listarCardsOngs('favoritas', $IdUsuario);
-$listaProjetos = $projetoModel->listarCardsProjetos('favoritos', ['usuario' => $IdUsuario, 'limit' => 50]);
+$listaOngs = $ongModel->listarCardsOngs('favoritas', $valor);
+$listaProjetos = $projetoModel->listarCardsProjetos('favoritos', $valor);
 
 // Pintar o icone de favoritos
 $ongsFavoritas = $ongModel->listarFavoritas($_SESSION['usuario']['id']);
@@ -31,32 +34,62 @@ $projetosFavoritos = $projetoModel->listarFavoritos($_SESSION['usuario']['id']);
             <div id="principal">
                 <div id="control-box">
                     <div class="box-ongs">
-                        <?php if (!$listaOngs) {
-                            echo '<div class="btn-doar" id="btn-doar-ong"> 
-                                    <h4>Você ainda não favoritou nenhuma ONG! <i class="fa-regular fa-face-frown"></i> </h4>
-                                    <a href="../ong/lista.php">
+                        <?php if (!$listaOngs): ?>
+                            <div class="btn-doar" id="btn-doar-ong">
+                                <h4>Você ainda não favoritou nenhuma ONG! <i class="fa-regular fa-face-frown"></i> </h4>
+                                <a href="../ong/lista.php">
                                     <button class="btn"><i class="fa-solid fa-house-flag"></i> Conhecer Ongs</button></a>
-                                  </div>';
-                        } else {
+                            </div>
+                        <?php else:
+                            $tipo = 'favoritos';
+                            $totalRegistros = $ongModel->paginacaoOngs($tipo, $valor);
+                            $paginas = (int) ceil($totalRegistros / 6);
+
+                            echo '<div class="list-card">';
                             foreach ($listaOngs as $ong) {
                                 $jaFavoritada = isset($_SESSION['usuario']['id']) && in_array($ong['ong_id'], $ongsFavoritas);
                                 require '../../components/cards/card-ong.php';
                             }
-                        }
+                            echo '</div>';
+                            if ($paginas > 1): ?>
+                                <nav class="navegacao">
+                                    <?php for ($i = 1; $i <= $paginas; $i++): ?>
+                                        <a href="?pagina=<?= $i ?>" class="<?= $i === $paginaAtual ? 'active' : '' ?>">
+                                            <?= $i ?>
+                                        </a>
+                                    <?php endfor; ?>
+                                </nav>
+                            <?php endif;
+                        endif;
                         ?>
                     </div>
                     <div class="box-ongs">
-                        <?php if (!$listaProjetos) {
-                            echo '<div class="btn-doar"> 
-                                    <h4>Você ainda não favoritou nenhum Projeto! <i class="fa-regular fa-face-frown"></i> </h4>
-                                    <a href="../projeto/lista.php">
-                                    <button class="btn"><i class="fa-solid fa-diagram-project"></i> Conhecer Projetos</button></a>
-                                  </div>';
-                        } else {
+                        <?php if (!$listaProjetos): ?>
+                            <div class="btn-doar">
+                                <h4>Você ainda não favoritou nenhum Projeto! <i class="fa-regular fa-face-frown"></i> </h4>
+                                <a href="../projeto/lista.php">
+                                    <button class="btn"><i class="fa-solid fa-diagram-project"></i> Conhecer
+                                        Projetos</button></a>
+                            </div>
+                        <?php else:
+                            $tipo = 'favoritos';
+                            $totalRegistros = $projetoModel->paginacaoProjetos($tipo, $valor);
+                            $paginas = (int) ceil($totalRegistros / 8);
+                            echo '<div class="list-card">';
                             foreach ($listaProjetos as $projeto) {
                                 require '../../components/cards/card-projeto.php';
                             }
-                        }
+                            echo '</div>';
+                            if ($paginas > 1): ?>
+                                <nav class="navegacao">
+                                    <?php for ($i = 1; $i <= $paginas; $i++): ?>
+                                        <a href="?pagina=<?= $i ?>" class="<?= $i === $paginaAtual ? 'active' : '' ?>">
+                                            <?= $i ?>
+                                        </a>
+                                    <?php endfor; ?>
+                                </nav>
+                            <?php endif;
+                        endif;
                         ?>
                     </div>
                 </div>

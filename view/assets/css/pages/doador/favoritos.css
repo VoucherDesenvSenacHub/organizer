@@ -89,12 +89,20 @@ main.conteudo-principal section {
 /* CARD ONG */
 .box-ongs {
     display: flex;
+    flex-direction: column;
     gap: 20px 5px;
-    justify-content: space-around;
+    justify-content: space-between;
     align-content: flex-start;
     flex-wrap: wrap;
     flex: 0 0 100%;
     height: fit-content;
+}
+
+.list-card {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 100%;
 }
 
 .btn-doar {

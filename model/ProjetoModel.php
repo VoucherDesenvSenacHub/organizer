@@ -39,7 +39,7 @@ class ProjetoModel
                 $query = "SELECT v.*, f.usuario_id FROM vw_card_projetos v
                 JOIN favoritos_projetos f USING (projeto_id)
                 WHERE usuario_id = :usuario_id ORDER BY data_favoritado DESC";
-                $params[':usuario_id'] = $valor['usuario'];
+                $params[':usuario_id'] = $valor['usuario_id'];
                 break;
             // Buscar os Projetos favoritos do Usúario
             case 'apoiados':
@@ -80,6 +80,12 @@ class ProjetoModel
                     $query .= " AND ong_id = :ong_id";
                     $params[':ong_id'] = $valor['ong_id'];
                 }
+                break;
+            case 'favoritos':
+                $query = "SELECT COUNT(*) AS total FROM vw_card_projetos v
+                JOIN favoritos_projetos f USING (projeto_id)
+                WHERE usuario_id = :usuario_id ORDER BY data_favoritado DESC";
+                $params[':usuario_id'] = $valor['usuario_id'];
                 break;
             default:
                 $query = "SELECT COUNT(*) AS total FROM vw_card_projetos";
