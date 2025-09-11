@@ -89,19 +89,49 @@ class RelatoriosModel {
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
         return $stmt->fetchAll();
     }
-    
-    function listarTodasDoacoes()
-    {
-        $query = "SELECT dp.projeto_id, dp.usuario_id, dp.valor, dp.data_doacao, (SELECT p.nome FROM projetos p WHERE p.projeto_id = dp.projeto_id ORDER BY dp.projeto_id ASC LIMIT 1) AS nome_projeto FROM doacao_projeto dp
-        WHERE dp.usuario_id = :id
-        ORDER BY dp.data_doacao DESC LIMIT 1;
-        ";
+
+    function listarDadosTabela($id){
+        $query = "SELECT * FROM doacoes_projetos";
+        $stmt = $this->pdo->prepare($query);
+        // $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        return $stmt->fetchAll();
+
+    }
+
+    // Função para somar as arrecadações mês a mês
+
+    function painelDeArrecadacao($id, $month, $year) {
+        $query = "
+        SELECT SUM(dp.valor) AS total_doado FROM
+            projetos p JOIN doacoes_projetos dp ON p.projeto_id = dp.projeto_id
+        WHERE
+            p.ong_id = :id
+            AND MONTH(dp.data_doacao) = :month
+            AND YEAR(dp.data_doacao) = :year
+            AND p.status = 'ATIVO' ;";
         $stmt = $this->pdo->prepare($query);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->bindParam(':month', $month, PDO::PARAM_INT);
+        $stmt->bindParam(':year', $year, PDO::PARAM_INT);
         $stmt->execute();
-        $stmt->setFetchMode(PDO::FETCH_CLASS, __CLASS__);
-        return $stmt->fetchAll();
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        return $stmt->fetch();            
     }
+    
+    // function listarTodasDoacoes()
+    // {
+    //     $query = "SELECT dp.projeto_id, dp.usuario_id, dp.valor, dp.data_doacao, (SELECT p.nome FROM projetos p WHERE p.projeto_id = dp.projeto_id ORDER BY dp.projeto_id ASC LIMIT 1) AS nome_projeto FROM doacao_projeto dp
+    //     WHERE dp.usuario_id = :id
+    //     ORDER BY dp.data_doacao DESC LIMIT 1;
+    //     ";
+    //     $stmt = $this->pdo->prepare($query);
+    //     $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+    //     $stmt->execute();
+    //     $stmt->setFetchMode(PDO::FETCH_CLASS, __CLASS__);
+    //     return $stmt->fetchAll();
+    // }
     function listarTabelas(){
         $query = "SELECT * from usuarios";
         $stmt = $this->pdo->prepare($query);
