@@ -7,8 +7,14 @@ require_once __DIR__ . '/../../../autoload.php';
 
 $projetoModel = new ProjetoModel();
 
+// Paginação
 $IdUsuario = $_SESSION['usuario']['id'];
-$lista = $projetoModel->listarCardsProjetos('apoiados', $IdUsuario);
+$paginaAtual = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
+$valor = ['usuario_id' => $IdUsuario, 'pagina' => $paginaAtual];
+$lista = $projetoModel->listarCardsProjetos('apoiados', $valor);
+$tipo = 'apoiados';
+$totalRegistros = $projetoModel->paginacaoProjetos($tipo, $valor);
+$paginas = (int)ceil($totalRegistros / 8);
 
 $projetosFavoritos = $projetoModel->listarFavoritos($_SESSION['usuario']['id']);
 
@@ -31,6 +37,16 @@ $projetosFavoritos = $projetoModel->listarFavoritos($_SESSION['usuario']['id']);
                 }
                 ?>
             </div>
+            <?php if ($paginas > 1): ?>
+                <nav class="navegacao">
+                    <?php for ($i = 1; $i <= $paginas; $i++): ?>
+                        <a href="?pagina=<?= $i ?>"
+                            class="<?= $i === $paginaAtual ? 'active' : '' ?>">
+                            <?= $i ?>
+                        </a>
+                    <?php endfor; ?>
+                </nav>
+            <?php endif; ?>
         </div>
     </section>
 </main>

@@ -46,7 +46,7 @@ class ProjetoModel
                 $query = "SELECT v.*, f.usuario_id FROM vw_card_projetos v
                 JOIN apoios_projetos f USING (projeto_id)
                 WHERE usuario_id = :usuario_id ORDER BY data_apoio DESC";
-                $params[':usuario_id'] = $valor;
+                $params[':usuario_id'] = $valor['usuario_id'];
                 break;
             // Buscar os Projetos mais recentes
             case 'recentes':
@@ -85,6 +85,12 @@ class ProjetoModel
                 $query = "SELECT COUNT(*) AS total FROM vw_card_projetos v
                 JOIN favoritos_projetos f USING (projeto_id)
                 WHERE usuario_id = :usuario_id ORDER BY data_favoritado DESC";
+                $params[':usuario_id'] = $valor['usuario_id'];
+                break;
+            case 'apoiados':
+                $query = "SELECT COUNT(*) AS total FROM vw_card_projetos v
+                JOIN apoios_projetos f USING (projeto_id)
+                WHERE usuario_id = :usuario_id ORDER BY data_apoio DESC";
                 $params[':usuario_id'] = $valor['usuario_id'];
                 break;
             default:
