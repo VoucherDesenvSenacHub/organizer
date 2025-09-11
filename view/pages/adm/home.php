@@ -8,6 +8,10 @@ require_once __DIR__ . '/../../../autoload.php';
 $adminModel = new AdminModel();
 $relatorio = $adminModel->RelatorioHome();
 $solicitacoes = $adminModel->ContadoresSolicitacoes();
+
+$relatorioOng = $adminModel->buscarOngs();
+$relatorioProjeto = $adminModel->buscarProjetos();
+
 ?>
 <main class="conteudo-principal">
     <section>
@@ -65,163 +69,49 @@ $solicitacoes = $adminModel->ContadoresSolicitacoes();
                     <h1>Ongs</h1>
                 </div>
                 <div class="content">
-                    <div class="list">
-                        <div class="left">
-                            <h2>Nome da Ong</h2>
-                            <div class="info">
-                                <span>2 Projetos</span>
-                                <span>4 Apoios</span>
+                    <?php foreach ($relatorioOng as $ong): ?>
+                        <a class="item" href="../ong/perfil.php?id=<?= $ong['ong_id'] ?>">
+                            <div class="left">
+                                <h2><?= $ong['nome'] ?></h2>
+                                <div class="info">
+                                    <span><?= $ong['total_projetos'] ?> Projetos</span>
+                                    |
+                                    <span><?= $ong['total_apoios'] ?> Apoios</span>
+                                </div>
                             </div>
-                        </div>
-                        <i class="fa-solid fa-angle-right"></i>
-                    </div>
-                    <span class="linha"></span>
-                    <div class="list">
-                        <div class="left">
-                            <h2>Nome da Ong</h2>
-                            <div class="info">
-                                <span>2 Projetos</span>
-                                <span>4 Apoios</span>
-                            </div>
-                        </div>
-                        <i class="fa-solid fa-angle-right"></i>
-                    </div>
-                    <span class="linha"></span>
-                    <div class="list">
-                        <div class="left">
-                            <h2>Nome da Ong</h2>
-                            <div class="info">
-                                <span>2 Projetos</span>
-                                <span>4 Apoios</span>
-                            </div>
-                        </div>
-                        <i class="fa-solid fa-angle-right"></i>
-                    </div>
-                    <span class="linha"></span>
-                    <div class="list">
-                        <div class="left">
-                            <h2>Nome da Ong</h2>
-                            <div class="info">
-                                <span>2 Projetos</span>
-                                <span>4 Apoios</span>
-                            </div>
-                        </div>
-                        <i class="fa-solid fa-angle-right"></i>
-                    </div>
-                    
+                            <i class="fa-solid fa-angle-right"></i>
+                        </a>
+                        <span class="linha"></span>
+                    <?php endforeach; ?>
                 </div>
                 <div class="area-btn">
                     <button class="btn">Todas as Ongs</button>
                 </div>
             </div>
+
             <div class="container-card">
                 <div class="top">
-                    <i class="fa-solid fa-house-flag"></i>
-                    <h1>Ongs</h1>
+                    <i class="fa-solid fa-diagram-project"></i>
+                    <h1>Projetos</h1>
                 </div>
                 <div class="content">
-                    <div class="list">
-                        <div class="left">
-                            <h2>Nome da Ong</h2>
-                            <div class="info">
-                                <span>2 Projetos</span>
-                                <span>4 Apoios</span>
+                    <?php foreach ($relatorioProjeto as $projeto): ?>
+                        <a class="item" href="../projeto/perfil.php?id=<?= $projeto['projeto_id'] ?>">
+                            <div class="left">
+                                <h2><?= $projeto['nome'] ?></h2>
+                                <div class="info">
+                                    <span>R$ <?= number_format($projeto['valor_arrecadado'], 0, ',', '.') ?></span>
+                                    |
+                                    <span><?= $projeto['total_apoios'] ?> Apoios</span>
+                                </div>
                             </div>
-                        </div>
-                        <i class="fa-solid fa-angle-right"></i>
-                    </div>
-                    <span class="linha"></span>
-                    <div class="list">
-                        <div class="left">
-                            <h2>Nome da Ong</h2>
-                            <div class="info">
-                                <span>2 Projetos</span>
-                                <span>4 Apoios</span>
-                            </div>
-                        </div>
-                        <i class="fa-solid fa-angle-right"></i>
-                    </div>
-                    <span class="linha"></span>
-                    <div class="list">
-                        <div class="left">
-                            <h2>Nome da Ong</h2>
-                            <div class="info">
-                                <span>2 Projetos</span>
-                                <span>4 Apoios</span>
-                            </div>
-                        </div>
-                        <i class="fa-solid fa-angle-right"></i>
-                    </div>
-                    <span class="linha"></span>
-                    <div class="list">
-                        <div class="left">
-                            <h2>Nome da Ong</h2>
-                            <div class="info">
-                                <span>2 Projetos</span>
-                                <span>4 Apoios</span>
-                            </div>
-                        </div>
-                        <i class="fa-solid fa-angle-right"></i>
-                    </div>
-                    
+                            <i class="fa-solid fa-angle-right"></i>
+                        </a>
+                        <span class="linha"></span>
+                    <?php endforeach; ?>
                 </div>
                 <div class="area-btn">
-                    <button class="btn">Todas as Ongs</button>
-                </div>
-            </div>
-            <div class="container-card">
-                <div class="top">
-                    <i class="fa-solid fa-house-flag"></i>
-                    <h1>Ongs</h1>
-                </div>
-                <div class="content">
-                    <div class="list">
-                        <div class="left">
-                            <h2>Nome da Ong</h2>
-                            <div class="info">
-                                <span>2 Projetos</span>
-                                <span>4 Apoios</span>
-                            </div>
-                        </div>
-                        <i class="fa-solid fa-angle-right"></i>
-                    </div>
-                    <span class="linha"></span>
-                    <div class="list">
-                        <div class="left">
-                            <h2>Nome da Ong</h2>
-                            <div class="info">
-                                <span>2 Projetos</span>
-                                <span>4 Apoios</span>
-                            </div>
-                        </div>
-                        <i class="fa-solid fa-angle-right"></i>
-                    </div>
-                    <span class="linha"></span>
-                    <div class="list">
-                        <div class="left">
-                            <h2>Nome da Ong</h2>
-                            <div class="info">
-                                <span>2 Projetos</span>
-                                <span>4 Apoios</span>
-                            </div>
-                        </div>
-                        <i class="fa-solid fa-angle-right"></i>
-                    </div>
-                    <span class="linha"></span>
-                    <div class="list">
-                        <div class="left">
-                            <h2>Nome da Ong</h2>
-                            <div class="info">
-                                <span>2 Projetos</span>
-                                <span>4 Apoios</span>
-                            </div>
-                        </div>
-                        <i class="fa-solid fa-angle-right"></i>
-                    </div>
-                    
-                </div>
-                <div class="area-btn">
-                    <button class="btn">Todas as Ongs</button>
+                    <button class="btn">Todos os Projetos</button>
                 </div>
             </div>
         </div>

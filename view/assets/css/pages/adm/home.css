@@ -3,7 +3,7 @@
     font-weight: bold;
 }
 
-main.conteudo-principal > section {
+main.conteudo-principal>section {
     min-height: calc(100vh - 60px);
     padding: 30px 20px;
     display: flex;
@@ -188,7 +188,7 @@ fieldset legend {
     background-color: #eee;
     border-radius: 4px;
     gap: 10px;
-    flex: 1;
+    flex: 1 1 300px;
 }
 
 .container-card .top {
@@ -212,30 +212,37 @@ fieldset legend {
     gap: 5px;
 }
 
-.container-card .content .list {
+.container-card .content a.item {
     max-height: 50px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    line-height: 15.5px; 
+    line-height: 18px;
     padding: 5px;
     transition: .3s;
     border-radius: 3px;
     cursor: default;
+    color: var(--cor-principal);
 }
 
-.container-card .content .list:hover {
+.container-card .content .item:hover {
     background-color: #ddd;
     padding: 5px;
 }
 
-.container-card .content .list h2 {
+.container-card .content .item h2 {
     font-size: 14.5px;
+    font-weight: 600;
 }
 
-.container-card .content .list span {
+.container-card .content .item span {
     font-size: 12px;
     font-weight: 500;
+    color: #777;
+}
+
+.container-card .content .item i.fa-angle-right {
+    color: #999;
 }
 
 .container-card .content .linha {
