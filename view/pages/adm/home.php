@@ -56,188 +56,174 @@ $solicitacoes = $adminModel->ContadoresSolicitacoes();
                         </div>
                     </a>
                 </div>
-                <!-- <div class="card-adm">
-                    <h4>INATIVAR</h4>
-                    <span>Confirme a inativação do projeto solicitados pela ONG.</span>
-                    <a href="inativacoes.php">
-                        <div><i class="fa-solid fa-trash-can"></i>
-                            <p><?= $solicitacoes->inativar ?> Solicitações</p>
+            </fieldset>
+        </div>
+        <div class="secao-3">
+            <div class="container-card">
+                <div class="top">
+                    <i class="fa-solid fa-house-flag"></i>
+                    <h1>Ongs</h1>
+                </div>
+                <div class="content">
+                    <div class="list">
+                        <div class="left">
+                            <h2>Nome da Ong</h2>
+                            <div class="info">
+                                <span>2 Projetos</span>
+                                <span>4 Apoios</span>
+                            </div>
                         </div>
-                    </a>
-                </div> -->
-            </fieldset>
-
-            <fieldset id="section-ong">
-                <legend><i class="fa-solid fa-house-flag"></i> ONGS</legend>
-                <table id="table-ong">
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>NOME</th>
-                            <th>PROJETOS</th>
-                            <th>RESPONSAVEL</th>
-                            <th>CRIADO</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td data-label="#">0</td>
-                            <td data-label="NOME">Ong Amigos</td>
-                            <td data-label="PROJETOS">4</td>
-                            <td data-label="RESPONSAVEL">Gean</td>
-                            <td data-label="CRIADO">12/05/2025</td>
-                            <td>
-                                <!-- <form method="GET"> -->
-                                <input type="hidden" name="id" value="">
-                                <a href="../adm/ongs.php"> <button class="fa-solid fa-eye"></button></a>
-                                <!-- </form> -->
-                            </td>
-                        </tr>
-                        <tr>
-                            <td data-label="#">1</td>
-                            <td data-label="NOME">Associação Natureza</td>
-                            <td data-label="PROJETOS">2</td>
-                            <td data-label="RESPONSAVEL">Eduarda</td>
-                            <td data-label="CRIADO">12/05/2025</td>
-                            <td>
-                                <!-- <form method="GET"> -->
-                                <input type="hidden" name="id" value="">
-                                <a href="../adm/ongs.php"> <button class="fa-solid fa-eye"></button></a>
-                                <!-- </form> -->
-                            </td>
-                        </tr>
-                        <tr>
-                            <td data-label="#">2</td>
-                            <td data-label="NOME">SOS Estados</td>
-                            <td data-label="PROJETOS">6</td>
-                            <td data-label="RESPONSAVEL">Carlos</td>
-                            <td data-label="CRIADO">12/05/2025</td>
-                            <td>
-                                <!-- <form method="GET"> -->
-                                <input type="hidden" name="id" value="">
-                                <a href="../adm/ongs.php"> <button class="fa-solid fa-eye"></button></a>
-                                <!-- </form> -->
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <a class="btn-ver-mais" href="ongs.php">Ver Mais</a>
-            </fieldset>
-            <fieldset id="section-projeto">
-                <legend><i class="fa-solid fa-diagram-project"></i> PROJETOS</legend>
-                <table id="table-projeto">
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>NOME</th>
-                            <th>ONG</th>
-                            <th>ARRECADADO</th>
-                            <th>CRIADO</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td data-label="#">0</td>
-                            <td data-label="NOME">Educação para Todos</td>
-                            <td data-label="ONG">Ong Amigos</td>
-                            <td data-label="ARRECADADO">R$ 15.000</td>
-                            <td data-label="CRIADO">12/05/2025</td>
-                            <td>
-                                <!-- <form method="GET"> -->
-                                <input type="hidden" name="id" value="">
-                                <a href="../adm/projetos.php"> <button class="fa-solid fa-eye"></button></a>
-                                <!-- </form> -->
-                            </td>
-                        </tr>
-                        <tr>
-                            <td data-label="#">1</td>
-                            <td data-label="NOME">Vida Sustentável</td>
-                            <td data-label="ONG">Associação Natureza</td>
-                            <td data-label="ARRECADADO">R$ 5.000</td>
-                            <td data-label="CRIADO">12/05/2025</td>
-                            <td>
-                                <!-- <form method="GET"> -->
-                                <input type="hidden" name="id" value="">
-                                <a href="../adm/projetos.php"> <button class="fa-solid fa-eye"></button></a>
-                                <!-- </form> -->
-                            </td>
-                        </tr>
-                        <tr>
-                            <td data-label="#">2</td>
-                            <td data-label="NOME">Alimenta Comunidade</td>
-                            <td data-label="ONG">SOS Estados</td>
-                            <td data-label="ARRECADADO">R$ 500</td>
-                            <td data-label="CRIADO">12/05/2025</td>
-                            <td>
-                                <!-- <form method="GET"> -->
-                                <input type="hidden" name="id" value="">
-                                <a href="../adm/projetos.php"> <button class="fa-solid fa-eye"></button></a>
-                                <!-- </form> -->
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <a class="btn-ver-mais" href="projetos.php">Ver Mais</a>
-            </fieldset>
-            <fieldset id="section-doador">
-                <legend><i class="fa-solid fa-users"></i> DOADORES</legend>
-                <table id="table-doador">
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>NOME</th>
-                            <th>EMAIL</th>
-                            <th>DOAÇÕES</th>
-                            <th>CRIADO</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td data-label="#">0</td>
-                            <td data-label="NOME">Gean</td>
-                            <td data-label="EMAIL">gean@organizer.com</td>
-                            <td data-label="DOAÇÕES">R$ 5.000</td>
-                            <td data-label="CRIADO">01/01/2025</td>
-                            <td>
-                                <!-- <form method="GET"> -->
-                                <input type="hidden" name="id" value="">
-                                <a href="../adm/doadores.php"> <button class="fa-solid fa-eye"></button></a>
-                                <!-- </form> -->
-                            </td>
-                        </tr>
-                        <tr>
-                            <td data-label="#">1</td>
-                            <td data-label="NOME">Eduarda</td>
-                            <td data-label="EMAIL">joao@organizer.com</td>
-                            <td data-label="DOAÇÕES">R$ 3.400</td>
-                            <td data-label="CRIADO">01/01/2025</td>
-                            <td>
-                                <!-- <form method="GET"> -->
-                                <input type="hidden" name="id" value="">
-                                <a href="../adm/doadores.php"> <button class="fa-solid fa-eye"></button></a>
-                                <!-- </form> -->
-                            </td>
-                        </tr>
-                        <tr>
-                            <td data-label="#">2</td>
-                            <td data-label="NOME">Bruna</td>
-                            <td data-label="EMAIL">bruna@organizer.com</td>
-                            <td data-label="DOAÇÕES">R$ 20.000</td>
-                            <td data-label="CRIADO">01/01/2025</td>
-                            <td>
-                                <!-- <form method="GET"> -->
-                                <input type="hidden" name="id" value="">
-                                <a href="../adm/doadores.php"> <button class="fa-solid fa-eye"></button></a>
-                                <!-- </form> -->
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <a class="btn-ver-mais" href="doadores.php">Ver Mais</a>
-            </fieldset>
+                        <i class="fa-solid fa-angle-right"></i>
+                    </div>
+                    <span class="linha"></span>
+                    <div class="list">
+                        <div class="left">
+                            <h2>Nome da Ong</h2>
+                            <div class="info">
+                                <span>2 Projetos</span>
+                                <span>4 Apoios</span>
+                            </div>
+                        </div>
+                        <i class="fa-solid fa-angle-right"></i>
+                    </div>
+                    <span class="linha"></span>
+                    <div class="list">
+                        <div class="left">
+                            <h2>Nome da Ong</h2>
+                            <div class="info">
+                                <span>2 Projetos</span>
+                                <span>4 Apoios</span>
+                            </div>
+                        </div>
+                        <i class="fa-solid fa-angle-right"></i>
+                    </div>
+                    <span class="linha"></span>
+                    <div class="list">
+                        <div class="left">
+                            <h2>Nome da Ong</h2>
+                            <div class="info">
+                                <span>2 Projetos</span>
+                                <span>4 Apoios</span>
+                            </div>
+                        </div>
+                        <i class="fa-solid fa-angle-right"></i>
+                    </div>
+                    
+                </div>
+                <div class="area-btn">
+                    <button class="btn">Todas as Ongs</button>
+                </div>
+            </div>
+            <div class="container-card">
+                <div class="top">
+                    <i class="fa-solid fa-house-flag"></i>
+                    <h1>Ongs</h1>
+                </div>
+                <div class="content">
+                    <div class="list">
+                        <div class="left">
+                            <h2>Nome da Ong</h2>
+                            <div class="info">
+                                <span>2 Projetos</span>
+                                <span>4 Apoios</span>
+                            </div>
+                        </div>
+                        <i class="fa-solid fa-angle-right"></i>
+                    </div>
+                    <span class="linha"></span>
+                    <div class="list">
+                        <div class="left">
+                            <h2>Nome da Ong</h2>
+                            <div class="info">
+                                <span>2 Projetos</span>
+                                <span>4 Apoios</span>
+                            </div>
+                        </div>
+                        <i class="fa-solid fa-angle-right"></i>
+                    </div>
+                    <span class="linha"></span>
+                    <div class="list">
+                        <div class="left">
+                            <h2>Nome da Ong</h2>
+                            <div class="info">
+                                <span>2 Projetos</span>
+                                <span>4 Apoios</span>
+                            </div>
+                        </div>
+                        <i class="fa-solid fa-angle-right"></i>
+                    </div>
+                    <span class="linha"></span>
+                    <div class="list">
+                        <div class="left">
+                            <h2>Nome da Ong</h2>
+                            <div class="info">
+                                <span>2 Projetos</span>
+                                <span>4 Apoios</span>
+                            </div>
+                        </div>
+                        <i class="fa-solid fa-angle-right"></i>
+                    </div>
+                    
+                </div>
+                <div class="area-btn">
+                    <button class="btn">Todas as Ongs</button>
+                </div>
+            </div>
+            <div class="container-card">
+                <div class="top">
+                    <i class="fa-solid fa-house-flag"></i>
+                    <h1>Ongs</h1>
+                </div>
+                <div class="content">
+                    <div class="list">
+                        <div class="left">
+                            <h2>Nome da Ong</h2>
+                            <div class="info">
+                                <span>2 Projetos</span>
+                                <span>4 Apoios</span>
+                            </div>
+                        </div>
+                        <i class="fa-solid fa-angle-right"></i>
+                    </div>
+                    <span class="linha"></span>
+                    <div class="list">
+                        <div class="left">
+                            <h2>Nome da Ong</h2>
+                            <div class="info">
+                                <span>2 Projetos</span>
+                                <span>4 Apoios</span>
+                            </div>
+                        </div>
+                        <i class="fa-solid fa-angle-right"></i>
+                    </div>
+                    <span class="linha"></span>
+                    <div class="list">
+                        <div class="left">
+                            <h2>Nome da Ong</h2>
+                            <div class="info">
+                                <span>2 Projetos</span>
+                                <span>4 Apoios</span>
+                            </div>
+                        </div>
+                        <i class="fa-solid fa-angle-right"></i>
+                    </div>
+                    <span class="linha"></span>
+                    <div class="list">
+                        <div class="left">
+                            <h2>Nome da Ong</h2>
+                            <div class="info">
+                                <span>2 Projetos</span>
+                                <span>4 Apoios</span>
+                            </div>
+                        </div>
+                        <i class="fa-solid fa-angle-right"></i>
+                    </div>
+                    
+                </div>
+                <div class="area-btn">
+                    <button class="btn">Todas as Ongs</button>
+                </div>
+            </div>
         </div>
     </section>
 </main>
