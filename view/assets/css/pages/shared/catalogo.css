@@ -57,7 +57,7 @@ section#top-info {
     display: flex;
     gap: 10px;
     height: 50px;
-    width: 90%;
+    width: fit-content;
     margin-top: 50px;
 }
 
