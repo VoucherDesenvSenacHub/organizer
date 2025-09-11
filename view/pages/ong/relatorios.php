@@ -1,7 +1,7 @@
 <?php
 $acesso = 'ong';
 // $idOngLogada = $_SESSION['ong_id'];
-$idOngLogada = 1;
+$idOngLogada = 3;
 $tituloPagina = 'Relatórios | Organizer'; // Definir o título da página
 $cssPagina = ["ong/relatorios.css"]; //Colocar o arquivo .css (exemplo: 'ONG/cadastro.css')
 require_once '../../components/layout/base-inicio.php';
@@ -62,7 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </form>
                 </div>
                 <div class="grafico-linhas">
-                    <?php echo graficoLinhas([960, 720, 480, 240, 0], $largura, $altura, $doacoesMensais) ?>
+                    <?php echo graficoLinhas( $largura, $altura, $idOngLogada) ?>
                 </div>
             </div>
 
