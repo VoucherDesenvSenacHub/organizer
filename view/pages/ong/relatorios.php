@@ -1,7 +1,7 @@
 <?php
 $acesso = 'ong';
 // $idOngLogada = $_SESSION['ong_id'];
-$idOngLogada = 3;
+$idOngLogada = 5;
 $tituloPagina = 'Relatórios | Organizer'; // Definir o título da página
 $cssPagina = ["ong/relatorios.css"]; //Colocar o arquivo .css (exemplo: 'ONG/cadastro.css')
 require_once '../../components/layout/base-inicio.php';

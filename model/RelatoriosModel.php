@@ -70,26 +70,6 @@ class RelatoriosModel {
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
         return $stmt->fetchAll();
     }
-    function buscarApoiadores($id)
-    {
-        $query = "SELECT u.nome, a.data_apoio from apoios_projeto a
-                  INNER JOIN usuarios u USING(usuario_id)
-                  WHERE projeto_id = :id
-                  ORDER BY data_apoio DESC";
-        $stmt = $this->pdo->prepare($query);
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-        $stmt->execute();
-        $stmt->setFetchMode(PDO::FETCH_ASSOC);
-        return $stmt->fetchAll();
-    }
-    function listarTodosProjetos(){
-        $query = "SELECT * FROM projetos";
-        $stmt = $this->pdo->prepare($query);
-        $stmt->execute();
-        $stmt->setFetchMode(PDO::FETCH_ASSOC);
-        return $stmt->fetchAll();
-    }
-
     function listarDadosTabela($id){
         $query = "SELECT * FROM doacoes_projetos";
         $stmt = $this->pdo->prepare($query);
@@ -120,18 +100,6 @@ class RelatoriosModel {
         return $stmt->fetch();            
     }
     
-    // function listarTodasDoacoes()
-    // {
-    //     $query = "SELECT dp.projeto_id, dp.usuario_id, dp.valor, dp.data_doacao, (SELECT p.nome FROM projetos p WHERE p.projeto_id = dp.projeto_id ORDER BY dp.projeto_id ASC LIMIT 1) AS nome_projeto FROM doacao_projeto dp
-    //     WHERE dp.usuario_id = :id
-    //     ORDER BY dp.data_doacao DESC LIMIT 1;
-    //     ";
-    //     $stmt = $this->pdo->prepare($query);
-    //     $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-    //     $stmt->execute();
-    //     $stmt->setFetchMode(PDO::FETCH_CLASS, __CLASS__);
-    //     return $stmt->fetchAll();
-    // }
     function listarTabelas(){
         $query = "SELECT * from usuarios";
         $stmt = $this->pdo->prepare($query);

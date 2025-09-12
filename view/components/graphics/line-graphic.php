@@ -68,9 +68,10 @@ function graficoLinhas($width, $height, $idOng){
 
         for($i = 1; $i <=$alturaUtil; $i+=$divisoes){
             $width >240?$iText = $i+10 : $iText = $i+5;
+            $indiceCalculado = 'R$ '.number_format($indices[$mi], 2,',','.');
             $linhasHorizontais = $linhasHorizontais."
                 <line x1='$xDash' y1='$i' x2='$width' y2='$i' style='stroke: gray; stroke-dasharray: 3 '/>
-                <text x='0' y='$iText'>$indices[$mi]</text>     
+                <text x='0' y='$iText'>$indiceCalculado</text>     
             ";
             $mi++;
         }
