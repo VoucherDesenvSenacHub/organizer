@@ -27,7 +27,9 @@ class AdminModel
         $query = "SELECT ong_id, nome, 
         (SELECT COUNT(*) FROM projetos p WHERE p.ong_id = o.ong_id) AS total_projetos,
         (SELECT COUNT(*) FROM apoios_projetos ap JOIN projetos ps ON ps.projeto_id = ap.projeto_id WHERE ps.ong_id = o.ong_id) AS total_apoios
-        FROM ongs o LIMIT 4";
+        FROM ongs o 
+        ORDER BY total_projetos DESC
+        LIMIT 4";
         $stmt = $this->pdo->prepare($query);
         $stmt->execute();
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
@@ -39,6 +41,7 @@ class AdminModel
         (SELECT SUM(valor) FROM doacoes_projetos dp WHERE dp.projeto_id = p.projeto_id) AS valor_arrecadado,
         (SELECT COUNT(*) FROM apoios_projetos ap WHERE ap.projeto_id = p.projeto_id) AS total_apoios
         FROM projetos p 
+        ORDER BY valor_arrecadado DESC
         LIMIT 4";
         $stmt = $this->pdo->prepare($query);
         $stmt->execute();
@@ -51,7 +54,7 @@ class AdminModel
         FROM usuarios u 
         JOIN doacoes_projetos dp USING(usuario_id)
         GROUP BY u.usuario_id, u.nome
-        ORDER BY valor_doado ASC
+        ORDER BY valor_doado DESC
         LIMIT 4";
         $stmt = $this->pdo->prepare($query);
         $stmt->execute();
