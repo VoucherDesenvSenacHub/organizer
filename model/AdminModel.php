@@ -46,6 +46,26 @@ class AdminModel
         return $stmt->fetchAll();
     }
 
+    function buscarDoadores() {
+        $query = "SELECT usuario_id, nome, SUM(dp.valor) AS valor_doado
+        FROM usuarios u 
+        JOIN doacoes_projetos dp USING(usuario_id)
+        GROUP BY u.usuario_id, u.nome
+        ORDER BY valor_doado ASC
+        LIMIT 4";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute();
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        return $stmt->fetchAll();
+    }
+    function buscarNoticias() {
+        $query = "SELECT noticia_id, titulo, data_cadastro FROM noticias n LIMIT 4";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute();
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        return $stmt->fetchAll();
+    }
+
     // Buscar parcerias aprovadas para exibição pública
     function ListarParceriasAprovadas()
     {

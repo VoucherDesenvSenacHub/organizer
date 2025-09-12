@@ -11,6 +11,8 @@ $solicitacoes = $adminModel->ContadoresSolicitacoes();
 
 $relatorioOng = $adminModel->buscarOngs();
 $relatorioProjeto = $adminModel->buscarProjetos();
+$relatorioDoador = $adminModel->buscarDoadores();
+$relatorioNoticia = $adminModel->buscarNoticias();
 
 ?>
 <main class="conteudo-principal">
@@ -84,9 +86,9 @@ $relatorioProjeto = $adminModel->buscarProjetos();
                         <span class="linha"></span>
                     <?php endforeach; ?>
                 </div>
-                <div class="area-btn">
+                <a class="area-btn" href="ongs.php">
                     <button class="btn">Todas as Ongs</button>
-                </div>
+                </a>
             </div>
 
             <div class="container-card">
@@ -110,9 +112,61 @@ $relatorioProjeto = $adminModel->buscarProjetos();
                         <span class="linha"></span>
                     <?php endforeach; ?>
                 </div>
-                <div class="area-btn">
+                <a class="area-btn" href="projetos.php">
                     <button class="btn">Todos os Projetos</button>
+                </a>
+            </div>
+
+            <div class="container-card">
+                <div class="top">
+                    <i class="fa-solid fa-users"></i>
+                    <h1>Doadores</h1>
                 </div>
+                <div class="content">
+                    <?php foreach ($relatorioDoador as $doador): ?>
+                        <a class="item" href="#">
+                            <div class="left">
+                                <h2><?= $doador['nome'] ?></h2>
+                                <div class="info">
+                                    <span>R$ <?= number_format($doador['valor_doado'], 0, ',', '.') ?> Doações</span>
+                                    <!-- |
+                                    <span>Texto</span> -->
+                                </div>
+                            </div>
+                            <i class="fa-solid fa-angle-right"></i>
+                        </a>
+                        <span class="linha"></span>
+                    <?php endforeach; ?>
+                </div>
+                <a class="area-btn" href="doadores.php">
+                    <button class="btn">Todos os Doadores</button>
+                </a>
+            </div>
+
+            <div class="container-card">
+                <div class="top">
+                    <i class="fa-solid fa-newspaper"></i>
+                    <h1>Notícias</h1>
+                </div>
+                <div class="content">
+                    <?php foreach ($relatorioNoticia as $noticia): ?>
+                        <a class="item" href="../noticia/perfil.php?id=<?= $noticia['noticia_id'] ?>">
+                            <div class="left">
+                                <h2><?= $noticia['titulo'] ?></h2>
+                                <div class="info">
+                                    <span><i class="fa-solid fa-calendar-days"></i> <?= date('d/m/Y', strtotime($noticia['data_cadastro'])) ?></span>
+                                    <!-- |
+                                    <span>Texto</span> -->
+                                </div>
+                            </div>
+                            <i class="fa-solid fa-angle-right"></i>
+                        </a>
+                        <span class="linha"></span>
+                    <?php endforeach; ?>
+                </div>
+                <a class="area-btn" href="#">
+                    <button class="btn">Todas as Notícias</button>
+                </a>
             </div>
         </div>
     </section>
