@@ -2,7 +2,7 @@
 -- VIEW PARA BUSCAR OS CARDS DA ONG
 -- ================================
 CREATE OR REPLACE VIEW vw_card_ongs AS
-    SELECT o.ong_id, o.nome, o.descricao, o.data_cadastro,
+    SELECT o.ong_id, o.status, o.nome, o.descricao, o.data_cadastro,
         (SELECT caminho FROM imagens i WHERE i.imagem_id = o.imagem_id) AS caminho,
         (SELECT COUNT(*) FROM projetos p WHERE p.ong_id = o.ong_id) AS total_projetos,
         (SELECT COUNT(*) FROM doacoes_projetos dp JOIN projetos p ON dp.projeto_id = p.projeto_id WHERE p.ong_id = o.ong_id) AS total_doacoes
@@ -12,7 +12,7 @@ CREATE OR REPLACE VIEW vw_card_ongs AS
 -- VIEW PARA BUSCAR OS CARDS DO PROJETO
 -- ================================
 CREATE OR REPLACE VIEW vw_card_projetos AS
-    SELECT p.projeto_id, p.nome, p.descricao, i.caminho, c.nome AS categoria, c.cor,
+    SELECT p.projeto_id, p.status, p.nome, p.descricao, i.caminho, p.categoria_id, c.nome AS categoria, c.cor,
         ROUND(COALESCE(SUM(dp.valor), 0) / p.meta * 100) AS barra, p.ong_id
     FROM projetos p
         LEFT JOIN imagens i

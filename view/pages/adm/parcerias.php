@@ -54,6 +54,6 @@ $solicitacoes = $adminModel->ListarSolicitacoesEmpresas();
     </section>
 </main>
 <?php
-$jsPagina = ['modal-confirmacao.js', 'adm/parcerias.js'];
+$jsPagina = ['adm/modal-confirmacao.js', 'adm/parcerias.js'];
 require_once '../../components/layout/footer/footer-logado.php';
 ?>

@@ -4,7 +4,7 @@ $IdProjeto = $projeto['projeto_id'] ?? null;
 $NomeProjeto = $projeto['nome'] ?? 'Nome do Projeto';
 $DescricaoProjeto =  mb_strimwidth($projeto['descricao'], 0, 220, '...') ?? 'Lorem ipsum...';
 $BarraProjeto = $projeto['barra'] ?? '30';
-$CategoriaProjeto = $projeto['categoria'] ?? 'Inválido';
+$CategoriaProjeto = $projeto['categoria'] ?? 'Indefinido';
 $CorCategoria = $projeto['cor'] ?? '#9E9E9E';
 $FotoProjeto = $projeto['caminho']
     ? '../../../' . $projeto['caminho']
