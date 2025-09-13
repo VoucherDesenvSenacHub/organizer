@@ -33,6 +33,7 @@ if (!empty($PerfilProjeto['projeto_id'])) {
 //Verificar se o doador marcou este projeto como favorito
 if ($acesso === 'doador') {
     $projetosFavoritos = $projetoModel->listarFavoritos($_SESSION['usuario']['id']);
+    
 }
 ob_end_flush();
 ?>
@@ -68,7 +69,7 @@ ob_end_flush();
                     <div id="carousel-imgs" class="carousel-imgs">
                         <?php if ($ImagensProjeto) {
                             foreach ($ImagensProjeto as $imagem) {
-                                echo "<img src='{$imagem['caminho']}' class='carousel-item'>";
+                                echo "<img src='../../../{$imagem['caminho']}' class='carousel-item'>";
                             }
                         } else {
                             echo "<img src='../../assets/images/global/image-placeholder.svg' class='carousel-item'>";
@@ -96,7 +97,7 @@ ob_end_flush();
                         <div id="carousel-big-imgs" class="carousel-imgs">
                             <?php if ($ImagensProjeto) {
                                 foreach ($ImagensProjeto as $imagem) {
-                                    echo "<img src='{$imagem['caminho']}' class='carousel-item-big'>";
+                                    echo "<img src='../../../{$imagem['caminho']}' class='carousel-item-big'>";
                                 }
                             } else {
                                 echo "<img src='../../assets/images/global/image-placeholder.svg' class='carousel-item-big'>";
