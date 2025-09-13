@@ -1,15 +1,15 @@
 <?php
 // Pegar os dados do Projeto e tratar possíveis erros
 $IdProjeto = $projeto['projeto_id'] ?? null;
-
-// Se houver imagens, pega a primeira
-$FotoProjeto = !empty($projeto['imagens']) ? '../../../' . $projeto['imagens'][0]['caminho'] : '../../assets/images/global/image-placeholder.svg';
-
 $NomeProjeto = $projeto['nome'] ?? 'Nome do Projeto';
 $DescricaoProjeto =  mb_strimwidth($projeto['descricao'], 0, 220, '...') ?? 'Lorem ipsum...';
 $BarraProjeto = $projeto['barra'] ?? '30';
 $CategoriaProjeto = $projeto['categoria'] ?? 'Inválido';
 $CorCategoria = $projeto['cor'] ?? '#9E9E9E';
+$FotoProjeto = $projeto['caminho']
+    ? '../../../' . $projeto['caminho']
+    : '../../assets/images/global/image-placeholder.svg';
+// Verificar se o Doador favoritou o Projeto
 $jaFavoritado = in_array($projeto['projeto_id'], $projetosFavoritos ?? []) ?? false;
 $classe = $jaFavoritado ? 'favoritado' : '';
 ?>

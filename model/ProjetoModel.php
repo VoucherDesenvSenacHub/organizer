@@ -204,7 +204,10 @@ class ProjetoModel
             $stmt->bindParam(':meta', $meta);
             $stmt->bindParam(':categoria_id', $categoria_id);
             $stmt->bindParam(':ong_id', $ong_id);
-            return $stmt->execute();
+            if ($stmt->execute()) {
+                return $this->pdo->lastInsertId();
+            }
+            return false;
         } catch (PDOException $e) {
             error_log("Erro ao inserir registro: " . $e->getMessage());
             return false;
@@ -301,8 +304,4 @@ class ProjetoModel
         $stmt->execute();
         return $stmt->fetch();
     }
-    public function getLastInsertId() {
-        return $this->pdo->lastInsertId();
-    }
-    
 }

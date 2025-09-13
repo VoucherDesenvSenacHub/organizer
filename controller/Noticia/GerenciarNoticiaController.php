@@ -22,6 +22,7 @@ if (empty($_POST['noticia-id'])) {
         $noticiaCriada = $noticiaModel->criar($TituloNoticia, $SubtituloNoticia, $TextoNoticia, $SubtextoNoticia, $IdOng);
 
         if ($noticiaCriada) {
+            // Pega o ID da notícia criado
             $IdNoticia = $noticiaCriada;
 
             // Upload de imagens (se houver)
@@ -37,7 +38,9 @@ if (empty($_POST['noticia-id'])) {
                         $destino  = __DIR__ . '/../../upload/images/noticias/' . $novoNome;
 
                         if (move_uploaded_file($tmp, $destino)) {
+                            // Salvar caminho no banco de dados
                             $IdImagem = $imagemModel->salvarCaminhoImagem('upload/images/noticias/' . $novoNome);
+                            // Vincular imagem ao projeto
                             $imagemModel->vincularNaNoticia($IdImagem, $IdNoticia);
                         }
                     }

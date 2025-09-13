@@ -27,8 +27,8 @@ if (empty($_POST['projeto-id'])) {
         $projetoCriado  = $projetoModel->criar($NomeProjeto, $DescricaoProjeto, $MetaProjeto, $CategoriaIdProjeto, $IdOng);
 
         if ($projetoCriado) {
-            // Pega o ID do projeto criado
-            $IdProjeto = $projetoModel->getLastInsertId();
+            //Pegar o ID do Projeto criado
+            $IdProjeto = $projetoCriado;
 
             // Upload de imagens (se houver)
             if (!empty($_FILES['imagens']['name'][0])) {
@@ -46,7 +46,6 @@ if (empty($_POST['projeto-id'])) {
                         if (move_uploaded_file($tmp, $destino)) {
                             // Salvar caminho no banco de dados
                             $IdImagem = $imagemModel->salvarCaminhoImagem('upload/images/projetos/' . $novoNome);
-
                             // Vincular imagem ao projeto
                             $imagemModel->vincularNoProjeto($IdImagem, $IdProjeto);
                         }
@@ -74,9 +73,9 @@ else {
         echo "<script>alert('Meta inválida: o valor deve ser maior do que o que já foi arrecadado.');window.history.back();</script>";
         exit;
     } else {
-        $edicao = $projetoModel->editar($IdProjeto, $NomeProjeto, $DescricaoProjeto, $MetaProjeto, $CategoriaIdProjeto);
+        $projetoEditado = $projetoModel->editar($IdProjeto, $NomeProjeto, $DescricaoProjeto, $MetaProjeto, $CategoriaIdProjeto);
 
-        if ($edicao) {
+        if ($projetoEditado) {
             // Só mexe nas imagens se houver upload novo
             if (!empty($_FILES['imagens']['name'][0])) {
                 // Apaga vínculos de imagens antigas
