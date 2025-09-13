@@ -7,15 +7,23 @@ require_once __DIR__ . '/../../../autoload.php';
 
 $projetoModel = new ProjetoModel();
 
-// Paginação
+// ===== CONFIGURAÇÃO DE PAGINAÇÃO =====
 $IdUsuario = $_SESSION['usuario']['id'];
 $paginaAtual = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
-$valor = ['usuario_id' => $IdUsuario, 'pagina' => $paginaAtual];
-$lista = $projetoModel->listarCardsProjetos('apoiados', $valor);
 $tipo = 'apoiados';
+$valor = [
+    'usuario_id' => $IdUsuario, 
+    'pagina' => $paginaAtual
+];
+
+// Buscar os projetos apoiados
+$lista = $projetoModel->listarCardsProjetos($tipo, $valor);
+
+// Calcula total de registros e número de páginas
 $totalRegistros = $projetoModel->paginacaoProjetos($tipo, $valor);
 $paginas = (int)ceil($totalRegistros / 8);
 
+// Lista os projetos favoritados pelo usuário (colorir o coração)
 $projetosFavoritos = $projetoModel->listarFavoritos($_SESSION['usuario']['id']);
 
 ?>
