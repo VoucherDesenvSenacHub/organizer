@@ -246,7 +246,7 @@ main.visitante {
 
 /* Se o usuário for um doador: */
 main.usuario-logado {
-    padding: 20px;
+    padding: 30px 20px;
     /* min-height: calc(100vh - 60px); */
 }
 
