@@ -1,7 +1,7 @@
 <?php
 $acesso = 'adm';
 $tituloPagina = 'Painel de Doadores | Organizer';
-$cssPagina = ['adm/doadores.css'];
+$cssPagina = ['adm/usuarios.css'];
 require_once '../../components/layout/base-inicio.php';
 
 require_once __DIR__ . '/../../../autoload.php';
@@ -43,21 +43,21 @@ if (isset($_GET['id'])) {
     <section>
         <div class="container">
             <div class="top">
-                <h1><i class="fa-solid fa-users"></i> PAINEL DE DOADORES</h1>
-                <form id="form-busca" action="doadores.php" method="GET">
-                    <input type="text" name="pesquisa" placeholder="Busque um doador">
+                <h1><i class="fa-solid fa-users"></i> PAINEL DE USUÁRIOS</h1>
+                <form id="form-busca" action="usuarios.php" method="GET">
+                    <input type="text" name="pesquisa" placeholder="Busque um usuário">
                     <button class="btn" type="submit"><i class="fa-solid fa-search"></i></button>
                 </form>
             </div>
             <!-- Quantidade da busca -->
             <?php if (isset($_GET['pesquisa'])) {
-                echo "<p class='qnt-busca'><i class='fa-solid fa-search'></i> " . $totalRegistros . " Doadores Encontrados</p>";
+                echo "<p class='qnt-busca'><i class='fa-solid fa-search'></i> " . $totalRegistros . " Usuários Encontrados</p>";
             } ?>
 
             <section id="box-ongs">
                 <?php
                 if (isset($lista) && empty($lista)) {
-                    echo '<p>Nenhum Doador cadastrado!</p>';
+                    echo '<p>Nenhum Usuário cadastrado!</p>';
                 } else {
                     foreach ($lista as $doador) {
                         require '../../components/cards/card-doador-adm.php';

@@ -34,7 +34,7 @@ ob_end_flush();
                 </div>
             </fieldset>
             <fieldset>
-                <legend><i class="fa-solid fa-house-flag"></i> DADOS DA ONG</legend>
+                <legend><i class="fa-solid fa-building-flag"></i> DADOS DA ONG</legend>
                 <div class="form">
                     <label>
                         <span>Nome da ONG</span>
