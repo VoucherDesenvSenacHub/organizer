@@ -68,6 +68,9 @@ $listagem_projetos = $projetos->listarProjetos($idOng);
     </div>
     <hr>
     <?php
+        echo '<pre>';
+        print_r($contagem_projetos);
+        echo '</pre';
         $contador = 0;
         foreach ($contagem_projetos as $cp):
     ?>

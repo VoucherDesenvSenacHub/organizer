@@ -83,11 +83,9 @@ class RelatoriosModel {
     // Função para somar as arrecadações mês a mês
 
     function painelDeArrecadacao($id, $month, $year) {
-        $query = "
-        SELECT SUM(dp.valor) AS total_doado FROM
+        $query = "SELECT SUM(dp.valor) AS total_doado FROM
             projetos p JOIN doacoes_projetos dp ON p.projeto_id = dp.projeto_id
-        WHERE
-            p.ong_id = :id
+            WHERE p.ong_id = :id
             AND MONTH(dp.data_doacao) = :month
             AND YEAR(dp.data_doacao) = :year
             AND p.status = 'ATIVO' ;";
