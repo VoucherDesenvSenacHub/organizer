@@ -166,7 +166,7 @@ ob_end_flush();
                         <?php if (isset($_SESSION['perfil_usuario']) && $_SESSION['perfil_usuario'] === 'ong' && $_SESSION['ong_id'] === $PerfilProjeto['ong_id']): ?>
                         <?php else: ?>
                             <div class="container-painel area-doador-voluntario">
-                                <h3><i class="fa-solid fa-house-flag"></i> ONG RESPONSÁVEL</h3>
+                                <h3><i class="fa-solid fa-building-flag"></i> ONG RESPONSÁVEL</h3>
                                 <div class="card-ong">
                                     <div class="perfil">
                                         <div class="logo">

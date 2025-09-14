@@ -59,7 +59,7 @@ $projetosFavoritos = $projetoModel->listarFavoritos($IdUsuario);
                             <div class="btn-doar" id="btn-doar-ong">
                                 <h4>Você ainda não favoritou nenhuma ONG! <i class="fa-regular fa-face-frown"></i></h4>
                                 <a href="../ong/lista.php">
-                                    <button class="btn"><i class="fa-solid fa-house-flag"></i> Conhecer Ongs</button>
+                                    <button class="btn"><i class="fa-solid fa-building-flag"></i> Conhecer Ongs</button>
                                 </a>
                             </div>
                         <?php else: ?>

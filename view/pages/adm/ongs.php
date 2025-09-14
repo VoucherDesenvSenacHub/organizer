@@ -26,7 +26,7 @@ $paginas = ceil($totalRegistros / 6);
     <section>
         <div class="container">
             <div class="top">
-                <h1><i class="fa-solid fa-house-flag"></i> PAINEL DE ONGS</h1>
+                <h1><i class="fa-solid fa-building-flag"></i> PAINEL DE ONGS</h1>
                 <form id="form-busca" action="ongs.php" method="GET">
                     <input type="text" name="pesquisa" placeholder="Busque uma ONG">
                     <button class="btn" type="submit"><i class="fa-solid fa-search"></i></button>

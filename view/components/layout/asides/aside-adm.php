@@ -2,7 +2,7 @@
     <div id="area-topo">
         <button id="btn-aside" title="Abrir Menu" onclick="abrir_aside()"><i id="icon-aside" class="fa-solid fa-angles-right"></i></button>
         <nav>
-            <a href="../adm/ongs.php" title="Ongs"><i class="fa-solid fa-house-flag"></i><span>Ongs</span></a>
+            <a href="../adm/ongs.php" title="Ongs"><i class="fa-solid fa-building-flag"></i><span>Ongs</span></a>
             <a href="../adm/projetos.php" title="Projetos"><i class="fa-solid fa-diagram-project"></i><span>Projetos</span></a>
             <a href="../adm/doadores.php" title="Doadores"><i class="fa-solid fa-users"></i><span>Doadores</span></a>
             <a href="../adm/parcerias.php" title="Parcerias"><i class="fa-solid fa-handshake"></i><span>Parcerias</span></a>
