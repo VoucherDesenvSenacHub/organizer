@@ -34,7 +34,7 @@ $relatorioNoticia = $adminModel->buscarNoticias();
                     <i class="fa-solid fa-diagram-project"></i>
                 </div>
             </a>
-            <a href="doadores.php">
+            <a href="usuarios.php">
                 <div class="resumo-item">
                     <h3><?= $relatorio['qnt_usuarios'] ?> <span>USUÁRIOS</span></h3>
                     <i class="fa-solid fa-users"></i>
@@ -139,7 +139,7 @@ $relatorioNoticia = $adminModel->buscarNoticias();
                         <span class="linha"></span>
                     <?php endforeach; ?>
                 </div>
-                <a class="area-btn" href="doadores.php">
+                <a class="area-btn" href="usuarios.php">
                     <button class="btn">Todos os Doadores</button>
                 </a>
             </div>

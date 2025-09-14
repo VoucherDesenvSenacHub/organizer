@@ -4,7 +4,8 @@
         <nav>
             <a href="../adm/ongs.php" title="Ongs"><i class="fa-solid fa-building-flag"></i><span>Ongs</span></a>
             <a href="../adm/projetos.php" title="Projetos"><i class="fa-solid fa-diagram-project"></i><span>Projetos</span></a>
-            <a href="../adm/doadores.php" title="Doadores"><i class="fa-solid fa-users"></i><span>Doadores</span></a>
+            <a href="../adm/noticias.php" title="Notícias"><i class="fa-solid fa-newspaper"></i><span>Notícias</span></a>
+            <a href="../adm/usuarios.php" title="Usuários"><i class="fa-solid fa-users"></i><span>Usuários</span></a>
             <a href="../adm/parcerias.php" title="Parcerias"><i class="fa-solid fa-handshake"></i><span>Parcerias</span></a>
             <a href="../adm/relatorios.php" title="Relatórios"><i class="fa-solid fa-chart-pie"></i><span>Relatórios</span></a>
         </nav>
