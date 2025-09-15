@@ -212,3 +212,73 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+
+
+const uploadArea = document.getElementById('uploadAreaDoador');
+const inputFile = document.getElementById('foto_usuario');
+const previewImg = document.getElementById('preview-foto');
+const btnRemover = document.getElementById('btnRemoverDoador');
+const uploadText = document.getElementById('uploadTextDoador');
+
+// Mostrar texto de upload se não houver imagem
+function updateUploadText() {
+    if (!previewImg.src || previewImg.src.includes('sem-foto')) {
+        uploadText.style.display = 'block';
+        btnRemover.style.display = 'none';
+    } else {
+        uploadText.style.display = 'none';
+        btnRemover.style.display = 'block';
+    }
+}
+updateUploadText();
+
+// Clique para abrir input
+uploadArea.onclick = function(e) {
+    if (e.target !== btnRemover) inputFile.click();
+};
+
+// Preview da imagem
+inputFile.addEventListener('change', function(e) {
+    const file = e.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(ev) {
+            previewImg.src = ev.target.result;
+            updateUploadText();
+        }
+        reader.readAsDataURL(file);
+    }
+});
+
+// Drag and drop
+uploadArea.addEventListener('dragover', function(e) {
+    e.preventDefault();
+    uploadArea.style.background = '#e0e0e0';
+});
+uploadArea.addEventListener('dragleave', function(e) {
+    e.preventDefault();
+    uploadArea.style.background = '#f3f3f3';
+});
+uploadArea.addEventListener('drop', function(e) {
+    e.preventDefault();
+    uploadArea.style.background = '#f3f3f3';
+    const file = e.dataTransfer.files[0];
+    if (file && file.type.startsWith('image/')) {
+        inputFile.files = e.dataTransfer.files;
+        const reader = new FileReader();
+        reader.onload = function(ev) {
+            previewImg.src = ev.target.result;
+            updateUploadText();
+        }
+        reader.readAsDataURL(file);
+    }
+});
+
+// Remover imagem
+btnRemover.onclick = function(e) {
+    e.stopPropagation();
+    previewImg.src = '../../assets/images/global/user-placeholder.jpg'; // coloque o caminho da imagem padrão
+    inputFile.value = '';
+    updateUploadText();
+};
