@@ -75,7 +75,7 @@ function changeSlideBig() {
 setInterval(changeSlideBig, 2500);
 
 // UPLOAD DE FOTOS NO CADASTRO - (SÓ PODE ENVIAR 5 IMAGENS)
-const fotosInput = document.getElementById('fotos');
+const fotosInput = document.getElementById('imagens');
 const qtImg = document.getElementById('qt-img');
 
 if (fotosInput && qtImg) {

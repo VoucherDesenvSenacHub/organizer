@@ -99,7 +99,7 @@ class NoticiaModel
                     $query .= " AND status = :status";
                     $params[':status'] = $statusFilter;
                 }
-                $params[':ong_id'] = $valor['ong_id'] ?? $valor;
+                $params[':ong_id'] = $valor['ong_id'] ?? $valor['ong_id'];
                 break;
             default:
                 $query = "SELECT * FROM vw_card_noticias";
@@ -131,6 +131,10 @@ class NoticiaModel
                     $query .= " AND ong_id = :ong_id";
                     $params[':ong_id'] = $valor['ong_id'];
                 }
+                break;
+            case 'ong':
+                $query = "SELECT COUNT(*) AS total FROM vw_card_noticias v WHERE status = 'ATIVO' AND ong_id = :ong_id";
+                $params[':ong_id'] = $valor['ong_id'];
                 break;
             default:
                 $query = "SELECT COUNT(*) AS total FROM vw_card_noticias WHERE status = 'ATIVO'";

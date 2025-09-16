@@ -13,7 +13,7 @@ if (isset($_GET['id'])) {
     $IdOng = $_GET['id'];
     $PerfilOng = $ongModel->buscarPerfilOng($IdOng);
     $projetos_ong = $projetoModel->listarCardsProjetos('ong', ['ong_id' => $IdOng, 'limit' => 50]);
-    $noticias_ong = $noticiaModel->listarCardsNoticias('ong', $IdOng);
+    $noticias_ong = $noticiaModel->listarCardsNoticias('ong', ['ong_id' => $IdOng]);
     $doadores_ong = $ongModel->buscarDoadores($IdOng);
     $FotoOng = $PerfilOng['caminho'] ?? '../../assets/images/global/image-placeholder.svg';
 }

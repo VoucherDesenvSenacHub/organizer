@@ -8,23 +8,44 @@ require_once '../../components/layout/base-inicio.php';
 require_once __DIR__ . '/../../../autoload.php';
 $noticiaModel = new NoticiaModel();
 
+
 // Pegar as noticias
 $IdOng = $_SESSION['ong_id'];
 $status = $_GET['status'] ?? null;
-$valor = ['ong_id' => $IdOng];
+$paginaAtual = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
+$tipo = 'ong';
+
+// parâmetros base
+$valor = [
+    'ong_id' => $IdOng,
+    'pagina' => $paginaAtual
+];
+
+// se tiver status, adiciona
 if ($status) {
     $valor['status'] = $status;
 }
+
+// busca normal (com ou sem status/página)
 $lista = $noticiaModel->listarCardsNoticias('ong', $valor);
 
+// se for pesquisa
 if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['pesquisa'])) {
     $pesquisa = $_GET['pesquisa'];
-    $valorPesquisa = ['ong_id' => $IdOng, 'pesquisa' => $pesquisa];
+
+    $valorPesquisa = [
+        'ong_id'   => $IdOng,
+        'pesquisa' => $pesquisa,
+        'pagina'   => $paginaAtual
+    ];
+
     if ($status) {
         $valorPesquisa['status'] = $status;
     }
+
     $lista = $noticiaModel->listarCardsNoticias('pesquisa', $valorPesquisa);
 }
+
 // Criar a Noticia
 $PerfilNoticia = (object) [
     'noticia_id' => null,
@@ -33,6 +54,17 @@ $PerfilNoticia = (object) [
     'texto' => null,
     'subtexto' => null
 ];
+
+// Paginação
+
+
+if (isset($_GET['pesquisa'])) {
+    $tipo = 'pesquisa';
+    $valor['pesquisa'] = $_GET['pesquisa'];
+}
+
+$totalRegistros = $noticiaModel->paginacaoNoticias($tipo, $valor);
+$paginas = (int)ceil($totalRegistros / 6);
 
 require_once '../../components/popup/formulario-noticia.php';
 ob_end_flush();
@@ -57,7 +89,7 @@ ob_end_flush();
                 <button class="btn btn-novo" onclick="abrir_popup('editar-noticia-popup')">NOVA NOTÍCIA +</button>
             </div>
             <?php if (isset($_GET['pesquisa'])) {
-                echo "<p id='qnt-busca'><i class='fa-solid fa-search'></i> " . count($lista) . " Notícias Encontradas</p>";
+                echo "<p id='qnt-busca'><i class='fa-solid fa-search'></i> " . $totalRegistros . " Notícias Encontradas</p>";
             } ?>
             <div class="area-cards">
                 <?php
@@ -77,8 +109,19 @@ ob_end_flush();
                 }
                 ?>
             </div>
+            <?php if ($paginas > 1): ?>
+            <nav class="navegacao">
+                <?php for ($i = 1; $i <= $paginas; $i++): ?>
+                    <a href="?pagina=<?= $i ?><?= isset($_GET['pesquisa']) ? '&pesquisa=' . urlencode($_GET['pesquisa']) : '' ?>"
+                        class="<?= $i === $paginaAtual ? 'active' : '' ?>">
+                        <?= $i ?>
+                    </a>
+                <?php endfor; ?>
+            </nav>
+        <?php endif; ?> 
         </div>
     </section>
+    
 </main>
 
 <!-- Toasts -->

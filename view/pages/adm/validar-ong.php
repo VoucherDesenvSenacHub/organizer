@@ -9,7 +9,7 @@ require_once '../../components/layout/base-inicio.php';
         <div class="dados-ong">
             <h1>SOLICITAÇÃO DA ONG: {NOME}</h1>
             <fieldset>
-                <legend><i class="fa-solid fa-house-flag"></i> DADOS DA ONG</legend>
+                <legend><i class="fa-solid fa-building-flag"></i> DADOS DA ONG</legend>
                 <div class="form">
                     <label><span>Nome da ONG</span><input type="text"></label>
                     <label><span>CPNJ</span><input type="text"></label>

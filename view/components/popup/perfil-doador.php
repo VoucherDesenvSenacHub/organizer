@@ -41,9 +41,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <button class="btn-fechar-popup fa-solid fa-xmark" onclick="fechar_popup('perfil-doador-popup')"></button>
         <div id="left" class="box">
             <div id="perfil">
-                <img src="<?= $_SESSION['usuario']['foto'] ?>">
+                <div class="upload-area" id="uploadAreaDoador">
+                    <input type="file" id="foto_usuario" name="foto_usuario" accept="image/*" style="display:none;">
+                    <img id="preview-foto" src="<?= $_SESSION['usuario']['foto'] ?>">
+                    <div id="uploadTextDoador">
+                        <i class="fa-solid fa-cloud-upload-alt"></i><br>
+                        Arraste ou clique para trocar
+                    </div>
+                    <button type="button" class="btn-remover" id="btnRemoverDoador">
+                        <i class="fa-solid fa-trash-can"></i>
+                    </button>
+                </div>
                 <p><?= $usuario['nome'] ?></p>
-                <!-- <p>email@blabla.com</p> -->
             </div>
             <button class="btn" title="Sair" onclick="abrir_popup('sair-da-conta-popup')">
                 <i class="fa-solid fa-right-from-bracket"></i>

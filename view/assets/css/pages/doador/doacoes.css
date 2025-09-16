@@ -9,6 +9,10 @@ section {
     gap: 30px;
 }
 
+section > h1 {
+    font-size: 24px;
+}
+
 section h1 i {
     color: var(--cor-azul);
 }

@@ -86,7 +86,7 @@ class ProjetoModel
                     $query .= " AND v.status = 'ATIVO'";
                 }
                 $query .= " ORDER BY data_favoritado DESC";
-                $params[':usuario_id'] = $valor['usuario'];
+                $params[':usuario_id'] = $valor['usuario_id'];
                 break;
                 
             // Buscar os Projetos apoiados pelo usuário
@@ -110,7 +110,7 @@ class ProjetoModel
                     $query .= " AND v.status = 'ATIVO'";
                 }
                 $query .= " ORDER BY data_apoio DESC";
-                $params[':usuario_id'] = $valor['usuario'];
+                $params[':usuario_id'] = $valor['usuario_id'];
                 break;
                 
             // Buscar os Projetos mais recentes
@@ -256,7 +256,18 @@ class ProjetoModel
                     $query .= " WHERE v.status = 'ATIVO'";
                 }
                 break;
-                
+            case 'favoritos':
+                $query = "SELECT COUNT(*) AS total FROM vw_card_projetos v
+                JOIN favoritos_projetos f USING (projeto_id)
+                WHERE usuario_id = :usuario_id ORDER BY data_favoritado DESC";
+                $params[':usuario_id'] = $valor['usuario_id'];
+                break;
+            case 'apoiados':
+                $query = "SELECT COUNT(*) AS total FROM vw_card_projetos v
+                JOIN apoios_projetos f USING (projeto_id)
+                WHERE usuario_id = :usuario_id ORDER BY data_apoio DESC";
+                $params[':usuario_id'] = $valor['usuario_id'];
+                break;
             default:
                 $query = "SELECT COUNT(*) AS total FROM vw_card_projetos";
                 if ($statusFilter) {
@@ -380,7 +391,10 @@ class ProjetoModel
             $stmt->bindParam(':meta', $meta);
             $stmt->bindParam(':categoria_id', $categoria_id);
             $stmt->bindParam(':ong_id', $ong_id);
-            return $stmt->execute();
+            if ($stmt->execute()) {
+                return $this->pdo->lastInsertId();
+            }
+            return false;
         } catch (PDOException $e) {
             error_log("Erro ao inserir registro: " . $e->getMessage());
             return false;

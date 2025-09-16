@@ -3,7 +3,7 @@
     font-weight: bold;
 }
 
-main.conteudo-principal > section {
+main.conteudo-principal>section {
     min-height: calc(100vh - 60px);
     padding: 30px 20px;
     display: flex;
@@ -108,30 +108,6 @@ fieldset#section-solicitacao legend {
     color: var(--cor-roxo-adm);
 }
 
-fieldset#section-ong {
-    border: 3px solid var(--cor-amarelo-hover);
-}
-
-fieldset#section-ong legend {
-    color: var(--cor-amarelo-hover);
-}
-
-fieldset#section-projeto {
-    border: 3px solid var(--cor-azul);
-}
-
-fieldset#section-projeto legend {
-    color: var(--cor-azul);
-}
-
-fieldset#section-doador {
-    border: 3px solid var(--cor-verde-barra);
-}
-
-fieldset#section-doador legend {
-    color: var(--cor-verde-barra);
-}
-
 fieldset legend {
     padding: 0 5px;
     font-weight: 700;
@@ -195,151 +171,150 @@ fieldset legend {
     filter: brightness(.93);
 }
 
-/* .card-adm:last-child div {
-    background-color: var(--cor-vermelho);
-} */
-
 .card-adm:nth-child(3) div {
     background-color: var(--cor-amarelo-hover);
 }
 
-/* Tabelas */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    /* border-spacing: 0 5px; */
+/* Seção 3 */
+.secao-3 {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.container-card {
+    display: flex;
+    flex-direction: column;
+    background-color: #eee;
     border-radius: 5px;
-    overflow-x: auto;
-    text-align: left;
+    gap: 10px;
+    flex: 1 1 300px;
 }
 
-/* thead */
-table thead th {
-    padding: 10px;
-    font-size: 14px;
-    font-weight: 700;
-    letter-spacing: 1px;
+.container-card .top {
+    display: flex;
+    align-items: center;
+    font-size: 15.5px;
+    gap: 5px;
+    padding: 15px 10px;
+    border-bottom: 1px solid #bbb;
+    height: 45px;
 }
 
-/* tbody */
-table tbody td {
-    font-size: 14px;
-    padding: 10px;
+.container-card .top > img {
+    width: 23px;
 }
 
-table tbody tr:nth-child(even) {
-    background-color: #f5f5f5;
+.container-card .top h1 {
+    font-size: 15.5px;
+    font-weight: 600;
 }
 
-table tbody td button {
-    background: none;
-    border: none;
-    font-size: 18px;
-    cursor: pointer;
-    transition: .3s;
+/* Cores da borda */
+.container-card:nth-child(1) {
+    border-left: 4px solid var(--cor-amarelo-hover);
+}
+.container-card:nth-child(2) {
+    border-left: 4px solid var(--cor-azul);
+}
+.container-card:nth-child(3) {
+    border-left: 4px solid var(--cor-verde-barra);
+}
+.container-card:nth-child(4) {
+    border-left: 4px solid var(--cor-laranja);
 }
 
-table tbody td button:hover {
-    filter: brightness(.9);
-}
-
-/* Tabela de Ongs */
-#table-ong thead th {
-    background-color: #fff3e4;
+/* Cores dos ícones */
+.container-card:nth-child(1) .top i {
     color: var(--cor-amarelo-hover);
 }
-
-#table-ong button {
-    color: var(--cor-amarelo-hover);
-}
-
-/* Tabela de Projetos */
-#table-projeto thead th {
-    background-color: #e4faff;
+.container-card:nth-child(2) .top i {
     color: var(--cor-azul);
 }
-
-#table-projeto button {
-    color: var(--cor-azul);
-}
-
-/* Tabela de Doador */
-#table-doador thead th {
-    background-color: #e4ffe8;
+.container-card:nth-child(3) .top i {
     color: var(--cor-verde-barra);
 }
-
-#table-doador button {
-    color: var(--cor-verde-barra);
+.container-card:nth-child(4) .top i {
+    color: var(--cor-laranja);
 }
 
-/* Botão ver mais */
-.btn-ver-mais {
+.container-card .content {
+    display: flex;
+    flex-direction: column;
+    padding: 0 10px;
     width: 100%;
-    text-align: center;
-    font-weight: 500;
-    color: var(--cor-principal);
-    transition: .3s;
+    gap: 5px;
 }
 
-.btn-ver-mais:hover {
-    color: var(--cor-roxo-adm);
+.container-card .content a.item {
+    max-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    line-height: 18px;
+    padding: 5px;
+    transition: .3s;
+    border-radius: 3px;
+    cursor: default;
+    color: var(--cor-principal);
+}
+
+.container-card .content .item:hover {
+    background-color: #ddd;
+}
+
+.container-card .content .item h2 {
+    font-size: 14.5px;
+    font-weight: 600;
+}
+
+.container-card .content .item span {
+    font-size: 12px;
+    font-weight: 500;
+    color: #777;
+}
+
+.container-card .content .item i.fa-angle-right {
+    color: #999;
+    transition: .3s;
+}
+.container-card .content .item:hover i.fa-angle-right {
+    color: #333;
+}
+
+.container-card .content .linha {
+    height: 1px;
+    width: 100%;
+    background-color: #e0e0e0;
+}
+
+.container-card .area-btn {
+    padding: 15px 10px;
+}
+
+.container-card .area-btn button {
+    border-radius: 10px;
+    width: 100%;
+    background-color: #ddd;
+}
+
+/* Cores no botão */
+.container-card:nth-child(1) .area-btn button:hover {
+    background-color: var(--cor-amarelo);
+}
+.container-card:nth-child(2) .area-btn button:hover {
+    background-color: var(--cor-azul);
+}
+.container-card:nth-child(3) .area-btn button:hover {
+    background-color: var(--cor-verde-barra);
+}
+.container-card:nth-child(4) .area-btn button:hover {
+    background-color: var(--cor-laranja);
 }
 
 /* Responsividade */
 @media (max-width: 700px) {
     fieldset {
         padding-inline: 10px;
-    }
-}
-
-@media (max-width: 545px) {
-
-    table,
-    thead,
-    tbody,
-    th,
-    td,
-    tr {
-        display: block;
-    }
-
-    thead {
-        display: none;
-        /* Esconde o cabeçalho */
-    }
-
-    table tbody tr {
-        margin-bottom: 15px;
-        background-color: #f5f5f5;
-        border-radius: 8px;
-        padding: 10px;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    }
-
-    table tbody td {
-        padding: 8px 10px;
-        text-align: right;
-        position: relative;
-    }
-
-    table tbody td::before {
-        content: attr(data-label);
-        position: absolute;
-        left: 10px;
-        font-weight: bold;
-        text-align: left;
-    }
-
-    #table-ong tbody td::before {
-        color: var(--cor-amarelo-hover);
-    }
-
-    #table-projeto tbody td::before {
-        color: var(--cor-azul);
-    }
-
-    #table-doador tbody td::before {
-        color: var(--cor-verde-barra);
     }
 }
