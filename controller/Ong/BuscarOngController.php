@@ -3,46 +3,67 @@ session_start();
 require_once __DIR__ . '/../../autoload.php';
 
 $ongModel = new OngModel();
+$paginaAtual = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
 
 // Inicializar variáveis
-$lista = [];
 $filtros = [];
 $pesquisa = '';
-$paginaAtual = isset($_POST['pagina']) ? (int)$_POST['pagina'] : 1;
 
 // ===== Captura filtros do formulário =====
-if (!empty($_POST)) {
-    // Tempo/quantidade
-    foreach ($_POST as $key => $value) {
-        if ($key === 'recentes') $filtros['tempo'] = 'mais-recentes';
-        if ($key === 'antigos')  $filtros['tempo'] = 'mais-antigos';
-        if ($key === '1-3')       $filtros['quantidade'] = '1-3';
-        if ($key === '4+')        $filtros['quantidade'] = '4+';
-    }
-
-    // Pesquisa
-    if (!empty($_POST['pesquisa'])) {
-        $pesquisa = trim($_POST['pesquisa']);
-        $filtros['pesquisa'] = $pesquisa;
-    }
-
-    // Adicionar página
-    $filtros['pagina'] = $paginaAtual;
-
-    // Buscar usando listarCardsOngs
-    $lista = $ongModel->listarCardsOngs('', $filtros);
-    $totalRegistros = $ongModel->paginacaoOngs('', $filtros);
+if (isset($_GET['filtro'])) {
+    if (isset($_GET['recentes'])) $filtros['tempo'] = 'mais-recentes';
+    if (isset($_GET['antigos']))  $filtros['tempo'] = 'mais-antigos';
+    if (isset($_GET['1-3']))      $filtros['quantidade'] = '1-3';
+    if (isset($_GET['4+']))       $filtros['quantidade'] = '4+';
 }
 
-// ===== Guardar dados na sessão =====
-$_SESSION['controller_ongs'] = [
+// Verificar se é pesquisa
+$pesquisa = $_GET['pesquisa'] ?? '';
+
+// Lógica para decidir quais dados buscar
+if (!empty($pesquisa)) {
+    // Caso pesquisa
+    $tipo = 'pesquisa';
+    $valor = array_merge([
+        'pagina' => $paginaAtual,
+        'pesquisa' => $pesquisa,
+        'limit' => 6
+    ], $filtros);
+
+    $lista = $ongModel->listarCardsOngs($tipo, $valor);
+    $totalRegistros = $ongModel->paginacaoOngs($tipo, $valor);
+    
+} elseif (!empty($filtros)) {
+    // Caso filtro
+    $tipo = 'pesquisa';
+    $valor = array_merge([
+        'pagina' => $paginaAtual,
+        'pesquisa' => $pesquisa,
+        'limit' => 6
+    ], $filtros);
+
+    $lista = $ongModel->listarCardsOngs($tipo, $valor);
+    $totalRegistros = $ongModel->paginacaoOngs($tipo, $valor);
+} else {
+    // Caso padrão (sem pesquisa/filtro)
+    $valor = [
+        'pagina' => $paginaAtual,
+        'limit' => 6
+    ];
+
+    $lista = $ongModel->listarCardsOngs('', $valor);
+    $totalRegistros = $ongModel->paginacaoOngs('', $valor);
+}
+
+// Guardar dados para a view
+$_SESSION['controller_filtro_ongs'] = [
     'lista' => $lista,
-    'filtros' => $filtros,
-    'pesquisa' => $pesquisa,
+    'totalRegistros' => $totalRegistros,
     'paginaAtual' => $paginaAtual,
-    'totalRegistros' => $totalRegistros
+    'filtros' => $filtros,
+    'pesquisa' => $pesquisa
 ];
 
 // Redirecionar para a view
-header('Location: ../../view/pages/ong/lista.php');
+header('Location: ../../view/pages/ONG/lista.php');
 exit;

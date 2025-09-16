@@ -8,22 +8,26 @@ require_once '../../components/layout/base-inicio.php';
 require_once __DIR__ . '/../../../autoload.php';
 $ongModel = new OngModel();
 
-// Receber dados do controller
-$controllerData = $_SESSION['controller_ongs'] ?? [];
-$lista = $controllerData['lista'] ?? [];
-$filtros = $controllerData['filtros'] ?? [];
-$pesquisa = $controllerData['pesquisa'] ?? '';
-$totalRegistros = $controllerData['totalRegistros'] ?? 0;
-$paginaAtual = $controllerData['paginaAtual'] ?? 1;
-unset($_SESSION['controller_ongs']);
+// Dados vindos do controller (quando o form envia para o controller)
+$dadosController = $_SESSION['controller_filtro_ongs'] ?? null;
 
-// Paginação
-$tipo = '';
-$valor = ['pagina' => $paginaAtual];
+$paginaAtual = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
+$filtros = [];
+unset($valor, $tipo);
 
-if (isset($_GET['pesquisa'])) {
-    $tipo = 'pesquisa';
-    $valor['pesquisa'] = $_GET['pesquisa'];
+$totalRegistros = 0;
+if ($dadosController) {
+    $lista = $dadosController['lista'];
+    $totalRegistros = $dadosController['totalRegistros'];
+    $paginaAtual = $dadosController['paginaAtual'];
+    $filtros = $dadosController['filtros'] ?? [];
+    $pesquisaController = $dadosController['pesquisa'] ?? '';
+    unset($_SESSION['controller_filtro_ongs']);
+} else {
+    $valor = ['pagina' => $paginaAtual];
+    $tipo = '';
+    $lista = $ongModel->listarCardsOngs($tipo, $valor);
+    $totalRegistros = $ongModel->paginacaoOngs($tipo, $valor);
 }
 
 $paginas = (int)ceil($totalRegistros / 6);
@@ -40,7 +44,8 @@ if (isset($_SESSION['usuario']['id'])) {
                 <div>
                     <h1>DESCUBRA AS ONGS</h1>
                     <p>Explore organizações que estão fazendo a diferença e saiba como você pode contribuir.</p>
-                    <form id="form-filtro" action="../../../controller/Ong/BuscarOngController.php" method="POST">
+                    <form id="form-filtro" action="../../../controller/Ong/BuscarOngController.php" method="GET">
+                        <input type="hidden" name="busca" value="1">
                         <input type="hidden" name="filtro" value="1">
                         <!-- ### -->
                         <div class="ul-group">
@@ -76,7 +81,8 @@ if (isset($_SESSION['usuario']['id'])) {
                         </div>
                         <button class="btn">Filtrar</button>
                         <div id="form-busca">
-                            <input type="text" name="pesquisa" placeholder="Busque uma ONG" value="<?= htmlspecialchars($pesquisa) ?>">
+                            <input type="text" name="pesquisa" placeholder="Busque uma ONG"
+                                value="<?= isset($_GET['pesquisa']) ? htmlspecialchars($_GET['pesquisa']) : (isset($pesquisaController) ? htmlspecialchars($pesquisaController) : '') ?>">
                             <button class="btn" type="submit"><i class="fa-solid fa-search"></i></button>
                         </div>
                     </form>
@@ -85,20 +91,71 @@ if (isset($_SESSION['usuario']['id'])) {
                     <img src="../../assets/images/pages/shared/time.png">
                 </div>
         </section>
-        <?php if (isset($_GET['pesquisa'])) {
-            echo "<p class='qnt-busca'><i class='fa-solid fa-search'></i> " . $totalRegistros . " ONGS Encontradas</p>";
-        } ?>
-        <section id="box-ongs">
-            <?php foreach ($lista as $ong) {
-                $jaFavoritada = isset($_SESSION['usuario']['id']) && in_array($ong['ong_id'], $ongsFavoritas);
-                require '../../components/cards/card-ong.php';
+
+        <!-- Mostrar contagem de resultados -->
+        <?php
+        $temPesquisa = isset($_GET['pesquisa']) && !empty($_GET['pesquisa']);
+        $temFiltro = isset($_GET['filtro']) && !empty($filtros);
+        $temPesquisaController = isset($pesquisaController) && !empty($pesquisaController);
+
+        // Só mostrar contagem quando há filtro ou pesquisa ativos
+        if ($temPesquisa || $temPesquisaController || $temFiltro) {
+            $textoContagem = '';
+
+            // Definir texto baseado na quantidade
+            if ($totalRegistros == 0) {
+                $texto = "ONG não encontrada";
+            } elseif ($totalRegistros == 1) {
+                $texto = "1 ONG encontrada";
+            } else {
+                $texto = $totalRegistros . " ONGs encontradas";
             }
-            ?>
+
+            if ($temPesquisa || $temPesquisaController) {
+                $textoContagem = "<i class='fa-solid fa-search'></i> " . $texto;
+            } elseif ($temFiltro) {
+                $textoContagem = "<i class='fa-solid fa-filter'></i> " . $texto;
+            }
+            echo "<p class='qnt-busca'>" . $textoContagem . "</p>";
+        }
+        ?>
+
+        <section id="box-ongs">
+            <?php if (empty($lista)): ?>
+                <div class="sem-resultados">
+                    <i class="fa-solid fa-search"></i>
+                    <p>Nenhuma ONG encontrada</p>
+                </div>
+            <?php else: ?>
+                <?php foreach ($lista as $ong) {
+                    $jaFavoritada = isset($_SESSION['usuario']['id']) && in_array($ong['ong_id'], $ongsFavoritas);
+                    require '../../components/cards/card-ong.php';
+                }
+                ?>
+            <?php endif; ?>
         </section>
         <?php if ($paginas > 1): ?>
+            <?php
+            // Monta parâmetros para manter filtro/pesquisa na paginação via controller
+            $paramsPaginacao = '';
+            if (isset($_GET['pesquisa']) && $_GET['pesquisa'] !== '') {
+                $paramsPaginacao .= '&pesquisa=' . urlencode($_GET['pesquisa']);
+            } elseif (isset($pesquisaController) && $pesquisaController !== '') {
+                $paramsPaginacao .= '&pesquisa=' . urlencode($pesquisaController);
+            }
+            if (!empty($filtros)) {
+                if (isset($filtros['tempo'])) {
+                    $paramsPaginacao .= '&' . ($filtros['tempo'] === 'mais-recentes' ? 'recentes' : 'antigos') . '=1';
+                }
+                if (isset($filtros['quantidade'])) {
+                    $paramsPaginacao .= '&' . $filtros['quantidade'] . '=1';
+                }
+                $paramsPaginacao .= '&filtro=1';
+            }
+            ?>
             <nav class="navegacao">
                 <?php for ($i = 1; $i <= $paginas; $i++): ?>
-                    <a href="?pagina=<?= $i ?><?= isset($_GET['pesquisa']) ? '&pesquisa=' . urlencode($_GET['pesquisa']) : '' ?>"
+                    <a href="../../../controller/Ong/BuscarOngController.php?pagina=<?= $i ?><?= $paramsPaginacao ?>"
                         class="<?= $i === $paginaAtual ? 'active' : '' ?>">
                         <?= $i ?>
                     </a>

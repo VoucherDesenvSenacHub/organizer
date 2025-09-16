@@ -90,62 +90,67 @@ class OngModel
         $limit = $valor['limit'] ?? 6;
         $pagina = $valor['pagina'] ?? 1;
         $offset = ($pagina - 1) * $limit;
+
+        $query = "SELECT * FROM vw_card_ongs v";
+        $where = [];
+        $order = "";
+
         switch ($tipo) {
-            // Buscar as Ongs pelo nome
             case 'pesquisa':
-                $query = "SELECT * FROM vw_card_ongs WHERE nome LIKE :nome";
+                $where[] = "v.nome LIKE :nome";
+                $params[':nome'] = "%{$valor['pesquisa']}%";
                 if (!empty($valor['ong_id'])) {
-                    $query .= " AND ong_id = :ong_id";
+                    $where[] = "v.ong_id = :ong_id";
                     $params[':ong_id'] = $valor['ong_id'];
                 }
-                $params[':nome'] = "%{$valor['pesquisa']}%";
                 break;
-            // Buscar as Ongs favoritas do Usúario
+
             case 'favoritas':
-                $query = "SELECT v.*, f.usuario_id FROM vw_card_ongs v
-                JOIN favoritos_ongs f USING (ong_id)
-                WHERE usuario_id = :usuario_id ORDER BY data_favoritado DESC";
+                $query = "SELECT v.*, f.usuario_id 
+                      FROM vw_card_ongs v
+                      JOIN favoritos_ongs f USING (ong_id)";
+                $where[] = "f.usuario_id = :usuario_id";
                 $params[':usuario_id'] = $valor['usuario_id'];
+                $order = "ORDER BY f.data_favoritado DESC";
                 break;
-            // Buscar as Ongs mais recentes
+
             case 'recentes':
-                $limit = 6;
-                $query = "SELECT * FROM vw_card_ongs v
-                ORDER BY data_cadastro DESC";
+                $order = "ORDER BY v.data_cadastro DESC";
                 break;
-            default:
-                $query = "SELECT * FROM vw_card_ongs v";
         }
 
-        // Adicionar filtro por quantidade de projetos (HAVING)
+        // ===== FILTROS =====
         if (!empty($valor['quantidade'])) {
             switch ($valor['quantidade']) {
                 case '1-3':
-                    $query .= " HAVING total_projetos BETWEEN 1 AND 3";
+                    $where[] = "v.total_projetos BETWEEN 1 AND 3";
                     break;
                 case '4+':
-                    $query .= " HAVING total_projetos >= 4";
+                    $where[] = "v.total_projetos >= 4";
                     break;
             }
         }
 
-        // Adicionar ordenação por tempo/cadastro
+        // ===== Ordenação =====
         if (!empty($valor['tempo'])) {
-            switch ($valor['tempo']) {
-                case 'mais-recentes':
-                    $query .= (stripos($query, 'ORDER BY') !== false ? " " : " ORDER BY") . " v.data_cadastro DESC";
-                    break;
-                case 'mais-antigos':
-                    $query .= (stripos($query, 'ORDER BY') !== false ? " " : " ORDER BY") . " v.data_cadastro ASC";
-                    break;
-                default:
-                    $query .= (stripos($query, 'ORDER BY') === false ? " ORDER BY v.nome ASC" : "");
+            if ($valor['tempo'] === 'mais-recentes') {
+                $order = "ORDER BY v.data_cadastro DESC";
+            } elseif ($valor['tempo'] === 'mais-antigos') {
+                $order = "ORDER BY v.data_cadastro ASC";
             }
-        } elseif (stripos($query, 'ORDER BY') === false) {
-            $query .= " ORDER BY v.nome ASC";
         }
 
-        $query .= " LIMIT {$limit} OFFSET {$offset}";
+        // Ordenação padrão caso não tenha sido definida
+        if (empty($order)) {
+            $order = "ORDER BY v.nome ASC";
+        }
+
+        // Montar query final
+        if (!empty($where)) {
+            $query .= " WHERE " . implode(" AND ", $where);
+        }
+
+        $query .= " $order LIMIT {$limit} OFFSET {$offset}";
 
         $stmt = $this->pdo->prepare($query);
         foreach ($params as $key => $value) {
@@ -160,43 +165,44 @@ class OngModel
         $params = [];
         switch ($tipo) {
             case 'pesquisa':
-                $query = "SELECT COUNT(*) AS total FROM vw_card_ongs WHERE nome LIKE :nome";
+                $query = "SELECT COUNT(*) AS total FROM vw_card_ongs v WHERE v.nome LIKE :nome";
                 $params[':nome'] = "%{$valor['pesquisa']}%";
                 if (!empty($valor['ong_id'])) {
-                    $query .= " AND ong_id = :ong_id";
+                    $query .= " AND v.ong_id = :ong_id";
                     $params[':ong_id'] = $valor['ong_id'];
                 }
                 break;
             case 'favoritos':
-                $query = "SELECT COUNT(*) AS total FROM vw_card_ongs v
-                JOIN favoritos_ongs f USING (ong_id)
-                WHERE usuario_id = :usuario_id ORDER BY data_favoritado DESC";
+                $query = "SELECT COUNT(*) AS total 
+                      FROM vw_card_ongs v
+                      JOIN favoritos_ongs f USING (ong_id)
+                      WHERE usuario_id = :usuario_id";
                 $params[':usuario_id'] = $valor['usuario_id'];
                 break;
             default:
-                $query = "SELECT COUNT(*) AS total FROM vw_card_ongs";
+                $query = "SELECT COUNT(*) AS total FROM vw_card_ongs v";
         }
 
-        // ===== FILTRO POR QUANTIDADE =====
-        if (!empty($valor['quantidade'])) {
-            $whereClause = (stripos($query, 'WHERE') !== false) ? " AND " : " WHERE ";
+        // ===== FILTROS =====
+        if (!empty($valor['filtros'])) {
+            $filtros = $valor['filtros'];
 
-            switch ($valor['quantidade']) {
-                case '1-3':
-                    $query .= $whereClause . " total_projetos BETWEEN 1 AND 3";
-                    break;
-                case '4+':
-                    $query .= $whereClause . " total_projetos >= 4";
-                    break;
+            if (isset($filtros['quantidade'])) {
+                $whereClause = (stripos($query, 'WHERE') !== false) ? " AND " : " WHERE ";
+                if ($filtros['quantidade'] === '1-3') {
+                    $query .= $whereClause . " v.total_projetos BETWEEN 1 AND 3";
+                } elseif ($filtros['quantidade'] === '4+') {
+                    $query .= $whereClause . " v.total_projetos >= 4";
+                }
             }
-        }
 
-        // ===== FILTRO POR TEMPO (recentes/antigos) =====
-        if (!empty($valor['tempo'])) {
-            if ($valor['tempo'] === 'recentes') {
-                $query .= " ORDER BY data_criacao DESC";
-            } elseif ($valor['tempo'] === 'antigos') {
-                $query .= " ORDER BY data_criacao ASC";
+            if (isset($filtros['tempo'])) {
+                $whereClause = (stripos($query, 'WHERE') !== false) ? " AND " : " WHERE ";
+                if ($filtros['tempo'] === 'mais-recentes') {
+                    $query .= $whereClause . " 1=1"; // Placeholder, já que a ordenação não afeta a contagem
+                } elseif ($filtros['tempo'] === 'mais-antigos') {
+                    $query .= $whereClause . " 1=1"; // Placeholder, já que a ordenação não afeta a contagem
+                }
             }
         }
 
