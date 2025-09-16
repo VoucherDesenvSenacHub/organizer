@@ -8,8 +8,16 @@ require_once '../../components/layout/base-inicio.php';
 require_once __DIR__ . '/../../../autoload.php';
 $ongModel = new OngModel();
 
+// Receber dados do controller
+$controllerData = $_SESSION['controller_ongs'] ?? [];
+$lista = $controllerData['lista'] ?? [];
+$filtros = $controllerData['filtros'] ?? [];
+$pesquisa = $controllerData['pesquisa'] ?? '';
+$totalRegistros = $controllerData['totalRegistros'] ?? 0;
+$paginaAtual = $controllerData['paginaAtual'] ?? 1;
+unset($_SESSION['controller_ongs']);
+
 // Paginação
-$paginaAtual = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
 $tipo = '';
 $valor = ['pagina' => $paginaAtual];
 
@@ -18,8 +26,6 @@ if (isset($_GET['pesquisa'])) {
     $valor['pesquisa'] = $_GET['pesquisa'];
 }
 
-$lista = $ongModel->listarCardsOngs($tipo, $valor);
-$totalRegistros = $ongModel->paginacaoOngs($tipo, $valor);
 $paginas = (int)ceil($totalRegistros / 6);
 
 // Buscar os favoritos
@@ -34,7 +40,8 @@ if (isset($_SESSION['usuario']['id'])) {
                 <div>
                     <h1>DESCUBRA AS ONGS</h1>
                     <p>Explore organizações que estão fazendo a diferença e saiba como você pode contribuir.</p>
-                    <form id="form-filtro" action="lista.php" method="GET">
+                    <form id="form-filtro" action="../../../controller/Ong/BuscarOngController.php" method="POST">
+                        <input type="hidden" name="filtro" value="1">
                         <!-- ### -->
                         <div class="ul-group">
                             <ul class="drop" id="esc-status">
@@ -43,12 +50,12 @@ if (isset($_SESSION['usuario']['id'])) {
                                     <i class="fa-solid fa-angle-down"></i>
                                 </li>
                                 <li>
-                                    <input type="checkbox" name="em-andamento" id="em-andamento">
-                                    <label for="em-andamento">mais recentes</label>
+                                    <input type="checkbox" name="recentes" id="recentes" <?= ($filtros['tempo'] ?? '') === 'mais-recentes' ? 'checked' : '' ?>>
+                                    <label for="recentes">Mais recentes</label>
                                 </li>
                                 <li>
-                                    <input type="checkbox" name="concluido" id="concluido">
-                                    <label for="concluido">mais antigos</label>
+                                    <input type="checkbox" name="antigos" id="antigos" <?= ($filtros['tempo'] ?? '') === 'mais-antigos' ? 'checked' : '' ?>>
+                                    <label for="antigos">Mais antigos</label>
                                 </li>
                             </ul>
                             <ul class="drop" id="esc-q-projetos">
@@ -57,32 +64,26 @@ if (isset($_SESSION['usuario']['id'])) {
                                     <i class="fa-solid fa-angle-down"></i>
                                 </li>
                                 <li>
-                                    <input type="checkbox" name="educacao" id="educacao">
-                                    <label for="educacao">1 projeto</label>
+                                    <input type="checkbox" name="1-3" id="1-3" <?= ($filtros['quantidade'] ?? '') === '1-3' ? 'checked' : '' ?>>
+                                    <label for="1-3">1 à 3 projetos</label>
                                 </li>
                                 <li>
-                                    <input type="checkbox" name="saude" id="saude">
-                                    <label for="saude">3 à 5 projetos</label>
+                                    <input type="checkbox" name="4+" id="4+" <?= ($filtros['quantidade'] ?? '') === '4+' ? 'checked' : '' ?>>
+                                    <label for="4+">4+</label>
                                 </li>
-                                <li>
-                                    <input type="checkbox" name="esporte" id="esporte">
-                                    <label for="esporte">5 ou mais projetos</label>
-                                </li>
-                                
                             </ul>
-                            
+
                         </div>
                         <button class="btn">Filtrar</button>
+                        <div id="form-busca">
+                            <input type="text" name="pesquisa" placeholder="Busque uma ONG" value="<?= htmlspecialchars($pesquisa) ?>">
+                            <button class="btn" type="submit"><i class="fa-solid fa-search"></i></button>
+                        </div>
                     </form>
                 </div>
-                <form id="form-busca" action="lista.php" method="GET">
-                    <input type="text" name="pesquisa" placeholder="Busque uma ONG">
-                    <button class="btn" type="submit"><i class="fa-solid fa-search"></i></button>
-                </form>
-            </div>
-            <div id="imagem-top">
-                <img src="../../assets/images/pages/shared/time.png">
-            </div>
+                <div id="imagem-top">
+                    <img src="../../assets/images/pages/shared/time.png">
+                </div>
         </section>
         <?php if (isset($_GET['pesquisa'])) {
             echo "<p class='qnt-busca'><i class='fa-solid fa-search'></i> " . $totalRegistros . " ONGS Encontradas</p>";
@@ -118,7 +119,7 @@ if (isset($_SESSION['usuario']['id'])) {
 </div>
 
 <?php
-$jsPagina = [];
+$jsPagina = ['ong/lista-cards.js'];
 require_once '../../components/layout/footer/footer-logado.php';
 // Ativar os toast
 if (isset($_SESSION['favorito'])) {

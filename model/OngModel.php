@@ -116,6 +116,35 @@ class OngModel
             default:
                 $query = "SELECT * FROM vw_card_ongs v";
         }
+
+        // Adicionar filtro por quantidade de projetos (HAVING)
+        if (!empty($valor['quantidade'])) {
+            switch ($valor['quantidade']) {
+                case '1-3':
+                    $query .= " HAVING total_projetos BETWEEN 1 AND 3";
+                    break;
+                case '4+':
+                    $query .= " HAVING total_projetos >= 4";
+                    break;
+            }
+        }
+
+        // Adicionar ordenação por tempo/cadastro
+        if (!empty($valor['tempo'])) {
+            switch ($valor['tempo']) {
+                case 'mais-recentes':
+                    $query .= (stripos($query, 'ORDER BY') !== false ? " " : " ORDER BY") . " v.data_cadastro DESC";
+                    break;
+                case 'mais-antigos':
+                    $query .= (stripos($query, 'ORDER BY') !== false ? " " : " ORDER BY") . " v.data_cadastro ASC";
+                    break;
+                default:
+                    $query .= (stripos($query, 'ORDER BY') === false ? " ORDER BY v.nome ASC" : "");
+            }
+        } elseif (stripos($query, 'ORDER BY') === false) {
+            $query .= " ORDER BY v.nome ASC";
+        }
+
         $query .= " LIMIT {$limit} OFFSET {$offset}";
 
         $stmt = $this->pdo->prepare($query);
@@ -146,6 +175,29 @@ class OngModel
                 break;
             default:
                 $query = "SELECT COUNT(*) AS total FROM vw_card_ongs";
+        }
+
+        // ===== FILTRO POR QUANTIDADE =====
+        if (!empty($valor['quantidade'])) {
+            $whereClause = (stripos($query, 'WHERE') !== false) ? " AND " : " WHERE ";
+
+            switch ($valor['quantidade']) {
+                case '1-3':
+                    $query .= $whereClause . " total_projetos BETWEEN 1 AND 3";
+                    break;
+                case '4+':
+                    $query .= $whereClause . " total_projetos >= 4";
+                    break;
+            }
+        }
+
+        // ===== FILTRO POR TEMPO (recentes/antigos) =====
+        if (!empty($valor['tempo'])) {
+            if ($valor['tempo'] === 'recentes') {
+                $query .= " ORDER BY data_criacao DESC";
+            } elseif ($valor['tempo'] === 'antigos') {
+                $query .= " ORDER BY data_criacao ASC";
+            }
         }
 
         $stmt = $this->pdo->prepare($query);

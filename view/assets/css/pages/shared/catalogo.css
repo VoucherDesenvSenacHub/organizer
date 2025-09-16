@@ -117,6 +117,27 @@ section#top-info {
   border-top: 0.1px solid rgba(0, 0, 0, 0.1);
 }
 
+/* Filtro: Status */
+#form-filtro #esc-status {
+  /* width: 95px; */
+  width: 95px;
+}
+
+#form-filtro #esc-status:hover {
+  height: calc(40px * 3);
+  width: 150px;
+}
+
+/* Filtro:  Quantidade projetos */
+#form-filtro #esc-q-projetos {
+  width: 130px;
+}
+
+#form-filtro #esc-q-projetos:hover {
+  height: calc(40px * 3);
+  width: 150px;
+}
+
 /* Filtro: Categoria */
 #form-filtro #esc-categoria {
   width: 149px;
