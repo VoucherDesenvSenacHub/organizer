@@ -7,8 +7,22 @@ require_once '../../components/layout/base-inicio.php';
 
 require_once __DIR__ . '/../../../autoload.php';
 $projetoModel = new ProjetoModel();
+$CategoriaModel = new CategoriaModel();
+
+$categorias = $CategoriaModel->buscarCategorias();
 
 $paginaAtual = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
+
+$categoriasSelecionadas = [];
+if (isset($_GET['filtro']) && !empty($_GET['filtro'])) {
+    foreach ($categorias as $categoria) {
+        if (isset($_GET["cat_{$categoria['categoria_id']}"])) {
+            $categoriasSelecionadas[] = $categoria['categoria_id'];
+        }
+    }
+    $valor['categorias'] = $categoriasSelecionadas;
+}
+
 $tipo = '';
 $valor = ['pagina' => $paginaAtual];
 
@@ -17,9 +31,21 @@ if (isset($_GET['pesquisa'])) {
     $valor['pesquisa'] = $_GET['pesquisa'];
 }
 
+if (isset($_GET['filtro']) && !empty($categoriasSelecionadas)) {
+    $tipo = '';
+    $valor['categorias'] = $categoriasSelecionadas;
+}
+
 $lista = $projetoModel->listarCardsProjetos($tipo, $valor);
 $totalRegistros = $projetoModel->paginacaoProjetos($tipo, $valor);
 $paginas = ceil($totalRegistros / 8);
+
+
+// Marcar categorias como checked
+$categoriasComChecked = [];
+foreach ($categorias as $cat) {
+    $categoriasComChecked[$cat['categoria_id']] = in_array($cat['categoria_id'], $categoriasSelecionadas);
+}
 
 //Verificar se o doador marcou este projeto como favorito
 if (isset($_SESSION['usuario']['id']) && $_SESSION['perfil_usuario'] === 'doador') {
@@ -45,62 +71,33 @@ if (isset($_SESSION['usuario']['id']) && $_SESSION['perfil_usuario'] === 'doador
                 <div>
                     <h1>ENCONTRE PROJETOS</h1>
                     <p>Explore projetos inspiradores e apoie causas e faça a diferença hoje mesmo.</p>
-                    <form id="form-filtro" action="lista.php" method="GET">
+                    <form id="form-filtro" action="../../../controller/Projeto/BuscarProjetoController.php" method="GET">
                         <!-- ### -->
+                        <input type="hidden" name="busca" value="1">
                         <div class="ul-group">
-                            <ul class="drop" id="esc-status">
-                                <li>
-                                    <p>Status</p>
-                                    <i class="fa-solid fa-angle-down"></i>
-                                </li>
-                                <li>
-                                    <input type="checkbox" name="em-andamento" id="em-andamento">
-                                    <label for="em-andamento">Ativos</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" name="concluido" id="concluido">
-                                    <label for="concluido">Finalizados</label>
-                                </li>
-                            </ul>
                             <ul class="drop" id="esc-categoria">
                                 <li>
                                     <p>Categoria</p>
                                     <i class="fa-solid fa-angle-down"></i>
                                 </li>
-                                <li>
-                                    <input type="checkbox" name="educacao" id="educacao">
-                                    <label for="educacao">Educação</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" name="saude" id="saude">
-                                    <label for="saude">Saúde</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" name="esporte" id="esporte">
-                                    <label for="esporte">Esporte</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" name="cultura" id="cultura">
-                                    <label for="cultura">Cultura</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" name="tecnologia" id="tecnologia">
-                                    <label for="tecnologia">Tecnologia</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" name="ambiente" id="ambiente">
-                                    <label for="ambiente">Meio Ambiente</label>
-                                </li>
+                                <?php foreach ($categorias as $categoria): ?>
+                                    <li>
+                                        <input type="checkbox" name="cat_<?= $categoria['categoria_id'] ?>"
+                                            id="cat_<?= $categoria['categoria_id'] ?>"
+                                            <?= $categoriasComChecked[$categoria['categoria_id']] ? 'checked' : '' ?>>
+                                        <label for="cat_<?= $categoria['categoria_id'] ?>"><?= ucfirst($categoria['nome']) ?></label>
+                                    </li>
+                                <?php endforeach; ?>
                             </ul>
-                            
+
                         </div>
                         <button class="btn">Filtrar</button>
+                        <div id="form-busca">
+                            <input type="text" name="pesquisa" placeholder="Busque um projeto">
+                            <button class="btn" type="submit"><i class="fa-solid fa-search"></i></button>
+                        </div>
                     </form>
                 </div>
-                <form id="form-busca" action="lista.php" method="GET">
-                    <input type="text" name="pesquisa" placeholder="Busque um projeto">
-                    <button class="btn" type="submit"><i class="fa-solid fa-search"></i></button>
-                </form>
             </div>
             <div id="imagem-top">
                 <img src="../../assets/images/pages/shared/criancas.png">

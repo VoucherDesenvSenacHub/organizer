@@ -57,6 +57,22 @@ class ProjetoModel
             default:
                 $query = "SELECT * FROM vw_card_projetos v";
         }
+
+        if (!empty($valor['categorias']) && is_array($valor['categorias'])) {
+            $placeholders = [];
+            foreach ($valor['categorias'] as $i => $catId) {
+                $ph = ":cat{$i}";
+                $placeholders[] = $ph;
+                $params[$ph] = $catId;
+            }
+
+            if (stripos($query, 'WHERE') !== false) {
+                $query .= " AND v.categoria_id IN (" . implode(',', $placeholders) . ")";
+            } else {
+                $query .= " WHERE v.categoria_id IN (" . implode(',', $placeholders) . ")";
+            }
+        }
+
         $query .= " LIMIT {$limit} OFFSET {$offset}";
 
         $stmt = $this->pdo->prepare($query);
@@ -98,6 +114,25 @@ class ProjetoModel
                     $query .= " WHERE ong_id = :ong_id";
                     $params[':ong_id'] = $valor['ong_id'];
                 }
+        }
+
+        // ===== FILTRO POR CATEGORIAS =====
+        if (!empty($valor['categorias']) && is_array($valor['categorias'])) {
+            $placeholders = [];
+            foreach ($valor['categorias'] as $i => $catId) {
+                $ph = ":cat{$i}";
+                $placeholders[] = $ph;
+                $params[$ph] = $catId;
+            }
+
+            // Se já tiver WHERE na query, acrescenta com AND, senão cria WHERE
+            if (stripos($query, 'WHERE') !== false) {
+                $query .= " AND v.categoria_id IN (" . implode(',', $placeholders) . ")";
+            } else {
+                // alguns casos não usam alias `v`, por isso tratei aqui
+                $alias = (stripos($query, 'vw_card_projetos v') !== false) ? 'v.' : '';
+                $query .= " WHERE {$alias}categoria_id IN (" . implode(',', $placeholders) . ")";
+            }
         }
 
         $stmt = $this->pdo->prepare($query);
