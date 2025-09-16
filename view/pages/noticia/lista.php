@@ -31,50 +31,6 @@ $paginas = (int)ceil($totalRegistros / 6);
                 <div>
                     <h1>NOTÍCIAS</h1>
                     <p>Acompanhe as novidades e os impactos das ONGs e saiba como elas estão transformando vidas.</p>
-                    <form id="form-filtro" action="lista.php" method="GET">
-                        <div class="ul-group">
-                            <ul class="drop" id="esc-categoria">
-                                <li>
-                                    <p>Categoria</p>
-                                    <i class="fa-solid fa-angle-down"></i>
-                                </li>
-                                <li>
-                                    <input type="checkbox" name="educacao" id="educacao">
-                                    <label for="educacao">Educação</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" name="saude" id="saude">
-                                    <label for="saude">Saúde</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" name="esporte" id="esporte">
-                                    <label for="esporte">Esporte</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" name="cultura" id="cultura">
-                                    <label for="cultura">Cultura</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" name="tecnologia" id="tecnologia">
-                                    <label for="tecnologia">Tecnologia</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" name="ambiente" id="ambiente">
-                                    <label for="ambiente">Meio Ambiente</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" name="animal" id="animal">
-                                    <label for="animal">Proteção Animal</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" name="direitos" id="direitos">
-                                    <label for="direitos">Direitos Humanos</label>
-                                </li>
-                            </ul>
-                        </div>
-                        <button class="btn">Filtrar</button>
-                    </form>
-
                 </div>
                 <form id="form-busca" action="lista.php" method="GET">
                     <input type="text" name="pesquisa" placeholder="Busque uma notícia">

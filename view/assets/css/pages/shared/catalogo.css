@@ -18,8 +18,9 @@ section#top-info {
     display: flex;
     justify-content: space-between;
     flex-direction: column;
-    gap: 20px;
+    gap: 20px; 
 }
+
 
 #info div {
     display: flex;
@@ -30,6 +31,7 @@ section#top-info {
 #top-info #imagem-top {
     max-width: 330px;
     height: 300px;
+    margin-right: 50px;
 }
 
 #imagem-top img {
