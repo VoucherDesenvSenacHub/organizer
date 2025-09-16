@@ -22,9 +22,9 @@ class ProjetoModel
         switch ($tipo) {
             // Buscar os Projetos pelo nome
             case 'pesquisa':
-                $query = "SELECT * FROM vw_card_projetos WHERE nome LIKE :nome";
+                $query = "SELECT * FROM vw_card_projetos v WHERE v.nome LIKE :nome";
                 if (!empty($valor['ong_id'])) {
-                    $query .= " AND ong_id = :ong_id";
+                    $query .= " AND v.ong_id = :ong_id";
                     $params[':ong_id'] = $valor['ong_id'];
                 }
                 $params[':nome'] = "%{$valor['pesquisa']}%";
@@ -66,10 +66,13 @@ class ProjetoModel
                 $params[$ph] = $catId;
             }
 
+            // Usa alias 'v' se a query o contiver, senão sem alias
+            $hasAliasV = (stripos($query, 'vw_card_projetos v') !== false);
+            $prefix = $hasAliasV ? 'v.' : '';
             if (stripos($query, 'WHERE') !== false) {
-                $query .= " AND v.categoria_id IN (" . implode(',', $placeholders) . ")";
+                $query .= " AND {$prefix}categoria_id IN (" . implode(',', $placeholders) . ")";
             } else {
-                $query .= " WHERE v.categoria_id IN (" . implode(',', $placeholders) . ")";
+                $query .= " WHERE {$prefix}categoria_id IN (" . implode(',', $placeholders) . ")";
             }
         }
 
@@ -89,10 +92,10 @@ class ProjetoModel
         $params = [];
         switch ($tipo) {
             case 'pesquisa':
-                $query = "SELECT COUNT(*) AS total FROM vw_card_projetos WHERE nome LIKE :nome";
+                $query = "SELECT COUNT(*) AS total FROM vw_card_projetos v WHERE v.nome LIKE :nome";
                 $params[':nome'] = "%{$valor['pesquisa']}%";
                 if (!empty($valor['ong_id'])) {
-                    $query .= " AND ong_id = :ong_id";
+                    $query .= " AND v.ong_id = :ong_id";
                     $params[':ong_id'] = $valor['ong_id'];
                 }
                 break;
@@ -125,13 +128,14 @@ class ProjetoModel
                 $params[$ph] = $catId;
             }
 
+            // Usa alias 'v' se a query o contiver, senão sem alias
+            $hasAliasV = (stripos($query, 'vw_card_projetos v') !== false);
+            $prefix = $hasAliasV ? 'v.' : '';
             // Se já tiver WHERE na query, acrescenta com AND, senão cria WHERE
             if (stripos($query, 'WHERE') !== false) {
-                $query .= " AND v.categoria_id IN (" . implode(',', $placeholders) . ")";
+                $query .= " AND {$prefix}categoria_id IN (" . implode(',', $placeholders) . ")";
             } else {
-                // alguns casos não usam alias `v`, por isso tratei aqui
-                $alias = (stripos($query, 'vw_card_projetos v') !== false) ? 'v.' : '';
-                $query .= " WHERE {$alias}categoria_id IN (" . implode(',', $placeholders) . ")";
+                $query .= " WHERE {$prefix}categoria_id IN (" . implode(',', $placeholders) . ")";
             }
         }
 
