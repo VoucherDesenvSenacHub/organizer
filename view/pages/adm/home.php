@@ -25,7 +25,7 @@ $relatorioNoticia = $adminModel->buscarNoticias();
             <a href="ongs.php">
                 <div class="resumo-item">
                     <h3><?= $relatorio['qnt_ongs'] ?> <span>ONGS</span></h3>
-                    <i class="fa-solid fa-house-flag"></i>
+                    <i class="fa-solid fa-building-flag"></i>
                 </div>
             </a>
             <a href="projetos.php">
@@ -34,9 +34,9 @@ $relatorioNoticia = $adminModel->buscarNoticias();
                     <i class="fa-solid fa-diagram-project"></i>
                 </div>
             </a>
-            <a href="doadores.php">
+            <a href="usuarios.php">
                 <div class="resumo-item">
-                    <h3><?= $relatorio['qnt_usuarios'] ?> <span>DOADORES</span></h3>
+                    <h3><?= $relatorio['qnt_usuarios'] ?> <span>USUÁRIOS</span></h3>
                     <i class="fa-solid fa-users"></i>
                 </div>
             </a>
@@ -57,7 +57,7 @@ $relatorioNoticia = $adminModel->buscarNoticias();
                     <h4>ONGS</h4>
                     <span>Aprove ou recuse cadastros de ONG’s novas no sistema.</span>
                     <a href="solicitacoes-ongs.php">
-                        <div><i class="fa-solid fa-house-flag"></i>
+                        <div><i class="fa-solid fa-building-flag"></i>
                             <p><?= $solicitacoes->ongs ?> Solicitações</p>
                         </div>
                     </a>
@@ -67,7 +67,7 @@ $relatorioNoticia = $adminModel->buscarNoticias();
         <div class="secao-3">
             <div class="container-card">
                 <div class="top">
-                    <i class="fa-solid fa-house-flag"></i>
+                    <i class="fa-solid fa-building-flag"></i>
                     <h1>Ongs</h1>
                 </div>
                 <div class="content">
@@ -119,7 +119,8 @@ $relatorioNoticia = $adminModel->buscarNoticias();
 
             <div class="container-card">
                 <div class="top">
-                    <i class="fa-solid fa-users"></i>
+                    <!-- <i class="fa-solid fa-users"></i> -->
+                    <img src="../../assets/images/icons/icon-doadores.png">
                     <h1>Doadores</h1>
                 </div>
                 <div class="content">
@@ -138,7 +139,7 @@ $relatorioNoticia = $adminModel->buscarNoticias();
                         <span class="linha"></span>
                     <?php endforeach; ?>
                 </div>
-                <a class="area-btn" href="doadores.php">
+                <a class="area-btn" href="usuarios.php">
                     <button class="btn">Todos os Doadores</button>
                 </a>
             </div>

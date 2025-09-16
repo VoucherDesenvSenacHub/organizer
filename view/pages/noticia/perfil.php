@@ -42,7 +42,7 @@ ob_end_flush();
                 <div class="titulo">
                     <h1><?= $PerfilNoticia['titulo'] ?></h1>
                     <span><i class="fa-regular fa-clock"></i> <?= date('d/m/Y H:i', strtotime($PerfilNoticia['data_cadastro'])) ?></span>
-                    <a title="Ver Perfil da ONG" href="../ong/perfil.php?id=<?= $PerfilNoticia['ong_id'] ?>"><i class="fa-solid fa-house-flag"></i> <?= $PerfilNoticia['nome'] ?></a>
+                    <a title="Ver Perfil da ONG" href="../ong/perfil.php?id=<?= $PerfilNoticia['ong_id'] ?>"><i class="fa-solid fa-building-flag"></i> <?= $PerfilNoticia['nome'] ?></a>
                 </div>
                 <!-- Botões de edição para a ONG -->
                 <?php if ($acesso === 'ong' && $PerfilNoticia['ong_id'] === $_SESSION['ong_id'] && $PerfilNoticia['status'] === 'ATIVO'): ?>

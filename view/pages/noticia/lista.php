@@ -31,7 +31,6 @@ $paginas = (int)ceil($totalRegistros / 6);
                 <div>
                     <h1>NOTÍCIAS</h1>
                     <p>Acompanhe as novidades e os impactos das ONGs e saiba como elas estão transformando vidas.</p>
-
                 </div>
                 <form id="form-busca" action="lista.php" method="GET">
                     <input type="text" name="pesquisa" placeholder="Busque uma notícia">

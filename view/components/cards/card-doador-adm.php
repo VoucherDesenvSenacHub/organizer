@@ -16,7 +16,7 @@ $FotoUsuario = $doador['caminho'] ?? '../../assets/images/global/user-placeholde
         </div>
     </div>
     <small><?= $DataCadastro ?></small>
-    <form action="doadores.php" method="GET">
+    <form action="usuarios.php" method="GET">
         <input type="hidden" name="id" value="<?= $IdUsuario ?>">
         <button type="submit">
             <i class="fa-solid fa-eye"></i>

@@ -5,7 +5,7 @@
     width: 100%;
     flex-direction: column;
     align-items: normal;
-
+    gap: 40px;
 }
 
 /* Sessão de Cima */
@@ -16,10 +16,9 @@ section#top-info {
 
 #top-info #info {
     display: flex;
+    justify-content: space-between;
     flex-direction: column;
-    gap: 60px; 
-    margin-left: 10px;
-
+    gap: 20px; 
 }
 
 
@@ -30,7 +29,7 @@ section#top-info {
 
 /* Imagem */
 #top-info #imagem-top {
-    max-width: 300px;
+    max-width: 330px;
     height: 300px;
     margin-right: 50px;
 }
@@ -249,7 +248,7 @@ main.visitante {
 
 /* Se o usuário for um doador: */
 main.usuario-logado {
-    padding: 20px;
+    padding: 30px 20px;
     /* min-height: calc(100vh - 60px); */
 }
 

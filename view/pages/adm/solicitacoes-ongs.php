@@ -9,7 +9,7 @@ $adminModel = new AdminModel();
 $solicitacoes = $adminModel->ListarSolicitacoesOngs();
 ?>
 <main class="container">
-    <h1><i class="fa-solid fa-house-flag"></i> SOLICITAÇÕES DE CADASTRO DE ONGs</h1>
+    <h1><i class="fa-solid fa-building-flag"></i> SOLICITAÇÕES DE CADASTRO DE ONGs</h1>
     <div class="box-cards">
         <?php if (empty($solicitacoes)): ?>
             <p>Nenhuma solicitação de cadastro de ONG pendente.</p>

@@ -19,7 +19,7 @@ $FotoNoticia = $noticia['caminho']
             <h3><?= $TituloNoticia ?></h3>
             <p><?= $TextoNoticia ?></p>
             <div class="info">
-                <p><i class="fa-solid fa-house-flag"></i> <?= $NomeOng ?></p>
+                <p><i class="fa-solid fa-building-flag"></i> <?= $NomeOng ?></p>
                 <p><i class="fa-regular fa-clock"></i> <?= date('d/m/Y', strtotime($DataNoticia)) ?></p>
             </div>
         </div>

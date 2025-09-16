@@ -105,7 +105,7 @@ class OngModel
                 $query = "SELECT v.*, f.usuario_id FROM vw_card_ongs v
                 JOIN favoritos_ongs f USING (ong_id)
                 WHERE usuario_id = :usuario_id ORDER BY data_favoritado DESC";
-                $params[':usuario_id'] = $valor;
+                $params[':usuario_id'] = $valor['usuario_id'];
                 break;
             // Buscar as Ongs mais recentes
             case 'recentes':
@@ -138,6 +138,12 @@ class OngModel
                     $params[':ong_id'] = $valor['ong_id'];
                 }
                 break;
+            case 'favoritos':
+                $query = "SELECT COUNT(*) AS total FROM vw_card_ongs v
+                JOIN favoritos_ongs f USING (ong_id)
+                WHERE usuario_id = :usuario_id ORDER BY data_favoritado DESC";
+                $params[':usuario_id'] = $valor['usuario_id'];
+                break;
             default:
                 $query = "SELECT COUNT(*) AS total FROM vw_card_ongs";
         }
@@ -148,7 +154,7 @@ class OngModel
         }
         $stmt->execute();
         $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
-        return (int)$resultado['total'];
+        return (int) $resultado['total'];
     }
 
     function buscarPerfilOng($id)
