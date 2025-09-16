@@ -58,19 +58,18 @@ $listagem_projetos = $projetos->listarProjetos($idOng);
     <hr>
     <div id="grafico">
         <?php
-            if ($listagem_projetos === "Não há projetos ativos cadastrados para essa ONG") {
+            if (count($listagem_projetos) == 0) {
                 echo '<h1>Não há projetos ativos cadastrados para essa ONG</h1>';
             } else {
                 echo "<h1>Aqui haverá um gráfico</h1>";
-                // echo graficoBarrasVerticais(600, 320, $contagem_projetos);
             }
         ?>
     </div>
     <hr>
     <?php
-        echo '<pre>';
-        print_r($contagem_projetos);
-        echo '</pre';
+        // echo '<pre>';
+        // print_r($contagem_projetos);
+        // echo '</pre';
         $contador = 0;
         foreach ($contagem_projetos as $cp):
     ?>
@@ -81,7 +80,7 @@ $listagem_projetos = $projetos->listarProjetos($idOng);
                 <th>Apoiadores</th>
             </thead>
             <tbody>
-                <?php 
+                <?php
                     foreach ($listagem_projetos as $lp):
                         if ($cp[0] == $lp['nome_projeto']):
                             $contador++;

@@ -1,6 +1,6 @@
 <?php
 $acesso = 'ong';
-require_once '../../components/graphics/line-graphic.php';
+require_once '../../components/graphics/pie-graphic.php';
 require_once '../../../model/RelatoriosModel.php';
 require_once '../../../model/OngModel.php';
 

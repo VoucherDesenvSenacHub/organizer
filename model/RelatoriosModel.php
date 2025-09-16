@@ -56,11 +56,11 @@ class RelatoriosModel {
         $stmt->bindParam(':ong_id', $id, PDO::PARAM_INT);
         $stmt->execute();
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
-        if ($stmt->rowCount() > 0){
-            return $stmt->fetchAll();
-        }else {
-            return "Não há projetos ativos cadastrados para essa ONG";
-        }
+        // if ($stmt->rowCount() > 0){
+        // }else {
+        //     return "Não há projetos ativos cadastrados para essa ONG";
+        // }
+        return $stmt->fetchAll();
     }
 
     function buscarUsuarios(){
@@ -98,6 +98,13 @@ class RelatoriosModel {
         return $stmt->fetch();            
     }
     
+    // Função para somar doações por projeto
+    function doacoesPosProjeto($id){
+        $query = "SELECT * from doacoes_projetos WHERE id = :id";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+    }
+
     function listarTabelas(){
         $query = "SELECT * from usuarios";
         $stmt = $this->pdo->prepare($query);
