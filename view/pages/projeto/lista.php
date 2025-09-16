@@ -109,7 +109,8 @@ if (isset($_SESSION['usuario']['id']) && $_SESSION['perfil_usuario'] === 'doador
                         <button class="btn">Filtrar</button>
 
                         <div id="form-busca">
-                            <input type="text" name="pesquisa" placeholder="Busque um projeto">
+                            <input type="text" name="pesquisa" placeholder="Busque um projeto" 
+                                   value="<?= isset($_GET['pesquisa']) ? htmlspecialchars($_GET['pesquisa']) : (isset($pesquisaController) ? htmlspecialchars($pesquisaController) : '') ?>">
                             <button class="btn" type="submit"><i class="fa-solid fa-search"></i></button>
                         </div>
                     </form>
@@ -127,12 +128,24 @@ if (isset($_SESSION['usuario']['id']) && $_SESSION['perfil_usuario'] === 'doador
         $temPesquisaController = isset($pesquisaController) && !empty($pesquisaController);
         
         // Só mostrar contagem quando há filtro ou pesquisa ativos
-        if ($temPesquisa || $temPesquisaController || $temFiltro) {
+        if ($temPesquisa || $temPesquisaController || $temFiltro || $dadosController) {
             $textoContagem = '';
+            
+            // Definir texto baseado na quantidade
+            if ($totalRegistros == 0) {
+                $texto = "Projeto não encontrado";
+            } elseif ($totalRegistros == 1) {
+                $texto = "1 Projeto encontrado";
+            } else {
+                $texto = $totalRegistros . " Projetos encontrados";
+            }
+            
             if ($temPesquisa || $temPesquisaController) {
-                $textoContagem = "<i class='fa-solid fa-search'></i> " . $totalRegistros . " Projetos Encontrados";
-            } elseif ($temFiltro) {
-                $textoContagem = "<i class='fa-solid fa-filter'></i> " . $totalRegistros . " Projetos Encontrados";
+                $textoContagem = "<i class='fa-solid fa-search'></i> " . $texto;
+            } elseif ($temFiltro || (!empty($categoriasSelecionadas) && $dadosController)) {
+                $textoContagem = "<i class='fa-solid fa-filter'></i> " . $texto;
+            } else {
+                $textoContagem = "<i class='fa-solid fa-list'></i> " . $texto;
             }
             echo "<p class='qnt-busca'>" . $textoContagem . "</p>";
         }
@@ -140,17 +153,9 @@ if (isset($_SESSION['usuario']['id']) && $_SESSION['perfil_usuario'] === 'doador
 
         <section id="box-ongs">
             <!-- LISTAR CARDS PROJETOS -->
-            <?php if (empty($lista)): ?>
-                <div class="sem-resultados">
-                    <i class="fa-solid fa-search"></i>
-                    <h3>Nenhum projeto encontrado</h3>
-                    <p>Tente ajustar os filtros ou fazer uma nova busca.</p>
-                </div>
-            <?php else: ?>
-                <?php foreach ($lista as $projeto) {
-                    require '../../components/cards/card-projeto.php';
-                } ?>
-            <?php endif; ?>
+        <?php foreach ($lista as $projeto) {
+            require '../../components/cards/card-projeto.php';
+        } ?>
         </section>
         <?php if ($paginas > 1): ?>
             <?php
