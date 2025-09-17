@@ -35,7 +35,7 @@ if (!empty($pesquisa)) {
     
 } elseif (!empty($filtros)) {
     // Caso filtro
-    $tipo = 'pesquisa';
+    $tipo = '';
     $valor = array_merge([
         'pagina' => $paginaAtual,
         'pesquisa' => $pesquisa,

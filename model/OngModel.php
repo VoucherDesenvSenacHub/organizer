@@ -184,23 +184,22 @@ class OngModel
         }
 
         // ===== FILTROS =====
-        if (!empty($valor['filtros'])) {
-            $filtros = $valor['filtros'];
+        if (!empty($valor['quantidade'])) {
 
-            if (isset($filtros['quantidade'])) {
+            if (isset($valor['quantidade'])) {
                 $whereClause = (stripos($query, 'WHERE') !== false) ? " AND " : " WHERE ";
-                if ($filtros['quantidade'] === '1-3') {
+                if ($valor['quantidade'] === '1-3') {
                     $query .= $whereClause . " v.total_projetos BETWEEN 1 AND 3";
-                } elseif ($filtros['quantidade'] === '4+') {
+                } elseif ($valor['quantidade'] === '4+') {
                     $query .= $whereClause . " v.total_projetos >= 4";
                 }
             }
 
-            if (isset($filtros['tempo'])) {
+            if (isset($valor['tempo'])) {
                 $whereClause = (stripos($query, 'WHERE') !== false) ? " AND " : " WHERE ";
-                if ($filtros['tempo'] === 'mais-recentes') {
+                if ($valor['tempo'] === 'mais-recentes') {
                     $query .= $whereClause . " 1=1"; // Placeholder, já que a ordenação não afeta a contagem
-                } elseif ($filtros['tempo'] === 'mais-antigos') {
+                } elseif ($valor['tempo'] === 'mais-antigos') {
                     $query .= $whereClause . " 1=1"; // Placeholder, já que a ordenação não afeta a contagem
                 }
             }

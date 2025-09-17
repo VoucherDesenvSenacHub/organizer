@@ -99,7 +99,7 @@ if (isset($_SESSION['usuario']['id'])) {
         $temPesquisaController = isset($pesquisaController) && !empty($pesquisaController);
 
         // Só mostrar contagem quando há filtro ou pesquisa ativos
-        if ($temPesquisa || $temPesquisaController || $temFiltro) {
+        if ($temPesquisa || $temPesquisaController || $temFiltro || $dadosController) {
             $textoContagem = '';
 
             // Definir texto baseado na quantidade
@@ -121,18 +121,11 @@ if (isset($_SESSION['usuario']['id'])) {
         ?>
 
         <section id="box-ongs">
-            <?php if (empty($lista)): ?>
-                <div class="sem-resultados">
-                    <i class="fa-solid fa-search"></i>
-                    <p>Nenhuma ONG encontrada</p>
-                </div>
-            <?php else: ?>
                 <?php foreach ($lista as $ong) {
                     $jaFavoritada = isset($_SESSION['usuario']['id']) && in_array($ong['ong_id'], $ongsFavoritas);
                     require '../../components/cards/card-ong.php';
                 }
                 ?>
-            <?php endif; ?>
         </section>
         <?php if ($paginas > 1): ?>
             <?php
