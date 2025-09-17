@@ -63,4 +63,40 @@ class ImagemModel
         $stmt->bindValue(':noticia_id', $idNoticia);
         return $stmt->execute();
     }
+    public function salvarImagem(array $file): ?int
+{
+    // Verifica erros no upload
+    if ($file['error'] !== UPLOAD_ERR_OK) {
+        throw new Exception("Erro no upload da imagem. Código: " . $file['error']);
+    }
+
+    // Tipos permitidos
+    $tiposPermitidos = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
+    if (!in_array($file['type'], $tiposPermitidos)) {
+        throw new Exception("Tipo de arquivo não permitido.");
+    }
+
+    // Garante pasta de upload
+    $pastaUpload = __DIR__ . "/../../uploads/";
+    if (!is_dir($pastaUpload)) {
+        mkdir($pastaUpload, 0777, true);
+    }
+
+    // Cria nome único para a imagem
+    $extensao = pathinfo($file['name'], PATHINFO_EXTENSION);
+    $nomeUnico = uniqid("img_", true) . "." . $extensao;
+    $caminhoFinal = $pastaUpload . $nomeUnico;
+
+    // Move a imagem
+    if (!move_uploaded_file($file['tmp_name'], $caminhoFinal)) {
+        throw new Exception("Falha ao salvar a imagem no servidor.");
+    }
+
+    // Caminho relativo (para salvar no banco e usar no HTML)
+    $caminhoRelativo = "uploads/" . $nomeUnico;
+
+    // Salva no banco e retorna o ID
+    return $this->salvarCaminhoImagem($caminhoRelativo);
+}
+
 }

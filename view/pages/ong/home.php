@@ -55,37 +55,66 @@ $UltimasAtividades = $ongModel->ultimasAtividadesOng($IdOng);
                 </div>
             </section>
         <?php endif ?>
+<div class="upload_imagem_perfil">
+    <h1>Finalizar cadastro</h1>
+    <h3>Adicione uma foto de perfil</h3>
+    <form action="upload.php" method="POST" enctype="multipart/form-data">
+        <label for="image" class="input_label">
+            <p>Procurar Imagem</p>
+        </label>
 
-        <div class="upload_imagem_perfil">
-            <h1>Finalizar cadastro</h1>
+        <input type="file" id="image" name="imagem" accept="image/*" required hidden>
+        <button type="submit">Enviar</button>
+    </form>
 
-            <h3>Adicione uma foto de perfil</h3>
-            <form action="upload.php" method="POST" enctype="multipart/form-data">
-                <label for="image">
-                    <div class="input_label">
-                        <p>Procurar Imagem</p>
-                    </div>
-                </label>
-                <input type="file" id="image" name="imagem" accept="image/*" required>
-                <button type="submit">Enviar</button>
-            </form>
-            <span id="imageName">Nenhum arquivo selecionado</span>
-        </div>
+    <span id="imageName">Nenhum arquivo selecionado</span>
+</div>
+
+
+        <script>
+            const inputFile = document.getElementById("image");
+            const imageName = document.getElementById("imageName");
+
+            inputFile.addEventListener("change", () => {
+                if (inputFile.files.length > 0) {
+                    imageName.textContent = inputFile.files[0].name;
+                } else {
+                    imageName.textContent = "Nenhum arquivo selecionado";
+                }
+            });
+        </script>
+
     </section>
 </main>
-<script>
-    const image = document.getElementById("image");
-    const imageName = document.getElementById("imageName");
-    image.addEventListener("change", function() {
-  imageName.textContent = image.files[0]?.name || "Nenhum arquivo selecionado";
-});
-</script>
 
 <!-- Toast -->
-<div id="toast-cadastro-ong" class="toast">
-    <i class="fa-regular fa-circle-check"></i>
-    Cadastro realizado com Sucesso!
-</div>
+<!-- SweetAlert2 CDN -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<?php
+// Mostra toast se existir mensagem na sessão
+if (isset($_SESSION['toast'])) {
+    $toast = $_SESSION['toast'];
+    $tipo = $_SESSION['toast_tipo'] ?? 'success'; // success, error, warning, info
+
+    echo "<script>
+        Swal.fire({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            icon: '$tipo',
+            title: '$toast'
+        });
+    </script>";
+
+    // Limpa a mensagem para não repetir
+    unset($_SESSION['toast']);
+    unset($_SESSION['toast_tipo']);
+}
+?>
+
 
 <?php
 $jsPagina = [];
