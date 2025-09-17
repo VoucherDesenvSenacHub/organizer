@@ -183,7 +183,7 @@ header #img-doador img {
 }
 
 /* SCROLL CUSTOMIZADO (Tirar o display: none) */
-/* .container #container-conteudo::-webkit-scrollbar {
+.container #container-conteudo::-webkit-scrollbar {
     width: 8px;
     display: none;
 }
@@ -197,7 +197,7 @@ header #img-doador img {
     background-size: 200% 100%;
     border-radius: 20px;
     animation: gradiente-scroll 3s infinite linear reverse;
-} */
+}
 
 /* ================= RESPONSIVIDADE ================= */
 @media (max-width: 700px) {
