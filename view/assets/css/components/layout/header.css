@@ -1,3 +1,4 @@
+/* ================= HEADER BASE ================= */
 header {
     padding: 0 20px;
     height: 60px;
@@ -12,13 +13,15 @@ header .container {
     justify-content: space-between;
 }
 
+/* ================= LOGO ================= */
 header .logo {
     display: flex;
     align-items: center;
     font-size: 11px;
     gap: 10px;
     cursor: default;
-    
+
+    /* Texto animado em gradiente */
     background: linear-gradient(90deg, #f8c35c, #f67f2a, #f8c35c);
     background-size: 200% 100%;
     background-clip: text;
@@ -42,7 +45,7 @@ header .logo:hover img {
     transform: rotate(360deg);
 }
 
-/* nav */
+/* ================= NAV MENU ================= */
 header nav ul {
     display: flex;
     list-style: none;
@@ -70,17 +73,58 @@ header nav a:hover {
     color: #E3B652;
 }
 
+header nav.active {
+    height: 180px;
+    transition: .3s;
+}
+
+/* ================= LOGIN (visitante) ================= */
 header .btn-login {
     display: flex;
     align-items: center;
     gap: 15px;
 }
 
-header nav.active {
-    height: 180px;
-    transition: .3s;
+/* ================= NAV (doador logado) ================= */
+header a {
+    text-decoration: none;
 }
 
+header #doador-nav {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Botão de avatar do doador */
+header #img-doador {
+    width: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background: none;
+    border: none;
+    transform: translateY(0);
+    transition: .3s;
+    border-radius: 50%;
+}
+
+header #img-doador:hover {
+    transform: translateY(-2px);
+    box-shadow: rgba(49, 214, 255, 0.35) 0px 5px 15px;
+}
+
+header #img-doador img {
+    width: 100%;
+    border-radius: 5px;
+    object-fit: cover;
+    box-shadow: rgba(60, 64, 67, 0.6) 0px 1px 2px 0px,
+                rgba(60, 64, 67, 0.5) 0px 1px 3px 1px;
+    border: 2px solid white;
+}
+
+/* ================= HAMBURGUER MENU ================= */
 #hamburguer {
     border: none;
     border-top: 4px solid #E3B652;
@@ -117,6 +161,45 @@ header nav.active {
     transform: rotate(-45deg);
 }
 
+/* ================= CONTEÚDO PRINCIPAL (logado) ================= */
+#container-principal > .container {
+    position: relative;
+    height: calc(100vh - 60px);
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    justify-content: normal;
+    align-items: normal;
+    padding-left: 65px;
+    transition: .3s;
+}
+
+.container #container-conteudo {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    transition: .3s ease-out;
+    min-height: calc(100vh - 60px);
+    overflow-y: scroll;
+}
+
+/* SCROLL CUSTOMIZADO (Tirar o display: none) */
+/* .container #container-conteudo::-webkit-scrollbar {
+    width: 8px;
+    display: none;
+}
+
+.container #container-conteudo::-webkit-scrollbar-track {
+    background: azure;
+}
+
+.container #container-conteudo::-webkit-scrollbar-thumb {
+    background: linear-gradient(90deg, #f8c35c, #f67f2a, #f8c35c);
+    background-size: 200% 100%;
+    border-radius: 20px;
+    animation: gradiente-scroll 3s infinite linear reverse;
+} */
+
+/* ================= RESPONSIVIDADE ================= */
 @media (max-width: 700px) {
     header {
         padding: 0 7.5px;
@@ -144,6 +227,17 @@ header nav.active {
 
     #hamburguer {
         display: block;
+    }
+}
+
+@media (max-width: 500px) {
+    #container-principal > .container {
+        padding-left: 0;
+    }
+
+    main.conteudo-principal > section {
+        padding-inline: 10px !important;
+        padding-top: 70px !important;
     }
 }
 
