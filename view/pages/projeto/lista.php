@@ -117,7 +117,7 @@ if (isset($_SESSION['usuario']['id']) && $_SESSION['perfil_usuario'] === 'doador
             } ?>
         </section>
         <?php if ($paginas > 1): ?>
-            <nav class="navegacao">
+            <nav class="paginacao">
                 <?php for ($i = 1; $i <= $paginas; $i++): ?>
                     <a href="?pagina=<?= $i ?><?= isset($_GET['pesquisa']) ? '&pesquisa=' . urlencode($_GET['pesquisa']) : '' ?>"
                         class="<?= $i === $paginaAtual ? 'active' : '' ?>">
