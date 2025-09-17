@@ -73,7 +73,7 @@ $projetosFavoritos = $projetoModel->listarFavoritos($IdUsuario);
                             </div>
 
                             <?php if ($paginasOngs > 1): ?>
-                                <nav class="navegacao">
+                                <nav class="paginacao">
                                     <?php for ($i = 1; $i <= $paginasOngs; $i++): ?>
                                         <a href="?pagina=<?= $i ?>&aba=ongs" class="<?= $i === $valorOngs['pagina'] ? 'active' : '' ?>">
                                             <?= $i ?>
@@ -99,7 +99,7 @@ $projetosFavoritos = $projetoModel->listarFavoritos($IdUsuario);
                             </div>
 
                             <?php if ($paginasProjetos > 1): ?>
-                                <nav class="navegacao">
+                                <nav class="paginacao">
                                     <?php for ($i = 1; $i <= $paginasProjetos; $i++): ?>
                                         <a href="?pagina=<?= $i ?>&aba=projetos" class="<?= $i === $valorProjetos['pagina'] ? 'active' : '' ?>">
                                             <?= $i ?>

@@ -1,7 +1,7 @@
+/* ========= ASIDE CONTAINER ========= */
 #aside-container {
     position: absolute;
     left: 0;
-    /* top: 60px; */
     width: 65px;
     flex-shrink: 0;
     height: 100%;
@@ -12,9 +12,9 @@
     background-color: rgba(255, 255, 255, 0.95);
     color: var(--cor-principal);
     border-radius: 0 25px 25px 0;
-    box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
+    box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em,
+                rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
     transition: .4s ease-out;
-    overflow: hidden;
     z-index: 2;
 }
 
@@ -22,8 +22,8 @@
     width: 200px;
 }
 
-/* Botão de abrir aside */
 
+/* ========= BOTÕES GERAIS ========= */
 #aside-container #btn-aside,
 #aside-container #btn-sair {
     background: none;
@@ -36,18 +36,18 @@
     overflow: hidden;
 }
 
+
+/* ========= BOTÃO ABRIR/COLAPSAR ========= */
 #aside-container #btn-aside {
-    position: fixed;
     background-color: var(--cor-azul);
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    /* transition: .3s; */
 }
 
 #aside-container #btn-aside:hover {
-    filter: brightness(.93);
+    filter: brightness(1.1);
 }
 
 #aside-container #btn-aside i {
@@ -57,35 +57,34 @@
     color: aliceblue;
 }
 
-#aside-container #btn-aside.active i {
-    transform: rotate(-180deg);
-}
-
 #aside-container #btn-aside.active {
     transform: translateX(135px);
 }
 
-#aside-container #area-topo {
-    display: flex;
-    position: fixed;
+#aside-container #btn-aside.active i {
+    transform: rotate(-180deg);
 }
 
+
+/* ========= LINKS DO TOPO ========= */
 #aside-container #area-topo a {
     height: 45px;
     width: 45px;
     transition: .4s;
+    white-space: nowrap;
 }
 
 #aside-container.active #area-topo a {
     width: 180px;
 }
 
-/* Navegação */
+
+/* ========= NAVEGAÇÃO ========= */
 #aside-container nav {
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    margin-top: 50px;
+    margin-top: 12px;
 }
 
 #aside-container a {
@@ -94,11 +93,10 @@
     gap: 30px;
     align-items: center;
     color: var(--cor-principal);
-    padding: 10px;
-    padding-left: 14px;
+    padding: 10px 14px;
     border-radius: 4px;
     transition: .3s;
-    font-size: 15px
+    font-size: 15px;
 }
 
 #aside-container a:hover,
@@ -111,10 +109,9 @@
     font-size: 17px;
 }
 
+
+/* ========= BOTÃO SAIR ========= */
 #aside-container #btn-sair {
-    overflow: hidden;
-    background: none;
-    border: none;
     display: flex;
     align-items: center;
     gap: 20px;
@@ -137,10 +134,9 @@
     width: 180px;
 }
 
+
+/* ========= BOTÃO MUDAR ACESSO ========= */
 #aside-container #btn-acesso {
-    overflow: hidden;
-    background: none;
-    border: none;
     display: flex;
     align-items: center;
     gap: 20px;
@@ -150,6 +146,9 @@
     color: var(--cor-principal);
     width: 45px;
     white-space: nowrap;
+    background: none;
+    border: none;
+    overflow: hidden;
     transition: .5s;
 }
 
@@ -161,37 +160,8 @@
     width: 25px;
 }
 
-/* @media (max-width: 400px) {
-    #aside-container-doador {
-        width: 50px;
-        padding: 5px;
-    }
 
-    #aside-container-doador a {
-        padding-left: 10.5px;
-    }
-
-
-    #aside-container-doador #area-topo a {
-        width: 40px;
-    }
-
-    #aside-container-doador #btn-aside {
-        width: 40px;
-        height: 40px;
-    }
-
-    #aside-container-doador #btn-sair {
-        padding: 0 10px;
-        width: 40px;
-    }
-
-    #aside-container-doador.active #btn-sair,
-    #aside-container-doador.active #area-topo a {
-        width: 189px;
-    }
-} */
-
+/* ========= RESPONSIVIDADE (MOBILE) ========= */
 @media (max-width: 500px) {
     #aside-container {
         left: -65px;
@@ -214,11 +184,13 @@
     #aside-container:not(.active) #btn-aside {
         border-radius: 0 50px 50px 0;
         background-color: white;
-        box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px,
+                    rgba(0, 0, 0, 0.23) 0px 3px 6px;
     }
 }
 
-/* Animação */
+
+/* ========= ANIMAÇÃO DE ÍCONES ========= */
 #aside-container nav a:hover i,
 #aside-container #btn-acesso:hover img,
 #aside-container #btn-sair:hover i {
@@ -226,19 +198,20 @@
 }
 
 @keyframes girarIcone {
-    50%{
-        transform: rotate(20deg);
-    }
-
-    100%{
-        transform: rotate(0);
-    }
+    50% { transform: rotate(20deg); }
+    100% { transform: rotate(0); }
 }
 
 
-/* ========= ASIDE DA ONG ========= */
+/* ========= VARIAÇÃO ASIDE ONG ========= */
 #aside-container.aside-ong #btn-aside {
     background-color: var(--cor-amarelo);
+}
+
+#aside-container.aside-ong a:hover,
+#aside-container.aside-ong #btn-sair:hover,
+#aside-container.aside-ong #btn-acesso:hover {
+    background-color: rgba(227, 182, 82, 0.2);
 }
 
 @media (max-width: 500px) {
@@ -251,14 +224,8 @@
     }
 }
 
-#aside-container.aside-ong a:hover,
-#aside-container.aside-ong #btn-sair:hover,
-#aside-container.aside-ong #btn-acesso:hover {
-    background-color: rgba(227, 182, 82, 0.2);
-}
 
-
-/* ========= ASIDE DO ADM ========= */
+/* ========= VARIAÇÃO ASIDE ADM ========= */
 #aside-container.aside-adm #btn-aside {
     background-color: var(--cor-roxo-adm);
 }

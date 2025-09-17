@@ -46,7 +46,7 @@ $projetosFavoritos = $projetoModel->listarFavoritos($_SESSION['usuario']['id']);
                 ?>
             </div>
             <?php if ($paginas > 1): ?>
-                <nav class="navegacao">
+                <nav class="paginacao">
                     <?php for ($i = 1; $i <= $paginas; $i++): ?>
                         <a href="?pagina=<?= $i ?>"
                             class="<?= $i === $paginaAtual ? 'active' : '' ?>">

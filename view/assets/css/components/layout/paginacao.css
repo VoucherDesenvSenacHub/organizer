@@ -1,11 +1,11 @@
-/* Botões de navegação */
-.navegacao {
+/* Botões de Paginação */
+.paginacao {
     display: flex;
     justify-content: center;
     gap: 10px;
 }
 
-.navegacao a {
+.paginacao a {
     text-decoration: none;
     color: var(--cor-principal);
     background-color: white;
@@ -19,12 +19,12 @@
     transition: .3s;
 }
 
-.navegacao a:hover {
+.paginacao a:hover {
     filter: brightness(.95);
     transform: translateY(-2px);
 }
 
-.navegacao a.active {
+.paginacao a.active {
     background-color: var(--cor-amarelo);
     /* background-color: red; */
 }

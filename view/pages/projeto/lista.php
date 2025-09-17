@@ -173,7 +173,7 @@ if (isset($_SESSION['usuario']['id']) && $_SESSION['perfil_usuario'] === 'doador
                     $paramsPaginacao .= '&filtro=1';
                 }
             ?>
-            <nav class="navegacao">
+            <nav class="paginacao">
                 <?php for ($i = 1; $i <= $paginas; $i++): ?>
                     <a href="../../../controller/Projeto/BuscarProjetoController.php?pagina=<?= $i ?><?= $paramsPaginacao ?>"
                         class="<?= $i === $paginaAtual ? 'active' : '' ?>">

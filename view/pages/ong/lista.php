@@ -146,7 +146,7 @@ if (isset($_SESSION['usuario']['id'])) {
                 $paramsPaginacao .= '&filtro=1';
             }
             ?>
-            <nav class="navegacao">
+            <nav class="paginacao">
                 <?php for ($i = 1; $i <= $paginas; $i++): ?>
                     <a href="../../../controller/Ong/BuscarOngController.php?pagina=<?= $i ?><?= $paramsPaginacao ?>"
                         class="<?= $i === $paginaAtual ? 'active' : '' ?>">
