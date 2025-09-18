@@ -165,7 +165,7 @@ $relatorioNoticia = $adminModel->buscarNoticias();
                         <span class="linha"></span>
                     <?php endforeach; ?>
                 </div>
-                <a class="area-btn" href="#">
+                <a class="area-btn" href="noticias.php">
                     <button class="btn">Todas as Notícias</button>
                 </a>
             </div>

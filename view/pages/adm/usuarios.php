@@ -66,7 +66,7 @@ if (isset($_GET['id'])) {
                 ?>
             </section>
             <?php if ($paginas > 1): ?>
-                <nav class="navegacao">
+                <nav class="paginacao">
                     <?php for ($i = 1; $i <= $paginas; $i++): ?>
                         <a href="?pagina=<?= $i ?><?= isset($_GET['pesquisa']) ? '&pesquisa=' . urlencode($_GET['pesquisa']) : '' ?>"
                             class="<?= $i === $paginaAtual ? 'active' : '' ?>">

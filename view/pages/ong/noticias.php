@@ -129,15 +129,15 @@ ob_end_flush();
                 ?>
             </div>
             <?php if ($paginas > 1): ?>
-                <nav class="navegacao">
-                    <?php for ($i = 1; $i <= $paginas; $i++): ?>
-                        <a href="?pagina=<?= $i ?><?= isset($_GET['pesquisa']) ? '&pesquisa=' . urlencode($_GET['pesquisa']) : '' ?>"
-                            class="<?= $i === $paginaAtual ? 'active' : '' ?>">
-                            <?= $i ?>
-                        </a>
-                    <?php endfor; ?>
-                </nav>
-            <?php endif; ?>
+            <nav class="paginacao">
+                <?php for ($i = 1; $i <= $paginas; $i++): ?>
+                    <a href="?pagina=<?= $i ?><?= isset($_GET['pesquisa']) ? '&pesquisa=' . urlencode($_GET['pesquisa']) : '' ?>"
+                        class="<?= $i === $paginaAtual ? 'active' : '' ?>">
+                        <?= $i ?>
+                    </a>
+                <?php endfor; ?>
+            </nav>
+        <?php endif; ?> 
         </div>
     </section>
 
