@@ -56,10 +56,6 @@ class RelatoriosModel {
         $stmt->bindParam(':ong_id', $id, PDO::PARAM_INT);
         $stmt->execute();
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
-        // if ($stmt->rowCount() > 0){
-        // }else {
-        //     return "Não há projetos ativos cadastrados para essa ONG";
-        // }
         return $stmt->fetchAll();
     }
 
@@ -71,9 +67,9 @@ class RelatoriosModel {
         return $stmt->fetchAll();
     }
     function listarDadosTabela($id){
-        $query = "SELECT * FROM doacoes_projetos";
+        $query = "SELECT * FROM doacoes_projetos WHERE projeto_id = :id";
         $stmt = $this->pdo->prepare($query);
-        // $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
         return $stmt->fetchAll();
@@ -99,17 +95,38 @@ class RelatoriosModel {
     }
     
     // Função para somar doações por projeto
-    function doacoesPosProjeto($id){
-        $query = "SELECT * from doacoes_projetos WHERE id = :id";
+    function relacaoDeProjetos($id){
+        $query = "SELECT * from projetos WHERE status = 'ATIVO' AND ong_id = :id";
         $stmt = $this->pdo->prepare($query);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-    }
-
-    function listarTabelas(){
-        $query = "SELECT * from usuarios";
-        $stmt = $this->pdo->prepare($query);
         $stmt->execute();
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
-        return $stmt->fetchAll();
+        return $stmt->fetchAll();     
     }
+    // Função somar valores arrecadados por projeto
+    function somarArrecadacaoProjetos($id) {
+        $query = "SELECT 
+            p.ong_id,
+            p.projeto_id,
+            p.nome AS nome_projeto,
+            COALESCE(SUM(d.valor), 0) AS total_doacoes
+            FROM projetos p
+            LEFT JOIN doacoes_projetos d 
+                ON p.projeto_id = d.projeto_id
+            WHERE p.ong_id = :id
+            GROUP BY p.ong_id, p.projeto_id, p.nome
+            ORDER BY total_doacoes DESC";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        return $stmt->fetchAll();    
+    }
+    // function listarTabelas(){
+    //     $query = "SELECT * from usuarios";
+    //     $stmt = $this->pdo->prepare($query);
+    //     $stmt->execute();
+    //     $stmt->setFetchMode(PDO::FETCH_ASSOC);
+    //     return $stmt->fetchAll();
+    // }
 }

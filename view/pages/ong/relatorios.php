@@ -1,7 +1,7 @@
 <?php
 $acesso = 'ong';
 // $idOngLogada = $_SESSION['ong_id'];
-$idOngLogada = 3;
+$idOngLogada = 1;
 $tituloPagina = 'Relatórios | Organizer'; // Definir o título da página
 $cssPagina = ["ong/relatorios.css"]; //Colocar o arquivo .css (exemplo: 'ONG/cadastro.css')
 require_once '../../components/layout/base-inicio.php';
@@ -17,8 +17,10 @@ require_once '../../../model/Relatorios.php';
 $projetos = new RelatoriosModel();
 $listaUsuarios = $projetos->buscarUsuarios();
 $contagem_projetos = $projetos->contarProjetos($idOngLogada);
-$listagem_projetos = $projetos->listarProjetos($idOngLogada);
-$load = false;
+$arrecadaProjetos = $projetos->somarArrecadacaoProjetos($idOngLogada);
+echo '<pre>';
+print_r($arrecadaProjetos);
+echo '</pre>';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $largura = $_POST['largura'];
     $altura = $_POST['altura'];
@@ -69,10 +71,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="card1">
                 <div class="icon">
                     Doações por projeto
-                    <button onclick="clicar()"><img src="../../assets/images/pages/ong/relatorios/icon-download.png" alt=""></button>
+                    <form action="../../components/reports-pdf/pdf-generator.php" method="POST">
+                        <input type="hidden" value="<?= $idOngLogada ?>" name="id-ong" id="id-ong">
+                        <input type="hidden" value="doacoes-mensais.php" name="relatorio" id="relatorio">
+                        <button onclick="clicar()"><img src="../../assets/images/pages/ong/relatorios/icon-download.png" alt=""></button>
+                    </form>
+                    <!-- <button onclick="clicar()"><img src="../../assets/images/pages/ong/relatorios/icon-download.png" alt=""></button> -->
                 </div>
                 <div class="grafico-pizza">
-                    <?php echo graficoPizza($largura, $altura, $doacoesPorProjeto) ?>
+                    <?php
+                    echo graficoPizza($largura, $altura, $idOngLogada);
+                    ?>
                 </div>
             </div>
 

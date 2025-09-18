@@ -23,6 +23,7 @@
         // Calcula uma média das quantidades de apoiadores dos projetos da ONG para determinar o índice máximo do gráfico
         $mediaIndices = 0;
         $indicesVert = array();
+        $divisao = 1;
         if(sizeof($dados)>1){
             for($i = 0; $i<sizeof($dados); $i++){
                 $mediaIndices += $dados[$i][1];
