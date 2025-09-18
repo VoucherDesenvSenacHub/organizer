@@ -45,7 +45,7 @@ class ProjetoModel
                 }
                 $params[':nome'] = "%{$valor['pesquisa']}%";
                 break;
-                
+
             // Buscar os Projetos de uma ONG
             case 'ong':
                 $query = "SELECT *, 
@@ -64,7 +64,7 @@ class ProjetoModel
                 }
                 $params[':ong_id'] = $valor['ong_id'];
                 break;
-                
+
             // Buscar os Projetos favoritos do Usuário
             case 'favoritos':
                 $query = "SELECT v.*, f.usuario_id,
@@ -88,7 +88,7 @@ class ProjetoModel
                 $query .= " ORDER BY data_favoritado DESC";
                 $params[':usuario_id'] = $valor['usuario_id'];
                 break;
-                
+
             // Buscar os Projetos apoiados pelo usuário
             case 'apoiados':
                 $query = "SELECT v.*, f.usuario_id,
@@ -112,7 +112,7 @@ class ProjetoModel
                 $query .= " ORDER BY data_apoio DESC";
                 $params[':usuario_id'] = $valor['usuario_id'];
                 break;
-                
+
             // Buscar os Projetos mais recentes
             case 'recentes':
                 $limit = 4;
@@ -135,7 +135,7 @@ class ProjetoModel
                 }
                 $query .= " ORDER BY data_cadastro DESC";
                 break;
-                
+
             default:
                 $query = "SELECT *, 
                          CASE 
@@ -154,7 +154,7 @@ class ProjetoModel
                     $query .= " WHERE status = 'ATIVO'";
                 }
         }
-        
+
         $query .= " LIMIT {$limit} OFFSET {$offset}";
 
         $stmt = $this->pdo->prepare($query);
@@ -169,7 +169,7 @@ class ProjetoModel
     {
         $params = [];
         $statusFilter = !empty($valor['status']) ? $valor['status'] : null;
-        
+
         switch ($tipo) {
             // Buscar os Projetos pelo nome
             case 'pesquisa':
@@ -190,7 +190,7 @@ class ProjetoModel
                 }
                 $params[':nome'] = "%{$valor['pesquisa']}%";
                 break;
-                
+
             // Buscar os Projetos de uma ONG
             case 'ong':
                 $query = "SELECT COUNT(*) AS total FROM vw_card_projetos WHERE ong_id = :ong_id";
@@ -204,7 +204,7 @@ class ProjetoModel
                 }
                 $params[':ong_id'] = $valor['ong_id'];
                 break;
-                
+
             // Buscar os Projetos favoritos do Usuário
             case 'favoritos':
                 $query = "SELECT COUNT(*) AS total FROM vw_card_projetos v
@@ -222,7 +222,7 @@ class ProjetoModel
                 }
                 $params[':usuario_id'] = $valor['usuario'];
                 break;
-                
+
             // Buscar os Projetos apoiados pelo Usuário
             case 'apoiados':
                 $query = "SELECT COUNT(*) AS total FROM vw_card_projetos v
@@ -240,7 +240,7 @@ class ProjetoModel
                 }
                 $params[':usuario_id'] = $valor['usuario'];
                 break;
-                
+
             // Buscar os Projetos mais recentes
             case 'recentes':
                 $query = "SELECT COUNT(*) AS total FROM vw_card_projetos v
@@ -488,4 +488,3 @@ class ProjetoModel
         return $stmt->fetch();
     }
 }
-?>

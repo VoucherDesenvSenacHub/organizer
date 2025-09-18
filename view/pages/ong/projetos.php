@@ -49,13 +49,24 @@ ob_end_flush();
             <div class="topo">
                 <h1><i class="fa-solid fa-diagram-project"></i> MEUS PROJETOS</h1>
                 <form id="form-filtro" action="projetos.php" method="GET">
-                    <select name="status" onchange="this.form.submit()">
-                        <option value="">Todos os Status</option>
-                        <option value="ATIVO" <?= (isset($_GET['status']) && $_GET['status'] == 'ATIVO') ? 'selected' : '' ?>>Ativo</option>
-                        <option value="INATIVO" <?= (isset($_GET['status']) && $_GET['status'] == 'INATIVO') ? 'selected' : '' ?>>Inativo</option>
-                        <option value="FINALIZADO" <?= (isset($_GET['status']) && $_GET['status'] == 'FINALIZADO') ? 'selected' : '' ?>>Finalizado</option>
-                    </select>
+                    <div class="ul-group">
+                        <div class="drop" id="esc-status" aria-haspopup="true" aria-expanded="false">
+                            <div class="drop-title" tabindex="0">
+                                <p id="status-label"><?= isset($_GET['status']) ? ucfirst(strtolower($_GET['status'])) : 'Status' ?></p>
+                                <i class="fa-solid fa-angle-down"></i>
+                            </div>
+
+                            <div class="drop-menu" role="menu" aria-labelledby="status-label">
+                                <button type="button" class="item" data-value="ATIVO">Ativo</button>
+                                <button type="button" class="item" data-value="INATIVO">Inativo</button>
+                                <button type="button" class="item" data-value="FINALIZADO">Finalizado</button>
+                            </div>
+
+                            <input type="hidden" name="status" id="status-hidden" value="<?= $_GET['status'] ?? '' ?>">
+                        </div>
+                    </div>
                 </form>
+
                 <form id="form-busca" action="projetos.php" method="GET">
                     <input type="text" name="pesquisa" placeholder="Busque um Projeto" value="<?= $_GET['pesquisa'] ?? '' ?>">
                     <input type="hidden" name="status" value="<?= $_GET['status'] ?? '' ?>">
@@ -88,7 +99,7 @@ ob_end_flush();
                 ?>
             </div>
             <?php if ($paginas > 1): ?>
-                <nav class="navegacao">
+                <nav class="paginacao">
                     <?php for ($i = 1; $i <= $paginas; $i++): ?>
                         <?php
                         $url = "?pagina=$i";

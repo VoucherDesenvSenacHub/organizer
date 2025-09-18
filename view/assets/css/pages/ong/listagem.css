@@ -72,3 +72,168 @@ main.conteudo-principal .container .area-cards {
         justify-content: center;
     }
 }
+
+#form-filtro {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+}
+
+#form-filtro .drop {
+    position: relative;
+    width: 180px;
+}
+
+#form-filtro .drop .drop-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 40px;
+    padding: 6px 10px;
+    background: white;
+    border-radius: 6px;
+    box-shadow: rgba(60,64,67,0.12) 0 1px 2px;
+    cursor: pointer;
+    user-select: none;
+}
+
+#form-filtro .drop .drop-menu {
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 0;
+    min-width: 180px;
+    display: none;
+    flex-direction: column;
+    background: white;
+    border-radius: 6px;
+    box-shadow: rgba(50,50,93,0.25) 0 6px 18px -6px,
+                rgba(0,0,0,0.15) 0 1px 2px;
+    z-index: 9999;
+    padding: 6px 6px;
+}
+
+#form-filtro .drop .drop-menu .item {
+    display: block;
+    text-align: left;
+    padding: 10px;
+    border: none;
+    background: transparent;
+    width: 100%;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+#form-filtro .drop .drop-menu .item:hover {
+    background-color: rgba(227,181,82,0.12);
+}
+
+#form-filtro .drop.open .drop-menu {
+    display: flex;
+}
+main.conteudo-principal .container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px 20px;
+    display: block !important;
+    align-items: stretch !important;
+    overflow: visible !important;
+}
+.topo {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+    justify-content: flex-start;
+    overflow: visible !important;
+    margin-bottom: 50px;
+}
+
+.topo h1 {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--cor-principal, #163a63);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-right: auto;
+}
+
+.topo .top-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    width: auto;
+}
+
+#form-filtro {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+}
+
+#form-filtro .drop {
+    position: relative;
+    width: 190px;
+    min-width: 140px;
+    font-family: inherit;
+}
+
+#form-filtro .drop .drop-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 40px;
+    padding: 6px 12px;
+    background: #ffffff;
+    border-radius: 6px;
+    border: 1px solid rgba(0,0,0,0.15);
+    box-shadow: rgba(60,64,67,0.06) 0 1px 2px;
+    cursor: pointer;
+    color: #12324a;
+}
+
+#form-filtro .drop .drop-title p {
+    margin: 0;
+    font-size: 14px;
+    color: #12324a;
+    text-transform: none;
+}
+#form-filtro .drop .drop-title i {
+    margin-left: 8px;
+    color: #12324a;
+}
+
+#form-filtro .drop .drop-menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    min-width: 190px;
+    display: none;
+    flex-direction: column;
+    background: #fff;
+    border-radius: 6px;
+    box-shadow: rgba(50,50,93,0.25) 0 6px 18px -6px, rgba(0,0,0,0.12) 0 1px 2px;
+    z-index: 99999; /* alto pra ficar acima de tudo */
+    padding: 6px;
+}
+
+#form-filtro .drop .drop-menu .item {
+    display: block;
+    text-align: left;
+    padding: 10px;
+    border: none;
+    background: transparent;
+    width: 100%;
+    font-size: 14px;
+    cursor: pointer;
+    color: #173b5a;
+    border-radius: 4px;
+}
+
+#form-filtro .drop .drop-menu .item:hover {
+    background: rgba(227,181,82,0.10);
+}
