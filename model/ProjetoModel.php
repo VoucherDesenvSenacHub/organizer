@@ -57,6 +57,9 @@ class ProjetoModel
             default:
                 $query = "SELECT * FROM vw_card_projetos v";
         }
+        // if (!empty($valor['categorias'])) {
+        //     $query .= " AND categoria_id IN ($valor['categorias'])"
+        // };
         $query .= " LIMIT {$limit} OFFSET {$offset}";
 
         $stmt = $this->pdo->prepare($query);

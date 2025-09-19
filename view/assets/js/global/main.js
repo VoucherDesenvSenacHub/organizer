@@ -64,6 +64,38 @@ function copiar_link(toast) {
     }
 }
 
+
+// Abrir a dropdown dos filtros
+const uls = document.querySelectorAll('.filtro-pesquisa ul');
+
+uls.forEach(ul => {
+    const liCount = ul.children.length;
+    const firstLi = ul.querySelector('li:first-child');
+    const text = firstLi.textContent.trim();
+
+    const closedWidth = text.length * 10 + 40; // largura inicial
+    ul.style.width = `${closedWidth}px`;
+
+    // calcula largura do maior li
+    let maxWidth = closedWidth;
+    Array.from(ul.children).forEach(li => {
+        const liText = li.textContent.trim();
+        const liWidth = liText.length * 10 + 20; // mesmo cálculo que closedWidth
+        if (liWidth > maxWidth) maxWidth = liWidth;
+        // alert(`li: ${liWidth} ${li.textContent} - Max: ${maxWidth}`)
+    });
+    
+    ul.addEventListener('mouseenter', () => {
+        ul.style.height = `${liCount * 40}px`;
+        ul.style.width = `${maxWidth}px`;
+    });
+
+    ul.addEventListener('mouseleave', () => {
+        ul.style.height = `40px`;
+        ul.style.width = `${closedWidth}px`;
+    });
+});
+
 function copiar_link_aprovar(toast) {
     let input = document.getElementById("link-aprovar");
     input.select();

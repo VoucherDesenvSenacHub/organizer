@@ -1,0 +1,100 @@
+.form-pesquisa {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    height: 100%;
+}
+
+/* Filtros */
+.filtro-pesquisa {
+    background-color: white;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    padding: 5px;
+    border-radius: 5px;
+    display: flex;
+    /* align-items: center; */
+    gap: 10px;
+    height: 50px;
+    width: fit-content;
+}
+
+.filtro-pesquisa ul {
+    list-style: none;
+    background-color: white;
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+    height: 40px;
+    border-radius: 5px;
+    z-index: 2;
+    overflow: hidden;
+    transition: .4s ease-in-out;
+    white-space: nowrap;
+}
+
+.filtro-pesquisa ul li {
+    display: flex;
+    align-items: center;
+    height: 40px;
+    padding: 0 10px;
+    cursor: default;
+    transition: .3s ease;
+}
+
+.filtro-pesquisa ul li:first-child {
+    justify-content: space-between;
+}
+
+.filtro-pesquisa ul li:nth-child(2) {
+    border-top: .1px solid rgba(0, 0, 0, 0.1);
+}
+
+.filtro-pesquisa ul li:hover {
+    background-color: rgba(227, 181, 82, 0.3);
+}
+
+.filtro-pesquisa ul li label {
+    /* background-color: red; */
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.filtro-pesquisa ul li label input {
+    accent-color: var(--cor-amarelo-hover);
+}
+
+/* Barra de pesquisa */
+div.input-pesquisa {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.input-pesquisa {
+    display: flex;
+    align-items: center;
+    max-width: 420px;
+    width: 100%;
+}
+
+.input-pesquisa input {
+    background-color: white;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    border: none;
+    outline: none;
+    border-radius: 4px 24px 24px 4px;
+    padding: 15px 60px 15px 15px;
+    transition: .3s;
+    width: 100%;
+}
+
+.input-pesquisa .btn {
+    font-size: 20px;
+    padding: 0;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-left: -50px;
+}

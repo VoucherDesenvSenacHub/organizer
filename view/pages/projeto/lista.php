@@ -7,6 +7,7 @@ require_once '../../components/layout/base-inicio.php';
 
 require_once __DIR__ . '/../../../autoload.php';
 $projetoModel = new ProjetoModel();
+$categoriaModel = new CategoriaModel();
 
 $paginaAtual = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
 $tipo = '';
@@ -17,6 +18,11 @@ if (isset($_GET['pesquisa'])) {
     $valor['pesquisa'] = $_GET['pesquisa'];
 }
 
+if (isset($_GET['categorias'])) {
+    $valor['categorias'] = $_GET['categorias'];
+}
+
+$categorias = $categoriaModel->buscarCategorias();
 $lista = $projetoModel->listarCardsProjetos($tipo, $valor);
 $totalRegistros = $projetoModel->paginacaoProjetos($tipo, $valor);
 $paginas = ceil($totalRegistros / 8);
@@ -40,69 +46,33 @@ if (isset($_SESSION['usuario']['id']) && $_SESSION['perfil_usuario'] === 'doador
 -->
 <main class="<?= isset($_SESSION['usuario']['id']) ? 'usuario-logado' : 'visitante' ?>">
     <div class="container" id="container-catalogo">
-        <section id="top-info">
-            <div id="info">
-                <div>
+        <section id="header-section">
+            <form class="form-pesquisa" action="lista.php" method="GET">
+                <div class="textos-pesquisa">
                     <h1>ENCONTRE PROJETOS</h1>
                     <p>Explore projetos inspiradores e apoie causas e faça a diferença hoje mesmo.</p>
-                    <form id="form-filtro" action="lista.php" method="GET">
-                        <!-- ### -->
-                        <div class="ul-group">
-                            <ul class="drop" id="esc-status">
-                                <li>
-                                    <p>Status</p>
-                                    <i class="fa-solid fa-angle-down"></i>
-                                </li>
-                                <li>
-                                    <input type="checkbox" name="em-andamento" id="em-andamento">
-                                    <label for="em-andamento">Ativos</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" name="concluido" id="concluido">
-                                    <label for="concluido">Finalizados</label>
-                                </li>
-                            </ul>
-                            <ul class="drop" id="esc-categoria">
-                                <li>
-                                    <p>Categoria</p>
-                                    <i class="fa-solid fa-angle-down"></i>
-                                </li>
-                                <li>
-                                    <input type="checkbox" name="educacao" id="educacao">
-                                    <label for="educacao">Educação</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" name="saude" id="saude">
-                                    <label for="saude">Saúde</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" name="esporte" id="esporte">
-                                    <label for="esporte">Esporte</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" name="cultura" id="cultura">
-                                    <label for="cultura">Cultura</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" name="tecnologia" id="tecnologia">
-                                    <label for="tecnologia">Tecnologia</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" name="ambiente" id="ambiente">
-                                    <label for="ambiente">Meio Ambiente</label>
-                                </li>
-                            </ul>
-                            
-                        </div>
-                        <button class="btn">Filtrar</button>
-                    </form>
                 </div>
-                <form id="form-busca" action="lista.php" method="GET">
-                    <input type="text" name="pesquisa" placeholder="Busque um projeto">
+                <div class="filtro-pesquisa">
+                    <ul>
+                        <li>Categoria <i class="fa-solid fa-angle-down"></i></li>
+                        <?php foreach ($categorias as $categoria): ?>
+                            <li><label><input type="checkbox" name="categorias[]" value="<?= $categoria['categoria_id'] ?>"><?= $categoria['nome'] ?></label></li>
+                        <?php endforeach; ?>
+                    </ul>
+                    <ul>
+                        <li>Status <i class="fa-solid fa-angle-down"></i></li>
+                        <li><label><input type="checkbox">Ativos</label></li>
+                        <li><label><input type="checkbox">Finalizados</label></li>
+                    </ul>
+                    <button class="btn">Filtrar</button>
+                </div>
+                <div class="input-pesquisa">
+                    <input type="text" name="pesquisa" placeholder="Busque um projeto"
+                        value="<?= isset($_GET['pesquisa']) ? htmlspecialchars($_GET['pesquisa']) : (isset($pesquisaController) ? htmlspecialchars($pesquisaController) : '') ?>">
                     <button class="btn" type="submit"><i class="fa-solid fa-search"></i></button>
-                </form>
-            </div>
-            <div id="imagem-top">
+                </div>
+            </form>
+            <div id="img-illustrativa">
                 <img src="../../assets/images/pages/shared/criancas.png">
             </div>
         </section>
