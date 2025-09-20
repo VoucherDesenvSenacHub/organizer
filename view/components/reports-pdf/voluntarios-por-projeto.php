@@ -4,8 +4,25 @@ require_once '../../components/graphics/vertical-bars.php';
 require_once '../../../model/RelatoriosModel.php';
 
 $projetos = new RelatoriosModel();
-$contagem_projetos = $projetos->contarProjetos($idOng);
-$listagem_projetos = $projetos->listarProjetos($idOng);
+$contagem_projetos = $projetos->contarProjetos($idOng); // Relaciona todos os projetos da ONG em uso
+$listagem_projetos = $projetos->listarProjetos($idOng); // Relaciona todos os voluntários vinculados à ONG em uso
+$totalDeApoiadores = sizeof($listagem_projetos);
+$linhaPercentual = array();
+foreach($contagem_projetos as $cp):
+    foreach($listagem_projetos as $lp):
+        
+
+    endforeach;
+endforeach;
+
+echo '<pre>';
+print_r($contagem_projetos);
+echo '</pre>';
+
+echo '<pre>';
+print_r($listagem_projetos);
+echo '</pre>';
+echo 'Total de Apoiadores da ONG: '.$totalDeApoiadores;
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -67,9 +84,6 @@ $listagem_projetos = $projetos->listarProjetos($idOng);
     </div>
     <hr>
     <?php
-        // echo '<pre>';
-        // print_r($contagem_projetos);
-        // echo '</pre';
         $contador = 0;
         foreach ($contagem_projetos as $cp):
     ?>
