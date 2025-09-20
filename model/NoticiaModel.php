@@ -68,103 +68,77 @@ class NoticiaModel
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    function listarCardsNoticias(string $tipo = '', $valor = [], $limit = null)
+    function listarCardsNoticias(string $tipo = '', array $valor = [])
     {
-        $params = [];
-        $limite = $valor['limit'] ?? ($limit ?? 6);
+        // Define limite e paginação
+        $limit = $valor['limit'] ?? 6;
         $pagina = $valor['pagina'] ?? 1;
-        $offset = ($pagina - 1) * $limite;
-
-        switch ($tipo) {
-            // Buscar as Notícias pelo título
-            case 'pesquisa':
-                $query = "SELECT * FROM vw_card_noticias WHERE status = 'ATIVO' AND titulo LIKE :titulo";
-                if (!empty($valor['ong_id'])) {
-                    $query .= " AND ong_id = :ong_id";
-                    $params[':ong_id'] = $valor['ong_id'];
-                }
-                $params[':titulo'] = "%{$valor['pesquisa']}%";
-                break;
-            // Buscar as Notícias de uma ONG
-            case 'ong':
-                $query = "SELECT * FROM vw_card_noticias v WHERE status = 'ATIVO' AND ong_id = :ong_id";
-                $params[':ong_id'] = $valor['ong_id'];
-                break;
-            default:
-                $query = "SELECT * FROM vw_card_noticias v";
-        }
-        $query .= " LIMIT {$limite} OFFSET {$offset}";
-
-        $stmt = $this->pdo->prepare($query);
-        foreach ($params as $key => $value) {
-            $stmt->bindValue($key, $value, is_int($value) ? PDO::PARAM_INT : PDO::PARAM_STR);
-        }
-        $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    }
-
-    function paginacaoNoticias(string $tipo = '', $valor = [])
-    {
+        $offset = ($pagina - 1) * $limit;
+        // Inicializa variáveis para montar a query
         $params = [];
+        $where = "WHERE status = 'ATIVO'"; // Filtro padrão
+        $join = '';
+        $order = '';
+        // Monta a query conforme o tipo de busca
         switch ($tipo) {
             case 'pesquisa':
-                $query = "SELECT COUNT(*) AS total FROM vw_card_noticias WHERE status = 'ATIVO' AND titulo LIKE :titulo";
+                $where .= " AND titulo LIKE :titulo";
                 $params[':titulo'] = "%{$valor['pesquisa']}%";
                 if (!empty($valor['ong_id'])) {
-                    $query .= " AND ong_id = :ong_id";
+                    $where .= " AND ong_id = :ong_id";
                     $params[':ong_id'] = $valor['ong_id'];
                 }
                 break;
+
             case 'ong':
-                $query = "SELECT COUNT(*) AS total FROM vw_card_noticias v WHERE status = 'ATIVO' AND ong_id = :ong_id";
+                $where .= " AND ong_id = :ong_id";
                 $params[':ong_id'] = $valor['ong_id'];
                 break;
-            default:
-                $query = "SELECT COUNT(*) AS total FROM vw_card_noticias WHERE status = 'ATIVO'";
         }
-
+        // MONTA A QUERY FINAL
+        $query = "SELECT v.* FROM vw_card_noticias v {$join} {$where} {$order} LIMIT {$limit} OFFSET {$offset}";
+        // Prepara e executa a query com os parâmetros
         $stmt = $this->pdo->prepare($query);
         foreach ($params as $key => $value) {
             $stmt->bindValue($key, $value, is_int($value) ? PDO::PARAM_INT : PDO::PARAM_STR);
         }
         $stmt->execute();
-        $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
-        return (int)$resultado['total'];
-    }
-
-    function listarCardsInativos($ong_id = null)
-    {
-        if ($ong_id) {
-            $query = "SELECT n.noticia_id, n.titulo, n.subtitulo, n.texto, n.subtexto, n.data_cadastro, o.nome,
-                         (SELECT i.logo_url 
-                          FROM imagens_noticia i 
-                          WHERE i.noticia_id = n.noticia_id 
-                          ORDER BY i.id ASC 
-                          LIMIT 1) AS logo_url
-                  FROM noticias n
-                  INNER JOIN ongs o ON n.ong_id = o.ong_id
-                  WHERE o.ong_id = :ong_id
-                  AND n.status = 'INATIVO'";
-
-            $stmt = $this->pdo->prepare($query);
-            $stmt->bindValue(':ong_id', $ong_id, PDO::PARAM_INT);
-        } else {
-            $query = "SELECT n.noticia_id, n.titulo, n.subtitulo, n.texto, n.subtexto, n.data_cadastro, o.nome,
-                         (SELECT i.logo_url 
-                          FROM imagens_noticia i 
-                          WHERE i.noticia_id = n.noticia_id 
-                          ORDER BY i.id ASC 
-                          LIMIT 1) AS logo_url
-                  FROM noticias n
-                  INNER JOIN ongs o ON n.ong_id = o.ong_id
-                  WHERE n.status = 'INATIVO'";
-            $stmt = $this->pdo->prepare($query);
-        }
-
-        $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+
+    function paginacaoNoticias(string $tipo = '', array $valor = [])
+    {
+        // Inicializa variáveis
+        $params = [];
+        $where = "WHERE status = 'ATIVO'";
+        $join = '';
+        // Monta filtros conforme o tipo
+        switch ($tipo) {
+            case 'pesquisa':
+                $where .= " AND titulo LIKE :titulo";
+                $params[':titulo'] = "%{$valor['pesquisa']}%";
+                if (!empty($valor['ong_id'])) {
+                    $where .= " AND ong_id = :ong_id";
+                    $params[':ong_id'] = $valor['ong_id'];
+                }
+                break;
+
+            case 'ong':
+                $where .= " AND ong_id = :ong_id";
+                $params[':ong_id'] = $valor['ong_id'];
+                break;
+        }
+
+        // Monta e executa a query
+        $query = "SELECT COUNT(*) AS total FROM vw_card_noticias v {$join} {$where}";
+        $stmt = $this->pdo->prepare($query);
+        foreach ($params as $key => $value) {
+            $stmt->bindValue($key, $value, is_int($value) ? PDO::PARAM_INT : PDO::PARAM_STR);
+        }
+        $stmt->execute();
+        return (int) $stmt->fetchColumn();
+    }
 
     function buscarImagensNoticia($IdNoticia)
     {

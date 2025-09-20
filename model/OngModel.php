@@ -84,40 +84,42 @@ class OngModel
     }
 
 
-    function listarCardsOngs(string $tipo = '', $valor = [])
+    function listarCardsOngs(string $tipo = '', array $valor = [])
     {
-        $params = [];
+        // Define limite e paginação
         $limit = $valor['limit'] ?? 6;
         $pagina = $valor['pagina'] ?? 1;
         $offset = ($pagina - 1) * $limit;
+        // Inicializa variáveis para montar a query
+        $params = [];
+        $where = 'WHERE 1=1'; // Base para adicionar filtros
+        $join = '';
+        $order = '';
+        // Monta a query conforme o tipo de busca
         switch ($tipo) {
-            // Buscar as Ongs pelo nome
             case 'pesquisa':
-                $query = "SELECT * FROM vw_card_ongs WHERE nome LIKE :nome";
+                $where .= " AND nome LIKE :nome";
+                $params[':nome'] = "%{$valor['pesquisa']}%";
                 if (!empty($valor['ong_id'])) {
-                    $query .= " AND ong_id = :ong_id";
+                    $where .= " AND ong_id = :ong_id";
                     $params[':ong_id'] = $valor['ong_id'];
                 }
-                $params[':nome'] = "%{$valor['pesquisa']}%";
                 break;
-            // Buscar as Ongs favoritas do Usúario
+
             case 'favoritas':
-                $query = "SELECT v.*, f.usuario_id FROM vw_card_ongs v
-                JOIN favoritos_ongs f USING (ong_id)
-                WHERE usuario_id = :usuario_id ORDER BY data_favoritado DESC";
+                $join = "JOIN favoritos_ongs f USING (ong_id)";
+                $where .= " AND usuario_id = :usuario_id";
+                $order = "ORDER BY data_favoritado DESC";
                 $params[':usuario_id'] = $valor['usuario_id'];
                 break;
-            // Buscar as Ongs mais recentes
-            case 'recentes':
-                $limit = 6;
-                $query = "SELECT * FROM vw_card_ongs v
-                ORDER BY data_cadastro DESC";
-                break;
-            default:
-                $query = "SELECT * FROM vw_card_ongs v";
-        }
-        $query .= " LIMIT {$limit} OFFSET {$offset}";
 
+            case 'recentes':
+                $order = "ORDER BY data_cadastro DESC";
+                break;
+        }
+        // MONTA A QUERY FINAL
+        $query = "SELECT v.* FROM vw_card_ongs v {$join} {$where} {$order} LIMIT {$limit} OFFSET {$offset}";
+        // Prepara e executa a query com os parâmetros
         $stmt = $this->pdo->prepare($query);
         foreach ($params as $key => $value) {
             $stmt->bindValue($key, $value, is_int($value) ? PDO::PARAM_INT : PDO::PARAM_STR);
@@ -126,35 +128,38 @@ class OngModel
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    function paginacaoOngs(string $tipo = '', $valor = [])
+    function paginacaoOngs(string $tipo = '', array $valor = [])
     {
+        // Inicializa variáveis
         $params = [];
+        $where = 'WHERE 1=1';
+        $join = '';
+        // Monta filtros conforme o tipo
         switch ($tipo) {
             case 'pesquisa':
-                $query = "SELECT COUNT(*) AS total FROM vw_card_ongs WHERE nome LIKE :nome";
+                $where .= " AND nome LIKE :nome";
                 $params[':nome'] = "%{$valor['pesquisa']}%";
                 if (!empty($valor['ong_id'])) {
-                    $query .= " AND ong_id = :ong_id";
+                    $where .= " AND ong_id = :ong_id";
                     $params[':ong_id'] = $valor['ong_id'];
                 }
                 break;
+
             case 'favoritos':
-                $query = "SELECT COUNT(*) AS total FROM vw_card_ongs v
-                JOIN favoritos_ongs f USING (ong_id)
-                WHERE usuario_id = :usuario_id ORDER BY data_favoritado DESC";
+                $join = "JOIN favoritos_ongs f USING (ong_id)";
+                $where .= " AND usuario_id = :usuario_id";
                 $params[':usuario_id'] = $valor['usuario_id'];
                 break;
-            default:
-                $query = "SELECT COUNT(*) AS total FROM vw_card_ongs";
         }
 
+        // Monta e executa a query
+        $query = "SELECT COUNT(*) AS total FROM vw_card_ongs v {$join} {$where}";
         $stmt = $this->pdo->prepare($query);
         foreach ($params as $key => $value) {
             $stmt->bindValue($key, $value, is_int($value) ? PDO::PARAM_INT : PDO::PARAM_STR);
         }
         $stmt->execute();
-        $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
-        return (int) $resultado['total'];
+        return (int) $stmt->fetchColumn();
     }
 
     function buscarPerfilOng($id)

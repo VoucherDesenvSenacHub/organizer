@@ -54,15 +54,15 @@ if (isset($_SESSION['usuario']['id']) && $_SESSION['perfil_usuario'] === 'doador
                 </div>
                 <div class="filtro-pesquisa">
                     <ul>
+                        <li>Status <i class="fa-solid fa-angle-down"></i></li>
+                        <li><label><input type="checkbox">Ativos</label></li>
+                        <li><label><input type="checkbox">Finalizados</label></li>
+                    </ul>
+                    <ul>
                         <li>Categoria <i class="fa-solid fa-angle-down"></i></li>
                         <?php foreach ($categorias as $categoria): ?>
                             <li><label><input type="checkbox" name="categorias[]" value="<?= $categoria['categoria_id'] ?>"><?= $categoria['nome'] ?></label></li>
                         <?php endforeach; ?>
-                    </ul>
-                    <ul>
-                        <li>Status <i class="fa-solid fa-angle-down"></i></li>
-                        <li><label><input type="checkbox">Ativos</label></li>
-                        <li><label><input type="checkbox">Finalizados</label></li>
                     </ul>
                     <button class="btn">Filtrar</button>
                 </div>
