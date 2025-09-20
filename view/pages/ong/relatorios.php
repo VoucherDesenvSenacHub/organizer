@@ -18,9 +18,9 @@ $projetos = new RelatoriosModel();
 $listaUsuarios = $projetos->buscarUsuarios();
 $contagem_projetos = $projetos->contarProjetos($idOngLogada);
 $arrecadaProjetos = $projetos->somarArrecadacaoProjetos($idOngLogada);
-echo '<pre>';
-print_r($arrecadaProjetos);
-echo '</pre>';
+// echo '<pre>';
+// print_r($arrecadaProjetos);
+// echo '</pre>';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $largura = $_POST['largura'];
     $altura = $_POST['altura'];
@@ -73,7 +73,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     Doações por projeto
                     <form action="../../components/reports-pdf/pdf-generator.php" method="POST">
                         <input type="hidden" value="<?= $idOngLogada ?>" name="id-ong" id="id-ong">
-                        <input type="hidden" value="doacoes-mensais.php" name="relatorio" id="relatorio">
+                        <input type="hidden" value="doacoes-por-projeto.php" name="relatorio" id="relatorio">
                         <button onclick="clicar()"><img src="../../assets/images/pages/ong/relatorios/icon-download.png" alt=""></button>
                     </form>
                     <!-- <button onclick="clicar()"><img src="../../assets/images/pages/ong/relatorios/icon-download.png" alt=""></button> -->

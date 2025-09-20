@@ -1,8 +1,9 @@
-<?php
+<?php 
 //Criação de gráfico tipo pizza
+require_once '../../../model/RelatoriosModel.php';
 
 /**
- *
+ * 
  * Sumary of pie-graph
  * @param int $idOng Array com nomes dos projetos e valores coletados nas doações
  * @param int $width Largura em pixels da área da imagem do gráfico
@@ -11,21 +12,20 @@
 
  function graficoPizza($width, $height, $idOng){
     $colors = ['#391df5', '#FFAE4C', '#3CC3DF', '#aedd2b', '#8979FF', '#FF928A', '#537FF1', '#FFFF00', '#DC143C', '#008000', '#xxff00', 'ff66ff'];
-    $totalArrecadado = 0;
-    $dados = array();
     $relatorio = new RelatoriosModel();
     $arrecadacao = $relatorio->somarArrecadacaoProjetos($idOng);
+    $totalArrecadado = 0;
     foreach($arrecadacao as $r):
-        $totalArrecadado += (float)$r['total_doacoes'];
-        $grupoDados = [$r['nome_projeto'], $r['total_doacoes']];
-        array_push($dados, $grupoDados);
+        $totalArrecadado += $r['total_doacoes'];
     endforeach;
-    if(sizeof($dados) == 0){
-        array_push($dados, ["Nenhum projeto", 0]);
-    }
     $alturaUtil = $height-20; //Define margens de altura para o gráfico
-    $divisoes = (int)($alturaUtil/(sizeof($dados))); // Calcula a separação para uso na escrita das legendas
-    $yLegendas = $divisoes*(sizeof($dados));
+    if(sizeof($arrecadacao) != 0){
+        $divisoes = (int)($alturaUtil/(sizeof($arrecadacao))); // Calcula a separação para uso na escrita das legendas
+    }else {
+        $divisoes = 1;
+        $totalArrecadado = 0;
+    }
+    $yLegendas = $divisoes*(sizeof($arrecadacao));
     $larguraUtil = $width-40; //Define margens de largura para o gráfico
     $i=0;
     $grafico = '';
@@ -37,19 +37,23 @@
     $perimetro = 2*pi()*$raio; // Calcula o comprimento da circunferência
     $arco = 0;
     $percentual = 0;
-    $totalArrecadado == 0 ? $acumulado = 1: $acumulado = $totalArrecadado;
-    $baseCalculoCirculo = $acumulado;
+    $acumulado = 0;
 
     // Laço para desenhar o círculo e escrever as legendas
 
-    for($i=sizeof($dados)-1;$i>=0;$i--){
-        if($i==sizeof($dados)-1){
-            $percentual = $acumulado*100/$baseCalculoCirculo; // Calcula o percentual de circunferência como círculo completo caso seja o primeiro a ser desenhado
+    for($i=sizeof($arrecadacao)-1;$i>=0;$i--){
+        if($i==sizeof($arrecadacao)-1){
+            if($totalArrecadado != 0){
+                $percentual = $totalArrecadado*100/$totalArrecadado; // Calcula o percentual de circunferência como círculo completo caso seja o primeiro a ser desenhado
+            }
+            else {
+                $percentual = 100;
+            }
         }else {
-            $acumulado-=$dados[$i+1][1];
-            $percentual = ($acumulado)*100/$baseCalculoCirculo; // Calcula o percentual de circunferência proporcional ao valor arrecadado no projeto
+            $acumulado-=(float)$arrecadacao[$i+1]['total_doacoes'];
+            $percentual = ($acumulado)*100/$totalArrecadado; // Calcula o percentual de circunferência proporcional ao valor arrecadado no projeto
         }
-            $arco = $percentual*$perimetro/100; // Calcula o comprimento da circunferência de acordo com o valor arrecadado
+            $arco = $arco - $percentual*$perimetro/100; // Calcula o comprimento da circunferência de acordo com o valor arrecadado
 
             // Cria os gráficos de circunferência
 
@@ -68,9 +72,8 @@
                 $colLeg = 30;
                 $rowCab = 5;
             }
-            $totalGrafico = number_format($totalArrecadado, 2, ',','.');
-            $cabecalho = "<text x='$colLeg' y='$rowCab'>Total arrecadado R$ $totalGrafico</text>";
-            $leg = $dados[$i][0].' - R$ '.number_format($dados[$i][1], 2, ',','.'); // Variável com texto de cada legenda
+            $cabecalho = "<text x='$colLeg' y='$rowCab'>Total arrecadado R$ $totalArrecadado</text>";
+            $leg = $arrecadacao[$i]['nome_projeto'].' - R$ '.$arrecadacao[$i]['total_doacoes'].' percentual: '.$arco; // Variável com texto de cada legenda
             $yIcone = $yLegendas-10; // Define o eixo Y onde será desenhado o retângulo/ícone da legenda
             $legenda = $legenda."
             <rect width='20' height='12' x='$colRect' y='$yIcone' fill='$colors[$i]'/>
@@ -78,14 +81,17 @@
             ";
             $yLegendas-=$divisoes;
     }
-   
-
-    return "
-    <svg style = 'width: $width; height: $height;'>
-    $cabecalho
-    $grafico
-    $legenda
-    </svg>
-    ";
+    
+    if($totalArrecadado != 0){
+        return "
+        <svg style = 'width: $width; height: $height;'>
+        $cabecalho
+        $grafico
+        $legenda
+        </svg>
+        ";
+    }else{
+        return "<h1>Essa ONG não arrecadou nenhum valor</h1>";
+    }
  }
 ?>

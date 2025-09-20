@@ -1,21 +1,51 @@
 <?php
 $acesso = 'ong';
-require_once '../../components/graphics/pie-graphic.php';
+require_once '../../components/graphics/pie-graph.php';
 require_once '../../../model/RelatoriosModel.php';
 require_once '../../../model/OngModel.php';
 
 $ongs = new OngModel();
 $relatorio = new RelatoriosModel();
-$doacoes = $ongs->buscarDoadores($idOng);
-$listaDoacoes = $ongs->dashboardOng($idOng);
-$dadosDasTabelas = $relatorio->listarDadosTabela($idOng);
-$year = date('Y');
-$projetos = new RelatoriosModel();
-$contagem_projetos = $projetos->contarProjetos($idOng);
-$listagem_projetos = $projetos->listarProjetos($idOng);
-$mesPorExtenso = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
-                  'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']
-
+$arrecadacao = $relatorio->somarArrecadacaoProjetos($idOng);
+$totalGeral = 0;
+foreach($arrecadacao as $a):
+    $totalGeral += $a['total_doacoes'];
+endforeach;
+$totalRodape = "R$ ".number_format($totalGeral, 2, ',','.');
+$tabela = "";
+foreach($arrecadacao as $a):
+    $nomeDoProjeto = $a['nome_projeto'];
+    $valorArrecadado = "R$ ".number_format($a['total_doacoes'], 2, ',','.');
+    if($totalGeral != 0){
+        $percentual = number_format($a['total_doacoes']*100/$totalGeral, 2)."%";
+    }else{
+        $percentual = "0%";
+    }
+    $tabela = $tabela."
+    <tr>
+    <td class='projeto'>
+    $nomeDoProjeto
+    </td>
+    <td class='valor'>
+    $valorArrecadado
+    </td>
+    <td class='valor'>
+    $percentual
+    </td>
+    </tr>
+    ";
+endforeach;
+$rodape = "
+<td class='projeto'>
+    Total arrecadado:
+</td>
+<td class='valor'>
+    $totalRodape
+</td>
+<td class='valor'>
+    ---
+</td>
+";
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -60,10 +90,15 @@ $mesPorExtenso = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
         th {
             text-align: left;
         }
+        tfoot {
+            font-weight: bold;
+        }
         .valor {
+            width: 150px;
             text-align: right;
         }
-        .mes {
+        .projeto {
+            width: 280px;
             text-align: left;
         }
 
@@ -76,44 +111,19 @@ $mesPorExtenso = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
 
 </head>
 <body>
-    <h1>Relatório de arrecadação mensal</h1>
-    <h2>Exercício <?php echo $year ?></h2>
+    <h2>Relatório de arrecadação total por projeto</h2>
     <table class="no-break">
         <thead>
-            <th>Mês</th>
+            <th>Projeto</th>
             <th>Valor - R$</th>
+            <th>Percentual (%)</th>
         </thead>
         <tbody>
-            <?php
-            $totalAnual = 0;
-                for($month = 1; $month <=12; $month++): 
-                    $arrecadacao = $relatorio->painelDeArrecadacao($idOng, $month, $year);
-                    if($arrecadacao['total_doado'] === null){
-                        $valorTotal = 0;
-                    }else {
-                        $valorTotal = (float)$arrecadacao['total_doado'];
-                        $totalAnual += $valorTotal;
-                    }
-                    $valorTotal = number_format($valorTotal, 2, ',','.');
-                ?>
-                <tr>
-                    <td class="mes">
-                        <?= $mesPorExtenso[$month-1] ?>
-                    </td>
-                    <td class="valor">
-                        <?= $valorTotal ?>
-                    </td>
-                </tr>
-            <?php
-                endfor;
-            ?>
+            <?= $tabela ?>
         </tbody>
         <tfoot>
-            <td>Total arrecadado R$</td>
-            <td class="valor"><?= number_format($totalAnual, 2,',','.');?></td>
+            <?= $rodape ?>
         </tfoot>
     </table>
-    
-    
-</body>
+    </body>
 </html>
