@@ -3,11 +3,11 @@
 #container-catalogo {
   height: fit-content;
   padding: 50px 0;
-  border-radius: 10px;
-  width: 100%;
-  flex-direction: column;
+  display: flex;
   align-items: normal;
-  gap: 40px;
+  justify-content: start;
+  flex-direction: column;
+  gap: 30px;
 }
 
 /* Sessão de Cima */
@@ -16,6 +16,7 @@ section#header-section {
   justify-content: space-between;
   height: 300px;
   text-align: justify;
+  gap: 10px;
 }
 
 
@@ -37,8 +38,11 @@ section#header-section {
   width: 100%;
 }
 
-.qnt-busca {
-  text-align: center;
+.resultado-busca {
+  display: flex;
+  gap: 20px;
+  font-weight: 500;
+  color: gray;
 }
 
 /* Sessão de Baixo: Áreas dos cards */
@@ -89,7 +93,7 @@ main.usuario-logado {
 main.usuario-logado #container-catalogo {
   background: none;
   padding: 0;
-  min-height: calc(100vh - 100px);
+  min-height: calc(100vh - 120px);
 }
 
 main.usuario-logado section#box-ongs {
@@ -97,10 +101,18 @@ main.usuario-logado section#box-ongs {
 }
 
 @media (max-width: 900px) {
+  #container-catalogo {
+    gap: 20px;
+  }
+
   section#header-section {
     flex-direction: column-reverse;
     height: auto;
     align-items: center;
     text-align: center;
+  }
+
+  .resultado-busca {
+    justify-content: center;
   }
 }
