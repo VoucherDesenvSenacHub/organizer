@@ -6,30 +6,24 @@ function carregarListaProjetos(array $get, array $post)
     $projetoModel = new ProjetoModel();
     $categoriaModel = new CategoriaModel();
 
-    $paginaAtual = (int)($_GET['pagina'] ?? 1);
-    $filtros = ['pagina' => $paginaAtual];
+    $paginaAtual = (int)($get['pagina'] ?? 1);
 
-    if (!empty($post['pesquisa'])) {
-        $filtros['pesquisa'] = $post['pesquisa'];
-    }
+    // Monta filtros
+    $filtros = [
+        'pagina'     => $paginaAtual,
+        'pesquisa'   => $post['pesquisa'] ?? null,
+        'ordem'      => $post['ordem'] ?? null,
+        'status'     => $post['status'] ?? null,
+        'categorias' => $post['categorias'] ?? null,
+    ];
 
-    if (!empty($post['ordem'])) {
-        $filtros['ordem'] = $post['ordem'];
-    }
-
-    if (!empty($post['status'])) {
-        $filtros['status'] = $post['status'];
-    }
-
-    if (!empty($post['categorias'])) {
-        $filtros['categorias'] = $post['categorias'];
-    }
-
-    $categorias = $categoriaModel->buscarCategorias();
-    $lista = $projetoModel->listarCardsProjetos($filtros);
+    // Buscar categorias, lista de projetos e paginação
+    $categorias     = $categoriaModel->buscarCategorias();
+    $lista          = $projetoModel->listarCardsProjetos($filtros);
     $totalRegistros = $projetoModel->paginacaoProjetos($filtros);
-    $paginas = ceil($totalRegistros / 8);
+    $paginas        = (int) ceil($totalRegistros / 8);
 
+    // Projetos favoritos do usuário
     $favoritos = [];
     if (!empty($_SESSION['usuario']['id']) && $_SESSION['perfil_usuario'] === 'doador') {
         $favoritos = $projetoModel->listarFavoritos($_SESSION['usuario']['id']);
