@@ -7,7 +7,7 @@ require_once '../../components//layout/base-inicio.php';
 require_once __DIR__ . '/../../../autoload.php';
 $ongModel = new OngModel();
 
-$lista = $ongModel->listarCardsOngs('recentes');
+$lista = $ongModel->listarCardsOngs(['recentes' => true]);
 // var_dump($lista);
 ?>
 <!-- COMEÇAR SEU CÓDIGO AQUI -->

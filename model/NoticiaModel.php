@@ -68,42 +68,39 @@ class NoticiaModel
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    function listarCardsNoticias(string $tipo = '', array $valor = [])
+    function listarCardsNoticias(array $filtros = [])
     {
-        $limit = $valor['limit'] ?? 6;
-        $pagina = $valor['pagina'] ?? 1;
+        $limit  = $filtros['limit'] ?? 6;
+        $pagina = $filtros['pagina'] ?? 1;
         $offset = ($pagina - 1) * $limit;
 
         $params = [];
-        $where = "WHERE status = 'ATIVO'";
-        $join = '';
-        $order = '';
+        $where  = "WHERE status = 'ATIVO'";
+        $order  = '';
+        $join   = '';
 
         // Filtro por pesquisa
-        if ($tipo === 'pesquisa' && !empty($valor['pesquisa'])) {
+        if (!empty($filtros['pesquisa'])) {
             $where .= " AND titulo LIKE :titulo";
-            $params[':titulo'] = "%{$valor['pesquisa']}%";
+            $params[':titulo'] = "%{$filtros['pesquisa']}%";
         }
-
         // Filtro por ordem
-        if (!empty($valor['ordem'])) {
-            if ($valor['ordem'] === 'novas') {
-                $order = "ORDER BY data_cadastro DESC";
-            } elseif ($valor['ordem'] === 'antigas') {
-                $order = "ORDER BY data_cadastro ASC";
-            }
+        if (!empty($filtros['ordem'])) {
+            $order = match ($filtros['ordem']) {
+                'novas'  => "ORDER BY data_cadastro DESC",
+                'antigas' => "ORDER BY data_cadastro ASC",
+                default  => ''
+            };
         }
-
-        // Filtro por ONG específica
-        if (!empty($valor['ong_id'])) {
+        // Filtro por ONG
+        if (!empty($filtros['ong_id'])) {
             $where .= " AND ong_id = :ong_id";
-            $params[':ong_id'] = $valor['ong_id'];
+            $params[':ong_id'] = $filtros['ong_id'];
         }
-
         // Query final
         $query = "SELECT v.* FROM vw_card_noticias v {$join} {$where} {$order} LIMIT {$limit} OFFSET {$offset}";
 
-        $stmt = $this->pdo->prepare($query);
+        $stmt  = $this->pdo->prepare($query);
         foreach ($params as $key => $value) {
             $stmt->bindValue($key, $value, is_int($value) ? PDO::PARAM_INT : PDO::PARAM_STR);
         }
@@ -111,27 +108,26 @@ class NoticiaModel
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-
-    function paginacaoNoticias(string $tipo = '', array $valor = [])
+    function paginacaoNoticias(array $filtros = [])
     {
         $params = [];
-        $where = "WHERE status = 'ATIVO'";
-        $join = '';
+        $where  = "WHERE status = 'ATIVO'";
+        $join   = '';
 
         // Filtro por pesquisa
-        if ($tipo === 'pesquisa' && !empty($valor['pesquisa'])) {
+        if (!empty($filtros['pesquisa'])) {
             $where .= " AND titulo LIKE :titulo";
-            $params[':titulo'] = "%{$valor['pesquisa']}%";
+            $params[':titulo'] = "%{$filtros['pesquisa']}%";
         }
-
         // Filtro por ONG específica
-        if (!empty($valor['ong_id'])) {
+        if (!empty($filtros['ong_id'])) {
             $where .= " AND ong_id = :ong_id";
-            $params[':ong_id'] = $valor['ong_id'];
+            $params[':ong_id'] = $filtros['ong_id'];
         }
-
+        // Query final
         $query = "SELECT COUNT(*) AS total FROM vw_card_noticias v {$join} {$where}";
-        $stmt = $this->pdo->prepare($query);
+
+        $stmt  = $this->pdo->prepare($query);
         foreach ($params as $key => $value) {
             $stmt->bindValue($key, $value, is_int($value) ? PDO::PARAM_INT : PDO::PARAM_STR);
         }

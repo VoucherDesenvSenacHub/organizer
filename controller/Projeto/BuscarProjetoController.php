@@ -6,32 +6,24 @@ function carregarListaProjetos(array $get, array $post)
     $projetoModel = new ProjetoModel();
     $categoriaModel = new CategoriaModel();
 
-    $paginaAtual = isset($get['pagina']) ? (int)$get['pagina'] : 1;
-    $tipo = isset($post['pesquisa']) && $post['pesquisa'] !== '' ? 'pesquisa' : '';
-    $valor = ['pagina' => $paginaAtual];
+    $paginaAtual = (int)($get['pagina'] ?? 1);
 
-    if (!empty($post['pesquisa'])) {
-        $valor['pesquisa'] = $post['pesquisa'];
-    }
+    // Monta filtros
+    $filtros = [
+        'pagina'     => $paginaAtual,
+        'pesquisa'   => $post['pesquisa'] ?? null,
+        'ordem'      => $post['ordem'] ?? null,
+        'status'     => $post['status'] ?? null,
+        'categorias' => $post['categorias'] ?? null,
+    ];
 
-    if (!empty($post['ordem'])) {
-        $valor['ordem'] = $post['ordem'];
-    }
+    // Buscar categorias, lista de projetos e paginação
+    $categorias     = $categoriaModel->buscarCategorias();
+    $lista          = $projetoModel->listarCardsProjetos($filtros);
+    $totalRegistros = $projetoModel->paginacaoProjetos($filtros);
+    $paginas        = (int) ceil($totalRegistros / 8);
 
-    if (!empty($post['status'])) {
-        $valor['status'] = $post['status'];
-    }
-
-    if (!empty($post['categorias'])) {
-        $valor['categorias'] = $post['categorias'];
-    }
-
-
-    $categorias = $categoriaModel->buscarCategorias();
-    $lista = $projetoModel->listarCardsProjetos($tipo, $valor);
-    $totalRegistros = $projetoModel->paginacaoProjetos($tipo, $valor);
-    $paginas = ceil($totalRegistros / 8);
-
+    // Projetos favoritos do usuário
     $favoritos = [];
     if (!empty($_SESSION['usuario']['id']) && $_SESSION['perfil_usuario'] === 'doador') {
         $favoritos = $projetoModel->listarFavoritos($_SESSION['usuario']['id']);
