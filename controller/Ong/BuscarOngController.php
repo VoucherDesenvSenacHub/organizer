@@ -3,32 +3,24 @@ require_once __DIR__ . '/../../autoload.php';
 
 function carregarListaOngs(array $get, array $post)
 {
-    $ongModel = new OngModel();
+    $ongModel = new OngModel(); 
+    $paginaAtual = (int)($get['pagina'] ?? 1);
 
-    $paginaAtual = isset($get['pagina']) ? (int)$get['pagina'] : 1;
-    $tipo = isset($post['pesquisa']) && $post['pesquisa'] !== '' ? 'pesquisa' : '';
-    $valor = ['pagina' => $paginaAtual];
+    // Monta filtros
+    $filtros = [
+        'pagina'  => $paginaAtual,
+        'pesquisa'=> $post['pesquisa'] ?? null,
+        'ordem'   => $post['ordem'] ?? null,
+        'projetos'=> $post['projetos'] ?? null,
+        'doacoes' => $post['doacoes'] ?? null,
+    ];
 
-    if (!empty($post['pesquisa'])) {
-        $valor['pesquisa'] = $post['pesquisa'];
-    }
+    // Busca lista e paginação
+    $lista          = $ongModel->listarCardsOngs($filtros);
+    $totalRegistros = $ongModel->paginacaoOngs($filtros);
+    $paginas        = (int)ceil($totalRegistros / 6);
 
-    if (!empty($post['ordem'])) {
-        $valor['ordem'] = $post['ordem'];
-    }
-
-    if (!empty($post['projetos'])) {
-        $valor['projetos'] = $post['projetos'];
-    }
-
-    if (!empty($post['doacoes'])) {
-        $valor['doacoes'] = $post['doacoes'];
-    }
-
-    $lista = $ongModel->listarCardsOngs($tipo, $valor);
-    $totalRegistros = $ongModel->paginacaoOngs($tipo, $valor);
-    $paginas = (int)ceil($totalRegistros / 6);
-
+    // Ongs favoritas do usuário
     $favoritas = [];
     if (!empty($_SESSION['usuario']['id'])) {
         $favoritas = $ongModel->listarFavoritas($_SESSION['usuario']['id']);

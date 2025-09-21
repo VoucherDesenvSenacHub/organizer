@@ -62,7 +62,7 @@ main.conteudo-principal section > .container {
 /* Sessão de Baixo: Áreas dos cards */
 section#box-ongs {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     gap: 30px 10px;
     flex-wrap: wrap;
     width: 100%;

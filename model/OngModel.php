@@ -84,74 +84,63 @@ class OngModel
     }
 
 
-    function listarCardsOngs(string $tipo = '', array $valor = [])
+    function listarCardsOngs(array $filtros = [])
     {
-        $limit = $valor['limit'] ?? 6;
-        $pagina = $valor['pagina'] ?? 1;
+        $limit  = $filtros['limit'] ?? 6;
+        $pagina = $filtros['pagina'] ?? 1;
         $offset = ($pagina - 1) * $limit;
 
         $params = [];
-        $where = 'WHERE 1=1';
-        $join = '';
-        $order = '';
+        $where  = 'WHERE 1=1';
+        $join   = '';
+        $order  = '';
 
         // Filtro por pesquisa
-        if ($tipo === 'pesquisa' && !empty($valor['pesquisa'])) {
+        if (!empty($filtros['pesquisa'])) {
             $where .= " AND nome LIKE :nome";
-            $params[':nome'] = "%{$valor['pesquisa']}%";
+            $params[':nome'] = "%{$filtros['pesquisa']}%";
         }
-
         // Filtro por ordem
-        if (!empty($valor['ordem'])) {
-            if ($valor['ordem'] === 'novas') {
-                $order = "ORDER BY data_cadastro DESC";
-            } elseif ($valor['ordem'] === 'antigas') {
-                $order = "ORDER BY data_cadastro ASC";
-            }
+        if (!empty($filtros['ordem'])) {
+            $order = match ($filtros['ordem']) {
+                'novas' => "ORDER BY data_cadastro DESC",
+                'antigas' => "ORDER BY data_cadastro ASC",
+                default  => ''
+            };
         }
-
         // Filtro por número de projetos
-        if (!empty($valor['projetos'])) {
-            switch ($valor['projetos']) {
-                case '5':
-                    $where .= " AND total_projetos <= 5";
-                    break;
-                case '10':
-                    $where .= " AND total_projetos <= 10";
-                    break;
-                case 'mais10':
-                    $where .= " AND total_projetos > 10";
-                    break;
-            }
+        if (!empty($filtros['projetos'])) {
+            $where .= match ($filtros['projetos']) {
+                '5'      => " AND total_projetos <= 5",
+                '10'     => " AND total_projetos <= 10",
+                'mais10' => " AND total_projetos > 10",
+                default  => ""
+            };
         }
-
         // Filtro por número de doações
-        if (!empty($valor['doacoes'])) {
-            switch ($valor['doacoes']) {
-                case '10':
-                    $where .= " AND total_doacoes <= 10";
-                    break;
-                case '20':
-                    $where .= " AND total_doacoes <= 20";
-                    break;
-                case 'mais20':
-                    $where .= " AND total_doacoes > 20";
-                    break;
-            }
+        if (!empty($filtros['doacoes'])) {
+            $where .= match ($filtros['doacoes']) {
+                '10'     => " AND total_doacoes <= 10",
+                '20'     => " AND total_doacoes <= 20",
+                'mais20' => " AND total_doacoes > 20",
+                default  => ""
+            };
         }
-
-        // Filtro por favoritas
-        if ($tipo === 'favoritas' && !empty($valor['usuario_id'])) {
-            $join = "JOIN favoritos_ongs f USING (ong_id)";
+        // Favoritas
+        if (!empty(!empty($filtros['usuario_id']) && $filtros['favoritas'])) {
+            $join  = "JOIN favoritos_ongs f USING (ong_id)";
             $where .= " AND usuario_id = :usuario_id";
-            $order = "ORDER BY data_favoritado DESC";
-            $params[':usuario_id'] = $valor['usuario_id'];
+            $order  = "ORDER BY data_favoritado DESC";
+            $params[':usuario_id'] = $filtros['usuario_id'];
         }
-
+        // Recentes
+        if (!empty($filtros['recentes'])) {
+            $order = "ORDER BY data_cadastro DESC";
+        }
         // Query final
         $query = "SELECT v.* FROM vw_card_ongs v {$join} {$where} {$order} LIMIT {$limit} OFFSET {$offset}";
 
-        $stmt = $this->pdo->prepare($query);
+        $stmt  = $this->pdo->prepare($query);
         foreach ($params as $key => $value) {
             $stmt->bindValue($key, $value, is_int($value) ? PDO::PARAM_INT : PDO::PARAM_STR);
         }
@@ -159,58 +148,45 @@ class OngModel
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    function paginacaoOngs(string $tipo = '', array $valor = [])
+    function paginacaoOngs(array $filtros = [])
     {
         $params = [];
-        $where = 'WHERE 1=1';
-        $join = '';
+        $where  = 'WHERE 1=1';
+        $join   = '';
 
         // Filtro por pesquisa
-        if ($tipo === 'pesquisa' && !empty($valor['pesquisa'])) {
+        if (!empty($filtros['pesquisa'])) {
             $where .= " AND nome LIKE :nome";
-            $params[':nome'] = "%{$valor['pesquisa']}%";
+            $params[':nome'] = "%{$filtros['pesquisa']}%";
         }
-
-        // Filtro por favoritas
-        if ($tipo === 'favoritos' && !empty($valor['usuario_id'])) {
-            $join = "JOIN favoritos_ongs f USING (ong_id)";
+        // Ongs favoritas
+        if (!empty($filtros['usuario_id']) && !empty($filtros['favoritas'])) {
+            $join  = "JOIN favoritos_ongs f USING (ong_id)";
             $where .= " AND usuario_id = :usuario_id";
-            $params[':usuario_id'] = $valor['usuario_id'];
+            $params[':usuario_id'] = $filtros['usuario_id'];
         }
-
         // Filtro por número de projetos
-        if (!empty($valor['projetos'])) {
-            switch ($valor['projetos']) {
-                case '5':
-                    $where .= " AND total_projetos <= 5";
-                    break;
-                case '10':
-                    $where .= " AND total_projetos <= 10";
-                    break;
-                case 'mais10':
-                    $where .= " AND total_projetos > 10";
-                    break;
-            }
+        if (!empty($filtros['projetos'])) {
+            $where .= match ($filtros['projetos']) {
+                '5'      => " AND total_projetos <= 5",
+                '10'     => " AND total_projetos <= 10",
+                'mais10' => " AND total_projetos > 10",
+                default  => ""
+            };
         }
-
         // Filtro por número de doações
-        if (!empty($valor['doacoes'])) {
-            switch ($valor['doacoes']) {
-                case '10':
-                    $where .= " AND total_doacoes <= 10";
-                    break;
-                case '20':
-                    $where .= " AND total_doacoes <= 20";
-                    break;
-                case 'mais20':
-                    $where .= " AND total_doacoes > 20";
-                    break;
-            }
+        if (!empty($filtros['doacoes'])) {
+            $where .= match ($filtros['doacoes']) {
+                '10'     => " AND total_doacoes <= 10",
+                '20'     => " AND total_doacoes <= 20",
+                'mais20' => " AND total_doacoes > 20",
+                default  => ""
+            };
         }
-
-        // Monta e executa a query
+        // Query final
         $query = "SELECT COUNT(*) AS total FROM vw_card_ongs v {$join} {$where}";
-        $stmt = $this->pdo->prepare($query);
+
+        $stmt  = $this->pdo->prepare($query);
         foreach ($params as $key => $value) {
             $stmt->bindValue($key, $value, is_int($value) ? PDO::PARAM_INT : PDO::PARAM_STR);
         }

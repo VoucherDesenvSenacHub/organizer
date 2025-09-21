@@ -1,30 +1,31 @@
 <?php
 ob_start();
-//CONFIGURAÇÕES DA PÁGINA
-$acesso = 'ong';
+$acesso       = 'ong';
 $tituloPagina = 'Projetos | Organizer';
-$cssPagina = ['ong/listagem.css'];
+$cssPagina    = ['ong/listagem.css'];
 require_once '../../components/layout/base-inicio.php';
 
 require_once __DIR__ . '/../../../autoload.php';
-
-//CARREGA CARDS DE PROJETOS
 $projetoModel = new ProjetoModel();
-$IdOng = $_SESSION['ong_id'];
-$paginaAtual = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
-$tipo = 'ong';
-$valor = ['ong_id' => $IdOng, 'pagina' => $paginaAtual];
-if (isset($_GET['pesquisa'])) {
-    $tipo = 'pesquisa';
-    $valor['pesquisa'] = $_GET['pesquisa'];
-}
-$lista = $projetoModel->listarCardsProjetos($tipo, $valor);
-$totalRegistros = $projetoModel->paginacaoProjetos($tipo, $valor);
-$paginas = ceil($totalRegistros / 8);
+$paginaAtual  = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
+
+$ongId = $_SESSION['ong_id'];
+
+// Monta os filtros
+$filtros = [
+    'pagina'   => $paginaAtual,
+    'ong_id'   => $ongId,
+    'pesquisa' => $_GET['pesquisa'] ?? null
+];
+
+// Busca lista e paginação
+$lista          = $projetoModel->listarCardsProjetos($filtros);
+$totalRegistros = $projetoModel->paginacaoProjetos($filtros);
+$paginas        = ceil($totalRegistros / 8);
 
 // Buscar as categorias
 $categoriaModel = new CategoriaModel();
-$Categorias = $categoriaModel->buscarCategorias();
+$Categorias     = $categoriaModel->buscarCategorias();
 
 //FORMULÁRIO DE CRIAÇÃO DE PROJETO (popup)
 $PerfilProjeto = [

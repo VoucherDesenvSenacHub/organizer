@@ -6,30 +6,28 @@ function carregarListaProjetos(array $get, array $post)
     $projetoModel = new ProjetoModel();
     $categoriaModel = new CategoriaModel();
 
-    $paginaAtual = isset($get['pagina']) ? (int)$get['pagina'] : 1;
-    $tipo = isset($post['pesquisa']) && $post['pesquisa'] !== '' ? 'pesquisa' : '';
-    $valor = ['pagina' => $paginaAtual];
+    $paginaAtual = (int)($_GET['pagina'] ?? 1);
+    $filtros = ['pagina' => $paginaAtual];
 
     if (!empty($post['pesquisa'])) {
-        $valor['pesquisa'] = $post['pesquisa'];
+        $filtros['pesquisa'] = $post['pesquisa'];
     }
 
     if (!empty($post['ordem'])) {
-        $valor['ordem'] = $post['ordem'];
+        $filtros['ordem'] = $post['ordem'];
     }
 
     if (!empty($post['status'])) {
-        $valor['status'] = $post['status'];
+        $filtros['status'] = $post['status'];
     }
 
     if (!empty($post['categorias'])) {
-        $valor['categorias'] = $post['categorias'];
+        $filtros['categorias'] = $post['categorias'];
     }
 
-
     $categorias = $categoriaModel->buscarCategorias();
-    $lista = $projetoModel->listarCardsProjetos($tipo, $valor);
-    $totalRegistros = $projetoModel->paginacaoProjetos($tipo, $valor);
+    $lista = $projetoModel->listarCardsProjetos($filtros);
+    $totalRegistros = $projetoModel->paginacaoProjetos($filtros);
     $paginas = ceil($totalRegistros / 8);
 
     $favoritos = [];
