@@ -71,7 +71,7 @@
     gap: 10px;
 }
 
-.filtro-pesquisa ul li label input {
+.filtro-pesquisa ul li label input[type="checkbox"] {
     accent-color: var(--cor-amarelo-hover);
 }
 
@@ -104,10 +104,43 @@ div.input-pesquisa {
 .input-pesquisa .btn {
     font-size: 20px;
     padding: 0;
-    width: 50px;
-    height: 50px;
+    min-width: 50px;
+    min-height: 50px;
     border-radius: 50%;
     margin-left: -50px;
+}
+
+/* Radios customizados */
+.filtro-pesquisa ul li input[type="radio"] {
+    appearance: none; /* remove o estilo padrão */
+    -webkit-appearance: none;
+    min-width: 16px;
+    min-height: 16px;
+    border: 1px solid #aaa;
+    border-radius: 50%;
+    position: relative;
+    cursor: pointer;
+    outline: none;
+    transition: 0.2s;
+    background-color: white;
+}
+
+/* Hover */
+.filtro-pesquisa ul li input[type="radio"]:hover {
+    border-color: var(--cor-amarelo-hover);
+}
+
+/* Checked */
+.filtro-pesquisa ul li input[type="radio"]:checked::after {
+    content: '';
+    min-width: 8px;
+    min-height: 8px;
+    background-color: var(--cor-amarelo-hover);
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 @media (max-width: 900px) {

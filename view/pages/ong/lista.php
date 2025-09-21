@@ -38,20 +38,20 @@ if (isset($_SESSION['usuario']['id'])) {
                 <div class="filtro-pesquisa">
                     <ul>
                         <li>Ordem <i class="fa-solid fa-angle-down"></i></li>
-                        <li><label><input type="checkbox">Novas</label></li>
-                        <li><label><input type="checkbox">Antigas</label></li>
+                        <li><label><input type="radio" name="ordem">Novas</label></li>
+                        <li><label><input type="radio" name="ordem">Antigas</label></li>
                     </ul>
                     <ul>
                         <li>Projetos <i class="fa-solid fa-angle-down"></i></li>
-                        <li><label><input type="checkbox">Até 5</label></li>
-                        <li><label><input type="checkbox">Até 10</label></li>
-                        <li><label><input type="checkbox">Mais de 10</label></li>
+                        <li><label><input type="radio" name="projetos">Até 5</label></li>
+                        <li><label><input type="radio" name="projetos">Até 10</label></li>
+                        <li><label><input type="radio" name="projetos">Mais de 10</label></li>
                     </ul>
                     <ul>
                         <li>Doações <i class="fa-solid fa-angle-down"></i></li>
-                        <li><label><input type="checkbox">Até 10</label></li>
-                        <li><label><input type="checkbox">Até 20</label></li>
-                        <li><label><input type="checkbox">Mais de 20</label></li>
+                        <li><label><input type="radio" name="doacoes">Até 10</label></li>
+                        <li><label><input type="radio" name="doacoes">Até 20</label></li>
+                        <li><label><input type="radio" name="doacoes">Mais de 20</label></li>
                     </ul>
                     <button class="btn">Filtrar</button>
                 </div>

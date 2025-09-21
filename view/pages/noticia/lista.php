@@ -35,8 +35,8 @@ $paginas = (int)ceil($totalRegistros / 6);
                 <div class="filtro-pesquisa">
                     <ul>
                         <li>Ordem <i class="fa-solid fa-angle-down"></i></li>
-                        <li><label><input type="checkbox">Novas</label></li>
-                        <li><label><input type="checkbox">Antigas</label></li>
+                        <li><label><input type="radio" name="ordem">Novas</label></li>
+                        <li><label><input type="radio" name="ordem">Antigas</label></li>
                     </ul>
                     <button class="btn">Filtrar</button>
                 </div>
