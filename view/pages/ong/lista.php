@@ -30,7 +30,7 @@ if (isset($_SESSION['usuario']['id'])) {
 <main class="<?= isset($_SESSION['usuario']['id']) ? 'usuario-logado' : 'visitante' ?>">
     <div class="container" id="container-catalogo">
         <section id="header-section">
-            <form class="form-pesquisa" action="lista.php" method="POST">
+            <form class="form-pesquisa" action="lista.php" method="GET">
                 <div class="textos-pesquisa">
                     <h1>DESCUBRA AS ONGS</h1>
                     <p>Explore organizações que estão fazendo a diferença e saiba como você pode contribuir.</p>
@@ -40,6 +40,18 @@ if (isset($_SESSION['usuario']['id'])) {
                         <li>Ordem <i class="fa-solid fa-angle-down"></i></li>
                         <li><label><input type="checkbox">Novas</label></li>
                         <li><label><input type="checkbox">Antigas</label></li>
+                    </ul>
+                    <ul>
+                        <li>Projetos <i class="fa-solid fa-angle-down"></i></li>
+                        <li><label><input type="checkbox">Até 5</label></li>
+                        <li><label><input type="checkbox">Até 10</label></li>
+                        <li><label><input type="checkbox">Mais de 10</label></li>
+                    </ul>
+                    <ul>
+                        <li>Doações <i class="fa-solid fa-angle-down"></i></li>
+                        <li><label><input type="checkbox">Até 10</label></li>
+                        <li><label><input type="checkbox">Até 20</label></li>
+                        <li><label><input type="checkbox">Mais de 20</label></li>
                     </ul>
                     <button class="btn">Filtrar</button>
                 </div>
@@ -52,9 +64,11 @@ if (isset($_SESSION['usuario']['id'])) {
                 <img src="../../assets/images/pages/shared/time.png">
             </div>
         </section>
-        <?php if (isset($_GET['pesquisa'])) {
-            echo "<p class='qnt-busca'><i class='fa-solid fa-search'></i> " . $totalRegistros . " ONGS Encontradas</p>";
-        } ?>
+        <?php if (isset($totalRegistros)): ?>
+            <div class="resultado-busca">
+                <p><?= $totalRegistros ?> Ongs</p>
+            </div>
+        <?php endif; ?>
         <section id="box-ongs">
             <?php foreach ($lista as $ong) {
                 $jaFavoritada = isset($_SESSION['usuario']['id']) && in_array($ong['ong_id'], $ongsFavoritas);

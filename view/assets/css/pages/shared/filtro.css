@@ -8,7 +8,6 @@
 
 /* Filtros */
 .filtro-pesquisa {
-    background-color: white;
     /* box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px; */
     /* padding: 5px; */
     border-radius: 5px;
@@ -45,6 +44,14 @@
 .filtro-pesquisa ul li:first-child {
     justify-content: space-between;
     gap: 10px;
+}
+
+.filtro-pesquisa ul li i {
+    transition: .5s ease;
+}
+
+.filtro-pesquisa ul:hover li i {
+    transform: rotateX(180deg);
 }
 
 .filtro-pesquisa ul li:nth-child(2) {
