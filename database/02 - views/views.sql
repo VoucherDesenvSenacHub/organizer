@@ -12,13 +12,14 @@ CREATE OR REPLACE VIEW vw_card_ongs AS
 -- VIEW PARA BUSCAR OS CARDS DO PROJETO
 -- ================================
 CREATE OR REPLACE VIEW vw_card_projetos AS
-    SELECT p.projeto_id, p.status, p.nome, p.descricao, i.caminho, p.categoria_id, c.nome AS categoria, c.cor,
+    SELECT p.projeto_id, p.status, p.nome, p.descricao, p.data_cadastro, i.caminho, p.categoria_id, c.nome AS categoria, c.cor,
         ROUND(COALESCE(SUM(dp.valor), 0) / p.meta * 100) AS barra, p.ong_id
     FROM projetos p
         LEFT JOIN imagens i
             ON i.imagem_id = (SELECT ip.imagem_id FROM imagens_projetos ip WHERE ip.projeto_id = p.projeto_id ORDER BY ip.id ASC LIMIT 1)
         LEFT JOIN categorias c USING(categoria_id)
         LEFT JOIN doacoes_projetos dp USING(projeto_id)
+    WHERE p.status <> 'INATIVO'
     GROUP BY p.projeto_id, p.nome, p.descricao, i.caminho;
 
 -- ================================

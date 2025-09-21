@@ -64,6 +64,50 @@ function copiar_link(toast) {
     }
 }
 
+
+const uls = document.querySelectorAll('.filtro-pesquisa ul');
+
+uls.forEach(ul => {
+    const lis = Array.from(ul.children);
+    const firstLi = lis[0];
+    const padding = 30;
+
+    // Medir largura real do primeiro <li> com clone invisível
+    const closedWidth = getNaturalWidth(firstLi);
+    ul.style.width = `${closedWidth + padding}px`;
+
+    // Medir largura real do maior <li> com clones invisíveis
+    let maxWidth = closedWidth;
+    lis.forEach(li => {
+        const liWidth = getNaturalWidth(li);
+        if (liWidth > maxWidth) maxWidth = liWidth;
+    });
+
+    ul.addEventListener('mouseenter', () => {
+        ul.style.height = `${lis.length * 40}px`;
+        ul.style.width = `${maxWidth + padding}px`;
+    });
+
+    ul.addEventListener('mouseleave', () => {
+        ul.style.height = '40px';
+        ul.style.width = `${closedWidth + padding}px`;
+    });
+});
+
+function getNaturalWidth(element) {
+    const clone = element.cloneNode(true);
+    clone.style.width = 'auto';
+    clone.style.position = 'absolute';
+    clone.style.visibility = 'hidden';
+    clone.style.whiteSpace = 'nowrap';
+    document.body.appendChild(clone);
+    const width = clone.getBoundingClientRect().width;
+    document.body.removeChild(clone);
+    return width;
+}
+
+
+
 function copiar_link_aprovar(toast) {
     let input = document.getElementById("link-aprovar");
     input.select();

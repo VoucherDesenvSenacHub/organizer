@@ -13,7 +13,7 @@ class CategoriaModel
 
     function buscarCategorias()
     {
-        $query = "SELECT categoria_id, nome FROM $this->tabela";
+        $query = "SELECT categoria_id, nome FROM $this->tabela ORDER BY nome";
         $stmt = $this->pdo->prepare($query);
         $stmt->execute();
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
