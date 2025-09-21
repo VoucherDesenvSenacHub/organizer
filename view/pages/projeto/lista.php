@@ -26,7 +26,7 @@ $totalRegistros = $resultado['totalRegistros'] ?? 0;
 $projetosFavoritos = $resultado['favoritos'] ?? [];
 $categoriasSelecionadas = $_SESSION['filtros_projetos']['categorias'] ?? [];
 ?>
-<main class="<?= isset($_SESSION['usuario']['id']) ? 'usuario-logado' : '' ?>">
+<main class="<?= isset($_SESSION['usuario']['id']) ? 'usuario-logado' : 'visitante' ?>">
     <div class="container" id="container-catalogo">
         <section id="header-section">
             <form class="form-pesquisa" action="lista.php" method="POST">

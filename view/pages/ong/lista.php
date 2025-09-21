@@ -29,58 +29,26 @@ if (isset($_SESSION['usuario']['id'])) {
 ?>
 <main class="<?= isset($_SESSION['usuario']['id']) ? 'usuario-logado' : 'visitante' ?>">
     <div class="container" id="container-catalogo">
-        <section id="top-info">
-            <div id="info">
-                <div>
+        <section id="header-section">
+            <form class="form-pesquisa" action="lista.php" method="POST">
+                <div class="textos-pesquisa">
                     <h1>DESCUBRA AS ONGS</h1>
                     <p>Explore organizações que estão fazendo a diferença e saiba como você pode contribuir.</p>
-                    <form id="form-filtro" action="lista.php" method="GET">
-                        <!-- ### -->
-                        <div class="ul-group">
-                            <ul class="drop" id="esc-status">
-                                <li>
-                                    <p>Ordem</p>
-                                    <i class="fa-solid fa-angle-down"></i>
-                                </li>
-                                <li>
-                                    <input type="checkbox" name="em-andamento" id="em-andamento">
-                                    <label for="em-andamento">mais recentes</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" name="concluido" id="concluido">
-                                    <label for="concluido">mais antigos</label>
-                                </li>
-                            </ul>
-                            <ul class="drop" id="esc-q-projetos">
-                                <li>
-                                    <p>Quantidade</p>
-                                    <i class="fa-solid fa-angle-down"></i>
-                                </li>
-                                <li>
-                                    <input type="checkbox" name="educacao" id="educacao">
-                                    <label for="educacao">1 projeto</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" name="saude" id="saude">
-                                    <label for="saude">3 à 5 projetos</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" name="esporte" id="esporte">
-                                    <label for="esporte">5 ou mais projetos</label>
-                                </li>
-                                
-                            </ul>
-                            
-                        </div>
-                        <button class="btn">Filtrar</button>
-                    </form>
                 </div>
-                <form id="form-busca" action="lista.php" method="GET">
+                <div class="filtro-pesquisa">
+                    <ul>
+                        <li>Ordem <i class="fa-solid fa-angle-down"></i></li>
+                        <li><label><input type="checkbox">Novas</label></li>
+                        <li><label><input type="checkbox">Antigas</label></li>
+                    </ul>
+                    <button class="btn">Filtrar</button>
+                </div>
+                <div class="input-pesquisa">
                     <input type="text" name="pesquisa" placeholder="Busque uma ONG">
                     <button class="btn" type="submit"><i class="fa-solid fa-search"></i></button>
-                </form>
-            </div>
-            <div id="imagem-top">
+                </div>
+            </form>
+            <div id="img-illustrativa">
                 <img src="../../assets/images/pages/shared/time.png">
             </div>
         </section>

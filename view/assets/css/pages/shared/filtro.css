@@ -44,6 +44,7 @@
 
 .filtro-pesquisa ul li:first-child {
     justify-content: space-between;
+    gap: 10px;
 }
 
 .filtro-pesquisa ul li:nth-child(2) {

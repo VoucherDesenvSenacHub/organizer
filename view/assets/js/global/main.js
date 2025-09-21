@@ -65,36 +65,48 @@ function copiar_link(toast) {
 }
 
 
-// Abrir a dropdown dos filtros
 const uls = document.querySelectorAll('.filtro-pesquisa ul');
 
 uls.forEach(ul => {
-    const liCount = ul.children.length;
-    const firstLi = ul.querySelector('li:first-child');
-    const text = firstLi.textContent.trim();
+    const lis = Array.from(ul.children);
+    const firstLi = lis[0];
+    const padding = 30;
 
-    const closedWidth = text.length * 10 + 40; // largura inicial
-    ul.style.width = `${closedWidth}px`;
+    // Medir largura real do primeiro <li> com clone invisível
+    const closedWidth = getNaturalWidth(firstLi);
+    ul.style.width = `${closedWidth + padding}px`;
 
-    // calcula largura do maior li
+    // Medir largura real do maior <li> com clones invisíveis
     let maxWidth = closedWidth;
-    Array.from(ul.children).forEach(li => {
-        const liText = li.textContent.trim();
-        const liWidth = liText.length * 10 + 20; // mesmo cálculo que closedWidth
+    lis.forEach(li => {
+        const liWidth = getNaturalWidth(li);
         if (liWidth > maxWidth) maxWidth = liWidth;
-        // alert(`li: ${liWidth} ${li.textContent} - Max: ${maxWidth}`)
     });
-    
+
     ul.addEventListener('mouseenter', () => {
-        ul.style.height = `${liCount * 40}px`;
-        ul.style.width = `${maxWidth}px`;
+        ul.style.height = `${lis.length * 40}px`;
+        ul.style.width = `${maxWidth + padding}px`;
     });
 
     ul.addEventListener('mouseleave', () => {
-        ul.style.height = `40px`;
-        ul.style.width = `${closedWidth}px`;
+        ul.style.height = '40px';
+        ul.style.width = `${closedWidth + padding}px`;
     });
 });
+
+function getNaturalWidth(element) {
+    const clone = element.cloneNode(true);
+    clone.style.width = 'auto';
+    clone.style.position = 'absolute';
+    clone.style.visibility = 'hidden';
+    clone.style.whiteSpace = 'nowrap';
+    document.body.appendChild(clone);
+    const width = clone.getBoundingClientRect().width;
+    document.body.removeChild(clone);
+    return width;
+}
+
+
 
 function copiar_link_aprovar(toast) {
     let input = document.getElementById("link-aprovar");
