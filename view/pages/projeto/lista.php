@@ -24,6 +24,7 @@ $paginaAtual = $resultado['paginaAtual'];
 $totalRegistros = $resultado['totalRegistros'] ?? 0;
 
 $projetosFavoritos = $resultado['favoritos'] ?? [];
+$statusSelecionado = $post['status'] ?? [];
 $categoriasSelecionadas = $_SESSION['filtros_projetos']['categorias'] ?? [];
 ?>
 <main class="<?= isset($_SESSION['usuario']['id']) ? 'usuario-logado' : 'visitante' ?>">
@@ -36,9 +37,14 @@ $categoriasSelecionadas = $_SESSION['filtros_projetos']['categorias'] ?? [];
                 </div>
                 <div class="filtro-pesquisa">
                     <ul>
+                        <li>Ordem <i class="fa-solid fa-angle-down"></i></li>
+                        <li><label><input type="radio" name="ordem" value="novos" <?= ($post['ordem'] ?? '') === 'novos' ? 'checked' : '' ?>>Novos</label></li>
+                        <li><label><input type="radio" name="ordem" value="antigos" <?= ($post['ordem'] ?? '') === 'antigos' ? 'checked' : '' ?>>Antigos</label></li>
+                    </ul>
+                    <ul>
                         <li>Status <i class="fa-solid fa-angle-down"></i></li>
-                        <li><label><input type="checkbox">Ativos</label></li>
-                        <li><label><input type="checkbox">Finalizados</label></li>
+                        <li><label><input type="checkbox" name="status[]" value="ATIVO" <?= in_array('ATIVO', $statusSelecionado) ? 'checked' : '' ?>>Ativos</label></li>
+                        <li><label><input type="checkbox" name="status[]" value="FINALIZADO" <?= in_array('FINALIZADO', $statusSelecionado) ? 'checked' : '' ?>>Finalizados</label></li>
                     </ul>
                     <ul>
                         <li>Categoria <i class="fa-solid fa-angle-down"></i></li>
@@ -63,7 +69,7 @@ $categoriasSelecionadas = $_SESSION['filtros_projetos']['categorias'] ?? [];
         <?php if (isset($totalRegistros)): ?>
             <div class="resultado-busca">
                 <p><?= $totalRegistros ?> Projetos</p>
-                <p><i class='fa-solid fa-filter'></i> <?= count($categoriasSelecionadas) ?> Filtros</p>
+                <p><i class='fa-solid fa-filter'></i> <?= count($categoriasSelecionadas) + count($statusSelecionado) ?> Filtros</p>
             </div>
         <?php endif; ?>
 
@@ -77,7 +83,6 @@ $categoriasSelecionadas = $_SESSION['filtros_projetos']['categorias'] ?? [];
             <nav class="paginacao">
                 <?php for ($i = 1; $i <= $paginas; $i++): ?>
                     <a href="?pagina=<?= $i ?>" class="<?= $i == $paginaAtual ? 'active' : '' ?>"> <?= $i ?> </a>
-                    <!-- Fica assim: http://organizer/view/pages/projeto/lista.php?pagina=1 -->
                 <?php endfor; ?>
             </nav>
         <?php endif; ?>

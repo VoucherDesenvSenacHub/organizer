@@ -14,16 +14,15 @@ class ProjetoModel
 
     function listarCardsProjetos(string $tipo = '', array $valor = [])
     {
-        // Define limite e paginação
         $limit = $valor['limit'] ?? 8;
         $pagina = $valor['pagina'] ?? 1;
         $offset = ($pagina - 1) * $limit;
-        // Inicializa variáveis para montar a query
+
         $params = [];
-        $where = 'WHERE 1=1'; // Base para adicionar filtros
+        $where = 'WHERE 1=1';
         $join = '';
         $order = '';
-        // Monta a query conforme o tipo de busca
+
         switch ($tipo) {
             case 'pesquisa':
                 $where .= " AND nome LIKE :nome";
@@ -58,6 +57,19 @@ class ProjetoModel
                 $order = "ORDER BY data_cadastro DESC";
                 break;
         }
+
+        // Filtro por status
+        if (!empty($valor['status']) && is_array($valor['status'])) {
+            $placeholders = [];
+            foreach ($valor['status'] as $i => $status) {
+                $key = ":status{$i}";
+                $placeholders[] = $key;
+                $params[$key] = $status;
+            }
+            $where .= " AND status IN (" . implode(',', $placeholders) . ")";
+        }
+
+
         // Filtro por categorias
         if (!empty($valor['categorias'])) {
             $placeholders = [];
@@ -68,9 +80,17 @@ class ProjetoModel
             }
             $where .= " AND categoria_id IN (" . implode(',', $placeholders) . ")";
         }
-        // MONTA A QUERY FINAL
+
+        // Filtro por ordem (se não definido pelo tipo)
+        if (empty($order) && !empty($valor['ordem'])) {
+            if ($valor['ordem'] === 'novos') {
+                $order = "ORDER BY data_cadastro DESC";
+            } elseif ($valor['ordem'] === 'antigos') {
+                $order = "ORDER BY data_cadastro ASC";
+            }
+        }
+
         $query = "SELECT v.* FROM vw_card_projetos v {$join} {$where} {$order} LIMIT {$limit} OFFSET {$offset}";
-        // Prepara e executa a query com os parâmetros
         $stmt = $this->pdo->prepare($query);
         foreach ($params as $key => $value) {
             $stmt->bindValue($key, $value, is_int($value) ? PDO::PARAM_INT : PDO::PARAM_STR);
@@ -79,14 +99,12 @@ class ProjetoModel
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-
     function paginacaoProjetos(string $tipo = '', array $valor = [])
     {
-        // Inicializa variáveis
         $params = [];
         $where = 'WHERE 1=1';
         $join = '';
-        // Monta filtros conforme o tipo
+
         switch ($tipo) {
             case 'pesquisa':
                 $where .= " AND nome LIKE :nome";
@@ -115,6 +133,7 @@ class ProjetoModel
                     $params[':ong_id'] = $valor['ong_id'];
                 }
         }
+
         // Filtro por categorias
         if (!empty($valor['categorias']) && is_array($valor['categorias'])) {
             $placeholders = [];
@@ -125,9 +144,19 @@ class ProjetoModel
             }
             $where .= " AND categoria_id IN (" . implode(',', $placeholders) . ")";
         }
-        // Monta e executa a query
+
+        // Filtro por status
+        if (!empty($valor['status']) && is_array($valor['status'])) {
+            $placeholders = [];
+            foreach ($valor['status'] as $i => $status) {
+                $key = ":status{$i}";
+                $placeholders[] = $key;
+                $params[$key] = $status;
+            }
+            $where .= " AND status IN (" . implode(',', $placeholders) . ")";
+        }
+
         $query = "SELECT COUNT(*) AS total FROM vw_card_projetos v {$join} {$where}";
-        
         $stmt = $this->pdo->prepare($query);
         foreach ($params as $key => $value) {
             $stmt->bindValue($key, $value, is_int($value) ? PDO::PARAM_INT : PDO::PARAM_STR);

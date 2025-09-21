@@ -14,9 +14,18 @@ function carregarListaProjetos(array $get, array $post)
         $valor['pesquisa'] = $post['pesquisa'];
     }
 
+    if (!empty($post['ordem'])) {
+        $valor['ordem'] = $post['ordem'];
+    }
+
+    if (!empty($post['status'])) {
+        $valor['status'] = $post['status'];
+    }
+
     if (!empty($post['categorias'])) {
         $valor['categorias'] = $post['categorias'];
     }
+
 
     $categorias = $categoriaModel->buscarCategorias();
     $lista = $projetoModel->listarCardsProjetos($tipo, $valor);

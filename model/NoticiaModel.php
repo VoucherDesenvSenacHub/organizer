@@ -70,34 +70,39 @@ class NoticiaModel
 
     function listarCardsNoticias(string $tipo = '', array $valor = [])
     {
-        // Define limite e paginação
         $limit = $valor['limit'] ?? 6;
         $pagina = $valor['pagina'] ?? 1;
         $offset = ($pagina - 1) * $limit;
-        // Inicializa variáveis para montar a query
+
         $params = [];
-        $where = "WHERE status = 'ATIVO'"; // Filtro padrão
+        $where = "WHERE status = 'ATIVO'";
         $join = '';
         $order = '';
-        // Monta a query conforme o tipo de busca
-        switch ($tipo) {
-            case 'pesquisa':
-                $where .= " AND titulo LIKE :titulo";
-                $params[':titulo'] = "%{$valor['pesquisa']}%";
-                if (!empty($valor['ong_id'])) {
-                    $where .= " AND ong_id = :ong_id";
-                    $params[':ong_id'] = $valor['ong_id'];
-                }
-                break;
 
-            case 'ong':
-                $where .= " AND ong_id = :ong_id";
-                $params[':ong_id'] = $valor['ong_id'];
-                break;
+        // Filtro por pesquisa
+        if ($tipo === 'pesquisa' && !empty($valor['pesquisa'])) {
+            $where .= " AND titulo LIKE :titulo";
+            $params[':titulo'] = "%{$valor['pesquisa']}%";
         }
-        // MONTA A QUERY FINAL
+
+        // Filtro por ordem
+        if (!empty($valor['ordem'])) {
+            if ($valor['ordem'] === 'novas') {
+                $order = "ORDER BY data_cadastro DESC";
+            } elseif ($valor['ordem'] === 'antigas') {
+                $order = "ORDER BY data_cadastro ASC";
+            }
+        }
+
+        // Filtro por ONG específica
+        if (!empty($valor['ong_id'])) {
+            $where .= " AND ong_id = :ong_id";
+            $params[':ong_id'] = $valor['ong_id'];
+        }
+
+        // Query final
         $query = "SELECT v.* FROM vw_card_noticias v {$join} {$where} {$order} LIMIT {$limit} OFFSET {$offset}";
-        // Prepara e executa a query com os parâmetros
+
         $stmt = $this->pdo->prepare($query);
         foreach ($params as $key => $value) {
             $stmt->bindValue($key, $value, is_int($value) ? PDO::PARAM_INT : PDO::PARAM_STR);
@@ -109,28 +114,22 @@ class NoticiaModel
 
     function paginacaoNoticias(string $tipo = '', array $valor = [])
     {
-        // Inicializa variáveis
         $params = [];
         $where = "WHERE status = 'ATIVO'";
         $join = '';
-        // Monta filtros conforme o tipo
-        switch ($tipo) {
-            case 'pesquisa':
-                $where .= " AND titulo LIKE :titulo";
-                $params[':titulo'] = "%{$valor['pesquisa']}%";
-                if (!empty($valor['ong_id'])) {
-                    $where .= " AND ong_id = :ong_id";
-                    $params[':ong_id'] = $valor['ong_id'];
-                }
-                break;
 
-            case 'ong':
-                $where .= " AND ong_id = :ong_id";
-                $params[':ong_id'] = $valor['ong_id'];
-                break;
+        // Filtro por pesquisa
+        if ($tipo === 'pesquisa' && !empty($valor['pesquisa'])) {
+            $where .= " AND titulo LIKE :titulo";
+            $params[':titulo'] = "%{$valor['pesquisa']}%";
         }
 
-        // Monta e executa a query
+        // Filtro por ONG específica
+        if (!empty($valor['ong_id'])) {
+            $where .= " AND ong_id = :ong_id";
+            $params[':ong_id'] = $valor['ong_id'];
+        }
+
         $query = "SELECT COUNT(*) AS total FROM vw_card_noticias v {$join} {$where}";
         $stmt = $this->pdo->prepare($query);
         foreach ($params as $key => $value) {
