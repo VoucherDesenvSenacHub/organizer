@@ -8,7 +8,7 @@ function carregarListaNoticias(array $get, array $post)
 
     // Monta filtros
     $filtros = [
-        'pagina'   => isset($get['pagina']) ? (int)$get['pagina'] : 1,
+        'pagina'   => $paginaAtual,
         'pesquisa' => $post['pesquisa'] ?? null,
         'ordem'    => $post['ordem'] ?? null
     ];
