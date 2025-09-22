@@ -1,7 +1,7 @@
 <?php
 $acesso = 'ong';
-// $idOngLogada = $_SESSION['ong_id'];
-$idOngLogada = 1;
+$idOngLogada = $_SESSION['ong_id'];
+// $idOngLogada = 2;
 $tituloPagina = 'Relatórios | Organizer'; // Definir o título da página
 $cssPagina = ["ong/relatorios.css"]; //Colocar o arquivo .css (exemplo: 'ONG/cadastro.css')
 require_once '../../components/layout/base-inicio.php';
@@ -18,9 +18,6 @@ $projetos = new RelatoriosModel();
 $listaUsuarios = $projetos->buscarUsuarios();
 $contagem_projetos = $projetos->contarProjetos($idOngLogada);
 $arrecadaProjetos = $projetos->somarArrecadacaoProjetos($idOngLogada);
-// echo '<pre>';
-// print_r($arrecadaProjetos);
-// echo '</pre>';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $largura = $_POST['largura'];
     $altura = $_POST['altura'];
