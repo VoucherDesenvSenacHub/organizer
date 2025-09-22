@@ -33,6 +33,7 @@ function graficoLinhas($width, $height, $idOng){
         endfor;
         $maiorIndice = max($valoresArrecadados)*1.1;
         $indices = array();
+        $divisao = 1;
 
         // Cria um array com os índices a serem utilizados de acordo com a divisão exata possível
         if($maiorIndice != 0){

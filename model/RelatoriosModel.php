@@ -83,7 +83,7 @@ class RelatoriosModel {
             projetos p JOIN doacoes_projetos dp ON p.projeto_id = dp.projeto_id
             WHERE p.ong_id = :id
             AND MONTH(dp.data_doacao) = :month
-            AND YEAR(dp.data_doacao) = :year
+            AND YEAR(dp.data_doacao) = :year            
             AND p.status = 'ATIVO' ;";
         $stmt = $this->pdo->prepare($query);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
