@@ -7,6 +7,7 @@ require_once '../../components/layout/base-inicio.php';
 require_once __DIR__ . '/../../../autoload.php';
 $ongModel = new OngModel();
 $IdOng = $_SESSION['ong_id'];
+echo $IdOng;
 $DashboardOng = $ongModel->dashboardOng($IdOng);
 $UltimasAtividades = $ongModel->ultimasAtividadesOng($IdOng);
 

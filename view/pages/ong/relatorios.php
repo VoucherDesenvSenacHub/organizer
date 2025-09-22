@@ -1,7 +1,5 @@
 <?php
 $acesso = 'ong';
-$idOngLogada = $_SESSION['ong_id'];
-// $idOngLogada = 2;
 $tituloPagina = 'Relatórios | Organizer'; // Definir o título da página
 $cssPagina = ["ong/relatorios.css"]; //Colocar o arquivo .css (exemplo: 'ONG/cadastro.css')
 require_once '../../components/layout/base-inicio.php';
@@ -15,9 +13,10 @@ require_once '../../../model/RelatoriosModel.php';
 require_once '../../../model/Relatorios.php';
 
 $projetos = new RelatoriosModel();
+$IdOng = $_SESSION['ong_id'];
 $listaUsuarios = $projetos->buscarUsuarios();
-$contagem_projetos = $projetos->contarProjetos($idOngLogada);
-$arrecadaProjetos = $projetos->somarArrecadacaoProjetos($idOngLogada);
+$contagem_projetos = $projetos->contarProjetos($IdOng);
+$arrecadaProjetos = $projetos->somarArrecadacaoProjetos($IdOng);
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $largura = $_POST['largura'];
     $altura = $_POST['altura'];
@@ -36,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="icon">
                     Voluntários por Projeto
                     <form action="../../components/reports-pdf/pdf-generator.php" method="POST">
-                        <input type="hidden" value="<?= $idOngLogada ?>" name="id-ong" id="id-ong">
+                        <input type="hidden" value="<?= $IdOng ?>" name="id-ong" id="id-ong">
                         <input type="hidden" value="voluntarios-por-projeto.php" name="relatorio" id="relatorio">
                         <button onclick="clicar()">
                             <img src="../../assets/images/pages/ong/relatorios/icon-download.png" alt="">
@@ -55,13 +54,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="icon">
                     Doações Mensais
                     <form action="../../components/reports-pdf/pdf-generator.php" method="POST">
-                        <input type="hidden" value="<?= $idOngLogada ?>" name="id-ong" id="id-ong">
+                        <input type="hidden" value="<?= $IdOng ?>" name="id-ong" id="id-ong">
                         <input type="hidden" value="doacoes-mensais.php" name="relatorio" id="relatorio">
                         <button onclick="clicar()"><img src="../../assets/images/pages/ong/relatorios/icon-download.png" alt=""></button>
                     </form>
                 </div>
                 <div class="grafico-linhas">
-                    <?php echo graficoLinhas( $largura, $altura, $idOngLogada) ?>
+                    <?php echo graficoLinhas( $largura, $altura, $IdOng) ?>
                 </div>
             </div>
 
@@ -69,7 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="icon">
                     Doações por projeto
                     <form action="../../components/reports-pdf/pdf-generator.php" method="POST">
-                        <input type="hidden" value="<?= $idOngLogada ?>" name="id-ong" id="id-ong">
+                        <input type="hidden" value="<?= $IdOng ?>" name="id-ong" id="id-ong">
                         <input type="hidden" value="doacoes-por-projeto.php" name="relatorio" id="relatorio">
                         <button onclick="clicar()"><img src="../../assets/images/pages/ong/relatorios/icon-download.png" alt=""></button>
                     </form>
@@ -77,7 +76,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </div>
                 <div class="grafico-pizza">
                     <?php
-                    echo graficoPizza($largura, $altura, $idOngLogada);
+                    echo graficoPizza($largura, $altura, $IdOng);
                     ?>
                 </div>
             </div>
