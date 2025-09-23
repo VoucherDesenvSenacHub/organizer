@@ -15,7 +15,8 @@ $ongId = $_SESSION['ong_id'];
 $filtros = [
     'pagina'   => $paginaAtual,
     'ong_id'   => $ongId,
-    'pesquisa' => $_GET['pesquisa'] ?? null
+    'pesquisa' => $_GET['pesquisa'] ?? null,
+    'status' => (array)($_GET['status'] ?? [])
 ];
 
 // Busca lista e paginação
@@ -65,7 +66,6 @@ ob_end_flush();
                             <button type="button" class="item" data-value="INATIVO">Inativo</button>
                             <button type="button" class="item" data-value="FINALIZADO">Finalizado</button>
                         </div>
-
                         <input type="hidden" name="status" id="status-hidden" value="<?= $_GET['status'] ?? '' ?>">
                     </div>
                 </div>

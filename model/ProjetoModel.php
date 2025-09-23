@@ -56,6 +56,8 @@ class ProjetoModel
                 $params[$key] = $status;
             }
             $where .= " AND status IN (" . implode(',', $placeholders) . ")";
+        } else {
+            $where .= " AND status <> 'INATIVO'";
         }
         // Filtro Categorias
         if (!empty($filtros['categorias']) && is_array($filtros['categorias'])) {
@@ -137,10 +139,12 @@ class ProjetoModel
                 $params[$key] = $status;
             }
             $where .= " AND status IN (" . implode(',', $placeholders) . ")";
+        } else {
+            $where .= " AND status <> 'INATIVO'";
         }
         // Query final
         $query = "SELECT COUNT(*) AS total FROM vw_card_projetos v {$join} {$where}";
-        
+
         $stmt = $this->pdo->prepare($query);
         foreach ($params as $key => $value) {
             $stmt->bindValue($key, $value, is_int($value) ? PDO::PARAM_INT : PDO::PARAM_STR);
