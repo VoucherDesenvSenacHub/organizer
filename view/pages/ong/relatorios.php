@@ -6,14 +6,13 @@ require_once '../../components/layout/base-inicio.php';
 require_once '../../components/popup/download.php';
 require_once '../../components/graphics/vertical-bars.php';
 require_once '../../components/graphics/line-graphic.php';
-require_once '../../components/graphics/horizontal-double-bars.php';
 require_once '../../components/graphics/pie-graph.php';
 require_once '../../components/graphics/calcula-graficos.php';
 require_once '../../../model/RelatoriosModel.php';
-require_once '../../../model/Relatorios.php';
 
 $projetos = new RelatoriosModel();
-$IdOng = $_SESSION['ong_id'];
+// $_SESSION['ong_id']
+$IdOng = 3;
 $listaUsuarios = $projetos->buscarUsuarios();
 $contagem_projetos = $projetos->contarProjetos($IdOng);
 $arrecadaProjetos = $projetos->somarArrecadacaoProjetos($IdOng);
@@ -81,15 +80,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </div>
             </div>
 
-            <div class="card1">
-                <div class="icon">
-                    Doações/Voluntários por Projeto
-                    <button onclick="clicar()"><img src="../../assets/images/pages/ong/relatorios/icon-download.png" alt=""></button>
-                </div>
-                <div class="grafico-horizontal">
-                    <?php echo graficoHorizontalDuplo($largura, $altura, $doacoesVoluntarios) ?>
-                </div>
-            </div>
+            
         </div>
 
     </div>
