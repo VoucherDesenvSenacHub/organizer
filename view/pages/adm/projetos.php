@@ -1,24 +1,23 @@
 <?php
 $acesso = 'adm';
-$tituloPagina = 'Painel de Projetos | Organizer'; // Definir o título da página
-$cssPagina = ['adm/listagem.css']; //Colocar o arquivo .css 
+$tituloPagina = 'Painel de Projetos | Organizer';
+$cssPagina = ['adm/listagem.css'];
 require_once '../../components/layout/base-inicio.php';
-
 require_once __DIR__ . '/../../../autoload.php';
+
 $projetoModel = new ProjetoModel();
+$paginaAtual = (int)($_GET['pagina'] ?? 1);
 
-$paginaAtual = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
-$tipo = '';
-$valor = ['pagina' => $paginaAtual];
+// Monta os filtros
+$filtros = [
+    'pagina'   => $paginaAtual,
+    'pesquisa' => $_GET['pesquisa'] ?? null
+];
 
-if (isset($_GET['pesquisa'])) {
-    $tipo = 'pesquisa';
-    $valor['pesquisa'] = $_GET['pesquisa'];
-}
-
-$lista = $projetoModel->listarCardsProjetos($tipo, $valor);
-$totalRegistros = $projetoModel->paginacaoProjetos($tipo, $valor);
-$paginas = ceil($totalRegistros / 8);
+// Busca lista e paginação
+$lista          = $projetoModel->listarCardsProjetos($filtros);
+$totalRegistros = $projetoModel->paginacaoProjetos($filtros);
+$paginas        = ceil($totalRegistros / 8);
 ?>
 
 <main class="conteudo-principal">
@@ -49,7 +48,7 @@ $paginas = ceil($totalRegistros / 8);
                 ?>
             </section>
             <?php if ($paginas > 1): ?>
-                <nav class="navegacao">
+                <nav class="paginacao">
                     <?php for ($i = 1; $i <= $paginas; $i++): ?>
                         <a href="?pagina=<?= $i ?><?= isset($_GET['pesquisa']) ? '&pesquisa=' . urlencode($_GET['pesquisa']) : '' ?>"
                             class="<?= $i === $paginaAtual ? 'active' : '' ?>">

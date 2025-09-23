@@ -1,10 +1,8 @@
 <?php
 $acesso = 'doador';
-//CONFIGURAÇÕES DA PÁGINA
 $tituloPagina = 'Home - Doador';
 $cssPagina = ['doador/home.css'];
 require_once '../../components/layout/base-inicio.php';
-
 require_once __DIR__ . '/../../../autoload.php';
 
 // Pegar os dados do Doador
@@ -13,12 +11,9 @@ $IdDoador = $_SESSION['usuario']['id'];
 $relatorio = $doadorModel->RelatorioHome($IdDoador);
 $UltimasAtividades = $doadorModel->ultimasAtividadesDoador($IdDoador);
 
-
 $projetoModel = new ProjetoModel();
-$lista = $projetoModel->listarCardsProjetos('recentes');
-$projetosFavoritos = $projetoModel->listarFavoritos($_SESSION['usuario']['id']);
-
-$perfil = $_SESSION['perfil_usuario'] ?? '';
+$lista = $projetoModel->listarCardsProjetos(['recentes' => true, 'limit' => 4, 'status' => ['ATIVO']]);
+$projetosFavoritos = $projetoModel->listarFavoritos($IdDoador);
 ?>
 
 <main class="conteudo-principal">

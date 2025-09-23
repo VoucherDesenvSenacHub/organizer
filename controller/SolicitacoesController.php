@@ -26,9 +26,6 @@ if ($method === 'GET') {
         case 'ongs':
             $data = $adminModel->ListarSolicitacoesOngs();
             break;
-        case 'inativar':
-            $data = $adminModel->ListarSolicitacoesInativar();
-            break;
         default:
             http_response_code(400);
             echo json_encode(['error' => 'Tipo inválido'], JSON_UNESCAPED_UNICODE);
@@ -54,7 +51,7 @@ if ($method === 'GET') {
     $acao = $input['acao'] ?? '';
 
     // Valida parâmetros obrigatórios
-    if (!$tipo || !$id || !in_array($acao, ['approve', 'reject']) || !in_array($tipo, ['empresas', 'ongs', 'inativar'])) {
+    if (!$tipo || !$id || !in_array($acao, ['approve', 'reject']) || !in_array($tipo, ['empresas', 'ongs'])) {
         http_response_code(400);
         echo json_encode(['error' => 'Parâmetros inválidos'], JSON_UNESCAPED_UNICODE);
         exit;

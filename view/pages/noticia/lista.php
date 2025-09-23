@@ -5,139 +5,75 @@ $tituloPagina = 'Acompanhe Notícias | Organizer';
 $cssPagina = ['shared/catalogo.css'];
 require_once '../../components/layout/base-inicio.php';
 
-require_once __DIR__ . '/../../../autoload.php';
-$noticiaModel = new NoticiaModel();
-$lista = $noticiaModel->listarCardsNoticias();
+require_once __DIR__ . '/../../../controller/Noticia/BuscarNoticiaController.php';
 
-if ($_SERVER['REQUEST_METHOD'] = 'GET' && isset($_GET['pesquisa'])) {
-    $pesquisa = $_GET['pesquisa'];
-    $lista = $noticiaModel->listarCardsNoticias('pesquisa', ['pesquisa' => $pesquisa]);
+// Persistência de filtros
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $_SESSION['filtros_noticias'] = $_POST;
+} elseif (!isset($_GET['pagina'])) {
+    unset($_SESSION['filtros_noticias']);
 }
 
+// Recuperar filtros
+$post = $_SESSION['filtros_noticias'] ?? [];
+$resultado = carregarListaNoticias($_GET, $post);
+
+// Dados retornados
+$listaNoticias = $resultado['lista'];
+$paginas = $resultado['paginas'];
+$paginaAtual = $resultado['paginaAtual'];
+$totalRegistros = $resultado['totalRegistros'] ?? 0;
+
+// Filtros selecionados
+$ordemSelecionada = $post['ordem'] ?? '';
 ?>
 
 <main class="<?= isset($_SESSION['usuario']['id']) ? 'usuario-logado' : 'visitante' ?>">
     <div class="container" id="container-catalogo">
-        <section id="top-info">
-            <div id="info">
-                <div>
+        <section id="header-section">
+            <form class="form-pesquisa" action="lista.php" method="POST">
+                <div class="textos-pesquisa">
                     <h1>NOTÍCIAS</h1>
                     <p>Acompanhe as novidades e os impactos das ONGs e saiba como elas estão transformando vidas.</p>
-                    <form id="form-filtro" action="lista.php" method="GET">
-                        <!-- ### -->
-                        <div class="ul-group">
-                            <ul class="drop" id="esc-status">
-                                <li>
-                                    <p>Status</p>
-                                    <i class="fa-solid fa-angle-down"></i>
-                                </li>
-                                <li>
-                                    <input type="checkbox" name="em-andamento" id="em-andamento">
-                                    <label for="em-andamento">Em andamento</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" name="concluido" id="concluido">
-                                    <label for="concluido">Concluído</label>
-                                </li>
-                            </ul>
-                            <ul class="drop" id="esc-categoria">
-                                <li>
-                                    <p>Categoria</p>
-                                    <i class="fa-solid fa-angle-down"></i>
-                                </li>
-                                <li>
-                                    <input type="checkbox" name="educacao" id="educacao">
-                                    <label for="educacao">Educação</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" name="saude" id="saude">
-                                    <label for="saude">Saúde</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" name="esporte" id="esporte">
-                                    <label for="esporte">Esporte</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" name="cultura" id="cultura">
-                                    <label for="cultura">Cultura</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" name="tecnologia" id="tecnologia">
-                                    <label for="tecnologia">Tecnologia</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" name="ambiente" id="ambiente">
-                                    <label for="ambiente">Meio Ambiente</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" name="animal" id="animal">
-                                    <label for="animal">Proteção Animal</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" name="direitos" id="direitos">
-                                    <label for="direitos">Direitos Humanos</label>
-                                </li>
-                            </ul>
-                            <ul class="drop" id="esc-regiao">
-                                <li>
-                                    <p>Região</p>
-                                    <i class="fa-solid fa-angle-down"></i>
-                                </li>
-                                <li>
-                                    <input type="checkbox" name="centro-oeste" id="centro-oeste">
-                                    <label for="centro-oeste">Centro-Oeste</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" name="norte" id="norte">
-                                    <label for="norte">Norte</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" name="nordeste" id="nordeste">
-                                    <label for="nordeste">Nordeste</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" name="sudeste" id="sudeste">
-                                    <label for="sudeste">Sudeste</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" name="sul" id="sul">
-                                    <label for="sul">Sul</label>
-                                </li>
-                            </ul>
-                        </div>
-                        <button class="btn">Filtrar</button>
-                    </form>
                 </div>
-                <form id="form-busca" action="lista.php" method="GET">
-                    <input type="text" name="pesquisa" placeholder="Busque uma notícia">
+                <div class="filtro-pesquisa">
+                    <ul>
+                        <li>Ordem <i class="fa-solid fa-angle-down"></i></li>
+                        <li><label><input type="radio" name="ordem" value="novas" <?= $ordemSelecionada === 'novas' ? 'checked' : '' ?>>Novas</label></li>
+                        <li><label><input type="radio" name="ordem" value="antigas" <?= $ordemSelecionada === 'antigas' ? 'checked' : '' ?>>Antigas</label></li>
+                    </ul>
+                    <button class="btn">Filtrar</button>
+                </div>
+                <div class="input-pesquisa">
+                    <input type="text" name="pesquisa" placeholder="Busque uma Notícia" value="<?= $post['pesquisa'] ?? '' ?>">
                     <button class="btn" type="submit"><i class="fa-solid fa-search"></i></button>
-                </form>
-            </div>
-            <div id="imagem-top">
+                </div>
+            </form>
+            <div id="img-illustrativa">
                 <img src="../../assets/images/pages/shared/mundo.png">
             </div>
         </section>
-        <?php if (isset($_GET['pesquisa'])) {
-            echo "<p class='qnt-busca'><i class='fa-solid fa-search'></i> " . count($lista) . " Notícias Encontradas</p>";
-        } ?>
+        <?php if (isset($totalRegistros)): ?>
+            <div class="resultado-busca">
+                <p><?= $totalRegistros ?> Notícias</p>
+            </div>
+        <?php endif; ?>
 
         <section id="box-ongs">
             <!-- LISTAR CARDS -->
-            <?php foreach ($lista as $noticia) {
+            <?php foreach ($listaNoticias as $noticia) {
                 require '../../components/cards/card-noticia.php';
             } ?>
         </section>
-        <nav id="navegacao">
-            <a class="active" href="#">1</a>
-            <a href="#">2</a>
-            <a href="#">3</a>
-            <a href="#">4</a>
-            <a href="#">5</a>
-            <a href="#">></a>
-        </nav>
+        <?php if ($paginas > 1): ?>
+            <nav class="paginacao">
+                <?php for ($i = 1; $i <= $paginas; $i++): ?>
+                    <a href="?pagina=<?= $i ?>" class="<?= $i == $paginaAtual ? 'active' : '' ?>"> <?= $i ?> </a>
+                <?php endfor; ?>
+            </nav>
+        <?php endif; ?>
     </div>
 </main>
-
 <?php
 $jsPagina = [];
 require_once '../../components/layout/footer/footer-logado.php';

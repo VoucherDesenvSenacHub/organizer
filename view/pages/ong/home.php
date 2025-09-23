@@ -57,29 +57,32 @@ $UltimasAtividades = $ongModel->ultimasAtividadesOng($IdOng);
         <?php endif ?>
 
         <div class="upload_imagem_perfil">
-            <h1>Finalizar cadastro</h1>
-
+            <h1>FINALIZAR CADASTRO</h1>
             <h3>Adicione uma foto de perfil</h3>
+
             <form action="upload.php" method="POST" enctype="multipart/form-data">
                 <label for="image">
-                    <div class="input_label">
-                        <p>Procurar Imagem</p>
-                    </div>
+                    <i class="fa-solid fa-image"></i>
+                    <p>Procurar Imagem</p>
                 </label>
                 <input type="file" id="image" name="imagem" accept="image/*" required>
-                <button type="submit">Enviar</button>
+
+                <div class="image-preview" id="imagePreview" style="display: none;">
+                    <img id="previewImg" src="" alt="Preview">
+                    <div class="preview-actions">
+                        <button type="button" class="btn" onclick="removeImage()">
+                            <i class="fa-solid fa-trash-can"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn" id="btnSubmit" disabled>Enviar</button>
             </form>
+
             <span id="imageName">Nenhum arquivo selecionado</span>
         </div>
     </section>
 </main>
-<script>
-    const image = document.getElementById("image");
-    const imageName = document.getElementById("imageName");
-    image.addEventListener("change", function() {
-  imageName.textContent = image.files[0]?.name || "Nenhum arquivo selecionado";
-});
-</script>
 
 <!-- Toast -->
 <div id="toast-cadastro-ong" class="toast">
@@ -88,7 +91,7 @@ $UltimasAtividades = $ongModel->ultimasAtividadesOng($IdOng);
 </div>
 
 <?php
-$jsPagina = [];
+$jsPagina = ['ong/home.js'];
 require_once '../../components/layout/footer/footer-logado.php';
 // Ativar os toast
 if (isset($_SESSION['cadastro-ong'])) {

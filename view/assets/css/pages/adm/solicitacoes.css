@@ -1,3 +1,5 @@
+@import url(modal-confirmacao.css);
+
 .conteudo-principal > section {
     display: flex;
     flex-direction: column;
@@ -106,6 +108,9 @@
 .box-cards .card-solicitacao-empresa p {
     font-size: 13px;
     text-align: justify;
+}
+.box-cards .card-solicitacao-empresa b {
+    word-break: break-all;
 }
 
 .box-cards .card-solicitacao-empresa .btn-acoes {

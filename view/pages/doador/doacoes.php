@@ -26,7 +26,7 @@ $doacoes = $projetoModel->buscarDoacao($_SESSION['usuario']['id']);
                     <div class="card-doacao">
                         <div class="img">
                             <?php if ($doacao['caminho']): ?>
-                                <img src="<?= $doacao['caminho'] ?>">
+                                <img src="../../../<?= $doacao['caminho'] ?>">
                             <?php else: ?>
                                 <img src='../../assets/images/global/image-placeholder.svg'>";
                             <?php endif; ?>

@@ -84,43 +84,114 @@ class OngModel
     }
 
 
-    function listarCardsOngs(string $tipo = '', $valor = [])
+    function listarCardsOngs(array $filtros = [])
     {
-        $params = [];
-        switch ($tipo) {
-            // Buscar as Ongs pelo nome
-            case 'pesquisa':
-                $query = "SELECT * FROM vw_card_ongs WHERE nome LIKE :nome";
-                if (!empty($valor['ong_id'])) {
-                    $query .= " AND ong_id = :ong_id";
-                    $params[':ong_id'] = $valor['ong_id'];
-                }
-                $params[':nome'] = "%{$valor['pesquisa']}%";
-                break;
-            // Buscar as Ongs favoritas do Usúario
-            case 'favoritas':
-                $query = "SELECT v.*, f.usuario_id FROM vw_card_ongs v
-                JOIN favoritos_ongs f USING (ong_id)
-                WHERE usuario_id = :usuario_id ORDER BY data_favoritado DESC";
-                $params[':usuario_id'] = $valor;
-                break;
-            // Buscar as Ongs mais recentes
-            case 'recentes':
-                $limit = 6;
-                $query = "SELECT v.*, o.data_cadastro FROM vw_card_ongs v
-                JOIN ongs o USING(ong_id)
-                ORDER BY data_cadastro DESC LIMIT {$limit}";
-                break;
-            default:
-                $query = "SELECT * FROM vw_card_ongs v";
-        }
+        $limit  = $filtros['limit'] ?? 6;
+        $pagina = $filtros['pagina'] ?? 1;
+        $offset = ($pagina - 1) * $limit;
 
-        $stmt = $this->pdo->prepare($query);
+        $params = [];
+        $where  = 'WHERE 1=1';
+        $join   = '';
+        $order  = '';
+
+        // Filtro por pesquisa
+        if (!empty($filtros['pesquisa'])) {
+            $where .= " AND nome LIKE :nome";
+            $params[':nome'] = "%{$filtros['pesquisa']}%";
+        }
+        // Filtro por ordem
+        if (!empty($filtros['ordem'])) {
+            $order = match ($filtros['ordem']) {
+                'novas' => "ORDER BY data_cadastro DESC",
+                'antigas' => "ORDER BY data_cadastro ASC",
+                default  => ''
+            };
+        }
+        // Filtro por número de projetos
+        if (!empty($filtros['projetos'])) {
+            $where .= match ($filtros['projetos']) {
+                '5'      => " AND total_projetos <= 5",
+                '10'     => " AND total_projetos <= 10",
+                'mais10' => " AND total_projetos > 10",
+                default  => ""
+            };
+        }
+        // Filtro por número de doações
+        if (!empty($filtros['doacoes'])) {
+            $where .= match ($filtros['doacoes']) {
+                '10'     => " AND total_doacoes <= 10",
+                '20'     => " AND total_doacoes <= 20",
+                'mais20' => " AND total_doacoes > 20",
+                default  => ""
+            };
+        }
+        // Favoritas
+        if (!empty(!empty($filtros['usuario_id']) && $filtros['favoritas'])) {
+            $join  = "JOIN favoritos_ongs f USING (ong_id)";
+            $where .= " AND usuario_id = :usuario_id";
+            $order  = "ORDER BY data_favoritado DESC";
+            $params[':usuario_id'] = $filtros['usuario_id'];
+        }
+        // Recentes
+        if (!empty($filtros['recentes'])) {
+            $order = "ORDER BY data_cadastro DESC";
+        }
+        // Query final
+        $query = "SELECT v.* FROM vw_card_ongs v {$join} {$where} {$order} LIMIT {$limit} OFFSET {$offset}";
+
+        $stmt  = $this->pdo->prepare($query);
         foreach ($params as $key => $value) {
             $stmt->bindValue($key, $value, is_int($value) ? PDO::PARAM_INT : PDO::PARAM_STR);
         }
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    function paginacaoOngs(array $filtros = [])
+    {
+        $params = [];
+        $where  = 'WHERE 1=1';
+        $join   = '';
+
+        // Filtro por pesquisa
+        if (!empty($filtros['pesquisa'])) {
+            $where .= " AND nome LIKE :nome";
+            $params[':nome'] = "%{$filtros['pesquisa']}%";
+        }
+        // Ongs favoritas
+        if (!empty($filtros['usuario_id']) && !empty($filtros['favoritas'])) {
+            $join  = "JOIN favoritos_ongs f USING (ong_id)";
+            $where .= " AND usuario_id = :usuario_id";
+            $params[':usuario_id'] = $filtros['usuario_id'];
+        }
+        // Filtro por número de projetos
+        if (!empty($filtros['projetos'])) {
+            $where .= match ($filtros['projetos']) {
+                '5'      => " AND total_projetos <= 5",
+                '10'     => " AND total_projetos <= 10",
+                'mais10' => " AND total_projetos > 10",
+                default  => ""
+            };
+        }
+        // Filtro por número de doações
+        if (!empty($filtros['doacoes'])) {
+            $where .= match ($filtros['doacoes']) {
+                '10'     => " AND total_doacoes <= 10",
+                '20'     => " AND total_doacoes <= 20",
+                'mais20' => " AND total_doacoes > 20",
+                default  => ""
+            };
+        }
+        // Query final
+        $query = "SELECT COUNT(*) AS total FROM vw_card_ongs v {$join} {$where}";
+
+        $stmt  = $this->pdo->prepare($query);
+        foreach ($params as $key => $value) {
+            $stmt->bindValue($key, $value, is_int($value) ? PDO::PARAM_INT : PDO::PARAM_STR);
+        }
+        $stmt->execute();
+        return (int) $stmt->fetchColumn();
     }
 
     function buscarPerfilOng($id)

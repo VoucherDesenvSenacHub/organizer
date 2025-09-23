@@ -23,13 +23,71 @@ class AdminModel
         return $stmt->fetch();
     }
 
+    function buscarOngs() {
+        $query = "SELECT ong_id, nome, 
+        (SELECT COUNT(*) FROM projetos p WHERE p.ong_id = o.ong_id) AS total_projetos,
+        (SELECT COUNT(*) FROM apoios_projetos ap JOIN projetos ps ON ps.projeto_id = ap.projeto_id WHERE ps.ong_id = o.ong_id) AS total_apoios
+        FROM ongs o 
+        ORDER BY total_projetos DESC
+        LIMIT 4";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute();
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        return $stmt->fetchAll();
+    }
+
+    function buscarProjetos() {
+        $query = "SELECT projeto_id, nome, 
+        (SELECT SUM(valor) FROM doacoes_projetos dp WHERE dp.projeto_id = p.projeto_id) AS valor_arrecadado,
+        (SELECT COUNT(*) FROM apoios_projetos ap WHERE ap.projeto_id = p.projeto_id) AS total_apoios
+        FROM projetos p 
+        ORDER BY valor_arrecadado DESC
+        LIMIT 4";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute();
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        return $stmt->fetchAll();
+    }
+
+    function buscarDoadores() {
+        $query = "SELECT usuario_id, nome, SUM(dp.valor) AS valor_doado
+        FROM usuarios u 
+        JOIN doacoes_projetos dp USING(usuario_id)
+        GROUP BY u.usuario_id, u.nome
+        ORDER BY valor_doado DESC
+        LIMIT 4";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute();
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        return $stmt->fetchAll();
+    }
+    function buscarNoticias() {
+        $query = "SELECT noticia_id, titulo, data_cadastro FROM noticias n LIMIT 4";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute();
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        return $stmt->fetchAll();
+    }
+
+    // Buscar parcerias aprovadas para exibição pública
+    function ListarParceriasAprovadas()
+    {
+        $query = "SELECT parceria_id, nome, email, telefone, cnpj, descricao, 
+                         DATE_FORMAT(data_envio, '%d/%m/%Y') as data_aprovacao
+                  FROM parcerias 
+                  WHERE status = 'APROVADA' 
+                  ORDER BY data_envio DESC";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     // Buscar contadores para os cards que tem na home adm
     function ContadoresSolicitacoes()
     {
         $query = "SELECT
                   (SELECT COUNT(*) FROM parcerias WHERE status = 'PENDENTE') AS empresas,
-                  (SELECT COUNT(*) FROM ongs WHERE status = 'PENDENTE') AS ongs,
-                  (SELECT COUNT(*) FROM projetos WHERE status = 'PENDENTE') AS inativar;";
+                  (SELECT COUNT(*) FROM ongs WHERE status = 'PENDENTE') AS ongs;";
         $stmt = $this->pdo->prepare($query);
         $stmt->execute();
         $stmt->setFetchMode(PDO::FETCH_CLASS, __CLASS__);
@@ -63,37 +121,18 @@ class AdminModel
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    // Buscar lista de solicitações de inativação das ongs
-    function ListarSolicitacoesInativar()
-    {
-        $query = "SELECT p.projeto_id, 
-                     p.nome AS projeto, 
-                     o.nome AS ong, 
-                     p.meta AS meta,
-                     p.descricao AS descricao,
-                     DATE_FORMAT(p.data_atualizacao, '%d/%m/%Y') AS criadoEm
-              FROM projetos p
-              INNER JOIN ongs o ON p.ong_id = o.ong_id
-              WHERE p.status = 'PENDENTE'
-              ORDER BY p.data_atualizacao DESC";
-
-        $stmt = $this->pdo->prepare($query);
-        $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    }
-
 
     // Inserir nova solicitação de parceria
     function CriarSolicitacaoParceria($dados)
     {
         try {
-            $query = "INSERT INTO parcerias (nome, email, cnpj, telefone, mensagem, status) 
+            $query = "INSERT INTO parcerias (nome, cnpj, email, telefone, mensagem, status) 
                       VALUES (?, ?, ?, ?, ?, 'PENDENTE')";
             $stmt = $this->pdo->prepare($query);
             return $stmt->execute([
                 $dados['nome'],
-                $dados['email'],
                 $dados['cnpj'],
+                $dados['email'],
                 $dados['telefone'],
                 $dados['mensagem']
             ]);
@@ -109,16 +148,12 @@ class AdminModel
         try {
             switch ($tipo) {
                 case 'empresas':
-                    $status = $acao === 'approve' ? 'APROVADDA' : 'RECUSADA';
+                    $status = $acao === 'approve' ? 'APROVADA' : 'RECUSADA';
                     $query = "UPDATE parcerias SET status = ? WHERE parceria_id = ? AND status = 'PENDENTE'";
                     break;
                 case 'ongs':
                     $status = $acao === 'approve' ? 'ATIVO' : 'INATIVO';
                     $query = "UPDATE ongs SET status = ? WHERE ong_id = ? AND status = 'PENDENTE'";
-                    break;
-                case 'inativar':
-                    $status = $acao === 'approve' ? 'INATIVO' : 'ATIVO';
-                    $query = "UPDATE projetos SET status = ? WHERE projeto_id = ? AND status = 'PENDENTE'";
                     break;
                 default:
                     return false;

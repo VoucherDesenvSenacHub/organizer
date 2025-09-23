@@ -68,6 +68,6 @@ require_once '../../components/layout/base-inicio.php';
     Login necessário para continuar!
 </div>
 <?php
-$jsPagina = ['login-doador.js'];
+$jsPagina = ['usuario/login.js'];
 require_once '../../components/layout/footer/footer-visitante.php';
 ?>

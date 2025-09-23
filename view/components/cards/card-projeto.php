@@ -1,16 +1,27 @@
 <?php
 // Pegar os dados do Projeto e tratar possíveis erros
 $IdProjeto = $projeto['projeto_id'] ?? null;
-$FotoProjeto = $projeto['caminho'] ?? '../../assets/images/global/image-placeholder.svg';
 $NomeProjeto = $projeto['nome'] ?? 'Nome do Projeto';
-$DescricaoProjeto =  mb_strimwidth($projeto['descricao'], 0, 220, '...') ?? 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odit, explicabo magni? Laboriosam possimus voluptas recusandae blanditiis architecto dolorem tenetur odio, nisi molestiae facere quia facilis officia cumque dicta impedit minima.';
+$DescricaoProjeto =  mb_strimwidth($projeto['descricao'], 0, 220, '...') ?? 'Lorem ipsum...';
+$StatusProjeto = $projeto['status'] ?? 'ATIVO';
+$CategoriaProjeto = $projeto['categoria'] ?? 'Indefinido';
+$CorCategoria = $projeto['cor'] ?? '#9E9E9E';
 $BarraProjeto = $projeto['barra'] ?? '30';
+$FotoProjeto = $projeto['caminho']
+    ? '../../../' . $projeto['caminho']
+    : '../../assets/images/global/image-placeholder.svg';
 // Verificar se o Doador favoritou o Projeto
-$jaFavoritado = in_array($projeto['projeto_id'], $projetosFavoritos ?? []) ?? false;
+$jaFavoritado = in_array($IdProjeto, $projetosFavoritos ?? []) ?? false;
 $classe = $jaFavoritado ? 'favoritado' : '';
 ?>
 
 <div class="card-projeto">
+    <span class="categoria" style="background-color: <?= $CorCategoria ?>;"><?= $CategoriaProjeto ?></span>
+    <?php if ($StatusProjeto == 'INATIVO'): ?>
+        <span class="status inativo">Inativo <i class="fa-solid fa-ban"></i></span>
+    <?php elseif ($StatusProjeto == 'FINALIZADO'): ?>
+        <span class="status finalizado">Finalizado <img src="../../assets/images/icons/meta.png"></span>
+    <?php endif; ?>
     <div class="acoes-projeto">
         <button title="Compartilhar" class="btn-share fa-solid fa-share-nodes" onclick="compartilhar('compartilhar-popup', <?= $IdProjeto ?>, 'projeto')"></button>
         <?php if (!isset($_SESSION['usuario']['id'])): ?>

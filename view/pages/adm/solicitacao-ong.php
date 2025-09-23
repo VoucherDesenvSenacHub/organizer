@@ -6,7 +6,7 @@ require_once '../../components/layout/base-inicio.php';
 ?>
 <main class="conteudo-principal">
     <section>
-        <h1><i class="fa-solid fa-house-flag"></i> SOLICITAÇÃO DE ONGS</h1>
+        <h1><i class="fa-solid fa-building-flag"></i> SOLICITAÇÃO DE ONGS</h1>
         <div class="box-cards">
             <div class="card-solicitacao">
                 <div class="nome">

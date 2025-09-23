@@ -1,4 +1,5 @@
 <?php
+session_start();
 header('Content-Type: application/json');
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: POST');
@@ -14,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 
 $input = json_decode(file_get_contents('php://input'), true);
 
-$camposObrigatorios = ['nome', 'email', 'cnpj', 'telefone', 'mensagem'];
+$camposObrigatorios = ['nome', 'cnpj', 'email', 'telefone', 'mensagem'];
 foreach ($camposObrigatorios as $campo) {
     if (empty($input[$campo])) {
         http_response_code(400);
@@ -31,8 +32,8 @@ if (!filter_var($input['email'], FILTER_VALIDATE_EMAIL)) {
 
 $dados = [
     'nome' => trim($input['nome']),
-    'email' => trim($input['email']),
     'cnpj' => preg_replace('/[^0-9]/', '', $input['cnpj']),
+    'email' => trim($input['email']),
     'telefone' => preg_replace('/[^0-9]/', '', $input['telefone']),
     'mensagem' => trim($input['mensagem'])
 ];
@@ -40,13 +41,15 @@ $dados = [
 try {
     $adminModel = new AdminModel();
     $resultado = $adminModel->CriarSolicitacaoParceria($dados);
-    
+
     if ($resultado) {
+        $_SESSION['parceria'] = true;
         echo json_encode([
-            'success' => true, 
+            'success' => true,
             'message' => 'Solicitação de parceria enviada com sucesso! Nossa equipe entrará em contato em breve.'
         ]);
     } else {
+        $_SESSION['parceria'] = false;
         http_response_code(500);
         echo json_encode(['error' => 'Erro ao processar solicitação. Tente novamente.']);
     }
@@ -64,4 +67,3 @@ try {
         echo json_encode(['error' => 'Erro interno do servidor']);
     }
 }
-?>
