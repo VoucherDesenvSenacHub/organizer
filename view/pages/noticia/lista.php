@@ -5,59 +5,70 @@ $tituloPagina = 'Acompanhe Notícias | Organizer';
 $cssPagina = ['shared/catalogo.css'];
 require_once '../../components/layout/base-inicio.php';
 
-require_once __DIR__ . '/../../../autoload.php';
-$noticiaModel = new NoticiaModel();
+require_once __DIR__ . '/../../../controller/Noticia/BuscarNoticiaController.php';
 
-// Paginação
-$paginaAtual = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
-$tipo = '';
-$valor = ['pagina' => $paginaAtual];
-
-if (isset($_GET['pesquisa'])) {
-    $tipo = 'pesquisa';
-    $valor['pesquisa'] = $_GET['pesquisa'];
+// Persistência de filtros
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $_SESSION['filtros_noticias'] = $_POST;
+} elseif (!isset($_GET['pagina'])) {
+    unset($_SESSION['filtros_noticias']);
 }
 
-$lista = $noticiaModel->listarCardsNoticias($tipo, $valor);
-$totalRegistros = $noticiaModel->paginacaoNoticias($tipo, $valor);
-$paginas = (int)ceil($totalRegistros / 6);
+// Recuperar filtros
+$post = $_SESSION['filtros_noticias'] ?? [];
+$resultado = carregarListaNoticias($_GET, $post);
 
+// Dados retornados
+$listaNoticias = $resultado['lista'];
+$paginas = $resultado['paginas'];
+$paginaAtual = $resultado['paginaAtual'];
+$totalRegistros = $resultado['totalRegistros'] ?? 0;
+
+// Filtros selecionados
+$ordemSelecionada = $post['ordem'] ?? '';
 ?>
 
 <main class="<?= isset($_SESSION['usuario']['id']) ? 'usuario-logado' : 'visitante' ?>">
     <div class="container" id="container-catalogo">
-        <section id="top-info">
-            <div id="info">
-                <div>
+        <section id="header-section">
+            <form class="form-pesquisa" action="lista.php" method="POST">
+                <div class="textos-pesquisa">
                     <h1>NOTÍCIAS</h1>
                     <p>Acompanhe as novidades e os impactos das ONGs e saiba como elas estão transformando vidas.</p>
                 </div>
-                <form id="form-busca" action="lista.php" method="GET">
-                    <input type="text" name="pesquisa" placeholder="Busque uma notícia">
+                <div class="filtro-pesquisa">
+                    <ul>
+                        <li>Ordem <i class="fa-solid fa-angle-down"></i></li>
+                        <li><label><input type="radio" name="ordem" value="novas" <?= $ordemSelecionada === 'novas' ? 'checked' : '' ?>>Novas</label></li>
+                        <li><label><input type="radio" name="ordem" value="antigas" <?= $ordemSelecionada === 'antigas' ? 'checked' : '' ?>>Antigas</label></li>
+                    </ul>
+                    <button class="btn">Filtrar</button>
+                </div>
+                <div class="input-pesquisa">
+                    <input type="text" name="pesquisa" placeholder="Busque uma Notícia" value="<?= $post['pesquisa'] ?? '' ?>">
                     <button class="btn" type="submit"><i class="fa-solid fa-search"></i></button>
-                </form>
-            </div>
-            <div id="imagem-top">
+                </div>
+            </form>
+            <div id="img-illustrativa">
                 <img src="../../assets/images/pages/shared/mundo.png">
             </div>
         </section>
-        <?php if (isset($_GET['pesquisa'])) {
-            echo "<p class='qnt-busca'><i class='fa-solid fa-search'></i> " . $totalRegistros . " Notícias Encontradas</p>";
-        } ?>
+        <?php if (isset($totalRegistros)): ?>
+            <div class="resultado-busca">
+                <p><?= $totalRegistros ?> Notícias</p>
+            </div>
+        <?php endif; ?>
 
         <section id="box-ongs">
             <!-- LISTAR CARDS -->
-            <?php foreach ($lista as $noticia) {
+            <?php foreach ($listaNoticias as $noticia) {
                 require '../../components/cards/card-noticia.php';
             } ?>
         </section>
         <?php if ($paginas > 1): ?>
             <nav class="paginacao">
                 <?php for ($i = 1; $i <= $paginas; $i++): ?>
-                    <a href="?pagina=<?= $i ?><?= isset($_GET['pesquisa']) ? '&pesquisa=' . urlencode($_GET['pesquisa']) : '' ?>"
-                        class="<?= $i === $paginaAtual ? 'active' : '' ?>">
-                        <?= $i ?>
-                    </a>
+                    <a href="?pagina=<?= $i ?>" class="<?= $i == $paginaAtual ? 'active' : '' ?>"> <?= $i ?> </a>
                 <?php endfor; ?>
             </nav>
         <?php endif; ?>

@@ -9,11 +9,13 @@ class EditarPerfilController
 {
     private $ongModel;
     private $bancoModel;
+    private $imagemModel;
 
     public function __construct()
     {
         $this->ongModel = new OngModel();
         $this->bancoModel = new BancoModel();
+        $this->imagemModel = new ImagemModel();
     }
 
     public function buscarDados()
@@ -21,24 +23,40 @@ class EditarPerfilController
         $perfil = $this->ongModel->buscarId($_SESSION['ong_id']);
         $lista_banco = $this->bancoModel->listar();
 
-        // Definir variáveis globais para a view
-        $GLOBALS['perfil'] = $perfil;
-        $GLOBALS['lista_banco'] = $lista_banco;
-
         return [
             'perfil' => $perfil,
             'bancos' => $lista_banco
         ];
     }
 
-    public function inicializar()
-    {
-        $this->buscarDados();
-    }
-
     public function atualizarPerfil()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['atualizar-ong'])) {
+
+            // --- upload de imagem da ONG ---
+            if (!empty($_FILES['foto_perfil']['name'])) {
+                $pasta = __DIR__ . '/../../upload/images/ongs/';
+                
+                if (!is_dir($pasta)) {
+                    mkdir($pasta, 0777, true);
+                }
+
+                $tmp = $_FILES['foto_perfil']['tmp_name'];
+                $nomeOriginal = basename($_FILES['foto_perfil']['name']);
+                $novoNome = uniqid() . '-' . $nomeOriginal;
+                $destino = $pasta . $novoNome;
+
+                if (move_uploaded_file($tmp, $destino)) {
+                    // salvar no banco
+                    $idImagem = $this->imagemModel->salvarCaminhoImagem('upload/images/ongs/' . $novoNome);
+                    $this->ongModel->atualizarImagem($_SESSION['ong_id'], $idImagem);
+
+                    // atualizar sessão
+                    $_SESSION['ong']['foto'] = 'upload/images/ongs/' . $novoNome;
+                }
+            }
+
+            // --- dados normais ---
             $dados = [
                 'nome' => $_POST['nome'],
                 'cnpj' => $_POST['cnpj'],
@@ -78,7 +96,6 @@ class EditarPerfilController
 // Instanciar o controller e processar a requisição
 $controller = new EditarPerfilController();
 
-// se for POST: processar a atualização
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $controller->atualizarPerfil();
 }

@@ -1,43 +1,43 @@
 <?php
-$acesso = 'doador';
+$acesso       = 'doador';
 $tituloPagina = 'Favoritos | Organizer';
-$cssPagina = ['doador/favoritos.css'];
+$cssPagina    = ['doador/favoritos.css'];
+
 require_once '../../components/layout/base-inicio.php';
 require_once __DIR__ . '/../../../autoload.php';
 
-$ongModel = new OngModel();
+$ongModel     = new OngModel();
 $projetoModel = new ProjetoModel();
+$IdUsuario    = $_SESSION['usuario']['id'];
 
-// ===== CONFIGURAÇÃO DE PAGINAÇÃO =====
-$IdUsuario = $_SESSION['usuario']['id'];
-$paginaAtual = isset($_GET['pagina']) ? (int) $_GET['pagina'] : 1;
+// Página e Aba atual
+$paginaAtual = (int)($_GET['pagina'] ?? 1);
+$abaAtual = $_GET['aba'] ?? 'ongs';
 
-// Detectar aba ativa baseada na URL
-$abaAtiva = isset($_GET['aba']) ? $_GET['aba'] : 'ongs';
-
-// Configurar paginação específica para cada aba
-$valorOngs = [
-    'pagina' => ($abaAtiva === 'ongs') ? $paginaAtual : 1,
-    'usuario_id' => $IdUsuario
+// Filtros para cada aba
+$filtrosOngs = [
+    'pagina'     => ($abaAtual === 'ongs') ? $paginaAtual : 1,
+    'usuario_id' => $IdUsuario,
+    'favoritas'  => true // flag para indicar que queremos apenas itens favoritados
 ];
-
-$valorProjetos = [
-    'pagina' => ($abaAtiva === 'projetos') ? $paginaAtual : 1,
-    'usuario_id' => $IdUsuario
+$filtrosProjetos = [
+    'pagina'     => ($abaAtual === 'projetos') ? $paginaAtual : 1,
+    'usuario_id' => $IdUsuario,
+    'favoritos'  => true // flag para indicar que queremos apenas projetos favoritados
 ];
 
 // Buscar ONGs e Projetos favoritados
-$listaOngs = $ongModel->listarCardsOngs('favoritas', $valorOngs);
-$listaProjetos = $projetoModel->listarCardsProjetos('favoritos', $valorProjetos);
+$listaOngs     = $ongModel->listarCardsOngs($filtrosOngs);
+$listaProjetos = $projetoModel->listarCardsProjetos($filtrosProjetos);
 
 // Calcular paginação para ONGs
 $tipoOngs = 'favoritos';
-$totalRegistrosOngs = $ongModel->paginacaoOngs($tipoOngs, $valorOngs);
+$totalRegistrosOngs = $ongModel->paginacaoOngs($filtrosOngs);
 $paginasOngs = (int) ceil($totalRegistrosOngs / 6);
 
 // Calcular paginação para Projetos
 $tipoProjetos = 'favoritos';
-$totalRegistrosProjetos = $projetoModel->paginacaoProjetos($tipoProjetos, $valorProjetos);
+$totalRegistrosProjetos = $projetoModel->paginacaoProjetos($filtrosProjetos);
 $paginasProjetos = (int) ceil($totalRegistrosProjetos / 8);
 
 // Listas para colorir ícones de favoritos
@@ -75,7 +75,7 @@ $projetosFavoritos = $projetoModel->listarFavoritos($IdUsuario);
                             <?php if ($paginasOngs > 1): ?>
                                 <nav class="paginacao">
                                     <?php for ($i = 1; $i <= $paginasOngs; $i++): ?>
-                                        <a href="?pagina=<?= $i ?>&aba=ongs" class="<?= $i === $valorOngs['pagina'] ? 'active' : '' ?>">
+                                        <a href="?pagina=<?= $i ?>&aba=ongs" class="<?= $i === $filtrosOngs['pagina'] ? 'active' : '' ?>">
                                             <?= $i ?>
                                         </a>
                                     <?php endfor; ?>
@@ -101,7 +101,7 @@ $projetosFavoritos = $projetoModel->listarFavoritos($IdUsuario);
                             <?php if ($paginasProjetos > 1): ?>
                                 <nav class="paginacao">
                                     <?php for ($i = 1; $i <= $paginasProjetos; $i++): ?>
-                                        <a href="?pagina=<?= $i ?>&aba=projetos" class="<?= $i === $valorProjetos['pagina'] ? 'active' : '' ?>">
+                                        <a href="?pagina=<?= $i ?>&aba=projetos" class="<?= $i === $filtrosProjetos['pagina'] ? 'active' : '' ?>">
                                             <?= $i ?>
                                         </a>
                                     <?php endfor; ?>
@@ -128,8 +128,8 @@ $projetosFavoritos = $projetoModel->listarFavoritos($IdUsuario);
 <script>
     // Definir aba ativa baseada na URL sem animação
     document.addEventListener('DOMContentLoaded', function() {
-        const abaAtiva = '<?= $abaAtiva ?>';
-        if (abaAtiva === 'projetos') {
+        const abaAtual = '<?= $abaAtual ?>';
+        if (abaAtual === 'projetos') {
             definirAbaInicial(1);
         } else {
             definirAbaInicial(0);

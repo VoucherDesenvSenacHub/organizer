@@ -5,90 +5,78 @@ $tituloPagina = 'Descubra Ongs | Organizer';
 $cssPagina = ['shared/catalogo.css'];
 require_once '../../components/layout/base-inicio.php';
 
-require_once __DIR__ . '/../../../autoload.php';
-$ongModel = new OngModel();
+require_once __DIR__ . '/../../../controller/Ong/BuscarOngController.php';
 
-// Paginação
-$paginaAtual = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
-$tipo = '';
-$valor = ['pagina' => $paginaAtual];
-
-if (isset($_GET['pesquisa'])) {
-    $tipo = 'pesquisa';
-    $valor['pesquisa'] = $_GET['pesquisa'];
+// Persistência de filtros
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $_SESSION['filtros_ongs'] = $_POST;
+} elseif (!isset($_GET['pagina'])) {
+    unset($_SESSION['filtros_ongs']);
 }
 
-$lista = $ongModel->listarCardsOngs($tipo, $valor);
-$totalRegistros = $ongModel->paginacaoOngs($tipo, $valor);
-$paginas = (int)ceil($totalRegistros / 6);
+// Recuperar filtros
+$post = $_SESSION['filtros_ongs'] ?? [];
+$resultado = carregarListaOngs($_GET, $post);
 
-// Buscar os favoritos
-if (isset($_SESSION['usuario']['id'])) {
-    $ongsFavoritas = $ongModel->listarFavoritas($_SESSION['usuario']['id']);
-}
+// Dados retornados
+$listaOngs = $resultado['lista'];
+$paginas = $resultado['paginas'];
+$paginaAtual = $resultado['paginaAtual'];
+$totalRegistros = $resultado['totalRegistros'] ?? 0;
+$ongsFavoritas = $resultado['favoritas'] ?? [];
+
+// Filtros selecionados
+$ordemSelecionada = $post['ordem'] ?? '';
+$projetosSelecionado = $post['projetos'] ?? '';
+$doacoesSelecionado = $post['doacoes'] ?? '';
+$totalFiltros = !empty($ordemSelecionada) + !empty($projetosSelecionado) + !empty($doacoesSelecionado);
 ?>
+
 <main class="<?= isset($_SESSION['usuario']['id']) ? 'usuario-logado' : 'visitante' ?>">
     <div class="container" id="container-catalogo">
-        <section id="top-info">
-            <div id="info">
-                <div>
+        <section id="header-section">
+            <form class="form-pesquisa" action="lista.php" method="POST">
+                <div class="textos-pesquisa">
                     <h1>DESCUBRA AS ONGS</h1>
                     <p>Explore organizações que estão fazendo a diferença e saiba como você pode contribuir.</p>
-                    <form id="form-filtro" action="lista.php" method="GET">
-                        <!-- ### -->
-                        <div class="ul-group">
-                            <ul class="drop" id="esc-status">
-                                <li>
-                                    <p>Ordem</p>
-                                    <i class="fa-solid fa-angle-down"></i>
-                                </li>
-                                <li>
-                                    <input type="checkbox" name="em-andamento" id="em-andamento">
-                                    <label for="em-andamento">mais recentes</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" name="concluido" id="concluido">
-                                    <label for="concluido">mais antigos</label>
-                                </li>
-                            </ul>
-                            <ul class="drop" id="esc-q-projetos">
-                                <li>
-                                    <p>Quantidade</p>
-                                    <i class="fa-solid fa-angle-down"></i>
-                                </li>
-                                <li>
-                                    <input type="checkbox" name="educacao" id="educacao">
-                                    <label for="educacao">1 projeto</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" name="saude" id="saude">
-                                    <label for="saude">3 à 5 projetos</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" name="esporte" id="esporte">
-                                    <label for="esporte">5 ou mais projetos</label>
-                                </li>
-                                
-                            </ul>
-                            
-                        </div>
-                        <button class="btn">Filtrar</button>
-                    </form>
                 </div>
-                <form id="form-busca" action="lista.php" method="GET">
-                    <input type="text" name="pesquisa" placeholder="Busque uma ONG">
+                <div class="filtro-pesquisa">
+                    <ul>
+                        <li>Ordem <i class="fa-solid fa-angle-down"></i></li>
+                        <li><label><input type="radio" name="ordem" value="novas" <?= $ordemSelecionada === 'novas' ? 'checked' : '' ?>>Novas</label></li>
+                        <li><label><input type="radio" name="ordem" value="antigas" <?= $ordemSelecionada === 'antigas' ? 'checked' : '' ?>>Antigas</label></li>
+                    </ul>
+                    <ul>
+                        <li>Projetos <i class="fa-solid fa-angle-down"></i></li>
+                        <li><label><input type="radio" name="projetos" value="5" <?= $projetosSelecionado === '5' ? 'checked' : '' ?>>Até 5</label></li>
+                        <li><label><input type="radio" name="projetos" value="10" <?= $projetosSelecionado === '10' ? 'checked' : '' ?>>Até 10</label></li>
+                        <li><label><input type="radio" name="projetos" value="mais10" <?= $projetosSelecionado === 'mais10' ? 'checked' : '' ?>>Mais de 10</label></li>
+                    </ul>
+                    <ul>
+                        <li>Doações <i class="fa-solid fa-angle-down"></i></li>
+                        <li><label><input type="radio" name="doacoes" value="10" <?= $doacoesSelecionado === '10' ? 'checked' : '' ?>>Até 10</label></li>
+                        <li><label><input type="radio" name="doacoes" value="20" <?= $doacoesSelecionado === '20' ? 'checked' : '' ?>>Até 20</label></li>
+                        <li><label><input type="radio" name="doacoes" value="mais20" <?= $doacoesSelecionado === 'mais20' ? 'checked' : '' ?>>Mais de 20</label></li>
+                    </ul>
+                    <button class="btn">Filtrar</button>
+                </div>
+                <div class="input-pesquisa">
+                    <input type="text" name="pesquisa" placeholder="Busque uma ONG" value="<?= $post['pesquisa'] ?? '' ?>">
                     <button class="btn" type="submit"><i class="fa-solid fa-search"></i></button>
-                </form>
-            </div>
-            <div id="imagem-top">
+                </div>
+            </form>
+            <div id="img-illustrativa">
                 <img src="../../assets/images/pages/shared/time.png">
             </div>
         </section>
-        <?php if (isset($_GET['pesquisa'])) {
-            echo "<p class='qnt-busca'><i class='fa-solid fa-search'></i> " . $totalRegistros . " ONGS Encontradas</p>";
-        } ?>
+        <?php if (isset($totalRegistros)): ?>
+            <div class="resultado-busca">
+                <p><?= $totalRegistros ?> Ongs</p>
+                <p><i class='fa-solid fa-filter'></i> <?= $totalFiltros ?> Filtros</p>
+            </div>
+        <?php endif; ?>
         <section id="box-ongs">
-            <?php foreach ($lista as $ong) {
+            <?php foreach ($listaOngs as $ong) {
                 $jaFavoritada = isset($_SESSION['usuario']['id']) && in_array($ong['ong_id'], $ongsFavoritas);
                 require '../../components/cards/card-ong.php';
             }
@@ -97,10 +85,7 @@ if (isset($_SESSION['usuario']['id'])) {
         <?php if ($paginas > 1): ?>
             <nav class="paginacao">
                 <?php for ($i = 1; $i <= $paginas; $i++): ?>
-                    <a href="?pagina=<?= $i ?><?= isset($_GET['pesquisa']) ? '&pesquisa=' . urlencode($_GET['pesquisa']) : '' ?>"
-                        class="<?= $i === $paginaAtual ? 'active' : '' ?>">
-                        <?= $i ?>
-                    </a>
+                    <a href="?pagina=<?= $i ?>" class="<?= $i == $paginaAtual ? 'active' : '' ?>"> <?= $i ?> </a>
                 <?php endfor; ?>
             </nav>
         <?php endif; ?>

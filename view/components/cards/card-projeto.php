@@ -10,7 +10,7 @@ $FotoProjeto = $projeto['caminho']
     ? '../../../' . $projeto['caminho']
     : '../../assets/images/global/image-placeholder.svg';
 // Verificar se o Doador favoritou o Projeto
-$jaFavoritado = in_array($projeto['projeto_id'], $projetosFavoritos ?? []) ?? false;
+$jaFavoritado = in_array($IdProjeto, $projetosFavoritos ?? []) ?? false;
 $classe = $jaFavoritado ? 'favoritado' : '';
 ?>
 

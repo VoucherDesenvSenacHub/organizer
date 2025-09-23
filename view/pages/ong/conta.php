@@ -26,7 +26,9 @@ ob_end_flush();
                         <p>Clique para escolher uma foto ou arraste aqui</p>
                     </div>
                     <div class="foto-preview" id="fotoPreview" style="display: none;">
-                        <img id="previewImage" src="" alt="Preview da foto">
+                        <img id="previewImage" src="<?= !empty($_SESSION['ong']['foto']) 
+                            ? '../../../' . $_SESSION['ong']['foto'] 
+                            : '../../assets/images/global/image-placeholder.svg' ?>">
                         <button type="button" class="btn-remover" id="btnRemover">
                             <i class="fa-solid fa-trash-can"></i>
                         </button>

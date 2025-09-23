@@ -1,7 +1,7 @@
 <?php
 // Pegar os dados da Ong e tratar possíveis erros
 $IdOng = $ong['ong_id'] ?? null;
-$FotoOng = $ong['caminho'] ?? '../../assets/images/global/image-placeholder.svg';
+$FotoOng = '../../../' . $ong['caminho'] ?? '../../assets/images/global/image-placeholder.svg';
 $NomeOng = $ong['nome'] ?? 'Nome da ONG';
 $DescricaoOng =  mb_strimwidth($ong['descricao'], 0, 215, '...') ?? 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati qui odio, dignissimos alias ut, nesciunt deserunt maiores at adipisci modi dolor inventore suscipit quas quis cumque minus nobis, ipsum delectus!';
 $DoacoesOng = $ong['total_doacoes'] ?? '?';

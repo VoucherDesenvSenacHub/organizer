@@ -1,25 +1,23 @@
 <?php
 $acesso = 'adm';
-$tituloPagina = 'Painel de Ongs | Organizer'; // Definir o título da página
-$cssPagina = ['adm/listagem.css']; //Colocar o arquivo .css 
+$tituloPagina = 'Painel de Ongs | Organizer';
+$cssPagina = ['adm/listagem.css'];
 require_once '../../components/layout/base-inicio.php';
-
 require_once __DIR__ . '/../../../autoload.php';
+
 $ongModel = new OngModel();
+$paginaAtual = (int)($_GET['pagina'] ?? 1);
 
-$paginaAtual = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
-$tipo = '';
-$valor = ['pagina' => $paginaAtual];
+// Monta filtros
+$filtros = [
+    'pagina'   => $paginaAtual,
+    'pesquisa' => $_GET['pesquisa'] ?? null
+];
 
-if ($_SERVER['REQUEST_METHOD'] = 'GET' && isset($_GET['pesquisa'])) {
-    $pesquisa = $_GET['pesquisa'];
-    $tipo = 'pesquisa';
-    $valor = ['pesquisa' => $pesquisa, 'pagina' => $paginaAtual];
-}
-
-$lista = $ongModel->listarCardsOngs($tipo, $valor);
-$totalRegistros = $ongModel->paginacaoOngs($tipo, $valor);
-$paginas = ceil($totalRegistros / 6);
+// Busca lista e paginação
+$lista          = $ongModel->listarCardsOngs($filtros);
+$totalRegistros = $ongModel->paginacaoOngs($filtros);
+$paginas        = (int)ceil($totalRegistros / 6);
 ?>
 
 <main class="conteudo-principal">

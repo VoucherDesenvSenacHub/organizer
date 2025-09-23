@@ -4,44 +4,32 @@ $acesso = 'ong';
 $tituloPagina = 'Notícias | Organizer';
 $cssPagina = ['ong/listagem.css'];
 require_once '../../components/layout/base-inicio.php';
-
 require_once __DIR__ . '/../../../autoload.php';
+
 $noticiaModel = new NoticiaModel();
-
-
-// Pegar as noticias
 $IdOng = $_SESSION['ong_id'];
-$paginaAtual = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
-$tipo = 'ong';
-$valor = ['pagina' => $paginaAtual, 'ong_id' => $IdOng];
+$paginaAtual = (int) ($_GET['pagina'] ?? 1);
 
-$lista = $noticiaModel->listarCardsNoticias('ong', ['ong_id' => $IdOng, 'pagina' => $paginaAtual]);
+// Monta filtros
+$filtros = array_filter([
+    'pagina'   => $paginaAtual,
+    'ong_id'   => $IdOng,
+    'pesquisa' => $_GET['pesquisa'] ?? null,
+]);
 
+// Busca lista e paginação
+$lista = $noticiaModel->listarCardsNoticias($filtros);
+$totalRegistros = $noticiaModel->paginacaoNoticias($filtros);
+$paginas = (int) ceil($totalRegistros / 6);
 
-
-if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['pesquisa'])) {
-    $pesquisa = $_GET['pesquisa'];
-    $lista = $noticiaModel->listarCardsNoticias('pesquisa', valor: ['ong_id' => $IdOng, 'pesquisa' => $pesquisa, 'pagina' => $paginaAtual]);
-}
-// Criar a Noticia
+// Notícia padrão para formulário
 $PerfilNoticia = (object) [
     'noticia_id' => null,
-    'titulo' => null,
-    'subtitulo' => null,
-    'texto' => null,
-    'subtexto' => null
+    'titulo'     => null,
+    'subtitulo'  => null,
+    'texto'      => null,
+    'subtexto'   => null,
 ];
-
-// Paginação
-
-
-if (isset($_GET['pesquisa'])) {
-    $tipo = 'pesquisa';
-    $valor['pesquisa'] = $_GET['pesquisa'];
-}
-
-$totalRegistros = $noticiaModel->paginacaoNoticias($tipo, $valor);
-$paginas = (int)ceil($totalRegistros / 6);
 
 require_once '../../components/popup/formulario-noticia.php';
 ob_end_flush();
@@ -72,18 +60,18 @@ ob_end_flush();
                 ?>
             </div>
             <?php if ($paginas > 1): ?>
-            <nav class="paginacao">
-                <?php for ($i = 1; $i <= $paginas; $i++): ?>
-                    <a href="?pagina=<?= $i ?><?= isset($_GET['pesquisa']) ? '&pesquisa=' . urlencode($_GET['pesquisa']) : '' ?>"
-                        class="<?= $i === $paginaAtual ? 'active' : '' ?>">
-                        <?= $i ?>
-                    </a>
-                <?php endfor; ?>
-            </nav>
-        <?php endif; ?> 
+                <nav class="paginacao">
+                    <?php for ($i = 1; $i <= $paginas; $i++): ?>
+                        <a href="?pagina=<?= $i ?><?= isset($_GET['pesquisa']) ? '&pesquisa=' . urlencode($_GET['pesquisa']) : '' ?>"
+                            class="<?= $i === $paginaAtual ? 'active' : '' ?>">
+                            <?= $i ?>
+                        </a>
+                    <?php endfor; ?>
+                </nav>
+            <?php endif; ?>
         </div>
     </section>
-    
+
 </main>
 
 <!-- Toasts -->
