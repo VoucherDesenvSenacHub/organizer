@@ -11,8 +11,7 @@ require_once '../../components/graphics/calcula-graficos.php';
 require_once '../../../model/RelatoriosModel.php';
 
 $projetos = new RelatoriosModel();
-// $_SESSION['ong_id']
-$IdOng = 3;
+$IdOng = $_SESSION['ong_id'];
 $listaUsuarios = $projetos->buscarUsuarios();
 $contagem_projetos = $projetos->contarProjetos($IdOng);
 $arrecadaProjetos = $projetos->somarArrecadacaoProjetos($IdOng);
