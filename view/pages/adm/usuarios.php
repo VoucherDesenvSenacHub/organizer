@@ -7,7 +7,7 @@ require_once '../../components/layout/base-inicio.php';
 require_once __DIR__ . '/../../../autoload.php';
 $usuarioModel = new UsuarioModel();
 
-$paginaAtual = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
+$paginaAtual = (int)($_GET['pagina'] ?? 1);
 $tipo = '';
 $valor = ['pagina' => $paginaAtual];
 

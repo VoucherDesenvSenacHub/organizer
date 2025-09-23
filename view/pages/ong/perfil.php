@@ -12,9 +12,9 @@ $noticiaModel = new NoticiaModel();
 if (isset($_GET['id'])) {
     $IdOng = $_GET['id'];
     $PerfilOng = $ongModel->buscarPerfilOng($IdOng);
-    $projetos_ong = $projetoModel->listarCardsProjetos('ong', ['ong_id' => $IdOng, 'limit' => 50]);
-    $noticias_ong = $noticiaModel->listarCardsNoticias('ong', ['ong_id' => $IdOng]);
-    $doadores_ong = $ongModel->buscarDoadores($IdOng);
+    $ProjetosOng = $projetoModel->listarCardsProjetos(['ong_id' => $IdOng, 'limit' => 50]);
+    $NoticiasOng = $noticiaModel->listarCardsNoticias(['ong_id' => $IdOng, 'limit' => 50]);
+    $DoadoresOng = $ongModel->buscarDoadores($IdOng);
     $FotoOng = $PerfilOng['caminho'] ?? '../../assets/images/global/image-placeholder.svg';
 }
 
@@ -95,8 +95,8 @@ if ($acesso === 'doador') {
                 </div>
                 <div class="mini-cards">
                     <?php
-                    if ($doadores_ong) {
-                        foreach ($doadores_ong as $doador) {
+                    if ($DoadoresOng) {
+                        foreach ($DoadoresOng as $doador) {
                             require '../../components/cards/card-doador.php';
                         }
                     } else {
@@ -114,8 +114,8 @@ if ($acesso === 'doador') {
                 </div>
                 <div class="mini-cards">
                     <?php
-                    if ($noticias_ong) {
-                        foreach ($noticias_ong as $noticia) {
+                    if ($NoticiasOng) {
+                        foreach ($NoticiasOng as $noticia) {
                             require '../../components/cards/card-noticia.php';
                         }
                     } else {
@@ -133,8 +133,8 @@ if ($acesso === 'doador') {
                 </div>
                 <div class="mini-cards">
                     <?php
-                    if ($projetos_ong) {
-                        foreach ($projetos_ong as $projeto) {
+                    if ($ProjetosOng) {
+                        foreach ($ProjetosOng as $projeto) {
                             require '../../components/cards/card-projeto.php';
                         }
                     } else {

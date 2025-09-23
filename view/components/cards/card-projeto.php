@@ -9,12 +9,10 @@ $CorCategoria = $projeto['cor'] ?? '#9E9E9E';
 $FotoProjeto = $projeto['caminho']
     ? '../../../' . $projeto['caminho']
     : '../../assets/images/global/image-placeholder.svg';
-$StatusProjeto = $projeto['status'] ?? 'ATIVO';
 // Verificar se o Doador favoritou o Projeto
-$jaFavoritado = in_array($projeto['projeto_id'], $projetosFavoritos ?? []) ?? false;
+$jaFavoritado = in_array($IdProjeto, $projetosFavoritos ?? []) ?? false;
 $classe = $jaFavoritado ? 'favoritado' : '';
 ?>
-
 
 <div class="card-projeto">
     <span class="categoria" style="background-color: <?= $CorCategoria ?>;"><?= $CategoriaProjeto ?></span>
@@ -31,11 +29,6 @@ $classe = $jaFavoritado ? 'favoritado' : '';
     </div>
     <div class="img-projeto">
         <img src="<?= $FotoProjeto ?>">
-        <?php if ($StatusProjeto === 'INATIVO'): ?>
-            <div class="badge-inativo">INATIVO</div>
-        <?php elseif ($StatusProjeto === 'FINALIZADO'): ?>
-            <div class="badge-finalizado">FINALIZADO</div>
-        <?php endif; ?>
     </div>
     <div class="info-projeto">
         <h5><?= $NomeProjeto ?></h5>

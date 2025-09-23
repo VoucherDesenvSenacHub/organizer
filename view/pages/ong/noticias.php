@@ -4,67 +4,32 @@ $acesso = 'ong';
 $tituloPagina = 'Notícias | Organizer';
 $cssPagina = ['ong/listagem.css'];
 require_once '../../components/layout/base-inicio.php';
-
 require_once __DIR__ . '/../../../autoload.php';
+
 $noticiaModel = new NoticiaModel();
-
-
-// Pegar as noticias
 $IdOng = $_SESSION['ong_id'];
-$status = $_GET['status'] ?? null;
-$paginaAtual = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
-$tipo = 'ong';
+$paginaAtual = (int) ($_GET['pagina'] ?? 1);
 
-// parâmetros base
-$valor = [
-    'ong_id' => $IdOng,
-    'pagina' => $paginaAtual
-];
+// Monta filtros
+$filtros = array_filter([
+    'pagina'   => $paginaAtual,
+    'ong_id'   => $IdOng,
+    'pesquisa' => $_GET['pesquisa'] ?? null,
+]);
 
-// se tiver status, adiciona
-if ($status) {
-    $valor['status'] = $status;
-}
+// Busca lista e paginação
+$lista = $noticiaModel->listarCardsNoticias($filtros);
+$totalRegistros = $noticiaModel->paginacaoNoticias($filtros);
+$paginas = (int) ceil($totalRegistros / 6);
 
-// busca normal (com ou sem status/página)
-$lista = $noticiaModel->listarCardsNoticias('ong', $valor);
-
-// se for pesquisa
-if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['pesquisa'])) {
-    $pesquisa = $_GET['pesquisa'];
-
-    $valorPesquisa = [
-        'ong_id'   => $IdOng,
-        'pesquisa' => $pesquisa,
-        'pagina'   => $paginaAtual
-    ];
-
-    if ($status) {
-        $valorPesquisa['status'] = $status;
-    }
-
-    $lista = $noticiaModel->listarCardsNoticias('pesquisa', $valorPesquisa);
-}
-
-// Criar a Noticia
+// Notícia padrão para formulário
 $PerfilNoticia = (object) [
     'noticia_id' => null,
-    'titulo' => null,
-    'subtitulo' => null,
-    'texto' => null,
-    'subtexto' => null
+    'titulo'     => null,
+    'subtitulo'  => null,
+    'texto'      => null,
+    'subtexto'   => null,
 ];
-
-// Paginação
-
-
-if (isset($_GET['pesquisa'])) {
-    $tipo = 'pesquisa';
-    $valor['pesquisa'] = $_GET['pesquisa'];
-}
-
-$totalRegistros = $noticiaModel->paginacaoNoticias($tipo, $valor);
-$paginas = (int)ceil($totalRegistros / 6);
 
 require_once '../../components/popup/formulario-noticia.php';
 ob_end_flush();
@@ -74,32 +39,6 @@ ob_end_flush();
         <div class="container">
             <div class="topo">
                 <h1><i class="fa-solid fa-newspaper"></i> MINHAS NOTÍCIAS</h1>
-
-
-                <form id="form-filtro" action="noticias.php" method="GET">
-                    <div class="ul-group">
-                        <div class="drop" id="esc-status" aria-haspopup="true" aria-expanded="false">
-                            <div class="drop-title" tabindex="0">
-                                <p id="status-label">
-                                    <?= isset($_GET['status']) && $_GET['status'] !== ''
-                                        ? ucfirst(strtolower($_GET['status']))
-                                        : 'Status' ?>
-                                </p>
-                                <i class="fa-solid fa-angle-down"></i>
-                            </div>
-
-                            <div class="drop-menu" role="menu" aria-labelledby="status-label">
-                                <button type="button" class="item" data-value="">Todos os Status</button>
-                                <button type="button" class="item" data-value="ATIVO">Ativo</button>
-                                <button type="button" class="item" data-value="INATIVO">Inativo</button>
-                            </div>
-
-                            <input type="hidden" name="status" id="status-hidden" value="<?= $_GET['status'] ?? '' ?>">
-                        </div>
-                    </div>
-                </form>
-
-
                 <form id="form-busca" action="noticias.php" method="GET">
                     <input type="text" name="pesquisa" placeholder="Busque uma notícia" value="<?= $_GET['pesquisa'] ?? '' ?>">
                     <input type="hidden" name="status" value="<?= $_GET['status'] ?? '' ?>">
@@ -107,6 +46,28 @@ ob_end_flush();
                 </form>
                 <button class="btn btn-novo" onclick="abrir_popup('editar-noticia-popup')">NOVA NOTÍCIA +</button>
             </div>
+            <form id="form-filtro" action="noticias.php" method="GET">
+                <div class="ul-group">
+                    <div class="drop" id="esc-status" aria-haspopup="true" aria-expanded="false">
+                        <div class="drop-title" tabindex="0">
+                            <p id="status-label">
+                                <?= isset($_GET['status']) && $_GET['status'] !== ''
+                                    ? ucfirst(strtolower($_GET['status']))
+                                    : 'Status' ?>
+                            </p>
+                            <i class="fa-solid fa-angle-down"></i>
+                        </div>
+
+                        <div class="drop-menu" role="menu" aria-labelledby="status-label">
+                            <button type="button" class="item" data-value="">Todos os Status</button>
+                            <button type="button" class="item" data-value="ATIVO">Ativo</button>
+                            <button type="button" class="item" data-value="INATIVO">Inativo</button>
+                        </div>
+
+                        <input type="hidden" name="status" id="status-hidden" value="<?= $_GET['status'] ?? '' ?>">
+                    </div>
+                </div>
+            </form>
             <?php if (isset($_GET['pesquisa'])) {
                 echo "<p id='qnt-busca'><i class='fa-solid fa-search'></i> " . $totalRegistros . " Notícias Encontradas</p>";
             } ?>
@@ -129,15 +90,15 @@ ob_end_flush();
                 ?>
             </div>
             <?php if ($paginas > 1): ?>
-            <nav class="paginacao">
-                <?php for ($i = 1; $i <= $paginas; $i++): ?>
-                    <a href="?pagina=<?= $i ?><?= isset($_GET['pesquisa']) ? '&pesquisa=' . urlencode($_GET['pesquisa']) : '' ?>"
-                        class="<?= $i === $paginaAtual ? 'active' : '' ?>">
-                        <?= $i ?>
-                    </a>
-                <?php endfor; ?>
-            </nav>
-        <?php endif; ?> 
+                <nav class="paginacao">
+                    <?php for ($i = 1; $i <= $paginas; $i++): ?>
+                        <a href="?pagina=<?= $i ?><?= isset($_GET['pesquisa']) ? '&pesquisa=' . urlencode($_GET['pesquisa']) : '' ?>"
+                            class="<?= $i === $paginaAtual ? 'active' : '' ?>">
+                            <?= $i ?>
+                        </a>
+                    <?php endfor; ?>
+                </nav>
+            <?php endif; ?>
         </div>
     </section>
 
@@ -154,7 +115,7 @@ ob_end_flush();
 </div>
 
 <?php
-$jsPagina = ['ong/noticias.js'];
+$jsPagina = ['ong/listagem.js'];
 require_once '../../components/layout/footer/footer-logado.php';
 // Ativar os toast
 if (isset($_SESSION['criar-noticia'])) {

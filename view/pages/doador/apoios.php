@@ -1,27 +1,25 @@
 <?php
-$acesso = 'doador';
+$acesso       = 'doador';
 $tituloPagina = 'Apoios | Organizer';
-$cssPagina = ['doador/apoios.css'];
+$cssPagina    = ['doador/apoios.css'];
 require_once '../../components/layout/base-inicio.php';
-require_once __DIR__ . '/../../../autoload.php';
 
+require_once __DIR__ . '/../../../autoload.php';
 $projetoModel = new ProjetoModel();
 
-// ===== CONFIGURAÇÃO DE PAGINAÇÃO =====
-$IdUsuario = $_SESSION['usuario']['id'];
-$paginaAtual = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
-$tipo = 'apoiados';
-$valor = [
-    'usuario_id' => $IdUsuario, 
-    'pagina' => $paginaAtual
+$usuarioId    = $_SESSION['usuario']['id'];
+
+// Monta os filtros
+$filtros = [
+    'pagina'     => (int)($_GET['pagina'] ?? 1),
+    'usuario_id' => $usuarioId,
+    'apoiados'   => true
 ];
 
-// Buscar os projetos apoiados
-$lista = $projetoModel->listarCardsProjetos($tipo, $valor);
-
-// Calcula total de registros e número de páginas
-$totalRegistros = $projetoModel->paginacaoProjetos($tipo, $valor);
-$paginas = (int)ceil($totalRegistros / 8);
+// Busca lista e paginação
+$lista          = $projetoModel->listarCardsProjetos($filtros);
+$totalRegistros = $projetoModel->paginacaoProjetos($filtros);
+$paginas        = (int)ceil($totalRegistros / 8);
 
 // Lista os projetos favoritados pelo usuário (colorir o coração)
 $projetosFavoritos = $projetoModel->listarFavoritos($_SESSION['usuario']['id']);

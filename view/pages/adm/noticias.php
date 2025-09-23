@@ -1,24 +1,23 @@
 <?php
 $acesso = 'adm';
-$tituloPagina = 'Painel de Projetos | Organizer'; // Definir o título da página
-$cssPagina = ['adm/listagem.css']; //Colocar o arquivo .css 
+$tituloPagina = 'Painel de Notícias | Organizer';
+$cssPagina = ['adm/listagem.css'];
 require_once '../../components/layout/base-inicio.php';
-
 require_once __DIR__ . '/../../../autoload.php';
+
 $noticiaModel = new NoticiaModel();
+$paginaAtual = (int)($_GET['pagina'] ?? 1);
 
-$paginaAtual = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
-$tipo = '';
-$valor = ['pagina' => $paginaAtual];
+// Monta filtros
+$filtros = [
+    'pagina'   => $paginaAtual,
+    'pesquisa' => $_GET['pesquisa'] ?? null
+];
 
-if (isset($_GET['pesquisa'])) {
-    $tipo = 'pesquisa';
-    $valor['pesquisa'] = $_GET['pesquisa'];
-}
-
-$lista = $noticiaModel->listarCardsNoticias($tipo, $valor);
-$totalRegistros = $noticiaModel->paginacaoNoticias($tipo, $valor);
-$paginas = ceil($totalRegistros / 6);
+// Busca lista e paginação
+$lista          = $noticiaModel->listarCardsNoticias($filtros);
+$totalRegistros = $noticiaModel->paginacaoNoticias($filtros);
+$paginas        = (int) ceil($totalRegistros / 6);
 ?>
 
 <main class="conteudo-principal">
