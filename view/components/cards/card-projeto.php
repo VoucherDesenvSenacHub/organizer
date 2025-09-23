@@ -3,9 +3,10 @@
 $IdProjeto = $projeto['projeto_id'] ?? null;
 $NomeProjeto = $projeto['nome'] ?? 'Nome do Projeto';
 $DescricaoProjeto =  mb_strimwidth($projeto['descricao'], 0, 220, '...') ?? 'Lorem ipsum...';
-$BarraProjeto = $projeto['barra'] ?? '30';
+$StatusProjeto = $projeto['status'] ?? 'ATIVO';
 $CategoriaProjeto = $projeto['categoria'] ?? 'Indefinido';
 $CorCategoria = $projeto['cor'] ?? '#9E9E9E';
+$BarraProjeto = $projeto['barra'] ?? '30';
 $FotoProjeto = $projeto['caminho']
     ? '../../../' . $projeto['caminho']
     : '../../assets/images/global/image-placeholder.svg';
@@ -16,6 +17,11 @@ $classe = $jaFavoritado ? 'favoritado' : '';
 
 <div class="card-projeto">
     <span class="categoria" style="background-color: <?= $CorCategoria ?>;"><?= $CategoriaProjeto ?></span>
+    <?php if ($StatusProjeto == 'INATIVO'): ?>
+        <span class="status inativo">Inativo <i class="fa-solid fa-ban"></i></span>
+    <?php elseif ($StatusProjeto == 'FINALIZADO'): ?>
+        <span class="status finalizado">Finalizado <img src="../../assets/images/icons/meta.png"></span>
+    <?php endif; ?>
     <div class="acoes-projeto">
         <button title="Compartilhar" class="btn-share fa-solid fa-share-nodes" onclick="compartilhar('compartilhar-popup', <?= $IdProjeto ?>, 'projeto')"></button>
         <?php if (!isset($_SESSION['usuario']['id'])): ?>

@@ -13,7 +13,7 @@ function carregarListaProjetos(array $get, array $post)
         'pagina'     => $paginaAtual,
         'pesquisa'   => $post['pesquisa'] ?? null,
         'ordem'      => $post['ordem'] ?? null,
-        'status'     => $post['status'] ?? null,
+        'status'     => $post['status'] ?? ['ATIVO', 'FINALIZADO'],
         'categorias' => $post['categorias'] ?? null,
     ];
 

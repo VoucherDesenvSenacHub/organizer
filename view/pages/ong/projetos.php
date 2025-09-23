@@ -16,7 +16,7 @@ $filtros = [
     'pagina'   => $paginaAtual,
     'ong_id'   => $ongId,
     'pesquisa' => $_GET['pesquisa'] ?? null,
-    'status' => (array)($_GET['status'] ?? [])
+    'status'   => array_filter((array)($_GET['status'] ?? []))
 ];
 
 // Busca lista e paginação

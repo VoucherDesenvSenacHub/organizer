@@ -15,6 +15,7 @@ $filtros = array_filter([
     'pagina'   => $paginaAtual,
     'ong_id'   => $IdOng,
     'pesquisa' => $_GET['pesquisa'] ?? null,
+    'status'   => $_GET['status'] ?? null
 ]);
 
 // Busca lista e paginação
@@ -59,7 +60,7 @@ ob_end_flush();
                         </div>
 
                         <div class="drop-menu" role="menu" aria-labelledby="status-label">
-                            <button type="button" class="item" data-value="">Todos os Status</button>
+                            <button type="button" class="item" data-value="">Todas</button>
                             <button type="button" class="item" data-value="ATIVO">Ativo</button>
                             <button type="button" class="item" data-value="INATIVO">Inativo</button>
                         </div>

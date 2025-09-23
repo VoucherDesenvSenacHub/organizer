@@ -12,8 +12,8 @@ $noticiaModel = new NoticiaModel();
 if (isset($_GET['id'])) {
     $IdOng = $_GET['id'];
     $PerfilOng = $ongModel->buscarPerfilOng($IdOng);
-    $ProjetosOng = $projetoModel->listarCardsProjetos(['ong_id' => $IdOng, 'limit' => 50]);
-    $NoticiasOng = $noticiaModel->listarCardsNoticias(['ong_id' => $IdOng, 'limit' => 50]);
+    $ProjetosOng = $projetoModel->listarCardsProjetos(['ong_id' => $IdOng, 'limit' => 50, 'status' => ['ATIVO', 'FINALIZADO']]);
+    $NoticiasOng = $noticiaModel->listarCardsNoticias(['ong_id' => $IdOng, 'limit' => 50, 'status' => 'ATIVO']);
     $DoadoresOng = $ongModel->buscarDoadores($IdOng);
     $FotoOng = $PerfilOng['caminho'] ?? '../../assets/images/global/image-placeholder.svg';
 }

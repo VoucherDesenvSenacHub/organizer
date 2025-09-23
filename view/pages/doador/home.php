@@ -12,7 +12,7 @@ $relatorio = $doadorModel->RelatorioHome($IdDoador);
 $UltimasAtividades = $doadorModel->ultimasAtividadesDoador($IdDoador);
 
 $projetoModel = new ProjetoModel();
-$lista = $projetoModel->listarCardsProjetos(['recentes' => true, 'limit' => 4]);
+$lista = $projetoModel->listarCardsProjetos(['recentes' => true, 'limit' => 4, 'status' => ['ATIVO']]);
 $projetosFavoritos = $projetoModel->listarFavoritos($IdDoador);
 ?>
 

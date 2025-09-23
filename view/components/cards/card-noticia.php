@@ -5,6 +5,7 @@ $TituloNoticia = $noticia['titulo'] ?? 'Titulo Da Matéria';
 $TextoNoticia = is_array($noticia) && isset($noticia['texto'])
     ? mb_strimwidth($noticia['texto'], 0, 150, '...')
     : 'Lorem ipsum...';
+$StatusNoticia = $noticia['status'] ?? 'ATIVO';
 $NomeOng = $noticia['ong_nome'] ?? 'Nome da Ong';
 $DataNoticia = $noticia['data_cadastro'] ?? '00/00/0000';
 $FotoNoticia = $noticia['caminho']
@@ -24,6 +25,7 @@ $FotoNoticia = $noticia['caminho']
         </div>
         <div class="imagem-noticia">
             <img src="<?= $FotoNoticia ?>">
+            <?= $StatusNoticia === 'INATIVO' ? "<span class='status'>Inativo <i class='fa-solid fa-ban'></i></span>" : "" ?>
         </div>
     </a>
     <div class="acoes-noticia">

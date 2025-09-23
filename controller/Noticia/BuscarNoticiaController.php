@@ -10,7 +10,8 @@ function carregarListaNoticias(array $get, array $post)
     $filtros = [
         'pagina'   => $paginaAtual,
         'pesquisa' => $post['pesquisa'] ?? null,
-        'ordem'    => $post['ordem'] ?? null
+        'ordem'    => $post['ordem'] ?? null,
+        'status'   => 'ATIVO'
     ];
 
     // Busca lista e paginação
