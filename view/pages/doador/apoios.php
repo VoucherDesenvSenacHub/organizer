@@ -1,30 +1,31 @@
 <?php
-$acesso = 'doador';
+$acesso       = 'doador';
 $tituloPagina = 'Apoios | Organizer';
-$cssPagina = ['doador/apoios.css'];
+$cssPagina    = ['doador/apoios.css'];
 require_once '../../components/layout/base-inicio.php';
-require_once __DIR__ . '/../../../autoload.php';
 
+require_once __DIR__ . '/../../../autoload.php';
 $projetoModel = new ProjetoModel();
 
-$IdUsuario = $_SESSION['usuario']['id'];
-$lista = $projetoModel->listarCardsProjetos('apoiados' , $IdUsuario);
+$usuarioId    = $_SESSION['usuario']['id'];
 
+// Monta os filtros
+$filtros = [
+    'pagina'     => (int)($_GET['pagina'] ?? 1),
+    'usuario_id' => $usuarioId,
+    'apoiados'   => true
+];
+
+// Busca lista e paginação
+$lista          = $projetoModel->listarCardsProjetos($filtros);
+$totalRegistros = $projetoModel->paginacaoProjetos($filtros);
+$paginas        = (int)ceil($totalRegistros / 8);
+
+// Lista os projetos favoritados pelo usuário (colorir o coração)
 $projetosFavoritos = $projetoModel->listarFavoritos($_SESSION['usuario']['id']);
 
 ?>
-<!-- 
-    Toast de Favoritar
--->
-<div id="toast-favorito" class="toast">
-    <i class="fa-solid fa-heart"></i>
-    Adicionado aos favoritos!
-</div>
-<div id="toast-remover-favorito" class="toast erro">
-    <i class="fa-solid fa-heart-crack"></i>
-    Removido dos favoritos!
-</div>
-<main>
+<main class="conteudo-principal">
     <section>
         <div class="container">
             <h1><i class="fa-solid fa-hand-holding-heart"></i> MEUS APOIOS</h1>
@@ -42,9 +43,29 @@ $projetosFavoritos = $projetoModel->listarFavoritos($_SESSION['usuario']['id']);
                 }
                 ?>
             </div>
+            <?php if ($paginas > 1): ?>
+                <nav class="paginacao">
+                    <?php for ($i = 1; $i <= $paginas; $i++): ?>
+                        <a href="?pagina=<?= $i ?>"
+                            class="<?= $i === $paginaAtual ? 'active' : '' ?>">
+                            <?= $i ?>
+                        </a>
+                    <?php endfor; ?>
+                </nav>
+            <?php endif; ?>
         </div>
     </section>
 </main>
+
+<!-- Toasts -->
+<div id="toast-favorito" class="toast">
+    <i class="fa-solid fa-heart"></i>
+    Adicionado aos favoritos!
+</div>
+<div id="toast-remover-favorito" class="toast erro">
+    <i class="fa-solid fa-heart-crack"></i>
+    Removido dos favoritos!
+</div>
 
 <?php
 $jsPagina = [''];

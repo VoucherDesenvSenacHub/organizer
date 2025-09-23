@@ -2,8 +2,13 @@
     color: var(--cor-azul);
 }
 
-#container-conteudo {
-    overflow: hidden;
+main.conteudo-principal .container > h1 {
+    font-size: 24px;
+}
+
+main.conteudo-principal section {
+    min-height: calc(100vh - 60px);
+    padding: 30px 20px;
 }
 
 /* Botões ONGS e PROJETOS */
@@ -73,7 +78,8 @@
 #principal {
     /* display: flex; */
     width: 100%;
-    /* overflow: hidden; */
+    overflow: hidden;
+    padding: 2px 0;
 }
 
 #control-box {
@@ -87,12 +93,21 @@
 /* CARD ONG */
 .box-ongs {
     display: flex;
+    flex-direction: column;
     gap: 20px 5px;
-    justify-content: space-around;
+    justify-content: space-between;
     align-content: flex-start;
     flex-wrap: wrap;
     flex: 0 0 100%;
     height: fit-content;
+}
+
+.list-card {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 100%;
+    gap:  20px 10px;
 }
 
 .btn-doar {

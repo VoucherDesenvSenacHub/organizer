@@ -21,70 +21,63 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $load = true;
 }
 ?>
-<main>
+<main class="conteudo-principal">
     <?php echo calculaGraficos($load); ?>
-    <div id="principal">
-        <div class="titulo">
-            <h1><i class="fa-solid fa-chart-pie"></i> PAINEL DE RELATÓRIOS</h1>
-        </div>
-
-        <div class="cards">
-            <div class="card1">
-                <div class="icon">
-                    Voluntários por Projeto
-                    <form action="../../components/reports-pdf/pdf-generator.php" method="POST">
-                        <input type="hidden" value="<?= $IdOng ?>" name="id-ong" id="id-ong">
-                        <input type="hidden" value="voluntarios-por-projeto.php" name="relatorio" id="relatorio">
-                        <button onclick="clicar()">
-                            <img src="../../assets/images/pages/ong/relatorios/icon-download.png" alt="">
-                        </button>
-                    </form>
+    <section>
+        <div id="principal">
+            <div class="titulo">
+                <h1><i class="fa-solid fa-chart-pie"></i> PAINEL DE RELATÓRIOS</h1>
+            </div>
+            <div class="cards">
+                <div class="card1">
+                    <div class="icon">
+                        Voluntários por Projeto
+                        <form action="../../components/reports-pdf/pdf-generator.php" method="POST">
+                            <input type="hidden" value="<?= $IdOng ?>" name="id-ong" id="id-ong">
+                            <input type="hidden" value="voluntarios-por-projeto.php" name="relatorio" id="relatorio">
+                            <button onclick="clicar()">
+                                <img src="../../assets/images/pages/ong/relatorios/icon-download.png" alt="">
+                            </button>
+                        </form>
+                    </div>
+                    <div class="graficos">
+                        <?php
+                        echo graficoBarrasVerticais($largura, $altura, $contagem_projetos);
+                        ?>
+                    </div>
                 </div>
-
-                <div class="graficos">
-                <?php
-                    echo graficoBarrasVerticais($largura, $altura, $contagem_projetos);
-                ?>
+                <div class="card1">
+                    <div class="icon">
+                        Doações Mensais
+                        <form action="../../components/reports-pdf/pdf-generator.php" method="POST">
+                            <input type="hidden" value="<?= $IdOng ?>" name="id-ong" id="id-ong">
+                            <input type="hidden" value="doacoes-mensais.php" name="relatorio" id="relatorio">
+                            <button onclick="clicar()"><img src="../../assets/images/pages/ong/relatorios/icon-download.png" alt=""></button>
+                        </form>
+                    </div>
+                    <div class="grafico-linhas">
+                        <?php echo graficoLinhas($largura, $altura, $IdOng) ?>
+                    </div>
+                </div>
+                <div class="card1">
+                    <div class="icon">
+                        Doações por projeto
+                        <form action="../../components/reports-pdf/pdf-generator.php" method="POST">
+                            <input type="hidden" value="<?= $IdOng ?>" name="id-ong" id="id-ong">
+                            <input type="hidden" value="doacoes-por-projeto.php" name="relatorio" id="relatorio">
+                            <button onclick="clicar()"><img src="../../assets/images/pages/ong/relatorios/icon-download.png" alt=""></button>
+                        </form>
+                        <!-- <button onclick="clicar()"><img src="../../assets/images/pages/ong/relatorios/icon-download.png" alt=""></button> -->
+                    </div>
+                    <div class="grafico-pizza">
+                        <?php
+                        echo graficoPizza($largura, $altura, $IdOng);
+                        ?>
+                    </div>
                 </div>
             </div>
-
-            <div class="card1">
-                <div class="icon">
-                    Doações Mensais
-                    <form action="../../components/reports-pdf/pdf-generator.php" method="POST">
-                        <input type="hidden" value="<?= $IdOng ?>" name="id-ong" id="id-ong">
-                        <input type="hidden" value="doacoes-mensais.php" name="relatorio" id="relatorio">
-                        <button onclick="clicar()"><img src="../../assets/images/pages/ong/relatorios/icon-download.png" alt=""></button>
-                    </form>
-                </div>
-                <div class="grafico-linhas">
-                    <?php echo graficoLinhas( $largura, $altura, $IdOng) ?>
-                </div>
-            </div>
-
-            <div class="card1">
-                <div class="icon">
-                    Doações por projeto
-                    <form action="../../components/reports-pdf/pdf-generator.php" method="POST">
-                        <input type="hidden" value="<?= $IdOng ?>" name="id-ong" id="id-ong">
-                        <input type="hidden" value="doacoes-por-projeto.php" name="relatorio" id="relatorio">
-                        <button onclick="clicar()"><img src="../../assets/images/pages/ong/relatorios/icon-download.png" alt=""></button>
-                    </form>
-                    <!-- <button onclick="clicar()"><img src="../../assets/images/pages/ong/relatorios/icon-download.png" alt=""></button> -->
-                </div>
-                <div class="grafico-pizza">
-                    <?php
-                    echo graficoPizza($largura, $altura, $IdOng);
-                    ?>
-                </div>
-            </div>
-
-            
-        </div>
-
-    </div>
+    </section>
 </main>
-
 <?php
 $jsPagina = ["relatorios.js"]; //Colocar o arquivo .js (exemplo: 'ONG/cadastro.js')
 require_once '../../components/layout/footer/footer-logado.php';

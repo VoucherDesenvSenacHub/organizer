@@ -1,21 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css');
+
 @import url(cores.css);
 @import url(../components/cards/cards.css);
 @import url(../components/popup/popup.css);
 
-@import url(../components/button.css);
-@import url(../components/header.css);
-@import url(../components/layout/footer.css);
-@import url(../components/layout/navegacao.css);
-
-@import url(../components/toast.css);
-@import url(../components/input-radio.css);
-
-/* Novo Doador */
-@import url(../components/aside-doador.css);
-@import url(../components/header-doador.css);
-
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css');
+@import url(../components/layout/layout.css);
+@import url(../components/elements/elements.css);
 
 * {
     margin: 0;
@@ -28,7 +19,6 @@
 body {
     background-color: aliceblue;
     color: var(--cor-principal);
-    /* scrollbar-color: #06c; */
 }
 
 h1 {

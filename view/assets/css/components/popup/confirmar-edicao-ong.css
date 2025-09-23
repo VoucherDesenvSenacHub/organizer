@@ -1,0 +1,68 @@
+/* POPUP DE CONFIRMAR EDIÇÃO ONG */
+#confirmar-edicao-popup {
+    background-color: rgba(0, 0, 0, 0.1);
+    padding: 8px;
+}
+
+#confirmar-edicao-popup .container-popup {
+    padding: 20px;
+    background-color: white;
+    color: var(--cor-principal);
+    max-width: 400px;
+}
+
+#confirmar-edicao-popup h1 {
+    font-size: 18px;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 15px;
+    color: var(--cor-principal);
+}
+
+#confirmar-edicao-popup p {
+    font-size: 14px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#confirmar-edicao-popup p strong {
+    color: var(--cor-amarelo);
+}
+
+#confirmar-edicao-popup .btn-acoes-modal {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+#confirmar-edicao-popup .btn-cancelar {
+    background-color: var(--cor-cinza);
+    color: white;
+    flex: 1;
+}
+
+#confirmar-edicao-popup .btn-cancelar:hover {
+    background-color: var(--cor-cinza-hover);
+    color: var(--cor-cinza);
+}
+
+#confirmar-edicao-popup .btn-confirmar {
+    background-color: var(--cor-amarelo);
+    color: var(--cor-principal);
+    flex: 1;
+}
+
+#confirmar-edicao-popup .btn-confirmar:hover {
+    background-color: var(--cor-amarelo-hover);
+}
+
+#confirmar-edicao-popup .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px;
+    border-radius: 4px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}

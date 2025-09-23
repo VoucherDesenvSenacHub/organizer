@@ -12,55 +12,80 @@ class ProjetoModel
         $this->pdo->exec("SET time_zone = '-04:00'");
     }
 
-    function listarCardsProjetos(string $tipo = '', $valor = [])
+    function listarCardsProjetos(array $filtros = [])
     {
+        $limit  = $filtros['limit']  ?? 8;
+        $pagina = $filtros['pagina'] ?? 1;
+        $offset = ($pagina - 1) * $limit;
+
         $params = [];
-        $limit = $valor['limit'] ?? 8;
-        $pagina = $valor['pagina'] ?? 1;
-        $offset = ($pagina - 1) * 8;
+        $where  = 'WHERE 1=1';
+        $join   = '';
+        $order  = '';
 
-        switch ($tipo) {
-            // Buscar os Projetos pelo nome
-            case 'pesquisa':
-                $query = "SELECT * FROM vw_card_projetos WHERE nome LIKE :nome";
-                if (!empty($valor['ong_id'])) {
-                    $query .= " AND ong_id = :ong_id";
-                    $params[':ong_id'] = $valor['ong_id'];
-                }
-                $params[':nome'] = "%{$valor['pesquisa']}%";
-                break;
-            // Buscar os Projetos de uma ONG
-            case 'ong':
-                $query = "SELECT * FROM vw_card_projetos v WHERE ong_id = :ong_id";
-                $params[':ong_id'] = $valor['ong_id'];
-                break;
-            // Buscar os Projetos favoritos do Usúario
-            case 'favoritos':
-                $query = "SELECT v.*, f.usuario_id FROM vw_card_projetos v
-                JOIN favoritos_projetos f USING (projeto_id)
-                WHERE usuario_id = :usuario_id ORDER BY data_favoritado DESC";
-                $params[':usuario_id'] = $valor;
-                break;
-            // Buscar os Projetos favoritos do Usúario
-            case 'apoiados':
-                $query = "SELECT v.*, f.usuario_id FROM vw_card_projetos v
-                JOIN apoios_projetos f USING (projeto_id)
-                WHERE usuario_id = :usuario_id ORDER BY data_apoio DESC";
-                $params[':usuario_id'] = $valor;
-                break;
-            // Buscar os Projetos mais recentes
-            case 'recentes':
-                $limit = 4;
-                $query = "SELECT v.*, p.data_cadastro FROM vw_card_projetos v
-                JOIN projetos p USING(projeto_id)
-                ORDER BY data_cadastro DESC";
-                break;
-            default:
-                $query = "SELECT * FROM vw_card_projetos v";
+        // Filtro por pesquisa
+        if (!empty($filtros['pesquisa'])) {
+            $where .= " AND nome LIKE :nome";
+            $params[':nome'] = "%{$filtros['pesquisa']}%";
         }
-        $query .= " LIMIT {$limit} OFFSET {$offset}";
+        // Filtrar por ONG
+        if (!empty($filtros['ong_id'])) {
+            $where .= " AND ong_id = :ong_id";
+            $params[':ong_id'] = $filtros['ong_id'];
+        }
+        // Favoritos
+        if (!empty($filtros['usuario_id']) && !empty($filtros['favoritos'])) {
+            $join = "JOIN favoritos_projetos f USING (projeto_id)";
+            $where .= " AND usuario_id = :usuario_id";
+            $order = "ORDER BY data_favoritado DESC";
+            $params[':usuario_id'] = $filtros['usuario_id'];
+        }
+        // Apoiados
+        if (!empty($filtros['usuario_id']) && !empty($filtros['apoiados'])) {
+            $join = "JOIN apoios_projetos f USING (projeto_id)";
+            $where .= " AND usuario_id = :usuario_id";
+            $order = "ORDER BY data_apoio DESC";
+            $params[':usuario_id'] = $filtros['usuario_id'];
+        }
+        // Filtro Status
+        if (!empty($filtros['status']) && is_array($filtros['status'])) {
+            $placeholders = [];
+            foreach ($filtros['status'] as $i => $status) {
+                $key = ":status{$i}";
+                $placeholders[] = $key;
+                $params[$key] = $status;
+            }
+            $where .= " AND status IN (" . implode(',', $placeholders) . ")";
+        } 
+        // else {
+        //     $where .= " AND status <> 'INATIVO'";
+        // }
+        // Filtro Categorias
+        if (!empty($filtros['categorias']) && is_array($filtros['categorias'])) {
+            $placeholders = [];
+            foreach ($filtros['categorias'] as $i => $catId) {
+                $key = ":cat{$i}";
+                $placeholders[] = $key;
+                $params[$key] = $catId;
+            }
+            $where .= " AND categoria_id IN (" . implode(',', $placeholders) . ")";
+        }
+        // Filtros Ordem
+        if (empty($order) && !empty($filtros['ordem'])) {
+            if ($filtros['ordem'] === 'novos') {
+                $order = "ORDER BY data_cadastro DESC";
+            } elseif ($filtros['ordem'] === 'antigos') {
+                $order = "ORDER BY data_cadastro ASC";
+            }
+        }
+        // Recentes
+        if (!empty($filtros['recentes'])) {
+            $order = "ORDER BY data_cadastro DESC";
+        }
+        // Query final
+        $query = "SELECT v.* FROM vw_card_projetos v {$join} {$where} {$order} LIMIT {$limit} OFFSET {$offset}";
 
-        $stmt = $this->pdo->prepare($query);
+        $stmt  = $this->pdo->prepare($query);
         foreach ($params as $key => $value) {
             $stmt->bindValue($key, $value, is_int($value) ? PDO::PARAM_INT : PDO::PARAM_STR);
         }
@@ -68,40 +93,68 @@ class ProjetoModel
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-
-    function paginacaoProjetos(string $tipo = '', $valor = [])
+    function paginacaoProjetos(array $filtros = [])
     {
         $params = [];
-        switch ($tipo) {
-            case 'pesquisa':
-                $query = "SELECT COUNT(*) AS total FROM vw_card_projetos WHERE nome LIKE :nome";
-                $params[':nome'] = "%{$valor['pesquisa']}%";
-                if (!empty($valor['ong_id'])) {
-                    $query .= " AND ong_id = :ong_id";
-                    $params[':ong_id'] = $valor['ong_id'];
-                }
-                break;
-            default:
-                $query = "SELECT COUNT(*) AS total FROM vw_card_projetos";
-                if (!empty($valor['ong_id'])) {
-                    $query .= " WHERE ong_id = :ong_id";
-                    $params[':ong_id'] = $valor['ong_id'];
-                }
+        $where = 'WHERE 1=1';
+        $join = '';
+
+        // Filtro por pesquisa
+        if (!empty($filtros['pesquisa'])) {
+            $where .= " AND nome LIKE :nome";
+            $params[':nome'] = "%{$filtros['pesquisa']}%";
         }
+        // Filtrar por ONG
+        if (!empty($filtros['ong_id'])) {
+            $where .= " AND ong_id = :ong_id";
+            $params[':ong_id'] = $filtros['ong_id'];
+        }
+        // Projetos Favoritos
+        if (!empty($filtros['favoritos']) && !empty($filtros['usuario_id'])) {
+            $join = "JOIN favoritos_projetos f USING (projeto_id)";
+            $where .= " AND usuario_id = :usuario_id";
+            $params[':usuario_id'] = $filtros['usuario_id'];
+        }
+        // Projetos Apoiados
+        if (!empty($filtros['apoiados']) && !empty($filtros['usuario_id'])) {
+            $join = "JOIN apoios_projetos f USING (projeto_id)";
+            $where .= " AND usuario_id = :usuario_id";
+            $params[':usuario_id'] = $filtros['usuario_id'];
+        }
+        // Filtro por categorias
+        if (!empty($filtros['categorias']) && is_array($filtros['categorias'])) {
+            $placeholders = [];
+            foreach ($filtros['categorias'] as $i => $catId) {
+                $key = ":cat{$i}";
+                $placeholders[] = $key;
+                $params[$key] = $catId;
+            }
+            $where .= " AND categoria_id IN (" . implode(',', $placeholders) . ")";
+        }
+        // Filtro por status
+        if (!empty($filtros['status']) && is_array($filtros['status'])) {
+            $placeholders = [];
+            foreach ($filtros['status'] as $i => $status) {
+                $key = ":status{$i}";
+                $placeholders[] = $key;
+                $params[$key] = $status;
+            }
+            $where .= " AND status IN (" . implode(',', $placeholders) . ")";
+        }
+        // Query final
+        $query = "SELECT COUNT(*) AS total FROM vw_card_projetos v {$join} {$where}";
 
         $stmt = $this->pdo->prepare($query);
         foreach ($params as $key => $value) {
             $stmt->bindValue($key, $value, is_int($value) ? PDO::PARAM_INT : PDO::PARAM_STR);
         }
         $stmt->execute();
-        $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
-        return $resultado['total'];
+        return $stmt->fetchColumn();
     }
-
 
     function buscarPerfilProjeto($IdProjeto)
     {
-        $query = "SELECT p.projeto_id, p.nome, p.meta, p.descricao, p.data_cadastro,
+        $query = "SELECT p.projeto_id, p.nome, p.descricao, p.meta, p.categoria_id, p.data_cadastro,
         p.ong_id, o.nome AS nome_ong, i.caminho, 
         COALESCE(SUM(dp.valor), 0) AS valor_arrecadado,
         ROUND(COALESCE(SUM(dp.valor), 0) / p.meta * 100) AS barra
@@ -170,20 +223,17 @@ class ProjetoModel
         return $stmt->rowCount();
     }
 
-
-
-
-
-    public function editar($id, $nome, $descricao, $meta)
+    public function editar($id, $nome, $descricao, $meta, $categoria_id)
     {
         try {
             $query = "UPDATE $this->tabela
-                      SET nome = :nome, descricao = :descricao, meta = :meta
+                      SET nome = :nome, descricao = :descricao, meta = :meta, categoria_id = :categoria_id
                       WHERE projeto_id = :id";
             $stmt = $this->pdo->prepare($query);
             $stmt->bindParam(':nome', $nome);
             $stmt->bindParam(':descricao', $descricao);
             $stmt->bindParam(':meta', $meta);
+            $stmt->bindParam(':categoria_id', $categoria_id);
             $stmt->bindParam(':id', $id);
             return $stmt->execute();
         } catch (PDOException $e) {
@@ -191,20 +241,23 @@ class ProjetoModel
         }
     }
 
-
-    function criar($nome, $descricao, $meta, $ong_id)
+    function criar($nome, $descricao, $meta, $categoria_id, $ong_id)
     {
         try {
-            $query = "INSERT INTO $this->tabela (nome, descricao, meta, ong_id)
-                      VALUES (:nome, :descricao, :meta, :ong_id)";
+            $query = "INSERT INTO $this->tabela (nome, descricao, meta, categoria_id, ong_id)
+                      VALUES (:nome, :descricao, :meta, :categoria_id, :ong_id)";
             $stmt = $this->pdo->prepare($query);
             $stmt->bindParam(':nome', $nome);
             $stmt->bindParam(':descricao', $descricao);
             $stmt->bindParam(':meta', $meta);
+            $stmt->bindParam(':categoria_id', $categoria_id);
             $stmt->bindParam(':ong_id', $ong_id);
-            return $stmt->execute();
+            if ($stmt->execute()) {
+                return $this->pdo->lastInsertId();
+            }
+            return false;
         } catch (PDOException $e) {
-            // error_log("Erro ao inserir registro: " . $e->getMessage());
+            error_log("Erro ao inserir registro: " . $e->getMessage());
             return false;
         }
     }
@@ -224,7 +277,6 @@ class ProjetoModel
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
         return $stmt->fetchAll();
     }
-
 
     function favoritarProjeto($usuario_id, $projeto_id)
     {
@@ -257,7 +309,6 @@ class ProjetoModel
         }
     }
 
-
     function listarFavoritos($usuario_id)
     {
         $sql = "SELECT projeto_id FROM favoritos_projetos WHERE usuario_id = :id";
@@ -266,7 +317,6 @@ class ProjetoModel
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_COLUMN);
     }
-
 
     public function apoiarProjeto($usuario_id, $projeto_id)
     {
@@ -285,7 +335,6 @@ class ProjetoModel
         $stmt->bindParam(':projeto_id', $projeto_id, PDO::PARAM_INT);
         return $stmt->execute();
     }
-
 
     public function usuarioJaApoiouProjeto($usuario_id, $projeto_id)
     {

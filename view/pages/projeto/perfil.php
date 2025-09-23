@@ -19,6 +19,11 @@ if (isset($_GET['id'])) {
     $ImagensProjeto = $projetoModel->buscarImagensProjeto($IdProjeto);
 }
 
+if ($acesso === 'ong') {
+    $categoriaModel = new CategoriaModel();
+    $Categorias = $categoriaModel->buscarCategorias();
+}
+
 //Chamar os Toasts e Popups 
 if (!empty($PerfilProjeto['projeto_id'])) {
     require_once 'partials/toast-projeto.php';
@@ -26,13 +31,14 @@ if (!empty($PerfilProjeto['projeto_id'])) {
 }
 
 //Verificar se o doador marcou este projeto como favorito
-if (isset($_SESSION['usuario']['id']) && $_SESSION['perfil_usuario'] === 'doador') {
+if ($acesso === 'doador') {
     $projetosFavoritos = $projetoModel->listarFavoritos($_SESSION['usuario']['id']);
+    
 }
 ob_end_flush();
 ?>
-<main>
-    <div class="container" id="container-principal">
+<main <?php if ($acesso === 'doador') echo 'class="usuario-logado"'; ?>>
+    <div class="container" id="tela-principal">
         <?php if (!isset($_GET['id']) || empty($PerfilProjeto['projeto_id'])): ?>
             <h2>ERRO AO ENCONTRAR PROJETO!</h2>
         <?php else: ?>
@@ -63,7 +69,7 @@ ob_end_flush();
                     <div id="carousel-imgs" class="carousel-imgs">
                         <?php if ($ImagensProjeto) {
                             foreach ($ImagensProjeto as $imagem) {
-                                echo "<img src='{$imagem['caminho']}' class='carousel-item'>";
+                                echo "<img src='../../../{$imagem['caminho']}' class='carousel-item'>";
                             }
                         } else {
                             echo "<img src='../../assets/images/global/image-placeholder.svg' class='carousel-item'>";
@@ -91,7 +97,7 @@ ob_end_flush();
                         <div id="carousel-big-imgs" class="carousel-imgs">
                             <?php if ($ImagensProjeto) {
                                 foreach ($ImagensProjeto as $imagem) {
-                                    echo "<img src='{$imagem['caminho']}' class='carousel-item-big'>";
+                                    echo "<img src='../../../{$imagem['caminho']}' class='carousel-item-big'>";
                                 }
                             } else {
                                 echo "<img src='../../assets/images/global/image-placeholder.svg' class='carousel-item-big'>";
@@ -160,7 +166,7 @@ ob_end_flush();
                         <?php if (isset($_SESSION['perfil_usuario']) && $_SESSION['perfil_usuario'] === 'ong' && $_SESSION['ong_id'] === $PerfilProjeto['ong_id']): ?>
                         <?php else: ?>
                             <div class="container-painel area-doador-voluntario">
-                                <h3><i class="fa-solid fa-house-flag"></i> ONG RESPONSÁVEL</h3>
+                                <h3><i class="fa-solid fa-building-flag"></i> ONG RESPONSÁVEL</h3>
                                 <div class="card-ong">
                                     <div class="perfil">
                                         <div class="logo">
@@ -185,7 +191,7 @@ ob_end_flush();
 </main>
 
 <?php
-$jsPagina = ['perfil-projeto.js'];
+$jsPagina = ['projeto/perfil.js'];
 require_once '../../components/layout/footer/footer-logado.php';
 // Chamar a lógica dos toasts
 require_once 'partials/alertas-toast.php';

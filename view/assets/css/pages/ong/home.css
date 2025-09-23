@@ -1,12 +1,10 @@
-#container-conteudo .container {
-    /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
-    width: 100%;
-    background-color: white;
-    justify-content: start;
-    /* padding: 50px 30px; */
+main.conteudo-principal > section {
+    min-height: calc(100vh - 60px);
+    padding: 30px 20px;
+    display: flex;
     flex-direction: column;
-    align-items: start;
-    gap: 40px;
+    gap: 30px;
+    justify-content: start;
 }
 
 #title {
@@ -80,6 +78,119 @@
     margin-top: 5px;
 }
 
+/* Upload de Imagem de Perfil */
+.upload_imagem_perfil {
+    background-color: #f8f9fa;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 25px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    max-width: 300px;
+}
+
+.upload_imagem_perfil h1 {
+    font-size: 19px;
+    margin-bottom: 8px;
+    color: var(--cor-principal);
+    text-align: center;
+}
+
+.upload_imagem_perfil h3 {
+    font-size: 13px;
+    margin-bottom: 20px;
+    color: #666;
+    text-align: center;
+    font-weight: 400;
+}
+
+.upload_imagem_perfil form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.upload_imagem_perfil form input[type="file"] {
+    display: none;
+}
+
+.upload_imagem_perfil form label {
+    cursor: pointer;
+    padding: 15px 20px;
+    background-color: white;
+    border: 2px dashed #ccc;
+    border-radius: 5px;
+    text-align: center;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.upload_imagem_perfil form label:hover {
+    border-color: var(--cor-amarelo);
+    background-color: #fffbf0;
+}
+
+.upload_imagem_perfil form label i {
+    color: var(--cor-amarelo);
+}
+
+.upload_imagem_perfil form label p {
+    margin: 0;
+    color: #666;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.upload_imagem_perfil form button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.upload_imagem_perfil #imageName {
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+    font-style: italic;
+    margin-top: 5px;
+}
+
+/* Preview da imagem */
+.image-preview {
+    border-radius: 5px;
+    overflow: hidden;
+    background: white;
+    border: 1px solid #e0e0e0;
+    margin-bottom: 15px;
+}
+
+.image-preview img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    display: block;
+}
+
+.preview-actions {
+    display: flex;
+    padding: 10px;
+    background: #f8f9fa;
+    border-top: 1px solid #e0e0e0;
+}
+
+.preview-actions .btn {
+    flex: 1;
+    background-color: var(--cor-vermelho);
+}
+
+/* Responsivo */
+@media (max-width: 500px) {
+    .upload_imagem_perfil {
+        max-width: none;
+    }
+}
 
 
 /* ===================== REMOVIDO POIS ESTAVA SE REPETINDO MUITO A MESMA NAVEGAÇÃO ===================== */

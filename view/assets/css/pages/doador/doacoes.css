@@ -1,7 +1,16 @@
+main.conteudo-principal section {
+    min-height: calc(100vh - 60px);
+    padding: 30px 20px;
+}
+
 section {
     display: flex;
     flex-direction: column;
     gap: 30px;
+}
+
+section > h1 {
+    font-size: 24px;
 }
 
 section h1 i {

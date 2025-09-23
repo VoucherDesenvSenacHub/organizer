@@ -9,7 +9,7 @@
                 <li><a href="../adm/home.php">Home</a></li>
                 <li><a href="../adm/ongs.php">Ongs</a></li>
                 <li><a href="../adm/projetos.php">Projetos</a></li>
-                <li><a href="../adm/doadores.php">Doadores</a></li>
+                <li><a href="../adm/usuarios.php">Usuários</a></li>
             </ul>
         </nav>
         <div id="doador-nav">
@@ -22,7 +22,7 @@
 </header>
 
 <!-- ASIDE -->
-<main id="main-doador">
+<main id="container-principal">
     <div class="container">
         <?php require_once __DIR__ . '/../asides/aside-adm.php'; ?>
         <div id="container-conteudo">
