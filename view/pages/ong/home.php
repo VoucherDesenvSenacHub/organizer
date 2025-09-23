@@ -60,24 +60,16 @@ $UltimasAtividades = $ongModel->ultimasAtividadesOng($IdOng);
             <h1>FINALIZAR CADASTRO</h1>
             <h3>Adicione uma foto de perfil</h3>
 
-            <form action="upload.php" method="POST" enctype="multipart/form-data">
-                <label for="image">
+            <form action="../../../controller/Ong/EditarPerfilController.php" method="POST" enctype="multipart/form-data">
+                <input type="hidden" name="atualizar-ong" value="true">
+                <label for="foto_perfil">
                     <i class="fa-solid fa-image"></i>
                     <p>Procurar Imagem</p>
                 </label>
-                <input type="file" id="image" name="imagem" accept="image/*" required>
-
-                <div class="image-preview" id="imagePreview" style="display: none;">
-                    <img id="previewImg" src="" alt="Preview">
-                    <div class="preview-actions">
-                        <button type="button" class="btn" onclick="removeImage()">
-                            <i class="fa-solid fa-trash-can"></i>
-                        </button>
-                    </div>
-                </div>
-
-                <button type="submit" class="btn" id="btnSubmit" disabled>Enviar</button>
+                <input type="file" id="foto_perfil" name="foto_perfil" accept="image/*" required>
+                <button type="submit" class="btn">Enviar</button>
             </form>
+
 
             <span id="imageName">Nenhum arquivo selecionado</span>
         </div>

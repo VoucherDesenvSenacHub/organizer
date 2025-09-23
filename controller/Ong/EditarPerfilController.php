@@ -33,30 +33,6 @@ class EditarPerfilController
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['atualizar-ong'])) {
 
-            // --- upload de imagem da ONG ---
-            if (!empty($_FILES['foto_perfil']['name'])) {
-                $pasta = __DIR__ . '/../../upload/images/ongs/';
-                
-                if (!is_dir($pasta)) {
-                    mkdir($pasta, 0777, true);
-                }
-
-                $tmp = $_FILES['foto_perfil']['tmp_name'];
-                $nomeOriginal = basename($_FILES['foto_perfil']['name']);
-                $novoNome = uniqid() . '-' . $nomeOriginal;
-                $destino = $pasta . $novoNome;
-
-                if (move_uploaded_file($tmp, $destino)) {
-                    // salvar no banco
-                    $idImagem = $this->imagemModel->salvarCaminhoImagem('upload/images/ongs/' . $novoNome);
-                    $this->ongModel->atualizarImagem($_SESSION['ong_id'], $idImagem);
-
-                    // atualizar sessão
-                    $_SESSION['ong']['foto'] = 'upload/images/ongs/' . $novoNome;
-                }
-            }
-
-            // --- dados normais ---
             $dados = [
                 'nome' => $_POST['nome'],
                 'cnpj' => $_POST['cnpj'],
@@ -76,17 +52,40 @@ class EditarPerfilController
                 'ong_id' => $_SESSION['ong_id']
             ];
 
+            // --- upload de imagem da ONG ---
+            if (!empty($_FILES['foto_perfil']['name'])) {
+                $pasta = __DIR__ . '/../../upload/images/ongs/';
+                
+                if (!is_dir($pasta)) {
+                    mkdir($pasta, 0777, true);
+                }
+
+                $tmp = $_FILES['foto_perfil']['tmp_name'];
+                $nomeOriginal = basename($_FILES['foto_perfil']['name']);
+                $novoNome = uniqid() . '-' . $nomeOriginal;
+                $destino = $pasta . $novoNome;
+
+                if (move_uploaded_file($tmp, $destino)) {
+                    // salvar imagem no banco
+                    $idImagem = $this->imagemModel->salvarCaminhoImagem('upload/images/ongs/' . $novoNome);
+                    $dados['imagem_id'] = $idImagem;
+
+                    // atualizar sessão
+                    $_SESSION['ong']['foto'] = 'upload/images/ongs/' . $novoNome;
+                }
+            }
+
             try {
                 $update = $this->ongModel->editar($dados);
                 if ($update > 0) {
-                    header('Location: ../../view/pages/ong/conta.php?upd=sucesso');
+                    header('Location: ../../view/pages/ong/home.php?upd=sucesso');
                     exit;
                 } else {
-                    header('Location: ../../view/pages/ong/conta.php');
+                    header('Location: ../../view/pages/ong/home.php');
                     exit;
                 }
             } catch (PDOException $e) {
-                header('Location: ../../view/pages/ong/conta.php?upd=erro');
+                header('Location: ../../view/pages/ong/home.php?upd=erro');
                 exit;
             }
         }
