@@ -5,7 +5,8 @@ if (session_status() === PHP_SESSION_NONE) {
 function VerificarAcesso($acesso)
 {
     if ($acesso !== 'visitante' && !isset($_SESSION['usuario']['id'])) {
-        header('Location: ../visitante/login.php?msg=login');
+        $_SESSION['mensagem_toast'] = ['erro', 'Login necessário para continuar!'];
+        header('Location: ../visitante/login.php');
         exit;
     }
 

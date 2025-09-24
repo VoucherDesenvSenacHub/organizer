@@ -26,7 +26,6 @@ if ($acesso === 'ong') {
 
 //Chamar os Toasts e Popups 
 if (!empty($PerfilProjeto['projeto_id'])) {
-    require_once 'partials/toast-projeto.php';
     require_once 'partials/popups-projeto.php';
 }
 
@@ -193,6 +192,4 @@ ob_end_flush();
 <?php
 $jsPagina = ['projeto/perfil.js'];
 require_once '../../components/layout/footer/footer-logado.php';
-// Chamar a lógica dos toasts
-require_once 'partials/alertas-toast.php';
 ?>

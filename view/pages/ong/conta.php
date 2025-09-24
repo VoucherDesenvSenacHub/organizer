@@ -145,26 +145,6 @@ ob_end_flush();
     </section>
 </main>
 
-<!-- Toast da Inativação -->
-<div id="toast-inativar-sucesso" class="toast">
-    <i class="fa-regular fa-circle-check"></i>
-    ONG inativada com Sucesso!
-</div>
-<div id="toast-inativar-erro" class="toast erro">
-    <i class="fa-solid fa-triangle-exclamation"></i>
-    Falha ao inativar ONG!
-</div>
-
-<!-- Toasts -->
-<div id="toast-ong-sucesso" class="toast">
-    <i class="fa-regular fa-circle-check"></i>
-    ONG atualizada com Sucesso!
-</div>
-<div id="toast-ong-erro" class="toast erro">
-    <i class="fa-solid fa-triangle-exclamation"></i>
-    Falha ao atualizar ONG!
-</div>
-
 <!-- Modal de Inativação -->
 <?php require_once '../../components/popup/inativar-ong.php'; ?>
 <!-- Modal de Confirmação de Edição -->

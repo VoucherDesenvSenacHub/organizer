@@ -74,7 +74,7 @@ class UsuarioModel
         $limit = $valor['limit'] ?? 14;
         $pagina = $valor['pagina'] ?? 1;
         $offset = ($pagina - 1) * $limit;
-        
+
         switch ($tipo) {
             // Buscar usuários pelo nome
             case 'pesquisa':
@@ -87,9 +87,9 @@ class UsuarioModel
                 $query = "SELECT u.*, i.caminho FROM $this->tabela u
                 LEFT JOIN imagens i USING(imagem_id)";
         }
-        
+
         $query .= " LIMIT {$limit} OFFSET {$offset}";
-        
+
         $stmt = $this->pdo->prepare($query);
         foreach ($params as $key => $value) {
             $stmt->bindValue($key, $value, is_int($value) ? PDO::PARAM_INT : PDO::PARAM_STR);
@@ -158,9 +158,7 @@ class UsuarioModel
             $stmt->bindParam(':data', $data);
             $stmt->bindParam(':email', $email);
             $stmt->execute();
-            if ($stmt->rowCount() > 0) {
-                return true;
-            }
+            return $stmt->rowCount();
         } catch (PDOException $e) {
             return false;
         }

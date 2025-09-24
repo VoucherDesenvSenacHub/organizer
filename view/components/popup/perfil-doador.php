@@ -50,7 +50,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $senhaconfirm = $_POST['senhaconfirm'];
 
         if ($senha === $senhaconfirm) {
-            $envio = $usuarioModel->updatesenha($id, $senha);
+            $resultado_senha = $usuarioModel->updatesenha($id, $senha);
+            if ($resultado_senha) {
+                $_SESSION['mensagem_toast'] = ['sucesso', 'Senha alterada com sucesso!'];
+            } else {
+                $_SESSION['mensagem_toast'] = ['erro', 'Falha ao alterar senha!'];
+            }
+            header('Location: ' . $_SERVER['HTTP_REFERER']);
+            exit;
         } else {
             echo "<script>alert('As senhas não coincidem')</script>";
         }

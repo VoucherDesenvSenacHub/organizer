@@ -61,6 +61,6 @@ $paginas        = (int)ceil($totalRegistros / 6);
 </main>
 
 <?php
-$jsPagina = []; //Colocar o arquivo .js (exemplo: 'ONG/cadastro.js')
+$jsPagina = [];
 require_once '../../components/layout/footer/footer-logado.php';
 ?>

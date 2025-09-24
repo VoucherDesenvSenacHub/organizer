@@ -75,7 +75,7 @@ class NoticiaModel
         $offset = ($pagina - 1) * $limit;
 
         $params = [];
-        $where  = "WHERE status = 'ATIVO'";
+        $where  = "WHERE 1=1";
         $order  = '';
         $join   = '';
 
@@ -97,6 +97,14 @@ class NoticiaModel
             $where .= " AND ong_id = :ong_id";
             $params[':ong_id'] = $filtros['ong_id'];
         }
+        // Filtro por status
+        if (!empty($filtros['status'])) {
+            $where .= " AND status = :status";
+            $params[':status'] = $filtros['status'];
+        } 
+        // else {
+        //     $where .= " AND status <> 'INATIVO'";
+        // }
         // Query final
         $query = "SELECT v.* FROM vw_card_noticias v {$join} {$where} {$order} LIMIT {$limit} OFFSET {$offset}";
 
@@ -111,7 +119,7 @@ class NoticiaModel
     function paginacaoNoticias(array $filtros = [])
     {
         $params = [];
-        $where  = "WHERE status = 'ATIVO'";
+        $where  = "WHERE 1=1";
         $join   = '';
 
         // Filtro por pesquisa
@@ -123,6 +131,11 @@ class NoticiaModel
         if (!empty($filtros['ong_id'])) {
             $where .= " AND ong_id = :ong_id";
             $params[':ong_id'] = $filtros['ong_id'];
+        }
+        // Filtro por status
+        if (!empty($filtros['status'])) {
+            $where .= " AND status = :status";
+            $params[':status'] = $filtros['status'];
         }
         // Query final
         $query = "SELECT COUNT(*) AS total FROM vw_card_noticias v {$join} {$where}";

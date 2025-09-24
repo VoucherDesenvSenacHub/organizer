@@ -47,13 +47,13 @@ if (empty($_POST['noticia-id'])) {
                 }
             }
 
-            $_SESSION['criar-noticia'] = true;
+            $_SESSION['mensagem_toast'] = ['sucesso', 'Notícia criada com sucesso!'];
             header('Location: ' . $_SERVER['HTTP_REFERER']);
             exit;
         }
     }
 
-    $_SESSION['criar-noticia'] = false;
+    $_SESSION['mensagem_toast'] = ['erro', 'Falha ao criar Notícia!'];
     header('Location: ' . $_SERVER['HTTP_REFERER']);
     exit;
 }
@@ -84,11 +84,11 @@ else {
             }
         }
 
-        $_SESSION['editar-noticia'] = true;
+        $_SESSION['mensagem_toast'] = ['sucesso', 'Notícia atualizada com sucesso!'];
         header('Location: ' . $_SERVER['HTTP_REFERER']);
         exit;
     } else {
-        $_SESSION['editar-noticia'] = false;
+        $_SESSION['mensagem_toast'] = ['erro', 'Falha ao atualizar notícia!'];
         header('Location: ' . $_SERVER['HTTP_REFERER']);
         exit;
     }

@@ -95,6 +95,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </main>
 
 <?php
-$jsPagina = ["relatorios.js"]; //Colocar o arquivo .js (exemplo: 'ONG/cadastro.js')
+$jsPagina = ["relatorios.js"];
 require_once '../../components/layout/footer/footer-logado.php';
 ?>
