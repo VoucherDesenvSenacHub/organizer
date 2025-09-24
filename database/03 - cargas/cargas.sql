@@ -218,7 +218,7 @@
         imagem_id, descricao, status
     ) VALUES (
         'Associação Amigos do Bem',
-        '12.345.678/0001-90',
+        '12345678000190',
         1,
         '67991202907',
         'gean@organizer.com',

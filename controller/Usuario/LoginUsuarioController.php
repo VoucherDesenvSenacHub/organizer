@@ -55,7 +55,6 @@ if ($contaUsuario && password_verify($senha, $contaUsuario['senha'])) {
         exit;
     }
 }
-
-// Caso falhe o login, redireciona de volta para a página anterior com uma mensagem de erro
-header('Location: ' . $_SERVER['HTTP_REFERER'] . '?msg=logerro');
+$_SESSION['mensagem_toast'] = ['erro', 'Email ou Senha Inválida!'];
+header('Location: ' . $_SERVER['HTTP_REFERER']);
 exit;

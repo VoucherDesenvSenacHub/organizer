@@ -1,5 +1,3 @@
-import { exibir_toast } from './toast.js';
-
 // NAV-BAR MOBILE
 function menu_mobile() {
     const nav_bar = document.getElementById('nav-bar');
@@ -42,6 +40,45 @@ function fechar_popup(popupId) {
     const fundoPopup = document.getElementById(popupId);
     fundoPopup.classList.remove('ativo');
 }
+
+//EFEITO DO TOAST
+function exibir_toast(tipo, mensagem) {
+    const toast = document.getElementById("toast");
+    const icon = document.getElementById("toast-icon");
+    const msg = document.getElementById("toast-msg");
+
+    // Define classe de cor
+    toast.className = "toast " + tipo;
+
+    // Define ícone conforme tipo
+    switch (tipo) {
+        case "sucesso":
+            icon.className = "fa-regular fa-circle-check";
+            break;
+        case "erro":
+            icon.className = "fa-solid fa-triangle-exclamation";
+            break;
+        case "info":
+            icon.className = "fa-solid fa-circle-info";
+            break;
+        default:
+            icon.className = "fa-regular fa-comment";
+    }
+
+    // Define mensagem
+    msg.textContent = mensagem;
+
+    // Exibe e oculta com animação
+    setTimeout(() => {
+        toast.style.right = "0px";
+        toast.style.opacity = "1";
+
+        setTimeout(() => {
+            toast.style.right = "-300px";
+            toast.style.opacity = "0";
+        }, 3000);
+    }, 50);
+};
 
 
 // Copiar o link da ong/projeto no popup de compartilhar
@@ -193,12 +230,6 @@ function mostrar_toast(id) {
         toast.style.right = "-300px";
         toast.style.opacity = "0";
     }, 3000);
-}
-
-// Recuperar senha dos login
-function recuperar_conta(toast, popup) {
-    fechar_popup(popup);
-    mostrar_toast(toast);
 }
 
 function mensagem_enviada(toast, popup) {

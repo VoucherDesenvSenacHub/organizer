@@ -27,6 +27,7 @@ $lista = $ongModel->listarCardsOngs(['recentes' => true]);
     <section class="secoes" id="secao-2">
         <div class="container">
             <h1>ONGS RECENTES</h1>
+            <?= var_dump($_SESSION)?>
             <div class="box-ongs">
                 <?php foreach ($lista as $ong):
                     require '../../components/cards/card-ong.php';

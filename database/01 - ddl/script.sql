@@ -65,7 +65,7 @@ CREATE TABLE ongs (
     ong_id INT PRIMARY KEY AUTO_INCREMENT,
 -- Identificação da ONG
     nome VARCHAR(255) NOT NULL,
-    cnpj VARCHAR(18) NOT NULL UNIQUE,
+    cnpj VARCHAR(14) NOT NULL UNIQUE,
     responsavel_id INT NOT NULL UNIQUE,
 -- Contato da ONG
     telefone VARCHAR(20) NOT NULL,
