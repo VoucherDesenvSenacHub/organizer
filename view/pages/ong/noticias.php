@@ -104,27 +104,7 @@ ob_end_flush();
     </section>
 
 </main>
-
-<!-- Toasts -->
-<div id="toast-noticia" class="toast">
-    <i class="fa-regular fa-circle-check"></i>
-    Notícia criada com sucesso!
-</div>
-<div id="toast-noticia-erro" class="toast erro">
-    <i class="fa-solid fa-triangle-exclamation"></i>
-    Falha ao criar Notícia!
-</div>
-
 <?php
 $jsPagina = ['ong/listagem.js'];
 require_once '../../components/layout/footer/footer-logado.php';
-// Ativar os toast
-if (isset($_SESSION['criar-noticia'])) {
-    if ($_SESSION['criar-noticia']) {
-        echo "<script>mostrar_toast('toast-noticia')</script>";
-    } else {
-        echo "<script>mostrar_toast('toast-noticia-erro')</script>";
-    }
-    unset($_SESSION['criar-noticia']);
-}
 ?>

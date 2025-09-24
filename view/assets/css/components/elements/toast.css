@@ -32,20 +32,22 @@
     color: var(--cor-verde-barra);
 }
 
-/* Erro */
-.toast.erro {
+/* Erro e Desfavorito */
+.toast.erro,
+.toast.desfavorito {
     border-left: 6px solid var(--cor-vermelho);
 }
-.toast.erro i {
+.toast.erro i,
+.toast.desfavorito i {
     color: var(--cor-vermelho);
 }
 
-/* Info */
-.toast.info {
-    border-left: 6px solid var(--cor-concluir);
+/* Favorito */
+.toast.favorito {
+    border-left: 6px solid hotpink;
 }
-.toast.info i {
-    color: var(--cor-concluir);
+.toast.favorito i {
+    color: hotpink;
 }
 
 /* Cor do apoio */
@@ -54,4 +56,12 @@
 }
 .toast.apoio i {
     color: var(--cor-apoiar);
+}
+
+/* Info */
+.toast.info {
+    border-left: 6px solid var(--cor-concluir);
+}
+.toast.info i {
+    color: var(--cor-concluir);
 }

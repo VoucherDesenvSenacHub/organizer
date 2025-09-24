@@ -87,11 +87,6 @@ require_once '../../components/layout/base-inicio.php';
                 </div>
             </div>
         </div>
-
-        <div id="exclusao-sucesso" class="toast">
-            <i class="fa-regular fa-circle-check"></i>
-            Cartão excluido com sucesso!
-        </div>
         <!-- Popup de Confirmação de Exclusão -->
         <div class="popup-fundo" id="popup-excluir-cartao">
             <div class="popup-overlay">

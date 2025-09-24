@@ -53,11 +53,6 @@ require_once '../../components//layout/base-inicio.php';
     </section>
 </main>
 
-<div id="toast-erro-parceria" class="toast erro">
-    <i class="fa-solid fa-triangle-exclamation"></i>
-    Erro ao enviar solicitação!
-</div>
-
 <?php require_once '../../components/popup/solicitacao-parceria.php'; ?>
 <div class="popup-fundo" id="parceria-enviada">
     <div class="container-popup">
@@ -75,8 +70,6 @@ require_once '../../components/layout/footer/footer-visitante.php';
 if (isset($_SESSION['parceria'])) {
     if ($_SESSION['parceria']) {
         echo "<script>abrir_popup('parceria-enviada')</script>";
-    } else {
-        echo "<script>mostrar_toast('toast-erro-parceria')</script>";
     }
     unset($_SESSION['parceria']);
 }

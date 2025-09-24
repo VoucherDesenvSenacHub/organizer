@@ -16,21 +16,25 @@ class InativarOngController
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['inativar-ong'])) {
             try {
                 $ongId = $_SESSION['ong_id'];
-                
+
                 // Atualizar status da ONG para INATIVO
                 $resultado = $this->ongModel->inativar($ongId);
-                
+
                 if ($resultado) {
                     // Limpar sessão e redirecionar para página inicial
                     session_destroy();
-                    header('Location: ../../auth/login.php?msg=ong_inativada');
+                    session_start();
+                    $_SESSION['mensagem_toast'] = ['sucesso', 'Sua ONG foi inativada com Sucesso!'];
+                    header('Location: ../../view/pages/visitante/login.php');
                     exit;
                 } else {
-                    header('Location: ../../view/pages/ong/conta.php?inativar=erro');
+                    $_SESSION['mensagem_toast'] = ['erro', 'Falha ao inativar ONG!'];
+                    header('Location: ../../view/pages/ong/conta.php');
                     exit;
                 }
             } catch (Exception $e) {
-                header('Location: ../../view/pages/ong/conta.php?inativar=erro');
+                $_SESSION['mensagem_toast'] = ['erro', 'Falha ao inativar ONG!'];
+                header('Location: ../../view/pages/ong/conta.php');
                 exit;
             }
         }

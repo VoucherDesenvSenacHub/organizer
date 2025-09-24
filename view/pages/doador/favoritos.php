@@ -114,17 +114,6 @@ $projetosFavoritos = $projetoModel->listarFavoritos($IdUsuario);
         </div>
     </section>
 </main>
-
-<!-- Toasts -->
-<div id="toast-favorito" class="toast">
-    <i class="fa-solid fa-heart"></i>
-    Adicionado aos favoritos!
-</div>
-<div id="toast-remover-favorito" class="toast erro">
-    <i class="fa-solid fa-heart-crack"></i>
-    Removido dos favoritos!
-</div>
-
 <script>
     // Definir aba ativa baseada na URL sem animação
     document.addEventListener('DOMContentLoaded', function() {
@@ -136,18 +125,7 @@ $projetosFavoritos = $projetoModel->listarFavoritos($IdUsuario);
         }
     });
 </script>
-
 <?php
 $jsPagina = ['doador/favoritos.js'];
 require_once '../../components/layout/footer/footer-logado.php';
-
-// Exibir toasts de notificação
-if (isset($_SESSION['favorito'])) {
-    if ($_SESSION['favorito']) {
-        echo "<script>mostrar_toast('toast-favorito')</script>";
-    } else {
-        echo "<script>mostrar_toast('toast-remover-favorito')</script>";
-    }
-    unset($_SESSION['favorito']);
-}
 ?>

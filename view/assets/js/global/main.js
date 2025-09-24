@@ -58,6 +58,12 @@ function exibir_toast(tipo, mensagem) {
         case "erro":
             icon.className = "fa-solid fa-triangle-exclamation";
             break;
+        case "favorito":
+            icon.className = "fa-solid fa-heart";
+            break;
+        case "desfavorito":
+            icon.className = "fa-solid fa-heart-crack";
+            break;
         case "info":
             icon.className = "fa-solid fa-circle-info";
             break;
@@ -89,16 +95,16 @@ function copiar_link(toast) {
 
     if (navigator.clipboard) {
         navigator.clipboard.writeText(input.value).then(() => {
-            mostrar_toast(toast);
+            exibir_toast('sucesso', 'Link copiado com sucesso!')
             fechar_popup('compartilhar-popup');
         }).catch(() => {
             document.execCommand("copy");
-            mostrar_toast(toast);
+            exibir_toast('sucesso', 'Link copiado com sucesso!')
             fechar_popup('compartilhar-popup');
         });
     } else {
         document.execCommand("copy");
-        mostrar_toast(toast);
+        exibir_toast('sucesso', 'Link copiado com sucesso!')
         fechar_popup('compartilhar-popup');
     }
 }
@@ -146,50 +152,6 @@ function getNaturalWidth(element) {
 }
 
 
-
-function copiar_link_aprovar(toast) {
-    let input = document.getElementById("link-aprovar");
-    input.select();
-    input.setSelectionRange(0, 99999); // Compatibilidade com iOS
-
-    if (navigator.clipboard) {
-        navigator.clipboard.writeText(input.value).then(() => {
-            mostrar_toast(toast);
-            fechar_popup('aprovar-popup');
-        }).catch(() => {
-            document.execCommand("copy");
-            mostrar_toast(toast);
-            fechar_popup('aprovar-popup');
-        });
-    } else {
-        document.execCommand("copy");
-        mostrar_toast(toast);
-        fechar_popup('aprovar-popup');
-    }
-}
-
-function copiar_link_recusar(toast) {
-    let input = document.getElementById("link-recusar");
-    input.select();
-    input.setSelectionRange(0, 99999); // Compatibilidade com iOS
-
-    if (navigator.clipboard) {
-        navigator.clipboard.writeText(input.value).then(() => {
-            mostrar_toast(toast);
-            fechar_popup('recusar-popup');
-        }).catch(() => {
-            document.execCommand("copy");
-            mostrar_toast(toast);
-            fechar_popup('recusar-popup');
-        });
-    } else {
-        document.execCommand("copy");
-        mostrar_toast(toast);
-        fechar_popup('recusar-popup');
-    }
-}
-
-
 // EFEITO DE COMPARTILHAR
 
 function compartilhar(popupId, Id, tipo) {
@@ -217,24 +179,6 @@ function compartilhar(popupId, Id, tipo) {
     } else {
         console.error(`Elemento com ID "${popupId}" não encontrado.`);
     }
-}
-
-
-// MOSTRAR UM ALERTA QUE SOME DEPOIS
-function mostrar_toast(id) {
-    let toast = document.getElementById(id);
-    toast.style.right = "0px";
-    toast.style.opacity = "1";
-
-    setTimeout(() => {
-        toast.style.right = "-300px";
-        toast.style.opacity = "0";
-    }, 3000);
-}
-
-function mensagem_enviada(toast, popup) {
-    fechar_popup(popup);
-    mostrar_toast(toast);
 }
 
 function ativar_classe(id) {
@@ -311,16 +255,16 @@ function updateUploadText() {
 updateUploadText();
 
 // Clique para abrir input
-uploadArea.onclick = function(e) {
+uploadArea.onclick = function (e) {
     if (e.target !== btnRemover) inputFile.click();
 };
 
 // Preview da imagem
-inputFile.addEventListener('change', function(e) {
+inputFile.addEventListener('change', function (e) {
     const file = e.target.files[0];
     if (file) {
         const reader = new FileReader();
-        reader.onload = function(ev) {
+        reader.onload = function (ev) {
             previewImg.src = ev.target.result;
             updateUploadText();
         }
@@ -329,22 +273,22 @@ inputFile.addEventListener('change', function(e) {
 });
 
 // Drag and drop
-uploadArea.addEventListener('dragover', function(e) {
+uploadArea.addEventListener('dragover', function (e) {
     e.preventDefault();
     uploadArea.style.background = '#e0e0e0';
 });
-uploadArea.addEventListener('dragleave', function(e) {
+uploadArea.addEventListener('dragleave', function (e) {
     e.preventDefault();
     uploadArea.style.background = '#f3f3f3';
 });
-uploadArea.addEventListener('drop', function(e) {
+uploadArea.addEventListener('drop', function (e) {
     e.preventDefault();
     uploadArea.style.background = '#f3f3f3';
     const file = e.dataTransfer.files[0];
     if (file && file.type.startsWith('image/')) {
         inputFile.files = e.dataTransfer.files;
         const reader = new FileReader();
-        reader.onload = function(ev) {
+        reader.onload = function (ev) {
             previewImg.src = ev.target.result;
             updateUploadText();
         }
@@ -353,7 +297,7 @@ uploadArea.addEventListener('drop', function(e) {
 });
 
 // Remover imagem
-btnRemover.onclick = function(e) {
+btnRemover.onclick = function (e) {
     e.stopPropagation();
     previewImg.src = '../../assets/images/global/user-placeholder.jpg'; // coloque o caminho da imagem padrão
     inputFile.value = '';

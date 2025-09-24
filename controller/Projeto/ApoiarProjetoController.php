@@ -12,7 +12,7 @@ switch ($acao) {
     case 'apoiar':
         $apoio = $projetoModel->apoiarProjeto($usuarioId, $projetoId);
         if ($apoio) {
-            $_SESSION['apoiar'] = true;
+            $_SESSION['mensagem_toast'] = ['sucesso', 'Projeto apoiado com sucesso!'];
             header('Location: ' . $_SERVER['HTTP_REFERER']);
             exit;
         }
@@ -21,7 +21,7 @@ switch ($acao) {
     case 'desapoiar':
         $desapoiado = $projetoModel->desapoiarProjeto($usuarioId, $projetoId);
         if ($desapoiado) {
-            $_SESSION['apoiar'] = false;
+            $_SESSION['mensagem_toast'] = ['info', 'Você não apoia mais este Projeto!'];
             header('Location: ' . $_SERVER['HTTP_REFERER']);
             exit;
         }

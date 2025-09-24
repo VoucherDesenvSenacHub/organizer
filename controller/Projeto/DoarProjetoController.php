@@ -24,11 +24,11 @@ if (isset($_POST['valor-doacao'])) {
     } else {
         $resultadoDoacao = $projetoModel->realizarDoacaoProjeto($IdProjeto, $_SESSION['usuario']['id'], $ValorDoacao);
         if ($resultadoDoacao > 0) {
-            $_SESSION['doar-projeto'] = true;
+            $_SESSION['mensagem_toast'] = ['sucesso', 'Doação realizada com sucesso!'];
             header('Location: ' . $_SERVER['HTTP_REFERER']);
             exit;
         } else {
-            $_SESSION['doar-projeto'] = false;
+            $_SESSION['mensagem_toast'] = ['erro', 'Falha ao processar doação!'];
             header('Location: ' . $_SERVER['HTTP_REFERER']);
             exit;
         }
