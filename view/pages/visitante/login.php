@@ -41,31 +41,15 @@ require_once '../../components/layout/base-inicio.php';
         <div>
             <h2>RECUPERAR SENHA</h2>
             <p>Digite seu email abaixo para receber um link de recuperação</p>
-            <form action="" onsubmit="recuperar_conta('toast-recuperar-conta', 'fundo-cadastro-popup'); return false;">
+            <form action="../../../controller/Usuario/RecuperarSenhaController.php" method="POST">
                 <div class="input-item">
                     <label for="recuperar-email">Email<span>*</span></label>
-                    <input id="recuperar-email" type="email" maxlength="45" placeholder="usúario@conta.com" required>
+                    <input id="recuperar-email" name="email" type="email" maxlength="45" placeholder="usúario@conta.com" required>
                 </div>
                 <button class="btn">ENVIAR</button>
             </form>
         </div>
     </div>
-</div>
-<div id="toast-recuperar-conta" class="toast">
-    <i class="fa-regular fa-circle-check"></i>
-    Email enviado com sucesso!
-</div>
-<div id="toast-sucesso-cadastro" class="toast">
-    <i class="fa-regular fa-circle-check"></i>
-    Cadastro efetuado com sucesso!
-</div>
-<div id="toast-login-erro" class="toast erro">
-    <i class="fa-solid fa-triangle-exclamation"></i>
-    Email ou Senha Inválida!
-</div>
-<div id="toast-login" class="toast erro">
-    <i class="fa-solid fa-triangle-exclamation"></i>
-    Login necessário para continuar!
 </div>
 <?php
 $jsPagina = ['usuario/login.js'];

@@ -43,27 +43,10 @@ function proximo(indice) {
 
 }
 
+// Remover máscara dos campos antes de enviar
 $("#form").submit(function (event) {
-    // Remover máscara dos campos antes de enviar
     $("#telefone").unmask();
     $("#cpf").unmask();
     $("#num_cartao").unmask();
     $("#code_cartao").unmask();
 });
-
-function getQueryParam(param) {
-    const urlParams = new URLSearchParams(window.location.search);
-    return urlParams.get(param);
-}
-
-function verificarMensagem() {
-    const mensagem = getQueryParam('cadastro');
-
-    if (mensagem === 'erro') {
-        mostrar_toast("toast-cadastro-erro");
-    }
-}
-
-window.onload = function () {
-    verificarMensagem();
-};

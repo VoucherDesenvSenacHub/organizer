@@ -83,19 +83,7 @@ $UltimasAtividades = $ongModel->ultimasAtividadesOng($IdOng);
         </div>
     </section>
 </main>
-
-<!-- Toast -->
-<div id="toast-cadastro-ong" class="toast">
-    <i class="fa-regular fa-circle-check"></i>
-    Cadastro realizado com Sucesso!
-</div>
-
 <?php
 $jsPagina = ['ong/home.js'];
 require_once '../../components/layout/footer/footer-logado.php';
-// Ativar os toast
-if (isset($_SESSION['cadastro-ong'])) {
-    echo "<script>mostrar_toast('toast-cadastro-ong')</script>";
-    unset($_SESSION['cadastro-ong']);
-}
 ?>

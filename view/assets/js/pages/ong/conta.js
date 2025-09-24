@@ -1,22 +1,3 @@
-// Ativar os toast com base nos parametros
-window.addEventListener('DOMContentLoaded', () => {
-    const params = new URLSearchParams(window.location.search);
-    const upd = params.get('upd');
-    const inativar = params.get('inativar');
-
-    if (upd === 'sucesso') {
-        mostrar_toast('toast-ong-sucesso');
-    } else if (upd === 'erro') {
-        mostrar_toast('toast-ong-erro');
-    }
-    
-    if (inativar === 'sucesso') {
-        mostrar_toast('toast-inativar-sucesso');
-    } else if (inativar === 'erro') {
-        mostrar_toast('toast-inativar-erro');
-    }
-});
-
 // Aguardar jQuery e aplicar máscaras aos campos
 document.addEventListener('DOMContentLoaded', function() {
     // quando jQuery estiver disponível

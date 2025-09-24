@@ -1,10 +1,10 @@
 .toast {
     position: fixed;
-    top: 60px; /* Começa fora da tela */
+    top: 60px;
     right: -200px;
     /* max-width: 300px; */
-    background-color: rgb(255, 255, 255);
-    border-left: 6px solid limegreen;
+    background-color: white;
+    border-left: 6px solid gray;
     color: rgb(0, 0, 0);
     padding: 15px;
     border-radius: 0 4px 4px 0;
@@ -20,23 +20,48 @@
 }
 
 .toast i {
-    color: limegreen;
+    color: gray;
     font-size: 20px
 }
 
-.toast.erro {
-    border-left: 6px solid var(--cor-vermelho);
+/* Sucesso */
+.toast.sucesso {
+    border-left: 6px solid var(--cor-verde-barra);
+}
+.toast.sucesso i {
+    color: var(--cor-verde-barra);
 }
 
-.toast.erro i {
+/* Erro e Desfavorito */
+.toast.erro,
+.toast.desfavorito {
+    border-left: 6px solid var(--cor-vermelho);
+}
+.toast.erro i,
+.toast.desfavorito i {
     color: var(--cor-vermelho);
+}
+
+/* Favorito */
+.toast.favorito {
+    border-left: 6px solid hotpink;
+}
+.toast.favorito i {
+    color: hotpink;
 }
 
 /* Cor do apoio */
 .toast.apoio {
     border-left: 6px solid var(--cor-apoiar);
 }
-
 .toast.apoio i {
     color: var(--cor-apoiar);
+}
+
+/* Info */
+.toast.info {
+    border-left: 6px solid var(--cor-concluir);
+}
+.toast.info i {
+    color: var(--cor-concluir);
 }

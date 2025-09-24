@@ -115,27 +115,7 @@ ob_end_flush();
         </div>
     </section>
 </main>
-
-<!-- Toasts -->
-<div id="toast-projeto" class="toast">
-    <i class="fa-regular fa-circle-check"></i>
-    Projeto criado com sucesso!
-</div>
-<div id="toast-projeto-erro" class="toast erro">
-    <i class="fa-solid fa-triangle-exclamation"></i>
-    Falha ao criar Projeto!
-</div>
-
 <?php
 $jsPagina = ['ong/listagem.js'];
 require_once '../../components/layout/footer/footer-logado.php';
-
-if (isset($_SESSION['criar-projeto'])) {
-    if ($_SESSION['criar-projeto']) {
-        echo "<script>mostrar_toast('toast-projeto')</script>";
-    } else {
-        echo "<script>mostrar_toast('toast-projeto-erro')</script>";
-    }
-    unset($_SESSION['criar-projeto']);
-}
 ?>

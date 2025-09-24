@@ -14,13 +14,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $idade = $usuarioModel->calcularIdade($data);
 
         if ($idade >= 18) {
-            $envio = $usuarioModel->update($id, $nome, $telefone, $cpf, $data, $email);
-            if ($envio) {
+            $resultado = $usuarioModel->update($id, $nome, $telefone, $cpf, $data, $email);
+            if ($resultado === 1) {
                 $usuario = $usuarioModel->buscar_perfil($_SESSION['usuario']['id']);
+                $_SESSION['mensagem_toast'] = ['sucesso', 'Dados atualizados com sucesso!'];
+            } elseif ($resultado === 0) {
+                $_SESSION['mensagem_toast'] = ['info', 'Nenhuma alteração feita!'];
+            } else {
+                $_SESSION['mensagem_toast'] = ['erro', 'Falha ao atualizar dados!'];
             }
+            header('Location: ' . $_SERVER['HTTP_REFERER']);
+            exit;
         } else {
             echo "<script>alert('Você precisa ter 18 anos ou mais para atualizar o cadastro.')</script>";
-            $envio = false;
         }
     }
     if (isset($_POST['usuario_id'])) {
@@ -28,7 +34,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $senha = $_POST['senha_usuario'];
         $senhaconfirm = $_POST['senhaconfirm'];
         if ($senha === $senhaconfirm) {
-            $envio = $usuarioModel->updatesenha($id, $senha);
+            $resultado_senha = $usuarioModel->updatesenha($id, $senha);
+            if ($resultado_senha) {
+                $_SESSION['mensagem_toast'] = ['sucesso', 'Senha alterada com sucesso!'];
+            } else {
+                $_SESSION['mensagem_toast'] = ['erro', 'Falha ao alterar senha!'];
+            }
+            header('Location: ' . $_SERVER['HTTP_REFERER']);
+            exit;
         } else {
             echo "<script>alert('As senhas não coincidem')</script>";
         }
@@ -102,25 +115,3 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </div>
     </div>
 </div>
-
-<div id="toast-update" class="toast">
-    <i class="fa-regular fa-circle-check"></i>
-    Dados atualizados com sucesso!
-</div>
-
-<div id="toast-update-erro" class="toast erro">
-    <i class="fa-solid fa-triangle-exclamation"></i>
-    Falha ao Atualizar dados!
-</div>
-
-<?php
-if (isset($envio)) {
-    echo "<script>window.onload = function() {";
-    if ($envio === true) {
-        echo "mostrar_toast('toast-update');";
-    } else {
-        echo "mostrar_toast('toast-update-erro');";
-    }
-    echo "};</script>";
-}
-?>

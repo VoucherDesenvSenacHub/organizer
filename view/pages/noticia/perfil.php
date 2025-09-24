@@ -76,27 +76,7 @@ ob_end_flush();
         <?php endif; ?>
     </div>
 </main>
-
-<!-- Toasts -->
-<div id="toast-noticia" class="toast">
-    <i class="fa-regular fa-circle-check"></i>
-    Notícia atualizada com sucesso!
-</div>
-<div id="toast-noticia-erro" class="toast erro">
-    <i class="fa-solid fa-triangle-exclamation"></i>
-    Falha ao atualizar notícia!
-</div>
-
 <?php
 $jsPagina = ['noticia/perfil.js'];
 require_once '../../components/layout/footer/footer-logado.php';
-// Ativar os toast
-if (isset($_SESSION['editar-noticia'])) {
-    if ($_SESSION['editar-noticia']) {
-        echo "<script>mostrar_toast('toast-noticia')</script>";
-    } else {
-        echo "<script>mostrar_toast('toast-noticia-erro')</script>";
-    }
-    unset($_SESSION['editar-noticia']);
-}
 ?>

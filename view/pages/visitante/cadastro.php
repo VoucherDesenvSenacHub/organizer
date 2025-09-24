@@ -8,10 +8,6 @@ require_once __DIR__ . '/../../../autoload.php';
 $usuarioModel = new UsuarioModel();
 
 ?>
-<div id="toast-cadastro-erro" class="toast erro">
-    <i class="fa-solid fa-triangle-exclamation"></i>
-    Falha ao realizar cadastro!
-</div>
 <main>
     <section>
         <div class="container">
@@ -98,7 +94,6 @@ $usuarioModel = new UsuarioModel();
         $(this).val(valor.replace(/[^a-zA-ZÀ-ÿ\s]/g, ""));
     });
 </script>
-
 <?php
 $jsPagina = ['usuario/cadastro.js'];
 require_once '../../components/layout/footer/footer-visitante.php';

@@ -53,13 +53,13 @@ if (empty($_POST['projeto-id'])) {
                 }
             }
 
-            $_SESSION['criar-projeto'] = true;
+            $_SESSION['mensagem_toast'] = ['sucesso', 'Projeto criado com sucesso!'];
             header('Location: ' . $_SERVER['HTTP_REFERER']);
             exit;
         }
     }
 
-    $_SESSION['criar-projeto'] = false;
+    $_SESSION['mensagem_toast'] = ['erro', 'Falha ao criar Projeto!'];
     header('Location: ' . $_SERVER['HTTP_REFERER']);
     exit;
 }
@@ -103,9 +103,9 @@ else {
                 }
             }
 
-            $_SESSION['editar-projeto'] = true;
+            $_SESSION['mensagem_toast'] = ['sucesso', 'Projeto salvo com sucesso!'];
         } else {
-            $_SESSION['editar-projeto'] = false;
+            $_SESSION['mensagem_toast'] = ['erro', 'Falha ao salvar Projeto!'];
         }
         header('Location: ' . $_SERVER['HTTP_REFERER']);
         exit;
