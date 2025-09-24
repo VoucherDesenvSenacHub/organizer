@@ -1,3 +1,5 @@
+import { exibir_toast } from './toast.js';
+
 // NAV-BAR MOBILE
 function menu_mobile() {
     const nav_bar = document.getElementById('nav-bar');
