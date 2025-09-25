@@ -80,8 +80,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 
 <!-- HTML do perfil -->
-<form action="#" method="POST" enctype="multipart/form-data"
-    onsubmit="return confirm('Tem certeza que deseja alterar seus dados?')">
+<form action="#" method="POST" enctype="multipart/form-data" onsubmit="return confirm('Tem certeza que deseja alterar seus dados?')">
     <div class="popup-fundo perfil-usuario-popup" id="perfil-doador-popup">
         <div class="container-popup">
             <button class="btn-fechar-popup fa-solid fa-xmark" onclick="fechar_popup('perfil-doador-popup')"></button>
