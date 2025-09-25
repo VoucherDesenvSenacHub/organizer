@@ -33,24 +33,37 @@ class EditarPerfilController
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['atualizar-ong'])) {
 
+            // Sempre garanto o ID da ONG
             $dados = [
-                'nome' => $_POST['nome'],
-                'cnpj' => $_POST['cnpj'],
-                'telefone' => $_POST['telefone'],
-                'email' => $_POST['email'],
-                'cep' => $_POST['cep'],
-                'rua' => $_POST['rua'],
-                'numero' => $_POST['numero'],
-                'bairro' => $_POST['bairro'],
-                'cidade' => $_POST['cidade'],
-                'estado' => $_POST['estado'],
-                'banco_id' => $_POST['banco'],
-                'agencia' => $_POST['agencia'],
-                'conta_numero' => $_POST['conta_numero'],
-                'tipo_conta' => $_POST['tipo_conta'],
-                'descricao' => $_POST['descricao'],
                 'ong_id' => $_SESSION['ong_id']
             ];
+
+            // Se vier mais campos além da foto, adiciona no $dados
+            $campos = [
+                'nome',
+                'cnpj',
+                'telefone',
+                'email',
+                'cep',
+                'rua',
+                'numero',
+                'bairro',
+                'cidade',
+                'estado',
+                'banco',
+                'agencia',
+                'conta_numero',
+                'tipo_conta',
+                'descricao'
+            ];
+
+            foreach ($campos as $campo) {
+                if (isset($_POST[$campo]) && $_POST[$campo] !== '') {
+                    // só adiciona se existir no POST
+                    $key = $campo === 'banco' ? 'banco_id' : $campo;
+                    $dados[$key] = $_POST[$campo];
+                }
+            }
 
             // --- upload de imagem da ONG ---
             if (!empty($_FILES['foto_perfil']['name'])) {
@@ -77,20 +90,18 @@ class EditarPerfilController
 
             try {
                 $update = $this->ongModel->editar($dados);
+
                 if ($update > 0) {
                     $_SESSION['mensagem_toast'] = ['sucesso', 'ONG atualizada com Sucesso!'];
-                    header('Location: ../../view/pages/ong/home.php');
-                    exit;
                 } else {
                     $_SESSION['mensagem_toast'] = ['info', 'Nenhuma alteração feita!'];
-                    header('Location: ../../view/pages/ong/home.php');
-                    exit;
                 }
             } catch (PDOException $e) {
                 $_SESSION['mensagem_toast'] = ['erro', 'Falha ao atualizar ONG!'];
-                header('Location: ../../view/pages/ong/home.php');
-                exit;
             }
+
+            header('Location: ../../view/pages/ong/home.php');
+            exit;
         }
     }
 }
