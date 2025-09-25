@@ -1,7 +1,7 @@
 const image = document.getElementById("image");
     const imageName = document.getElementById("imageName");
     const imagePreview = document.getElementById("imagePreview");
-    const previewImg = document.getElementById("previewImg");
+    const previewImgOng = document.getElementById("previewImg");
     const btnSubmit = document.getElementById("btnSubmit");
 
     image.addEventListener("change", function() {
@@ -14,7 +14,7 @@ const image = document.getElementById("image");
             // Mostrar preview da imagem
             const reader = new FileReader();
             reader.onload = function(e) {
-                previewImg.src = e.target.result;
+                previewImgOng.src = e.target.result;
                 imagePreview.style.display = 'block';
                 btnSubmit.disabled = false;
             };

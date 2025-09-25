@@ -61,7 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <i class="fa-solid fa-cloud-upload-alt"></i><br>
                         Arraste ou clique para trocar
                     </div>
-                    <button type="button" class="btn-remover" id="btnRemoverDoador">
+                    <button type="button" class="btn-remover" id="btnRemoverDoador" title="Remover Imagem">
                         <i class="fa-solid fa-trash-can"></i>
                     </button>
                 </div>
