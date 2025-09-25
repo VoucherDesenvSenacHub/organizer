@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . '/../../../model/UsuarioModel.php';
 require_once __DIR__ . '/../../../model/ImagemModel.php';
-$imagemModel = new ImagemModel(); 
+$imagemModel = new ImagemModel();
 $usuarioModel = new UsuarioModel();
 $usuario = $usuarioModel->buscar_perfil($_SESSION['usuario']['id']);
 
@@ -17,29 +17,44 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $idade = $usuarioModel->calcularIdade($data);
 
         if (!empty($_FILES['foto_usuario']['name'])) {
-    $pasta = __DIR__ . '/../../../upload/images/usuarios/';
-    
-    if (!is_dir($pasta)) {
-        mkdir($pasta, 0777, true);
-    }
+            $pasta = __DIR__ . '/../../../upload/images/usuarios/';
 
-    $tmp = $_FILES['foto_usuario']['tmp_name'];
-    $nomeOriginal = basename($_FILES['foto_usuario']['name']);
-    $novoNome = uniqid() . '-' . $nomeOriginal;
-    $destino = $pasta . $novoNome;
+            if (!is_dir($pasta)) {
+                mkdir($pasta, 0777, true);
+            }
 
-    if (move_uploaded_file($tmp, $destino)) {
-    $idImagem = $imagemModel->salvarCaminhoImagem('upload/images/usuarios/' . $novoNome);
-    $usuarioModel->atualizarImagem($_SESSION['usuario']['id'], $idImagem);
-    
-    // Atualiza sessão
-    $_SESSION['usuario']['foto'] = 'upload/images/usuarios/' . $novoNome;
-    
-    // Atualiza o $usuario para usar no HTML
-    $usuario = $usuarioModel->buscar_perfil($_SESSION['usuario']['id']);
-}
+            $tmp = $_FILES['foto_usuario']['tmp_name'];
+            $nomeOriginal = basename($_FILES['foto_usuario']['name']);
+            $novoNome = uniqid() . '-' . $nomeOriginal;
+            $destino = $pasta . $novoNome;
+
+            if (move_uploaded_file($tmp, $destino)) {
+                $idImagem = $imagemModel->salvarCaminhoImagem('upload/images/usuarios/' . $novoNome);
+                $usuarioModel->atualizarImagem($_SESSION['usuario']['id'], $idImagem);
+
+                // Atualiza sessão
+                $_SESSION['usuario']['foto'] = 'upload/images/usuarios/' . $novoNome;
+
+                // Atualiza o $usuario para usar no HTML
+                $usuario = $usuarioModel->buscar_perfil($_SESSION['usuario']['id']);
+            }
+        }
 
 
+        if ($idade >= 18) {
+            $resultado = $usuarioModel->update($id, $nome, $telefone, $cpf, $data, $email);
+            if ($resultado === 1) {
+                $usuario = $usuarioModel->buscar_perfil($_SESSION['usuario']['id']);
+                $_SESSION['mensagem_toast'] = ['sucesso', 'Dados atualizados com sucesso!'];
+            } elseif ($resultado === 0) {
+                $_SESSION['mensagem_toast'] = ['info', 'Nenhuma alteração feita!'];
+            } else {
+                $_SESSION['mensagem_toast'] = ['erro', 'Falha ao atualizar dados!'];
+            }
+            header('Location: ' . $_SERVER['HTTP_REFERER']);
+            exit;
+        } else {
+            echo "<script>alert('Você precisa ter 18 anos ou mais para atualizar o cadastro.')</script>";
         }
     }
 
@@ -50,7 +65,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $senhaconfirm = $_POST['senhaconfirm'];
 
         if ($senha === $senhaconfirm) {
-            $envio = $usuarioModel->updatesenha($id, $senha);
+            $resultado_senha = $usuarioModel->updatesenha($id, $senha);
+            if ($resultado_senha) {
+                $_SESSION['mensagem_toast'] = ['sucesso', 'Senha alterada com sucesso!'];
+            } else {
+                $_SESSION['mensagem_toast'] = ['erro', 'Falha ao alterar senha!'];
+            }
+            header('Location: ' . $_SERVER['HTTP_REFERER']);
+            exit;
         } else {
             echo "<script>alert('As senhas não coincidem')</script>";
         }
@@ -59,36 +81,36 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 
 <!-- HTML do perfil -->
- <form  action="#" method="POST" enctype="multipart/form-data" onsubmit="return confirm('Tem certeza que deseja alterar seus dados?')">
-<div class="popup-fundo perfil-usuario-popup" id="perfil-doador-popup">
-    <div class="container-popup">
-        <button class="btn-fechar-popup fa-solid fa-xmark" onclick="fechar_popup('perfil-doador-popup')"></button>
-        <div id="left" class="box">
-            <div id="perfil">
-                <div class="upload-area" id="uploadAreaDoador">
-                    <input type="file" id="foto_usuario" name="foto_usuario" accept="image/*" style="display:none;">
-                    <img id="preview-foto" 
-                        src="<?= !empty($_SESSION['usuario']['foto']) 
-                        ? '../../../' . $_SESSION['usuario']['foto'] 
-                        : '../../assets/images/global/image-placeholder.svg' ?>">
-                    <div id="uploadTextDoador">
-                        <i class="fa-solid fa-cloud-upload-alt"></i><br>
-                        Arraste ou clique para trocar
+<form action="#" method="POST" enctype="multipart/form-data" onsubmit="return confirm('Tem certeza que deseja alterar seus dados?')">
+    <div class="popup-fundo perfil-usuario-popup" id="perfil-doador-popup">
+        <div class="container-popup">
+            <button class="btn-fechar-popup fa-solid fa-xmark" onclick="fechar_popup('perfil-doador-popup')"></button>
+            <div id="left" class="box">
+                <div id="perfil">
+                    <div class="upload-area" id="uploadAreaDoador">
+                        <input type="file" id="foto_usuario" name="foto_usuario" accept="image/*" style="display:none;">
+                        <img id="preview-foto"
+                            src="<?= !empty($_SESSION['usuario']['foto'])
+                                        ? '../../../' . $_SESSION['usuario']['foto']
+                                        : '../../assets/images/global/image-placeholder.svg' ?>">
+                        <div id="uploadTextDoador">
+                            <i class="fa-solid fa-cloud-upload-alt"></i><br>
+                            Arraste ou clique para trocar
+                        </div>
+                        <button type="button" class="btn-remover" id="btnRemoverDoador">
+                            <i class="fa-solid fa-trash-can"></i>
+                        </button>
                     </div>
-                    <button type="button" class="btn-remover" id="btnRemoverDoador">
-                        <i class="fa-solid fa-trash-can"></i>
-                    </button>
+                    <p><?= htmlspecialchars($usuario['nome']) ?></p>
                 </div>
-                <p><?= htmlspecialchars($usuario['nome']) ?></p>
+                <button class="btn" title="Sair" onclick="abrir_popup('sair-da-conta-popup')">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    Sair
+                </button>
             </div>
-            <button class="btn" title="Sair" onclick="abrir_popup('sair-da-conta-popup')">
-                <i class="fa-solid fa-right-from-bracket"></i>
-                Sair
-            </button>
-        </div>
-        <div id="right" class="box">
-            <h1>PERFIL</h1>
-            
+            <div id="right" class="box">
+                <h1>PERFIL</h1>
+
                 <input type="hidden" name="id_usuario" value="<?= $_SESSION['usuario']['id'] ?>">
                 <div class="input-group">
                     <div class="input-box">
@@ -125,30 +147,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </button>
                     <button class="btn" type="submit"><i class="fa-solid fa-floppy-disk"></i>Salvar</button>
                 </div>
-            </form>
-        </div>
-    </div>
+</form>
 </div>
-
-<!-- Toasts -->
-<div id="toast-update" class="toast">
-    <i class="fa-regular fa-circle-check"></i>
-    Dados atualizados com sucesso!
 </div>
-
-<div id="toast-update-erro" class="toast erro">
-    <i class="fa-solid fa-triangle-exclamation"></i>
-    Falha ao Atualizar dados!
 </div>
-
-<?php
-if (isset($envio)) {
-    echo "<script>window.onload = function() {";
-    if ($envio === true) {
-        echo "mostrar_toast('toast-update');";
-    } else {
-        echo "mostrar_toast('toast-update-erro');";
-    }
-    echo "};</script>";
-}
-?>

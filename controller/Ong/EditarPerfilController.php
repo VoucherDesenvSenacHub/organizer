@@ -78,14 +78,17 @@ class EditarPerfilController
             try {
                 $update = $this->ongModel->editar($dados);
                 if ($update > 0) {
-                    header('Location: ../../view/pages/ong/home.php?upd=sucesso');
+                    $_SESSION['mensagem_toast'] = ['sucesso', 'ONG atualizada com Sucesso!'];
+                    header('Location: ../../view/pages/ong/conta.php');
                     exit;
                 } else {
-                    header('Location: ../../view/pages/ong/home.php');
+                    $_SESSION['mensagem_toast'] = ['info', 'Nenhuma alteração feita!'];
+                    header('Location: ../../view/pages/ong/conta.php');
                     exit;
                 }
             } catch (PDOException $e) {
-                header('Location: ../../view/pages/ong/home.php?upd=erro');
+                $_SESSION['mensagem_toast'] = ['erro', 'Falha ao atualizar ONG!'];
+                header('Location: ../../view/pages/ong/conta.php');
                 exit;
             }
         }

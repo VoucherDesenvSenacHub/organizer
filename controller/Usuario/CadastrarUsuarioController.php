@@ -16,15 +16,15 @@ $dados = [
     'senha'            => $_POST['senha']
 ];
 
-// Chama o método de cadastro no model, passando os dados recebidos
 $cadastroUsuario = $usuarioModel->cadastro($dados);
 
 if ($cadastroUsuario) {
     // Redireciona para a página de login com mensagem de sucesso se o cadastro foi bem-sucedido
-    header('Location: ../../view/pages/visitante/login.php?msg=cadsucesso');
+    $_SESSION['mensagem_toast'] = ['sucesso', 'Cadastro efetuado com sucesso!'];
+    header('Location: ../../view/pages/visitante/login.php');
 } else {
     // Redireciona de volta para a página de cadastro com indicação de erro
-    header('Location: ../../view/pages/visitante/cadastro.php?cadastro=erro');
+    $_SESSION['mensagem_toast'] = ['erro', 'Falha ao realizar cadastro!'];
+    header('Location: ../../view/pages/visitante/cadastro.php');
 }
-
 exit;

@@ -12,8 +12,3 @@
         </div>
     </div>
 </div>
-<!-- Toast de link copiado -->
-<div id="toast-copiar" class="toast">
-    <i class="fa-regular fa-circle-check"></i>
-    Link copiado com sucesso!
-</div>

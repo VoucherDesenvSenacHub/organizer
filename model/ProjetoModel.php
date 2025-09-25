@@ -56,7 +56,10 @@ class ProjetoModel
                 $params[$key] = $status;
             }
             $where .= " AND status IN (" . implode(',', $placeholders) . ")";
-        }
+        } 
+        // else {
+        //     $where .= " AND status <> 'INATIVO'";
+        // }
         // Filtro Categorias
         if (!empty($filtros['categorias']) && is_array($filtros['categorias'])) {
             $placeholders = [];
@@ -140,7 +143,7 @@ class ProjetoModel
         }
         // Query final
         $query = "SELECT COUNT(*) AS total FROM vw_card_projetos v {$join} {$where}";
-        
+
         $stmt = $this->pdo->prepare($query);
         foreach ($params as $key => $value) {
             $stmt->bindValue($key, $value, is_int($value) ? PDO::PARAM_INT : PDO::PARAM_STR);
@@ -148,7 +151,6 @@ class ProjetoModel
         $stmt->execute();
         return $stmt->fetchColumn();
     }
-
 
     function buscarPerfilProjeto($IdProjeto)
     {
@@ -221,10 +223,6 @@ class ProjetoModel
         return $stmt->rowCount();
     }
 
-
-
-
-
     public function editar($id, $nome, $descricao, $meta, $categoria_id)
     {
         try {
@@ -242,7 +240,6 @@ class ProjetoModel
             return false;
         }
     }
-
 
     function criar($nome, $descricao, $meta, $categoria_id, $ong_id)
     {
@@ -281,7 +278,6 @@ class ProjetoModel
         return $stmt->fetchAll();
     }
 
-
     function favoritarProjeto($usuario_id, $projeto_id)
     {
         // Verifica se já está favoritado
@@ -313,7 +309,6 @@ class ProjetoModel
         }
     }
 
-
     function listarFavoritos($usuario_id)
     {
         $sql = "SELECT projeto_id FROM favoritos_projetos WHERE usuario_id = :id";
@@ -322,7 +317,6 @@ class ProjetoModel
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_COLUMN);
     }
-
 
     public function apoiarProjeto($usuario_id, $projeto_id)
     {
@@ -341,7 +335,6 @@ class ProjetoModel
         $stmt->bindParam(':projeto_id', $projeto_id, PDO::PARAM_INT);
         return $stmt->execute();
     }
-
 
     public function usuarioJaApoiouProjeto($usuario_id, $projeto_id)
     {

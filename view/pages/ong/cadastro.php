@@ -26,19 +26,10 @@ $lista_banco = $bancoModel->listar();
 </head>
 
 <body>
-    <!-- Mostrar toast se o cadastro falhar -->
-    <?php if (isset($_GET['cadastro']) && $_GET['cadastro'] == 'erro'): ?>
-        <script>
-            window.onload = function() {
-                mostrar_toast('toast-cadastro-erro');
-            };
-        </script>
-    <?php endif; ?>
-    <div id="toast-cadastro-erro" class="toast erro">
-        <i class="fa-solid fa-triangle-exclamation"></i>
-        Falha ao realizar cadastro!
+    <div id="toast" class="toast">
+        <i id="toast-icon" class=""></i>
+        <span id="toast-msg"></span>
     </div>
-
     <main>
         <section>
             <div class="container">
@@ -212,3 +203,11 @@ $lista_banco = $bancoModel->listar();
 </body>
 
 </html>
+<?php
+if (isset($_SESSION['mensagem_toast'])) {
+    $tipo = json_encode($_SESSION['mensagem_toast'][0]);
+    $mensagem = json_encode($_SESSION['mensagem_toast'][1]);
+    echo "<script>exibir_toast($tipo, $mensagem)</script>";
+    unset($_SESSION['mensagem_toast']);
+}
+?>

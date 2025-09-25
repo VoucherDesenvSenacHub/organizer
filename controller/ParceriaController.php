@@ -43,13 +43,14 @@ try {
     $resultado = $adminModel->CriarSolicitacaoParceria($dados);
 
     if ($resultado) {
+        // $_SESSION['mensagem_toast'] = ['sucesso', 'Solicitação de parceria enviada com sucesso!'];
         $_SESSION['parceria'] = true;
         echo json_encode([
             'success' => true,
             'message' => 'Solicitação de parceria enviada com sucesso! Nossa equipe entrará em contato em breve.'
         ]);
     } else {
-        $_SESSION['parceria'] = false;
+        // $_SESSION['mensagem_toast'] = ['erro', 'Erro ao enviar solicitação!'];
         http_response_code(500);
         echo json_encode(['error' => 'Erro ao processar solicitação. Tente novamente.']);
     }

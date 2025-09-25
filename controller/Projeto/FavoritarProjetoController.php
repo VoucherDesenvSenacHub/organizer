@@ -10,9 +10,9 @@ $projetoId = $_POST['projeto-id'] ?? null;
 if ($projetoId) {
     $favorito = $projetoModel->favoritarProjeto($usuarioId, $projetoId);
     if ($favorito) {
-        $_SESSION['favorito'] = true;
+        $_SESSION['mensagem_toast'] = ['favorito', 'Adicionado aos favoritos!'];
     } else {
-        $_SESSION['favorito'] = false;
+        $_SESSION['mensagem_toast'] = ['desfavorito', 'Removido dos favoritos!'];
     }
 
     header('Location: ' . $_SERVER['HTTP_REFERER']);

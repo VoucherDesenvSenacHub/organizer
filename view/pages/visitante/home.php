@@ -8,13 +8,7 @@ require_once __DIR__ . '/../../../autoload.php';
 $ongModel = new OngModel();
 
 $lista = $ongModel->listarCardsOngs(['recentes' => true]);
-// var_dump($lista);
 ?>
-<!-- COMEÇAR SEU CÓDIGO AQUI -->
-<div id="toast-volte-sempre" class="toast">
-    <i class="fa-regular fa-circle-check"></i>
-    Tchau, até mais tarde
-</div>
 <main>
     <section class="secoes" id="secao-1">
         <div class="container">
@@ -33,6 +27,7 @@ $lista = $ongModel->listarCardsOngs(['recentes' => true]);
     <section class="secoes" id="secao-2">
         <div class="container">
             <h1>ONGS RECENTES</h1>
+            <?= var_dump($_SESSION)?>
             <div class="box-ongs">
                 <?php foreach ($lista as $ong):
                     require '../../components/cards/card-ong.php';
@@ -57,14 +52,14 @@ $lista = $ongModel->listarCardsOngs(['recentes' => true]);
                     <h3>Nossos Parceiros</h3>
                     <p>Conheça empresas e organizações que colaboram conosco para criar um impacto positivo. Veja como
                         essas parcerias ajudam a fortalecer a nossa missão.</p>
-                        <a href="parcerias.php">Saiba Mais</a>
+                    <a href="parcerias.php">Saiba Mais</a>
                 </div>
             </div>
             <a id="scroll-home" href="#secao-1" class="fa-solid fa-arrow-up"></a>
         </div>
     </section>
 </main>
-    <?php
-    $jsPagina = [];
-    require_once '../../components/layout/footer/footer-visitante.php';
-    ?>
+<?php
+$jsPagina = [];
+require_once '../../components/layout/footer/footer-visitante.php';
+?>

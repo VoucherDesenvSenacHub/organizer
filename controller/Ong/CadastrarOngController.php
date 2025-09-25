@@ -31,11 +31,12 @@ try {
         $usuarioModel = new UsuarioModel();
         $usuarioModel->primeiroAcesso($_SESSION['usuario']['id'], 'ong');
         $_SESSION['usuario']['acessos']['ong'] = true;
-        $_SESSION['cadastro-ong'] = true;
+        $_SESSION['mensagem_toast'] = ['sucesso', 'Cadastro realizado com Sucesso!'];
         header('Location: ../../view/pages/ong/home.php');
         exit;
     }
 } catch (PDOException $e) {
-    header('Location: ../../view/pages/ong/cadastro.php?cadastro=erro');
+    $_SESSION['mensagem_toast'] = ['erro', 'Falha ao realizar cadastro!'];
+    header('Location: ../../view/pages/ong/cadastro.php?e');
     exit;
 }

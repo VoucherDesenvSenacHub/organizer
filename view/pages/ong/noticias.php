@@ -15,6 +15,7 @@ $filtros = array_filter([
     'pagina'   => $paginaAtual,
     'ong_id'   => $IdOng,
     'pesquisa' => $_GET['pesquisa'] ?? null,
+    'status'   => $_GET['status'] ?? null
 ]);
 
 // Busca lista e paginação
@@ -40,11 +41,34 @@ ob_end_flush();
             <div class="topo">
                 <h1><i class="fa-solid fa-newspaper"></i> MINHAS NOTÍCIAS</h1>
                 <form id="form-busca" action="noticias.php" method="GET">
-                    <input type="text" name="pesquisa" placeholder="Busque uma notícia">
+                    <input type="text" name="pesquisa" placeholder="Busque uma notícia" value="<?= $_GET['pesquisa'] ?? '' ?>">
+                    <input type="hidden" name="status" value="<?= $_GET['status'] ?? '' ?>">
                     <button class="btn" type="submit"><i class="fa-solid fa-search"></i></button>
                 </form>
                 <button class="btn btn-novo" onclick="abrir_popup('editar-noticia-popup')">NOVA NOTÍCIA +</button>
             </div>
+            <form id="form-filtro" action="noticias.php" method="GET">
+                <div class="ul-group">
+                    <div class="drop" id="esc-status" aria-haspopup="true" aria-expanded="false">
+                        <div class="drop-title" tabindex="0">
+                            <p id="status-label">
+                                <?= isset($_GET['status']) && $_GET['status'] !== ''
+                                    ? ucfirst(strtolower($_GET['status']))
+                                    : 'Status' ?>
+                            </p>
+                            <i class="fa-solid fa-angle-down"></i>
+                        </div>
+
+                        <div class="drop-menu" role="menu" aria-labelledby="status-label">
+                            <button type="button" class="item" data-value="">Todas</button>
+                            <button type="button" class="item" data-value="ATIVO">Ativo</button>
+                            <button type="button" class="item" data-value="INATIVO">Inativo</button>
+                        </div>
+
+                        <input type="hidden" name="status" id="status-hidden" value="<?= $_GET['status'] ?? '' ?>">
+                    </div>
+                </div>
+            </form>
             <?php if (isset($_GET['pesquisa'])) {
                 echo "<p id='qnt-busca'><i class='fa-solid fa-search'></i> " . $totalRegistros . " Notícias Encontradas</p>";
             } ?>
@@ -55,7 +79,14 @@ ob_end_flush();
                         require '../../components/cards/card-noticia.php';
                     }
                 } else {
-                    echo 'Você ainda não publicou nenhuma notícia :(';
+                    $status = $_GET['status'] ?? '';
+                    if ($status === 'ATIVO') {
+                        echo 'Você não tem notícias ativas no momento.';
+                    } elseif ($status === 'INATIVO') {
+                        echo 'Você não tem notícias inativas no momento.';
+                    } else {
+                        echo 'Você ainda não publicou nenhuma notícia :(';
+                    }
                 }
                 ?>
             </div>
@@ -73,27 +104,7 @@ ob_end_flush();
     </section>
 
 </main>
-
-<!-- Toasts -->
-<div id="toast-noticia" class="toast">
-    <i class="fa-regular fa-circle-check"></i>
-    Notícia criada com sucesso!
-</div>
-<div id="toast-noticia-erro" class="toast erro">
-    <i class="fa-solid fa-triangle-exclamation"></i>
-    Falha ao criar Notícia!
-</div>
-
 <?php
-$jsPagina = ['ong/noticias.js'];
+$jsPagina = ['ong/listagem.js'];
 require_once '../../components/layout/footer/footer-logado.php';
-// Ativar os toast
-if (isset($_SESSION['criar-noticia'])) {
-    if ($_SESSION['criar-noticia']) {
-        echo "<script>mostrar_toast('toast-noticia')</script>";
-    } else {
-        echo "<script>mostrar_toast('toast-noticia-erro')</script>";
-    }
-    unset($_SESSION['criar-noticia']);
-}
 ?>
