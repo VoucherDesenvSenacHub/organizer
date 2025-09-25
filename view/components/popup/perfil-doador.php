@@ -147,7 +147,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </button>
                     <button class="btn" type="submit"><i class="fa-solid fa-floppy-disk"></i>Salvar</button>
                 </div>
+            </div>
+        </div>
+    </div>
 </form>
-</div>
-</div>
-</div>

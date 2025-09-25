@@ -55,7 +55,7 @@ class EditarPerfilController
             // --- upload de imagem da ONG ---
             if (!empty($_FILES['foto_perfil']['name'])) {
                 $pasta = __DIR__ . '/../../upload/images/ongs/';
-                
+
                 if (!is_dir($pasta)) {
                     mkdir($pasta, 0777, true);
                 }
