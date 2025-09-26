@@ -211,3 +211,19 @@
     width: 100%;
     gap: 20px 10px;
 }
+
+.btn-doar {
+    width: 100%;
+    height: 100%; /* Isso faz a div ocupar toda a altura disponível */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centraliza o conteúdo horizontalmente */
+    justify-content: center; /* Centraliza o conteúdo verticalmente */
+    gap: 10px;
+}
+
+.btn-doar .btn {
+    background-color: var(--cor-roxo-adm);
+    font-weight: normal;
+    outline: none;
+}
