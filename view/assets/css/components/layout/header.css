@@ -36,13 +36,14 @@ header .logo {
 }
 
 header .logo img {
-    width: 45px;
-    transform: rotate(0);
-    transition: 2s;
+    width: 50px;
+    height: 50px;
+    transform: rotateZ(224deg);
+    transition: 1s;
 }
 
 header .logo:hover img {
-    transform: rotate(360deg);
+    transform: rotateZ(359deg);
 }
 
 /* ================= NAV MENU ================= */

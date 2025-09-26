@@ -1,7 +1,7 @@
 <header>
     <div class="container">
         <a class="logo" href="../doador/home.php">
-            <img src="../../assets/images/global/Logo-Organizer.png">
+            <img src="../../assets/images/global/logo.png">
             <h1>Organizer</h1>
         </a>
         <nav id="nav-bar">
