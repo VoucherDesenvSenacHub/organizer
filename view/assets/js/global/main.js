@@ -303,3 +303,36 @@ btnRemover.onclick = function (e) {
     inputFile.value = '';
     updateUploadText();
 };
+
+
+
+document.querySelectorAll('.btn-like').forEach(botao => {
+    botao.addEventListener('click', async (e) => {
+        e.preventDefault();
+
+        const tipo = botao.getAttribute('data-tipo'); // 'projeto' ou 'ong'
+        const id = botao.getAttribute('data-id');
+
+        try {
+            const resposta = await fetch('../.././../controller/Interacoes/FavoritarController.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: 'tipo=' + encodeURIComponent(tipo) + '&id=' + encodeURIComponent(id)
+            });
+
+            const data = await resposta.json();
+
+            // Atualiza o ícone (favoritado/desfavoritado)
+            botao.classList.toggle('favorito');
+
+            // Exibe o toast
+            exibir_toast(data.tipo, data.mensagem);
+
+        } catch (error) {
+            console.error('Erro:', error);
+            exibir_toast('erro', 'Algo deu errado!');
+        }
+    });
+});
