@@ -181,12 +181,6 @@ function compartilhar(popupId, Id, tipo) {
     }
 }
 
-function ativar_classe(id) {
-    let i = document.getElementById(id);
-    i.classList.toggle('active');
-}
-
-
 // ============================ DOADOR ===============================
 function abrir_aside() {
     let aside = document.getElementById('aside-container');

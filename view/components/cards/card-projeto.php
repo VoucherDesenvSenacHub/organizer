@@ -27,10 +27,7 @@ $classe = $jaFavoritado ? 'favoritado' : '';
         <?php if (!isset($_SESSION['usuario']['id'])): ?>
             <button title="Favoritar" class="btn-like fa-solid fa-heart" onclick="abrir_popup('login-obrigatorio-popup')"></button>
         <?php elseif (!isset($_SESSION['perfil_usuario']) || $_SESSION['perfil_usuario'] === 'doador'): ?>
-            <form action="../.././../controller/Projeto/FavoritarProjetoController.php" method="POST">
-                <input type="hidden" name="projeto-id" value="<?= $IdProjeto ?>">
-                <button title="Favoritar" class="btn-like fa-solid fa-heart <?= $classe ?>"></button>
-            </form>
+            <button data-id="<?= $IdProjeto ?>" data-tipo="projeto" title="Favoritar" class="btn-like fa-solid fa-heart <?= $classe ?>"></button>
         <?php endif; ?>
     </div>
     <div class="img-projeto">
