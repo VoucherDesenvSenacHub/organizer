@@ -40,10 +40,7 @@ if ($acesso === 'doador') {
                         <button title="Favoritar" class="btn-like fa-solid fa-heart" onclick="abrir_popup('login-obrigatorio-popup')"></button>
                     <?php elseif (!isset($_SESSION['perfil_usuario']) || $_SESSION['perfil_usuario'] === 'doador') : ?>
                         <?php $classe = in_array($PerfilOng['ong_id'], $ongsFavoritas) ? 'favoritado' : ''; ?>
-                        <form action="../.././../controller/Ong/FavoritarOngController.php" method="POST">
-                            <input type="hidden" name="ong-id" value="<?= $IdOng ?>">
-                            <button title="Favoritar" class="btn-like fa-solid fa-heart <?= $classe ?>"></button>
-                        </form>
+                        <button data-id="<?= $IdOng ?>" data-tipo="ong" title="Favoritar" class="btn-like fa-solid fa-heart <?= $classe ?>"></button>
                     <?php endif; ?>
                 </div>
             </div>

@@ -122,6 +122,6 @@ require_once '../../components/layout/base-inicio.php';
     $("#CVV").mask("000");
 </script>
 <?php
-$jsPagina = ['doador/cartoes.js']; //Colocar o arquivo .js (exemplo: 'cadastro.js')
+$jsPagina = ['doador/cartoes.js'];
 require_once '../../components/layout/footer/footer-logado.php';
 ?>

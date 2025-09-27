@@ -32,7 +32,6 @@ if (!empty($PerfilProjeto['projeto_id'])) {
 //Verificar se o doador marcou este projeto como favorito
 if ($acesso === 'doador') {
     $projetosFavoritos = $projetoModel->listarFavoritos($_SESSION['usuario']['id']);
-    
 }
 ob_end_flush();
 ?>
@@ -81,10 +80,7 @@ ob_end_flush();
 
                         <?php elseif (!isset($_SESSION['perfil_usuario']) || $_SESSION['perfil_usuario'] === 'doador') : ?>
                             <?php $classe = in_array($IdProjeto, $projetosFavoritos) ? 'favoritado' : ''; ?>
-                            <form action="../.././../controller/Projeto/FavoritarProjetoController.php" method="POST">
-                                <input type="hidden" name="projeto-id" value="<?= $IdProjeto ?>">
-                                <button title="Favoritar" class="btn-like fa-solid fa-heart <?= $classe ?>"></button>
-                            </form>
+                            <button data-id="<?= $IdProjeto ?>" data-tipo="projeto" title="Favoritar" class="btn-like fa-solid fa-heart <?= $classe ?>"></button>
                         <?php endif; ?>
                     </div>
                 </div>

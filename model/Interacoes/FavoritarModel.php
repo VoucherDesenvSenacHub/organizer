@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . "/../config/database.php";
+require_once __DIR__ . "/../../config/database.php";
 class FavoritarModel
 {
     private $pdo;
@@ -10,7 +10,7 @@ class FavoritarModel
         $this->pdo = $pdo;
     }
 
-    public function favoritar($usuarioId, $tipo, $id)
+    function favoritar($usuarioId, $tipo, $id)
     {
         // Define qual tabela e coluna usar
         if ($tipo === 'projeto') {
@@ -39,7 +39,7 @@ class FavoritarModel
                 ':id' => $usuarioId,
                 ':valor' => $id
             ]);
-            return false; // desfavoritado
+            return false;
         } else {
             // Não favoritado → adiciona
             $query = "INSERT INTO {$tabela} (usuario_id, {$coluna}) VALUES (:id, :valor)";
@@ -48,7 +48,7 @@ class FavoritarModel
                 ':id' => $usuarioId,
                 ':valor' => $id
             ]);
-            return true; // favoritado
+            return true;
         }
     }
 }

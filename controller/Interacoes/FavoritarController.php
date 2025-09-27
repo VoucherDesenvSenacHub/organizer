@@ -14,9 +14,9 @@ if ($tipo && $id) {
     $favorito = $favoritoModel->favoritar($usuarioId, $tipo, $id);
 
     if ($favorito) {
-        echo json_encode(['tipo' => 'favorito', 'mensagem' => 'Adicionado aos favoritos!']);
+        echo json_encode(['tipo' => 'favorito', 'mensagem' => ucfirst($tipo) . ' adicionado aos favoritos!']);
     } else {
-        echo json_encode(['tipo' => 'desfavorito', 'mensagem' => 'Removido dos favoritos!']);
+        echo json_encode(['tipo' => 'desfavorito', 'mensagem' => ucfirst($tipo) . ' removido dos favoritos!']);
     }
 } else {
     echo json_encode(['tipo' => 'erro', 'mensagem' => 'Dados inválidos.']);

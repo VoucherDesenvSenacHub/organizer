@@ -8,7 +8,7 @@ $DoacoesOng = $ong['total_doacoes'] ?? '?';
 $ProjetosOng = $ong['total_projetos'] ?? '?';
 // Verificar se o Doador favoritou a Ong
 $jaFavoritada = $jaFavoritada ?? false;
-$classe = $jaFavoritada ? 'favorito' : '';
+$classe = $jaFavoritada ? 'favoritado' : '';
 ?>
 
 <div class="card-ong">
