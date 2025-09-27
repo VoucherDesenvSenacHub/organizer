@@ -38,15 +38,27 @@ section#header-section {
   width: 100%;
 }
 
-.resultado-busca {
+/* Sessão de Baixo: Áreas dos cards */
+section#resultado-filtros {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+#resultado-filtros  .lista-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+#resultado-filtros .resultado-busca {
   display: flex;
   gap: 20px;
   font-weight: 500;
-  color: gray;
 }
 
-/* Sessão de Baixo: Áreas dos cards */
-section#box-ongs {
+section#lista-cards {
   display: flex;
   justify-content: space-around;
   gap: 30px;
@@ -74,7 +86,7 @@ section#box-ongs {
     text-align: center;
   }
 
-  section#box-ongs {
+  section#lista-cards {
     justify-content: space-evenly;
     gap: 30px 15px;
   }
@@ -96,7 +108,7 @@ main.usuario-logado #container-catalogo {
   min-height: calc(100vh - 120px);
 }
 
-main.usuario-logado section#box-ongs {
+main.usuario-logado section#lista-cards {
   gap: 30px 10px;
 }
 

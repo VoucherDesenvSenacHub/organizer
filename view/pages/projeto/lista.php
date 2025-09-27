@@ -7,30 +7,24 @@ require_once '../../components/layout/base-inicio.php';
 
 require_once __DIR__ . '/../../../controller/Projeto/BuscarProjetoController.php';
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $_SESSION['filtros_projetos'] = $_POST;
-} elseif (!isset($_GET['pagina'])) {
-    unset($_SESSION['filtros_projetos']);
-}
-
-$post = $_SESSION['filtros_projetos'] ?? [];
+$post = $_POST ?? [];
 $resultado = carregarListaProjetos($_GET, $post);
 
 $categorias = $resultado['categorias'];
 $listaProjetos = $resultado['lista'];
-
 $paginas = $resultado['paginas'];
 $paginaAtual = $resultado['paginaAtual'];
 $totalRegistros = $resultado['totalRegistros'] ?? 0;
-
 $projetosFavoritos = $resultado['favoritos'] ?? [];
+
 $statusSelecionado = $post['status'] ?? [];
-$categoriasSelecionadas = $_SESSION['filtros_projetos']['categorias'] ?? [];
+$categoriasSelecionadas = $post['categorias'] ?? [];
+$pesquisa = $post['pesquisa'] ?? '';
 ?>
 <main class="<?= isset($_SESSION['usuario']['id']) ? 'usuario-logado' : 'visitante' ?>">
     <div class="container" id="container-catalogo">
         <section id="header-section">
-            <form class="form-pesquisa" action="lista.php" method="POST">
+            <form id="form-filtros" class="form-pesquisa" action="lista.php" method="POST">
                 <div class="textos-pesquisa">
                     <h1>ENCONTRE PROJETOS</h1>
                     <p>Explore projetos inspiradores e apoie causas e faça a diferença hoje mesmo.</p>
@@ -55,10 +49,9 @@ $categoriasSelecionadas = $_SESSION['filtros_projetos']['categorias'] ?? [];
                             </li>
                         <?php endforeach; ?>
                     </ul>
-                    <button class="btn">Filtrar</button>
                 </div>
                 <div class="input-pesquisa">
-                    <input type="text" name="pesquisa" placeholder="Busque um projeto" value="<?= isset($_SESSION['filtros_projetos']) ? $_SESSION['filtros_projetos']['pesquisa'] : '' ?>">
+                    <input type="text" name="pesquisa" placeholder="Busque um projeto" value="<?= htmlspecialchars($pesquisa) ?>">
                     <button class="btn" type="submit"><i class="fa-solid fa-search"></i></button>
                 </div>
             </form>
@@ -66,26 +59,26 @@ $categoriasSelecionadas = $_SESSION['filtros_projetos']['categorias'] ?? [];
                 <img src="../../assets/images/pages/shared/criancas.png">
             </div>
         </section>
-        <?php if (isset($totalRegistros)): ?>
+
+        <section id="resultado-filtros">
             <div class="resultado-busca">
                 <p><?= $totalRegistros ?> Projetos</p>
                 <p><i class='fa-solid fa-filter'></i> <?= count($categoriasSelecionadas) + count($statusSelecionado) ?> Filtros</p>
             </div>
-        <?php endif; ?>
 
-        <section id="box-ongs">
-            <!-- LISTAR CARDS PROJETOS -->
-            <?php foreach ($listaProjetos as $projeto) {
-                require '../../components/cards/card-projeto.php';
-            } ?>
+            <div class="lista-cards">
+                <?php foreach ($listaProjetos as $projeto) {
+                    require '../../components/cards/card-projeto.php';
+                } ?>
+            </div>
+            <?php if ($paginas > 1): ?>
+                <nav class="paginacao">
+                    <?php for ($i = 1; $i <= $paginas; $i++): ?>
+                        <a href="?pagina=<?= $i ?>" class="<?= $i == $paginaAtual ? 'active' : '' ?>"> <?= $i ?> </a>
+                    <?php endfor; ?>
+                </nav>
+            <?php endif; ?>
         </section>
-        <?php if ($paginas > 1): ?>
-            <nav class="paginacao">
-                <?php for ($i = 1; $i <= $paginas; $i++): ?>
-                    <a href="?pagina=<?= $i ?>" class="<?= $i == $paginaAtual ? 'active' : '' ?>"> <?= $i ?> </a>
-                <?php endfor; ?>
-            </nav>
-        <?php endif; ?>
     </div>
 </main>
 <?php

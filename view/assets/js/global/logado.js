@@ -8,7 +8,7 @@ document.querySelectorAll('.btn-like').forEach(botao => {
 
         botao.disabled = true;
         try {
-            const resposta = await fetch('../.././../controller/Interacoes/FavoritarController.php', {
+            const resposta = await fetch('../../../controller/Interacoes/FavoritarController.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
@@ -35,3 +35,32 @@ document.querySelectorAll('.btn-like').forEach(botao => {
         }
     });
 });
+
+
+document.querySelectorAll('#form-filtros input').forEach(input => {
+    input.addEventListener('change', () => {
+        aplicarFiltros();
+    });
+});
+
+document.querySelector('#form-filtros input[name="pesquisa"]').addEventListener('input', () => {
+    aplicarFiltros();
+});
+
+async function aplicarFiltros() {
+    const form = document.querySelector('#form-filtros');
+    const dados = new FormData(form);
+
+    try {
+        const resposta = await fetch('../../../controller/Projeto/FiltroAjaxController.php', {
+            method: 'POST',
+            body: dados
+        });
+
+        const html = await resposta.text();
+        document.querySelector('#resultado-filtros').innerHTML = html;
+
+    } catch (error) {
+        console.error('Erro ao aplicar filtros:', error);
+    }
+}
