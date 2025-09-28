@@ -165,7 +165,7 @@ ob_end_flush();
                                 <div class="card-ong">
                                     <div class="perfil">
                                         <div class="logo">
-                                            <img src="<?= $PerfilProjeto['caminho'] ?? '../../assets/images/global/image-placeholder.svg' ?>">
+                                            <img src="<?= $PerfilProjeto['caminho'] ? '../../../' . $PerfilProjeto['caminho'] : '../../assets/images/global/image-placeholder.svg' ?>">
                                         </div>
                                         <div class="nome">
                                             <h2><?= $PerfilProjeto['nome_ong'] ?></h2>

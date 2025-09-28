@@ -15,7 +15,9 @@ if (isset($_GET['id'])) {
     $ProjetosOng = $projetoModel->listarCardsProjetos(['ong_id' => $IdOng, 'limit' => 50, 'status' => ['ATIVO', 'FINALIZADO']]);
     $NoticiasOng = $noticiaModel->listarCardsNoticias(['ong_id' => $IdOng, 'limit' => 50, 'status' => 'ATIVO']);
     $DoadoresOng = $ongModel->buscarDoadores($IdOng);
-    $FotoOng = $PerfilOng['caminho'] ?? '../../assets/images/global/image-placeholder.svg';
+    $FotoOng = $PerfilOng['caminho']
+        ? '../../../' . $PerfilOng['caminho']
+        : '../../assets/images/global/image-placeholder.svg';
 }
 
 //Verificar se o doador marcou este projeto como favorito

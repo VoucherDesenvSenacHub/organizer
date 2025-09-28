@@ -308,7 +308,7 @@ section#apresentacao {
 .area-doador-voluntario i.fa-hand-holding-dollar {
     color: var(--cor-verde);
 }
-.area-doador-voluntario i.fa-house-flag {
+.area-doador-voluntario i.fa-building-flag {
     color: var(--cor-amarelo);
 }
 
@@ -318,10 +318,6 @@ section#apresentacao {
     justify-content: space-evenly;
     gap: 10px;
 }
-
-/* .area-doador-voluntario {
-    padding: 0 50px;
-} */
 
 .area-doador-voluntario h3 {
     margin-bottom: 20px;

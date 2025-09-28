@@ -97,6 +97,7 @@ class EditarPerfilController
                     $_SESSION['mensagem_toast'] = ['info', 'Nenhuma alteração feita!'];
                 }
             } catch (PDOException $e) {
+                $_SESSION['erro'] = $e->getMessage();
                 $_SESSION['mensagem_toast'] = ['erro', 'Falha ao atualizar ONG!'];
             }
 

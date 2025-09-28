@@ -9,7 +9,7 @@ $ongModel = new OngModel();
 $IdOng = $_SESSION['ong_id'];
 $DashboardOng = $ongModel->dashboardOng($IdOng);
 $UltimasAtividades = $ongModel->ultimasAtividadesOng($IdOng);
-
+var_dump($_SESSION['erro']);
 ?>
 <main class="conteudo-principal">
     <section>
@@ -62,11 +62,11 @@ $UltimasAtividades = $ongModel->ultimasAtividadesOng($IdOng);
             <form action="../../../controller/Ong/EditarPerfilController.php" method="POST"
                 enctype="multipart/form-data">
                 <input type="hidden" name="atualizar-ong" value="true">
-                <label for="foto_perfil">
+                <label for="fotoPerfil">
                     <i class="fa-solid fa-image"></i>
                     <p>Procurar Imagem</p>
                 </label>
-                <input type="file" id="foto_perfil" name="foto_perfil" accept="image/*" required>
+                <input type="file" id="fotoPerfil" name="foto_perfil" accept="image/*" required>
                 <div class="image-preview" id="imagePreview" style="display: none;">
                     <img id="previewImg" src="" alt="Preview">
                     <div class="preview-actions">
