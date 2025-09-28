@@ -9,7 +9,7 @@ $ongModel = new OngModel();
 $IdOng = $_SESSION['ong_id'];
 $DashboardOng = $ongModel->dashboardOng($IdOng);
 $UltimasAtividades = $ongModel->ultimasAtividadesOng($IdOng);
-var_dump($_SESSION['erro']);
+// var_dump($_SESSION['erro']);
 ?>
 <main class="conteudo-principal">
     <section>
