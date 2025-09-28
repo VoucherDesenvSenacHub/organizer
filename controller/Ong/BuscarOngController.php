@@ -1,30 +1,53 @@
 <?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 require_once __DIR__ . '/../../autoload.php';
 
-function carregarListaOngs(array $get, array $post)
-{
-    $ongModel = new OngModel(); 
-    $paginaAtual = (int)($get['pagina'] ?? 1);
+$ongModel = new OngModel();
 
-    // Monta filtros
-    $filtros = [
-        'pagina'  => $paginaAtual,
-        'pesquisa'=> $post['pesquisa'] ?? null,
-        'ordem'   => $post['ordem'] ?? null,
-        'projetos'=> $post['projetos'] ?? null,
-        'doacoes' => $post['doacoes'] ?? null,
-    ];
+// Monta filtros
+$filtros = [
+    'pagina'   => $_POST['pagina'] ?? 1,
+    'pesquisa' => $_POST['pesquisa'] ?? null,
+    'ordem'    => $_POST['ordem'] ?? null,
+    'projetos' => $_POST['projetos'] ?? null,
+    'doacoes'  => $_POST['doacoes'] ?? null,
+];
 
-    // Busca lista e paginação
-    $lista          = $ongModel->listarCardsOngs($filtros);
-    $totalRegistros = $ongModel->paginacaoOngs($filtros);
-    $paginas        = (int)ceil($totalRegistros / 6);
+// Buscar dados
+$lista          = $ongModel->listarCardsOngs($filtros);
+$totalRegistros = $ongModel->paginacaoOngs($filtros);
+$paginas        = (int)ceil($totalRegistros / 6);
 
-    // Ongs favoritas do usuário
-    $favoritas = [];
-    if (!empty($_SESSION['usuario']['id'])) {
-        $favoritas = $ongModel->listarFavoritas($_SESSION['usuario']['id']);
-    }
-
-    return compact('lista', 'paginas', 'paginaAtual', 'totalRegistros', 'favoritas');
+// Favoritos
+$favoritas = [];
+if (!empty($_SESSION['usuario']['id'])) {
+    $favoritas = $ongModel->listarFavoritas($_SESSION['usuario']['id']);
 }
+
+$totalFiltros = !empty($_POST['ordem']) + !empty($_POST['projetos']) + !empty($_POST['doacoes']);
+
+?>
+<div class="contadores">
+    <p><?= $totalRegistros ?> Ongs</p>
+    <p><i class='fa-solid fa-filter'></i> <?= $totalFiltros ?> Filtros</p>
+</div>
+
+<div class="lista-cards">
+    <?php if (empty($lista)): ?>
+        <p class="sem-resultados">Nenhuma Ong encontrada</p>
+    <?php else: ?>
+        <?php foreach ($lista as $ong) {
+            require '../../view/components/cards/card-ong.php';
+        } ?>
+    <?php endif; ?>
+</div>
+
+<?php if ($paginas > 1): ?>
+    <nav class="paginacao">
+        <?php for ($i = 1; $i <= $paginas; $i++): ?>
+            <a href="#" data-pagina="<?= $i ?>" class="<?= $i == $_POST['pagina'] ? 'active' : '' ?>"> <?= $i ?> </a>
+        <?php endfor; ?>
+    </nav>
+<?php endif; ?>

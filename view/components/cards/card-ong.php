@@ -7,8 +7,7 @@ $DescricaoOng =  mb_strimwidth($ong['descricao'], 0, 215, '...') ?? 'Lorem ipsum
 $DoacoesOng = $ong['total_doacoes'] ?? '?';
 $ProjetosOng = $ong['total_projetos'] ?? '?';
 // Verificar se o Doador favoritou a Ong
-$jaFavoritada = $jaFavoritada ?? false;
-$classe = $jaFavoritada ? 'favoritado' : '';
+$classe = in_array($IdOng, $favoritas ?? []) ? 'favoritado' : '';
 ?>
 
 <div class="card-ong">
