@@ -266,37 +266,6 @@ class OngModel
         return $stmt->fetch();
     }
 
-    function favoritarOng($usuario_id, $ong_id)
-    {
-        // Verifica se já está favoritada
-        $sql = "SELECT 1 FROM favoritos_ongs WHERE usuario_id = :id AND ong_id = :id_ong";
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([
-            ':id' => $usuario_id,
-            ':id_ong' => $ong_id
-        ]);
-
-        if ($stmt->rowCount() > 0) {
-            // Já favoritada → remover
-            $sql = "DELETE FROM favoritos_ongs WHERE usuario_id = :id AND ong_id = :id_ong";
-            $stmt = $this->pdo->prepare($sql);
-            $stmt->execute([
-                ':id' => $usuario_id,
-                ':id_ong' => $ong_id
-            ]);
-            return false; // desfavoritada
-        } else {
-            // Não favoritada → adicionar
-            $sql = "INSERT INTO favoritos_ongs (usuario_id, ong_id) VALUES (:id, :id_ong)";
-            $stmt = $this->pdo->prepare($sql);
-            $stmt->execute([
-                ':id' => $usuario_id,
-                ':id_ong' => $ong_id
-            ]);
-            return true; // favoritada
-        }
-    }
-
     function listarFavoritas($usuario_id)
     {
         $sql = "SELECT ong_id FROM favoritos_ongs WHERE usuario_id = :id";

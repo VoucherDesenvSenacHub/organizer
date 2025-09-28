@@ -20,8 +20,8 @@ if (isset($_GET['id'])) {
 
 //Verificar se o doador marcou este projeto como favorito
 if ($acesso === 'doador') {
-    $projetosFavoritos = $projetoModel->listarFavoritos($_SESSION['usuario']['id']);
-    $ongsFavoritas = $ongModel->listarFavoritas($_SESSION['usuario']['id']);
+    $favoritos = $projetoModel->listarFavoritos($_SESSION['usuario']['id']);
+    $favoritas = $ongModel->listarFavoritas($_SESSION['usuario']['id']);
 }
 ?>
 <main <?php if ($acesso === 'doador') echo 'class="usuario-logado"'; ?>>
@@ -39,11 +39,8 @@ if ($acesso === 'doador') {
                     <?php if (!isset($_SESSION['usuario']['id'])): ?>
                         <button title="Favoritar" class="btn-like fa-solid fa-heart" onclick="abrir_popup('login-obrigatorio-popup')"></button>
                     <?php elseif (!isset($_SESSION['perfil_usuario']) || $_SESSION['perfil_usuario'] === 'doador') : ?>
-                        <?php $classe = in_array($PerfilOng['ong_id'], $ongsFavoritas) ? 'favoritado' : ''; ?>
-                        <form action="../.././../controller/Ong/FavoritarOngController.php" method="POST">
-                            <input type="hidden" name="ong-id" value="<?= $IdOng ?>">
-                            <button title="Favoritar" class="btn-like fa-solid fa-heart <?= $classe ?>"></button>
-                        </form>
+                        <?php $classe = in_array($PerfilOng['ong_id'], $favoritas) ? 'favoritado' : ''; ?>
+                        <button data-id="<?= $IdOng ?>" data-tipo="ong" title="Favoritar" class="btn-like fa-solid fa-heart <?= $classe ?>"></button>
                     <?php endif; ?>
                 </div>
             </div>

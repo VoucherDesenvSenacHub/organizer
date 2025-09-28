@@ -7,8 +7,7 @@ $DescricaoOng =  mb_strimwidth($ong['descricao'], 0, 215, '...') ?? 'Lorem ipsum
 $DoacoesOng = $ong['total_doacoes'] ?? '?';
 $ProjetosOng = $ong['total_projetos'] ?? '?';
 // Verificar se o Doador favoritou a Ong
-$jaFavoritada = $jaFavoritada ?? false;
-$classe = $jaFavoritada ? 'favoritado' : '';
+$classe = in_array($IdOng, $favoritas ?? []) ? 'favoritado' : '';
 ?>
 
 <div class="card-ong">
@@ -36,10 +35,7 @@ $classe = $jaFavoritada ? 'favoritado' : '';
             <?php if (!isset($_SESSION['usuario']['id'])): ?>
                 <button title="Favoritar" class="btn-like fa-solid fa-heart" onclick="abrir_popup('login-obrigatorio-popup')"></button>
             <?php elseif (!isset($_SESSION['perfil_usuario']) || $_SESSION['perfil_usuario'] === 'doador'): ?>
-                <form action="../.././../controller/ong/FavoritarOngController.php" method="POST">
-                    <input type="hidden" name="ong-id" value="<?= $IdOng ?>">
-                    <button title="Favoritar" class="btn-like fa-solid fa-heart <?= $classe ?>"></button>
-                </form>
+                <button data-id="<?= $IdOng ?>" data-tipo="ong" title="Favoritar" class="btn-like fa-solid fa-heart <?= $classe ?>"></button>
             <?php endif; ?>
         </div>
     </div>

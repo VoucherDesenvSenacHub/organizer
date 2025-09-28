@@ -41,8 +41,8 @@ $totalRegistrosProjetos = $projetoModel->paginacaoProjetos($filtrosProjetos);
 $paginasProjetos = (int) ceil($totalRegistrosProjetos / 8);
 
 // Listas para colorir ícones de favoritos
-$ongsFavoritas = $ongModel->listarFavoritas($IdUsuario);
-$projetosFavoritos = $projetoModel->listarFavoritos($IdUsuario);
+$favoritas = $ongModel->listarFavoritas($IdUsuario);
+$favoritos = $projetoModel->listarFavoritos($IdUsuario);
 ?>
 <main class="conteudo-principal">
     <section class="secoes" id="secao-2">
@@ -66,7 +66,7 @@ $projetosFavoritos = $projetoModel->listarFavoritos($IdUsuario);
                             <div class="list-card">
                                 <?php foreach ($listaOngs as $ong): ?>
                                     <?php
-                                    $jaFavoritada = isset($_SESSION['usuario']['id']) && in_array($ong['ong_id'], $ongsFavoritas);
+                                    $jaFavoritada = isset($_SESSION['usuario']['id']) && in_array($ong['ong_id'], $favoritas);
                                     require '../../components/cards/card-ong.php';
                                     ?>
                                 <?php endforeach; ?>
