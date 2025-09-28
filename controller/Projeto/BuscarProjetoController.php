@@ -1,33 +1,53 @@
 <?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 require_once __DIR__ . '/../../autoload.php';
 
-function carregarListaProjetos(array $get, array $post)
-{
-    $projetoModel = new ProjetoModel();
-    $categoriaModel = new CategoriaModel();
+$projetoModel = new ProjetoModel();
+$categoriaModel = new CategoriaModel();
 
-    $paginaAtual = (int)($get['pagina'] ?? 1);
+// Monta filtros
+$filtros = [
+    'pagina'     => $_POST['pagina'] ?? 1,
+    'pesquisa'   => $_POST['pesquisa'] ?? null,
+    'ordem'      => $_POST['ordem'] ?? null,
+    'status'     => $_POST['status'] ?? ['ATIVO', 'FINALIZADO'],
+    'categorias' => $_POST['categorias'] ?? null,
+];
 
-    // Monta filtros
-    $filtros = [
-        'pagina'     => $paginaAtual,
-        'pesquisa'   => $post['pesquisa'] ?? null,
-        'ordem'      => $post['ordem'] ?? null,
-        'status'     => $post['status'] ?? ['ATIVO', 'FINALIZADO'],
-        'categorias' => $post['categorias'] ?? null,
-    ];
+// Buscar dados
+$lista          = $projetoModel->listarCardsProjetos($filtros);
+$totalRegistros = $projetoModel->paginacaoProjetos($filtros);
+$paginas        = (int) ceil($totalRegistros / 8);
 
-    // Buscar categorias, lista de projetos e paginação
-    $categorias     = $categoriaModel->buscarCategorias();
-    $lista          = $projetoModel->listarCardsProjetos($filtros);
-    $totalRegistros = $projetoModel->paginacaoProjetos($filtros);
-    $paginas        = (int) ceil($totalRegistros / 8);
-
-    // Projetos favoritos do usuário
-    $favoritos = [];
-    if (!empty($_SESSION['usuario']['id']) && $_SESSION['perfil_usuario'] === 'doador') {
-        $favoritos = $projetoModel->listarFavoritos($_SESSION['usuario']['id']);
-    }
-
-    return compact('categorias', 'lista', 'paginas', 'favoritos', 'totalRegistros', 'paginaAtual');
+// Favoritos
+$favoritos = [];
+if (!empty($_SESSION['usuario']['id']) && $_SESSION['perfil_usuario'] === 'doador') {
+    $favoritos = $projetoModel->listarFavoritos($_SESSION['usuario']['id']);
 }
+
+$totalFiltros = count($_POST['status'] ?? []) + count($_POST['categorias'] ?? []);
+?>
+<div class="contadores">
+    <p><?= $totalRegistros ?> Projetos</p>
+    <p><i class='fa-solid fa-filter'></i> <?= $totalFiltros ?> Filtros</p>
+</div>
+
+<div class="lista-cards">
+    <?php if (empty($lista)): ?>
+        <p class="sem-resultados">Nenhum projeto encontrado</p>
+    <?php else: ?>
+        <?php foreach ($lista as $projeto) {
+            require '../../view/components/cards/card-projeto.php';
+        } ?>
+    <?php endif; ?>
+</div>
+
+<?php if ($paginas > 1): ?>
+    <nav class="paginacao">
+        <?php for ($i = 1; $i <= $paginas; $i++): ?>
+            <a href="#" data-pagina="<?= $i ?>" class="<?= $i == $_POST['pagina'] ? 'active' : '' ?>"> <?= $i ?> </a>
+        <?php endfor; ?>
+    </nav>
+<?php endif; ?>
