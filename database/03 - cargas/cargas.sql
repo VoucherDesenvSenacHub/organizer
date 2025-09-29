@@ -23,12 +23,12 @@
     ('upload/images/noticias/coleta_lixo002.jpg'),
     ('upload/images/noticias/doe-alimentos001.jpg'),
     -- IMAGENS PARA ONGS
-    ('https://www.portaladesso.com.br/images/noticia/img_3671_foto_2.jpg'),
-    ('https://sasp.com.br/wp-content/uploads/2020/04/acaosocial.jpg'),
-    ('https://img.freepik.com/vetores-premium/sustentabilidade-salve-a-terra-proteja-o-planeta-dia-do-meio-ambiente_822713-79.jpg'),
-    ('https://imagens.ebc.com.br/0iaeH_3bqaOnsrNzoGjkZuz01pE=/754x0/smart/https://radios.ebc.com.br/sites/default/files/thumbnails/image/sementes_0.jpg'),
-    ('https://sosenchentes.rs.gov.br/upload/recortes/202309/19160547_1450_GD.png'),
-    ('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh8KZO_tHfb95xYL3TiffzHtiA1lahqwnrPofiZD6GV51reFIakWZjnsJlpiuFl1pJcwi0fSk0K9PaNdcfpQ-gC6J-AMvVc4zMesed2sTfJ0-MvCLPSutx5mvDt6Umol92nU3OnzzQRqm0/s1600/marca+funda%25C3%25A7%25C3%25A3o+michel-01.jpg'),
+    ('upload/images/ongs/amigos_do_bem.jpg'),
+    ('upload/images/ongs/acao_social.jpg'),
+    ('upload/images/ongs/planeta-harmonia.jpg'),
+    ('upload/images/ongs/sementes_do_amanha.webp'),
+    ('upload/images/ongs/sos_rio_grande.png'),
+    ('upload/images/ongs/fundação_beija_flor.jpg');
     -- IMAGENS PARA USÚARIOS
     ('https://avatars.githubusercontent.com/u/172551721?v=4'),
     ('https://avatars.githubusercontent.com/u/161078050?v=4'),

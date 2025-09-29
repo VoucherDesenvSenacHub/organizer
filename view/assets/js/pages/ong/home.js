@@ -1,4 +1,4 @@
-const image = document.getElementById("image");
+const image = document.getElementById("fotoPerfil");
     const imageName = document.getElementById("imageName");
     const imagePreview = document.getElementById("imagePreview");
     const previewImgOng = document.getElementById("previewImg");

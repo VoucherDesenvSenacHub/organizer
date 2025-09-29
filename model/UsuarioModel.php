@@ -190,4 +190,28 @@ class UsuarioModel
         $idade = $hoje->diff($dataNascimento)->y;
         return $idade;
     }
+    public function atualizarImagem($usuarioId, $imagemId)
+    {
+    $sql = "UPDATE usuarios SET imagem_id = :imagem_id WHERE usuario_id = :id";
+    $stmt = $this->pdo->prepare($sql);
+    $stmt->execute([
+        ':imagem_id' => $imagemId,
+        ':id'        => $usuarioId
+    ]);
+    }
+    public function salvarImagemUsuario($usuarioId, $caminho)
+    {
+    // 1️⃣ Salvar caminho na tabela imagens
+    $sql = "INSERT INTO imagens (caminho) VALUES (:caminho)";
+    $stmt = $this->pdo->prepare($sql);
+    $stmt->bindParam(':caminho', $caminho);
+    $stmt->execute();
+    $idImagem = $this->pdo->lastInsertId();
+
+    // 2️⃣ Atualizar usuário com imagem_id
+    $this->atualizarImagem($usuarioId, $idImagem);
+
+    return $idImagem;
+    }
+
 }

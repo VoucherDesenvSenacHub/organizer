@@ -9,7 +9,7 @@ $ongModel = new OngModel();
 $IdOng = $_SESSION['ong_id'];
 $DashboardOng = $ongModel->dashboardOng($IdOng);
 $UltimasAtividades = $ongModel->ultimasAtividadesOng($IdOng);
-
+// var_dump($_SESSION['erro']);
 ?>
 <main class="conteudo-principal">
     <section>
@@ -59,14 +59,14 @@ $UltimasAtividades = $ongModel->ultimasAtividadesOng($IdOng);
         <div class="upload_imagem_perfil">
             <h1>FINALIZAR CADASTRO</h1>
             <h3>Adicione uma foto de perfil</h3>
-
-            <form action="upload.php" method="POST" enctype="multipart/form-data">
-                <label for="image">
+            <form action="../../../controller/Ong/EditarPerfilController.php" method="POST"
+                enctype="multipart/form-data">
+                <input type="hidden" name="atualizar-ong" value="true">
+                <label for="fotoPerfil">
                     <i class="fa-solid fa-image"></i>
                     <p>Procurar Imagem</p>
                 </label>
-                <input type="file" id="image" name="imagem" accept="image/*" required>
-
+                <input type="file" id="fotoPerfil" name="foto_perfil" accept="image/*" required>
                 <div class="image-preview" id="imagePreview" style="display: none;">
                     <img id="previewImg" src="" alt="Preview">
                     <div class="preview-actions">
@@ -75,10 +75,8 @@ $UltimasAtividades = $ongModel->ultimasAtividadesOng($IdOng);
                         </button>
                     </div>
                 </div>
-
                 <button type="submit" class="btn" id="btnSubmit" disabled>Enviar</button>
             </form>
-
             <span id="imageName">Nenhum arquivo selecionado</span>
         </div>
     </section>
