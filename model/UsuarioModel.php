@@ -191,14 +191,16 @@ class UsuarioModel
         return $idade;
     }
     public function atualizarImagem($usuarioId, $imagemId)
-    {
+{
     $sql = "UPDATE usuarios SET imagem_id = :imagem_id WHERE usuario_id = :id";
     $stmt = $this->pdo->prepare($sql);
     $stmt->execute([
         ':imagem_id' => $imagemId,
         ':id'        => $usuarioId
     ]);
-    }
+    return $stmt->rowCount();
+}
+
     public function salvarImagemUsuario($usuarioId, $caminho)
     {
     // 1️⃣ Salvar caminho na tabela imagens
