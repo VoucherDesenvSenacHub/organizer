@@ -258,7 +258,10 @@ class OngModel
         (SELECT COUNT(*) 
             FROM apoios_projetos ap JOIN projetos p ON ap.projeto_id = p.projeto_id WHERE p.ong_id = o.ong_id) AS total_apoios,
         (SELECT COUNT(*) 
-            FROM noticias n WHERE n.ong_id = o.ong_id) AS total_noticias FROM ongs o WHERE o.ong_id = :id";
+            FROM noticias n WHERE n.ong_id = o.ong_id) AS total_noticias,
+        (SELECT caminho 
+            FROM imagens i WHERE i.imagem_id = o.imagem_id) AS imagem
+        FROM ongs o WHERE o.ong_id = :id";
         $stmt = $this->pdo->prepare($query);
         $stmt->bindParam(':id', $IdOng, PDO::PARAM_INT);
         $stmt->execute();
