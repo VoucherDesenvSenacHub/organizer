@@ -22,7 +22,7 @@ $totalRegistros = $projetoModel->paginacaoProjetos($filtros);
 $paginas        = (int)ceil($totalRegistros / 8);
 
 // Lista os projetos favoritados pelo usuário (colorir o coração)
-$projetosFavoritos = $projetoModel->listarFavoritos($_SESSION['usuario']['id']);
+$favoritos = $projetoModel->listarFavoritos($_SESSION['usuario']['id']);
 
 ?>
 <main class="conteudo-principal">

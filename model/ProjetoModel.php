@@ -278,37 +278,6 @@ class ProjetoModel
         return $stmt->fetchAll();
     }
 
-    function favoritarProjeto($usuario_id, $projeto_id)
-    {
-        // Verifica se já está favoritado
-        $sql = "SELECT 1 FROM favoritos_projetos WHERE usuario_id = :id AND projeto_id = :projeto_id";
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([
-            ':id' => $usuario_id,
-            ':projeto_id' => $projeto_id
-        ]);
-
-        if ($stmt->rowCount() > 0) {
-            // Já favoritado → desfavorita
-            $sql = "DELETE FROM favoritos_projetos WHERE usuario_id = :id AND projeto_id = :projeto_id";
-            $stmt = $this->pdo->prepare($sql);
-            $stmt->execute([
-                ':id' => $usuario_id,
-                ':projeto_id' => $projeto_id
-            ]);
-            return false; // desfavoritado
-        } else {
-            // Não favoritado → adiciona
-            $sql = "INSERT INTO favoritos_projetos (usuario_id, projeto_id) VALUES (:id, :projeto_id)";
-            $stmt = $this->pdo->prepare($sql);
-            $stmt->execute([
-                ':id' => $usuario_id,
-                ':projeto_id' => $projeto_id
-            ]);
-            return true; // favoritado
-        }
-    }
-
     function listarFavoritos($usuario_id)
     {
         $sql = "SELECT projeto_id FROM favoritos_projetos WHERE usuario_id = :id";

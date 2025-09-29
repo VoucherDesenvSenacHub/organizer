@@ -11,8 +11,7 @@ $FotoProjeto = $projeto['caminho']
     ? '../../../' . $projeto['caminho']
     : '../../assets/images/global/image-placeholder.svg';
 // Verificar se o Doador favoritou o Projeto
-$jaFavoritado = in_array($IdProjeto, $projetosFavoritos ?? []) ?? false;
-$classe = $jaFavoritado ? 'favoritado' : '';
+$classe = in_array($IdProjeto, $favoritos ?? []) ? 'favoritado' : '';
 ?>
 
 <div class="card-projeto">
@@ -27,10 +26,7 @@ $classe = $jaFavoritado ? 'favoritado' : '';
         <?php if (!isset($_SESSION['usuario']['id'])): ?>
             <button title="Favoritar" class="btn-like fa-solid fa-heart" onclick="abrir_popup('login-obrigatorio-popup')"></button>
         <?php elseif (!isset($_SESSION['perfil_usuario']) || $_SESSION['perfil_usuario'] === 'doador'): ?>
-            <form action="../.././../controller/Projeto/FavoritarProjetoController.php" method="POST">
-                <input type="hidden" name="projeto-id" value="<?= $IdProjeto ?>">
-                <button title="Favoritar" class="btn-like fa-solid fa-heart <?= $classe ?>"></button>
-            </form>
+            <button data-id="<?= $IdProjeto ?>" data-tipo="projeto" title="Favoritar" class="btn-like fa-solid fa-heart <?= $classe ?>"></button>
         <?php endif; ?>
     </div>
     <div class="img-projeto">

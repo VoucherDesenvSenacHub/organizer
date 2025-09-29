@@ -36,13 +36,14 @@ header .logo {
 }
 
 header .logo img {
-    width: 45px;
-    transform: rotate(0);
-    transition: 2s;
+    width: 50px;
+    height: 50px;
+    transform: rotateZ(224deg);
+    transition: 1s;
 }
 
 header .logo:hover img {
-    transform: rotate(360deg);
+    transform: rotateZ(359deg);
 }
 
 /* ================= NAV MENU ================= */
@@ -99,6 +100,7 @@ header #doador-nav {
 /* Botão de avatar do doador */
 header #img-doador {
     width: 45px;
+    height: 45px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -117,11 +119,12 @@ header #img-doador:hover {
 
 header #img-doador img {
     width: 100%;
+    height: 100%;
     border-radius: 5px;
     object-fit: cover;
     box-shadow: rgba(60, 64, 67, 0.6) 0px 1px 2px 0px,
                 rgba(60, 64, 67, 0.5) 0px 1px 3px 1px;
-    border: 2px solid white;
+    border: 2px solid rgba(255, 255, 255, 0.2);
 }
 
 /* ================= HAMBURGUER MENU ================= */

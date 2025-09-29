@@ -43,9 +43,13 @@ function fechar_popup(popupId) {
 
 //EFEITO DO TOAST
 function exibir_toast(tipo, mensagem) {
+    let toastTimeout;
     const toast = document.getElementById("toast");
     const icon = document.getElementById("toast-icon");
     const msg = document.getElementById("toast-msg");
+
+    // Cancela qualquer animação anterior
+    clearTimeout(toastTimeout);
 
     // Define classe de cor
     toast.className = "toast " + tipo;
@@ -74,16 +78,15 @@ function exibir_toast(tipo, mensagem) {
     // Define mensagem
     msg.textContent = mensagem;
 
-    // Exibe e oculta com animação
-    setTimeout(() => {
-        toast.style.right = "0px";
-        toast.style.opacity = "1";
+    // Exibe o toast
+    toast.style.right = "0px";
+    toast.style.opacity = "1";
 
-        setTimeout(() => {
-            toast.style.right = "-300px";
-            toast.style.opacity = "0";
-        }, 3000);
-    }, 50);
+    // Oculta após 3 segundos
+    toastTimeout = setTimeout(() => {
+        toast.style.right = "-300px";
+        toast.style.opacity = "0";
+    }, 3000);
 };
 
 
@@ -180,12 +183,6 @@ function compartilhar(popupId, Id, tipo) {
         console.error(`Elemento com ID "${popupId}" não encontrado.`);
     }
 }
-
-function ativar_classe(id) {
-    let i = document.getElementById(id);
-    i.classList.toggle('active');
-}
-
 
 // ============================ DOADOR ===============================
 function abrir_aside() {

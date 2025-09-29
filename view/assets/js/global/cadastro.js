@@ -1,13 +1,3 @@
-// document.addEventListener("DOMContentLoaded", function () {
-//     document.querySelectorAll("input").forEach(input => {
-//         input.addEventListener("keypress", function (event) {
-//             if (event.key === "Enter") {
-//                 event.preventDefault();
-//             }
-//         });
-//     });
-// });
-
 const form = document.querySelector('#form');
 const div_item = document.querySelectorAll(".item");
 const linha = document.querySelector("#linhaAzul");

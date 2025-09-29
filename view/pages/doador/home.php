@@ -13,7 +13,7 @@ $UltimasAtividades = $doadorModel->ultimasAtividadesDoador($IdDoador);
 
 $projetoModel = new ProjetoModel();
 $lista = $projetoModel->listarCardsProjetos(['recentes' => true, 'limit' => 4, 'status' => ['ATIVO']]);
-$projetosFavoritos = $projetoModel->listarFavoritos($IdDoador);
+$favoritos = $projetoModel->listarFavoritos($IdDoador);
 ?>
 
 <main class="conteudo-principal">
