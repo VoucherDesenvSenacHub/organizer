@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . '/../../model/ProjetoModel.php';
 session_start();
-
+// Adercio
 $projetoModel = new ProjetoModel();
 
 if (isset($_POST['valor-doacao'])) {
