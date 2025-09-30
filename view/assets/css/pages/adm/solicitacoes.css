@@ -81,6 +81,7 @@
     justify-content: space-between;
     cursor: default;
     transition: .3s;
+    
 }
 
 .box-cards .card-solicitacao-empresa:hover {
@@ -141,10 +142,26 @@
     position: relative;
 }
 
+#btn-solicitacao {
+    width: 100%;
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#btn-aceitas {
+    width: 100%;
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 #buttons::after {
     content: '';
     position: absolute;
-    width: 50%;
+    width: 55%;
     height: 100%;
     background-color: rgb(216, 216, 216);
     pointer-events: none;
@@ -154,12 +171,12 @@
 }
 
 #buttons.active::after {
-    left: 50%;
+    left: 55%;
     background-color: var(--cor-roxo-adm); /* Cor para o segundo botão */
 }
 
 #buttons button {
-    width: 50%;
+    width: 55%;
     padding: 9px;
     cursor: pointer;
     background: none;
@@ -169,7 +186,7 @@
     font-size: 15px;
     z-index: 1;
     color: var(--cor-principal);
-}
+}   
 #secao-parcerias {
     display: flex;
 }
@@ -186,11 +203,11 @@
     width: 100%;
     overflow: hidden;
     padding: 2px 0;
+    /* padding-right: 5px; */
 }
 #control-box {
     display: flex;
     flex-wrap: nowrap;
-    gap: 30px;
     transform: translateX(0);
     transition: 0.6s;
 }
@@ -199,7 +216,7 @@
     flex-direction: column;
     gap: 20px 5px;
     justify-content: space-between;
-    align-content: flex-start;
+    align-content: center;
     flex-wrap: wrap;
     flex: 0 0 100%;
     height: fit-content;
@@ -208,22 +225,20 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    width: 100%;
+    width: 99%;
     gap: 20px 10px;
 }
 
-.btn-doar {
-    width: 100%;
-    height: 100%; /* Isso faz a div ocupar toda a altura disponível */
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Centraliza o conteúdo horizontalmente */
-    justify-content: center; /* Centraliza o conteúdo verticalmente */
-    gap: 10px;
-}
 
 .btn-doar .btn {
     background-color: var(--cor-roxo-adm);
     font-weight: normal;
     outline: none;
 }
+
+@media (max-width: 830px) {
+    #btn-aceitas .container {
+        align-items: center;
+    }
+}
+

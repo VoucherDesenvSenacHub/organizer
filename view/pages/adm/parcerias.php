@@ -46,9 +46,6 @@ $paginasAceitas = (int) ceil($totalAceitas / 8);
                         <?php if (empty($listaSolicitacoes)): ?>
                             <div class="btn-doar">
                                 <h4>Nenhuma solicitação de parceria pendente. <i class="fa-regular fa-face-frown"></i></h4>
-                                <a>
-                                    <button class="btn"><i class="fa-solid fa-building-user"></i> Conhecer Empresas</button>
-                                </a>
                             </div>
                         <?php else: ?>
                             <div class="box-cards">
