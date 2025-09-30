@@ -89,7 +89,11 @@ class EditarPerfilController
             }
 
             try {
-                $update = $this->ongModel->editar($dados);
+                if (isset($dados['imagem_id'])) {
+                    $update = $this->ongModel->atualizarImagem($dados['ong_id'], $dados['imagem_id']);
+                } else {
+                    $update = $this->ongModel->editar($dados);
+                }
 
                 if ($update > 0) {
                     $_SESSION['mensagem_toast'] = ['sucesso', 'ONG atualizada com Sucesso!'];
