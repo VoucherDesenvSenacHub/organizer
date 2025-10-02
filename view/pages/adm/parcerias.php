@@ -1,7 +1,7 @@
 <?php
 $acesso = 'adm';
 $tituloPagina = 'Parcerias | Organizer';
-$cssPagina = ['adm/solicitacoes.css', 'modal-confirmacao.css'];
+$cssPagina = ['adm/parcerias.css', 'modal-confirmacao.css'];
 require_once '../../components/layout/base-inicio.php';
 require_once __DIR__ . '/../../../autoload.php';
 
@@ -30,7 +30,6 @@ $paginasSolicitacoes = (int) ceil($totalSolicitacoes / 8);
 // Calcular paginação para Parcerias Aceitas
 $totalAceitas = $adminModel->contarParceriasAceitas();
 $paginasAceitas = (int) ceil($totalAceitas / 8);
-
 ?>
 <main class="conteudo-principal">
     <section class="secoes" id="secao-parcerias">
@@ -42,61 +41,51 @@ $paginasAceitas = (int) ceil($totalAceitas / 8);
             </div>
             <div id="principal">
                 <div id="control-box">
-                    <div class="box-parcerias">
-                        <?php if (empty($listaSolicitacoes)): ?>
+                    <div class="box-cards">
+                        <h1>Teste 1</h1>
+                        <!-- <?php if (empty($listaSolicitacoes)): ?>
                             <div class="btn-doar">
                                 <h4>Nenhuma solicitação de parceria pendente. <i class="fa-regular fa-face-frown"></i></h4>
                             </div>
                         <?php else: ?>
-                            <div class="box-cards">
-                                <?php foreach ($listaSolicitacoes as $solicitacao): ?>
-                                    <div class="card-solicitacao-empresa">
-                                        <div class="nome">
-                                            <div class="topo">
-                                                <h3><?= htmlspecialchars($solicitacao['nome'] ?? 'Nome não informado') ?></h3>
-                                                <small><?= htmlspecialchars($solicitacao['criadoEm'] ?? '') ?></small>
-                                            </div>
-                                            <small class="cnpj">
-                                                Email: <?= htmlspecialchars($solicitacao['email'] ?? 'Não informado') ?>
-                                            </small><br>
-                                            <small class="cnpj">
-                                                CNPJ: <?= htmlspecialchars($solicitacao['cnpj'] ?? 'Não informado') ?>
-                                            </small><br>
-                                            <small class="cnpj">
-                                                Contato: <?= htmlspecialchars($solicitacao['telefone'] ?? 'Não informado') ?>
-                                            </small><br>
-                                            <div>
-                                                Mensagem: <b><?= htmlspecialchars($solicitacao['mensagem'] ?? 'Sem descrição informada') ?></b>
-                                            </div><br>
+                            <?php foreach ($listaSolicitacoes as $solicitacao): ?>
+                                <div class="card-empresas">
+                                    <div class="top">
+                                        <div class="icon">
+                                            <i class="fa-solid fa-building"></i>
                                         </div>
-                                        <div class="btn-acoes" style="bottom: 0; margin: 10px;">
-                                            <button class="btn btn-aprovar"
-                                                    data-id="<?= $solicitacao['parceria_id'] ?? '' ?>"
-                                                    data-tipo="empresas">
-                                                APROVAR <i class="fa-solid fa-thumbs-up"></i>
-                                            </button>
-                                            <button class="btn btn-recusar"
-                                                    data-id="<?= $solicitacao['parceria_id'] ?? '' ?>"
-                                                    data-tipo="empresas">
-                                                RECUSAR <i class="fa-solid fa-thumbs-down"></i>
-                                            </button>
+                                        <div class="empresa">
+                                            <h1><?= $solicitacao['nome'] ?></h1>
+                                            <span><?= $solicitacao['cnpj'] ?></span>
                                         </div>
+                                        <span class="data-criacao">
+                                            <i class="fa-solid fa-calendar-days"></i>
+                                            <?= $solicitacao['criadoEm'] ?>
+                                        </span>
                                     </div>
-                                <?php endforeach; ?>
-                            </div>
-                            <?php if ($paginasSolicitacoes > 1): ?>
-                                <nav class="navegacao">
-                                    <?php for ($i = 1; $i <= $paginasSolicitacoes; $i++): ?>
-                                        <a href="?pagina=<?= $i ?>&aba=solicitacoes" class="<?= $i === $valorSolicitacoes['pagina'] ? 'active' : '' ?>">
-                                            <?= $i ?>
-                                        </a>
-                                    <?php endfor; ?>
-                                </nav>
-                            <?php endif; ?>
-                        <?php endif; ?>
+                                    <div class="contato">
+                                        <span><i class="fa-solid fa-envelope"></i><?= $solicitacao['email'] ?></span>
+                                        <span><i class="fa-solid fa-phone"></i><?= $solicitacao['telefone'] ?></span>
+                                    </div>
+                                    <div class="mensagem">
+                                        <span>Mensagem:</span>
+                                        <p><?= $solicitacao['mensagem'] ?></p>
+                                    </div>
+                                    <div class="btn-acoes">
+                                        <button class="btn-aceitar" data-id="<?= $solicitacao['parceria_id'] ?? '' ?>" data-tipo="empresas">
+                                            <i class="fa-solid fa-thumbs-up"></i>
+                                        </button>
+                                        <button class="btn-recusar" data-id="<?= $solicitacao['parceria_id'] ?? '' ?>" data-tipo="empresas">
+                                            <i class="fa-solid fa-thumbs-down"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
+                        <?php endif; ?> -->
                     </div>
-                    <div class="box-parcerias">
-                        <?php if (empty($listaAceitas)): ?>
+                    <div class="box-cards">
+                        <h2>Teste 2</h2>
+                        <!-- <?php if (empty($listaAceitas)): ?>
                             <div class="btn-doar">
                                 <h4>Você ainda não possui parcerias aceitas! <i class="fa-regular fa-face-frown"></i></h4>
                                 <a href="../empresa/lista.php">
@@ -104,42 +93,32 @@ $paginasAceitas = (int) ceil($totalAceitas / 8);
                                 </a>
                             </div>
                         <?php else: ?>
-                            <div class="box-cards">
-                                <?php foreach ($listaAceitas as $parceria): ?>
-                                    <div class="card-solicitacao-empresa">
-                                        <div class="nome">
-                                            <div class="topo">
-                                                <h3><?= htmlspecialchars($parceria['nome'] ?? 'Nome não informado') ?></h3>
-                                                <small><?= htmlspecialchars($parceria['criadoEm'] ?? '') ?></small>
-                                            </div>
-                                            <small class="cnpj">
-                                                Email: <?= htmlspecialchars($parceria['email'] ?? 'Não informado') ?>
-                                            </small><br>
-                                            <small class="cnpj">
-                                                CNPJ: <?= htmlspecialchars($parceria['cnpj'] ?? 'Não informado') ?>
-                                            </small><br>
-                                            <small class="cnpj">
-                                                Contato: <?= htmlspecialchars($parceria['telefone'] ?? 'Não informado') ?>
-                                            </small><br>
-                                            <div>
-                                                Mensagem: <b><?= htmlspecialchars($parceria['mensagem'] ?? 'Sem descrição informada') ?></b>
-                                            </div><br>
+                            <?php foreach ($listaAceitas as $parceria): ?>
+                                <div class="card-empresas">
+                                    <div class="top">
+                                        <div class="icon">
+                                            <i class="fa-solid fa-building"></i>
                                         </div>
-                                        <div class="btn-acoes" style="bottom: 0; margin: 10px;">
-                                            </div>
+                                        <div class="empresa">
+                                            <h1><?= $parceria['nome'] ?></h1>
+                                            <span><?= $parceria['cnpj'] ?></span>
+                                        </div>
+                                        <span class="data-criacao">
+                                            <i class="fa-solid fa-calendar-days"></i>
+                                            <?= $parceria['criadoEm'] ?>
+                                        </span>
                                     </div>
-                                <?php endforeach; ?>
-                            </div>
-                            <?php if ($paginasAceitas > 1): ?>
-                                <nav class="navegacao">
-                                    <?php for ($i = 1; $i <= $paginasAceitas; $i++): ?>
-                                        <a href="?pagina=<?= $i ?>&aba=aceitas" class="<?= $i === $valorAceitas['pagina'] ? 'active' : '' ?>">
-                                            <?= $i ?>
-                                        </a>
-                                    <?php endfor; ?>
-                                </nav>
-                            <?php endif; ?>
-                        <?php endif; ?>   
+                                    <div class="contato">
+                                        <span><i class="fa-solid fa-envelope"></i><?= $parceria['email'] ?></span>
+                                        <span><i class="fa-solid fa-phone"></i><?= $parceria['telefone'] ?></span>
+                                    </div>
+                                    <div class="mensagem">
+                                        <span><i class="fa-solid fa-quote-left"></i> Descrição:</span>
+                                        <p><?= $parceria['descricao'] ?></p>
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
+                        <?php endif; ?> -->
                     </div>
                 </div>
             </div>

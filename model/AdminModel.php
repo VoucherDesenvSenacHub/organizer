@@ -93,7 +93,7 @@ class AdminModel
         $limite = 8;
         $offset = ($parametros['pagina'] - 1) * $limite;
 
-        $query = "SELECT parceria_id, nome, email, telefone, cnpj, mensagem,
+        $query = "SELECT parceria_id, nome, email, telefone, cnpj, descricao,
                      DATE_FORMAT(data_envio, '%d/%m/%Y') as criadoEm
                      FROM parcerias 
                      WHERE status = 'APROVADA'
