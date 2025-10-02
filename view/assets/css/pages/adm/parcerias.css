@@ -102,6 +102,11 @@
     height: fit-content;
 }
 
+.box-cards:last-child .card-empresas {
+    flex: 1 1 500px;
+    height: auto;
+}
+
 /* ========================
    CARD EMPRESAS
 ======================== */
@@ -118,6 +123,10 @@
     position: relative;
     transition: .3s;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card-empresas:hover {
+    transform: translateY(-2px);
 }
 
 .card-empresas .top {
