@@ -36,51 +36,47 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-function trocarAba(index) {
-    const controlBox = document.getElementById('control-box');
-    const buttons = document.getElementById('buttons');
-    const btnSolicitacao = document.getElementById('btn-solicitacao');
-    const btnAceitas = document.getElementById('btn-aceitas');
+const cards = document.querySelector('#control-box');
+const btn = document.querySelector('#buttons')
+let box = document.querySelectorAll('.box-cards');
 
-    if (index === 0) {
-        controlBox.style.transform = 'translateX(0)';
-        buttons.classList.remove('active');
-        btnSolicitacao.style.color = '#fff';
-        btnAceitas.style.color = 'var(--cor-principal)';
-    } else {
-        controlBox.style.transform = 'translateX(-100%)';
-        buttons.classList.add('active');
-        btnSolicitacao.style.color = 'var(--cor-principal)';
-        btnAceitas.style.color = '#fff';
-    }
+function trocarAba(index) {
+    const altura = box[index].offsetHeight;
+    const deslocamento = index * (cards.offsetWidth + 20);
+    cards.style.transform = `translateX(-${deslocamento}px)`;
+    cards.style.height = `${altura}px`;
+    index == 1 ? btn.classList.add('active') : btn.classList.remove('active');
 }
 
 function definirAbaInicial(index) {
-    const controlBox = document.getElementById('control-box');
-    const buttons = document.getElementById('buttons');
-    const btnSolicitacao = document.getElementById('btn-solicitacao');
-    const btnAceitas = document.getElementById('btn-aceitas');
-    const url = new URL(window.location);
-
-    if (index === 0) {
-        controlBox.style.transform = 'translateX(0)';
-        buttons.classList.remove('active');
-        btnSolicitacao.style.color = '#fff';
-        btnAceitas.style.color = 'var(--cor-principal)';
-        url.searchParams.set('aba', 'solicitacoes');
+    const altura = box[index].offsetHeight;
+    const deslocamento = index * (cards.offsetWidth + 30);
+    cards.style.transform = `translateX(-${deslocamento}px)`;
+    cards.style.height = `${altura}px`;
+    cards.style.transition = 'none'; // Remove transição para posicionamento inicial
+    
+    // Remove transição do pseudo-elemento ::after dos botões
+    const style = document.createElement('style');
+    style.textContent = '#buttons::after { transition: none !important; }';
+    document.head.appendChild(style);
+    
+    // Define estado visual dos botões sem animação
+    if (index == 1) {
+        btn.classList.add('active');
     } else {
-        controlBox.style.transform = 'translateX(-100%)';
-        buttons.classList.add('active');
-        btnSolicitacao.style.color = 'var(--cor-principal)';
-        btnAceitas.style.color = '#fff';
-        url.searchParams.set('aba', 'aceitas');
+        btn.classList.remove('active');
     }
-    history.pushState({}, '', url);
+    
+    // Restaura as transições após um pequeno delay
+    setTimeout(() => {
+        cards.style.transition = '';
+        document.head.removeChild(style);
+    }, 50);
 }
 
 // Função para processar a ação (aprovar/recusar)
 function processarSolicitacao(id, tipo, acao, button) {
-    const card = button.closest('.card-solicitacao-empresa');
+    const card = button.closest('.card-empresas');
     const buttons = card.querySelectorAll('button');
 
     buttons.forEach(btn => btn.disabled = true);

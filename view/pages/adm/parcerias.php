@@ -42,8 +42,7 @@ $paginasAceitas = (int) ceil($totalAceitas / 8);
             <div id="principal">
                 <div id="control-box">
                     <div class="box-cards">
-                        <h1>Teste 1</h1>
-                        <!-- <?php if (empty($listaSolicitacoes)): ?>
+                        <?php if (empty($listaSolicitacoes)): ?>
                             <div class="btn-doar">
                                 <h4>Nenhuma solicitação de parceria pendente. <i class="fa-regular fa-face-frown"></i></h4>
                             </div>
@@ -72,7 +71,7 @@ $paginasAceitas = (int) ceil($totalAceitas / 8);
                                         <p><?= $solicitacao['mensagem'] ?></p>
                                     </div>
                                     <div class="btn-acoes">
-                                        <button class="btn-aceitar" data-id="<?= $solicitacao['parceria_id'] ?? '' ?>" data-tipo="empresas">
+                                        <button class="btn-aprovar" data-id="<?= $solicitacao['parceria_id'] ?? '' ?>" data-tipo="empresas">
                                             <i class="fa-solid fa-thumbs-up"></i>
                                         </button>
                                         <button class="btn-recusar" data-id="<?= $solicitacao['parceria_id'] ?? '' ?>" data-tipo="empresas">
@@ -81,11 +80,10 @@ $paginasAceitas = (int) ceil($totalAceitas / 8);
                                     </div>
                                 </div>
                             <?php endforeach; ?>
-                        <?php endif; ?> -->
+                        <?php endif; ?>
                     </div>
                     <div class="box-cards">
-                        <h2>Teste 2</h2>
-                        <!-- <?php if (empty($listaAceitas)): ?>
+                        <?php if (empty($listaAceitas)): ?>
                             <div class="btn-doar">
                                 <h4>Você ainda não possui parcerias aceitas! <i class="fa-regular fa-face-frown"></i></h4>
                                 <a href="../empresa/lista.php">
@@ -118,7 +116,7 @@ $paginasAceitas = (int) ceil($totalAceitas / 8);
                                     </div>
                                 </div>
                             <?php endforeach; ?>
-                        <?php endif; ?> -->
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>

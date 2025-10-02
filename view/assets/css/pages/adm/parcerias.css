@@ -1,12 +1,6 @@
-/* ========================
-   IMPORTS
-======================== */
-@import url("modal-confirmacao.css");
+@import url(modal-confirmacao.css);
 
-/* ========================
-   LAYOUT PRINCIPAL
-======================== */
-.conteudo-principal>section {
+.conteudo-principal > section {
     display: flex;
     flex-direction: column;
     gap: 30px;
@@ -28,7 +22,7 @@
 ======================== */
 #buttons {
     display: flex;
-    width: 200px;
+    width: 250px;
     background-color: #fff;
     border-radius: 20px;
     overflow: hidden;
@@ -38,7 +32,7 @@
 }
 
 #buttons button {
-    width: 100px;
+    width: 50%;
     padding: 9px;
     cursor: pointer;
     background: none;
@@ -54,7 +48,7 @@
     content: '';
     position: absolute;
     left: 0;
-    width: 55%;
+    width: 50%;
     height: 100%;
     background-color: var(--cor-roxo-adm);
     pointer-events: none;
@@ -62,7 +56,7 @@
 }
 
 #buttons.active::after {
-    left: 55%;
+    left: 50%;
 }
 
 /* ========================
@@ -78,10 +72,11 @@
     align-items: flex-start;
     gap: 30px;
     width: 100%;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 #principal {
+    overflow: hidden;
     width: 100%;
     padding: 2px 0;
 }
@@ -91,12 +86,7 @@
     flex-wrap: nowrap;
     transform: translateX(0);
     transition: 0.6s;
-}
-
-.btn-doar .btn {
-    background-color: var(--cor-roxo-adm);
-    font-weight: normal;
-    outline: none;
+    gap: 20px;
 }
 
 /* ========================
@@ -105,21 +95,18 @@
 .box-cards {
     display: flex;
     flex-wrap: wrap;
+    align-content: flex-start;
     justify-content: space-around;
-    gap: 20px 10px;
     flex: 0 0 100%;
-    background-color: red;
-}
-
-.box-cards:first-child {
-    background-color: blue;
+    gap: 20px;
+    height: fit-content;
 }
 
 /* ========================
-   CARD EMPRESAS (NOVO)
+   CARD EMPRESAS
 ======================== */
 .card-empresas {
-    flex: 1 1 500px;
+    width: 100%;
     height: fit-content;
     padding: 15px;
     border: 1px solid #e0e0e0;
@@ -129,7 +116,6 @@
     flex-direction: column;
     gap: 10px;
     position: relative;
-    cursor: pointer;
     transition: .3s;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
@@ -194,11 +180,11 @@
 }
 
 .card-empresas .mensagem p {
+    word-break: break-all;
     color: var(--cor-principal);
     text-align: justify;
 }
 
-/* Ações do card */
 .card-empresas .btn-acoes {
     display: flex;
     flex-direction: column;
@@ -227,13 +213,15 @@
     justify-content: center;
     align-items: center;
     transition: .3s;
+    cursor: pointer;
+    border: none;
 }
 
 .card-empresas .btn-acoes button:hover {
     filter: brightness(0.8);
 }
 
-.card-empresas .btn-aceitar {
+.card-empresas .btn-aprovar {
     background-color: rgba(48, 173, 26, 0.4);
     color: var(--cor-verde);
 }
@@ -241,13 +229,4 @@
 .card-empresas .btn-recusar {
     background-color: rgba(255, 77, 77, 0.4);
     color: var(--cor-vermelho);
-}
-
-/* ========================
-   RESPONSIVIDADE
-======================== */
-@media (max-width: 830px) {
-    #btn-aceitas .container {
-        align-items: center;
-    }
 }
