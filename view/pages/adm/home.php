@@ -170,6 +170,11 @@ $relatorioNoticia = $adminModel->buscarNoticias();
                 </a>
             </div>
         </div>
+        <div>
+        <a class="area-btn" href="bloquear-noticias.php">
+                    <button class="btn">Bloquear publicação de noticia de ong</button>
+                </a>
+                </div>
     </section>
 </main>
 <?php
