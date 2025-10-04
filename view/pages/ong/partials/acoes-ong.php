@@ -9,6 +9,6 @@ $perfil = $_SESSION['perfil_usuario'] ?? 'visitante';
     </div>
 <?php elseif ($perfil === 'adm'): ?>
     <div id="acoes">
-        <button class="btn adm-inativar" id="btn-inativar"><i class="fa-solid fa-ban"></i> Inativar</button>
+        <button class="btn adm-inativar" id="btn-inativar" onclick="abrir_popup('inativar-ong-popup')"><i class="fa-solid fa-ban"></i> Inativar</button>
     </div>
 <?php endif; ?>
