@@ -52,7 +52,7 @@ require_once '../../components/layout/base-inicio.php';
 
         <div class="popup-fundo" id="popup-adicionar-cartao">
             <div class="credit-card-popup">
-                <h2>CARTÃO DE CRÉDITO</h2>
+                <h2>PAGAR COM CARTÃO DE CRÉDITO</h2>
 
                 <div class="input-grupo">
                     <label>Número do Cartão</label>
@@ -62,7 +62,7 @@ require_once '../../components/layout/base-inicio.php';
                 <div class="row">
                     <div class="input-grupo">
                         <label for="">Validade</label>
-                        <input type="date" placeholder="MM/AA">
+                        <input id="validade-cartao" type="text" placeholder="MM/AA">
                     </div>
 
                     <div class="input-grupo">
@@ -73,11 +73,11 @@ require_once '../../components/layout/base-inicio.php';
 
                 <div class="input-grupo">
                     <label for="name">Titular do cartão</label>
-                    <input type="text" placeholder="Nome Completo" maxlength="200" onkeypress="return /[a-z\s]/i.test(event.key)">
+                    <input type="text" placeholder="Nome impresso no cartão" maxlength="200" onkeypress="return /[a-z\s]/i.test(event.key)">
                 </div>
                 <div>
                     <button class="add-button" id="addButton">
-                        <span class="button-text">ADICIONAR</span>
+                        <span class="button-text">CONFIRMAR</span>
                         <div class="loader"></div>
                         <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
                             <circle class="checkmark-circle" cx="26" cy="26" r="25" fill="none" />
@@ -120,6 +120,7 @@ require_once '../../components/layout/base-inicio.php';
 <script type="text/javascript">
     $("#number-cartao").mask("0000 0000 0000 0000");
     $("#CVV").mask("000");
+    $("#validade-cartao").mask("00/00");
 </script>
 <?php
 $jsPagina = ['doador/cartoes.js'];
