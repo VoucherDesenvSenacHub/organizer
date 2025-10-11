@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . '/../../../model/UsuarioModel.php';
 require_once __DIR__ . '/../../../model/ImagemModel.php';
+
 $imagemModel = new ImagemModel();
 $usuarioModel = new UsuarioModel();
 $usuario = $usuarioModel->buscar_perfil($_SESSION['usuario']['id']);
@@ -18,11 +19,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if ($idade >= 18) {
             try {
+                $resultado = 0;
+                $imagemPadrao = 'view/assets/images/global/user-placeholder.jpg'; 
+
+                // Remover Foto
+                if (isset($_POST['remover_foto']) && $_POST['remover_foto'] === 'true') {
+                    // salva a imagem padrão
+                    $idImagem = $imagemModel->salvarCaminhoImagem($imagemPadrao);
+                    $usuarioModel->atualizarImagem($_SESSION['usuario']['id'], $idImagem);
+
+                    $_SESSION['usuario']['foto'] = $imagemPadrao;
+                    $resultado = 1;
+                }
+
+               // Nova Imagem
                 if (!empty($_FILES['foto_usuario']['name'])) {
                     $pasta = __DIR__ . '/../../../upload/images/usuarios/';
-                    if (!is_dir($pasta)) {
-                        mkdir($pasta, 0777, true);
-                    }
+                    if (!is_dir($pasta)) mkdir($pasta, 0777, true);
 
                     $tmp = $_FILES['foto_usuario']['tmp_name'];
                     $nomeOriginal = basename($_FILES['foto_usuario']['name']);
@@ -31,18 +44,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                     if (move_uploaded_file($tmp, $destino)) {
                         $idImagem = $imagemModel->salvarCaminhoImagem('upload/images/usuarios/' . $novoNome);
-                        $resultado = $usuarioModel->atualizarImagem($_SESSION['usuario']['id'], $idImagem);
+                        $usuarioModel->atualizarImagem($_SESSION['usuario']['id'], $idImagem);
 
-                        // Atualiza sessão
                         $_SESSION['usuario']['foto'] = 'upload/images/usuarios/' . $novoNome;
-                    } else {
-                        $resultado = 0; // se falhar upload
+                        $resultado = 1;
                     }
-                } else {
-                    // Atualizar demais dados
-                    $resultado = $usuarioModel->update($id, $nome, $telefone, $cpf, $data, $email);
                 }
 
+                //Atualizar dados
+                $resultadoDados = $usuarioModel->update($id, $nome, $telefone, $cpf, $data, $email);
+                if ($resultadoDados > 0) $resultado = 1;
+
+                //Mensagem usuarios
                 if ($resultado > 0) {
                     $_SESSION['mensagem_toast'] = ['sucesso', 'Dados atualizados com sucesso!'];
                 } else {
@@ -59,8 +72,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } else {
             echo "<script>alert('Você precisa ter 18 anos ou mais para atualizar o cadastro.')</script>";
         }
-
-
     }
 
     // Atualização de senha
@@ -85,6 +96,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 
+
+
 <!-- HTML do perfil -->
 
 <div class="popup-fundo perfil-usuario-popup" id="perfil-doador-popup">
@@ -104,7 +117,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <i class="fa-solid fa-cloud-upload-alt"></i><br>
                         Arraste ou clique para trocar
                     </div>
-                    <button type="button" class="btn-remover" id="btnRemoverDoador" title="Remover Imagem">
+                    <button type="button" class="btn-remover" id="btnRemoverDoador" title="Remover Imagem"
+                        onclick="removerFotoPerfilDoador()">
                         <i class="fa-solid fa-trash-can"></i>
                     </button>
                 </div>
@@ -162,3 +176,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
     </form>
 </div>
+
