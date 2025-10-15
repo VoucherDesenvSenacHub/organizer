@@ -23,6 +23,7 @@ switch ($perfil) {
         require_once __DIR__ . '/../../popup/aprovar-parceria.php';
         require_once __DIR__ . '/../../popup/recusar-parceria.php';
         require_once __DIR__ . '/../../popup/inativar-ong.php';
+        require_once __DIR__ . '/../../popup/inativar-projeto.php';
         break;
         
     default:
