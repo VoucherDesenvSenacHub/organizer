@@ -2,6 +2,7 @@
 require_once __DIR__ . '/../../model/ProjetoModel.php';
 session_start();
 // Adercio
+$pagamento = curl_init();
 $projetoModel = new ProjetoModel();
 
 if (isset($_POST['valor-doacao'])) {
