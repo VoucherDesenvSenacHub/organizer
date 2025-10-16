@@ -52,6 +52,18 @@ class AdminModel
         return $stmt->fetchAll();
     }
 
+    function ListarParceriasRecusadas($params = [])
+    {
+        $query = "SELECT parceria_id, nome, email, telefone, cnpj, mensagem,
+                     DATE_FORMAT(data_envio, '%d/%m/%Y') as criadoEm
+                     FROM parcerias 
+                     WHERE status = 'RECUSADA'
+                     ORDER BY data_envio DESC";
+
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
     function buscarDoadores()
     {
         $query = "SELECT usuario_id, nome, SUM(dp.valor) AS valor_doado

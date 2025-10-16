@@ -1,11 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Definir aba ativa baseada na URL
-    const abaAtiva = '<?= $abaAtiva ?>';
-    if (abaAtiva === 'aceitas') {
-        definirAbaInicial(1);
-    } else {
-        definirAbaInicial(0);
-    }
+    // Definir status inicial baseado na URL
+    const statusAtual = new URLSearchParams(window.location.search).get('aba') || 'solicitacoes';
+    document.getElementById('status-parceria').value = statusAtual;
+    mostrarLista(statusAtual);
 
     // Funcionalidade para aprovar/recusar parcerias com empresas
     document.querySelectorAll('.btn-aprovar').forEach(btn => {
@@ -36,43 +33,29 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-const cards = document.querySelector('#control-box');
-const btn = document.querySelector('#buttons')
-let box = document.querySelectorAll('.box-cards');
+function mudarStatus(status) {
+    // Atualizar a URL sem recarregar a página
+    const url = new URL(window.location.href);
+    url.searchParams.set('aba', status);
+    window.history.pushState({}, '', url);
 
-function trocarAba(index) {
-    const altura = box[index].offsetHeight;
-    const deslocamento = index * (cards.offsetWidth + 20);
-    cards.style.transform = `translateX(-${deslocamento}px)`;
-    cards.style.height = `${altura}px`;
-    index == 1 ? btn.classList.add('active') : btn.classList.remove('active');
+    // Atualizar a visualização
+    mostrarLista(status);
 }
 
-function definirAbaInicial(index) {
-    const altura = box[index].offsetHeight;
-    const deslocamento = index * (cards.offsetWidth + 30);
-    cards.style.transform = `translateX(-${deslocamento}px)`;
-    cards.style.height = `${altura}px`;
-    cards.style.transition = 'none'; // Remove transição para posicionamento inicial
-    
-    // Remove transição do pseudo-elemento ::after dos botões
-    const style = document.createElement('style');
-    style.textContent = '#buttons::after { transition: none !important; }';
-    document.head.appendChild(style);
-    
-    // Define estado visual dos botões sem animação
-    if (index == 1) {
-        btn.classList.add('active');
-    } else {
-        btn.classList.remove('active');
-    }
-    
-    // Restaura as transições após um pequeno delay
-    setTimeout(() => {
-        cards.style.transition = '';
-        document.head.removeChild(style);
-    }, 50);
+function mostrarLista(status) {
+    const boxCards = document.querySelectorAll('.box-cards');
+    boxCards.forEach((box, index) => {
+        if ((status === 'solicitacoes' && index === 0) ||
+            (status === 'aceitas' && index === 1) ||
+            (status === 'recusadas' && index === 2)) {
+            box.style.display = 'flex';
+        } else {
+            box.style.display = 'none';
+        }
+    });
 }
+
 
 // Função para processar a ação (aprovar/recusar)
 function processarSolicitacao(id, tipo, acao, button) {
