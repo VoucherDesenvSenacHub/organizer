@@ -10,6 +10,7 @@
 @import url(perfil-doador.css);
 @import url(nova-senha-doador.css);
 @import url(solicitacao-parceria.css);
+@import url(inativar-noticia.css);
 
 .popup-fundo {
     position: fixed;
