@@ -429,4 +429,6 @@ section#apresentacao {
 
 #dados-projeto #acoes .adm-inativar {
     width: 100%;
+    background-color: var(--cor-vermelho);
+    color: white;
 }
