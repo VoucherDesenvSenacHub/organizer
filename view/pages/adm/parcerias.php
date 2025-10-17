@@ -20,7 +20,7 @@ $statusMap = [
 
 // Buscar lista de parcerias baseado no status
 $lista = $adminModel->listarParcerias($statusMap[$abaAtiva]);
-var_dump($lista);
+// var_dump($lista);
 ?>
 <main class="conteudo-principal">
     <section class="secoes" id="secao-parcerias">
@@ -84,7 +84,7 @@ var_dump($lista);
                                     </div>
                                     <div class="mensagem">
                                         <span><i class="fa-solid fa-quote-left"></i> <?= $abaAtiva === 'aceitas' ? 'Descrição' : 'Mensagem' ?>:</span>
-                                        <p><?= $abaAtiva === 'aceitas' ? $parceria['descricao'] : $parceria['mensagem'] ?></p>
+                                        <p><?= $parceria['mensagem'] ?></p>
                                     </div>
                                     <?php if ($abaAtiva === 'solicitacoes'): ?>
                                         <div class="btn-acoes">
