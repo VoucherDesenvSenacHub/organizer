@@ -7,25 +7,20 @@ require_once __DIR__ . '/../../../autoload.php';
 
 $adminModel = new AdminModel();
 
-// ===== CONFIGURAÇÃO DE PAGINAÇÃO =====
+// ===== CONFIGURAÇÃO =====
 $IdUsuario = $_SESSION['usuario']['id'];
 $abaAtiva = isset($_GET['aba']) ? $_GET['aba'] : 'solicitacoes';
 
-$valorSolicitacoes = [
-    'pagina' => ($abaAtiva === 'solicitacoes') ? $paginaAtual : 1,
-];
-$valorAceitas = [
-    'pagina' => ($abaAtiva === 'aceitas') ? $paginaAtual : 1,
-];
-$valorRecusadas = [
-    'pagina' => ($abaAtiva === 'recusadas') ? $paginaAtual : 1,
+// Mapear os valores de status do frontend para o backend
+$statusMap = [
+    'solicitacoes' => 'PENDENTE',
+    'aceitas' => 'APROVADA',
+    'recusadas' => 'RECUSADA'
 ];
 
-// Buscar solicitações, parcerias aceitas e recusadas
-$listaSolicitacoes = $adminModel->ListarSolicitacoesEmpresas($valorSolicitacoes);
-$listaAceitas = $adminModel->ListarParceriasAceitas($valorAceitas);
-$listaRecusadas = $adminModel->ListarParceriasRecusadas($valorRecusadas);
-
+// Buscar lista de parcerias baseado no status
+$lista = $adminModel->listarParcerias($statusMap[$abaAtiva]);
+var_dump($lista);
 ?>
 <main class="conteudo-principal">
     <section class="secoes" id="secao-parcerias">
@@ -43,56 +38,32 @@ $listaRecusadas = $adminModel->ListarParceriasRecusadas($valorRecusadas);
             <div id="principal">
                 <div id="control-box">
                     <div class="box-cards">
-                        <?php if (empty($listaSolicitacoes)): ?>
+                        <?php if (empty($lista)): ?>
                             <div class="btn-doar">
-                                <h4>Nenhuma solicitação de parceria pendente. <i class="fa-regular fa-face-frown"></i></h4>
+                                <h4>
+                                    <?php
+                                    switch($abaAtiva) {
+                                        case 'solicitacoes':
+                                            echo 'Nenhuma solicitação de parceria pendente.';
+                                            break;
+                                        case 'aceitas':
+                                            echo 'Nenhuma empresa parceira aceita!';
+                                            break;
+                                        case 'recusadas':
+                                            echo 'Nenhuma parceria recusada!';
+                                            break;
+                                    }
+                                    ?>
+                                    <i class="fa-regular <?= $abaAtiva === 'recusadas' ? 'fa-face-smile' : 'fa-face-frown' ?>"></i>
+                                </h4>
+                                <?php if ($abaAtiva === 'aceitas'): ?>
+                                    <a href="../empresa/lista.php">
+                                        <button class="btn"><i class="fa-solid fa-building-user"></i> Conhecer Empresas</button>
+                                    </a>
+                                <?php endif; ?>
                             </div>
                         <?php else: ?>
-                            <?php foreach ($listaSolicitacoes as $solicitacao): ?>
-                                <div class="card-empresas">
-                                    <div class="top">
-                                        <div class="icon">
-                                            <i class="fa-solid fa-building"></i>
-                                        </div>
-                                        <div class="empresa">
-                                            <h1><?= $solicitacao['nome'] ?></h1>
-                                            <span><?= $solicitacao['cnpj'] ?></span>
-                                        </div>
-                                        <span class="data-criacao">
-                                            <i class="fa-solid fa-calendar-days"></i>
-                                            <?= $solicitacao['criadoEm'] ?>
-                                        </span>
-                                    </div>
-                                    <div class="contato">
-                                        <span><i class="fa-solid fa-envelope"></i><?= $solicitacao['email'] ?></span>
-                                        <span><i class="fa-solid fa-phone"></i><?= $solicitacao['telefone'] ?></span>
-                                    </div>
-                                    <div class="mensagem">
-                                        <span>Mensagem:</span>
-                                        <p><?= $solicitacao['mensagem'] ?></p>
-                                    </div>
-                                    <div class="btn-acoes">
-                                        <button class="btn-aprovar" data-id="<?= $solicitacao['parceria_id'] ?? '' ?>" data-tipo="empresas">
-                                            <i class="fa-solid fa-thumbs-up"></i>
-                                        </button>
-                                        <button class="btn-recusar" data-id="<?= $solicitacao['parceria_id'] ?? '' ?>" data-tipo="empresas">
-                                            <i class="fa-solid fa-thumbs-down"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            <?php endforeach; ?>
-                        <?php endif; ?>
-                    </div>
-                    <div class="box-cards">
-                        <?php if (empty($listaAceitas)): ?>
-                            <div class="btn-doar">
-                                <h4>Você ainda não possui parcerias aceitas! <i class="fa-regular fa-face-frown"></i></h4>
-                                <a href="../empresa/lista.php">
-                                    <button class="btn"><i class="fa-solid fa-building-user"></i> Conhecer Empresas</button>
-                                </a>
-                            </div>
-                        <?php else: ?>
-                            <?php foreach ($listaAceitas as $parceria): ?>
+                            <?php foreach ($lista as $parceria): ?>
                                 <div class="card-empresas">
                                     <div class="top">
                                         <div class="icon">
@@ -112,42 +83,19 @@ $listaRecusadas = $adminModel->ListarParceriasRecusadas($valorRecusadas);
                                         <span><i class="fa-solid fa-phone"></i><?= $parceria['telefone'] ?></span>
                                     </div>
                                     <div class="mensagem">
-                                        <span><i class="fa-solid fa-quote-left"></i> Descrição:</span>
-                                        <p><?= $parceria['descricao'] ?></p>
+                                        <span><i class="fa-solid fa-quote-left"></i> <?= $abaAtiva === 'aceitas' ? 'Descrição' : 'Mensagem' ?>:</span>
+                                        <p><?= $abaAtiva === 'aceitas' ? $parceria['descricao'] : $parceria['mensagem'] ?></p>
                                     </div>
-                                </div>
-                            <?php endforeach; ?>
-                        <?php endif; ?>
-                    </div>
-                    <div class="box-cards">
-                        <?php if (empty($listaRecusadas)): ?>
-                            <div class="btn-doar">
-                                <h4>Nenhuma parceria recusada! <i class="fa-regular fa-face-smile"></i></h4>
-                            </div>
-                        <?php else: ?>
-                            <?php foreach ($listaRecusadas as $recusada): ?>
-                                <div class="card-empresas">
-                                    <div class="top">
-                                        <div class="icon">
-                                            <i class="fa-solid fa-building"></i>
+                                    <?php if ($abaAtiva === 'solicitacoes'): ?>
+                                        <div class="btn-acoes">
+                                            <button class="btn-aprovar" data-id="<?= $parceria['parceria_id'] ?? '' ?>" data-tipo="empresas">
+                                                <i class="fa-solid fa-thumbs-up"></i>
+                                            </button>
+                                            <button class="btn-recusar" data-id="<?= $parceria['parceria_id'] ?? '' ?>" data-tipo="empresas">
+                                                <i class="fa-solid fa-thumbs-down"></i>
+                                            </button>
                                         </div>
-                                        <div class="empresa">
-                                            <h1><?= $recusada['nome'] ?></h1>
-                                            <span><?= $recusada['cnpj'] ?></span>
-                                        </div>
-                                        <span class="data-criacao">
-                                            <i class="fa-solid fa-calendar-days"></i>
-                                            <?= $recusada['criadoEm'] ?>
-                                        </span>
-                                    </div>
-                                    <div class="contato">
-                                        <span><i class="fa-solid fa-envelope"></i><?= $recusada['email'] ?></span>
-                                        <span><i class="fa-solid fa-phone"></i><?= $recusada['telefone'] ?></span>
-                                    </div>
-                                    <div class="mensagem">
-                                        <span>Mensagem:</span>
-                                        <p><?= $recusada['mensagem'] ?></p>
-                                    </div>
+                                    <?php endif; ?>
                                 </div>
                             <?php endforeach; ?>
                         <?php endif; ?>

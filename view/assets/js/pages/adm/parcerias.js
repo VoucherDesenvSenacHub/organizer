@@ -34,26 +34,10 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function mudarStatus(status) {
-    // Atualizar a URL sem recarregar a página
+    // Redirecionar para a nova URL
     const url = new URL(window.location.href);
     url.searchParams.set('aba', status);
-    window.history.pushState({}, '', url);
-
-    // Atualizar a visualização
-    mostrarLista(status);
-}
-
-function mostrarLista(status) {
-    const boxCards = document.querySelectorAll('.box-cards');
-    boxCards.forEach((box, index) => {
-        if ((status === 'solicitacoes' && index === 0) ||
-            (status === 'aceitas' && index === 1) ||
-            (status === 'recusadas' && index === 2)) {
-            box.style.display = 'flex';
-        } else {
-            box.style.display = 'none';
-        }
-    });
+    window.location.href = url.toString();
 }
 
 
