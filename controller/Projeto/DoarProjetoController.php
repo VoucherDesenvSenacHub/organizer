@@ -1,15 +1,19 @@
 <?php
 require_once __DIR__ . '/../../model/ProjetoModel.php';
 session_start();
-// Adercio
 $pagamento = curl_init();
 $projetoModel = new ProjetoModel();
 
 if (isset($_POST['valor-doacao'])) {
+
     // Dados do Projeto
     $IdProjeto = $_POST['projeto-id'];
     $ValorArrecadado = $_POST['valor-arrecadado'];
     $ValorMeta = $_POST['meta'];
+    $NumberCartao = $_POST['number-cartao'];
+    $ValidadeCartao = $_POST['validade-cartao'];
+    $Cvv = $_POST['cvv'];
+    $titular = $_POST['titular'];
 
     // Pegar a doação
     $ValorDoacao = $_POST['valor-doacao'];
