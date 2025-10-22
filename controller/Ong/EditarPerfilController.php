@@ -9,18 +9,22 @@ class EditarPerfilController
 {
     private $ongModel;
     private $bancoModel;
-    private $imagemModel;
 
     public function __construct()
     {
         $this->ongModel = new OngModel();
         $this->bancoModel = new BancoModel();
-        $this->imagemModel = new ImagemModel();
     }
 
     public function buscarDados()
     {
         $perfil = $this->ongModel->buscarId($_SESSION['ong_id']);
+
+        // Adiciona o caminho completo para a imagem
+        $perfil['foto'] = $perfil['imagem_id']
+            ? '../../../' . $this->ongModel->buscarCaminhoImagem($perfil['imagem_id'])
+            : 'assets/images/global/image-placeholder.svg';
+
         $lista_banco = $this->bancoModel->listar();
 
         return [
@@ -29,16 +33,12 @@ class EditarPerfilController
         ];
     }
 
+
     public function atualizarPerfil()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['atualizar-ong'])) {
+            $ongId = $_SESSION['ong_id'];
 
-            // Sempre garanto o ID da ONG
-            $dados = [
-                'ong_id' => $_SESSION['ong_id']
-            ];
-
-            // Se vier mais campos além da foto, adiciona no $dados
             $campos = [
                 'nome',
                 'cnpj',
@@ -57,51 +57,49 @@ class EditarPerfilController
                 'descricao'
             ];
 
+            $dados = ['ong_id' => $ongId];
             foreach ($campos as $campo) {
                 if (isset($_POST[$campo]) && $_POST[$campo] !== '') {
-                    // só adiciona se existir no POST
                     $key = $campo === 'banco' ? 'banco_id' : $campo;
                     $dados[$key] = $_POST[$campo];
                 }
             }
 
-            // --- upload de imagem da ONG ---
+            $imagemAlterada = false;
+
+            // --- Upload de imagem da ONG ---
             if (!empty($_FILES['foto_perfil']['name'])) {
                 $pasta = __DIR__ . '/../../upload/images/ongs/';
-
-                if (!is_dir($pasta)) {
+                if (!is_dir($pasta))
                     mkdir($pasta, 0777, true);
-                }
 
-                $tmp = $_FILES['foto_perfil']['tmp_name'];
-                $nomeOriginal = basename($_FILES['foto_perfil']['name']);
-                $novoNome = uniqid() . '-' . $nomeOriginal;
+                $novoNome = uniqid() . '-' . basename($_FILES['foto_perfil']['name']);
                 $destino = $pasta . $novoNome;
 
-                if (move_uploaded_file($tmp, $destino)) {
-                    // salvar imagem no banco
-                    $idImagem = $this->imagemModel->salvarCaminhoImagem('upload/images/ongs/' . $novoNome);
-                    $dados['imagem_id'] = $idImagem;
-
-                    // atualizar sessão
+                if (move_uploaded_file($_FILES['foto_perfil']['tmp_name'], $destino)) {
+                    $dados['imagem_id'] = $this->ongModel->salvarImagemOng($ongId, 'upload/images/ongs/' . $novoNome);
                     $_SESSION['ong']['foto'] = 'upload/images/ongs/' . $novoNome;
+                    $imagemAlterada = true;
+                } else {
+                    // Caso falhe upload, mantém a imagem antiga
+                    $dados['imagem_id'] = $this->ongModel->buscarImagemId($ongId);
                 }
+            } else {
+                // Mantém a imagem atual caso nenhum arquivo seja enviado
+                $dados['imagem_id'] = $this->ongModel->buscarImagemId($ongId);
             }
 
             try {
-                if (isset($dados['imagem_id'])) {
-                    $update = $this->ongModel->atualizarImagem($dados['ong_id'], $dados['imagem_id']);
-                } else {
-                    $update = $this->ongModel->editar($dados);
-                }
+                $alterou = $this->ongModel->editar($dados);
 
-                if ($update > 0) {
-                    $_SESSION['mensagem_toast'] = ['sucesso', 'ONG atualizada com Sucesso!'];
+                // Se alterou algum campo OU imagem foi alterada
+                if ($alterou > 0 || $imagemAlterada) {
+                    $_SESSION['mensagem_toast'] = ['sucesso', 'ONG atualizada com sucesso!'];
                 } else {
                     $_SESSION['mensagem_toast'] = ['info', 'Nenhuma alteração feita!'];
                 }
+
             } catch (PDOException $e) {
-                // $_SESSION['erro'] = $e->getMessage();
                 $_SESSION['mensagem_toast'] = ['erro', 'Falha ao atualizar ONG!'];
             }
 
@@ -111,9 +109,8 @@ class EditarPerfilController
     }
 }
 
-// Instanciar o controller e processar a requisição
+// Instancia e processa requisição
 $controller = new EditarPerfilController();
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $controller->atualizarPerfil();
 }

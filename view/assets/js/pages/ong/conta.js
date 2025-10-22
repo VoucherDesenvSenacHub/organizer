@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const fotoPreview = document.getElementById('fotoPreview');
     const btnRemover = document.getElementById('btnRemover');
 
-    // Função para processar arquivo
+    // Função para processar arquivo (preview imediato)
     function processarArquivo(file) {
         if (file && file.type.startsWith('image/')) {
             const reader = new FileReader();
@@ -109,6 +109,14 @@ document.addEventListener('DOMContentLoaded', function() {
             reader.readAsDataURL(file);
         }
     }
+
+    // Atualiza o preview existente ao carregar a página (foto salva)
+    window.addEventListener('load', function() {
+        if (previewImage && previewImage.src && !previewImage.src.includes('image-placeholder.svg')) {
+            uploadArea.style.display = 'none';
+            fotoPreview.style.display = 'block';
+        }
+    });
 
     // Event listeners
     if (fotoInput) {
@@ -152,8 +160,8 @@ document.addEventListener('DOMContentLoaded', function() {
             e.stopPropagation();
             uploadArea.style.display = 'flex';
             fotoPreview.style.display = 'none';
+            previewImage.src = "../../assets/images/global/image-placeholder.svg";
             fotoInput.value = '';
         });
     }
 });
-
