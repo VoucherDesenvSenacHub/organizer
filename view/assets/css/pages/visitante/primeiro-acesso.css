@@ -1,0 +1,165 @@
+/* ======== Fundo ======== */
+body {
+    background: linear-gradient(180deg, aliceblue 15%, #c9dcff 100%);
+}
+
+/* ======== Estrutura principal ======== */
+main {
+    padding: 30px 15px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 60px);
+    gap: 30px;
+    text-align: center;
+}
+
+/* ======== Título principal animado ======== */
+.container h1 {
+    font-size: 32px;
+    text-transform: uppercase;
+    background: linear-gradient(90deg, #1C3464, #7ea1e0, #1C3464);
+    background-size: 200% 100%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradiente 3s linear infinite reverse;
+}
+
+/* ======== Animação de gradiente ======== */
+@keyframes gradiente {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 200% 50%;
+    }
+}
+
+/* ======== Seção de escolha (doador / ONG) ======== */
+.escolha {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 30px;
+}
+
+.escolha .item {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    flex: 1 1 585px;
+    max-width: 600px;
+    text-align: center;
+    gap: 20px;
+    transition: transform 0.3s;
+}
+
+.escolha .item:hover {
+    transform: translateY(-5px);
+}
+
+.escolha .item p {
+    font-size: 15px;
+}
+
+/* ======== Títulos internos com gradientes diferentes ======== */
+.escolha .item:first-child h1 {
+    background: linear-gradient(90deg, #45BEE6, #007AFF, #45BEE6);
+    background-size: 200% 100%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradiente 3s linear infinite reverse;
+    line-height: 1.2;
+}
+
+.escolha .item:last-child h1 {
+    background: linear-gradient(90deg, #f8c35c, #f67f2a, #f8c35c);
+    background-size: 200% 100%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradiente 3s linear infinite reverse;
+    line-height: 1.2;
+}
+
+/* ======== Imagens flutuando ======== */
+.escolha img {
+    width: 250px;
+    animation: mover 2s infinite alternate-reverse linear;
+}
+
+@keyframes mover {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-10px); }
+}
+
+/* ======== Botões ======== */
+.escolha .btn {
+    width: 100%;
+    margin-top: 10px;
+    border-radius: 40px;
+    background: none;
+    padding: 10px 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.escolha .item:first-child .btn {
+    border: 2px solid var(--cor-azul);
+    color: var(--cor-azul);
+}
+
+.escolha .item:first-child .btn:hover {
+    background-color: var(--cor-azul);
+    color: aliceblue;
+}
+
+.escolha .item:last-child .btn {
+    border: 2px solid var(--cor-amarelo-hover);
+    color: var(--cor-amarelo-hover);
+}
+
+.escolha .item:last-child .btn:hover {
+    background-color: var(--cor-amarelo-hover);
+    color: aliceblue;
+}
+
+.container a {
+    text-decoration: none;
+    font-weight: 600;
+    color: var(--cor-vermelho);
+    transition: .3s;
+}
+
+.container a:hover {
+   filter: brightness(.8);
+}
+
+/* ======== Responsivo ======== */
+@media (max-width: 600px) {
+    .escolha .item {
+        flex-direction: column;
+    }
+
+    .container h1 {
+        font-size: 24px;
+    }
+
+    .container p {
+        font-size: 13px;
+    }
+
+    .escolha img {
+        width: 200px;
+    }
+}

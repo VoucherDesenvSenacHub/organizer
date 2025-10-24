@@ -1,25 +1,102 @@
-# BASE DA ESTRUTURA:
-<?php 
-    $tituloPagina = ''; // Definir o título da página
-    $cssPagina = []; //Colocar o arquivo .css (exemplo: 'ONG/cadastro.css')
-    require_once '../../components/header.php';
-?>
-<!-- COMEÇAR SEU CÓDIGO AQUI -->
+# Organizer
+
+*Sistema completo para gerenciamento de ONGs, facilitando a administração de projetos, doadores, notícias e campanhas.*
 
 
-<?php
-    $jsPagina = []; //Colocar o arquivo .js (exemplo: 'cadastro.js')
-    require_once '../../components/footer.php';
-?>
+## Índice
 
+* [Descrição](#descrição)
+* [Funcionalidades](#funcionalidades)
+* [Tecnologias Utilizadas](#tecnologias-utilizadas)
+* [Como Rodar o Projeto](#como-rodar-o-projeto)
+* [Estrutura do Projeto](#estrutura-do-projeto)
+* [Licença](#licença)
 
+---
 
-# RECOMENDO INSTALAR A EXTENSÃO (MATERIAL ICON THEME)
+## Descrição
 
+O **Organizer** é um sistema web desenvolvido para facilitar o gerenciamento de ONGs. O sistema permite que usuários se cadastrem livremente como **doador**, **ONG** ou **administrador** (quando autorizado). Com isso, o Organizer oferece controle e transparência na gestão de projetos sociais, notícias e doações.
 
+---
 
-# PASTAS
-As pastas estão organizadas
+## Funcionalidades
 
-- Quando for fazer uma página, crie ela dentro da pasta (view/pages)
-- Já o CSS, JS ou Imagens coloque nas pastas (view/assets/...)
+* Cadastro e login de usuários com perfis diferenciados:
+
+  * **Doador:** pode se cadastrar, visualizar projetos e fazer doações.
+  * **ONG:** pode se cadastrar, criar e gerenciar seus próprios projetos e notícias.
+  * **Administrador:** possui controle total sobre o sistema, incluindo gestão de usuários e conteúdos.
+
+* Gerenciamento completo de projetos sociais: criação, edição, exclusão e visualização detalhada.
+
+* Publicação e gerenciamento de notícias para manter a comunidade informada.
+
+* Sistema de favoritos para projetos.
+
+* Interface responsiva e intuitiva.
+
+* Controle de permissões baseado na sessão do usuário.
+
+---
+
+## Tecnologias Utilizadas
+
+* PHP (arquitetura MVC)
+* MySQL (banco de dados)
+* HTML5 / CSS3 / JavaScript
+* PDO para conexões seguras ao banco
+* Font Awesome para ícones
+
+---
+
+## Como Rodar o Projeto
+
+1. Clone o repositório:
+
+   ```bash
+   git clone https://github.com/seu-usuario/organizer.git
+   ```
+
+2. Configure o banco de dados MySQL:
+
+   * Crie o banco `organizer` (ou o nome que preferir).
+   * Importe o arquivo SQL com a estrutura inicial.
+
+3. Ajuste as configurações de conexão no arquivo `database.php`.
+
+4. Hospede o projeto em um servidor local (XAMPP, WAMP, etc.).
+
+5. Acesse via navegador:
+
+   ```
+   http://localhost/organizer
+   ```
+
+---
+
+## Estrutura do Projeto
+
+```
+organizer/
+│
+├── config/              # Configurações do sistema (ex: banco de dados)
+├── controller/          # Controladores que gerenciam a lógica da aplicação
+├── database/                  # Scripts e arquivos relacionados ao banco de dados
+├── model/               # Modelos que representam dados e regras de negócio
+├── view/                # Arquivos da interface do usuário
+│   ├── assets/          # Arquivos estáticos (CSS, JS, imagens) organizados por perfil e componentes
+│   ├── components/      # Componentes reutilizáveis da interface (cards, layouts, popups)
+│   └── pages/           # Páginas específicas para cada perfil de usuário (adm, doador, ong, visitante)
+└── README.md            # Documentação do projeto
+```
+
+---
+
+---
+
+## Licença
+
+Senac Hub Academy 2025.
+
+---

@@ -1,85 +1,121 @@
 <?php
 ob_start();
-//CONFIGURAÇÕES DA PÁGINA
-$acesso = 'ong';
+$acesso       = 'ong';
 $tituloPagina = 'Projetos | Organizer';
-$cssPagina = ['ong/listagem.css'];
+$cssPagina    = ['ong/listagem.css'];
 require_once '../../components/layout/base-inicio.php';
 
-//IMPORT CLASSES
 require_once __DIR__ . '/../../../autoload.php';
+$projetoModel = new ProjetoModel();
+$paginaAtual  = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
 
-//CARREGA CARDS DE PROJETOS
-$projetoModel = new Projeto();
-$lista = $projetoModel->listar($_SESSION['ong_id']);
-$temprojeto = $lista;
-//PESQUISAR PROJETO
-if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['pesquisa'])) {
-    $pesquisa = $_GET['pesquisa'];
-    $lista = $projetoModel->buscarNome($pesquisa, $_SESSION['ong_id']);
-}
+$ongId = $_SESSION['ong_id'];
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['nome'])) {
-    $nome = $_POST['nome'];
-    $descricao = $_POST['descricao'];
-    $meta = $_POST['meta'];
-    $ong = $_SESSION['ong_id'];
-    $projetoModel->criar($nome, $descricao, $meta, $ong);
-}
+// Monta os filtros
+$filtros = [
+    'pagina'   => $paginaAtual,
+    'ong_id'   => $ongId,
+    'pesquisa' => $_GET['pesquisa'] ?? null,
+    'status'   => array_filter((array)($_GET['status'] ?? []))
+];
+
+// Busca lista e paginação
+$lista          = $projetoModel->listarCardsProjetos($filtros);
+$totalRegistros = $projetoModel->paginacaoProjetos($filtros);
+$paginas        = ceil($totalRegistros / 8);
+
+// Buscar as categorias
+$categoriaModel = new CategoriaModel();
+$Categorias     = $categoriaModel->buscarCategorias();
 
 //FORMULÁRIO DE CRIAÇÃO DE PROJETO (popup)
-$projeto = (object) [
-    'projeto_id' => '',
-    'nome' => '',
-    'meta' => '',
-    'descricao' => ''
+$PerfilProjeto = [
+    'projeto_id' => null,
+    'nome' => null,
+    'descricao' => null,
+    'meta' => null,
+    'categoria_id' => null,
+    'valor_arrecadado' => null
 ];
 require_once __DIR__ . '/../../components/popup/formulario-projeto.php';
 ob_end_flush();
+
 ?>
-<div id="toast-projeto" class="toast">
-    <i class="fa-regular fa-circle-check"></i>
-    Projeto criado com sucesso!
-</div>
-<div id="toast-projeto-erro" class="toast erro">
-    <i class="fa-solid fa-triangle-exclamation"></i>
-    Falha ao criar Projeto!
-</div>
+<main class="conteudo-principal">
+    <section>
+        <div class="container">
+            <div class="topo">
+                <h1><i class="fa-solid fa-diagram-project"></i> MEUS PROJETOS</h1>
+                <form id="form-busca" action="projetos.php" method="GET">
+                    <input type="text" name="pesquisa" placeholder="Busque um Projeto" value="<?= $_GET['pesquisa'] ?? '' ?>">
+                    <input type="hidden" name="status" value="<?= $_GET['status'] ?? '' ?>">
+                    <button class="btn" type="submit"><i class="fa-solid fa-search"></i></button>
+                </form>
+                <button class="btn btn-novo" onclick="abrir_popup('editar-projeto-popup')">NOVO PROJETO +</button>
+            </div>
+            <form id="form-filtro" action="projetos.php" method="GET">
+                <div class="ul-group">
+                    <div class="drop" id="esc-status" aria-haspopup="true" aria-expanded="false">
+                        <div class="drop-title" tabindex="0">
+                            <p id="status-label"><?= isset($_GET['status']) ? ucfirst(strtolower($_GET['status'])) : 'Status' ?></p>
+                            <i class="fa-solid fa-angle-down"></i>
+                        </div>
 
-<!--CONTEÚDO PRINCIPAL DA PÁGINA-->
-<main>
-    <div class="container">
-        <div class="topo">
-            <h1><i class="fa-solid fa-diagram-project"></i> MEUS PROJETOS</h1>
-            <form id="form-busca" action="projetos.php" method="GET">
-                <input type="text" name="pesquisa" placeholder="Busque um Projeto">
-                <button class="btn" type="submit"><i class="fa-solid fa-search"></i></button>
+                        <div class="drop-menu" role="menu" aria-labelledby="status-label">
+                            <button type="button" class="item" data-value="ATIVO">Ativo</button>
+                            <button type="button" class="item" data-value="INATIVO">Inativo</button>
+                            <button type="button" class="item" data-value="FINALIZADO">Finalizado</button>
+                        </div>
+                        <input type="hidden" name="status" id="status-hidden" value="<?= $_GET['status'] ?? '' ?>">
+                    </div>
+                </div>
             </form>
-            <button class="btn btn-novo" onclick="abrir_popup('editar-projeto-popup')">NOVO PROJETO +</button>
-        </div>
-        <?php if (isset($_GET['pesquisa'])) {
-            echo "<p id='qnt-busca'><i class='fa-solid fa-search'></i> " . count($lista) . " Projetos Encontrados</p>";
-        } ?>
-        <!-- CARDS DE PROJETOS -->
-        <div class="area-cards">
-            <?php
-            if ($lista) {
-                $class = 'tp-ong';
-                foreach ($lista as $projeto) {
-                    $valor_projeto = $projetoModel->buscarValor($projeto->projeto_id);
-                    $barra = round(($valor_projeto / $projeto->meta) * 100);
-                    require '../../components/cards/card-projeto.php';
+            <?php if (isset($_GET['pesquisa'])) {
+                echo "<p id='qnt-busca'><i class='fa-solid fa-search'></i> " . $totalRegistros . " Projetos Encontrados</p>";
+            } ?>
+            <!-- CARDS DE PROJETOS -->
+            <div class="area-cards">
+                <?php
+                if ($lista) {
+                    foreach ($lista as $projeto) {
+                        require '../../components/cards/card-projeto.php';
+                    }
+                } else {
+                    $status = $_GET['status'] ?? '';
+                    if ($status === 'ATIVO') {
+                        echo 'Você não tem projetos ativos no momento.';
+                    } elseif ($status === 'INATIVO') {
+                        echo 'Você não tem projetos inativos no momento.';
+                    } elseif ($status === 'FINALIZADO') {
+                        echo 'Você não tem projetos finalizados no momento.';
+                    } else {
+                        echo 'Você ainda não tem nenhum projeto :(';
+                    }
                 }
-            }
-            if (isset($temprojeto) && !$temprojeto) {
-                echo 'Você ainda não tem nenhum projeto :(';
-            }
-            ?>
+                ?>
+            </div>
+            <?php if ($paginas > 1): ?>
+                <nav class="paginacao">
+                    <?php for ($i = 1; $i <= $paginas; $i++): ?>
+                        <?php
+                        $url = "?pagina=$i";
+                        if (isset($_GET['pesquisa'])) {
+                            $url .= '&pesquisa=' . urlencode($_GET['pesquisa']);
+                        }
+                        if (isset($_GET['status'])) {
+                            $url .= '&status=' . urlencode($_GET['status']);
+                        }
+                        ?>
+                        <a href="<?= $url ?>" class="<?= $i === $paginaAtual ? 'active' : '' ?>">
+                            <?= $i ?>
+                        </a>
+                    <?php endfor; ?>
+                </nav>
+            <?php endif; ?>
         </div>
-    </div>
+    </section>
 </main>
-
 <?php
-$jsPagina = ['projetos-ong.js'];
+$jsPagina = ['ong/listagem.js'];
 require_once '../../components/layout/footer/footer-logado.php';
 ?>

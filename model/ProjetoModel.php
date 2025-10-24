@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__ . "/../config/database.php";
-class Projeto
+class ProjetoModel
 {
     private $tabela = 'projetos';
     private $pdo;
@@ -12,163 +12,208 @@ class Projeto
         $this->pdo->exec("SET time_zone = '-04:00'");
     }
 
-    function listar($id = null)
+    function listarCardsProjetos(array $filtros = [])
     {
-        if ($id) {
-            $query = "SELECT p.projeto_id, p.nome, p.descricao, p.meta, 
-                      (SELECT i.logo_url FROM imagens_projeto i WHERE i.projeto_id = p.projeto_id ORDER BY i.id ASC LIMIT 1) AS logo_url
-                      FROM $this->tabela p
-                      WHERE ong_id = :id";
-            $stmt = $this->pdo->prepare($query);
-            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-        } else {
-            $query = "SELECT p.projeto_id, p.nome, p.descricao, p.meta,
-                      (SELECT i.logo_url FROM imagens_projeto i WHERE i.projeto_id = p.projeto_id ORDER BY i.id ASC LIMIT 1) AS logo_url
-                      FROM $this->tabela p";
-            $stmt = $this->pdo->prepare($query);
-        }
+        $limit  = $filtros['limit']  ?? 8;
+        $pagina = $filtros['pagina'] ?? 1;
+        $offset = ($pagina - 1) * $limit;
 
+        $params = [];
+        $where  = 'WHERE 1=1';
+        $join   = '';
+        $order  = '';
+
+        // Filtro por pesquisa
+        if (!empty($filtros['pesquisa'])) {
+            $where .= " AND nome LIKE :nome";
+            $params[':nome'] = "%{$filtros['pesquisa']}%";
+        }
+        // Filtrar por ONG
+        if (!empty($filtros['ong_id'])) {
+            $where .= " AND ong_id = :ong_id";
+            $params[':ong_id'] = $filtros['ong_id'];
+        }
+        // Favoritos
+        if (!empty($filtros['usuario_id']) && !empty($filtros['favoritos'])) {
+            $join = "JOIN favoritos_projetos f USING (projeto_id)";
+            $where .= " AND usuario_id = :usuario_id";
+            $order = "ORDER BY data_favoritado DESC";
+            $params[':usuario_id'] = $filtros['usuario_id'];
+        }
+        // Apoiados
+        if (!empty($filtros['usuario_id']) && !empty($filtros['apoiados'])) {
+            $join = "JOIN apoios_projetos f USING (projeto_id)";
+            $where .= " AND usuario_id = :usuario_id";
+            $order = "ORDER BY data_apoio DESC";
+            $params[':usuario_id'] = $filtros['usuario_id'];
+        }
+        // Filtro Status
+        if (!empty($filtros['status']) && is_array($filtros['status'])) {
+            $placeholders = [];
+            foreach ($filtros['status'] as $i => $status) {
+                $key = ":status{$i}";
+                $placeholders[] = $key;
+                $params[$key] = $status;
+            }
+            $where .= " AND status IN (" . implode(',', $placeholders) . ")";
+        } 
+        // else {
+        //     $where .= " AND status <> 'INATIVO'";
+        // }
+        // Filtro Categorias
+        if (!empty($filtros['categorias']) && is_array($filtros['categorias'])) {
+            $placeholders = [];
+            foreach ($filtros['categorias'] as $i => $catId) {
+                $key = ":cat{$i}";
+                $placeholders[] = $key;
+                $params[$key] = $catId;
+            }
+            $where .= " AND categoria_id IN (" . implode(',', $placeholders) . ")";
+        }
+        // Filtros Ordem
+        if (empty($order) && !empty($filtros['ordem'])) {
+            if ($filtros['ordem'] === 'novos') {
+                $order = "ORDER BY data_cadastro DESC";
+            } elseif ($filtros['ordem'] === 'antigos') {
+                $order = "ORDER BY data_cadastro ASC";
+            }
+        }
+        // Recentes
+        if (!empty($filtros['recentes'])) {
+            $order = "ORDER BY data_cadastro DESC";
+        }
+        // Query final
+        $query = "SELECT v.* FROM vw_card_projetos v {$join} {$where} {$order} LIMIT {$limit} OFFSET {$offset}";
+
+        $stmt  = $this->pdo->prepare($query);
+        foreach ($params as $key => $value) {
+            $stmt->bindValue($key, $value, is_int($value) ? PDO::PARAM_INT : PDO::PARAM_STR);
+        }
         $stmt->execute();
-        $stmt->setFetchMode(PDO::FETCH_CLASS, __CLASS__);
-        return $stmt->fetchAll();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-
-    function buscarPerfil($id)
+    function paginacaoProjetos(array $filtros = [])
     {
-        $query = "SELECT projeto_id, nome, meta, descricao, data_cadastro, ong_id FROM $this->tabela WHERE projeto_id = :id";
+        $params = [];
+        $where = 'WHERE 1=1';
+        $join = '';
+
+        // Filtro por pesquisa
+        if (!empty($filtros['pesquisa'])) {
+            $where .= " AND nome LIKE :nome";
+            $params[':nome'] = "%{$filtros['pesquisa']}%";
+        }
+        // Filtrar por ONG
+        if (!empty($filtros['ong_id'])) {
+            $where .= " AND ong_id = :ong_id";
+            $params[':ong_id'] = $filtros['ong_id'];
+        }
+        // Projetos Favoritos
+        if (!empty($filtros['favoritos']) && !empty($filtros['usuario_id'])) {
+            $join = "JOIN favoritos_projetos f USING (projeto_id)";
+            $where .= " AND usuario_id = :usuario_id";
+            $params[':usuario_id'] = $filtros['usuario_id'];
+        }
+        // Projetos Apoiados
+        if (!empty($filtros['apoiados']) && !empty($filtros['usuario_id'])) {
+            $join = "JOIN apoios_projetos f USING (projeto_id)";
+            $where .= " AND usuario_id = :usuario_id";
+            $params[':usuario_id'] = $filtros['usuario_id'];
+        }
+        // Filtro por categorias
+        if (!empty($filtros['categorias']) && is_array($filtros['categorias'])) {
+            $placeholders = [];
+            foreach ($filtros['categorias'] as $i => $catId) {
+                $key = ":cat{$i}";
+                $placeholders[] = $key;
+                $params[$key] = $catId;
+            }
+            $where .= " AND categoria_id IN (" . implode(',', $placeholders) . ")";
+        }
+        // Filtro por status
+        if (!empty($filtros['status']) && is_array($filtros['status'])) {
+            $placeholders = [];
+            foreach ($filtros['status'] as $i => $status) {
+                $key = ":status{$i}";
+                $placeholders[] = $key;
+                $params[$key] = $status;
+            }
+            $where .= " AND status IN (" . implode(',', $placeholders) . ")";
+        }
+        // Query final
+        $query = "SELECT COUNT(*) AS total FROM vw_card_projetos v {$join} {$where}";
+
         $stmt = $this->pdo->prepare($query);
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        foreach ($params as $key => $value) {
+            $stmt->bindValue($key, $value, is_int($value) ? PDO::PARAM_INT : PDO::PARAM_STR);
+        }
         $stmt->execute();
-        $stmt->setFetchMode(PDO::FETCH_CLASS, __CLASS__);
+        return $stmt->fetchColumn();
+    }
+
+    function buscarPerfilProjeto($IdProjeto)
+    {
+        $query = "SELECT p.projeto_id, p.nome, p.descricao, p.meta, p.categoria_id, p.data_cadastro, p.status,
+        p.ong_id, o.nome AS nome_ong, i.caminho,
+        COALESCE(SUM(dp.valor), 0) AS valor_arrecadado,
+        ROUND(COALESCE(SUM(dp.valor), 0) / p.meta * 100) AS barra
+        FROM $this->tabela p
+        INNER JOIN ongs o
+            ON o.ong_id = p.ong_id
+        LEFT JOIN imagens i
+            ON o.imagem_id = i.imagem_id
+        LEFT JOIN doacoes_projetos dp
+            ON dp.projeto_id = p.projeto_id
+        WHERE p.projeto_id = :id";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindParam(':id', $IdProjeto, PDO::PARAM_INT);
+        $stmt->execute();
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
         return $stmt->fetch();
     }
 
-    function buscarNome($nome, $ong_id = null)
+    function buscarDoadoresProjeto($IdProjeto)
     {
-        if ($ong_id) {
-            $query = "SELECT p.projeto_id, p.nome, p.descricao, p.meta, 
-                      (SELECT i.logo_url FROM imagens_projeto i WHERE i.projeto_id = p.projeto_id ORDER BY i.id ASC LIMIT 1) AS logo_url
-                      FROM $this->tabela p
-                      WHERE nome LIKE :nome AND ong_id = :ong_id";
-            $stmt = $this->pdo->prepare($query);
-            $stmt->bindValue(':nome', "%{$nome}%", PDO::PARAM_STR);
-            $stmt->bindValue(':ong_id', $ong_id, PDO::PARAM_INT);
-        } else {
-            $query = "SELECT p.projeto_id, p.nome, p.descricao, p.meta,
-                      (SELECT i.logo_url FROM imagens_projeto i WHERE i.projeto_id = p.projeto_id ORDER BY i.id ASC LIMIT 1) AS logo_url
-                      FROM $this->tabela p
-                      WHERE nome LIKE :nome";
-            $stmt = $this->pdo->prepare($query);
-            $stmt->bindValue(':nome', "%{$nome}%", PDO::PARAM_STR);
-        }
-        $stmt->execute();
-        $stmt->setFetchMode(PDO::FETCH_CLASS, __CLASS__);
-        return $stmt->fetchAll();
-    }
-
-
-    function buscarValor($id)
-    {
-        $query = "SELECT SUM(valor) AS total FROM doacao_projeto WHERE projeto_id = :id";
-        $stmt = $this->pdo->prepare($query);
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-        $stmt->execute();
-        $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
-        return $resultado['total'] ?? 0;
-    }
-
-    function contarDoadores($id)
-    {
-        $query = "SELECT COUNT(*) AS total FROM doacao_projeto WHERE projeto_id = :id";
-        $stmt = $this->pdo->prepare($query);
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-        $stmt->execute();
-        $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
-        return $resultado['total'] ?? 0;
-    }
-
-    function buscarDoadores($id)
-    {
-        $query = "SELECT u.nome, SUM(dp.valor) as valor_doado FROM doacao_projeto dp
+        $query = "SELECT u.nome, SUM(dp.valor) as valor_doado, COUNT(dp.valor) as qtd_doacoes FROM doacoes_projetos dp
                   INNER JOIN projetos p USING (projeto_id)
                   INNER JOIN usuarios u USING (usuario_id)
                   WHERE p.projeto_id = :id
                   GROUP BY nome
                   ORDER BY 2 DESC";
         $stmt = $this->pdo->prepare($query);
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->bindParam(':id', $IdProjeto, PDO::PARAM_INT);
         $stmt->execute();
-        $stmt->setFetchMode(PDO::FETCH_CLASS, __CLASS__);
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
         return $stmt->fetchAll();
     }
 
-    function buscarApoiadores($id)
+    function buscarApoiadoresProjeto($IdProjeto)
     {
-        $query = "SELECT u.nome, a.data_apoio from apoios_projeto a
+        $query = "SELECT u.nome, a.data_apoio from apoios_projetos a
                   INNER JOIN usuarios u USING(usuario_id)
                   WHERE projeto_id = :id
                   ORDER BY data_apoio DESC";
         $stmt = $this->pdo->prepare($query);
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->bindParam(':id', $IdProjeto, PDO::PARAM_INT);
         $stmt->execute();
-        $stmt->setFetchMode(PDO::FETCH_CLASS, __CLASS__);
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
         return $stmt->fetchAll();
     }
 
-
-    function editar($id, $nome, $descricao, $meta)
+    function buscarImagensProjeto($IdProjeto)
     {
-        try {
-            $query = "UPDATE $this->tabela
-                          SET nome = :nome, descricao = :descricao, meta = :meta
-                          WHERE projeto_id = :id";
-            $stmt = $this->pdo->prepare($query);
-            $stmt->bindParam(':nome', $nome);
-            $stmt->bindParam(':descricao', $descricao);
-            $stmt->bindParam(':meta', $meta);
-            $stmt->bindParam(':id', $id);
-            $stmt->execute();
-
-            if ($stmt->rowCount() > 0) {
-                header("Location: perfil.php?id=$id&msg=sucesso");
-            } else {
-                header("Location: perfil.php?id=$id");
-            }
-            exit;
-        } catch (PDOException $e) {
-            // echo "Erro no UPDATE: " . $e->getMessage();
-            header("Location: perfil.php?id=$id&msg=erro");
-            exit;
-        }
+        $query = "SELECT caminho FROM imagens JOIN imagens_projetos i USING(imagem_id) WHERE projeto_id = :id";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindParam(':id', $IdProjeto, PDO::PARAM_INT);
+        $stmt->execute();
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        return $stmt->fetchAll();
     }
 
-    function criar($nome, $descricao, $meta, $ong_id)
+    function realizarDoacaoProjeto($projeto_id, $usuario_id, $valor)
     {
-        try {
-            $query = "INSERT INTO $this->tabela (nome, descricao, meta, ong_id)
-                          VALUES (:nome, :descricao, :meta, :ong_id)";
-            $stmt = $this->pdo->prepare($query);
-            $stmt->bindParam(':nome', $nome);
-            $stmt->bindParam(':descricao', $descricao);
-            $stmt->bindParam(':meta', $meta);
-            $stmt->bindParam(':ong_id', $ong_id);
-            $stmt->execute();
-            if ($stmt->rowCount() > 0) {
-                header('Location: projetos.php?msg=sucesso');
-            } else {
-                header('Location: projetos.php');
-            }
-            exit;
-        } catch (PDOException $e) {
-            header('Location: projetos.php?msg=erro');
-            exit;
-        }
-    }
-
-    function doacao($projeto_id, $usuario_id, $valor)
-    {
-        $query = 'INSERT INTO doacao_projeto (projeto_id, usuario_id, valor)
+        $query = 'INSERT INTO doacoes_projetos (projeto_id, usuario_id, valor)
                   VALUES (:projeto, :doador, :valor)';
         $stmt = $this->pdo->prepare($query);
         $stmt->bindParam(':projeto', $projeto_id);
@@ -178,49 +223,60 @@ class Projeto
         return $stmt->rowCount();
     }
 
-    function buscarDoacao($id)
+    public function editar($id, $nome, $descricao, $meta, $categoria_id)
     {
-        $query = "SELECT p.nome, valor, data_doacao
-                  FROM $this->tabela p, doacao_projeto d
-                  WHERE p.projeto_id = d.projeto_id
-                  AND d.usuario_id = :id
-                  ORDER BY 3 DESC";
-        $stmt = $this->pdo->prepare($query);
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-        $stmt->execute();
-        $stmt->setFetchMode(PDO::FETCH_CLASS, __CLASS__);
-        return $stmt->fetchAll();
-    }
-
-
-    function favoritarProjeto($usuario_id, $projeto_id)
-    {
-        // Verifica se já está favoritado
-        $sql = "SELECT 1 FROM favoritos_projetos WHERE usuario_id = :id AND projeto_id = :projeto_id";
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([
-            ':id' => $usuario_id,
-            ':projeto_id' => $projeto_id
-        ]);
-
-        if ($stmt->rowCount() > 0) {
-            // Já favoritado → desfavorita
-            $sql = "DELETE FROM favoritos_projetos WHERE usuario_id = :id AND projeto_id = :projeto_id";
-            $stmt = $this->pdo->prepare($sql);
-            $stmt->execute([':id' => $usuario_id, ':projeto_id' => $projeto_id]);
-            return false; // desfavoritado
-        } else {
-            // Não favoritado → adiciona
-            $sql = "INSERT INTO favoritos_projetos (usuario_id, projeto_id) VALUES (:id, :projeto_id)";
-            $stmt = $this->pdo->prepare($sql);
-            $stmt->execute([
-                ':id' => $usuario_id,
-                ':projeto_id' => $projeto_id
-            ]);
-            return true; // favoritado
+        try {
+            $query = "UPDATE $this->tabela
+                      SET nome = :nome, descricao = :descricao, meta = :meta, categoria_id = :categoria_id
+                      WHERE projeto_id = :id";
+            $stmt = $this->pdo->prepare($query);
+            $stmt->bindParam(':nome', $nome);
+            $stmt->bindParam(':descricao', $descricao);
+            $stmt->bindParam(':meta', $meta);
+            $stmt->bindParam(':categoria_id', $categoria_id);
+            $stmt->bindParam(':id', $id);
+            return $stmt->execute();
+        } catch (PDOException $e) {
+            return false;
         }
     }
 
+    function criar($nome, $descricao, $meta, $categoria_id, $ong_id)
+    {
+        try {
+            $query = "INSERT INTO $this->tabela (nome, descricao, meta, categoria_id, ong_id)
+                      VALUES (:nome, :descricao, :meta, :categoria_id, :ong_id)";
+            $stmt = $this->pdo->prepare($query);
+            $stmt->bindParam(':nome', $nome);
+            $stmt->bindParam(':descricao', $descricao);
+            $stmt->bindParam(':meta', $meta);
+            $stmt->bindParam(':categoria_id', $categoria_id);
+            $stmt->bindParam(':ong_id', $ong_id);
+            if ($stmt->execute()) {
+                return $this->pdo->lastInsertId();
+            }
+            return false;
+        } catch (PDOException $e) {
+            error_log("Erro ao inserir registro: " . $e->getMessage());
+            return false;
+        }
+    }
+
+    function buscarDoacao($id)
+    {
+        $query = "SELECT p.projeto_id, p.nome, d.valor, d.data_doacao,
+            (SELECT i.caminho FROM imagens i JOIN imagens_projetos ip ON i.imagem_id = ip.imagem_id 
+            WHERE ip.projeto_id = p.projeto_id ORDER BY i.data_upload ASC LIMIT 1) AS caminho
+        FROM projetos p
+            INNER JOIN doacoes_projetos d ON p.projeto_id = d.projeto_id
+        WHERE d.usuario_id = :id
+        ORDER BY d.data_doacao DESC";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        return $stmt->fetchAll();
+    }
 
     function listarFavoritos($usuario_id)
     {
@@ -231,33 +287,9 @@ class Projeto
         return $stmt->fetchAll(PDO::FETCH_COLUMN);
     }
 
-    function favoritosUsuario($usuario_id)
-    {
-        $query = "SELECT p.projeto_id, p.nome, p.descricao, p.meta,
-        (SELECT i.logo_url FROM imagens_projeto i WHERE i.projeto_id = p.projeto_id ORDER BY i.id ASC LIMIT 1) AS logo_url
-        FROM $this->tabela p
-        INNER JOIN favoritos_projetos f USING(projeto_id) 
-        WHERE f.usuario_id = :id";
-        $stmt = $this->pdo->prepare($query);
-        $stmt->bindParam(':id', $usuario_id, PDO::PARAM_INT);
-        $stmt->execute();
-        $stmt->setFetchMode(PDO::FETCH_CLASS, __CLASS__);
-        return $stmt->fetchAll();
-    }
-
-    function buscarImagens($id)
-    {
-        $query = "SELECT logo_url FROM imagens_projeto WHERE projeto_id = :id";
-        $stmt = $this->pdo->prepare($query);
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-        $stmt->execute();
-        $stmt->setFetchMode(PDO::FETCH_CLASS, __CLASS__);
-        return $stmt->fetchAll();
-    }
-
     public function apoiarProjeto($usuario_id, $projeto_id)
     {
-        $query = "INSERT IGNORE INTO apoios_projeto (usuario_id, projeto_id) VALUES (:usuario_id, :projeto_id)";
+        $query = "INSERT IGNORE INTO apoios_projetos (usuario_id, projeto_id) VALUES (:usuario_id, :projeto_id)";
         $stmt = $this->pdo->prepare($query);
         $stmt->bindParam(':usuario_id', $usuario_id, PDO::PARAM_INT);
         $stmt->bindParam(':projeto_id', $projeto_id, PDO::PARAM_INT);
@@ -266,32 +298,17 @@ class Projeto
 
     public function desapoiarProjeto($usuario_id, $projeto_id)
     {
-        $query = "DELETE FROM apoios_projeto WHERE usuario_id = :usuario_id AND projeto_id = :projeto_id";
+        $query = "DELETE FROM apoios_projetos WHERE usuario_id = :usuario_id AND projeto_id = :projeto_id";
         $stmt = $this->pdo->prepare($query);
         $stmt->bindParam(':usuario_id', $usuario_id, PDO::PARAM_INT);
         $stmt->bindParam(':projeto_id', $projeto_id, PDO::PARAM_INT);
         return $stmt->execute();
     }
 
-
-    function buscarCardsApoiados($id)
-    {
-        $query = "SELECT p.projeto_id, p.nome, p.descricao, p.meta, 
-                  (SELECT i.logo_url FROM imagens_projeto i WHERE i.projeto_id = p.projeto_id ORDER BY i.id ASC LIMIT 1) AS logo_url
-                  FROM projetos p 
-                  INNER JOIN apoios_projeto a USING (projeto_id)
-                  WHERE usuario_id = :id";
-        $stmt = $this->pdo->prepare($query);
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-        $stmt->execute();
-        $stmt->setFetchMode(PDO::FETCH_CLASS, __CLASS__);
-        return $stmt->fetchAll();
-    }
-
     public function usuarioJaApoiouProjeto($usuario_id, $projeto_id)
     {
-        $query = "SELECT 1 FROM apoios_projeto 
-                  WHERE usuario_id = :usuario_id AND projeto_id = :projeto_id 
+        $query = "SELECT 1 FROM apoios_projetos
+                  WHERE usuario_id = :usuario_id AND projeto_id = :projeto_id
                   LIMIT 1";
 
         $stmt = $this->pdo->prepare($query);
@@ -299,5 +316,14 @@ class Projeto
         $stmt->bindParam(':projeto_id', $projeto_id, PDO::PARAM_INT);
         $stmt->execute();
         return $stmt->fetch();
+    }
+
+    function inativar($id)
+    {
+        $query = "UPDATE $this->tabela SET status = 'INATIVO' WHERE projeto_id = :id";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->rowCount();
     }
 }

@@ -1,0 +1,247 @@
+/* ========= ASIDE CONTAINER ========= */
+#aside-container {
+    position: absolute;
+    left: 0;
+    width: 65px;
+    flex-shrink: 0;
+    height: 100%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: rgba(255, 255, 255, 0.95);
+    color: var(--cor-principal);
+    border-radius: 0 25px 25px 0;
+    box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em,
+                rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
+    transition: .4s ease-out;
+    z-index: 2;
+}
+
+#aside-container.active {
+    width: 200px;
+}
+
+
+/* ========= BOTÕES GERAIS ========= */
+#aside-container #btn-aside,
+#aside-container #btn-sair {
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 45px;
+    height: 45px;
+    border-radius: 4px;
+    transition: .4s ease-out;
+    overflow: hidden;
+}
+
+
+/* ========= BOTÃO ABRIR/COLAPSAR ========= */
+#aside-container #btn-aside {
+    background-color: var(--cor-azul);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#aside-container #btn-aside:hover {
+    filter: brightness(1.1);
+}
+
+#aside-container #btn-aside i {
+    transform: rotate(0);
+    transition: .4s;
+    font-size: 17px;
+    color: aliceblue;
+}
+
+#aside-container #btn-aside.active {
+    transform: translateX(135px);
+}
+
+#aside-container #btn-aside.active i {
+    transform: rotate(-180deg);
+}
+
+
+/* ========= LINKS DO TOPO ========= */
+#aside-container #area-topo a {
+    height: 45px;
+    width: 45px;
+    transition: .4s;
+    white-space: nowrap;
+}
+
+#aside-container.active #area-topo a {
+    width: 180px;
+}
+
+
+/* ========= NAVEGAÇÃO ========= */
+#aside-container nav {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    margin-top: 12px;
+}
+
+#aside-container a {
+    text-decoration: none;
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    color: var(--cor-principal);
+    padding: 10px 14px;
+    border-radius: 4px;
+    transition: .3s;
+    font-size: 15px;
+}
+
+#aside-container a:hover,
+#aside-container #btn-sair:hover,
+#aside-container #btn-acesso:hover {
+    background-color: rgba(69, 190, 230, 0.2);
+}
+
+#aside-container a i {
+    font-size: 17px;
+}
+
+
+/* ========= BOTÃO SAIR ========= */
+#aside-container #btn-sair {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 0 13px;
+    position: absolute;
+    bottom: 15px;
+    color: var(--cor-principal);
+    width: 45px;
+}
+
+#aside-container #btn-sair i {
+    font-size: 20px;
+}
+
+#aside-container #btn-sair span {
+    font-size: 15px;
+}
+
+#aside-container.active #btn-sair {
+    width: 180px;
+}
+
+
+/* ========= BOTÃO MUDAR ACESSO ========= */
+#aside-container #btn-acesso {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 10px;
+    position: absolute;
+    bottom: 65px;
+    color: var(--cor-principal);
+    width: 45px;
+    white-space: nowrap;
+    background: none;
+    border: none;
+    overflow: hidden;
+    transition: .5s;
+}
+
+#aside-container.active #btn-acesso {
+    width: 180px;
+}
+
+#aside-container #btn-acesso img {
+    width: 25px;
+}
+
+
+/* ========= RESPONSIVIDADE (MOBILE) ========= */
+@media (max-width: 500px) {
+    #aside-container {
+        left: -65px;
+    }
+
+    #aside-container.active {
+        left: 0;
+    }
+
+    #aside-container #btn-aside {
+        transform: translateX(55px);
+    }
+
+    #aside-container #btn-aside i {
+        background-color: var(--cor-azul);
+        padding: 10px;
+        border-radius: 50%;
+    }
+
+    #aside-container:not(.active) #btn-aside {
+        border-radius: 0 50px 50px 0;
+        background-color: white;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px,
+                    rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    }
+}
+
+
+/* ========= ANIMAÇÃO DE ÍCONES ========= */
+#aside-container nav a:hover i,
+#aside-container #btn-acesso:hover img,
+#aside-container #btn-sair:hover i {
+    animation: girarIcone .3s linear;
+}
+
+@keyframes girarIcone {
+    50% { transform: rotate(20deg); }
+    100% { transform: rotate(0); }
+}
+
+
+/* ========= VARIAÇÃO ASIDE ONG ========= */
+#aside-container.aside-ong #btn-aside {
+    background-color: var(--cor-amarelo);
+}
+
+#aside-container.aside-ong a:hover,
+#aside-container.aside-ong #btn-sair:hover,
+#aside-container.aside-ong #btn-acesso:hover {
+    background-color: rgba(227, 182, 82, 0.2);
+}
+
+@media (max-width: 500px) {
+    #aside-container.aside-ong #btn-aside i {
+        background-color: var(--cor-amarelo);
+    }
+
+    #aside-container.aside-ong:not(.active) #btn-aside {
+        background-color: white;
+    }
+}
+
+
+/* ========= VARIAÇÃO ASIDE ADM ========= */
+#aside-container.aside-adm #btn-aside {
+    background-color: var(--cor-roxo-adm);
+}
+
+#aside-container.aside-adm a:hover,
+#aside-container.aside-adm #btn-sair:hover,
+#aside-container.aside-adm #btn-acesso:hover {
+    background-color: rgba(151, 71, 255, 0.2);
+}
+
+@media (max-width: 500px) {
+    #aside-container.aside-adm #btn-aside i {
+        background-color: var(--cor-roxo-adm);
+    }
+
+    #aside-container.aside-adm:not(.active) #btn-aside {
+        background-color: white;
+    }
+}

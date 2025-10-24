@@ -1,39 +1,50 @@
 <?php
-
-$acesso = 'doador';
+$acesso       = 'doador';
 $tituloPagina = 'Favoritos | Organizer';
-$cssPagina = ['doador/favoritos.css'];
+$cssPagina    = ['doador/favoritos.css'];
+
 require_once '../../components/layout/base-inicio.php';
+require_once __DIR__ . '/../../../autoload.php';
 
-require_once '../../../model/OngModel.php';
-$ongModel = new Ong();
+$ongModel     = new OngModel();
+$projetoModel = new ProjetoModel();
+$IdUsuario    = $_SESSION['usuario']['id'];
 
-require_once '../../../model/ProjetoModel.php';
-$projetoModel = new Projeto();
+// Página e Aba atual
+$paginaAtual = (int)($_GET['pagina'] ?? 1);
+$abaAtual = $_GET['aba'] ?? 'ongs';
 
-// Buscar os favoritos
-$listaOngs = $ongModel->favoritosUsuario($_SESSION['usuario_id']);
-$listaProjetos = $projetoModel->favoritosUsuario($_SESSION['usuario_id']);
+// Filtros para cada aba
+$filtrosOngs = [
+    'pagina'     => ($abaAtual === 'ongs') ? $paginaAtual : 1,
+    'usuario_id' => $IdUsuario,
+    'favoritas'  => true // flag para indicar que queremos apenas itens favoritados
+];
+$filtrosProjetos = [
+    'pagina'     => ($abaAtual === 'projetos') ? $paginaAtual : 1,
+    'usuario_id' => $IdUsuario,
+    'favoritos'  => true // flag para indicar que queremos apenas projetos favoritados
+];
 
-// Pintar o icone de favoritos
-if (isset($_SESSION['usuario_id'])) {
-    $ongsFavoritas = $ongModel->listarFavoritas($_SESSION['usuario_id']);
-    $projetosFavoritos = $projetoModel->listarFavoritos($_SESSION['usuario_id']);
-}
+// Buscar ONGs e Projetos favoritados
+$listaOngs     = $ongModel->listarCardsOngs($filtrosOngs);
+$listaProjetos = $projetoModel->listarCardsProjetos($filtrosProjetos);
 
+// Calcular paginação para ONGs
+$tipoOngs = 'favoritos';
+$totalRegistrosOngs = $ongModel->paginacaoOngs($filtrosOngs);
+$paginasOngs = (int) ceil($totalRegistrosOngs / 6);
+
+// Calcular paginação para Projetos
+$tipoProjetos = 'favoritos';
+$totalRegistrosProjetos = $projetoModel->paginacaoProjetos($filtrosProjetos);
+$paginasProjetos = (int) ceil($totalRegistrosProjetos / 8);
+
+// Listas para colorir ícones de favoritos
+$favoritas = $ongModel->listarFavoritas($IdUsuario);
+$favoritos = $projetoModel->listarFavoritos($IdUsuario);
 ?>
-<!-- 
-    Toast de Favoritar
--->
-<div id="toast-favorito" class="toast">
-    <i class="fa-solid fa-heart"></i>
-    Adicionado aos favoritos!
-</div>
-<div id="toast-remover-favorito" class="toast erro">
-    <i class="fa-solid fa-heart-crack"></i>
-    Removido dos favoritos!
-</div>
-<main>
+<main class="conteudo-principal">
     <section class="secoes" id="secao-2">
         <div class="container">
             <h1><i class="fa-solid fa-heart"></i> MEUS FAVORITOS</h1>
@@ -44,56 +55,77 @@ if (isset($_SESSION['usuario_id'])) {
             <div id="principal">
                 <div id="control-box">
                     <div class="box-ongs">
-                        <?php if (!$listaOngs) {
-                            echo '<div class="btn-doar" id="btn-doar-ong"> 
-                                    <h4>Você ainda não favoritou nenhuma ONG! <i class="fa-regular fa-face-frown"></i> </h4>
-                                    <a href="../ong/lista.php">
-                                    <button class="btn"><i class="fa-solid fa-house-flag"></i> Conhecer Ongs</button></a>
-                                  </div>';
-                        } else {
-                            foreach ($listaOngs as $ong) {
-                                $jaFavoritada = isset($_SESSION['usuario_id']) && in_array($ong->ong_id, $ongsFavoritas);
-                                require '../../components/cards/card-ong.php';
-                            }
-                        }
-                        ?>
+                        <?php if (!$listaOngs): ?>
+                            <div class="btn-doar" id="btn-doar-ong">
+                                <h4>Você ainda não favoritou nenhuma ONG! <i class="fa-regular fa-face-frown"></i></h4>
+                                <a href="../ong/lista.php">
+                                    <button class="btn"><i class="fa-solid fa-building-flag"></i> Conhecer Ongs</button>
+                                </a>
+                            </div>
+                        <?php else: ?>
+                            <div class="list-card">
+                                <?php foreach ($listaOngs as $ong): ?>
+                                    <?php
+                                    $jaFavoritada = isset($_SESSION['usuario']['id']) && in_array($ong['ong_id'], $favoritas);
+                                    require '../../components/cards/card-ong.php';
+                                    ?>
+                                <?php endforeach; ?>
+                            </div>
+
+                            <?php if ($paginasOngs > 1): ?>
+                                <nav class="paginacao">
+                                    <?php for ($i = 1; $i <= $paginasOngs; $i++): ?>
+                                        <a href="?pagina=<?= $i ?>&aba=ongs" class="<?= $i === $filtrosOngs['pagina'] ? 'active' : '' ?>">
+                                            <?= $i ?>
+                                        </a>
+                                    <?php endfor; ?>
+                                </nav>
+                            <?php endif; ?>
+                        <?php endif; ?>
                     </div>
                     <div class="box-ongs">
-                        <?php if (!$listaProjetos) {
-                            echo '<div class="btn-doar"> 
-                                    <h4>Você ainda não favoritou nenhum Projeto! <i class="fa-regular fa-face-frown"></i> </h4>
-                                    <a href="../projeto/lista.php">
-                                    <button class="btn"><i class="fa-solid fa-diagram-project"></i> Conhecer Projetos</button></a>
-                                  </div>';
-                        } else {
-                            foreach ($listaProjetos as $projeto) {
-                                $jaFavoritado = isset($_SESSION['usuario_id']) && in_array($projeto->projeto_id, $projetosFavoritos);
-                                $valor_projeto = $projetoModel->buscarValor($projeto->projeto_id);
-                                $barra = round(($valor_projeto / $projeto->meta) * 100);
-                                require '../../components/cards/card-projeto.php';
-                            }
-                        }
-                        ?>
+                        <?php if (!$listaProjetos): ?>
+                            <div class="btn-doar">
+                                <h4>Você ainda não favoritou nenhum Projeto! <i class="fa-regular fa-face-frown"></i></h4>
+                                <a href="../projeto/lista.php">
+                                    <button class="btn"><i class="fa-solid fa-diagram-project"></i> Conhecer Projetos</button>
+                                </a>
+                            </div>
+                        <?php else: ?>
+                            <div class="list-card">
+                                <?php foreach ($listaProjetos as $projeto): ?>
+                                    <?php require '../../components/cards/card-projeto.php'; ?>
+                                <?php endforeach; ?>
+                            </div>
+
+                            <?php if ($paginasProjetos > 1): ?>
+                                <nav class="paginacao">
+                                    <?php for ($i = 1; $i <= $paginasProjetos; $i++): ?>
+                                        <a href="?pagina=<?= $i ?>&aba=projetos" class="<?= $i === $filtrosProjetos['pagina'] ? 'active' : '' ?>">
+                                            <?= $i ?>
+                                        </a>
+                                    <?php endfor; ?>
+                                </nav>
+                            <?php endif; ?>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>
         </div>
-
-        </div>
-
     </section>
 </main>
-
+<script>
+    // Definir aba ativa baseada na URL sem animação
+    document.addEventListener('DOMContentLoaded', function() {
+        const abaAtual = '<?= $abaAtual ?>';
+        if (abaAtual === 'projetos') {
+            definirAbaInicial(1);
+        } else {
+            definirAbaInicial(0);
+        }
+    });
+</script>
 <?php
-$jsPagina = ['favoritos.js']; //Colocar o arquivo .js
+$jsPagina = ['doador/favoritos.js'];
 require_once '../../components/layout/footer/footer-logado.php';
-// Ativar os toast
-if (isset($_SESSION['favorito'])) {
-    if ($_SESSION['favorito']) {
-        echo "<script>mostrar_toast('toast-favorito')</script>";
-    } else {
-        echo "<script>mostrar_toast('toast-remover-favorito')</script>";
-    }
-    unset($_SESSION['favorito']);
-}
 ?>

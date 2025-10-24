@@ -1,4 +1,4 @@
-/* POPUP DE EDITAR*/
+/* POPUP DE INATIVAR PROJETO */
 #inativar-projeto-popup {
     background-color: rgba(0, 0, 0, 0.1);
     padding: 8px;
@@ -8,96 +8,71 @@
     padding: 20px;
     background-color: white;
     color: var(--cor-principal);
-}
-
-#inativar-projeto-popup form {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-#inativar-projeto-popup .box-edit {
-    /* background-color: white; */
-    /* padding: 10px; */
-    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3); */
-    border-radius: 3px;
-    display: flex;
-    flex-direction: column;
+    max-width: 500px;
 }
 
 #inativar-projeto-popup h1 {
     font-size: 20px;
     text-align: center;
     width: 100%;
-    margin-bottom: 15px
+    margin-bottom: 15px;
+    color: var(--cor-vermelho);
 }
 
-#inativar-projeto-popup .group-check {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
+#inativar-projeto-popup p {
+    font-size: 14px;
+    margin-bottom: 10px;
 }
 
-#inativar-projeto-popup .input-box {
-    display: flex;
-    align-items: center;
-    padding: 8px;
-    border-radius: 3px;
-    background-color: #f0f0f0;
-    gap: 10px;
+#inativar-projeto-popup p strong {
+    color: var(--cor-vermelho);
+}
+
+#inativar-projeto-popup ul {
+    margin: 15px 0;
+    padding-left: 20px;
+}
+
+#inativar-projeto-popup ul li {
+    margin: 5px 0;
     font-size: 14px;
 }
 
-#inativar-projeto-popup .input-box:hover {
-    filter: brightness(.9);
-}
-
-#inativar-projeto-popup input[type="checkbox"] {
-    accent-color: var(--cor-amarelo-hover);
-    width: 14px;
-    height: 14px;
-}
-
-#inativar-projeto-popup .input-area {
+#inativar-projeto-popup .btn-acoes-modal {
     display: flex;
-    flex-direction: column;
-}
-
-#inativar-projeto-popup .input-area textarea {
-    background-color: rgba(0, 0, 0, 0.07);
-    border: none;
-    outline: none;
-    border-radius: 4px;
-    padding: 15px;
-    transition: .3s;
-    width: 100%;
-    max-width: 471px;
-}
-
-#inativar-projeto-popup p,
-#inativar-projeto-popup .input-area label {
-    font-size: 13px;
-}
-
-#inativar-projeto-popup p span,
-#inativar-projeto-popup .input-area label span {
-    font-size: 15px;
-    color: red;
-    font-weight: 600;
-}
-
-
-#inativar-projeto-popup .container-popup .box-edit button {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     gap: 15px;
-    background-color: var(--cor-vermelho);
-    /* color: #912B2B; */
     margin-top: 20px;
 }
 
-#inativar-projeto-popup .container-popup .box-edit button i {
-    font-size: 20px;
+#inativar-projeto-popup .btn-cancelar {
+    background-color: var(--cor-cinza);
+    color: white;
+    flex: 1;
+}
+
+#inativar-projeto-popup .btn-cancelar:hover {
+    background-color: var(--cor-cinza-hover);
+    color: var(--cor-cinza);
+}
+
+#inativar-projeto-popup .btn-confirmar {
+    background-color: var(--cor-vermelho);
+    color: white;
+    flex: 1;
+}
+
+#inativar-projeto-popup .btn-confirmar:hover {
+    background-color: var(--cor-vermelho-hover);
+    color: var(--cor-vermelho);
+}
+
+#inativar-projeto-popup .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px;
+    border-radius: 4px;
+    font-weight: 600;
+    transition: all 0.3s ease;
 }

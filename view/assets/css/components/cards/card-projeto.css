@@ -13,6 +13,44 @@
     transition: .3s;
 }
 
+.card-projeto .categoria {
+    position: absolute;
+    border-radius: 5px;
+    top: 5px;
+    left: 5px;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 1px 4px;
+    color: aliceblue;
+    opacity: .9;
+}
+
+.card-projeto .status {
+    position: absolute;
+    top: 107px;
+    left: 5px;
+    padding: 1px 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    font-size: 11px;
+    font-weight: 600;
+    border-radius: 4px;
+}
+
+.card-projeto .status img {
+    width: 12px;
+}
+
+.card-projeto .status.inativo {
+    background-color: var(--cor-vermelho);
+}
+
+.card-projeto .status.finalizado {
+    background-color: var(--cor-ciano);
+}
+
 /* Imagem do Projeto */
 .card-projeto .img-projeto {
     width: 100%;
@@ -55,7 +93,9 @@
     display: flex;
     align-items: center;
     gap: 8px;
+
 }
+
 
 .card-projeto .barra-doacao span {
     font-size: 11px;
@@ -149,14 +189,11 @@
 
 .card-projeto .acoes-projeto button.favoritado {
     color: hotpink;
+    animation: pulse 1s ease;
 }
 
-
-/* TIPOS DE CARD */
-/* .card-projeto.tp-ong {
-    height: auto;
-} */
-
-.card-projeto.tp-ong .acoes-projeto form {
-    display: none;
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
 }

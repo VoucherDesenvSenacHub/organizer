@@ -1,0 +1,69 @@
+.card-atividade {
+    /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    padding: 10px;
+    gap: 10px;
+    transition: .3s;
+    flex: 1;
+    min-width: 280px;
+    max-height: 90px;
+    background-color: #f8f8fd;
+    cursor: default;
+}
+
+.card-atividade:hover {
+    box-shadow: rgba(60, 64, 67, 0.4) 0px 1px 2px 0px, rgba(60, 64, 67, 0.3) 0px 1px 3px 1px;
+}
+
+/* Icones */
+.card-atividade .icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    /* padding: 7px; */
+    min-width: 50px;
+    max-width: 50px;
+    border-radius: 50%;
+    /* box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    background-color: #f0f0f0; */
+}
+
+/* Imagem do icone */
+.card-atividade .icon img {
+    width: 70%;
+}
+
+/* Texto do Card */
+.card-atividade .text h4 {
+    color: var(--cor-principal);
+    font-size: 13.5px;
+    font-weight: 600;
+}
+
+.card-atividade .text p {
+    color: grey;
+    font-weight: 500;
+    font-size: 12px;
+}
+
+.card-atividade .text span {
+    font-weight: 400;
+    color: silver;
+    font-size: 12px;
+}
+
+/* Cor do fundo */
+.card-atividade .icon.tp-doacao {
+    background-color: #55E18B;
+}
+
+.card-atividade .icon.tp-salvar {
+    background-color: #FF5A79;
+}
+.card-atividade .icon.tp-apoiar {
+    background-color: #62D8FF;
+}
