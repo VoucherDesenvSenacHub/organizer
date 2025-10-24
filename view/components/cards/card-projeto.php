@@ -1,46 +1,38 @@
 <?php
-// Pegar os dados do Projeto e tratar possíveis erros
-$IdProjeto = $projeto['projeto_id'] ?? null;
-$NomeProjeto = $projeto['nome'] ?? 'Nome do Projeto';
-$DescricaoProjeto =  mb_strimwidth($projeto['descricao'], 0, 220, '...') ?? 'Lorem ipsum...';
-$StatusProjeto = $projeto['status'] ?? 'ATIVO';
-$CategoriaProjeto = $projeto['categoria'] ?? 'Indefinido';
-$CorCategoria = $projeto['cor'] ?? '#9E9E9E';
-$BarraProjeto = $projeto['barra'] ?? '30';
-$FotoProjeto = $projeto['caminho']
-    ? '../../../' . $projeto['caminho']
-    : '../../assets/images/global/image-placeholder.svg';
-// Verificar se o Doador favoritou o Projeto
-$classe = in_array($IdProjeto, $favoritos ?? []) ? 'favoritado' : '';
+$id = $projeto->projeto_id ?? 'Erro';
+$class = $class ?? '';
+$nome = $projeto->nome ?? 'Nome do Projeto';
+$descricao =  mb_strimwidth($projeto->descricao, 0, 230, '...') ?? 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odit, explicabo magni? Laboriosam possimus voluptas recusandae blanditiis architecto dolorem tenetur odio, nisi molestiae facere quia facilis officia cumque dicta impedit minima.';
+$barra = $barra ?? '30';
+$jaFavoritado = $jaFavoritado ?? false;
+$classe = $jaFavoritado ? 'favoritado' : '';
+$logo_url = $projeto->logo_url ?? '../../assets/images/global/image-placeholder.svg';
 ?>
 
-<div class="card-projeto">
-    <span class="categoria" style="background-color: <?= $CorCategoria ?>;"><?= $CategoriaProjeto ?></span>
-    <?php if ($StatusProjeto == 'INATIVO'): ?>
-        <span class="status inativo">Inativo <i class="fa-solid fa-ban"></i></span>
-    <?php elseif ($StatusProjeto == 'FINALIZADO'): ?>
-        <span class="status finalizado">Finalizado <img src="../../assets/images/icons/meta.png"></span>
-    <?php endif; ?>
+<div class="card-projeto <?= $class ?>">
     <div class="acoes-projeto">
-        <button title="Compartilhar" class="btn-share fa-solid fa-share-nodes" onclick="compartilhar('compartilhar-popup', <?= $IdProjeto ?>, 'projeto')"></button>
-        <?php if (!isset($_SESSION['usuario']['id'])): ?>
+        <button class="btn-share fa-solid fa-share-nodes" onclick="abrir_popup('compartilhar-popup')"></button>
+        <?php if (!isset($_SESSION['usuario_id'])): ?>
             <button title="Favoritar" class="btn-like fa-solid fa-heart" onclick="abrir_popup('login-obrigatorio-popup')"></button>
-        <?php elseif (!isset($_SESSION['perfil_usuario']) || $_SESSION['perfil_usuario'] === 'doador'): ?>
-            <button data-id="<?= $IdProjeto ?>" data-tipo="projeto" title="Favoritar" class="btn-like fa-solid fa-heart <?= $classe ?>"></button>
+        <?php else: ?>
+            <form action="../.././../controller/ProjetoController.php?acao=favoritar" method="POST">
+                <input type="hidden" name="projeto-id-favorito" value="<?= $id ?>">
+                <button title="Favoritar" class="btn-like fa-solid fa-heart <?= $classe ?>"></button>
+            </form>
         <?php endif; ?>
     </div>
     <div class="img-projeto">
-        <img src="<?= $FotoProjeto ?>">
+        <img src="<?= $logo_url ?>">
     </div>
     <div class="info-projeto">
-        <h5><?= $NomeProjeto ?></h5>
-        <p><?= $DescricaoProjeto ?></p>
+        <h5><?= $nome ?></h5>
+        <p><?= $descricao ?></p>
         <div class="barra-doacao">
-            <span><?= $BarraProjeto ?>%</span>
+            <span><?= $barra ?>%</span>
             <div class="barra">
-                <div class="barra-verde" style="width: <?= $BarraProjeto ?>%;"></div>
+                <div class="barra-verde" style="width: <?= $barra ?>%;"></div>
             </div>
         </div>
     </div>
-    <a class="saiba-mais-projeto" href="../projeto/perfil.php?id=<?= $IdProjeto ?>">Saiba Mais</a>
+    <a class="saiba-mais-projeto" href="../projeto/perfil.php?id=<?= $id ?>">Saiba Mais</a>
 </div>

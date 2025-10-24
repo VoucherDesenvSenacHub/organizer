@@ -7,11 +7,11 @@ switch ($perfil) {
         break;
     case 'ong':
         require_once __DIR__ . '/../../../components/popup/formulario-projeto.php';
-        require_once __DIR__ . '/../../../components/popup/finalizar-projeto.php';
+        require_once __DIR__ . '/../../../components/popup/inativar-projeto.php';
         break;
     case 'adm':
         require_once __DIR__ . '/../../../components/popup/formulario-projeto.php';
-        require_once __DIR__ . '/../../../components/popup/finalizar-projeto.php';
+        require_once __DIR__ . '/../../../components/popup/inativar-projeto.php';
         break;
     default:
         break;

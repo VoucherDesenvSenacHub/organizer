@@ -1,0 +1,154 @@
+header {
+    padding: 0 20px;
+    height: 60px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    background-color: var(--cor-principal);
+    position: sticky;
+    top: 0;
+    z-index: 99;
+}
+
+header .container {
+    justify-content: space-between;
+}
+
+header .logo {
+    display: flex;
+    align-items: center;
+    font-size: 11px;
+    gap: 10px;
+    cursor: default;
+    
+    background: linear-gradient(90deg, #f8c35c, #f67f2a, #f8c35c);
+    background-size: 200% 100%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradiente 3s infinite linear reverse;
+}
+
+@keyframes gradiente {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 200% 50%; }
+}
+
+header .logo img {
+    width: 45px;
+    transform: rotate(0);
+    transition: 2s;
+}
+
+header .logo:hover img {
+    transform: rotate(360deg);
+}
+
+/* nav */
+header nav ul {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+header nav ul li {
+    transform: translateY(0);
+    transition: .3s;
+}
+
+header nav ul li:hover {
+    transform: translateY(-2px);
+}
+
+header nav a {
+    color: aliceblue;
+    text-decoration: none;
+    padding-block: 8px;
+    transform: translateY(0);
+    transition: .3s;
+}
+
+header nav a:hover {
+    color: #E3B652;
+}
+
+header .btn-login {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+header nav.active {
+    height: 180px;
+    transition: .3s;
+}
+
+#hamburguer {
+    border: none;
+    border-top: 4px solid #E3B652;
+    background: none;
+    border-radius: 3px;
+    display: none;
+    cursor: pointer;
+    position: relative;
+}
+
+#hamburguer::after,
+#hamburguer::before {
+    content: '';
+    margin-top: 3px;
+    width: 30px;
+    height: 4px;
+    display: block;
+    background-color: #E3B652;
+    border-radius: 3px;
+    transition: .3s;
+}
+
+#hamburguer.active {
+    border: none;
+}
+
+#hamburguer.active::after {
+    transform: rotate(45deg);
+    top: 0;
+    position: absolute;
+}
+
+#hamburguer.active::before {
+    transform: rotate(-45deg);
+}
+
+@media (max-width: 700px) {
+    header {
+        padding: 0 7.5px;
+    }
+
+    header nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #1C3464;
+        overflow: hidden;
+        box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;
+        height: 0;
+        transition: .3s;
+        z-index: 999;
+    }
+
+    header nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        padding: 15px 0;
+    }
+
+    #hamburguer {
+        display: block;
+    }
+}
+
+@media (max-width: 350px) {
+    header {
+        padding: 0 5px;
+    }
+}

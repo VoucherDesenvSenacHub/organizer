@@ -12,14 +12,12 @@
     width: 100%;
 }
 
-#tela-principal {
+#container-principal {
     background-color: white;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     padding: 50px 10px;
     flex-direction: column;
     gap: 30px;
-    min-height: calc(100vh - 60px);
-    justify-content: flex-start;
 }
 
 /* PRIMEIRA SECTION */
@@ -308,7 +306,7 @@ section#apresentacao {
 .area-doador-voluntario i.fa-hand-holding-dollar {
     color: var(--cor-verde);
 }
-.area-doador-voluntario i.fa-building-flag {
+.area-doador-voluntario i.fa-house-flag {
     color: var(--cor-amarelo);
 }
 
@@ -318,6 +316,10 @@ section#apresentacao {
     justify-content: space-evenly;
     gap: 10px;
 }
+
+/* .area-doador-voluntario {
+    padding: 0 50px;
+} */
 
 .area-doador-voluntario h3 {
     margin-bottom: 20px;
@@ -385,7 +387,7 @@ section#apresentacao {
 }
 
 @media (max-width: 455px) {
-    #tela-principal {
+    #container-principal {
         padding: 50px 5px;
     }
 
@@ -398,15 +400,15 @@ section#apresentacao {
     }
 }
 
-#container-principal #tela-principal {
-    padding: 30px 10px;
+/* container  */
+#main-doador #container-principal {
+    /* background-color: red; */
     box-shadow: none;
+    padding: 0;
 }
 
-@media (max-width: 500px) {
-    #container-principal #tela-principal {
-        padding-top: 70px;
-    }
+#main-doador .container #container-conteudo {
+    padding-inline: 10px;
 }
 
 /* Botões de Editar e Inativar */
@@ -415,20 +417,11 @@ section#apresentacao {
     /* color: #912B2B; */
 }
 
-#dados-projeto #acoes #btn-finalizar {
-    background-color: var(--cor-ciano);
-}
-
-#dados-projeto #acoes #btn-finalizar img {
-    width: 17px;
-}
-
-/* #dados-projeto #acoes #btn-inativar {
+#dados-projeto #acoes #btn-inativar {
     background-color: var(--cor-vermelho);
-} */
+    /* color: #912B2B; */
+}
 
 #dados-projeto #acoes .adm-inativar {
     width: 100%;
-    background-color: var(--cor-vermelho);
-    color: white;
 }

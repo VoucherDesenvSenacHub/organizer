@@ -1,57 +1,20 @@
 <?php
-require_once '../../../model/RelatoriosModel.php';
 
-// Criação de gráfico de linhas
+    // Criação de gráfico de linhas
 
-/**
- * Sumary of graficoBarrasVerticais
- * 
- * @param int $width Largura em pixels da área da imagem do gráfico
- * @param int $height Altura em pixels da área da imagem do gráfico
- * @param int $idOng ID da ong para query do banco de dados
- * 
- * 
- */
+    /**
+     * Sumary of graficoBarrasVerticais
+     * 
+     * @param array $indices Lista de índices a serem colocados na primeira coluna vertical em ordem decrescente
+     * @param int $width Largura em pixels da área da imagem do gráfico
+     * @param int $height Altura em pixels da área da imagem do gráfico
+     * @param array $dados Lista de dados para preenchimento do grafico
+     * 
+     * 
+     */
 
-
-function graficoLinhas($width, $height, $idOng){
-    $relatorio = new RelatoriosModel();
-    $year = date('Y');
-    $dados = array();
-    $valoresArrecadados = array();
-    $mesExtenso = ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
-        for($month = 1; $month <=12; $month++):
-            $arrecadacao = $relatorio->painelDeArrecadacao($idOng, $month, $year);
-            if($arrecadacao['total_doado'] === null){
-                $valorTotal = 0;
-            }else {
-                $valorTotal = (float)$arrecadacao['total_doado'];
-            }
-            $mes = [$mesExtenso[$month-1], $valorTotal];
-            array_push($dados, $mes);
-            array_push($valoresArrecadados, $valorTotal);
-        endfor;
-        $maiorIndice = max($valoresArrecadados)*1.1;
-        $indices = array();
-        $divisao = 1;
-
-        // Cria um array com os índices a serem utilizados de acordo com a divisão exata possível
-        if($maiorIndice != 0){
-            if($maiorIndice % 5 == 0){
-                $divisao = $maiorIndice / 5;
-            }else if ($maiorIndice % 4 == 0){
-                $divisao = $maiorIndice / 4;
-            }else if ($maiorIndice % 3 == 0){
-                $divisao = $maiorIndice / 3;
-            }
-            while($maiorIndice >=0){
-                array_push($indices, (int)$maiorIndice);
-                $maiorIndice -= $divisao;
-            }
-        } else {
-            $maiorIndice = 5; // Cria uma média de índices fictícia caso não haja apoiadores nos projetos da ONG somente para renderização gráfica
-            $indices = [5, 3, 0]; // Atribui índices verticais fictícios para o caso de não existência de apoiadores
-        }
+  
+    function graficoLinhas($indices, $width, $height, $dados){
         $mi=0;
         if($width>240){
             $alturaUtil = $height-27; // Calcula a altura útil para vetorização do gráfico
@@ -69,10 +32,9 @@ function graficoLinhas($width, $height, $idOng){
 
         for($i = 1; $i <=$alturaUtil; $i+=$divisoes){
             $width >240?$iText = $i+10 : $iText = $i+5;
-            $indiceCalculado = 'R$ '.number_format($indices[$mi], 2,',','.');
             $linhasHorizontais = $linhasHorizontais."
                 <line x1='$xDash' y1='$i' x2='$width' y2='$i' style='stroke: gray; stroke-dasharray: 3 '/>
-                <text x='0' y='$iText'>$indiceCalculado</text>     
+                <text x='0' y='$iText'>$indices[$mi]</text>     
             ";
             $mi++;
         }

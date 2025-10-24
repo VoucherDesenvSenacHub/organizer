@@ -1,12 +1,24 @@
 <?php
+ob_start();
 $acesso = 'visitante';
 $tituloPagina = 'Login | Organizer';
 $cssPagina = ['visitante/login.css'];
 require_once '../../components/layout/base-inicio.php';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $email = $_POST['email'];
+    $senha = $_POST['senha'];
+
+    require_once __DIR__ . '/../../../autoload.php';
+    $usuarioModel = new Usuario();
+
+    $usuarioModel->login($email, $senha);
+}
+ob_end_flush();
 ?>
 <main>
     <div id="container-login" class="container">
-        <form action="../../../controller/Usuario/LoginUsuarioController.php" method="POST">
+        <form action="login.php" method="POST">
             <h1>FAÇA SEU LOGIN</h1>
             <div class="input-group">
                 <div class="input-item">
@@ -29,29 +41,43 @@ require_once '../../components/layout/base-inicio.php';
             <button class="btn" type="submit">ENTRAR</button>
             <span>Não tem uma conta? <a href="cadastro.php">Criar Conta</a></span>
         </form>
-        <div class="img">
-            <img src="../../assets/images/pages/visitante/celular-usuario.png">
-        </div>
+        <img alt="Celular-Login" src="../../assets/images/pages/login_doador.png">
     </div>
 </main>
 <div id="fundo-cadastro-popup" class="popup-fundo">
     <div class="container-popup" id="popup-recuperar-senha">
         <button class="btn-fechar-popup fa-solid fa-xmark" onclick="fechar_popup('fundo-cadastro-popup')"></button>
-        <img src="../../assets/images/pages/visitante/esqueci-senha.png">
+        <img src="../../assets/images/pages/esqueci-senha-doador.png" alt="">
         <div>
             <h2>RECUPERAR SENHA</h2>
             <p>Digite seu email abaixo para receber um link de recuperação</p>
-            <form action="../../../controller/Usuario/RecuperarSenhaController.php" method="POST">
+            <form action="" onsubmit="recuperar_conta('toast-recuperar-conta', 'fundo-cadastro-popup'); return false;">
                 <div class="input-item">
                     <label for="recuperar-email">Email<span>*</span></label>
-                    <input id="recuperar-email" name="email" type="email" maxlength="45" placeholder="usúario@conta.com" required>
+                    <input id="recuperar-email" type="email" maxlength="45" placeholder="usúario@conta.com" required>
                 </div>
                 <button class="btn">ENVIAR</button>
             </form>
         </div>
     </div>
 </div>
+<div id="toast-recuperar-conta" class="toast">
+    <i class="fa-regular fa-circle-check"></i>
+    Email enviado com sucesso!
+</div>
+<div id="toast-sucesso-cadastro" class="toast">
+    <i class="fa-regular fa-circle-check"></i>
+    Cadastro efetuado com sucesso!
+</div>
+<div id="toast-login-erro" class="toast erro">
+    <i class="fa-solid fa-triangle-exclamation"></i>
+    Email ou Senha Inválida!
+</div>
+<div id="toast-login" class="toast erro">
+    <i class="fa-solid fa-triangle-exclamation"></i>
+    Login necessário para continuar!
+</div>
 <?php
-$jsPagina = ['usuario/login.js'];
+$jsPagina = ['login-doador.js'];
 require_once '../../components/layout/footer/footer-visitante.php';
 ?>

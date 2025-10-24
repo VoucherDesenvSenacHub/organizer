@@ -2,12 +2,13 @@
 
 @import url(../doador/fazer-doacao.css);
 
-#container-principal #tela-principal {
+#main-doador #container-principal {
+    /* background-color: red; */
     box-shadow: none;
-    padding: 30px 10px;
+    padding: 0;
 }
 
-#tela-principal {
+#container-principal {
     background-color: white;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     padding: 50px 10px;
@@ -87,6 +88,11 @@ section#apresentacao {
     visibility: visible;
     opacity: 1;
     transform: translateY(0);
+}
+
+#logo-ong .btn-salvar button {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: aliceblue;
 }
 
 /* Informações da ONG */
@@ -319,22 +325,20 @@ section#apresentacao {
         font-size: 20px;
     }
 
-    #tela-principal {
+    #container-principal {
         padding-inline: 5px;
     }
     
 }
 
 /* Visão do doador: */
-main.usuario-logado #tela-principal {
+main.usuario-logado #container-principal {
+    padding: 0;
     box-shadow: none;
-    padding: 30px 10px;
 }
 
-@media (max-width: 500px) {
-    main.usuario-logado #tela-principal {
-        padding-top: 70px !important;
-    }
+#main-doador #container-conteudo {
+    padding-inline: 10px;
 }
 
 /* Botões de Editar e Inativar */

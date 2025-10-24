@@ -2,15 +2,10 @@
 @import url(compartilhar.css);
 @import url(formulario-projeto.css);
 @import url(formulario-noticia.css);
-@import url(finalizar-projeto.css);
-@import url(inativar-ong.css);
 @import url(inativar-projeto.css);
-@import url(confirmar-edicao-ong.css);
 @import url(logoff.css);
 @import url(perfil-doador.css);
 @import url(nova-senha-doador.css);
-@import url(solicitacao-parceria.css);
-@import url(inativar-noticia.css);
 
 .popup-fundo {
     position: fixed;
@@ -23,7 +18,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: rgba(0, 0, 0, 0.5);
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s ease, visibility 0.3s ease;

@@ -1,31 +1,27 @@
 <?php
-$acesso       = 'doador';
+$acesso = 'doador';
 $tituloPagina = 'Apoios | Organizer';
-$cssPagina    = ['doador/apoios.css'];
+$cssPagina = ['doador/apoios.css'];
 require_once '../../components/layout/base-inicio.php';
-
 require_once __DIR__ . '/../../../autoload.php';
-$projetoModel = new ProjetoModel();
+$projetoModel = new Projeto();
+$lista = $projetoModel->buscarCardsApoiados($_SESSION['usuario_id']);
 
-$usuarioId    = $_SESSION['usuario']['id'];
-
-// Monta os filtros
-$filtros = [
-    'pagina'     => (int)($_GET['pagina'] ?? 1),
-    'usuario_id' => $usuarioId,
-    'apoiados'   => true
-];
-
-// Busca lista e paginação
-$lista          = $projetoModel->listarCardsProjetos($filtros);
-$totalRegistros = $projetoModel->paginacaoProjetos($filtros);
-$paginas        = (int)ceil($totalRegistros / 8);
-
-// Lista os projetos favoritados pelo usuário (colorir o coração)
-$favoritos = $projetoModel->listarFavoritos($_SESSION['usuario']['id']);
+$projetosFavoritos = $projetoModel->listarFavoritos($_SESSION['usuario_id']);
 
 ?>
-<main class="conteudo-principal">
+<!-- 
+    Toast de Favoritar
+-->
+<div id="toast-favorito" class="toast">
+    <i class="fa-solid fa-heart"></i>
+    Adicionado aos favoritos!
+</div>
+<div id="toast-remover-favorito" class="toast erro">
+    <i class="fa-solid fa-heart-crack"></i>
+    Removido dos favoritos!
+</div>
+<main>
     <section>
         <div class="container">
             <h1><i class="fa-solid fa-hand-holding-heart"></i> MEUS APOIOS</h1>
@@ -38,25 +34,28 @@ $favoritos = $projetoModel->listarFavoritos($_SESSION['usuario']['id']);
                           </div>';
                 } else {
                     foreach ($lista as $projeto) {
+                        $jaFavoritado = isset($_SESSION['usuario_id']) && in_array($projeto->projeto_id, $projetosFavoritos);
+                        $valor_projeto = $projetoModel->buscarValor($projeto->projeto_id);
+                        $barra = round(($valor_projeto / $projeto->meta) * 100);
                         require '../../components/cards/card-projeto.php';
                     }
                 }
                 ?>
             </div>
-            <?php if ($paginas > 1): ?>
-                <nav class="paginacao">
-                    <?php for ($i = 1; $i <= $paginas; $i++): ?>
-                        <a href="?pagina=<?= $i ?>"
-                            class="<?= $i === $paginaAtual ? 'active' : '' ?>">
-                            <?= $i ?>
-                        </a>
-                    <?php endfor; ?>
-                </nav>
-            <?php endif; ?>
         </div>
     </section>
 </main>
+
 <?php
 $jsPagina = [''];
 require_once '../../components/layout/footer/footer-logado.php';
+// Ativar os toast
+if (isset($_SESSION['favorito'])) {
+    if ($_SESSION['favorito']) {
+        echo "<script>mostrar_toast('toast-favorito')</script>";
+    } else {
+        echo "<script>mostrar_toast('toast-remover-favorito')</script>";
+    }
+    unset($_SESSION['favorito']);
+}
 ?>

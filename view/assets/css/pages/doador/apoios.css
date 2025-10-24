@@ -2,11 +2,6 @@
     color: var(--cor-azul);
 }
 
-main.conteudo-principal section {
-    min-height: calc(100vh - 60px);
-    padding: 30px 20px;
-}
-
 section .container {
     flex-direction: column;
     gap: 40px;

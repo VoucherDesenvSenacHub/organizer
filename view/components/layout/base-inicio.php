@@ -1,5 +1,5 @@
 <?php
-    require_once '../../../controller/AcessoController.php';
+    require_once '../../../controller/verificarAcesso.php';
     VerificarAcesso($acesso);
 ?>
 
@@ -30,7 +30,3 @@
     require_once 'includes/popup_loader.php';
     require_once 'headers/header.php';
 ?>
-<div id="toast" class="toast">
-    <i id="toast-icon" class=""></i>
-    <span id="toast-msg"></span>
-</div>

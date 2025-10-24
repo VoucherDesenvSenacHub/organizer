@@ -24,66 +24,13 @@
     word-wrap: break-word;
 }
 
-/* Foto de Perfil */
-.perfil-usuario-popup .upload-area {
+.perfil-usuario-popup #left img {
     width: 150px;
     height: 150px;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    background: #f3f3f3;
-    border-radius: 10px;
-    box-shadow: rgba(60, 64, 67, 0.5) 0px 1px 2px 0px, rgba(60, 64, 67, 0.30) 0px 1px 3px 1px;
-    position: relative;
-}
-
-.perfil-usuario-popup .upload-area img {
-    width: 100%;
-    height: 100%;
     object-fit: cover;
-    display: block;
+    box-shadow: rgba(60, 64, 67, 0.5) 0px 1px 2px 0px, rgba(60, 64, 67, 0.30) 0px 1px 3px 1px;
+    border-radius: 10px;
 }
-
-.perfil-usuario-popup .upload-area #uploadTextDoador {
-    position: absolute;
-    text-align: center;
-    width: 120px;
-    pointer-events: none;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: #888;
-    font-size: 12px;
-    display: none;
-}
-
-.perfil-usuario-popup .upload-area #btnRemoverDoador {
-    display: none;
-    position: absolute;
-    /* top: -14px;
-    right: -14px; */
-    top: 4px;
-    right: 4px;
-    width: 28px;
-    height: 28px;
-    background: var(--cor-vermelho);
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    color: var(--cor-principal);
-    transition: .3s ease-out;
-}
-
-.perfil-usuario-popup .upload-area #btnRemoverDoador:hover {
-    filter: brightness(1.2);
-}
-
-/* .perfil-usuario-popup .upload-area:hover #btnRemoverDoador {
-    top: 5px;
-    right: 5px;
-} */
 
 .perfil-usuario-popup #left p {
     max-width: 245px;

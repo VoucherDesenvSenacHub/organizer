@@ -1,4 +1,4 @@
-#container-principal .container-noticia {
+#main-doador .container-noticia {
     /* background-color: red; */
     box-shadow: none;
     padding: 0;
@@ -166,13 +166,11 @@ section.area-materia {
 }
 
 /* Visão do doador */
-#container-principal main.usuario-logado  .container-noticia {
-    padding: 30px 10px;
-    min-height: calc(100vh - 60px);
+main.usuario-logado .container-noticia {
+    padding: 0;
+    box-shadow: none;
 }
 
-@media (max-width: 500px) {
-    #container-principal main.usuario-logado  .container-noticia {
-        padding-top: 70px;
-    }
+#main-doador .container #container-conteudo {
+    padding-inline: 10px;
 }

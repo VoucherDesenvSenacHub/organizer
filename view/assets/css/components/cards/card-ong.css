@@ -11,7 +11,6 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    position: relative;
 }
 
 .card-ong:hover {
@@ -145,43 +144,26 @@
     transition: .3s;
 }
 
-.btn-salvar button.btn-share:hover {
+.btn-salvar button#share:hover {
     color: #45BEE6;
 }
 
-.btn-salvar button.btn-like:hover {
+.btn-salvar button#like:hover {
     color: hotpink;
 }
 
 .btn-salvar button.favoritado {
     color: hotpink !important;
-    animation: pulse 1s ease;
-}
-
-@keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-    100% { transform: scale(1); }
-}
-
-.card-ong .status {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    padding: 1px 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 5px;
-    font-size: 11px;
-    font-weight: 600;
-    border-radius: 4px;
-    background-color: var(--cor-vermelho);
-    color: white;
 }
 
 @media (max-width: 450px) {
     .card-ong {
         max-height: none;
     }
+}
+
+
+/* Card para adm (tirar o botão de like) */
+.card-ong.tp-adm .btn-salvar form {
+    display: none;
 }

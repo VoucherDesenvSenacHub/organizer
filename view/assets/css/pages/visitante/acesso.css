@@ -1,19 +1,18 @@
-/* ======== Fundo da página ======== */
 body {
     display: flex;
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    background: linear-gradient(180deg, aliceblue 15%, #c9dcff 100%);
+    background-color: var(--cor-principal);
 }
 
-/* ======== Container principal ======== */
 .container {
-    background-color: white;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    background-color: aliceblue;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     padding: 30px;
     border-radius: 10px;
     flex-direction: column;
+    /* gap: 20px; */
     text-align: center;
 }
 
@@ -21,7 +20,7 @@ body {
     font-size: 24px;
 }
 
-/* ======== Bloco de formulários ======== */
+/* Formulários */
 .forms {
     display: flex;
     align-items: center;
@@ -36,11 +35,12 @@ body {
     background-color: #f5f5f5;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
     border-radius: 5px;
-    transition: 0.3s;
-    flex: 1 1 200px;
+    transform: translate(0px);
+    transition: .3s;
+    flex: 1 1 100px;
     display: flex;
     align-items: center;
-    justify-content: center; 
+    justify-content: center;
 }
 
 .forms form:hover {
@@ -55,6 +55,7 @@ body {
     justify-content: center;
     gap: 5px;
     padding: 20px;
+    /* width: 110px; */
     border: none;
     background: none;
     width: 100%;
@@ -62,67 +63,39 @@ body {
     cursor: pointer;
 }
 
-.forms form .img {
-    max-width: 200px;
-}
-
-.forms form .img img {
-    width: 100%;
+.forms form i {
+    font-size: 32px;
 }
 
 .forms form p {
     font-weight: 600;
 }
 
-/* ======== Bordas coloridas por tipo de perfil ======== */
 .forms .form-doador {
-    border-bottom: 5px solid var(--cor-azul);
+    border-bottom: 5px solid var(--cor-verde-barra);
 }
-
 .forms .form-ong {
     border-bottom: 5px solid var(--cor-amarelo-hover);
 }
-
 .forms .form-adm {
     border-bottom: 5px solid var(--cor-roxo-adm);
 }
 
-/* ======== Link de sair ======== */
 a {
     text-decoration: none;
     font-weight: 600;
     font-size: 14px;
     color: var(--cor-vermelho);
-    transition: 0.3s;
+    transition: .3s;
 }
 
 a:hover {
-    filter: brightness(0.8);
+    filter: brightness(.8);
 }
 
-/* ======== Responsividade ======== */
 @media (max-width: 400px) {
     .container {
-        width: 100vw;
-        padding: 30px 0;
-    }
-
-    .forms {
-        gap: 25px;
-    }
-
-    .forms form:nth-child(even) {
-        border-radius: 100px 0 0 100px;
-        margin-left: 10px;
-        overflow: hidden;
-    }
-    .forms form:nth-child(odd) {
-        border-radius: 0 100px 100px 0;
-        margin-right: 10px;
-        overflow: hidden;
-    }
-
-    .forms form .img {
-        max-width: 100px;
+        /* padding: 30px 10px; */
+        width: 100%;
     }
 }
