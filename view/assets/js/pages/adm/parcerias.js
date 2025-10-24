@@ -1,35 +1,44 @@
 document.addEventListener('DOMContentLoaded', function() {
+    console.log('Inicializando parcerias.js...');
+
+    // Verificar se o modal está disponível
+    if (typeof mostrarModalConfirmacao !== 'function') {
+        console.error('Erro: função mostrarModalConfirmacao não encontrada! Verifique se modal-confirmacao.js foi carregado.');
+        return;
+    }
+
     // Definir status inicial baseado na URL
     const statusAtual = new URLSearchParams(window.location.search).get('aba') || 'solicitacoes';
     document.getElementById('status-parceria').value = statusAtual;
-    mostrarLista(statusAtual);
 
-    // Funcionalidade para aprovar/recusar parcerias com empresas
-    document.querySelectorAll('.btn-aprovar').forEach(btn => {
-        btn.addEventListener('click', function() {
-            const id = this.dataset.id;
-            const tipo = this.dataset.tipo;
+    // Event delegation para capturar cliques nos botões
+    document.getElementById('control-box').addEventListener('click', function(e) {
+        const btnAprovar = e.target.closest('.btn-aprovar');
+        const btnRecusar = e.target.closest('.btn-recusar');
+        
+        if (btnAprovar || btnRecusar) {
+            const button = btnAprovar || btnRecusar;
+            const id = button.dataset.id;
+            const tipo = button.dataset.tipo;
+            const acao = btnAprovar ? 'approve' : 'reject';
+            
+            console.log('Botão clicado:', {
+                tipo: tipo,
+                id: id,
+                acao: acao
+            });
+
+            if (!id) {
+                console.error('Erro: ID não encontrado no botão');
+                return;
+            }
 
             mostrarModalConfirmacao(
-                'Aprovar Parceria',
-                'Tem certeza que deseja APROVAR a parceria com esta empresa?',
-                () => processarSolicitacao(id, tipo, 'approve', this)
+                `${btnAprovar ? 'Aprovar' : 'Recusar'} Parceria`,
+                `Tem certeza que deseja ${btnAprovar ? 'APROVAR' : 'RECUSAR'} a parceria com esta empresa?`,
+                () => processarSolicitacao(id, tipo, acao, button)
             );
-        });
-    });
-
-    // Recusa
-    document.querySelectorAll('.btn-recusar').forEach(btn => {
-        btn.addEventListener('click', function() {
-            const id = this.dataset.id;
-            const tipo = this.dataset.tipo;
-
-            mostrarModalConfirmacao(
-                'Recusar Parceria',
-                'Tem certeza que deseja RECUSAR a parceria com esta empresa?',
-                () => processarSolicitacao(id, tipo, 'reject', this)
-            );
-        });
+        }
     });
 });
 
@@ -43,8 +52,16 @@ function mudarStatus(status) {
 
 // Função para processar a ação (aprovar/recusar)
 function processarSolicitacao(id, tipo, acao, button) {
+    console.log('Processando solicitação:', { id, tipo, acao });
+
     const card = button.closest('.card-empresas');
+    if (!card) {
+        console.error('Erro: Card não encontrado!');
+        return;
+    }
+
     const buttons = card.querySelectorAll('button');
+    console.log(`Desabilitando ${buttons.length} botões...`);
 
     buttons.forEach(btn => btn.disabled = true);
 

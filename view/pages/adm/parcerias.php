@@ -106,6 +106,6 @@ $lista = $adminModel->listarParcerias($statusMap[$abaAtiva]);
     </section>
 </main>
 <?php
-$jsPagina = ['adm/parcerias.js', 'adm/modal-confirmacao.js'];
+$jsPagina = ['adm/modal-confirmacao.js', 'adm/parcerias.js'];
 require_once '../../components/layout/footer/footer-logado.php';
 ?>
