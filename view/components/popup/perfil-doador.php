@@ -98,7 +98,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <input type="file" id="foto_usuario" name="foto_usuario" accept="image/*" style="display:none;">
                     <img id="preview-foto" src="<?= !empty($_SESSION['usuario']['foto'])
                         ? '../../../' . $_SESSION['usuario']['foto']
-                        : '../../assets/images/global/image-placeholder.svg'
+                        : 'view/assets/images/global/image-placeholder.svg'
                         ?>">
                     <div id="uploadTextDoador">
                         <i class="fa-solid fa-cloud-upload-alt"></i><br>

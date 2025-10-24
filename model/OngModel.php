@@ -244,7 +244,7 @@ class OngModel
         $query = "
             SELECT o.ong_id, o.nome, o.data_cadastro, o.descricao,
             (SELECT caminho FROM imagens i WHERE i.imagem_id = o.imagem_id) AS caminho,
-            (SELECT COUNT(*) FROM projetos p WHERE p.ong_id = o.ong_id) AS total_projetos,
+            (SELECT COUNT(*) FROM projetos p WHERE p.ong_id = o.ong_id AND p.status = 'ATIVO') AS total_projetos,
             (SELECT COUNT(*) FROM doacoes_projetos dp JOIN projetos p ON dp.projeto_id = p.projeto_id WHERE p.ong_id = o.ong_id) AS total_doacoes,
             (SELECT COUNT(*) FROM apoios_projetos JOIN projetos USING(projeto_id) WHERE ong_id = :id) AS total_apoiadores,
             (SELECT COALESCE(SUM(dp.valor), 0) FROM doacoes_projetos dp JOIN projetos p ON dp.projeto_id = p.projeto_id WHERE p.ong_id = o.ong_id) AS total_arrecadado
