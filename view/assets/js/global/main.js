@@ -296,7 +296,21 @@ uploadArea.addEventListener('drop', function (e) {
 // Remover imagem
 btnRemover.onclick = function (e) {
     e.stopPropagation();
-    previewImg.src = '../../assets/images/global/user-placeholder.jpg'; // coloque o caminho da imagem padrão
+
+    // Atualiza o preview
+    previewImg.src = '../../assets/images/global/user-placeholder.jpg';
     inputFile.value = '';
     updateUploadText();
+
+    // Marca para remoção no backend
+    const form = btnRemover.closest('form');
+    let inputRemover = form.querySelector('input[name="remover_foto"]');
+    if (!inputRemover) {
+        inputRemover = document.createElement('input');
+        inputRemover.type = 'hidden';
+        inputRemover.name = 'remover_foto';
+        form.appendChild(inputRemover);
+    }
+    inputRemover.value = 'true';
 };
+
