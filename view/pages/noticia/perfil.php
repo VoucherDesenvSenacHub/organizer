@@ -7,7 +7,7 @@ $PerfilNoticiaModel = new NoticiaModel();
 session_start();
 $acesso = $_SESSION['perfil_usuario'] ?? 'visitante';
 $tituloPagina = 'Leia Mais | Organizer';
-$cssPagina = ['noticia/perfil.css'];
+$cssPagina = ['noticia/perfil.css', 'components/popup/inativar-noticia.css'];
 require_once '../../components/layout/base-inicio.php';
 
 //Processamento de dados
@@ -19,6 +19,10 @@ if (isset($_GET['id'])) {
 
 if ($acesso === 'ong' && isset($PerfilNoticia) && $PerfilNoticia) {
     require_once '../../components/popup/formulario-noticia.php';
+}
+
+if ($acesso === 'adm' && isset($PerfilNoticia) && $PerfilNoticia) {
+    require_once '../../components/popup/inativar-noticia.php';
 }
 ob_end_flush();
 ?>
@@ -52,6 +56,12 @@ ob_end_flush();
                             <input type="hidden" name="noticia-id" value=<?= $IdNoticia ?>>
                             <button class="btn"><i class="fa-solid fa-trash-can"></i> Inativar</button>
                         </form>
+                    </div>
+                <?php endif; ?>
+
+                <?php if ($acesso === 'adm' && $PerfilNoticia['status'] === 'ATIVO'): ?>
+                    <div class="area-acoes">
+                        <button class="btn adm-inativar" onclick="abrir_popup('inativar-noticia-popup')"><i class="fa-solid fa-ban"></i> Inativar</button>
                     </div>
                 <?php endif; ?>
                 <div class="texto">
