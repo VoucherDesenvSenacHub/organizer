@@ -55,12 +55,6 @@
                         <label for="name">Titular do cartão</label>
                         <input id="titular" type="text" placeholder="Nome impresso no cartão" maxlength="200" onkeypress="return /[a-z\s]/i.test(event.key)">
                     </div>
-                    <!--
-                        number-cartao
-                        validade-cartao
-                        cvv
-                        titular
-                    -->
                     <div>
                         <!-- <button class="add-button" id="addButton">
                             <span class="button-text">CONFIRMAR</span>

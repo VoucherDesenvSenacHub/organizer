@@ -211,14 +211,47 @@ class ProjetoModel
         return $stmt->fetchAll();
     }
 
-    function realizarDoacaoProjeto($projeto_id, $usuario_id, $valor)
+    function realizarDoacaoProjeto($projeto_id, $usuario_id, $valor, $transacao_id)
     {
-        $query = 'INSERT INTO doacoes_projetos (projeto_id, usuario_id, valor)
-                  VALUES (:projeto, :doador, :valor)';
+        $query = 'INSERT INTO doacoes_projetos (projeto_id, usuario_id, valor, transacao_id)
+                  VALUES (:projeto, :doador, :valor, :transacao_id)';
+                  //transacao_id - Nova coluna na tabela que registrará o ID da transação
+                  //payment.avanth.kinghost.net
+        /*
+        end point:
+        http://payment.avanth.kinghost.net/api/payments/pay-with-credit-card
+        RESPOSTA
+        {
+  "id": 79,
+  "tipo": "CARTAO_CREDITO",
+  "situacao": "APROVADA",
+  "descricao": "Fone de Ouvido Bluetooth",
+  "valor": "199.9",
+  "cartao": {
+    "id": 79,
+    "numero": "4111111111111111",
+    "nome": "Adercio",
+    "expiracaoMes": "12",
+    "expiracaoAno": "2028",
+    "cvv": "123",
+    "token": "019a1378-9ff5-79ce-b9e8-ae72cd436e4b",
+    "bandeira": "VISA",
+    "titular": {
+      "id": 79,
+      "nome": "João da Silva",
+      "cpfCnpj": "12345678900",
+      "email": "joao.silva@email.com",
+      "cep": "01001000",
+      "enderecoNumero": 123,
+      "enderecoComplemento": "Apto 45",
+      "telefone": "11912345678"
+    }
+        */
         $stmt = $this->pdo->prepare($query);
         $stmt->bindParam(':projeto', $projeto_id);
         $stmt->bindParam(':doador', $usuario_id);
         $stmt->bindParam(':valor', $valor);
+        $stmt->bindParam(':transacao_id', $transacao_id);
         $stmt->execute();
         return $stmt->rowCount();
     }

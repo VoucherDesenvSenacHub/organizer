@@ -27,7 +27,36 @@ if (isset($_POST['valor-doacao'])) {
         echo "<script>alert('Valor inválido!! Doe um valor maior.');window.history.back();</script>";
         exit;
     } else {
-        $resultadoDoacao = $projetoModel->realizarDoacaoProjeto($IdProjeto, $_SESSION['usuario']['id'], $ValorDoacao);
+        //Executar a rotina de validação no gateway antes de prosseguir com a doação
+        //Criar uma classe para tratar o processo de pagamento pelo gateway, que retornará $transacao_id caso seja aprovada
+        /*
+        Body:
+```
+{
+    "cartao": {
+        "numero": "",
+        "nome": "",
+        "expiracaoMes": "",
+        "expiracaoAno": "",
+        "cvv": ""
+    },
+    "produto": {
+        "descricao": "",
+        "valor": ""
+    },
+    "titular": {
+        "nome": "",
+        "cpfCnpj": "",
+        "email": "",
+        "cep": "",
+        "enderecoNumero": "",
+        "enderecoComplemento": "",
+        "telefone": ""
+    }
+}
+
+        */
+        $resultadoDoacao = $projetoModel->realizarDoacaoProjeto($IdProjeto, $_SESSION['usuario']['id'], $ValorDoacao, $transacao_id);
         if ($resultadoDoacao > 0) {
             $_SESSION['mensagem_toast'] = ['sucesso', 'Doação realizada com sucesso!'];
             header('Location: ' . $_SERVER['HTTP_REFERER']);
