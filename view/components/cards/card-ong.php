@@ -5,6 +5,7 @@ $NomeOng = $ong['nome'] ?? 'Nome da ONG';
 $DescricaoOng =  mb_strimwidth($ong['descricao'], 0, 215, '...') ?? 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati qui odio, dignissimos alias ut, nesciunt deserunt maiores at adipisci modi dolor inventore suscipit quas quis cumque minus nobis, ipsum delectus!';
 $DoacoesOng = $ong['total_doacoes'] ?? '?';
 $ProjetosOng = $ong['total_projetos'] ?? '?';
+$StatusOng = $ong['status'] ?? 'ATIVO';
 $FotoOng = $ong['caminho']
     ? '../../../' . $ong['caminho']
     : '../../assets/images/global/image-placeholder.svg';
@@ -13,6 +14,9 @@ $classe = in_array($IdOng, $favoritas ?? []) ? 'favoritado' : '';
 ?>
 
 <div class="card-ong">
+    <?php if ($StatusOng === 'INATIVO'): ?>
+        <span class="status inativo">Inativo <i class="fa-solid fa-ban"></i></span>
+    <?php endif; ?>
     <div class="perfil">
         <div class="logo">
             <img src="<?= $FotoOng ?>">

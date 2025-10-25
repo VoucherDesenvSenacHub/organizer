@@ -19,7 +19,9 @@ if (isset($jaApoiou)) {
             <button class="btn" id="btn-finalizar" onclick="abrir_popup('finalizar-projeto-popup')"><img src="../../assets/images/icons/meta.png"> Finalizar</button>
         <?php endif; break;
         case 'adm': ?>
-            <button class="btn adm-inativar" id="btn-finalizar" onclick="abrir_popup('finalizar-projeto-popup')"><img src="../../assets/images/icons/meta.png"> Finalizar</button>
+            <?php if ($PerfilProjeto['status'] !== 'INATIVO'): ?>
+                <button class="btn adm-inativar" id="btn-inativar" onclick="abrir_popup('inativar-projeto-popup')"><i class="fa-solid fa-ban"></i> Inativar</button>
+            <?php endif; ?>
         <?php break;
         default: ?>
             <button class="btn" id="btn-doacao" onclick="abrir_popup('login-obrigatorio-popup')"><i class="fa-solid fa-hand-holding-dollar"></i> Quero Doar</button>

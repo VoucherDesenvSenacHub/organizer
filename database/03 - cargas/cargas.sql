@@ -28,7 +28,7 @@
     ('upload/images/ongs/planeta-harmonia.jpg'),
     ('upload/images/ongs/sementes_do_amanha.webp'),
     ('upload/images/ongs/sos_rio_grande.png'),
-    ('upload/images/ongs/fundação_beija_flor.jpg');
+    ('upload/images/ongs/fundação_beija_flor.jpg'),
     -- IMAGENS PARA USÚARIOS
     ('https://avatars.githubusercontent.com/u/172551721?v=4'),
     ('https://avatars.githubusercontent.com/u/161078050?v=4'),

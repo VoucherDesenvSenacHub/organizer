@@ -15,27 +15,43 @@ class InativarOngController
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['inativar-ong'])) {
             try {
-                $ongId = $_SESSION['ong_id'];
+                $ongId = isset($_POST['ong_id']) ? $_POST['ong_id'] : $_SESSION['ong_id'];
 
                 // Atualizar status da ONG para INATIVO
                 $resultado = $this->ongModel->inativar($ongId);
 
                 if ($resultado) {
-                    // Limpar sessão e redirecionar para página inicial
-                    session_destroy();
-                    session_start();
-                    $_SESSION['mensagem_toast'] = ['sucesso', 'Sua ONG foi inativada com Sucesso!'];
-                    header('Location: ../../view/pages/visitante/login.php');
-                    exit;
+                    if ($_SESSION['perfil_usuario'] === 'adm') {
+                        $_SESSION['mensagem_toast'] = ['sucesso', 'ONG inativada com sucesso!'];
+                        header('Location: ../../view/pages/adm/ongs.php');
+                        exit;
+                    } else {
+                        // Limpar sessão e redirecionar para página inicial
+                        session_destroy();
+                        session_start();
+                        $_SESSION['mensagem_toast'] = ['sucesso', 'Sua ONG foi inativada com Sucesso!'];
+                        header('Location: ../../view/pages/visitante/login.php');
+                        exit;
+                    }
                 } else {
                     $_SESSION['mensagem_toast'] = ['erro', 'Falha ao inativar ONG!'];
-                    header('Location: ../../view/pages/ong/conta.php');
-                    exit;
+                    if ($_SESSION['perfil_usuario'] === 'adm') {
+                        header('Location: ../../view/pages/adm/ongs.php');
+                        exit;
+                    } else {
+                        header('Location: ../../view/pages/ong/conta.php');
+                        exit;
+                    }
                 }
             } catch (Exception $e) {
                 $_SESSION['mensagem_toast'] = ['erro', 'Falha ao inativar ONG!'];
-                header('Location: ../../view/pages/ong/conta.php');
-                exit;
+                if ($_SESSION['perfil_usuario'] === 'adm') {
+                    header('Location: ../../view/pages/adm/ongs.php');
+                    exit;
+                } else {
+                    header('Location: ../../view/pages/ong/conta.php');
+                    exit;
+                }
             }
         }
     }
