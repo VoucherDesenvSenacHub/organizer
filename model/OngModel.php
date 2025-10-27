@@ -106,13 +106,13 @@ class OngModel
     }
 
     public function buscarCaminhoImagem($imagemId)
-{
-    $query = "SELECT caminho FROM imagens WHERE imagem_id = :id";
-    $stmt = $this->pdo->prepare($query);
-    $stmt->bindValue(':id', $imagemId, PDO::PARAM_INT);
-    $stmt->execute();
-    return $stmt->fetchColumn(); // Retorna algo como 'upload/images/ongs/xxxx.jpg'
-}
+    {
+        $query = "SELECT caminho FROM imagens WHERE imagem_id = :id";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindValue(':id', $imagemId, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchColumn(); // Retorna algo como 'upload/images/ongs/xxxx.jpg'
+    }
 
 
 
@@ -343,4 +343,13 @@ class OngModel
         $stmt->execute();
         return $stmt->fetchColumn();
     }
+
+    public function removerImagemOng($ongId)
+    {
+        $sql = "UPDATE ongs SET imagem_id = NULL WHERE ong_id = :id";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(':id', $ongId, PDO::PARAM_INT);
+        $stmt->execute();
+    }
+
 }

@@ -156,12 +156,21 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     if (btnRemover) {
-        btnRemover.addEventListener('click', function(e) {
-            e.stopPropagation();
+    btnRemover.addEventListener('click', function(e) {
+        e.stopPropagation();
+        if (confirm('Deseja realmente remover a foto da ONG?')) {
+            // Atualiza o input escondido para o backend saber que deve remover
+            document.getElementById('removerFoto').value = '1';
+
+            // Atualiza visual
             uploadArea.style.display = 'flex';
             fotoPreview.style.display = 'none';
             previewImage.src = "../../assets/images/global/image-placeholder.svg";
-            fotoInput.value = '';
-        });
-    }
+
+            // Submete o form automaticamente
+            form.submit();
+        }
+    });
+}
+
 });

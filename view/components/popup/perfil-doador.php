@@ -20,22 +20,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($idade >= 18) {
             try {
                 $resultado = 0;
-                $imagemPadrao = 'view/assets/images/global/user-placeholder.jpg'; 
+                $imagemPadrao = 'view/assets/images/global/user-placeholder.jpg';
 
                 // Remover Foto
                 if (isset($_POST['remover_foto']) && $_POST['remover_foto'] === 'true') {
-                    // salva a imagem padrão
-                    $idImagem = $imagemModel->salvarCaminhoImagem($imagemPadrao);
-                    $usuarioModel->atualizarImagem($_SESSION['usuario']['id'], $idImagem);
+                    // Pega imagem atual
+                    $idImagemAtual = $usuario['imagem_id'] ?? null;
 
-                    $_SESSION['usuario']['foto'] = $imagemPadrao;
+                    if ($idImagemAtual) {
+                        // Apaga a imagem do servidor e do banco
+                        $imagemModel->deletarImagem($idImagemAtual);
+                    }
+
+                    // Remove o vínculo da imagem com o usuário
+                    $usuarioModel->atualizarImagem($_SESSION['usuario']['id'], null);
+
+                    // Atualiza a sessão para o placeholder
+                    $_SESSION['usuario']['foto'] = 'view/assets/images/global/user-placeholder.jpg';
                     $resultado = 1;
                 }
 
-               // Nova Imagem
+                // Nova Imagem
                 if (!empty($_FILES['foto_usuario']['name'])) {
                     $pasta = __DIR__ . '/../../../upload/images/usuarios/';
-                    if (!is_dir($pasta)) mkdir($pasta, 0777, true);
+                    if (!is_dir($pasta))
+                        mkdir($pasta, 0777, true);
 
                     $tmp = $_FILES['foto_usuario']['tmp_name'];
                     $nomeOriginal = basename($_FILES['foto_usuario']['name']);
@@ -53,7 +62,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                 //Atualizar dados
                 $resultadoDados = $usuarioModel->update($id, $nome, $telefone, $cpf, $data, $email);
-                if ($resultadoDados > 0) $resultado = 1;
+                if ($resultadoDados > 0)
+                    $resultado = 1;
 
                 //Mensagem usuarios
                 if ($resultado > 0) {
@@ -176,4 +186,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
     </form>
 </div>
-

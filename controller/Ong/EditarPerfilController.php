@@ -33,9 +33,29 @@ class EditarPerfilController
         ];
     }
 
-
     public function atualizarPerfil()
     {
+        // 🔹 Se for para remover a foto da ONG
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['remover_foto'])) {
+            $ongId = $_SESSION['ong_id'];
+
+            $imagemId = $this->ongModel->buscarImagemId($ongId);
+
+            if ($imagemId) {
+                $imagemModel = new ImagemModel();
+                $imagemModel->deletarImagem($imagemId);
+                $this->ongModel->removerImagemOng($ongId);
+            }
+
+            // Atualiza a sessão e imagem padrão
+            $_SESSION['ong']['foto'] = 'assets/images/global/image-placeholder.svg';
+            $_SESSION['mensagem_toast'] = ['sucesso', 'ONG atualizada com sucesso!'];
+
+            header('Location: ../../view/pages/ong/home.php');
+            exit;
+        }
+
+        // 🔹 Atualização normal do perfil
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['atualizar-ong'])) {
             $ongId = $_SESSION['ong_id'];
 
@@ -92,7 +112,6 @@ class EditarPerfilController
             try {
                 $alterou = $this->ongModel->editar($dados);
 
-                // Se alterou algum campo OU imagem foi alterada
                 if ($alterou > 0 || $imagemAlterada) {
                     $_SESSION['mensagem_toast'] = ['sucesso', 'ONG atualizada com sucesso!'];
                 } else {
