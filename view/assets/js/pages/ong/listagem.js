@@ -43,4 +43,37 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         });
     }
-});
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const formFiltros = document.getElementById("form-filtros");
+        const btnLimpar = document.querySelector(".limpar-filtro");
+        const inputPesquisa = formFiltros.querySelector("input[name='pesquisa']");
+        const radios = formFiltros.querySelectorAll("input[type='radio']");
+        const spinner = document.getElementById("spinner");
+    
+        btnLimpar.addEventListener("click", (e) => {
+            e.preventDefault();
+    
+            // Limpa todos os radios
+            radios.forEach(radio => radio.checked = false);
+    
+            // Limpa o campo de pesquisa
+            inputPesquisa.value = "";
+    
+            // Adiciona uma classe de animação (exemplo: botão pisca)
+            btnLimpar.classList.add("limpando");
+    
+            // Mostra o spinner (caso queira um feedback visual)
+            spinner.style.display = "block";
+    
+            // Espera 0.8s antes de recarregar a página
+            setTimeout(() => {
+                location.reload();
+            }, 800);
+        });
+    });
+    
+    });
+
+
+
