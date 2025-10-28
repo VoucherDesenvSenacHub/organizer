@@ -3,6 +3,7 @@ ob_start();
 $acesso = 'ong';
 $tituloPagina = 'Notícias | Organizer';
 $cssPagina = ['ong/listagem.css'];
+$jsPagina = ["limpar-filtro.js"];
 require_once '../../components/layout/base-inicio.php';
 require_once __DIR__ . '/../../../autoload.php';
 
@@ -12,10 +13,10 @@ $paginaAtual = (int) ($_GET['pagina'] ?? 1);
 
 // Monta filtros
 $filtros = array_filter([
-    'pagina'   => $paginaAtual,
-    'ong_id'   => $IdOng,
+    'pagina' => $paginaAtual,
+    'ong_id' => $IdOng,
     'pesquisa' => $_GET['pesquisa'] ?? null,
-    'status'   => $_GET['status'] ?? null
+    'status' => $_GET['status'] ?? null
 ]);
 
 // Busca lista e paginação
@@ -26,10 +27,10 @@ $paginas = (int) ceil($totalRegistros / 6);
 // Notícia padrão para formulário
 $PerfilNoticia = (object) [
     'noticia_id' => null,
-    'titulo'     => null,
-    'subtitulo'  => null,
-    'texto'      => null,
-    'subtexto'   => null,
+    'titulo' => null,
+    'subtitulo' => null,
+    'texto' => null,
+    'subtexto' => null,
 ];
 
 require_once '../../components/popup/formulario-noticia.php';
@@ -41,9 +42,11 @@ ob_end_flush();
             <div class="topo">
                 <h1><i class="fa-solid fa-newspaper"></i> MINHAS NOTÍCIAS</h1>
                 <form id="form-busca" action="noticias.php" method="GET">
-                    <input type="text" name="pesquisa" placeholder="Busque uma notícia" value="<?= $_GET['pesquisa'] ?? '' ?>">
+                    <input type="text" name="pesquisa" placeholder="Busque uma notícia"
+                        value="<?= $_GET['pesquisa'] ?? '' ?>">
                     <input type="hidden" name="status" value="<?= $_GET['status'] ?? '' ?>">
                     <button class="btn" type="submit"><i class="fa-solid fa-search"></i></button>
+                    <button class="limpar-filtro" onclick="limparFiltros()">Limpar filtros</button>
                 </form>
                 <button class="btn btn-novo" onclick="abrir_popup('editar-noticia-popup')">NOVA NOTÍCIA +</button>
             </div>
@@ -105,6 +108,6 @@ ob_end_flush();
 
 </main>
 <?php
-$jsPagina = ['ong/listagem.js'];
+
 require_once '../../components/layout/footer/footer-logado.php';
 ?>

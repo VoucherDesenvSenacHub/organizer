@@ -1,32 +1,32 @@
 <?php
 ob_start();
-$acesso       = 'ong';
+$acesso = 'ong';
 $tituloPagina = 'Projetos | Organizer';
-$cssPagina    = ['ong/listagem.css'];
+$cssPagina = ['ong/listagem.css'];
 require_once '../../components/layout/base-inicio.php';
 
 require_once __DIR__ . '/../../../autoload.php';
 $projetoModel = new ProjetoModel();
-$paginaAtual  = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
+$paginaAtual = isset($_GET['pagina']) ? (int) $_GET['pagina'] : 1;
 
 $ongId = $_SESSION['ong_id'];
 
 // Monta os filtros
 $filtros = [
-    'pagina'   => $paginaAtual,
-    'ong_id'   => $ongId,
+    'pagina' => $paginaAtual,
+    'ong_id' => $ongId,
     'pesquisa' => $_GET['pesquisa'] ?? null,
-    'status'   => array_filter((array)($_GET['status'] ?? []))
+    'status' => array_filter((array) ($_GET['status'] ?? []))
 ];
 
 // Busca lista e paginação
-$lista          = $projetoModel->listarCardsProjetos($filtros);
+$lista = $projetoModel->listarCardsProjetos($filtros);
 $totalRegistros = $projetoModel->paginacaoProjetos($filtros);
-$paginas        = ceil($totalRegistros / 8);
+$paginas = ceil($totalRegistros / 8);
 
 // Buscar as categorias
 $categoriaModel = new CategoriaModel();
-$Categorias     = $categoriaModel->buscarCategorias();
+$Categorias = $categoriaModel->buscarCategorias();
 
 //FORMULÁRIO DE CRIAÇÃO DE PROJETO (popup)
 $PerfilProjeto = [
@@ -47,9 +47,12 @@ ob_end_flush();
             <div class="topo">
                 <h1><i class="fa-solid fa-diagram-project"></i> MEUS PROJETOS</h1>
                 <form id="form-busca" action="projetos.php" method="GET">
-                    <input type="text" name="pesquisa" placeholder="Busque um Projeto" value="<?= $_GET['pesquisa'] ?? '' ?>">
+                    <input type="text" name="pesquisa" placeholder="Busque um Projeto"
+                        value="<?= $_GET['pesquisa'] ?? '' ?>">
                     <input type="hidden" name="status" value="<?= $_GET['status'] ?? '' ?>">
                     <button class="btn" type="submit"><i class="fa-solid fa-search"></i></button>
+                    <button class="limpar-filtro" onclick="limparFiltros()">Limpar filtros</button>
+
                 </form>
                 <button class="btn btn-novo" onclick="abrir_popup('editar-projeto-popup')">NOVO PROJETO +</button>
             </div>
@@ -57,7 +60,8 @@ ob_end_flush();
                 <div class="ul-group">
                     <div class="drop" id="esc-status" aria-haspopup="true" aria-expanded="false">
                         <div class="drop-title" tabindex="0">
-                            <p id="status-label"><?= isset($_GET['status']) ? ucfirst(strtolower($_GET['status'])) : 'Status' ?></p>
+                            <p id="status-label">
+                                <?= isset($_GET['status']) ? ucfirst(strtolower($_GET['status'])) : 'Status' ?></p>
                             <i class="fa-solid fa-angle-down"></i>
                         </div>
 
