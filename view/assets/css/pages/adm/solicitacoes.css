@@ -1,0 +1,91 @@
+@import url(modal-confirmacao.css);
+
+.conteudo-principal > section {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    min-height: calc(100vh - 60px);
+    padding: 30px 20px;
+} 
+
+.conteudo-principal h1 {
+    font-size: 24px;
+}
+
+.conteudo-principal h1 i {
+    color: var(--cor-roxo-adm);
+}
+
+.box-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    width: 100%;
+}
+
+/* Card */
+.box-cards .card-solicitacao-empresa {
+    word-break: break-all;
+    flex: 1 1 400px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    border-left: 7px solid var(--cor-roxo-adm);
+    background-color: white;
+    color: var(--cor-principal);
+    transform: translateY(0);
+    transition: .3s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: default;
+    transition: .3s;
+}
+
+.box-cards .card-solicitacao-empresa:hover {
+    border-left-color: #6a00f3;
+    transform: translateY(-3px);
+}
+
+.box-cards .card-solicitacao-empresa .topo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.box-cards .card-solicitacao-empresa .cnpj {
+    color: #aaa;
+    font-weight: 600;
+}
+
+.box-cards .card-solicitacao-empresa .topo small {
+    font-size: 12px;
+    font-weight: 500;
+    color: #aaa;
+}
+
+.box-cards .card-solicitacao-empresa p {
+    font-size: 13px;
+    text-align: justify;
+}
+.box-cards .card-solicitacao-empresa b {
+    word-break: break-all;
+}
+
+.box-cards .card-solicitacao-empresa .btn-acoes {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+    justify-content: end;
+}
+
+.box-cards .card-solicitacao-empresa .btn-acoes button {
+    padding: 8px 10px;
+}
+
+.box-cards .card-solicitacao-empresa .btn-acoes button:first-child {
+    background-color: var(--cor-verde-barra);
+}
+.box-cards .card-solicitacao-empresa .btn-acoes button:last-child {
+    background-color: var(--cor-vermelho);
+}
