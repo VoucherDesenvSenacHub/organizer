@@ -30,14 +30,12 @@ if (isset($_POST['valor-doacao'])) {
         echo "<script>alert('Valor inválido!! Doe um valor maior.');window.history.back();</script>";
         exit;
     } else {
-        //Capturar nome do projeto
-        //Capturar nome, cpf, email, cep, númeroEndereco, complementoEndereco e telefone do usuário
-        $transacao_id = $validacao->validarPagamentoCartao($NumberCartao, $usuario['nome'],
+        //Capturar nome do projeto e usuário para validação do pagamento
+        $transacao_id = $validacao->validarPagamentoCartao($NumberCartao, $titular,
         $mesExpiracao, $anoExpiracao, $Cvv, $PerfilProjeto['nome'], $ValorDoacao,
-        $titular, $usuario['cpf'], $usuario['email'],
+        $usuario['nome'], $usuario['cpf'], $usuario['email'],
         79100000, 1000, 'Casa',$usuario['telefone']);
         //Executar a rotina de validação no gateway antes de prosseguir com a doação
-        //Criar uma classe para tratar o processo de pagamento pelo gateway, que retornará $transacao_id caso seja aprovada
         
         $resultadoDoacao = $projetoModel->realizarDoacaoProjeto($IdProjeto, $_SESSION['usuario']['id'], $ValorDoacao, $transacao_id);
         if ($resultadoDoacao > 0) {
