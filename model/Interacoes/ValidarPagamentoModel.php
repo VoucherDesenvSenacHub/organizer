@@ -57,9 +57,45 @@ class ValidarPagamentoModel
     function validarPagamentoCartao($numeroCartao, $nomeCartao, $expiracaoMes, $expiracaoAno,
         $cvv, $descricaoProduto, $valorProduto, $nome, $cpfCnpj,
         $email, $cep,$enderecoNumero, $enderecoComplemento, $telefone){
-            $url = 'http://payment.avanth.kinghost.net/api/payments/pay-with-credit-card';
-            $pagamento = curl_init($url);
-            $transacao_id = 0;
-            return $transacao_id;
-        }
+        $url = 'http://payment.avanth.kinghost.net/api/payments/pay-with-credit-card';
+        $payload = [
+            'cartao' => [
+                'numero' => $numeroCartao,
+                'nome' => $nomeCartao,
+                'expiracaoMes' => $expiracaoMes,
+                'expiracaoAno' => $expiracaoAno,
+                'cvv' => $cvv
+            ],
+            'produto' => [
+                'descricao' => $descricaoProduto,
+                'valor' => $valorProduto
+            ],
+            'titular' => [
+                'nome' => $nome,
+                'cpfCnpj' => $cpfCnpj,
+                'email' => $email,
+                'cep' => $cep,
+                'enderecoNumero' => $enderecoNumero,
+                'enderecoComplemento' => $enderecoComplemento,
+                'telefone' => $telefone
+            ]
+        ];
+        $json = json_encode($payload, JSON_UNESCAPED_UNICODE);
+        $pagamento = curl_init($url);
+        curl_setopt_array($pagamento, [
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_POST => true,
+            CURLOPT_POSTFIELDS => $json,
+            CURLOPT_HTTPHEADER => [
+                'Content-Type: application/json',
+                'Accept: application/json',
+                'Content-Length: ' . strlen($json)
+            ],]);
+        $responseBody = curl_exec($pagamento);
+        $curlErr = curl_error($pagamento) ?: null;
+        $httpCode = curl_getinfo($pagamento, CURLINFO_HTTP_CODE);
+        curl_close($pagamento);
+        $transacao_id = 0;
+        return $transacao_id;
+    }
 }

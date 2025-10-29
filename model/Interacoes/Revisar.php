@@ -90,8 +90,8 @@ function sendPaymentWithCreditCard(array $dados): array {
 
     $json = json_encode($payload, JSON_UNESCAPED_UNICODE);
 
-    $ch = curl_init($url);
-    curl_setopt_array($ch, [
+    $pagamento = curl_init($url);
+    curl_setopt_array($pagamento, [
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_POST => true,
         CURLOPT_POSTFIELDS => $json,
@@ -105,10 +105,10 @@ function sendPaymentWithCreditCard(array $dados): array {
         CURLOPT_TIMEOUT => 30,
     ]);
 
-    $responseBody = curl_exec($ch);
-    $curlErr = curl_error($ch) ?: null;
-    $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-    curl_close($ch);
+    $responseBody = curl_exec($pagamento);
+    $curlErr = curl_error($pagamento) ?: null;
+    $httpCode = curl_getinfo($pagamento, CURLINFO_HTTP_CODE);
+    curl_close($pagamento);
 
     if ($responseBody === false && $curlErr) {
         return [
