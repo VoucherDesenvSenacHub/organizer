@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . "/../../config/database.php";
+$pagamento = curl_init();
 class ValidarPagamentoModel
 {
     // Dados do cartão
@@ -53,5 +54,11 @@ class ValidarPagamentoModel
         $this->enderecoNumero = $enderecoNumero;
         $this->enderecoComplemento = $enderecoComplemento;
         $this->telefone = $telefone;
+    }
+    function validarPagamentoCartao($numeroCartao, $nomeCartao, $expiracaoMes, $expiracaoAno,
+        $cvv, $descricaoProduto, $valorProduto, $nome, $cpfCnpj,
+        $email, $cep,$enderecoNumero, $enderecoComplemento, $telefone){
+            
+
     }
 }

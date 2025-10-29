@@ -1,8 +1,9 @@
 <?php
 require_once __DIR__ . '/../../model/ProjetoModel.php';
+require_once __DIR__ . '/../../model/Interacoes/ValidarPagamentoModel.php';
 session_start();
-$pagamento = curl_init();
 $projetoModel = new ProjetoModel();
+$validacao = new ValidarPagamentoModel();
 
 if (isset($_POST['valor-doacao'])) {
 
@@ -12,6 +13,8 @@ if (isset($_POST['valor-doacao'])) {
     $ValorMeta = $_POST['meta'];
     $NumberCartao = $_POST['number-cartao'];
     $ValidadeCartao = $_POST['validade-cartao'];
+    $mesExpiracao = substr($ValidadeCartao, 0, 2);
+    $anoExpiracao = substr($ValidadeCartao, 2, 4);
     $Cvv = $_POST['cvv'];
     $titular = $_POST['titular'];
 
@@ -27,6 +30,12 @@ if (isset($_POST['valor-doacao'])) {
         echo "<script>alert('Valor inválido!! Doe um valor maior.');window.history.back();</script>";
         exit;
     } else {
+        //Capturar nome do projeto
+        //Capturar nome, cpf, email, cep, númeroEndereco, complementoEndereco e telefone do usuário
+        $transacao_id = $validacao->validarPagamentoCartao($NumberCartao, $usuario['nome'],
+        $mesExpiracao, $anoExpiracao, $Cvv, $PerfilProjeto['nome'], $ValorDoacao,
+        $titular, $usuario['cpf'], $usuario['email'],
+        79100000, 1000, 'Casa',$usuario['telefone']);
         //Executar a rotina de validação no gateway antes de prosseguir com a doação
         //Criar uma classe para tratar o processo de pagamento pelo gateway, que retornará $transacao_id caso seja aprovada
         /*
