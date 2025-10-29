@@ -1,6 +1,5 @@
 <?php
 require_once __DIR__ . "/../../config/database.php";
-$pagamento = curl_init();
 class ValidarPagamentoModel
 {
     // Dados do cartão
@@ -58,7 +57,9 @@ class ValidarPagamentoModel
     function validarPagamentoCartao($numeroCartao, $nomeCartao, $expiracaoMes, $expiracaoAno,
         $cvv, $descricaoProduto, $valorProduto, $nome, $cpfCnpj,
         $email, $cep,$enderecoNumero, $enderecoComplemento, $telefone){
-            
-
-    }
+            $url = 'http://payment.avanth.kinghost.net/api/payments/pay-with-credit-card';
+            $pagamento = curl_init($url);
+            $transacao_id = 0;
+            return $transacao_id;
+        }
 }
