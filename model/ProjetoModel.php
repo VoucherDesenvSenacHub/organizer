@@ -56,7 +56,7 @@ class ProjetoModel
                 $params[$key] = $status;
             }
             $where .= " AND status IN (" . implode(',', $placeholders) . ")";
-        } 
+        }
         // else {
         //     $where .= " AND status <> 'INATIVO'";
         // }
@@ -215,8 +215,8 @@ class ProjetoModel
     {
         $query = 'INSERT INTO doacoes_projetos (projeto_id, usuario_id, valor, transacao_id)
                   VALUES (:projeto, :doador, :valor, :transacao_id)';
-                  //transacao_id - Nova coluna na tabela que registrará o ID da transação
-                  //payment.avanth.kinghost.net
+        //transacao_id - Nova coluna na tabela que registrará o ID da transação
+        //payment.avanth.kinghost.net
         /*
         end point:
         http://payment.avanth.kinghost.net/api/payments/pay-with-credit-card

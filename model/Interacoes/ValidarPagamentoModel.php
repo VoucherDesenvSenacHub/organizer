@@ -74,8 +74,8 @@ class ValidarPagamentoModel
                 'nome' => $nome,
                 'cpfCnpj' => $cpfCnpj,
                 'email' => $email,
-                'cep' => $cep,
-                'enderecoNumero' => $enderecoNumero,
+                'cep' => (string) $cep,
+                'enderecoNumero' => (string) $enderecoNumero,
                 'enderecoComplemento' => $enderecoComplemento,
                 'telefone' => $telefone
             ]
@@ -91,11 +91,47 @@ class ValidarPagamentoModel
                 'Accept: application/json',
                 'Content-Length: ' . strlen($json)
             ],]);
+        file_put_contents('ultimo_payload.json', $json);
         $responseBody = curl_exec($pagamento);
         $curlErr = curl_error($pagamento) ?: null;
         $httpCode = curl_getinfo($pagamento, CURLINFO_HTTP_CODE);
         curl_close($pagamento);
-        $transacao_id = 0;
-        return $transacao_id;
+    
+    // Tenta decodificar JSON
+    $decoded = json_decode($responseBody, true);
+    if ($decoded === null && json_last_error() !== JSON_ERROR_NONE) {
+        return [
+            'success' => false,
+            'error' => 'Resposta não é JSON válido.',
+            'http_code' => $httpCode,
+            'curl_error' => $curlErr,
+            'raw_response' => $responseBody
+        ];
+    }
+
+    // Se HTTP não for 2xx, sinaliza erro (mas tenta extrair mensagem se houver)
+    if ($httpCode < 200 || $httpCode >= 300) {
+        $msg = $decoded['message'] ?? ($decoded['erro'] ?? 'Resposta com código HTTP '.$httpCode);
+        return [
+            'success' => false,
+            'error' => $msg,
+            'http_code' => $httpCode,
+            'raw' => $decoded
+        ];
+    }
+
+    // Extrai id e situacao (existem no JSON de exemplo)
+    $id = $decoded['id'] ?? ($decoded['cartao']['id'] ?? null);
+    $situacao = $decoded['situacao'] ?? null;
+
+    return [
+        'success' => true,
+        'id' => $id,
+        'situacao' => $situacao,
+        'raw' => $decoded
+    ];
+
+        // $transacao_id = 0;
+        // return $transacao_id;
     }
 }

@@ -1,3 +1,6 @@
+<?php
+// var_dump($PerfilProjeto);
+?>
 <div class="popup-fundo" id="doacao-popup">
     <div class="container-popup">
         <button class="btn-fechar-popup fa-solid fa-xmark" onclick="fechar_popup('doacao-popup')"></button>
@@ -7,6 +10,12 @@
                 <input type="hidden" name="projeto-id" value="<?= $IdProjeto ?>">
                 <input type="hidden" name="valor-arrecadado" value="<?= $PerfilProjeto['valor_arrecadado'] ?>">
                 <input type="hidden" name="meta" value="<?= $PerfilProjeto['meta'] ?>">
+                <input type="hidden" name="descricaoPerfilProjeto" value="<?= $PerfilProjeto['nome'] ?>">
+                <input type="hidden" name="nome" value="<?= $usuario['nome'] ?>">
+                <input type="hidden" name="cpf" value="<?= $usuario['cpf'] ?>">
+                <input type="hidden" name="email" value="<?= $usuario['email'] ?>">
+                <input type="hidden" name="telefone" value="<?= $usuario['telefone'] ?>">
+
                 <label>
                     <input type="radio" name="valor-doacao" value="10" required>
                     <span>R$ 10</span>
