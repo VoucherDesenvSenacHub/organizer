@@ -31,10 +31,10 @@ ob_end_flush();
                     <div class="foto-preview" id="fotoPreview" style="display: <?= !empty($_SESSION['ong']['foto']) ? 'block' : 'none' ?>;">
                         <img id="previewImage" src="<?= $perfil['foto'] ?>">
                          
-                        <button type="button" class="btn-remover" id="btnRemover" title="Remover Imagem">
+                        <button type="button" class="btn-remover" id="btnRemoverFoto" title="Remover Imagem">
                             <i class="fa-solid fa-trash-can"></i>
                         </button>
-                        <input type="hidden" name="remover_foto" id="removerFoto" value="0">
+                        <input type="hidden" name="remover_foto" id="removerFotoOng" value="0">
                     </div>
                 </div>
             </fieldset>

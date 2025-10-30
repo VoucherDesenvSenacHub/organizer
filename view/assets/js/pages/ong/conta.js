@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const previewImage = document.getElementById('previewImage');
     const uploadArea = document.getElementById('uploadArea');
     const fotoPreview = document.getElementById('fotoPreview');
-    const btnRemover = document.getElementById('btnRemover');
+    const btnRemoverFoto = document.getElementById('btnRemoverFoto');
 
     // Função para processar arquivo (preview imediato)
     function processarArquivo(file) {
@@ -155,12 +155,12 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    if (btnRemover) {
-    btnRemover.addEventListener('click', function(e) {
+    if (btnRemoverFoto) {
+    btnRemoverFoto.addEventListener('click', function(e) {
         e.stopPropagation();
         if (confirm('Deseja realmente remover a foto da ONG?')) {
             // Atualiza o input escondido para o backend saber que deve remover
-            document.getElementById('removerFoto').value = '1';
+            document.getElementById('removerFotoOng').value = '1';
 
             // Atualiza visual
             uploadArea.style.display = 'flex';
