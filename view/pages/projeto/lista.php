@@ -26,14 +26,14 @@ $categorias = $categoriaModel->buscarCategorias();
                     </ul>
                     <ul>
                         <li>Status <i class="fa-solid fa-angle-down"></i></li>
-                        <li><label><input type="checkbox" name="status[]" value="ATIVO">Ativos</label></li>
-                        <li><label><input type="checkbox" name="status[]" value="FINALIZADO">Finalizados</label></li>
+                        <li><label><input type="radio" name="status[]" value="ATIVO">Ativos</label></li>
+                        <li><label><input type="radio" name="status[]" value="FINALIZADO">Finalizados</label></li>
                     </ul>
                     <ul>
                         <li>Categoria <i class="fa-solid fa-angle-down"></i></li>
                         <?php foreach ($categorias as $categoria): ?>
                             <li>
-                                <label><input type="checkbox" name="categorias[]" value="<?= $categoria['categoria_id'] ?>"> <?= $categoria['nome'] ?></label>
+                                <label><input type="radio" name="categorias[]" value="<?= $categoria['categoria_id'] ?>"> <?= $categoria['nome'] ?></label>
                             </li>
                         <?php endforeach; ?>
                     </ul>
@@ -41,6 +41,8 @@ $categorias = $categoriaModel->buscarCategorias();
                 <div class="input-pesquisa">
                     <input type="text" name="pesquisa" placeholder="Busque um projeto">
                     <button class="btn" type="submit"><i class="fa-solid fa-search"></i></button>
+                    <button class="limpar-filtro" onclick="limparFiltros()">Limpar filtros</button>
+
                 </div>
             </form>
             <div id="img-illustrativa">
@@ -58,6 +60,6 @@ $categorias = $categoriaModel->buscarCategorias();
 </main>
 
 <?php
-$jsPagina = [];
+$jsPagina = ["ong/limpar-filtro.js"];
 require_once '../../components/layout/footer/footer-logado.php';
 ?>
