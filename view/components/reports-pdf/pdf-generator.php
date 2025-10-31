@@ -2,13 +2,17 @@
     use Dompdf\Dompdf;
     use Dompdf\Options;
 
-    require_once '../../../dompdf/autoload.inc.php';
+    require_once __DIR__ . '/../../../dompdf/autoload.inc.php';
     $dompdf = new Dompdf();
+    $idOng = null;
+    $relatorio = null;
 
-    if($_SERVER['REQUEST_METHOD'] === "POST"):
+    if($_SERVER['REQUEST_METHOD'] === "POST"){
         $idOng = $_POST['id-ong'];
         $relatorio = $_POST['relatorio'];
-    endif;
+    } else{
+        $relatorio = 'recibo-doacao.php';
+    }
     
     ob_start();
     include ($relatorio);

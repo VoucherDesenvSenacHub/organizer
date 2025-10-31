@@ -46,9 +46,9 @@ if (isset($_POST['valor-doacao'])) {
             if ($resultadoDoacao > 0) {
                 $_SESSION['mensagem_toast'] = ['sucesso', 'Doação realizada com sucesso!'];
                 include '../../view/components/reports-pdf/recibo-doacao.php';
-                include '../../view/components/reports-pdf/recibo-generator.php';
-                $recibo = file_get_contents('../../view/components/reports-pdf/recibo-generator.php');
-                echo $recibo;
+                include '../../view/components/reports-pdf/pdf-generator.php';
+                $recibo = file_get_contents('../../view/components/reports-pdf/pdf-generator.php');
+                // echo $recibo;
                 // header('Location: ' . $_SERVER['HTTP_REFERER']);
                 // exit;
             } else {
