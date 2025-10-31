@@ -20,7 +20,7 @@ ob_end_flush();
             <fieldset>
                 <legend><i class="fa-solid fa-image"></i> FOTO DA ONG</legend>
                 <div class="form-foto-perfil">
-                    <div class="upload-area" id="uploadArea">
+                    <div class="upload-area-ong" id="uploadArea">
                         <input type="file" id="fotoPerfil" name="foto_perfil" accept="image/*" style="display: none;">
                         <i class="fa-solid fa-cloud-upload-alt"></i>
                         <p>Clique para escolher uma foto ou arraste aqui</p>
@@ -29,7 +29,7 @@ ob_end_flush();
                         <img id="previewImage" src="<?= !empty($_SESSION['ong']['foto']) 
                             ? '../../../' . $_SESSION['ong']['foto'] 
                             : '../../assets/images/global/image-placeholder.svg' ?>">
-                        <button type="button" class="btn-remover" id="btnRemover">
+                        <button type="button" class="btn-remover-foto" id="btnRemover">
                             <i class="fa-solid fa-trash-can"></i>
                         </button>
                     </div>
