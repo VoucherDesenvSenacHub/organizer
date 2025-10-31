@@ -16,9 +16,14 @@ if (isset($_GET['id'])) {
     $ProjetosOng = $projetoModel->listarCardsProjetos(['ong_id' => $IdOng, 'limit' => 50, 'status' => ['ATIVO', 'FINALIZADO']]);
     $NoticiasOng = $noticiaModel->listarCardsNoticias(['ong_id' => $IdOng, 'limit' => 50, 'status' => 'ATIVO']);
     $DoadoresOng = $ongModel->buscarDoadores($IdOng);
-    $FotoOng = isset($PerfilOng['caminho']) && $PerfilOng['caminho']
-        ? '../../../' . $PerfilOng['caminho']
-        : '../../assets/images/global/image-placeholder.svg';
+
+    // 🔹 Busca o caminho da imagem com base no imagem_id
+    if (!empty($PerfilOng['imagem_id'])) {
+        $caminho = $ongModel->buscarCaminhoImagem($PerfilOng['imagem_id']);
+        $FotoOng = '../../../' . $caminho;
+    } else {
+        $FotoOng = '../../assets/images/global/image-placeholder.svg';
+    }
 }
 
 //Verificar se o doador marcou este projeto como favorito

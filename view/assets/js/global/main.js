@@ -236,24 +236,24 @@ document.addEventListener('DOMContentLoaded', () => {
 const uploadArea = document.getElementById('uploadAreaDoador');
 const inputFile = document.getElementById('foto_usuario');
 const previewImg = document.getElementById('preview-foto');
-const btnRemover = document.getElementById('btnRemoverDoador');
+const btnRemoverDoador = document.getElementById('btnRemoverDoador');
 const uploadText = document.getElementById('uploadTextDoador');
 
 // Mostrar texto de upload se não houver imagem
 function updateUploadText() {
     if (!previewImg.src || previewImg.src.includes('sem-foto')) {
         uploadText.style.display = 'block';
-        btnRemover.style.display = 'none';
+        btnRemoverDoador.style.display = 'none';
     } else {
         uploadText.style.display = 'none';
-        btnRemover.style.display = 'block';
+        btnRemoverDoador.style.display = 'block';
     }
 }
 updateUploadText();
 
 // Clique para abrir input
 uploadArea.onclick = function (e) {
-    if (e.target !== btnRemover) inputFile.click();
+    if (e.target !== btnRemoverDoador) inputFile.click();
 };
 
 // Preview da imagem
@@ -294,7 +294,7 @@ uploadArea.addEventListener('drop', function (e) {
 });
 
 // Remover imagem
-btnRemover.onclick = function (e) {
+btnRemoverDoador.onclick = function (e) {
     e.stopPropagation();
 
     // Atualiza o preview
@@ -303,7 +303,7 @@ btnRemover.onclick = function (e) {
     updateUploadText();
 
     // Marca para remoção no backend
-    const form = btnRemover.closest('form');
+    const form = btnRemoverDoador.closest('form');
     let inputRemover = form.querySelector('input[name="remover_foto"]');
     if (!inputRemover) {
         inputRemover = document.createElement('input');
