@@ -1,6 +1,6 @@
 <?php
 $acesso = 'adm';
-$tituloPagina = 'Relatórios | Organizer'; // Definir o título da página
+$tituloPagina = 'Relatórios | Organizer';
 $cssPagina = ["adm/relatorios.css"]; //Colocar o arquivo .css (exemplo: 'ONG/cadastro.css')
 require_once '../../components/layout/base-inicio.php';
 require_once '../../components/graphics/vertical-bars.php';
@@ -68,7 +68,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <!-- Fim doações Mensais -->
 
                 <!-- Início doações por projeto - Gráfico "PIE" -->
-
                 <div class="card1">
                     <div class="icon">
                         Doações por projeto
