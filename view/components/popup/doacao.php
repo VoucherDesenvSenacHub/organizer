@@ -1,6 +1,4 @@
-<?php
-// var_dump($PerfilProjeto);
-?>
+
 <div class="popup-fundo" id="doacao-popup">
     <div class="container-popup">
         <button class="btn-fechar-popup fa-solid fa-xmark" onclick="fechar_popup('doacao-popup')"></button>
@@ -37,9 +35,6 @@
                     <span>R$</span>
                     <input type="number" name="valor-personalizado" placeholder="Outro Valor">
                 </label>
-            <!-- </div> -->
-            <!-- <div class="popup-fundo" id="popup-adicionar-cartao">
-                <div class="credit-card-popup"> -->
             <div id="popup-adicionar-cartao">
                 <div class="credit-card-popup">
                     <div class="input-grupo">
@@ -63,16 +58,6 @@
                     <div class="input-grupo">
                         <label for="name">Titular do cartão</label>
                         <input id="titular" name="titular" type="text" placeholder="Nome impresso no cartão" maxlength="200" onkeypress="return /[a-z\s]/i.test(event.key)">
-                    </div>
-                    <div>
-                        <!-- <button class="add-button" id="addButton">
-                            <span class="button-text">CONFIRMAR</span>
-                            <div class="loader"></div>
-                            <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
-                                <circle class="checkmark-circle" cx="26" cy="26" r="25" fill="none" />
-                                <path class="checkmark-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
-                            </svg>
-                        </button> -->
                     </div>
                 </div>
             </div>

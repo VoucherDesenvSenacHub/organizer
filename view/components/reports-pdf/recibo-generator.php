@@ -4,14 +4,9 @@
 
     require_once '../../../dompdf/autoload.inc.php';
     $dompdf = new Dompdf();
-
-    if($_SERVER['REQUEST_METHOD'] === "POST"):
-        $idOng = $_POST['id-ong'];
-        $relatorio = $_POST['relatorio'];
-    endif;
     
     ob_start();
-    include ($relatorio);
+    include ('recibo-doacao.php');
     $html = ob_get_clean();
 
     $option = new Options();
@@ -22,5 +17,5 @@
 
     $dompdf->render();
 
-    $dompdf->stream("Relatorio.pdf");
+    $dompdf->stream("Recibo.pdf");
 ?>

@@ -45,8 +45,12 @@ if (isset($_POST['valor-doacao'])) {
             $resultadoDoacao = $projetoModel->realizarDoacaoProjeto($IdProjeto, $_SESSION['usuario']['id'], $ValorDoacao, $transacao_id['id']);
             if ($resultadoDoacao > 0) {
                 $_SESSION['mensagem_toast'] = ['sucesso', 'Doação realizada com sucesso!'];
-                header('Location: ' . $_SERVER['HTTP_REFERER']);
-                exit;
+                include '../../view/components/reports-pdf/recibo-doacao.php';
+                include '../../view/components/reports-pdf/recibo-generator.php';
+                $recibo = file_get_contents('../../view/components/reports-pdf/recibo-generator.php');
+                echo $recibo;
+                // header('Location: ' . $_SERVER['HTTP_REFERER']);
+                // exit;
             } else {
                 $_SESSION['mensagem_toast'] = ['erro', 'Compra não aprovada pela operadora!'];
                 header('Location: ' . $_SERVER['HTTP_REFERER']);

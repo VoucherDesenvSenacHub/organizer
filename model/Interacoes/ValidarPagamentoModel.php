@@ -108,8 +108,6 @@ class ValidarPagamentoModel
             'raw_response' => $responseBody
         ];
     }
-
-    // Se HTTP não for 2xx, sinaliza erro (mas tenta extrair mensagem se houver)
     if ($httpCode < 200 || $httpCode >= 300) {
         $msg = $decoded['message'] ?? ($decoded['erro'] ?? 'Resposta com código HTTP '.$httpCode);
         return [
@@ -119,8 +117,6 @@ class ValidarPagamentoModel
             'raw' => $decoded
         ];
     }
-
-    // Extrai id e situacao (existem no JSON de exemplo)
     $id = $decoded['id'] ?? ($decoded['cartao']['id'] ?? null);
     $situacao = $decoded['situacao'] ?? null;
 
@@ -130,8 +126,5 @@ class ValidarPagamentoModel
         'situacao' => $situacao,
         'raw' => $decoded
     ];
-
-        // $transacao_id = 0;
-        // return $transacao_id;
     }
 }
