@@ -167,4 +167,11 @@ class NoticiaModel
 
         return $stmt->rowCount() > 0;
     }
+    public function bloquearNoticia(int $noticia_id): bool {
+        $sql = "UPDATE noticias SET status = 'INATIVO' WHERE noticia_id = :noticia_id";
+        $stmt = $this->pdo->prepare($sql);
+        return $stmt->execute([':noticia_id' => $noticia_id]);
+    }
+    
+    
 }

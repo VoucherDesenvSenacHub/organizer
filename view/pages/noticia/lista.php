@@ -24,6 +24,8 @@ require_once '../../components/layout/base-inicio.php';
                 <div class="input-pesquisa">
                     <input type="text" name="pesquisa" placeholder="Busque uma Notícia">
                     <button class="btn" type="submit"><i class="fa-solid fa-search"></i></button>
+                    <button class="limpar-filtro" onclick="limparFiltros()">Limpar filtros</button>
+
                 </div>
             </form>
             <div id="img-illustrativa">
@@ -40,6 +42,6 @@ require_once '../../components/layout/base-inicio.php';
 </main>
 
 <?php
-$jsPagina = [];
+$jsPagina = ["ong/limpar-filtro.js"];
 require_once '../../components/layout/footer/footer-logado.php';
 ?>
