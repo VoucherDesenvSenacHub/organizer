@@ -227,7 +227,7 @@ class UsuarioModel
 
     public function removerImagem($idUsuario)
     {
-        $sql = "UPDATE usuario SET id_imagem = NULL WHERE id = :id";
+        $sql = "UPDATE usuarios SET imagem_id = NULL WHERE usuario_id = :id";
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindValue(':id', $idUsuario, PDO::PARAM_INT);
         return $stmt->execute();
