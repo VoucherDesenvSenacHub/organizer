@@ -92,7 +92,7 @@ class ValidarPagamentoModel
                 'Accept: application/json',
                 'Content-Length: ' . strlen($json)
             ],]);
-        file_put_contents('ultimo_payload.json', $json);
+        // file_put_contents('ultimo_payload.json', $json);
         $responseBody = curl_exec($pagamento);
         $curlErr = curl_error($pagamento) ?: null;
         $httpCode = curl_getinfo($pagamento, CURLINFO_HTTP_CODE);

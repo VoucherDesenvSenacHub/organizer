@@ -328,14 +328,6 @@ class ProjetoModel
         return $stmt->fetch();
     }
 
-    public function buscarProjetos() {
-        $query = "SELECT * FROM projetos";
-        $stmt = $this->pdo->prepare($query);
-        $stmt->execute();
-        $stmt->setFetchMode(PDO::FETCH_ASSOC);
-        return $stmt->fetchAll();
-    }
-
     public function buscarOngProjeto($idOng){
         $query = "SELECT 
                 o.nome,

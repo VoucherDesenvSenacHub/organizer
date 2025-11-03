@@ -62,10 +62,13 @@
 </head>
 <body>
     <h1>RECIBO</h1>
+    <br><br><br>
     <p>Declaramos para os devidos fins que recebemos de <?= $nome ?> a importância de <strong><?= $valor ?></strong>, referente a contribuição financeira para custeio do projeto <strong><?= $projeto ?>.</strong>, de responsabilidade da instituição <strong><?= $ong ?></strong></p>
     <br><br><br>
     <h3><?= $cidade ?>, <?= $data?></h3>
+    <br><br><br>
     <h2><?= $ong ?></h2>
+    <h3>CNPJ: <?= $cnpj ?></h3>
 
 </body>
 </html>
