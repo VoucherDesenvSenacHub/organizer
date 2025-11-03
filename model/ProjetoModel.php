@@ -215,38 +215,6 @@ class ProjetoModel
     {
         $query = 'INSERT INTO doacoes_projetos (projeto_id, usuario_id, valor, transacao_id)
                   VALUES (:projeto, :doador, :valor, :transacao_id)';
-        //transacao_id - Nova coluna na tabela que registrará o ID da transação
-        //payment.avanth.kinghost.net
-        /*
-        end point:
-        http://payment.avanth.kinghost.net/api/payments/pay-with-credit-card
-        RESPOSTA
-        {
-  "id": 79,
-  "tipo": "CARTAO_CREDITO",
-  "situacao": "APROVADA",
-  "descricao": "Fone de Ouvido Bluetooth",
-  "valor": "199.9",
-  "cartao": {
-    "id": 79,
-    "numero": "4111111111111111",
-    "nome": "Adercio",
-    "expiracaoMes": "12",
-    "expiracaoAno": "2028",
-    "cvv": "123",
-    "token": "019a1378-9ff5-79ce-b9e8-ae72cd436e4b",
-    "bandeira": "VISA",
-    "titular": {
-      "id": 79,
-      "nome": "João da Silva",
-      "cpfCnpj": "12345678900",
-      "email": "joao.silva@email.com",
-      "cep": "01001000",
-      "enderecoNumero": 123,
-      "enderecoComplemento": "Apto 45",
-      "telefone": "11912345678"
-    }
-        */
         $stmt = $this->pdo->prepare($query);
         $stmt->bindParam(':projeto', $projeto_id);
         $stmt->bindParam(':doador', $usuario_id);
@@ -348,6 +316,41 @@ class ProjetoModel
         $stmt->bindParam(':usuario_id', $usuario_id, PDO::PARAM_INT);
         $stmt->bindParam(':projeto_id', $projeto_id, PDO::PARAM_INT);
         $stmt->execute();
+        return $stmt->fetch();
+    }
+
+    public function buscarIdOng($projeto_id) {
+        $query = "SELECT ong_id FROM projetos WHERE projeto_id = :id";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindParam(':id', $projeto_id, PDO::PARAM_INT);
+        $stmt->execute();
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        return $stmt->fetch();
+    }
+
+    public function buscarProjetos() {
+        $query = "SELECT * FROM projetos";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute();
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        return $stmt->fetchAll();
+    }
+
+    public function buscarOngProjeto($idOng){
+        $query = "SELECT 
+                o.nome,
+                o.cnpj,
+                o.cidade,
+                o.estado
+            FROM 
+                ongs AS o
+            WHERE 
+                o.ong_id = :ong_id;
+            ";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindParam(':ong_id', $idOng);
+        $stmt->execute();
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
         return $stmt->fetch();
     }
 }

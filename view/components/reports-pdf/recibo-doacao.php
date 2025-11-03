@@ -1,5 +1,4 @@
-<?php 
-echo $nome;
+<?php
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -10,6 +9,9 @@ echo $nome;
     <style>
         h1, h2, h3 {
             text-align: center;
+        }
+        p {
+            text-indent: 30px;
         }
         @page {
             margin: 1cm 1cm 2cm 1cm;
@@ -59,7 +61,11 @@ echo $nome;
     </style>
 </head>
 <body>
-    <h1><?= $titular ?></h1>
-    <h2><?= $ValorDoacao?></h2>
+    <h1>RECIBO</h1>
+    <p>Declaramos para os devidos fins que recebemos de <?= $nome ?> a importância de <strong><?= $valor ?></strong>, referente a contribuição financeira para custeio do projeto <strong><?= $projeto ?>.</strong>, de responsabilidade da instituição <strong><?= $ong ?></strong></p>
+    <br><br><br>
+    <h3><?= $cidade ?>, <?= $data?></h3>
+    <h2><?= $ong ?></h2>
+
 </body>
 </html>

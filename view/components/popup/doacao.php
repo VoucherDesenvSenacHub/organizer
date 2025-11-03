@@ -13,6 +13,8 @@
                 <input type="hidden" name="cpf" value="<?= $usuario['cpf'] ?>">
                 <input type="hidden" name="email" value="<?= $usuario['email'] ?>">
                 <input type="hidden" name="telefone" value="<?= $usuario['telefone'] ?>">
+                <input type="hidden" name="id-ong" value="0">
+                <input type="hidden" name="relatorio" value="recibo-doacao.php">
 
                 <label>
                     <input type="radio" name="valor-doacao" value="10" required>

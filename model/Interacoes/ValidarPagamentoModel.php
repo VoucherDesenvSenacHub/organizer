@@ -54,6 +54,7 @@ class ValidarPagamentoModel
         $this->enderecoComplemento = $enderecoComplemento;
         $this->telefone = $telefone;
     }
+    
     function validarPagamentoCartao($numeroCartao, $nomeCartao, $expiracaoMes, $expiracaoAno,
         $cvv, $descricaoProduto, $valorProduto, $nome, $cpfCnpj,
         $email, $cep,$enderecoNumero, $enderecoComplemento, $telefone){
