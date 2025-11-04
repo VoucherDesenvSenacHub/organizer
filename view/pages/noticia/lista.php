@@ -40,7 +40,6 @@ require_once '../../components/layout/base-inicio.php';
         </section>
     </div>
 </main>
-
 <?php
 $jsPagina = ["ong/limpar-filtro.js"];
 require_once '../../components/layout/footer/footer-logado.php';

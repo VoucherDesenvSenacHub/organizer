@@ -147,3 +147,36 @@ main.usuario-logado #container-catalogo {
     transform: rotate(360deg);
   }
 }
+
+/* Animação de entrada (fade + subida) */
+.limpar-filtro.animar-entrada {
+  animation: aparecer 0.4s ease forwards;
+}
+
+@keyframes aparecer {
+  from {
+      opacity: 0;
+      transform: translateY(15px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+/* Animação de saída (fade + descida) */
+.limpar-filtro.animar-saida {
+  animation: desaparecer 0.3s ease forwards;
+}
+
+@keyframes desaparecer {
+  from {
+      opacity: 1;
+      transform: translateY(0);
+  }
+  to {
+      opacity: 0;
+      transform: translateY(10px);
+  }
+}
+
