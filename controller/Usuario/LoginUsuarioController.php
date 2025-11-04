@@ -18,7 +18,7 @@ if ($contaUsuario && password_verify($senha, $contaUsuario['senha'])) {
     $_SESSION['usuario'] = [
         'id'    => $contaUsuario['usuario_id'],
         'nome'  => $contaUsuario['nome'],
-        'foto'  => $contaUsuario['caminho'] ?? '../../assets/images/global/user-placeholder.jpg', // Foto padrão caso não tenha
+        'foto'  => $contaUsuario['caminho'] ?? 'view/assets/images/global/user-placeholder.jpg', // Foto padrão caso não tenha
         'acessos' => [
             'doador' => (bool) $contaUsuario['doador'], // Conversão explícita para booleano
             'ong'    => (bool) $contaUsuario['ong'],

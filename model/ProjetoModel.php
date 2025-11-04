@@ -154,16 +154,16 @@ class ProjetoModel
 
     function buscarPerfilProjeto($IdProjeto)
     {
-        $query = "SELECT p.projeto_id, p.nome, p.descricao, p.meta, p.categoria_id, p.data_cadastro,
-        p.ong_id, o.nome AS nome_ong, i.caminho, 
+        $query = "SELECT p.projeto_id, p.nome, p.descricao, p.meta, p.categoria_id, p.data_cadastro, p.status,
+        p.ong_id, o.nome AS nome_ong, i.caminho,
         COALESCE(SUM(dp.valor), 0) AS valor_arrecadado,
         ROUND(COALESCE(SUM(dp.valor), 0) / p.meta * 100) AS barra
         FROM $this->tabela p
         INNER JOIN ongs o
             ON o.ong_id = p.ong_id
-        LEFT JOIN imagens i 
+        LEFT JOIN imagens i
             ON o.imagem_id = i.imagem_id
-        LEFT JOIN doacoes_projetos dp 
+        LEFT JOIN doacoes_projetos dp
             ON dp.projeto_id = p.projeto_id
         WHERE p.projeto_id = :id";
         $stmt = $this->pdo->prepare($query);
@@ -309,7 +309,7 @@ class ProjetoModel
     public function usuarioJaApoiouProjeto($usuario_id, $projeto_id)
     {
         $query = "SELECT 1 FROM apoios_projetos
-                  WHERE usuario_id = :usuario_id AND projeto_id = :projeto_id 
+                  WHERE usuario_id = :usuario_id AND projeto_id = :projeto_id
                   LIMIT 1";
 
         $stmt = $this->pdo->prepare($query);
@@ -319,7 +319,8 @@ class ProjetoModel
         return $stmt->fetch();
     }
 
-    public function buscarIdOng($projeto_id) {
+    public function buscarIdOng($projeto_id)
+    {
         $query = "SELECT ong_id FROM projetos WHERE projeto_id = :id";
         $stmt = $this->pdo->prepare($query);
         $stmt->bindParam(':id', $projeto_id, PDO::PARAM_INT);
@@ -328,7 +329,8 @@ class ProjetoModel
         return $stmt->fetch();
     }
 
-    public function buscarOngProjeto($idOng){
+    public function buscarOngProjeto($idOng)
+    {
         $query = "SELECT 
                 o.nome,
                 o.cnpj,
@@ -344,5 +346,14 @@ class ProjetoModel
         $stmt->execute();
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
         return $stmt->fetch();
+    }
+
+    function inativar($id)
+    {
+        $query = "UPDATE $this->tabela SET status = 'INATIVO' WHERE projeto_id = :id";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->rowCount();
     }
 }

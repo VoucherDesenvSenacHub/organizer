@@ -95,9 +95,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const previewImage = document.getElementById('previewImage');
     const uploadArea = document.getElementById('uploadArea');
     const fotoPreview = document.getElementById('fotoPreview');
-    const btnRemover = document.getElementById('btnRemover');
+    const btnRemoverFoto = document.getElementById('btnRemoverFoto');
 
-    // Função para processar arquivo
+    // Função para processar arquivo (preview imediato)
     function processarArquivo(file) {
         if (file && file.type.startsWith('image/')) {
             const reader = new FileReader();
@@ -109,6 +109,14 @@ document.addEventListener('DOMContentLoaded', function() {
             reader.readAsDataURL(file);
         }
     }
+
+    // Atualiza o preview existente ao carregar a página (foto salva)
+    window.addEventListener('load', function() {
+        if (previewImage && previewImage.src && !previewImage.src.includes('image-placeholder.svg')) {
+            uploadArea.style.display = 'none';
+            fotoPreview.style.display = 'block';
+        }
+    });
 
     // Event listeners
     if (fotoInput) {
@@ -147,13 +155,22 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    if (btnRemover) {
-        btnRemover.addEventListener('click', function(e) {
-            e.stopPropagation();
+    if (btnRemoverFoto) {
+    btnRemoverFoto.addEventListener('click', function(e) {
+        e.stopPropagation();
+        if (confirm('Deseja realmente remover a foto da ONG?')) {
+            // Atualiza o input escondido para o backend saber que deve remover
+            document.getElementById('removerFotoOng').value = '1';
+
+            // Atualiza visual
             uploadArea.style.display = 'flex';
             fotoPreview.style.display = 'none';
-            fotoInput.value = '';
-        });
-    }
-});
+            previewImage.src = "../../assets/images/global/image-placeholder.svg";
 
+            // Submete o form automaticamente
+            form.submit();
+        }
+    });
+}
+
+});

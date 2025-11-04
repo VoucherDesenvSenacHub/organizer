@@ -23,50 +23,9 @@
     width: 100%;
 }
 
-.box-cards .card-solicitacao {
-    /* flex: 1 1 300px; */
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 5px 10px;
-    border-radius: 5px;
-    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
-    border-left: 7px solid var(--cor-amarelo);
-    background-color: white;
-    color: var(--cor-principal);
-    transform: translateY(0);
-    transition: .3s;
-}
-
-.box-cards .card-solicitacao:hover {
-    border-left-color: var(--cor-amarelo-hover);
-    transform: translateY(-3px);
-}
-
-.box-cards .card-solicitacao button {
-    font-size: 20px;
-    background-color: var(--cor-amarelo);
-    border-radius: 3px;
-    color: var(--cor-principal);
-    padding: 8px;
-    border: none;
-    cursor: pointer;
-    transition: .3s;
-}
-
-.box-cards .card-solicitacao button:hover {
-    background-color: var(--cor-amarelo-hover);
-}
-
-/* @media (max-width: 700px) {
-    main.container {
-        padding-inline: 10px;
-    }
-} */
-
-/* TIPO EMPRESA */
+/* Card */
 .box-cards .card-solicitacao-empresa {
+    word-break: break-all;
     flex: 1 1 400px;
     padding: 5px 10px;
     border-radius: 5px;
