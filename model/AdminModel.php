@@ -169,4 +169,36 @@ class AdminModel
             return false;
         }
     }
+
+    function ListarParceriasAprovadas()
+    {
+        $query = "SELECT parceria_id, nome, email, telefone, cnpj, descricao, 
+                     DATE_FORMAT(data_envio, '%d/%m/%Y') as data_aprovacao
+                     FROM parcerias 
+                     WHERE status = 'APROVADA' 
+                     ORDER BY data_envio DESC";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+    
+    // Novo: Listar Parcerias Aceitas com paginação
+    function listarParceriasAceitas($parametros)
+    {
+        $limite = 8;
+        $offset = ($parametros['pagina'] - 1) * $limite;
+
+        $query = "SELECT parceria_id, nome, email, telefone, cnpj, descricao,
+                     DATE_FORMAT(data_envio, '%d/%m/%Y') as criadoEm
+                     FROM parcerias 
+                     WHERE status = 'APROVADA'
+                     ORDER BY data_envio DESC
+                     LIMIT :limite OFFSET :offset";
+
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindParam(':limite', $limite, PDO::PARAM_INT);
+        $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
