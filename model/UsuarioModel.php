@@ -141,7 +141,7 @@ class UsuarioModel
         }
         $stmt->execute();
         $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
-        return (int)$resultado['total'];
+        return (int) $resultado['total'];
     }
 
     function update($id, $nome, $telefone, $cpf, $data, $email)
@@ -191,29 +191,46 @@ class UsuarioModel
         return $idade;
     }
     public function atualizarImagem($usuarioId, $imagemId)
-{
-    $sql = "UPDATE usuarios SET imagem_id = :imagem_id WHERE usuario_id = :id";
-    $stmt = $this->pdo->prepare($sql);
-    $stmt->execute([
-        ':imagem_id' => $imagemId,
-        ':id'        => $usuarioId
-    ]);
-    return $stmt->rowCount();
-}
+    {
+        if ($imagemId === null) {
+            $sql = "UPDATE usuarios SET imagem_id = NULL WHERE usuario_id = :id";
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->bindValue(':id', $usuarioId, PDO::PARAM_INT);
+        } else {
+            $sql = "UPDATE usuarios SET imagem_id = :imagem_id WHERE usuario_id = :id";
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->bindValue(':imagem_id', $imagemId, PDO::PARAM_INT);
+            $stmt->bindValue(':id', $usuarioId, PDO::PARAM_INT);
+        }
+
+        $stmt->execute();
+
+        // força retorno "positivo" mesmo se imagem_id já estava null
+        return true;
+    }
+
 
     public function salvarImagemUsuario($usuarioId, $caminho)
     {
-    // 1️⃣ Salvar caminho na tabela imagens
-    $sql = "INSERT INTO imagens (caminho) VALUES (:caminho)";
-    $stmt = $this->pdo->prepare($sql);
-    $stmt->bindParam(':caminho', $caminho);
-    $stmt->execute();
-    $idImagem = $this->pdo->lastInsertId();
+        // 1️⃣ Salvar caminho na tabela imagens
+        $sql = "INSERT INTO imagens (caminho) VALUES (:caminho)";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam(':caminho', $caminho);
+        $stmt->execute();
+        $idImagem = $this->pdo->lastInsertId();
 
-    // 2️⃣ Atualizar usuário com imagem_id
-    $this->atualizarImagem($usuarioId, $idImagem);
+        // 2️⃣ Atualizar usuário com imagem_id
+        $this->atualizarImagem($usuarioId, $idImagem);
 
-    return $idImagem;
+        return $idImagem;
+    }
+
+    public function removerImagem($idUsuario)
+    {
+        $sql = "UPDATE usuarios SET imagem_id = NULL WHERE usuario_id = :id";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(':id', $idUsuario, PDO::PARAM_INT);
+        return $stmt->execute();
     }
 
 }

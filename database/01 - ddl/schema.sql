@@ -143,6 +143,7 @@ CREATE TABLE doacoes_projetos (
 -- Relacionamentos
     projeto_id INT NOT NULL,
     usuario_id INT NOT NULL,
+    transacao_id VARCHAR(255),
 -- Dados da doação
     valor DECIMAL(10, 2) NOT NULL,
     data_doacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
