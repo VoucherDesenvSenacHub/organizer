@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . '/../../../model/UsuarioModel.php';
 require_once __DIR__ . '/../../../model/ImagemModel.php';
+
 $imagemModel = new ImagemModel();
 $usuarioModel = new UsuarioModel();
 $usuario = $usuarioModel->buscar_perfil($_SESSION['usuario']['id']);
@@ -16,42 +17,68 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $email = $_POST['email_usuario'];
         $idade = $usuarioModel->calcularIdade($data);
 
-        if (!empty($_FILES['foto_usuario']['name'])) {
-            $pasta = __DIR__ . '/../../../upload/images/usuarios/';
-
-            if (!is_dir($pasta)) {
-                mkdir($pasta, 0777, true);
-            }
-
-            $tmp = $_FILES['foto_usuario']['tmp_name'];
-            $nomeOriginal = basename($_FILES['foto_usuario']['name']);
-            $novoNome = uniqid() . '-' . $nomeOriginal;
-            $destino = $pasta . $novoNome;
-
-            if (move_uploaded_file($tmp, $destino)) {
-                $idImagem = $imagemModel->salvarCaminhoImagem('upload/images/usuarios/' . $novoNome);
-                $usuarioModel->atualizarImagem($_SESSION['usuario']['id'], $idImagem);
-
-                // Atualiza sessão
-                $_SESSION['usuario']['foto'] = 'upload/images/usuarios/' . $novoNome;
-
-                // Atualiza o $usuario para usar no HTML
-                $usuario = $usuarioModel->buscar_perfil($_SESSION['usuario']['id']);
-            }
-        }
-
         if ($idade >= 18) {
-            $resultado = $usuarioModel->update($id, $nome, $telefone, $cpf, $data, $email);
-            if ($resultado === 1) {
-                $usuario = $usuarioModel->buscar_perfil($_SESSION['usuario']['id']);
-                $_SESSION['mensagem_toast'] = ['sucesso', 'Dados atualizados com sucesso!'];
-            } elseif ($resultado === 0) {
-                $_SESSION['mensagem_toast'] = ['info', 'Nenhuma alteração feita!'];
-            } else {
+            try {
+                $resultado = 0;
+                $imagemPadrao = 'view/assets/images/global/user-placeholder.jpg';
+
+                // Remover Foto
+                if (isset($_POST['remover_foto']) && $_POST['remover_foto'] === 'true') {
+                    // Pega imagem atual
+                    $idImagemAtual = $usuario['imagem_id'] ?? null;
+
+                    if ($idImagemAtual) {
+                        // Apaga a imagem do servidor e do banco
+                        $imagemModel->deletarImagem($idImagemAtual);
+                    }
+
+                    // Remove o vínculo da imagem com o usuário
+                    $usuarioModel->atualizarImagem($_SESSION['usuario']['id'], null);
+
+                    // Atualiza a sessão para o placeholder
+                    $_SESSION['usuario']['foto'] = 'view/assets/images/global/user-placeholder.jpg';
+                    $resultado = 1;
+                }
+
+                // Nova Imagem
+                if (!empty($_FILES['foto_usuario']['name'])) {
+                    $pasta = __DIR__ . '/../../../upload/images/usuarios/';
+                    if (!is_dir($pasta))
+                        mkdir($pasta, 0777, true);
+
+                    $tmp = $_FILES['foto_usuario']['tmp_name'];
+                    $nomeOriginal = basename($_FILES['foto_usuario']['name']);
+                    $novoNome = uniqid() . '-' . $nomeOriginal;
+                    $destino = $pasta . $novoNome;
+
+                    if (move_uploaded_file($tmp, $destino)) {
+                        $idImagem = $imagemModel->salvarCaminhoImagem('upload/images/usuarios/' . $novoNome);
+                        $usuarioModel->atualizarImagem($_SESSION['usuario']['id'], $idImagem);
+
+                        $_SESSION['usuario']['foto'] = 'upload/images/usuarios/' . $novoNome;
+                        $resultado = 1;
+                    }
+                }
+
+                //Atualizar dados
+                $resultadoDados = $usuarioModel->update($id, $nome, $telefone, $cpf, $data, $email);
+                if ($resultadoDados > 0)
+                    $resultado = 1;
+
+                //Mensagem usuarios
+                if ($resultado > 0) {
+                    $_SESSION['mensagem_toast'] = ['sucesso', 'Dados atualizados com sucesso!'];
+                } else {
+                    $_SESSION['mensagem_toast'] = ['info', 'Nenhuma alteração feita!'];
+                }
+
+                header('Location: ' . $_SERVER['HTTP_REFERER']);
+                exit;
+            } catch (PDOException $e) {
                 $_SESSION['mensagem_toast'] = ['erro', 'Falha ao atualizar dados!'];
+                header('Location: ' . $_SERVER['HTTP_REFERER']);
+                exit;
             }
-            header('Location: ' . $_SERVER['HTTP_REFERER']);
-            exit;
         } else {
             echo "<script>alert('Você precisa ter 18 anos ou mais para atualizar o cadastro.')</script>";
         }
@@ -79,25 +106,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 
+
+
 <!-- HTML do perfil -->
 
 <div class="popup-fundo perfil-usuario-popup" id="perfil-doador-popup">
-    <form class="container-popup" action="#" method="POST" enctype="multipart/form-data" onsubmit="return confirm('Tem certeza que deseja alterar seus dados?')">
-        <button type="button" class="btn-fechar-popup fa-solid fa-xmark" onclick="fechar_popup('perfil-doador-popup')"></button>
+    <form class="container-popup" action="#" method="POST" enctype="multipart/form-data"
+        onsubmit="return confirm('Tem certeza que deseja alterar seus dados?')">
+        <button type="button" class="btn-fechar-popup fa-solid fa-xmark"
+            onclick="fechar_popup('perfil-doador-popup')"></button>
         <div id="left" class="box">
             <div id="perfil">
                 <div class="upload-area" id="uploadAreaDoador">
                     <input type="file" id="foto_usuario" name="foto_usuario" accept="image/*" style="display:none;">
-                    <img id="preview-foto"
-                        src="<?= !empty($_SESSION['usuario']['foto'])
-                                    ? '../../../' . $_SESSION['usuario']['foto']
-                                    : '../../assets/images/global/image-placeholder.svg'
-                                ?>">
+                    <img id="preview-foto" src="<?= !empty($_SESSION['usuario']['foto'])
+                        ? '../../../' . $_SESSION['usuario']['foto']
+                        : 'view/assets/images/global/image-placeholder.svg'
+                        ?>">
                     <div id="uploadTextDoador">
                         <i class="fa-solid fa-cloud-upload-alt"></i><br>
                         Arraste ou clique para trocar
                     </div>
-                    <button type="button" class="btn-remover" id="btnRemoverDoador" title="Remover Imagem">
+                    <button type="button" class="btn-remover" id="btnRemoverDoador" title="Remover Imagem"
+                        onclick="removerFotoPerfilDoador()">
                         <i class="fa-solid fa-trash-can"></i>
                     </button>
                 </div>

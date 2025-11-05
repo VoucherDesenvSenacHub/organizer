@@ -1,0 +1,248 @@
+@import url(modal-confirmacao.css);
+
+.conteudo-principal > section {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    min-height: calc(100vh - 60px);
+    padding: 30px 20px;
+}
+
+.conteudo-principal h1 {
+    font-size: 24px;
+}
+
+.conteudo-principal h1 i,
+#secao-parcerias h1 i {
+    color: var(--cor-roxo-adm);
+}
+
+/* ========================
+   HEADER PARCERIAS
+======================== */
+.header-parcerias {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.filtro-status {
+    position: relative;
+}
+
+#status-parceria {
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: 2px solid var(--cor-roxo-adm);
+    background-color: white;
+    color: var(--cor-principal);
+    font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
+    min-width: 200px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+.filtro-status::after {
+    content: '\f107';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--cor-roxo-adm);
+    pointer-events: none;
+}
+
+#status-parceria:focus {
+    outline: none;
+    border-color: var(--cor-roxo-adm);
+    box-shadow: 0 0 0 2px rgba(var(--cor-roxo-adm-rgb), 0.1);
+}
+
+#status-parceria option {
+    padding: 10px;
+    background-color: white;
+    color: var(--cor-principal);
+}
+
+/* ========================
+   SEÇÃO PARCERIAS
+======================== */
+#secao-parcerias {
+    display: flex;
+}
+
+#secao-parcerias .container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 30px;
+    width: 100%;
+    /* overflow: hidden; */
+}
+
+#principal {
+    width: 100%;
+    padding: 2px 0;
+}
+
+#control-box {
+    display: flex;
+    gap: 20px;
+}
+
+/* ========================
+   BOX CARDS (LISTAS)
+======================== */
+.box-cards {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    justify-content: space-around;
+    flex: 0 0 100%;
+    gap: 20px;
+    height: fit-content;
+}
+
+.box-cards:last-child .card-empresas {
+    flex: 1 1 500px;
+    height: auto;
+}
+
+/* ========================
+   CARD EMPRESAS
+======================== */
+.card-empresas {
+    width: 100%;
+    height: fit-content;
+    padding: 15px;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: relative;
+    transition: .3s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card-empresas:hover {
+    transform: translateY(-2px);
+}
+
+.card-empresas .top {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.card-empresas .top .icon {
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+    color: #fff;
+    border-radius: 10px;
+    background: linear-gradient(135deg, var(--cor-amarelo), var(--cor-amarelo-hover));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-empresas .top h1 {
+    font-size: 18px;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.card-empresas .top span {
+    font-size: 12px;
+    color: grey;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.card-empresas .top .data-criacao {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.card-empresas .contato {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: center;
+    color: #71717A;
+    border-bottom: 1px solid #e7e7e7;
+    padding: 10px 0;
+}
+
+.card-empresas .contato span {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.card-empresas .mensagem span {
+    color: #71717a;
+    font-weight: 500;
+}
+
+.card-empresas .mensagem p {
+    word-break: break-all;
+    color: var(--cor-principal);
+    text-align: justify;
+}
+
+.card-empresas .btn-acoes {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    transition: .3s;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.card-empresas:hover .btn-acoes {
+    right: 10px;
+    opacity: 1;
+    visibility: visible;
+}
+
+.card-empresas .btn-acoes button {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: .3s;
+    cursor: pointer;
+    border: none;
+}
+
+.card-empresas .btn-acoes button:hover {
+    filter: brightness(0.8);
+}
+
+.card-empresas .btn-aprovar {
+    background-color: rgba(48, 173, 26, 0.4);
+    color: var(--cor-verde);
+}
+
+.card-empresas .btn-recusar {
+    background-color: rgba(255, 77, 77, 0.4);
+    color: var(--cor-vermelho);
+}

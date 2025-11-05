@@ -11,13 +11,19 @@ $projetoModel = new ProjetoModel();
 $noticiaModel = new NoticiaModel();
 if (isset($_GET['id'])) {
     $IdOng = $_GET['id'];
-    $PerfilOng = $ongModel->buscarPerfilOng($IdOng);
+    $PerfilOng = $ongModel->buscarId($IdOng);
+    $PerfilOngStats = $ongModel->buscarPerfilOng($IdOng);
     $ProjetosOng = $projetoModel->listarCardsProjetos(['ong_id' => $IdOng, 'limit' => 50, 'status' => ['ATIVO', 'FINALIZADO']]);
     $NoticiasOng = $noticiaModel->listarCardsNoticias(['ong_id' => $IdOng, 'limit' => 50, 'status' => 'ATIVO']);
     $DoadoresOng = $ongModel->buscarDoadores($IdOng);
-    $FotoOng = $PerfilOng['caminho']
-        ? '../../../' . $PerfilOng['caminho']
-        : '../../assets/images/global/image-placeholder.svg';
+
+    // 🔹 Busca o caminho da imagem com base no imagem_id
+    if (!empty($PerfilOng['imagem_id'])) {
+        $caminho = $ongModel->buscarCaminhoImagem($PerfilOng['imagem_id']);
+        $FotoOng = '../../../' . $caminho;
+    } else {
+        $FotoOng = '../../assets/images/global/image-placeholder.svg';
+    }
 }
 
 //Verificar se o doador marcou este projeto como favorito
@@ -51,20 +57,20 @@ if ($acesso === 'doador') {
 
                 <div class="info-bloco arrecadado">
                     <span class="info-label">Arrecadado</span>
-                    <span class="info-valor">R$ <?= number_format($PerfilOng['total_arrecadado'], 0, ',', '.'); ?></span>
+                    <span class="info-valor">R$ <?= number_format($PerfilOngStats['total_arrecadado'], 0, ',', '.'); ?></span>
                 </div>
 
                 <div class="info-resumo">
                     <div class="info-item">
-                        <span class="info-numero"><?= $PerfilOng['total_projetos'] ?></span>
+                        <span class="info-numero"><?= $PerfilOngStats['total_projetos'] ?></span>
                         <span class="info-texto">Projetos</span>
                     </div>
                     <div class="info-item">
-                        <span class="info-numero"><?= $PerfilOng['total_doacoes'] ?></span>
+                        <span class="info-numero"><?= $PerfilOngStats['total_doacoes'] ?></span>
                         <span class="info-texto">Doações Recebidas</span>
                     </div>
                     <div class="info-item">
-                        <span class="info-numero"><?= $PerfilOng['total_apoiadores'] ?></span>
+                        <span class="info-numero"><?= $PerfilOngStats['total_apoiadores'] ?></span>
                         <span class="info-texto">Apoiadores</span>
                     </div>
                 </div>
@@ -82,8 +88,8 @@ if ($acesso === 'doador') {
                     <img src="../../assets/images/icons/icon-sobre.png">
                     <h3>Sobre</h3>
                 </div>
-                <small>Criada em <?= date('d/m/Y', strtotime($PerfilOng['data_cadastro'])); ?></small>
-                <p><?= $PerfilOng['descricao'] ?></p>
+                <small>Criada em <?= date('d/m/Y', strtotime($PerfilOngStats['data_cadastro'])); ?></small>
+                <p><?= $PerfilOngStats['descricao'] ?></p>
             </div>
         </section>
         <section class="container-section" id="apoiadores">
