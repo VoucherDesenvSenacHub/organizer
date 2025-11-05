@@ -2,131 +2,17 @@
 require_once __DIR__ . '/../../../model/UsuarioModel.php';
 require_once __DIR__ . '/../../../model/ImagemModel.php';
 
-$imagemModel = new ImagemModel();
 $usuarioModel = new UsuarioModel();
 $usuario = $usuarioModel->buscar_perfil($_SESSION['usuario']['id']);
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Atualização de dados do perfil
-    if (isset($_POST['id_usuario'])) {
-        $id = $_POST['id_usuario'];
-        $nome = $_POST['nome_usuario'];
-        $telefone = preg_replace('/[^0-9]/', '', $_POST['telefone_usuario']);
-        $cpf = preg_replace('/[^0-9]/', '', $_POST['cpf_usuario']);
-        $data = $_POST['data_usuario'];
-        $email = $_POST['email_usuario'];
-        $idade = $usuarioModel->calcularIdade($data);
-
-        if ($idade >= 18) {
-            try {
-                $resultado = 0;
-                $imagemPadrao = 'view/assets/images/global/user-placeholder.jpg';
-
-                // Remover Foto
-                if (isset($_POST['remover_foto']) && $_POST['remover_foto'] === 'true') {
-                    // Pega imagem atual
-                    $idImagemAtual = $usuario['imagem_id'] ?? null;
-
-                    if ($idImagemAtual) {
-                        // Apaga a imagem do servidor e do banco
-                        $imagemModel->deletarImagem($idImagemAtual);
-                    }
-
-                    // Remove o vínculo da imagem com o usuário
-                    $usuarioModel->atualizarImagem($_SESSION['usuario']['id'], null);
-
-                    // Atualiza a sessão para o placeholder
-                    $_SESSION['usuario']['foto'] = 'view/assets/images/global/user-placeholder.jpg';
-                    $resultado = 1;
-                }
-
-                
-                // Nova Imagem (com validação de tamanho e dimensões)
-                if (!empty($_FILES['foto_usuario']['name'])) {
-                    $file = $_FILES['foto_usuario'];
-                    $fileSize = $file['size'];
-                    $maxSize = 20 * 1024 * 1024; // 20 MB
-
-                    // Verifica tamanho em MB
-                    if ($fileSize > $maxSize) {
-                        $_SESSION['mensagem_toast'] = ['erro', 'A imagem deve ter no máximo 20MB.'];
-                        header('Location: ' . $_SERVER['HTTP_REFERER']);
-                        exit;
-                    }
-
-                    // Se passou nas verificações → prossegue com o upload
-                    $pasta = __DIR__ . '/../../../upload/images/usuarios/';
-                    if (!is_dir($pasta))
-                        mkdir($pasta, 0777, true);
-
-                    $tmp = $file['tmp_name'];
-                    $nomeOriginal = basename($file['name']);
-                    $novoNome = uniqid() . '-' . $nomeOriginal;
-                    $destino = $pasta . $novoNome;
-
-                    if (move_uploaded_file($tmp, $destino)) {
-                        $idImagem = $imagemModel->salvarCaminhoImagem('upload/images/usuarios/' . $novoNome);
-                        $usuarioModel->atualizarImagem($_SESSION['usuario']['id'], $idImagem);
-
-                        $_SESSION['usuario']['foto'] = 'upload/images/usuarios/' . $novoNome;
-                        $resultado = 1;
-                    }
-                }
-
-
-                //Atualizar dados
-                $resultadoDados = $usuarioModel->update($id, $nome, $telefone, $cpf, $data, $email);
-                if ($resultadoDados > 0)
-                    $resultado = 1;
-
-                //Mensagem usuarios
-                if ($resultado > 0) {
-                    $_SESSION['mensagem_toast'] = ['sucesso', 'Dados atualizados com sucesso!'];
-                } else {
-                    $_SESSION['mensagem_toast'] = ['info', 'Nenhuma alteração feita!'];
-                }
-
-                header('Location: ' . $_SERVER['HTTP_REFERER']);
-                exit;
-            } catch (PDOException $e) {
-                $_SESSION['mensagem_toast'] = ['erro', 'Falha ao atualizar dados!'];
-                header('Location: ' . $_SERVER['HTTP_REFERER']);
-                exit;
-            }
-        } else {
-            echo "<script>alert('Você precisa ter 18 anos ou mais para atualizar o cadastro.')</script>";
-        }
-    }
-
-    // Atualização de senha
-    if (isset($_POST['usuario_id'])) {
-        $id = $_POST['usuario_id'];
-        $senha = $_POST['senha_usuario'];
-        $senhaconfirm = $_POST['senhaconfirm'];
-
-        if ($senha === $senhaconfirm) {
-            $resultado_senha = $usuarioModel->updatesenha($id, $senha);
-            if ($resultado_senha) {
-                $_SESSION['mensagem_toast'] = ['sucesso', 'Senha alterada com sucesso!'];
-            } else {
-                $_SESSION['mensagem_toast'] = ['erro', 'Falha ao alterar senha!'];
-            }
-            header('Location: ' . $_SERVER['HTTP_REFERER']);
-            exit;
-        } else {
-            echo "<script>alert('As senhas não coincidem')</script>";
-        }
-    }
-}
 ?>
 
 
-
-<!-- HTML do perfil -->
-
 <div class="popup-fundo perfil-usuario-popup" id="perfil-doador-popup">
-    <form class="container-popup" action="#" method="POST" enctype="multipart/form-data"
-        onsubmit="return confirm('Tem certeza que deseja alterar seus dados?')">
+    <form class="container-popup" 
+      action="../../../controller/usuario/EditarPerfilController.php" 
+      method="POST" 
+      enctype="multipart/form-data"
+      onsubmit="return confirm('Tem certeza que deseja alterar seus dados?')">
         <button type="button" class="btn-fechar-popup fa-solid fa-xmark"
             onclick="fechar_popup('perfil-doador-popup')"></button>
         <div id="left" class="box">
