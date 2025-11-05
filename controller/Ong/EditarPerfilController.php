@@ -49,7 +49,7 @@ class EditarPerfilController
             $imagemId = $this->ongModel->buscarImagemId($ongId);
 
             if ($imagemId) {
-                $this->imagemModel->deletarImagem((int)$imagemId);
+                $this->imagemModel->deletarImagem((int) $imagemId);
                 $this->ongModel->removerImagemOng($ongId);
             }
 
@@ -106,6 +106,13 @@ class EditarPerfilController
             $pasta = __DIR__ . '/../../upload/images/ongs/';
             if (!is_dir($pasta)) {
                 mkdir($pasta, 0777, true);
+            }
+
+            $tamanhoMaximo = 20 * 1024 * 1024; // 25 MB em bytes
+            if ($_FILES['foto_perfil']['size'] > $tamanhoMaximo) {
+                $_SESSION['mensagem_toast'] = ['erro', 'A imagem deve ter no máximo 20 MB.'];
+                header('Location: ../../view/pages/ong/home.php');
+                exit;
             }
 
             $novoNome = uniqid() . '-' . basename($_FILES['foto_perfil']['name']);

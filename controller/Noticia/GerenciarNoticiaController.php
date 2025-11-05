@@ -22,7 +22,6 @@ if (empty($_POST['noticia-id'])) {
         $noticiaCriada = $noticiaModel->criar($TituloNoticia, $SubtituloNoticia, $TextoNoticia, $SubtextoNoticia, $IdOng);
 
         if ($noticiaCriada) {
-            // Pega o ID da notícia criado
             $IdNoticia = $noticiaCriada;
 
             // Upload de imagens (se houver)
@@ -31,16 +30,25 @@ if (empty($_POST['noticia-id'])) {
                 if (!is_dir($pasta)) {
                     mkdir($pasta, 0777, true);
                 }
+
+                $tamanhoMaximo = 20 * 1024 * 1024; // 20 MB em bytes
+
                 foreach ($_FILES['fotos']['name'] as $i => $nome) {
                     if ($_FILES['fotos']['error'][$i] === UPLOAD_ERR_OK) {
+
+                        // 🔹 Verifica tamanho antes de mover
+                        if ($_FILES['fotos']['size'][$i] > $tamanhoMaximo) {
+                            $_SESSION['mensagem_toast'] = ['erro', "A imagem '{$nome}' ultrapassa 20 MB e não foi enviada."];
+                            header('Location: ' . $_SERVER['HTTP_REFERER']);
+                            exit;
+                        }
+
                         $tmp   = $_FILES['fotos']['tmp_name'][$i];
                         $novoNome = uniqid() . '-' . basename($nome);
                         $destino  = __DIR__ . '/../../upload/images/noticias/' . $novoNome;
 
                         if (move_uploaded_file($tmp, $destino)) {
-                            // Salvar caminho no banco de dados
                             $IdImagem = $imagemModel->salvarCaminhoImagem('upload/images/noticias/' . $novoNome);
-                            // Vincular imagem ao projeto
                             $imagemModel->vincularNaNoticia($IdImagem, $IdNoticia);
                         }
                     }
@@ -64,14 +72,21 @@ else {
     $noticiaEditada = $noticiaModel->editar($IdNoticia, $TituloNoticia, $SubtituloNoticia, $TextoNoticia, $SubtextoNoticia);
 
     if ($noticiaEditada) {
-        // Só mexe nas imagens se houver upload novo
         if (!empty($_FILES['fotos']['name'][0])) {
-            // Apaga imagens antigas
             $imagemModel->deletarPorNoticia($IdNoticia);
 
-            // Salva as novas
+            $tamanhoMaximo = 20 * 1024 * 1024; // 20 MB
+
             foreach ($_FILES['fotos']['name'] as $i => $nome) {
                 if ($_FILES['fotos']['error'][$i] === UPLOAD_ERR_OK) {
+
+                    // 🔹 Validação de tamanho
+                    if ($_FILES['fotos']['size'][$i] > $tamanhoMaximo) {
+                        $_SESSION['mensagem_toast'] = ['erro', "A imagem '{$nome}' ultrapassa 20 MB e não foi enviada."];
+                        header('Location: ' . $_SERVER['HTTP_REFERER']);
+                        exit;
+                    }
+
                     $tmp   = $_FILES['fotos']['tmp_name'][$i];
                     $novoNome = uniqid() . '-' . basename($nome);
                     $destino  = __DIR__ . '/../../upload/images/noticias/' . $novoNome;
@@ -93,3 +108,4 @@ else {
         exit;
     }
 }
+

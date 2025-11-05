@@ -40,14 +40,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $resultado = 1;
                 }
 
-                // Nova Imagem
+                
+                // Nova Imagem (com validação de tamanho e dimensões)
                 if (!empty($_FILES['foto_usuario']['name'])) {
+                    $file = $_FILES['foto_usuario'];
+                    $fileSize = $file['size'];
+                    $maxSize = 20 * 1024 * 1024; // 20 MB
+
+                    // Verifica tamanho em MB
+                    if ($fileSize > $maxSize) {
+                        $_SESSION['mensagem_toast'] = ['erro', 'A imagem deve ter no máximo 20MB.'];
+                        header('Location: ' . $_SERVER['HTTP_REFERER']);
+                        exit;
+                    }
+
+                    // Se passou nas verificações → prossegue com o upload
                     $pasta = __DIR__ . '/../../../upload/images/usuarios/';
                     if (!is_dir($pasta))
                         mkdir($pasta, 0777, true);
 
-                    $tmp = $_FILES['foto_usuario']['tmp_name'];
-                    $nomeOriginal = basename($_FILES['foto_usuario']['name']);
+                    $tmp = $file['tmp_name'];
+                    $nomeOriginal = basename($file['name']);
                     $novoNome = uniqid() . '-' . $nomeOriginal;
                     $destino = $pasta . $novoNome;
 
@@ -59,6 +72,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         $resultado = 1;
                     }
                 }
+
 
                 //Atualizar dados
                 $resultadoDados = $usuarioModel->update($id, $nome, $telefone, $cpf, $data, $email);
