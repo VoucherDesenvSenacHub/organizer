@@ -1,5 +1,4 @@
 <?php
-// Adercio
 $perfil = $_SESSION['perfil_usuario'] ?? 'visitante';
 switch ($perfil) {
     case 'doador':

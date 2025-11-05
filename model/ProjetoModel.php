@@ -57,9 +57,6 @@ class ProjetoModel
             }
             $where .= " AND status IN (" . implode(',', $placeholders) . ")";
         }
-        // else {
-        //     $where .= " AND status <> 'INATIVO'";
-        // }
         // Filtro Categorias
         if (!empty($filtros['categorias']) && is_array($filtros['categorias'])) {
             $placeholders = [];

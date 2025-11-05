@@ -1,6 +1,5 @@
 <?php
 $perfil = $_SESSION['perfil_usuario'] ?? 'visitante';
-// Adercio
 
 // Para o doador - Botão de Apoiar ou Desapoiar
 if (isset($jaApoiou)) {
