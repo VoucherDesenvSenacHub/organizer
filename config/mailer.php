@@ -1,5 +1,4 @@
-onfig/mailer.php</path>
-<content"><?php
+<?php
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
