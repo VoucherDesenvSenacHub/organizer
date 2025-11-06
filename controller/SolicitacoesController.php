@@ -20,9 +20,9 @@ if ($method === 'GET') {
     $tipo = $_GET['tipo'] ?? '';
 
     switch ($tipo) {
-        case 'empresas':
-            $data = $adminModel->ListarSolicitacoesEmpresas();
-            break;
+        // case 'empresas':
+        //     $data = $adminModel->ListarSolicitacoesEmpresas();
+        //     break;
         case 'ongs':
             $data = $adminModel->ListarSolicitacoesOngs();
             break;
