@@ -1,5 +1,4 @@
-ontroller/Usuario/RecuperarSenhaController.php</path>
-<content"><?php
+<?php
 
 require_once __DIR__ . "/../../config/database.php";
 require_once __DIR__ . "/../../services/EmailService.php";
