@@ -57,37 +57,8 @@ else {
         $projetoEditado = $projetoModel->editar($idProjeto, $NomeProjeto, $DescricaoProjeto, $MetaProjeto, $CategoriaIdProjeto);
 
         if ($projetoEditado) {
-            if (!empty($_FILES['imagens']['name'][0])) {
-                $imagemModel->deletarPorProjeto($idProjeto);
-
-                $pasta = __DIR__ . '/../../upload/images/projetos/';
-                if (!is_dir($pasta)) {
-                    mkdir($pasta, 0777, true);
-                }
-
-                $tamanhoMaximo = 20 * 1024 * 1024; // 🔹 20 MB
-
-                foreach ($_FILES['imagens']['name'] as $i => $nome) {
-                    if ($_FILES['imagens']['error'][$i] === UPLOAD_ERR_OK) {
-
-                        // ✅ Validação de tamanho
-                        if ($_FILES['imagens']['size'][$i] > $tamanhoMaximo) {
-                            $_SESSION['mensagem_toast'] = ['erro', "A imagem '{$nome}' ultrapassa 20 MB e não foi enviada."];
-                            header('Location: ' . $_SERVER['HTTP_REFERER']);
-                            exit;
-                        }
-
-                        $tmp      = $_FILES['imagens']['tmp_name'][$i];
-                        $novoNome = uniqid() . '-' . basename($nome);
-                        $destino  = $pasta . $novoNome;
-
-                        if (move_uploaded_file($tmp, $destino)) {
-                            $IdImagem = $imagemModel->salvarCaminhoImagem('upload/images/projetos/' . $novoNome);
-                            $imagemModel->vincularNoProjeto($IdImagem, $idProjeto);
-                        }
-                    }
-                }
-            }
+            
+            $upload->uploadImgProjeto($_FILES['imagens'], $idProjeto,  true);
 
             $_SESSION['mensagem_toast'] = ['sucesso', 'Projeto salvo com sucesso!'];
         } else {
