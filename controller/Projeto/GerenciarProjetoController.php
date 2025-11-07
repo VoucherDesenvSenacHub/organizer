@@ -1,12 +1,14 @@
 <?php
 require_once __DIR__ . '/../../model/ProjetoModel.php';
 require_once __DIR__ . '/../../model/ImagemModel.php';
-require_once '../../service/AuthService.php';
+require_once __DIR__ . '/../../service/AuthService.php';
+require_once __DIR__ . '/../../service/UploadService.php';
 
 AuthService::verificaLoginOng();
 
 $projetoModel = new ProjetoModel();
 $imagemModel  = new ImagemModel();
+$upload = new UploadService();
 
 // Pegar os dados
 $NomeProjeto        = filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_SPECIAL_CHARS);
@@ -27,38 +29,10 @@ if (empty($_POST['projeto-id'])) {
         $projetoCriado = $projetoModel->criar($NomeProjeto, $DescricaoProjeto, $MetaProjeto, $CategoriaIdProjeto, $IdOng);
 
         if ($projetoCriado) {
-            $IdProjeto = $projetoCriado;
+            $idProjeto = $projetoCriado;
 
             // Upload de imagens (se houver)
-            if (!empty($_FILES['imagens']['name'][0])) {
-                $pasta = __DIR__ . '/../../upload/images/projetos/';
-                if (!is_dir($pasta)) {
-                    mkdir($pasta, 0777, true);
-                }
-
-                $tamanhoMaximo = 20 * 1024 * 1024; // 🔹 20 MB em bytes
-
-                foreach ($_FILES['imagens']['name'] as $i => $nome) {
-                    if ($_FILES['imagens']['error'][$i] === UPLOAD_ERR_OK) {
-
-                        // ✅ Verifica tamanho
-                        if ($_FILES['imagens']['size'][$i] > $tamanhoMaximo) {
-                            $_SESSION['mensagem_toast'] = ['erro', "A imagem '{$nome}' ultrapassa 20 MB e não foi enviada."];
-                            header('Location: ' . $_SERVER['HTTP_REFERER']);
-                            exit;
-                        }
-
-                        $tmp      = $_FILES['imagens']['tmp_name'][$i];
-                        $novoNome = uniqid() . '-' . basename($nome);
-                        $destino  = $pasta . $novoNome;
-
-                        if (move_uploaded_file($tmp, $destino)) {
-                            $IdImagem = $imagemModel->salvarCaminhoImagem('upload/images/projetos/' . $novoNome);
-                            $imagemModel->vincularNoProjeto($IdImagem, $IdProjeto);
-                        }
-                    }
-                }
-            }
+            $upload->uploadImgProjeto($_FILES['imagens'], $idProjeto);
 
             $_SESSION['mensagem_toast'] = ['sucesso', 'Projeto criado com sucesso!'];
             header('Location: ' . $_SERVER['HTTP_REFERER']);
@@ -73,18 +47,18 @@ if (empty($_POST['projeto-id'])) {
 
 // Editar um Projeto
 else {
-    $IdProjeto       = $_POST['projeto-id'];
+    $idProjeto       = $_POST['projeto-id'];
     $ValorArrecadado = $_POST['valor-arrecadado'] ?? 0;
 
     if ($MetaProjeto < $ValorArrecadado) {
         echo "<script>alert('Meta inválida: o valor deve ser maior do que o que já foi arrecadado.');window.history.back();</script>";
         exit;
     } else {
-        $projetoEditado = $projetoModel->editar($IdProjeto, $NomeProjeto, $DescricaoProjeto, $MetaProjeto, $CategoriaIdProjeto);
+        $projetoEditado = $projetoModel->editar($idProjeto, $NomeProjeto, $DescricaoProjeto, $MetaProjeto, $CategoriaIdProjeto);
 
         if ($projetoEditado) {
             if (!empty($_FILES['imagens']['name'][0])) {
-                $imagemModel->deletarPorProjeto($IdProjeto);
+                $imagemModel->deletarPorProjeto($idProjeto);
 
                 $pasta = __DIR__ . '/../../upload/images/projetos/';
                 if (!is_dir($pasta)) {
@@ -109,7 +83,7 @@ else {
 
                         if (move_uploaded_file($tmp, $destino)) {
                             $IdImagem = $imagemModel->salvarCaminhoImagem('upload/images/projetos/' . $novoNome);
-                            $imagemModel->vincularNoProjeto($IdImagem, $IdProjeto);
+                            $imagemModel->vincularNoProjeto($IdImagem, $idProjeto);
                         }
                     }
                 }
