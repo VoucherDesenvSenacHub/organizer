@@ -171,6 +171,11 @@ class OngModel
                 default => ""
             };
         }
+        // Filtro por status
+        if (!empty($filtros['status'])) {
+            $where .= " AND status = :status";
+            $params[':status'] = $filtros['status'];
+        } 
         // Favoritas
         if (!empty(!empty($filtros['usuario_id']) && $filtros['favoritas'])) {
             $join = "JOIN favoritos_ongs f USING (ong_id)";
@@ -180,7 +185,7 @@ class OngModel
         }
         // Recentes
         if (!empty($filtros['recentes'])) {
-            $order = "ORDER BY data_cadastro DESC";
+            $order = "AND status = 'ATIVO' ORDER BY data_cadastro DESC";
         }
         // Query final
         $query = "SELECT v.* FROM vw_card_ongs v {$join} {$where} {$order} LIMIT {$limit} OFFSET {$offset}";
@@ -210,6 +215,11 @@ class OngModel
             $where .= " AND usuario_id = :usuario_id";
             $params[':usuario_id'] = $filtros['usuario_id'];
         }
+        // Filtro por status
+        if (!empty($filtros['status'])) {
+            $where .= " AND status = :status";
+            $params[':status'] = $filtros['status'];
+        } 
         // Filtro por número de projetos
         if (!empty($filtros['projetos'])) {
             $where .= match ($filtros['projetos']) {
