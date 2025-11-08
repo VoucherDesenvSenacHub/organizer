@@ -19,7 +19,7 @@
                         <i class="fa-solid fa-xmark"></i> CANCELAR
                     </button>
                     <button class="btn btn-confirmar" type="submit">
-                        <i class="fa-solid fa-ban"></i> CONFIRMAR INATIVAÇÃO
+                        <i class="fa-solid fa-ban"></i> CONFIRMAR 
                     </button>
                 </div>
             </div>

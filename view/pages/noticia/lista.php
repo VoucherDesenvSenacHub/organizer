@@ -20,12 +20,11 @@ require_once '../../components/layout/base-inicio.php';
                         <li><label><input type="radio" name="ordem" value="novas">Novas</label></li>
                         <li><label><input type="radio" name="ordem" value="antigas">Antigas</label></li>
                     </ul>
+                    <button class="limpar-filtro"><img src="../../assets/images/icons/icon-remover-filtro.png">Limpar filtros</button>
                 </div>
                 <div class="input-pesquisa">
                     <input type="text" name="pesquisa" placeholder="Busque uma Notícia">
                     <button class="btn" type="submit"><i class="fa-solid fa-search"></i></button>
-                    <button class="limpar-filtro" onclick="limparFiltros()">Limpar filtros</button>
-
                 </div>
             </form>
             <div id="img-illustrativa">
