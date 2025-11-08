@@ -112,7 +112,8 @@ div.input-pesquisa {
 
 /* Radios customizados */
 .filtro-pesquisa ul li input[type="radio"] {
-    appearance: none; /* remove o estilo padrão */
+    appearance: none;
+    /* remove o estilo padrão */
     -webkit-appearance: none;
     min-width: 16px;
     min-height: 16px;
@@ -143,6 +144,52 @@ div.input-pesquisa {
     transform: translate(-50%, -50%);
 }
 
+/* Remover Filtro */
+.limpar-filtro {
+    display: none;
+    align-items: center;
+    gap: 5px;
+    background-color: none;
+    background: none;
+    border: none;
+    color: var(--cor-vermelho);
+    font-weight: 700;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: .3s;
+    width: fit-content;
+    white-space: nowrap;
+}
+
+.limpar-filtro:hover {
+    filter: brightness(.9);
+    transform: translateY(-1px);
+}
+
+.limpar-filtro img {
+    width: 20px;
+}
+
+.limpar-filtro.limpando {
+    animation: limparPiscar 0.8s ease-in-out;
+}
+
+@keyframes limparPiscar {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+        transform: scale(0.97);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
 @media (max-width: 900px) {
     #header-section .form-pesquisa {
         align-items: center;
@@ -158,4 +205,15 @@ div.input-pesquisa {
         top: calc(50% + 5px);
         width: 100%;
     }
+
+    .limpar-filtro {
+        position: absolute;
+        bottom: 0;
+        left: 30%;
+    }
+
+    [data-tipo="noticias"] .limpar-filtro {
+        left: -20%;
+    }
+
 }

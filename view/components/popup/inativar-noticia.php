@@ -1,9 +1,8 @@
 <div class="popup-fundo" id="inativar-noticia-popup">
     <div class="container-popup">
         <button class="btn-fechar-popup fa-solid fa-xmark" onclick="fechar_popup('inativar-noticia-popup')"></button>
-        <form id="form-inativar-noticia" action="../../../controller/Noticia/InativarNoticiaAdmController.php" method="POST">
-            <input type="hidden" name="inativar-noticia" value="true">
-            <input type="hidden" name="noticia_id" value="<?php echo htmlspecialchars($_GET['id'] ?? ''); ?>">
+        <form id="form-inativar-noticia" action="../../../controller/Noticia/InativarNoticiaController.php" method="POST">
+            <input type="hidden" name="noticia-id" value="<?php echo htmlspecialchars($_GET['id'] ?? null); ?>">
             <div class="box-edit">
                 <h1>INATIVAR NOTÍCIA</h1>
                 <p><i class="fa-solid fa-triangle-exclamation"></i> <strong>ATENÇÃO:</strong></p>
@@ -19,7 +18,7 @@
                         <i class="fa-solid fa-xmark"></i> CANCELAR
                     </button>
                     <button class="btn btn-confirmar" type="submit">
-                        <i class="fa-solid fa-ban"></i> CONFIRMAR INATIVAÇÃO
+                        <i class="fa-solid fa-ban"></i> CONFIRMAR
                     </button>
                 </div>
             </div>

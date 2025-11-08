@@ -22,6 +22,28 @@
     justify-content: flex-start;
 }
 
+h1.info-inativo {
+    width: 100%;
+    background-color: rgba(255, 77, 77, 0.3);
+    color: var(--cor-vermelho);
+    font-size: 20px;
+    padding: 8px;
+    text-align: center;
+    border-radius: 20px;
+    cursor: default;
+}
+
+h1.info-finalizado {
+    width: 100%;
+    background-color: rgba(50, 205, 186, 0.3);
+    color: var(--cor-ciano);
+    font-size: 20px;
+    padding: 8px;
+    text-align: center;
+    border-radius: 20px;
+    cursor: default;
+}
+
 /* PRIMEIRA SECTION */
 section#apresentacao {
     align-items: center;

@@ -7,7 +7,7 @@ $PerfilNoticiaModel = new NoticiaModel();
 session_start();
 $acesso = $_SESSION['perfil_usuario'] ?? 'visitante';
 $tituloPagina = 'Leia Mais | Organizer';
-$cssPagina = ['noticia/perfil.css', 'components/popup/inativar-noticia.css'];
+$cssPagina = ['noticia/perfil.css'];
 require_once '../../components/layout/base-inicio.php';
 
 //Processamento de dados
@@ -21,7 +21,7 @@ if ($acesso === 'ong' && isset($PerfilNoticia) && $PerfilNoticia) {
     require_once '../../components/popup/formulario-noticia.php';
 }
 
-if ($acesso === 'adm' && isset($PerfilNoticia) && $PerfilNoticia) {
+if (($acesso === 'adm' || $acesso === 'ong') && isset($PerfilNoticia) && $PerfilNoticia) {
     require_once '../../components/popup/inativar-noticia.php';
 }
 ob_end_flush();
@@ -31,6 +31,9 @@ ob_end_flush();
         <?php if (!isset($_GET['id']) || !$PerfilNoticia): ?>
             <h2 style="text-align: center;">ERRO AO ENCONTRAR NOTÍCIA!</h2>
         <?php else: ?>
+            <?php if ($PerfilNoticia['status'] === 'INATIVO'): ?>
+                <h1 class="info-inativo">NOTÍCIA INATIVA!</h1>
+            <?php endif; ?>
             <section id="carousel">
                 <div id="carousel-imgs">
                     <?php if ($ImagensNoticia) {
@@ -52,10 +55,7 @@ ob_end_flush();
                 <?php if ($acesso === 'ong' && $PerfilNoticia['ong_id'] === $_SESSION['ong_id'] && $PerfilNoticia['status'] === 'ATIVO'): ?>
                     <div class="area-acoes">
                         <button class="btn" onclick="abrir_popup('editar-noticia-popup')"><i class="fa-solid fa-pen-to-square"></i> Editar</button>
-                        <form onsubmit="return confirm('Esta notícia será inativada permanentemente.')" action="../../../controller/Noticia/InativarNoticiaController.php" method="POST">
-                            <input type="hidden" name="noticia-id" value=<?= $IdNoticia ?>>
-                            <button class="btn"><i class="fa-solid fa-trash-can"></i> Inativar</button>
-                        </form>
+                        <button class="btn" onclick="abrir_popup('inativar-noticia-popup')"><i class="fa-solid fa-ban"></i> Inativar</button>
                     </div>
                 <?php endif; ?>
 
