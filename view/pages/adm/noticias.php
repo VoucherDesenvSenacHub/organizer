@@ -84,7 +84,6 @@ $paginas = (int) ceil($totalRegistros / 6);
                          }
                     }
                     ?>
-
                     <!-- 
                // if ($lista) {
                ////     foreach ($lista as $noticia) {
@@ -94,7 +93,6 @@ $paginas = (int) ceil($totalRegistros / 6);
                 //    echo '<p>Nenhuma Notícia cadastrada!</p>';
                /// }
                 ?> -->
-
 
             </section>
             <?php if ($paginas > 1): ?>
@@ -111,6 +109,6 @@ $paginas = (int) ceil($totalRegistros / 6);
     </section>
 </main>
 <?php
-$jsPagina = ['ong/listagem.js']; //Colocar o arquivo .js
+$jsPagina = ['adm/listagem.js']; //Colocar o arquivo .js
 require_once '../../components/layout/footer/footer-logado.php';
 ?>
