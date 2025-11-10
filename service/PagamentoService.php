@@ -30,6 +30,7 @@ class PagamentoService{
             ]
         ];
         $pagamentoCartao = $validacaoPagamento->post($url, $payload);
+        return $pagamentoCartao;
     }
 
 }

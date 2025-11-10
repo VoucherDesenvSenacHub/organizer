@@ -1,9 +1,9 @@
 <?php
 require_once __DIR__ . '/../../model/ProjetoModel.php';
-require_once __DIR__ . '/../../model/Interacoes/ValidarPagamentoModel.php';
+require_once __DIR__ . '/../../service/PagamentoService.php';
 session_start();
 $projetoModel = new ProjetoModel();
-$validacao = new ValidarPagamentoModel();
+$validacao = new PagamentoService();
 
 if (isset($_POST['valor-doacao'])) {
 
