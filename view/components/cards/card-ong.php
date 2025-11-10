@@ -16,6 +16,8 @@ $classe = in_array($IdOng, $favoritas ?? []) ? 'favoritado' : '';
 <div class="card-ong">
     <?php if ($StatusOng === 'INATIVO'): ?>
         <span class="status inativo">Inativo <i class="fa-solid fa-ban"></i></span>
+    <?php elseif ($StatusOng === 'PENDENTE'): ?>
+        <span class="status pendente">Pendente <i class="fa-regular fa-clock"></i></span>
     <?php endif; ?>
     <div class="perfil">
         <div class="logo">
