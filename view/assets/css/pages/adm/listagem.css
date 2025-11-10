@@ -69,6 +69,21 @@ section#box-ongs {
     padding-bottom: 30px;
 }
 
+/* ARÉA DOS CARDS */
+main.conteudo-principal .container .area-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+    width: 100%;
+}
+
+@media (max-width: 500px) {
+    main.conteudo-principal .container .topo {
+        justify-content: center;
+    }
+}
+
 /*filtrinhos
 
 #form-filtro {

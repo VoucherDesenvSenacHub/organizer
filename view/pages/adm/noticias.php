@@ -9,10 +9,23 @@ $noticiaModel = new NoticiaModel();
 $paginaAtual = (int) ($_GET['pagina'] ?? 1);
 
 // Monta filtros
-$filtros = [
-    'pagina' => $paginaAtual,
-    'pesquisa' => $_GET['pesquisa'] ?? null
+$filtros = array_filter([
+    'pagina'   => $paginaAtual,
+    'pesquisa' => $_GET['pesquisa'] ?? null,
+    'status'   => $_GET['status'] ?? null
+]);
+
+// Notícia padrão para formulário
+$PerfilNoticia = (object) [
+    'noticia_id' => null,
+    'titulo'     => null,
+    'subtitulo'  => null,
+    'texto'      => null,
+    'subtexto'   => null,
 ];
+require_once '../../components/popup/formulario-noticia.php';
+ob_end_flush();
+
 
 // Busca lista e paginação
 $lista = $noticiaModel->listarCardsNoticias($filtros);
