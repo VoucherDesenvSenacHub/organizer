@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 $token = $_GET["token"];
 
 $token_hash = hash("sha256", $token);
@@ -12,20 +14,22 @@ $sql = "SELECT * FROM usuarios
 
 $stmt = $pdo->prepare($sql);
 
-$stmt->bind_param("s", $token_hash);
+$stmt->bindValue(1, $token_hash, PDO::PARAM_STR);
 
 $stmt->execute();
 
-$result = $stmt->get_result();
-
-$user = $result->fetch_assoc();
+$user = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if ($user === null) {
-    die("Token não encontrado");
+    $_SESSION['mensagem_toast'] = ['error', 'Token não encontrado'];
+    header('Location: login.php');
+    exit;
 }
 
 if (strtotime($user["reset_token_expires_at"]) <= time()) {
-    die("Token expirado");
+    $_SESSION['mensagem_toast'] = ['error', 'Token expirado'];
+    header('Location: login.php');
+    exit;
 }
 
 $acesso = 'visitante';
@@ -51,6 +55,7 @@ require_once '../../components/layout/base-inicio.php';
                 <div class="input-item">
                     <label for="password_confirmation">Confirmar Senha<span>*</span></label>
                     <input type="password" id="password_confirmation" name="password_confirmation" minlength="8" maxlength="20" placeholder="********" required>
+                    <i id="togglePasswordConfirm" class="fas fa-eye"></i>
                 </div>
             </div>
             
