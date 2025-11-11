@@ -21,14 +21,16 @@ $sql = "UPDATE usuarios
 
 $stmt = $pdo->prepare($sql);
 
-$stmt->bind_param("sss", $token_hash, $expiry, $email);
+$stmt->bindValue(1, $token_hash, PDO::PARAM_STR);
+$stmt->bindValue(2, $expiry, PDO::PARAM_STR);
+$stmt->bindValue(3, $email, PDO::PARAM_STR);
 
 $stmt->execute();
 
 session_start();
 
 // Verifica se o email existe no sistema
-if ($pdo->affected_rows > 0) {
+if ($stmt->rowCount() > 0) {
     try {
         $emailService = new EmailService();
         
