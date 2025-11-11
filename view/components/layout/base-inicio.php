@@ -13,6 +13,8 @@
     <title><?= isset($tituloPagina) ? $tituloPagina : 'Sem Nome'; ?></title>
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="../../assets/images/global/Logo-Organizer.png">
+    <!-- Font Awesome para ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <!-- CSS global do sistema -->
     <link rel="stylesheet" href="../../assets/css/global/style.css">
     <!-- CSS específico da página (se houver) -->
