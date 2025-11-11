@@ -1,12 +1,26 @@
 <?php
 
-require_once __DIR__ . '/../util/HttpUtil.php';
-class PagamentoService{
-    public static function validarPagamentoCartao($numeroCartao, $nomeCartao, $expiracaoMes, $expiracaoAno,
-        $cvv, $descricaoProduto, $valorProduto, $nome, $cpfCnpj,
-        $email, $cep,$enderecoNumero, $enderecoComplemento, $telefone){
+require_once __DIR__ . '/../util/HttpClientUtil.php';
+
+class PagamentoService
+{
+    public static function processarPagamentoCartao(
+        $numeroCartao,
+        $nomeCartao,
+        $expiracaoMes,
+        $expiracaoAno,
+        $cvv,
+        $descricaoProduto,
+        $valorProduto,
+        $nome,
+        $cpfCnpj,
+        $email,
+        $cep,
+        $enderecoNumero,
+        $enderecoComplemento,
+        $telefone
+    ) {
         $url = 'http://payment.avanth.kinghost.net/api/payments/pay-with-credit-card';
-        $validacaoPagamento = new HttpUtil();
         $payload = [
             'cartao' => [
                 'numero' => $numeroCartao,
@@ -29,8 +43,8 @@ class PagamentoService{
                 'telefone' => $telefone
             ]
         ];
-        $pagamentoCartao = $validacaoPagamento->post($url, $payload);
+        $httpClient = new HttpClientUtil();
+        $pagamentoCartao = $httpClient->post($url, $payload);
         return $pagamentoCartao;
     }
-
 }

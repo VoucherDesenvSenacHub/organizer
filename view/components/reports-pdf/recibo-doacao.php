@@ -33,7 +33,7 @@ $cnpj_formatado = substr($cnpj, 0, 2) . '.' .
             text-align: justify;
             padding: 0;
             font-family: Arial, Helvetica, sans-serif;
-            font-size: 1.3em;
+            font-size: 16px;
         }
         .no-break {
             page-break-inside: avoid;
@@ -49,7 +49,7 @@ $cnpj_formatado = substr($cnpj, 0, 2) . '.' .
     <br><br><br>
     <h3><?= $cidade ?> - <?= $estado ?>, <?= $data?></h3>
     <br><br><br>
-    <h2><?= $ong ?></h2>
+    <h3><?= $ong ?></h3>
     <h3>CNPJ: <?= $cnpj_formatado ?></h3>
 
 </body>
