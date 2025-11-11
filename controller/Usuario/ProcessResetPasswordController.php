@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 $token = $_POST["token"];
 
 $token_hash = hash("sha256", $token);
@@ -13,36 +15,46 @@ $sql = "SELECT * FROM usuarios
 
 $stmt = $pdo->prepare($sql);
 
-$stmt->bind_param("s", $token_hash);
+$stmt->bindValue(1, $token_hash, PDO::PARAM_STR);
 
 $stmt->execute();
 
-$result = $stmt->get_result();
-
-$user = $result->fetch_assoc();
+$user = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if ($user === null) {
-    die("Token não encontrado");
+    $_SESSION['mensagem_toast'] = ['error', 'Token não encontrado'];
+    header('Location: ../../view/pages/visitante/reset-password.php?token=' . urlencode($token));
+    exit;
 }
 
 if (strtotime($user["reset_token_expires_at"]) <= time()) {
-    die("Token expirado");
+    $_SESSION['mensagem_toast'] = ['error', 'Token expirado'];
+    header('Location: ../../view/pages/visitante/reset-password.php?token=' . urlencode($token));
+    exit;
 }
 
 if (strlen($_POST["password"]) < 8) {
-    die("A senha deve ter pelo menos 8 caracteres");
+    $_SESSION['mensagem_toast'] = ['error', 'A senha deve ter pelo menos 8 caracteres'];
+    header('Location: ../../view/pages/visitante/reset-password.php?token=' . urlencode($token));
+    exit;
 }
 
 if (!preg_match("/[a-z]/i", $_POST["password"])) {
-    die("A senha deve conter pelo menos uma letra");
+    $_SESSION['mensagem_toast'] = ['error', 'A senha deve conter pelo menos uma letra'];
+    header('Location: ../../view/pages/visitante/reset-password.php?token=' . urlencode($token));
+    exit;
 }
 
 if (!preg_match("/[0-9]/", $_POST["password"])) {
-    die("A senha deve conter pelo menos um número");
+    $_SESSION['mensagem_toast'] = ['error', 'A senha deve conter pelo menos um número'];
+    header('Location: ../../view/pages/visitante/reset-password.php?token=' . urlencode($token));
+    exit;
 }
 
 if ($_POST["password"] !== $_POST["password_confirmation"]) {
-    die("As senhas devem ser iguais");
+    $_SESSION['mensagem_toast'] = ['error', 'As senhas devem ser iguais'];
+    header('Location: ../../view/pages/visitante/reset-password.php?token=' . urlencode($token));
+    exit;
 }
 
 $password_hash = password_hash($_POST["password"], PASSWORD_DEFAULT);
@@ -55,11 +67,11 @@ $sql = "UPDATE usuarios
 
 $stmt = $pdo->prepare($sql);
 
-$stmt->bind_param("ss", $password_hash, $user["usuario_id"]);
+$stmt->bindValue(1, $password_hash, PDO::PARAM_STR);
+$stmt->bindValue(2, $user["usuario_id"], PDO::PARAM_STR);
 
 $stmt->execute();
 
-session_start();
 $_SESSION['mensagem_toast'] = ['success', 'Senha atualizada com sucesso! Faça login com a nova senha.'];
-header('Location: ../../../view/pages/visitante/login.php');
+header('Location: ../../view/pages/visitante/login.php');
 exit;
