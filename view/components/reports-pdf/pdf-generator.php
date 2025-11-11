@@ -17,6 +17,7 @@
             $ong = $_POST['ong'];
             $cnpj = $_POST['cnpj'];
             $cidade = $_POST['cidade'];
+            $estado = $_POST['estado'];
             $titulo = 'Recibo.pdf';
         }
     }    
