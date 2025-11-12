@@ -27,9 +27,6 @@ CREATE TABLE usuarios (
     email VARCHAR(255) UNIQUE NOT NULL,
     telefone VARCHAR(20) NOT NULL,
     senha VARCHAR(255) NOT NULL,
--- Campos para recuperação de senha
-    reset_token_hash VARCHAR(64) NULL DEFAULT NULL UNIQUE,
-    reset_token_expires_at DATETIME NULL DEFAULT NULL,
 -- Tipos e status de usuário
     doador BOOLEAN DEFAULT FALSE,
     ong BOOLEAN DEFAULT FALSE,
