@@ -52,23 +52,35 @@ O **Organizer** é um sistema web desenvolvido para facilitar o gerenciamento de
 
 ## Como Rodar o Projeto
 
-1. Clone o repositório:
+Este é um projeto PHP que utiliza PHPMailer para envio de e-mails, e Symfony Dotenv para gerenciamento seguro de variáveis de ambiente. O gerenciamento de dependências é feito com o Composer local (composer.phar).
 
+### 🚀 Requisitos
+* PHP 8.1 ou superior
+* Composer local (composer.phar na raiz do projeto)
+
+### ⚙️ Instalar as dependências
+
+1. Clone o repositório:
    ```bash
    git clone https://github.com/seu-usuario/organizer.git
    ```
 
-2. Configure o banco de dados MySQL:
+2. Instale as dependências:
+   ```bash
+   php composer.phar install
+   ```
 
+3. Crie um arquivo .env para colocar suas variáveis de ambiente, como o exemplo em .env.example
+
+4. Configure o banco de dados MySQL:
    * Crie o banco `organizer` (ou o nome que preferir).
    * Importe o arquivo SQL com a estrutura inicial.
 
-3. Ajuste as configurações de conexão no arquivo `database.php`.
+5. Ajuste as configurações de conexão no arquivo `database.php`.
 
-4. Hospede o projeto em um servidor local (XAMPP, WAMP, etc.).
+6. Hospede o projeto em um servidor local (XAMPP, WAMP, etc.).
 
-5. Acesse via navegador:
-
+7. Acesse via navegador:
    ```
    http://localhost/organizer
    ```
