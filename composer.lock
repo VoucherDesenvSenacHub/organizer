@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "826f515f5ef16946d3e3ee3e3205b25e",
+    "content-hash": "7d6a9d461972290aecf05d071f1d1558",
     "packages": [
         {
             "name": "phpmailer/phpmailer",
@@ -87,15 +87,93 @@
                 }
             ],
             "time": "2025-10-15T16:40:02+00:00"
+        },
+        {
+            "name": "symfony/dotenv",
+            "version": "v7.3.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/dotenv.git",
+                "reference": "2192790a11f9e22cbcf9dc705a3ff22a5503923a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/dotenv/zipball/2192790a11f9e22cbcf9dc705a3ff22a5503923a",
+                "reference": "2192790a11f9e22cbcf9dc705a3ff22a5503923a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.2"
+            },
+            "conflict": {
+                "symfony/console": "<6.4",
+                "symfony/process": "<6.4"
+            },
+            "require-dev": {
+                "symfony/console": "^6.4|^7.0",
+                "symfony/process": "^6.4|^7.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Dotenv\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Registers environment variables from a .env file",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "dotenv",
+                "env",
+                "environment"
+            ],
+            "support": {
+                "source": "https://github.com/symfony/dotenv/tree/v7.3.2"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://github.com/nicolas-grekas",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2025-07-10T08:29:33+00:00"
         }
     ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {},
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": [],
-    "platform-dev": [],
+    "platform": {},
+    "platform-dev": {},
     "plugin-api-version": "2.6.0"
 }
