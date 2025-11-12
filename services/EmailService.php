@@ -60,12 +60,4 @@ class EmailService
 
         $this->emailUtil->enviar($destinatario, $assunto, $mensagemCompleta);
     }
-
-    /**
-     * Atualiza configuração de email
-     */
-    public function atualizarConfiguracaoEmail($host, $username, $password, $port = 587, $secure = 'tls')
-    {
-        $this->emailUtil->atualizarConfiguracao($host, $username, $password, $port, $secure);
-    }
 }
