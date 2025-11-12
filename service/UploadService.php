@@ -25,26 +25,13 @@ class UploadService
      */
     function uploadImagens($files, $id, string $tipo = '', bool $editar = false)
     {
-        if ($tipo !== 'projeto' && $tipo !== 'ong') {
-            throw new InvalidArgumentException("Tipo inválido: $tipo");
+        if (!in_array($tipo, ['projeto', 'ong', 'noticia', 'usuario'])) {
+            throw new InvalidArgumentException("Tipo inválido: {$tipo}");
         }
 
         // Ignora se não há imagens
         if (empty($files['name']) || (is_array($files['name']) && empty($files['name'][0]))) {
             return;
-        }
-
-        // Se for ONG e editar = true, deleta imagem antiga
-        if ($editar && $tipo === 'ong') {
-            $imagemAntiga = $this->ongModel->buscarImagemId($id);
-            if ($imagemAntiga) {
-                $this->imagemModel->deletarImagem((int) $imagemAntiga);
-            }
-        }
-
-        // Se for Projeto e editar = true, deleta imagens antigas do projeto
-        if ($editar && $tipo === 'projeto') {
-            $this->imagemModel->deletarPorProjeto($id);
         }
 
         // Define pasta destino
@@ -55,8 +42,17 @@ class UploadService
 
         $tamanhoMaximo = 20 * 1024 * 1024; // 20MB
 
-        // Se for ONG (1 imagem)
-        if ($tipo === 'ong' && !is_array($files['name'])) {
+        // Se for ONG
+        if ($tipo === 'ong') {
+            // se editar = true, deleta imagem antiga
+            if ($editar) {
+                $imagemAntiga = $this->ongModel->buscarImagemId($id);
+                if ($imagemAntiga) {
+                    $this->imagemModel->deletarImagem((int) $imagemAntiga);
+                }
+            }
+
+            // insere a imagem
             if ($files['size'] > $tamanhoMaximo) {
                 $_SESSION['mensagem_toast'] = ['erro', 'A imagem deve ter no máximo 20 MB.'];
                 header('Location: ' . $_SERVER['HTTP_REFERER']);
@@ -78,22 +74,58 @@ class UploadService
             return;
         }
 
-        // Se for Projeto (múltiplas imagens)
-        foreach ($files['name'] as $i => $nome) {
-            if ($files['error'][$i] === UPLOAD_ERR_OK) {
-                if ($files['size'][$i] > $tamanhoMaximo) {
-                    $_SESSION['mensagem_toast'] = ['erro', "A imagem '{$nome}' ultrapassa 20 MB e não foi enviada."];
-                    header('Location: ' . $_SERVER['HTTP_REFERER']);
-                    exit;
+        // Se for Projeto
+        if ($tipo === 'projeto') {
+            // se editar = true, deleta imagens antigas do projeto
+            if ($editar) {
+                $this->imagemModel->deletarPorProjeto($id);
+            }
+
+            // insere imagens
+            foreach ($files['name'] as $i => $nome) {
+                if ($files['error'][$i] === UPLOAD_ERR_OK) {
+                    if ($files['size'][$i] > $tamanhoMaximo) {
+                        $_SESSION['mensagem_toast'] = ['erro', "A imagem '{$nome}' ultrapassa 20 MB e não foi enviada."];
+                        header('Location: ' . $_SERVER['HTTP_REFERER']);
+                        exit;
+                    }
+
+                    $tmp = $files['tmp_name'][$i];
+                    $novoNome = uniqid() . '-' . basename($nome);
+                    $destino = $pasta . $novoNome;
+
+                    if (move_uploaded_file($tmp, $destino)) {
+                        $idImagem = $this->imagemModel->salvarCaminhoImagem("upload/images/{$tipo}s/" . $novoNome);
+                        $this->imagemModel->vincularNoProjeto($idImagem, $id);
+                    }
                 }
+            }
+        }
 
-                $tmp = $files['tmp_name'][$i];
-                $novoNome = uniqid() . '-' . basename($nome);
-                $destino = $pasta . $novoNome;
+        // Se for Noricia
+        if ($tipo === 'noticia'){
+            if($editar){
+                $this->imagemModel->deletarPorNoticia($id);
+            }
 
-                if (move_uploaded_file($tmp, $destino)) {
-                    $idImagem = $this->imagemModel->salvarCaminhoImagem("upload/images/{$tipo}s/" . $novoNome);
-                    $this->imagemModel->vincularNoProjeto($idImagem, $id);
+            foreach ($_FILES['fotos']['name'] as $i => $nome) {
+                if ($_FILES['fotos']['error'][$i] === UPLOAD_ERR_OK) {
+
+                    // 🔹 Validação de tamanho
+                    if ($_FILES['fotos']['size'][$i] > $tamanhoMaximo) {
+                        $_SESSION['mensagem_toast'] = ['erro', "A imagem '{$nome}' ultrapassa 20 MB e não foi enviada."];
+                        header('Location: ' . $_SERVER['HTTP_REFERER']);
+                        exit;
+                    }
+
+                    $tmp   = $_FILES['fotos']['tmp_name'][$i];
+                    $novoNome = uniqid() . '-' . basename($nome);
+                    $destino  = __DIR__ . '/../../upload/images/noticias/' . $novoNome;
+
+                    if (move_uploaded_file($tmp, $destino)) {
+                        $IdImagem = $this->imagemModel->salvarCaminhoImagem("upload/images/{$tipo}s/" . $novoNome);
+                        $this->imagemModel->vincularNaNoticia($IdImagem, $id);
+                    }
                 }
             }
         }
