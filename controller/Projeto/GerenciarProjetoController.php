@@ -32,7 +32,7 @@ if (empty($_POST['projeto-id'])) {
             $idProjeto = $projetoCriado;
 
             // Upload de imagens (se houver)
-            $upload->uploadImgProjeto($_FILES['imagens'], $idProjeto);
+            $upload->uploadImagens($_FILES['imagens'], $idProjeto, 'projeto');
 
             $_SESSION['mensagem_toast'] = ['sucesso', 'Projeto criado com sucesso!'];
             header('Location: ' . $_SERVER['HTTP_REFERER']);
@@ -58,7 +58,7 @@ else {
 
         if ($projetoEditado) {
             
-            $upload->uploadImgProjeto($_FILES['imagens'], $idProjeto,  true);
+            $upload->uploadImagens($_FILES['imagens'], $idProjeto, 'projeto', true);
 
             $_SESSION['mensagem_toast'] = ['sucesso', 'Projeto salvo com sucesso!'];
         } else {

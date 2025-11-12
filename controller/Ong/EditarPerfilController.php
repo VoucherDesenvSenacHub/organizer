@@ -1,9 +1,11 @@
 <?php
 require_once __DIR__ . '/../../autoload.php';
+require_once __DIR__ . '/../../service/UploadService.php';
 
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
+
 
 class EditarPerfilController
 {
@@ -11,11 +13,14 @@ class EditarPerfilController
     private $bancoModel;
     private $imagemModel;
 
+    private $uploadService;
+
     public function __construct()
     {
         $this->ongModel = new OngModel();
         $this->bancoModel = new BancoModel();
         $this->imagemModel = new ImagemModel();
+        $this->uploadService = new UploadService();
     }
 
     public function buscarDados()
@@ -101,40 +106,24 @@ class EditarPerfilController
 
         $imagemAlterada = false;
 
-        // --- Upload de imagem da ONG (se enviado) ---
+        // Upload de imagem da ONG (se enviado)
+        // substitui somente este bloco pelo call ao service (sem alterar o restante do método)
         if (!empty($_FILES['foto_perfil']['name'])) {
-            $pasta = __DIR__ . '/../../upload/images/ongs/';
-            if (!is_dir($pasta)) {
-                mkdir($pasta, 0777, true);
-            }
+            require_once __DIR__ . '/../../service/UploadService.php';
+            $uploadService = new UploadService();
 
-            $tamanhoMaximo = 20 * 1024 * 1024; // 25 MB em bytes
-            if ($_FILES['foto_perfil']['size'] > $tamanhoMaximo) {
-                $_SESSION['mensagem_toast'] = ['erro', 'A imagem deve ter no máximo 20 MB.'];
-                header('Location: ../../view/pages/ong/home.php');
-                exit;
-            }
 
-            $novoNome = uniqid() . '-' . basename($_FILES['foto_perfil']['name']);
-            $destino = $pasta . $novoNome;
+            $uploadService->uploadImagens($_FILES['foto_perfil'], $ongId, 'ong', true);
 
-            if (move_uploaded_file($_FILES['foto_perfil']['tmp_name'], $destino)) {
-                // salva caminho relativo no banco
-                $caminhoRelativo = 'upload/images/ongs/' . $novoNome;
-                $idImagem = $this->imagemModel->salvarCaminhoImagem($caminhoRelativo);
-                $dados['imagem_id'] = $idImagem;
+            // pega o imagem_id que foi vinculado 
+            $dados['imagem_id'] = $this->ongModel->buscarImagemId($ongId);
 
-                // atualiza sessão com caminho relativo (ou com o que você preferir)
-                $_SESSION['ong']['foto'] = $caminhoRelativo;
-                $imagemAlterada = true;
-            } else {
-                // falhou upload -> manter imagem atual
-                $dados['imagem_id'] = $this->ongModel->buscarImagemId($ongId);
-            }
+            $imagemAlterada = true;
         } else {
             // nenhum arquivo enviado -> manter imagem atual
             $dados['imagem_id'] = $this->ongModel->buscarImagemId($ongId);
         }
+
 
         try {
             $alterou = $this->ongModel->editar($dados);
