@@ -49,6 +49,7 @@ $doacoes = $projetoModel->buscarDoacao($_SESSION['usuario']['id']);
                             <input type="hidden" name="ong" value="<?= $ongProjeto['nome'] ?>">
                             <input type="hidden" name="cnpj" value="<?= $ongProjeto['cnpj'] ?>">
                             <input type="hidden" name="cidade" value="<?= $ongProjeto['cidade'] ?>">
+                            <input type="hidden" name="estado" value="<?= $ongProjeto['estado'] ?>">
                             <button class="btn"><i class="fa-solid fa-receipt"></i></button>
                         </form>
                     </div>
