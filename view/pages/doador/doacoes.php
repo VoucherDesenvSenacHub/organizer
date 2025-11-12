@@ -39,9 +39,9 @@ $doacoes = $projetoModel->buscarDoacao($_SESSION['usuario']['id']);
                             <small><i class="fa-solid fa-calendar-days"></i> <?= date('d/m/Y', strtotime($doacao['data_doacao'])) ?></small>
                             <small><i class="fa-solid fa-clock"></i> <?= date('H:i', strtotime($doacao['data_doacao'])) ?></small>
                         </div>
-                        <form action="../../components/reports-pdf/pdf-generator.php" method="POST">
+                        <form action="../../../controller/RelatorioController.php" method="POST">
                             <input type="hidden" name="id-ong" value="<?= $doacao['nome'] ?>">
-                            <input type="hidden" name="relatorio" value="recibo-doacao.php">
+                            <input type="hidden" name="relatorio" value="recibo">
                             <input type="hidden" name ="valor" value="R$ <?= number_format($doacao['valor'], 2, ',', '.') ?>">
                             <input type="hidden" name="data" value="<?= date('d/m/Y', strtotime($doacao['data_doacao'])) ?>">
                             <input type="hidden" name="projeto" value="<?= $doacao['nome'] ?>">
