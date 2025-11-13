@@ -6,18 +6,18 @@ require_once '../../components/layout/base-inicio.php';
 require_once __DIR__ . '/../../../autoload.php';
 
 $projetoModel = new ProjetoModel();
-$paginaAtual = (int)($_GET['pagina'] ?? 1);
+$paginaAtual = (int) ($_GET['pagina'] ?? 1);
 
 // Monta os filtros
 $filtros = [
-    'pagina'   => $paginaAtual,
+    'pagina' => $paginaAtual,
     'pesquisa' => $_GET['pesquisa'] ?? null
 ];
 
 // Busca lista e paginação
-$lista          = $projetoModel->listarCardsProjetos($filtros);
+$lista = $projetoModel->listarCardsProjetos($filtros);
 $totalRegistros = $projetoModel->paginacaoProjetos($filtros);
-$paginas        = ceil($totalRegistros / 8);
+$paginas = ceil($totalRegistros / 8);
 ?>
 
 <main class="conteudo-principal">
@@ -29,6 +29,25 @@ $paginas        = ceil($totalRegistros / 8);
                     <input type="text" name="pesquisa" placeholder="Busque um projeto">
                     <button class="btn" type="submit"><i class="fa-solid fa-search"></i></button>
                 </form>
+                <form id="form-filtro" action="projetos.php" method="GET">
+                    <div class="ul-group">
+                        <div class="drop" id="esc-status" aria-haspopup="true" aria-expanded="false">
+                            <div class="drop-title" tabindex="0">
+                                <p id="status-label">
+                                    <?= isset($_GET['status']) ? ucfirst(strtolower($_GET['status'])) : 'Status' ?></p>
+                                <i class="fa-solid fa-angle-down"></i>
+                            </div>
+
+                            <div class="drop-menu" role="menu" aria-labelledby="status-label">
+                                <button type="button" class="item" data-value="ATIVO">Ativo</button>
+                                <button type="button" class="item" data-value="INATIVO">Inativo</button>
+                                <button type="button" class="item" data-value="FINALIZADO">Finalizado</button>
+                            </div>
+                            <input type="hidden" name="status" id="status-hidden" value="<?= $_GET['status'] ?? '' ?>">
+                        </div>
+                    </div>
+                </form>
+
             </div>
             <!-- Quantidade da busca -->
             <?php if (isset($_GET['pesquisa'])) {
@@ -43,8 +62,18 @@ $paginas        = ceil($totalRegistros / 8);
                         require '../../components/cards/card-projeto.php';
                     }
                 } else {
-                    echo '<p>Nenhum Projeto cadastrado!</p>';
+                    $status = $_GET['status'] ?? '';
+                    if ($status === 'ATIVO') {
+                        echo 'Você não tem projetos ativos no momento.';
+                    } elseif ($status === 'INATIVO') {
+                        echo 'Você não tem projetos inativos no momento.';
+                    } elseif ($status === 'FINALIZADO') {
+                        echo 'Você não tem projetos finalizados no momento.';
+                    } else {
+                        echo 'Você ainda não tem nenhum projeto :(';
+                    }
                 }
+                ?>
                 ?>
             </section>
             <?php if ($paginas > 1): ?>
@@ -61,6 +90,6 @@ $paginas        = ceil($totalRegistros / 8);
     </section>
 </main>
 <?php
-$jsPagina = []; //Colocar o arquivo .js
+$jsPagina = ['adm/listagem.js']; //Colocar o arquivo .js
 require_once '../../components/layout/footer/footer-logado.php';
 ?>
