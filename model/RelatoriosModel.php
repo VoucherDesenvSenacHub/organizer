@@ -11,7 +11,7 @@ class RelatoriosModel {
         $this->pdo->exec("SET time_zone = '-04:00'");
     }
 
-    function contarProjetos($id) {
+    public function contarProjetos($id) {
         $query = "SELECT p.projeto_id, p.nome, p.status 
                       FROM projetos p
                       WHERE ong_id = :id";
@@ -45,7 +45,7 @@ class RelatoriosModel {
         return $dados;
     }
 
-    function listarProjetos($id) {
+    public function listarProjetos($id) {
         $query = "SELECT p.projeto_id, p.nome AS nome_projeto, p.status, p.ong_id, u.usuario_id,
                     u.nome AS nome_usuario, u.telefone FROM projetos p
                 INNER JOIN apoios_projetos ap ON p.projeto_id = ap.projeto_id
