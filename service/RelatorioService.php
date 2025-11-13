@@ -38,7 +38,6 @@ class RelatorioService
     {
         $acesso = 'ong';
         require_once __DIR__ .'/../model/RelatoriosModel.php';
-        $idOng = (int)$idOng;
 
         $projetos = new RelatoriosModel();
         $contagem_projetos = $projetos->contarProjetos($idOng); // Relaciona todos os projetos da ONG em uso

@@ -122,11 +122,4 @@ class RelatoriosModel {
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
         return $stmt->fetchAll();    
     }
-    // function listarTabelas(){
-    //     $query = "SELECT * from usuarios";
-    //     $stmt = $this->pdo->prepare($query);
-    //     $stmt->execute();
-    //     $stmt->setFetchMode(PDO::FETCH_ASSOC);
-    //     return $stmt->fetchAll();
-    // }
 }
