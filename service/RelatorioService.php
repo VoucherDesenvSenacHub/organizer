@@ -37,7 +37,8 @@ class RelatorioService
     public function gerarVoluntariosProjeto($idOng)
     {
         $acesso = 'ong';
-        require_once '../model/RelatoriosModel.php';
+        require_once __DIR__ .'/../model/RelatoriosModel.php';
+        $idOng = (int)$idOng;
 
         $projetos = new RelatoriosModel();
         $contagem_projetos = $projetos->contarProjetos($idOng); // Relaciona todos os projetos da ONG em uso
@@ -56,7 +57,18 @@ class RelatorioService
         Aqui serão processadas as buscas no banco de dados e tratamento dos dados para transferência
         para o template voluntariosProjeto.php
         */
-        echo "<h1>Voluntarios por Projeto";
+        echo "<h1>Voluntarios por Projeto</h1>";
+
+
+        //Geração do PDF:
+
+        // ob_start();
+        // include __DIR__ . '/../report/voluntariosProjeto.php';
+        // $html = ob_get_clean();
+
+        // require_once __DIR__ . '/../util/PdfUtil.php';
+        // $pdfUtil = new PdfUtil();
+        // $pdfUtil->gerarPdf($html, 'Voluntários Por Projeto.pdf');
     }
 
     public function gerarDoacoesMensais($idOng)
