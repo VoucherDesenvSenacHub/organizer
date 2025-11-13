@@ -1,11 +1,13 @@
 <?php
 require_once __DIR__ . '/../../model/UsuarioModel.php';
 require_once __DIR__ . '/../../model/ImagemModel.php';
+require_once __DIR__ . '/../../service/UploadService.php';
 
 session_start();
 
 $imagemModel = new ImagemModel();
 $usuarioModel = new UsuarioModel();
+$upload = new UploadService();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Atualização de dados do perfil
@@ -25,11 +27,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         try {
-            $resultado = 0;
-            $imagemPadrao = 'view/assets/images/global/user-placeholder.jpg';
-            $usuario = $usuarioModel->buscar_perfil($_SESSION['usuario']['id']);
 
-            // --- REMOVER FOTO ---
+            $resultado = 0; 
+
+            // carregar usuário atual (para remoção se necessário)
+            $usuario = $usuarioModel->buscar_perfil($_SESSION['usuario']['id']);
+            $imagemPadrao = 'view/assets/images/global/user-placeholder.jpg';
+
+            // REMOVER FOTO 
             if (isset($_POST['remover_foto']) && $_POST['remover_foto'] === 'true') {
                 $idImagemAtual = $usuario['imagem_id'] ?? null;
                 if ($idImagemAtual) {
@@ -40,38 +45,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $resultado = 1;
             }
 
-            // --- UPLOAD DE NOVA FOTO ---
+            // UPLOAD DE NOVA FOTO 
             if (!empty($_FILES['foto_usuario']['name'])) {
-                $file = $_FILES['foto_usuario'];
-                $fileSize = $file['size'];
-                $maxSize = 20 * 1024 * 1024; // 20 MB
-
-                if ($fileSize > $maxSize) {
-                    $_SESSION['mensagem_toast'] = ['erro', 'A imagem deve ter no máximo 20MB.'];
-                    header('Location: ' . $_SERVER['HTTP_REFERER']);
-                    exit;
-                }
-
-                $pasta = __DIR__ . '/../../upload/images/usuarios/';
-                if (!is_dir($pasta))
-                    mkdir($pasta, 0777, true);
-
-                $tmp = $file['tmp_name'];
-                $nomeOriginal = basename($file['name']);
-                $novoNome = uniqid() . '-' . $nomeOriginal;
-                $destino = $pasta . $novoNome;
-
-                if (move_uploaded_file($tmp, $destino)) {
-                    $idImagem = $imagemModel->salvarCaminhoImagem('upload/images/usuarios/' . $novoNome);
-                    $usuarioModel->atualizarImagem($_SESSION['usuario']['id'], $idImagem);
-                    $_SESSION['usuario']['foto'] = 'upload/images/usuarios/' . $novoNome;
+                $novaFoto = $upload->uploadImagens($_FILES['foto_usuario'], $_SESSION['usuario']['id'], 'usuario', true);
+                if ($novaFoto === true) {
                     $resultado = 1;
                 }
             }
 
-            // --- ATUALIZAR DADOS ---
+
+            // ATUALIZAR DADOS 
             $resultadoDados = $usuarioModel->update($id, $nome, $telefone, $cpf, $data, $email);
-            if ($resultadoDados > 0) $resultado = 1;
+            if ($resultadoDados > 0)
+                $resultado = 1;
 
             $_SESSION['mensagem_toast'] = $resultado > 0
                 ? ['sucesso', 'Dados atualizados com sucesso!']

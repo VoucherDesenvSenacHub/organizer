@@ -8,11 +8,15 @@ class UploadService
 
     private $ongModel;
 
+    private $usuarioModel;
+
     public function __construct()
     {
         $this->imagemModel = new ImagemModel();
 
         $this->ongModel = new OngModel();
+
+        $this->usuarioModel = new UsuarioModel();
     }
 
     /**
@@ -102,25 +106,24 @@ class UploadService
             }
         }
 
-        // Se for Noricia
-        if ($tipo === 'noticia'){
-            if($editar){
+        // Se for Noticia
+        if ($tipo === 'noticia') {
+            if ($editar) {
                 $this->imagemModel->deletarPorNoticia($id);
             }
 
-            foreach ($_FILES['fotos']['name'] as $i => $nome) {
-                if ($_FILES['fotos']['error'][$i] === UPLOAD_ERR_OK) {
+            foreach ($files['name'] as $i => $nome) {
+                if ($files['error'][$i] === UPLOAD_ERR_OK) {
 
-                    // 🔹 Validação de tamanho
-                    if ($_FILES['fotos']['size'][$i] > $tamanhoMaximo) {
+                    if ($files['size'][$i] > $tamanhoMaximo) {
                         $_SESSION['mensagem_toast'] = ['erro', "A imagem '{$nome}' ultrapassa 20 MB e não foi enviada."];
                         header('Location: ' . $_SERVER['HTTP_REFERER']);
                         exit;
                     }
 
-                    $tmp   = $_FILES['fotos']['tmp_name'][$i];
+                    $tmp = $files['tmp_name'][$i];
                     $novoNome = uniqid() . '-' . basename($nome);
-                    $destino  = __DIR__ . '/../../upload/images/noticias/' . $novoNome;
+                    $destino = $pasta . $novoNome;
 
                     if (move_uploaded_file($tmp, $destino)) {
                         $IdImagem = $this->imagemModel->salvarCaminhoImagem("upload/images/{$tipo}s/" . $novoNome);
@@ -128,6 +131,37 @@ class UploadService
                     }
                 }
             }
+        }
+
+        // Se for Usuario
+        if ($tipo === 'usuario') {
+            // busca usuário pelo id passado (não pela sessão)
+            $usuario = $this->usuarioModel->buscar_perfil($id);
+
+            if ($editar) {
+                $idImagemAntiga = $usuario['imagem_id'] ?? null;
+                if ($idImagemAntiga) {
+                    $this->imagemModel->deletarImagem($idImagemAntiga);
+                }
+            }
+
+            if ($files['size'] > $tamanhoMaximo) {
+                $_SESSION['mensagem_toast'] = ['erro', 'A imagem deve ter no máximo 20 MB.'];
+                header('Location: ' . $_SERVER['HTTP_REFERER']);
+                exit;
+            }
+
+            $novoNome = uniqid() . '-' . basename($files['name']);
+            $destino = $pasta . $novoNome;
+
+            if (move_uploaded_file($files['tmp_name'], $destino)) {
+                $caminhoRelativo = "upload/images/{$tipo}s/" . $novoNome;
+                $idImagem = $this->imagemModel->salvarCaminhoImagem($caminhoRelativo);
+                $this->usuarioModel->atualizarImagem($id, $idImagem);
+                $_SESSION['usuario']['foto'] = $caminhoRelativo;
+                return true; // indica que houve alteração
+            }
+            return false;
         }
     }
 }

@@ -26,7 +26,7 @@ if (empty($_POST['noticia-id'])) {
         if ($noticiaCriada) {
             $IdNoticia = $noticiaCriada;
 
-            $upload->uploadImagens($_FILES['foto_perfil'], $IdNoticia, 'noticia');
+            $upload->uploadImagens($_FILES['fotos'], $IdNoticia, 'noticia');
 
             $_SESSION['mensagem_toast'] = ['sucesso', 'Notícia criada com sucesso!'];
             header('Location: ' . $_SERVER['HTTP_REFERER']);
@@ -45,7 +45,7 @@ else {
     $noticiaEditada = $noticiaModel->editar($IdNoticia, $TituloNoticia, $SubtituloNoticia, $TextoNoticia, $SubtextoNoticia);
 
     if ($noticiaEditada) {
-        $upload->uploadImagens($_FILES['imagens'], $IdNoticia, 'noticia', true);
+        $upload->uploadImagens($_FILES['fotos'], $IdNoticia, 'noticia', true);
 
         $_SESSION['mensagem_toast'] = ['sucesso', 'Notícia atualizada com sucesso!'];
         header('Location: ' . $_SERVER['HTTP_REFERER']);
