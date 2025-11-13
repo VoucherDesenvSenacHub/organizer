@@ -19,19 +19,19 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     }
 }
 switch ($relatorioId) {
-    case 'voluntarios':
+    case "voluntarios":
         $relatorio->gerarVoluntariosProjeto($idOng);
         break;
 
-    case 'doacoes-mensais':
+    case "doacoes-mensais":
         $relatorio->gerarDoacoesMensais($idOng);
         break;
 
-    case 'doacoes-projeto':
+    case "doacoes-projeto":
         $relatorio->gerarDoacoesProjeto($idOng);
         break;
 
-    case 'recibo':
+    case "recibo":
         $relatorio->gerarReciboDoacao(
             $idOng,
             $projeto,

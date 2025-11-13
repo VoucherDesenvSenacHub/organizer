@@ -1,22 +1,24 @@
 <?php 
-    use Dompdf\Dompdf;
-    use Dompdf\Options;
+use Dompdf\Dompdf;
+use Dompdf\Options;
 
-    require_once __DIR__ . '/../dompdf/autoload.inc.php';
-    $dompdf = new Dompdf();
+class PdfUtil {
+
+    public function gerarPdf($html, $titulo){
+        
+        require_once __DIR__ . '/../dompdf/autoload.inc.php';
+        
+        $options = new Options();
+        $options->set('isRemoteEnabled', true);
+
+        $dompdf = new Dompdf();    
     
-    ob_start();
-
-    include ($relatorio);
-
-    $html = ob_get_clean();
-
-    $option = new Options();
-
-    $dompdf->loadHtml($html);
-
-    $dompdf->setPaper('A4', 'portrait');
-
-    $dompdf->render();
-
-    $dompdf->stream($titulo);
+        $dompdf->loadHtml($html);
+    
+        $dompdf->setPaper('A4', 'portrait');
+    
+        $dompdf->render();
+    
+        $dompdf->stream($titulo);
+    }
+    }
