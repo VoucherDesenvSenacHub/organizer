@@ -13,6 +13,7 @@ $filtros = [
     'ordem'    => $_POST['ordem'] ?? null,
     'projetos' => $_POST['projetos'] ?? null,
     'doacoes'  => $_POST['doacoes'] ?? null,
+    'status'   => 'ATIVO'
 ];
 
 // Buscar dados
