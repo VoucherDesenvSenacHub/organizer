@@ -1,4 +1,20 @@
+<?php
+require_once __DIR__ . '/../model/RelatoriosModel.php';
 
+$projetos = new RelatoriosModel();
+$contagem_projetos = $projetos->contarProjetos($idOng); // Relaciona todos os projetos da ONG em uso
+$listagem_projetos = $projetos->listarProjetos($idOng); // Relaciona todos os voluntários vinculados à ONG em uso
+$totalDeApoiadores = sizeof($listagem_projetos); // Captura a quantidade total de apoiadores da ONG
+$dadosPercentuais = "";
+foreach($contagem_projetos as $lperc):
+    $projeto = $lperc[0];
+    $proporcional = number_format($lperc[1]*100/$totalDeApoiadores, 2);
+    echo $projeto;
+    $dadosPercentuais = $dadosPercentuais."
+        <h1>$projeto => $proporcional% dos apoiadores</h1>
+    ";
+endforeach;
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -36,12 +52,12 @@
         th {
             text-align: left;
         }
-/* 
+
         #grafico {
             display: grid;
             place-items: center;
             font-size: 0.5em;
-        } */
+        }
     </style>
 </head>
 

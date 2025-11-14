@@ -1,8 +1,7 @@
 <?php
 $acesso = 'ong';
-require_once '../../components/graphics/line-graphic.php';
-require_once '../../../model/RelatoriosModel.php';
-require_once '../../../model/OngModel.php';
+require_once __DIR__ . '/../model/RelatoriosModel.php';
+require_once __DIR__ . '/../model/OngModel.php';
 
 $ongs = new OngModel();
 $relatorio = new RelatoriosModel();

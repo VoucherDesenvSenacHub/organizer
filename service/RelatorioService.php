@@ -1,5 +1,7 @@
 <?php
 
+require_once  __DIR__ . "/../model/RelatoriosModel.php";
+
 class RelatorioService
 {
     public function gerarReciboDoacao(
@@ -35,50 +37,35 @@ class RelatorioService
     }
 
     public function gerarVoluntariosProjeto($idOng)
-    {
-        $acesso = 'ong';
-        require_once '../view/components/graphics/vertical-bars.php';
-        require_once '../model/RelatoriosModel.php';
+    {   
+        ob_start();
+        include __DIR__ . '/../report/voluntariosProjeto.php';
+        $html = ob_get_clean();
 
-        $projetos = new RelatoriosModel();
-        $contagem_projetos = $projetos->contarProjetos($idOng); // Relaciona todos os projetos da ONG em uso
-        var_dump($contagem_projetos);
-    //     $listagem_projetos = $projetos->listarProjetos($idOng); // Relaciona todos os voluntários vinculados à ONG em uso
-    //     $totalDeApoiadores = sizeof($listagem_projetos); // Captura a quantidade total de apoiadores da ONG
-    //     $dadosPercentuais = "";
-    //     foreach ($contagem_projetos as $lperc):
-    //         $projeto = $lperc[0];
-    //         $proporcional = number_format($lperc[1] * 100 / $totalDeApoiadores, 2);
-    //         echo $projeto;
-    //         $dadosPercentuais = $dadosPercentuais . "
-    //     <h1>$projeto => $proporcional% dos apoiadores</h1>
-    // ";
-    //     endforeach;
-        /*
-        Aqui serão processadas as buscas no banco de dados e tratamento dos dados para transferência
-        para o template voluntariosProjeto.php
-        */
-        echo "<h1>Voluntarios por Projeto</h1>";
-
-
-        //Geração do PDF:
-
-        // ob_start();
-        // include __DIR__ . '/../report/voluntariosProjeto.php';
-        // $html = ob_get_clean();
-
-        // require_once __DIR__ . '/../util/PdfUtil.php';
-        // $pdfUtil = new PdfUtil();
-        // $pdfUtil->gerarPdf($html, 'Voluntários Por Projeto.pdf');
+        require_once __DIR__ . '/../util/PdfUtil.php';
+        $pdfUtil = new PdfUtil();
+        $pdfUtil->gerarPdf($html, 'Voluntários por Projeto.pdf');
     }
 
     public function gerarDoacoesMensais($idOng)
     {
-        echo "<h1>Doações Mensais";
+        ob_start();
+        include __DIR__ . '/../report/doacoesMensais.php';
+        $html = ob_get_clean();
+
+        require_once __DIR__ . '/../util/PdfUtil.php';
+        $pdfUtil = new PdfUtil();
+        $pdfUtil->gerarPdf($html, 'Doações Mensais.pdf');
     }
 
     public function gerarDoacoesProjeto($idOng)
     {
-        echo "<h1>Doações por Projeto";
+        ob_start();
+        include __DIR__ . '/../report/doacoesProjeto.php';
+        $html = ob_get_clean();
+
+        require_once __DIR__ . '/../util/PdfUtil.php';
+        $pdfUtil = new PdfUtil();
+        $pdfUtil->gerarPdf($html, 'Doações por Projeto.pdf');
     }
 }
