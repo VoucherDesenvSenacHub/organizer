@@ -135,16 +135,6 @@ class UploadService
 
         // Se for Usuario
         if ($tipo === 'usuario') {
-            // busca usuário pelo id passado (não pela sessão)
-            $usuario = $this->usuarioModel->buscar_perfil($id);
-
-            if ($editar) {
-                $idImagemAntiga = $usuario['imagem_id'] ?? null;
-                if ($idImagemAntiga) {
-                    $this->imagemModel->deletarImagem($idImagemAntiga);
-                }
-            }
-
             if ($files['size'] > $tamanhoMaximo) {
                 $_SESSION['mensagem_toast'] = ['erro', 'A imagem deve ter no máximo 20 MB.'];
                 header('Location: ' . $_SERVER['HTTP_REFERER']);
@@ -164,4 +154,22 @@ class UploadService
             return false;
         }
     }
+
+    function removerImagemUsuario($usuarioId)
+    {
+        $usuario = $this->usuarioModel->buscar_perfil($usuarioId);
+        $idImagemAntiga = $usuario['imagem_id'] ?? null;
+
+        if ($idImagemAntiga) {
+            $this->imagemModel->deletarImagem($idImagemAntiga);
+        }
+
+        $this->usuarioModel->atualizarImagem($usuarioId, null);
+
+        // var_dump(1);
+        // exit;
+    }
+
+
+
 }

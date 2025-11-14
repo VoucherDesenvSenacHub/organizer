@@ -4,6 +4,8 @@ require_once __DIR__ . '/../../../model/ImagemModel.php';
 
 $usuarioModel = new UsuarioModel();
 $usuario = $usuarioModel->buscar_perfil($_SESSION['usuario']['id']);
+// var_dump($usuario);
+// exit;
 ?>
 
 
@@ -19,9 +21,9 @@ $usuario = $usuarioModel->buscar_perfil($_SESSION['usuario']['id']);
             <div id="perfil">
                 <div class="upload-area-doador" id="uploadAreaDoador">
                     <input type="file" id="foto_usuario" name="foto_usuario" accept="image/*" style="display:none;">
-                    <img id="preview-foto" src="<?= !empty($_SESSION['usuario']['foto'])
-                        ? '../../../' . $_SESSION['usuario']['foto']
-                        : 'view/assets/images/global/image-placeholder.svg'
+                    <img id="preview-foto" src="<?= !empty($usuario['caminho'])
+                        ? '../../../' . $usuario['caminho']
+                        : '../../assets/images/global/user-placeholder.jpg'
                         ?>">
                     <div id="uploadTextDoador">
                         <i class="fa-solid fa-cloud-upload-alt"></i><br>

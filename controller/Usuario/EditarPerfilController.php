@@ -28,26 +28,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         try {
 
-            $resultado = 0; 
+            $resultado = 0;
 
             // carregar usuário atual (para remoção se necessário)
-            $usuario = $usuarioModel->buscar_perfil($_SESSION['usuario']['id']);
+            $usuario = $usuarioModel->buscar_perfil($id);
             $imagemPadrao = 'view/assets/images/global/user-placeholder.jpg';
 
-            // REMOVER FOTO 
+            
+             // REMOVER FOTO 
             if (isset($_POST['remover_foto']) && $_POST['remover_foto'] === 'true') {
-                $idImagemAtual = $usuario['imagem_id'] ?? null;
-                if ($idImagemAtual) {
-                    $imagemModel->deletarImagem($idImagemAtual);
-                }
-                $usuarioModel->atualizarImagem($_SESSION['usuario']['id'], null);
-                $_SESSION['usuario']['foto'] = $imagemPadrao;
+                $upload->removerImagemUsuario($id);
                 $resultado = 1;
             }
-
+            
             // UPLOAD DE NOVA FOTO 
             if (!empty($_FILES['foto_usuario']['name'])) {
-                $novaFoto = $upload->uploadImagens($_FILES['foto_usuario'], $_SESSION['usuario']['id'], 'usuario', true);
+                $novaFoto = $upload->uploadImagens($_FILES['foto_usuario'], $id, 'usuario', true);
                 if ($novaFoto === true) {
                     $resultado = 1;
                 }
