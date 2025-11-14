@@ -1,10 +1,11 @@
 <?php
 
-require_once  __DIR__ . "/../model/RelatoriosModel.php";
+require_once __DIR__ . "/../model/RelatoriosModel.php";
 require_once __DIR__ . '/../model/OngModel.php';
 
 class RelatorioService
 {
+
     public function gerarReciboDoacao(
         $idOng,
         $projeto,
@@ -39,6 +40,23 @@ class RelatorioService
 
     public function gerarVoluntariosProjeto($idOng)
     {
+        $projetos = new RelatoriosModel();
+        $contagem_projetos = $projetos->contarProjetos($idOng); // Relaciona todos os projetos da ONG em uso
+        $listagem_projetos = $projetos->listarProjetos($idOng); // Relaciona todos os voluntários vinculados à ONG em uso
+        $totalDeApoiadores = sizeof($listagem_projetos); // Captura a quantidade total de apoiadores da ONG
+        $dadosPercentuais = "";
+        foreach ($contagem_projetos as $lperc):
+            $projeto = $lperc[0];
+            $proporcional = number_format($lperc[1] * 100 / $totalDeApoiadores, 2);
+            $dadosPercentuais = $dadosPercentuais . "
+        <h1>$projeto => $proporcional% dos apoiadores</h1>
+    ";
+        endforeach;
+        if (count($listagem_projetos) == 0) {
+                $dadosPercentuais =  '<h1>Não há projetos ativos cadastrados para essa ONG</h1>';
+            }
+
+        // Geração do PDF
         ob_start();
         include __DIR__ . '/../report/voluntariosProjeto.php';
         $html = ob_get_clean();
@@ -98,7 +116,7 @@ class RelatorioService
         endfor;
 
         //Geração do PDF
-        
+
         ob_start();
         include __DIR__ . '/../report/doacoesMensais.php';
         $html = ob_get_clean();

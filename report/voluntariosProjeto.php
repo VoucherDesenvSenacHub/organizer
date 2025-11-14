@@ -1,20 +1,3 @@
-<?php
-require_once __DIR__ . '/../model/RelatoriosModel.php';
-
-$projetos = new RelatoriosModel();
-$contagem_projetos = $projetos->contarProjetos($idOng); // Relaciona todos os projetos da ONG em uso
-$listagem_projetos = $projetos->listarProjetos($idOng); // Relaciona todos os voluntários vinculados à ONG em uso
-$totalDeApoiadores = sizeof($listagem_projetos); // Captura a quantidade total de apoiadores da ONG
-$dadosPercentuais = "";
-foreach($contagem_projetos as $lperc):
-    $projeto = $lperc[0];
-    $proporcional = number_format($lperc[1]*100/$totalDeApoiadores, 2);
-    echo $projeto;
-    $dadosPercentuais = $dadosPercentuais."
-        <h1>$projeto => $proporcional% dos apoiadores</h1>
-    ";
-endforeach;
-?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -53,7 +36,7 @@ endforeach;
             text-align: left;
         }
 
-        #grafico {
+        #percentuais {
             display: grid;
             place-items: center;
             font-size: 0.5em;
@@ -64,14 +47,8 @@ endforeach;
 <body class="no-break">
     <h1 class="no-break">Relatório de apoiadores</h1>
     <hr>
-    <div id="grafico">
-        <?php
-            if (count($listagem_projetos) == 0) {
-                echo '<h1>Não há projetos ativos cadastrados para essa ONG</h1>';
-            } else {
-                echo $dadosPercentuais;
-            }
-        ?>
+    <div id="percentuais">
+        <?= $dadosPercentuais ?>
     </div>
     <hr>
     <?php
