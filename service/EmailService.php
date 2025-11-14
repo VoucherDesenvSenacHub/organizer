@@ -6,10 +6,38 @@ require_once __DIR__ . "/../exceptions/EmailException.php";
 class EmailService
 {
     private $emailUtil;
+    private $templatesPath;
 
     public function __construct()
     {
         $this->emailUtil = new EmailUtil();
+        $this->templatesPath = __DIR__ . "/../emails/";
+    }
+
+    /**
+     * Carrega template de email
+     */
+    private function carregarTemplate($nomeTemplate)
+    {
+        $arquivoTemplate = $this->templatesPath . $nomeTemplate;
+        
+        if (!file_exists($arquivoTemplate)) {
+            throw new EmailException("Template de email não encontrado: " . $nomeTemplate);
+        }
+        
+        return file_get_contents($arquivoTemplate);
+    }
+
+    /**
+     * Substitui variáveis no template
+     */
+    private function processarTemplate($conteudo, $variaveis)
+    {
+        foreach ($variaveis as $chave => $valor) {
+            $conteudo = str_replace("{{" . $chave . "}}", $valor, $conteudo);
+        }
+        
+        return $conteudo;
     }
 
     /**
@@ -18,15 +46,10 @@ class EmailService
     public function enviarEmailRedefinirSenha($destinatario, $link)
     {
         $assunto = "Redefinição de Senha - Organizer";
-        $mensagem = "
-        <h2>Olá!</h2>
-        <p>Recebemos uma solicitação para redefinir sua senha.</p>
-        <p>Clique no link abaixo para criar uma nova senha. Esse link é válido por 1 hora.</p>
-        <p><a href='{$link}' target='_blank' style='background-color: #007bff; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;'>Redefinir minha senha</a></p>
-        <br>
-        <p>Se você não solicitou a redefinição, ignore este e-mail.</p>
-        <p style='color: #888; font-size: 0.9em;'>Esta é uma mensagem automática. Por favor, não responda a este e-mail.</p>
-        ";
+        $template = $this->carregarTemplate('redefinir-senha.html');
+        $mensagem = $this->processarTemplate($template, [
+            'LINK' => $link
+        ]);
 
         $this->emailUtil->enviar($destinatario, $assunto, $mensagem);
     }
@@ -37,12 +60,10 @@ class EmailService
     public function enviarEmailBoasVindas($destinatario, $nome)
     {
         $assunto = "Bem-vindo ao Organizer!";
-        $mensagem = "
-        <h2>Bem-vindo, {$nome}!</h2>
-        <p>Seu cadastro no Organizer foi realizado com sucesso.</p>
-        <p>A partir de agora você pode utilizar todos os recursos da plataforma.</p>
-        <p style='color: #888; font-size: 0.9em;'>Esta é uma mensagem automática. Por favor, não responda a este e-mail.</p>
-        ";
+        $template = $this->carregarTemplate('boas-vindas.html');
+        $mensagem = $this->processarTemplate($template, [
+            'NOME' => $nome
+        ]);
 
         $this->emailUtil->enviar($destinatario, $assunto, $mensagem);
     }
@@ -52,11 +73,11 @@ class EmailService
      */
     public function enviarEmailGenerico($destinatario, $assunto, $mensagem)
     {
-        // Adiciona rodapé padrão
-        $mensagemCompleta = $mensagem . "
-        <br>
-        <p style='color: #888; font-size: 0.9em;'>Esta é uma mensagem automática. Por favor, não responda a este e-mail.</p>
-        ";
+        $template = $this->carregarTemplate('email-generico.html');
+        $mensagemCompleta = $this->processarTemplate($template, [
+            'ASSUNTO' => $assunto,
+            'MENSAGEM' => $mensagem
+        ]);
 
         $this->emailUtil->enviar($destinatario, $assunto, $mensagemCompleta);
     }
