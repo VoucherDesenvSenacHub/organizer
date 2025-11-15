@@ -7,6 +7,8 @@ require_once __DIR__ . '/../../../autoload.php';
 
 $projetoModel = new ProjetoModel();
 $paginaAtual = (int) ($_GET['pagina'] ?? 1);
+$ongId = $_SESSION['ong_id'];
+// $paginaAtual  = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
 
 // Monta os filtros
 $filtros = [
@@ -18,8 +20,8 @@ $filtros = [
 $lista = $projetoModel->listarCardsProjetos($filtros);
 $totalRegistros = $projetoModel->paginacaoProjetos($filtros);
 $paginas = ceil($totalRegistros / 8);
-?>
 
+?>
 <main class="conteudo-principal">
     <section>
         <div class="container">
@@ -69,12 +71,10 @@ $paginas = ceil($totalRegistros / 8);
                         echo 'Você não tem projetos inativos no momento.';
                     } elseif ($status === 'FINALIZADO') {
                         echo 'Você não tem projetos finalizados no momento.';
-                    } else {
-                        echo 'Você ainda não tem nenhum projeto :(';
-                    }
+                    } 
                 }
                 ?>
-                ?>
+                
             </section>
             <?php if ($paginas > 1): ?>
                 <nav class="paginacao">

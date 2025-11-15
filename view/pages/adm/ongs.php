@@ -6,18 +6,19 @@ require_once '../../components/layout/base-inicio.php';
 require_once __DIR__ . '/../../../autoload.php';
 
 $ongModel = new OngModel();
-$paginaAtual = (int)($_GET['pagina'] ?? 1);
+$paginaAtual = (int) ($_GET['pagina'] ?? 1);
 
 // Monta filtros
 $filtros = [
-    'pagina'   => $paginaAtual,
+    'pagina' => $paginaAtual,
     'pesquisa' => $_GET['pesquisa'] ?? null
 ];
 
 // Busca lista e paginação
-$lista          = $ongModel->listarCardsOngs($filtros);
+$lista = $ongModel->listarCardsOngs($filtros);
 $totalRegistros = $ongModel->paginacaoOngs($filtros);
-$paginas        = (int)ceil($totalRegistros / 6);
+$paginas = (int) ceil($totalRegistros / 6);
+
 ?>
 
 <main class="conteudo-principal">
@@ -29,23 +30,50 @@ $paginas        = (int)ceil($totalRegistros / 6);
                     <input type="text" name="pesquisa" placeholder="Busque uma ONG">
                     <button class="btn" type="submit"><i class="fa-solid fa-search"></i></button>
                 </form>
+
+                <form id="form-filtro" action="projetos.php" method="GET">
+                    <div class="ul-group">
+                        <div class="drop" id="esc-status" aria-haspopup="true" aria-expanded="false">
+                            <div class="drop-title" tabindex="0">
+                                <p id="status-label">
+                                    <?= isset($_GET['status']) ? ucfirst(strtolower($_GET['status'])) : 'Status' ?>
+                                </p>
+                                <i class="fa-solid fa-angle-down"></i>
+                            </div>
+
+                            <div class="drop-menu" role="menu" aria-labelledby="status-label">
+                                <button type="button" class="item" data-value="ATIVO">Ativo</button>
+                                <button type="button" class="item" data-value="INATIVO">Inativo</button>
+                                <button type="button" class="item" data-value="FINALIZADO">Finalizado</button>
+                            </div>
+                            <input type="hidden" name="status" id="status-hidden" value="<?= $_GET['status'] ?? '' ?>">
+                        </div>
+                    </div>
+                </form>
             </div>
             <!-- Quantidade da busca -->
             <?php if (isset($_GET['pesquisa'])) {
                 echo "<p class='qnt-busca'><i class='fa-solid fa-search'></i> " . $totalRegistros . " ONGS Encontrados</p>";
             } ?>
 
-            <section id="box-ongs">
+            <div class="area-cards">
                 <?php
-                if (isset($lista) && empty($lista)) {
-                    echo '<p>Nenhuma ONG cadastrada!</p>';
-                } else {
+                if ($lista) {
                     foreach ($lista as $ong) {
                         require '../../components/cards/card-ong.php';
                     }
+                } else {
+                    $status = $_GET['status'] ?? '';
+                    if ($status === 'ATIVO') {
+                        echo 'Nenhuma Ong foi encontrada.';
+                    } elseif ($status === 'INATIVO') {
+                        echo 'Nenhuma Ong foi encontrada.';
+                        // } else {
+                        //     echo 'Não foi possível encontrar nenhuma noticia :(';
+                    }
                 }
                 ?>
-            </section>
+            </div>
             <?php if ($paginas > 1): ?>
                 <nav class="paginacao">
                     <?php for ($i = 1; $i <= $paginas; $i++): ?>
@@ -61,6 +89,6 @@ $paginas        = (int)ceil($totalRegistros / 6);
 </main>
 
 <?php
-$jsPagina = [];
+$jsPagina = ['adm/listagem.js'];
 require_once '../../components/layout/footer/footer-logado.php';
 ?>
