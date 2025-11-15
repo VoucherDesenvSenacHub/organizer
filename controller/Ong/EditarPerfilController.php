@@ -51,12 +51,7 @@ class EditarPerfilController
         // --- 1) Remover foto (só se valor vier como '1') ---
         $removerFlag = $_POST['remover_foto'] ?? '0';
         if ($removerFlag === '1') {
-            $imagemId = $this->ongModel->buscarImagemId($ongId);
-
-            if ($imagemId) {
-                $this->imagemModel->deletarImagem((int) $imagemId);
-                $this->ongModel->removerImagemOng($ongId);
-            }
+            $this->uploadService->removerImagemOng($ongId);
 
             // Atualiza a sessão e imagem padrão
             $_SESSION['ong']['foto'] = 'assets/images/global/image-placeholder.svg';
@@ -117,6 +112,8 @@ class EditarPerfilController
 
             // pega o imagem_id que foi vinculado 
             $dados['imagem_id'] = $this->ongModel->buscarImagemId($ongId);
+
+            
 
             $imagemAlterada = true;
         } else {

@@ -49,12 +49,12 @@ class UploadService
         // Se for ONG
         if ($tipo === 'ong') {
             // se editar = true, deleta imagem antiga
-            if ($editar) {
-                $imagemAntiga = $this->ongModel->buscarImagemId($id);
-                if ($imagemAntiga) {
-                    $this->imagemModel->deletarImagem((int) $imagemAntiga);
-                }
-            }
+            // if ($editar) {
+            //     $imagemAntiga = $this->ongModel->buscarImagemId($id);
+            //     if ($imagemAntiga) {
+            //         $this->imagemModel->deletarImagem((int) $imagemAntiga);
+            //     }
+            // }
 
             // insere a imagem
             if ($files['size'] > $tamanhoMaximo) {
@@ -67,23 +67,24 @@ class UploadService
             $destino = $pasta . $novoNome;
 
             if (move_uploaded_file($files['tmp_name'], $destino)) {
+
                 $caminhoRelativo = "upload/images/{$tipo}s/" . $novoNome;
+
                 $idImagem = $this->imagemModel->salvarCaminhoImagem($caminhoRelativo);
 
-                // vincula imagem à ONG
                 $this->imagemModel->vincularNaOng($idImagem, $id);
-                $_SESSION['ong']['foto'] = $caminhoRelativo;
+
+                $this->ongModel->atualizarImagem($id, $idImagem);
+
+                return;
             }
 
-            return;
+            return false;
         }
 
         // Se for Projeto
         if ($tipo === 'projeto') {
-            // se editar = true, deleta imagens antigas do projeto
-            if ($editar) {
-                $this->imagemModel->deletarPorProjeto($id);
-            }
+            
 
             // insere imagens
             foreach ($files['name'] as $i => $nome) {
@@ -108,9 +109,7 @@ class UploadService
 
         // Se for Noticia
         if ($tipo === 'noticia') {
-            if ($editar) {
-                $this->imagemModel->deletarPorNoticia($id);
-            }
+            
 
             foreach ($files['name'] as $i => $nome) {
                 if ($files['error'][$i] === UPLOAD_ERR_OK) {
@@ -145,16 +144,50 @@ class UploadService
             $destino = $pasta . $novoNome;
 
             if (move_uploaded_file($files['tmp_name'], $destino)) {
+
                 $caminhoRelativo = "upload/images/{$tipo}s/" . $novoNome;
+
                 $idImagem = $this->imagemModel->salvarCaminhoImagem($caminhoRelativo);
+
                 $this->usuarioModel->atualizarImagem($id, $idImagem);
-                $_SESSION['usuario']['foto'] = $caminhoRelativo;
-                return true; // indica que houve alteração
+
+                return true;
             }
+
             return false;
         }
     }
 
+    
+    function removerImagemOng($ongId)
+    {
+        
+        $imagemId = $this->ongModel->buscarImagemId($ongId);
+
+        if ($imagemId) {
+            // deleta da tabela + arquivo físico
+            $this->imagemModel->deletarImagem((int) $imagemId);
+
+            // atualiza ONG, removendo vinculo
+            $this->ongModel->removerImagemOng($ongId);
+        }
+
+        return true;
+
+    }
+    
+    function removerImagemProjeto($id, $editar){
+        // se editar = true, deleta imagens antigas do projeto
+            if ($editar) {
+                $this->imagemModel->deletarPorProjeto($id);
+            }
+    }
+
+    function removerImagemNoticia($id, $editar){
+        if ($editar) {
+                $this->imagemModel->deletarPorNoticia($id);
+            }
+    }
     function removerImagemUsuario($usuarioId)
     {
         $usuario = $this->usuarioModel->buscar_perfil($usuarioId);
@@ -168,8 +201,9 @@ class UploadService
 
         // var_dump(1);
         // exit;
-    }
-
+    } 
+    
+    
 
 
 }

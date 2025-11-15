@@ -58,7 +58,9 @@ else {
 
         if ($projetoEditado) {
             
-            $upload->uploadImagens($_FILES['imagens'], $idProjeto, 'projeto', true);
+            $upload->removerImagemProjeto($idProjeto, true);
+            $upload->uploadImagens($_FILES['imagens'], $idProjeto, 'projeto');
+            
 
             $_SESSION['mensagem_toast'] = ['sucesso', 'Projeto salvo com sucesso!'];
         } else {

@@ -45,7 +45,8 @@ else {
     $noticiaEditada = $noticiaModel->editar($IdNoticia, $TituloNoticia, $SubtituloNoticia, $TextoNoticia, $SubtextoNoticia);
 
     if ($noticiaEditada) {
-        $upload->uploadImagens($_FILES['fotos'], $IdNoticia, 'noticia', true);
+        $upload->removerImagemNoticia($IdNoticia,  true);
+        $upload->uploadImagens($_FILES['fotos'], $IdNoticia, 'noticia');
 
         $_SESSION['mensagem_toast'] = ['sucesso', 'Notícia atualizada com sucesso!'];
         header('Location: ' . $_SERVER['HTTP_REFERER']);
