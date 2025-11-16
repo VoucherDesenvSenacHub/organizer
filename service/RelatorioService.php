@@ -181,4 +181,5 @@ class RelatorioService
         $pdfUtil = new PdfUtil();
         $pdfUtil->gerarPdf($html, 'Doações por Projeto.pdf');
     }
+    
 }
