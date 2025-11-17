@@ -5,7 +5,12 @@
     $user = 'root';
     $password = 'GxbLQsKICwpVBaOQegbVxZvLHfgSIorV';
 
-    
+    // BANCO DE DADOS LOCAL (PARA TESTES):
+        // $host = 'localhost';
+        // $port = 3306;
+        // $dbname = 'organizer';
+        // $user = 'root';
+        // $password = '';
     
     try {
         $pdo = new PDO("mysql:host=$host;port=$port;dbname=$dbname;charset=utf8", $user, $password);
