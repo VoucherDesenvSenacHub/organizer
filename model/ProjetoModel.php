@@ -9,7 +9,6 @@ class ProjetoModel
     {
         global $pdo;
         $this->pdo = $pdo;
-        $this->pdo->exec("SET time_zone = '-04:00'");
     }
 
     function listarCardsProjetos(array $filtros = [])
