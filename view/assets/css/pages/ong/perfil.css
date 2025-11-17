@@ -8,11 +8,23 @@
 }
 
 #tela-principal {
+    min-height: calc(100vh - 60px);
     background-color: white;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     padding: 50px 10px;
     flex-direction: column;
     gap: 30px;
+}
+
+h1.info-inativo {
+    width: 100%;
+    background-color: rgba(255, 77, 77, 0.3);
+    color: var(--cor-vermelho);
+    font-size: 20px;
+    padding: 8px;
+    text-align: center;
+    border-radius: 20px;
+    cursor: default;
 }
 
 /* Imagem Ilustrativa */
@@ -322,7 +334,10 @@ section#apresentacao {
     #tela-principal {
         padding-inline: 5px;
     }
-    
+
+    #container-principal #tela-principal {
+        padding-top: 70px;
+    }
 }
 
 /* Visão do doador: */

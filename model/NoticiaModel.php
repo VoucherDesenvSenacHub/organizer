@@ -160,7 +160,7 @@ class NoticiaModel
 
     function inativarNoticia($id)
     {
-        $query = "UPDATE {$this->tabela} set status= 'INATIVO' WHERE noticia_id = :id";
+        $query = "UPDATE {$this->tabela} SET status = 'INATIVO' WHERE noticia_id = :id";
         $stmt = $this->pdo->prepare($query);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
