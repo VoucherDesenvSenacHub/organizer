@@ -110,4 +110,32 @@ class EmailService
 
         $this->emailUtil->enviar($destinatario, $assunto, $mensagem);
     }
+
+    /**
+     * Envia email de inativação de Projeto
+     */
+    public function enviarEmailInativacaoProjeto($destinatario, $projetoNome)
+    {
+        $assunto = "Projeto inativado - Organizer";
+        $template = $this->carregarTemplate('inativacao-projeto.html');
+        $mensagem = $this->processarTemplate($template, [
+            'PROJETO_NOME' => $projetoNome
+        ]);
+
+        $this->emailUtil->enviar($destinatario, $assunto, $mensagem);
+    }
+
+    /**
+     * Envia email de inativação de Notícia
+     */
+    public function enviarEmailInativacaoNoticia($destinatario, $noticiaTitulo)
+    {
+        $assunto = "Notícia inativada - Organizer";
+        $template = $this->carregarTemplate('inativacao-noticia.html');
+        $mensagem = $this->processarTemplate($template, [
+            'NOTICIA_TITULO' => $noticiaTitulo
+        ]);
+
+        $this->emailUtil->enviar($destinatario, $assunto, $mensagem);
+    }
 }
