@@ -1,9 +1,11 @@
 <?php
 require_once __DIR__ . '/../../autoload.php';
+require_once __DIR__ . '/../../service/UploadService.php';
 
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
+
 
 class EditarPerfilController
 {
@@ -11,11 +13,14 @@ class EditarPerfilController
     private $bancoModel;
     private $imagemModel;
 
+    private $uploadService;
+
     public function __construct()
     {
         $this->ongModel = new OngModel();
         $this->bancoModel = new BancoModel();
         $this->imagemModel = new ImagemModel();
+        $this->uploadService = new UploadService();
     }
 
     public function buscarDados()
@@ -46,12 +51,7 @@ class EditarPerfilController
         // --- 1) Remover foto (só se valor vier como '1') ---
         $removerFlag = $_POST['remover_foto'] ?? '0';
         if ($removerFlag === '1') {
-            $imagemId = $this->ongModel->buscarImagemId($ongId);
-
-            if ($imagemId) {
-                $this->imagemModel->deletarImagem((int)$imagemId);
-                $this->ongModel->removerImagemOng($ongId);
-            }
+            $this->uploadService->removerImagemOng($ongId);
 
             // Atualiza a sessão e imagem padrão
             $_SESSION['ong']['foto'] = 'assets/images/global/image-placeholder.svg';
@@ -101,33 +101,26 @@ class EditarPerfilController
 
         $imagemAlterada = false;
 
-        // --- Upload de imagem da ONG (se enviado) ---
+        // Upload de imagem da ONG (se enviado)
+        // substitui somente este bloco pelo call ao service (sem alterar o restante do método)
         if (!empty($_FILES['foto_perfil']['name'])) {
-            $pasta = __DIR__ . '/../../upload/images/ongs/';
-            if (!is_dir($pasta)) {
-                mkdir($pasta, 0777, true);
-            }
+            require_once __DIR__ . '/../../service/UploadService.php';
+            $uploadService = new UploadService();
 
-            $novoNome = uniqid() . '-' . basename($_FILES['foto_perfil']['name']);
-            $destino = $pasta . $novoNome;
 
-            if (move_uploaded_file($_FILES['foto_perfil']['tmp_name'], $destino)) {
-                // salva caminho relativo no banco
-                $caminhoRelativo = 'upload/images/ongs/' . $novoNome;
-                $idImagem = $this->imagemModel->salvarCaminhoImagem($caminhoRelativo);
-                $dados['imagem_id'] = $idImagem;
+            $uploadService->uploadImagens($_FILES['foto_perfil'], $ongId, 'ong', true);
 
-                // atualiza sessão com caminho relativo (ou com o que você preferir)
-                $_SESSION['ong']['foto'] = $caminhoRelativo;
-                $imagemAlterada = true;
-            } else {
-                // falhou upload -> manter imagem atual
-                $dados['imagem_id'] = $this->ongModel->buscarImagemId($ongId);
-            }
+            // pega o imagem_id que foi vinculado 
+            $dados['imagem_id'] = $this->ongModel->buscarImagemId($ongId);
+
+            
+
+            $imagemAlterada = true;
         } else {
             // nenhum arquivo enviado -> manter imagem atual
             $dados['imagem_id'] = $this->ongModel->buscarImagemId($ongId);
         }
+
 
         try {
             $alterou = $this->ongModel->editar($dados);

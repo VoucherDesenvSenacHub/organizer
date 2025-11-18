@@ -25,7 +25,7 @@
 }
 
 /* Foto de Perfil */
-.perfil-usuario-popup .upload-area {
+.perfil-usuario-popup .upload-area-doador {
     width: 150px;
     height: 150px;
     overflow: hidden;
@@ -39,14 +39,14 @@
     position: relative;
 }
 
-.perfil-usuario-popup .upload-area img {
+.perfil-usuario-popup .upload-area-doador img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
 }
 
-.perfil-usuario-popup .upload-area #uploadTextDoador {
+.perfil-usuario-popup .upload-area-doador #uploadTextDoador {
     position: absolute;
     text-align: center;
     width: 120px;
@@ -59,7 +59,7 @@
     display: none;
 }
 
-.perfil-usuario-popup .upload-area #btnRemoverDoador {
+.perfil-usuario-popup .upload-area-doador #btnRemoverDoador {
     display: none;
     position: absolute;
     /* top: -14px;
@@ -76,11 +76,11 @@
     transition: .3s ease-out;
 }
 
-.perfil-usuario-popup .upload-area #btnRemoverDoador:hover {
+.perfil-usuario-popup .upload-area-doador #btnRemoverDoador:hover {
     filter: brightness(1.2);
 }
 
-/* .perfil-usuario-popup .upload-area:hover #btnRemoverDoador {
+/* .perfil-usuario-popup .upload-area-doador:hover #btnRemoverDoador {
     top: 5px;
     right: 5px;
 } */

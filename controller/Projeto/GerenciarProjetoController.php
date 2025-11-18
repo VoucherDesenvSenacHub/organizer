@@ -1,12 +1,14 @@
 <?php
 require_once __DIR__ . '/../../model/ProjetoModel.php';
 require_once __DIR__ . '/../../model/ImagemModel.php';
-require_once '../../service/AuthService.php';
+require_once __DIR__ . '/../../service/AuthService.php';
+require_once __DIR__ . '/../../service/UploadService.php';
 
 AuthService::verificaLoginOng();
 
 $projetoModel = new ProjetoModel();
 $imagemModel  = new ImagemModel();
+$upload = new UploadService();
 
 // Pegar os dados
 $NomeProjeto        = filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_SPECIAL_CHARS);
@@ -24,34 +26,13 @@ if (empty($_POST['projeto-id'])) {
     }
 
     if ($NomeProjeto && $DescricaoProjeto && $MetaProjeto && $CategoriaIdProjeto) {
-        $projetoCriado  = $projetoModel->criar($NomeProjeto, $DescricaoProjeto, $MetaProjeto, $CategoriaIdProjeto, $IdOng);
+        $projetoCriado = $projetoModel->criar($NomeProjeto, $DescricaoProjeto, $MetaProjeto, $CategoriaIdProjeto, $IdOng);
 
         if ($projetoCriado) {
-            //Pegar o ID do Projeto criado
-            $IdProjeto = $projetoCriado;
+            $idProjeto = $projetoCriado;
 
             // Upload de imagens (se houver)
-            if (!empty($_FILES['imagens']['name'][0])) {
-                $pasta = __DIR__ . '/../../upload/images/projetos/';
-                if (!is_dir($pasta)) {
-                    mkdir($pasta, 0777, true);
-                }
-
-                foreach ($_FILES['imagens']['name'] as $i => $nome) {
-                    if ($_FILES['imagens']['error'][$i] === UPLOAD_ERR_OK) {
-                        $tmp      = $_FILES['imagens']['tmp_name'][$i];
-                        $novoNome = uniqid() . '-' . basename($nome);
-                        $destino  = $pasta . $novoNome;
-
-                        if (move_uploaded_file($tmp, $destino)) {
-                            // Salvar caminho no banco de dados
-                            $IdImagem = $imagemModel->salvarCaminhoImagem('upload/images/projetos/' . $novoNome);
-                            // Vincular imagem ao projeto
-                            $imagemModel->vincularNoProjeto($IdImagem, $IdProjeto);
-                        }
-                    }
-                }
-            }
+            $upload->uploadImagens($_FILES['imagens'], $idProjeto, 'projeto');
 
             $_SESSION['mensagem_toast'] = ['sucesso', 'Projeto criado com sucesso!'];
             header('Location: ' . $_SERVER['HTTP_REFERER']);
@@ -66,42 +47,20 @@ if (empty($_POST['projeto-id'])) {
 
 // Editar um Projeto
 else {
-    $IdProjeto       = $_POST['projeto-id'];
+    $idProjeto       = $_POST['projeto-id'];
     $ValorArrecadado = $_POST['valor-arrecadado'] ?? 0;
 
     if ($MetaProjeto < $ValorArrecadado) {
         echo "<script>alert('Meta inválida: o valor deve ser maior do que o que já foi arrecadado.');window.history.back();</script>";
         exit;
     } else {
-        $projetoEditado = $projetoModel->editar($IdProjeto, $NomeProjeto, $DescricaoProjeto, $MetaProjeto, $CategoriaIdProjeto);
+        $projetoEditado = $projetoModel->editar($idProjeto, $NomeProjeto, $DescricaoProjeto, $MetaProjeto, $CategoriaIdProjeto);
 
         if ($projetoEditado) {
-            // Só mexe nas imagens se houver upload novo
-            if (!empty($_FILES['imagens']['name'][0])) {
-                // Apaga vínculos de imagens antigas
-                $imagemModel->deletarPorProjeto($IdProjeto);
-
-                $pasta = __DIR__ . '/../../upload/images/projetos/';
-                if (!is_dir($pasta)) {
-                    mkdir($pasta, 0777, true);
-                }
-
-                foreach ($_FILES['imagens']['name'] as $i => $nome) {
-                    if ($_FILES['imagens']['error'][$i] === UPLOAD_ERR_OK) {
-                        $tmp      = $_FILES['imagens']['tmp_name'][$i];
-                        $novoNome = uniqid() . '-' . basename($nome);
-                        $destino  = $pasta . $novoNome;
-
-                        if (move_uploaded_file($tmp, $destino)) {
-                            // Salvar caminho no banco
-                            $IdImagem = $imagemModel->salvarCaminhoImagem('upload/images/projetos/' . $novoNome);
-
-                            // Vincular imagem ao projeto
-                            $imagemModel->vincularNoProjeto($IdImagem, $IdProjeto);
-                        }
-                    }
-                }
-            }
+            
+            $upload->removerImagemProjeto($idProjeto, true);
+            $upload->uploadImagens($_FILES['imagens'], $idProjeto, 'projeto');
+            
 
             $_SESSION['mensagem_toast'] = ['sucesso', 'Projeto salvo com sucesso!'];
         } else {
