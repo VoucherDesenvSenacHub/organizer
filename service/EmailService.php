@@ -43,11 +43,12 @@ class EmailService
     /**
      * Envia email de redefinição de senha
      */
-    public function enviarEmailRedefinirSenha($destinatario, $link)
+    public function enviarEmailRedefinirSenha($destinatario, $nome, $link)
     {
         $assunto = "Redefinição de Senha - Organizer";
         $template = $this->carregarTemplate('redefinir-senha.html');
         $mensagem = $this->processarTemplate($template, [
+            'NAME' => $nome,
             'LINK' => $link
         ]);
 
