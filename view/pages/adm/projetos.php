@@ -8,7 +8,6 @@ require_once __DIR__ . '/../../../autoload.php';
 $projetoModel = new ProjetoModel();
 $paginaAtual = (int) ($_GET['pagina'] ?? 1);
 $ongId = $_SESSION['ong_id'];
-// $paginaAtual  = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
 
 // Monta os filtros
 $filtros = [
@@ -28,11 +27,18 @@ $paginas = (int) ceil($totalRegistros / 6);
         <div class="container">
             <div class="top">
                 <h1><i class="fa-solid fa-diagram-project"></i> PAINEL DE PROJETOS</h1>
+
+                <!-- FORM DE BUSCA (mantém valor digitado) -->
                 <form id="form-busca" action="projetos.php" method="GET">
-                    <input type="text" name="pesquisa" placeholder="Busque um projeto">
+                    <input type="text" name="pesquisa" placeholder="Busque um projeto"
+                           value="<?= $_GET['pesquisa'] ?? '' ?>">
                     <button class="btn" type="submit"><i class="fa-solid fa-search"></i></button>
                 </form>
+
+                <!-- FORM DE FILTRO (mantém pesquisa junto com o status) -->
                 <form id="form-filtro" action="projetos.php" method="GET">
+                    <input type="hidden" name="pesquisa" value="<?= $_GET['pesquisa'] ?? '' ?>">
+
                     <div class="ul-group">
                         <div class="drop" id="esc-status" aria-haspopup="true" aria-expanded="false">
                             <div class="drop-title" tabindex="0">
@@ -47,27 +53,30 @@ $paginas = (int) ceil($totalRegistros / 6);
                                     }
                                     ?>
                                 </p>
-
                                 <i class="fa-solid fa-angle-down"></i>
                             </div>
 
                             <div class="drop-menu" role="menu" aria-labelledby="status-label">
-                                <button type="button" class="item" data-value="">Todas</button>
+                                <button type="button" class="item" data-value="">Todos</button>
                                 <button type="button" class="item" data-value="ATIVO">Ativo</button>
                                 <button type="button" class="item" data-value="INATIVO">Inativo</button>
                                 <button type="button" class="item" data-value="FINALIZADO">Finalizado</button>
-
                             </div>
-                            <input type="hidden" name="status" id="status-hidden" value="<?= $_GET['status'] ?? '' ?>">
+
+                            <input type="hidden" name="status" id="status-hidden"
+                                   value="<?= $_GET['status'] ?? '' ?>">
                         </div>
                     </div>
                 </form>
 
             </div>
+
             <!-- Quantidade da busca -->
-            <?php if (isset($_GET['pesquisa'])) {
-                echo "<p class='qnt-busca'><i class='fa-solid fa-search'></i> " . $totalRegistros . " Projetos Encontrados</p>";
-            } ?>
+            <?php if (isset($_GET['pesquisa'])): ?>
+                <p class="qnt-busca">
+                    <i class="fa-solid fa-search"></i> <?= $totalRegistros ?> Projetos Encontrados
+                </p>
+            <?php endif; ?>
 
             <section id="box-ongs">
                 <!-- LISTAR CARDS PROJETOS -->
@@ -84,16 +93,21 @@ $paginas = (int) ceil($totalRegistros / 6);
                         echo 'Você não tem projetos inativos no momento.';
                     } elseif ($status === 'FINALIZADO') {
                         echo 'Você não tem projetos finalizados no momento.';
+                    } else {
+                        echo 'Nenhum projeto encontrado.';
                     }
                 }
                 ?>
-
             </section>
+
+            <!-- PAGINAÇÃO (mantém pesquisa e status) -->
             <?php if ($paginas > 1): ?>
                 <nav class="paginacao">
                     <?php for ($i = 1; $i <= $paginas; $i++): ?>
-                        <a href="?pagina=<?= $i ?><?= isset($_GET['pesquisa']) ? '&pesquisa=' . urlencode($_GET['pesquisa']) : '' ?>"
-                            class="<?= $i === $paginaAtual ? 'active' : '' ?>">
+                        <a href="?pagina=<?= $i ?>
+                        <?= isset($_GET['pesquisa']) ? '&pesquisa=' . urlencode($_GET['pesquisa']) : '' ?>
+                        <?= isset($_GET['status']) ? '&status=' . urlencode($_GET['status']) : '' ?>"
+                        class="<?= $i === $paginaAtual ? 'active' : '' ?>">
                             <?= $i ?>
                         </a>
                     <?php endfor; ?>
@@ -102,7 +116,8 @@ $paginas = (int) ceil($totalRegistros / 6);
         </div>
     </section>
 </main>
+
 <?php
-$jsPagina = ['adm/listagem.js']; //Colocar o arquivo .js
+$jsPagina = ['adm/listagem.js'];
 require_once '../../components/layout/footer/footer-logado.php';
 ?>
