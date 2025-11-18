@@ -101,6 +101,7 @@ class ProjetoModel
             $where .= " AND nome LIKE :nome";
             $params[':nome'] = "%{$filtros['pesquisa']}%";
         }
+        
         // Filtrar por ONG
         if (!empty($filtros['ong_id'])) {
             $where .= " AND ong_id = :ong_id";
