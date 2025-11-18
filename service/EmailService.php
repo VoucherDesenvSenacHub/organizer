@@ -70,6 +70,20 @@ class EmailService
     }
 
     /**
+     * Envia email de boas-vindas para ONG
+     */
+    public function enviarEmailBoasVindasOng($destinatario, $nome)
+    {
+        $assunto = "Bem-vindo ao Organizer!";
+        $template = $this->carregarTemplate('boas-vindas-ong.html');
+        $mensagem = $this->processarTemplate($template, [
+            'NOME' => $nome
+        ]);
+
+        $this->emailUtil->enviar($destinatario, $assunto, $mensagem);
+    }
+
+    /**
      * Envia email genérico
      */
     public function enviarEmailGenerico($destinatario, $assunto, $mensagem)
