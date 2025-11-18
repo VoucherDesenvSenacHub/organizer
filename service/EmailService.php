@@ -96,4 +96,18 @@ class EmailService
 
         $this->emailUtil->enviar($destinatario, $assunto, $mensagemCompleta);
     }
+
+    /**
+     * Envia email de inativação de ONG
+     */
+    public function enviarEmailInativacaoOng($destinatario, $nome)
+    {
+        $assunto = "Sua ONG foi inativada - Organizer";
+        $template = $this->carregarTemplate('inativacao-ong.html');
+        $mensagem = $this->processarTemplate($template, [
+            'NOME' => $nome
+        ]);
+
+        $this->emailUtil->enviar($destinatario, $assunto, $mensagem);
+    }
 }
