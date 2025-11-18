@@ -9,28 +9,28 @@ $noticiaModel = new NoticiaModel();
 $paginaAtual = (int) ($_GET['pagina'] ?? 1);
 
 // Monta filtros
-$filtros = array_filter([
-    'pagina'   => $paginaAtual,
-    'pesquisa' => $_GET['pesquisa'] ?? null,
-    'status'   => $_GET['status'] ?? null
-]);
+$filtros = [
+    'pagina' => $paginaAtual,
+    'pesquisa' => $_GET['pesquisa'] ?? '',
+    'status' => ($_GET['status'] ?? '') !== '' ? $_GET['status'] : null
+];
 
 // Notícia padrão para formulário
 $PerfilNoticia = (object) [
     'noticia_id' => null,
-    'titulo'     => null,
-    'subtitulo'  => null,
-    'texto'      => null,
-    'subtexto'   => null,
+    'titulo' => null,
+    'subtitulo' => null,
+    'texto' => null,
+    'subtexto' => null,
 ];
-require_once '../../components/popup/formulario-noticia.php';
-ob_end_flush();
-
 
 // Busca lista e paginação
 $lista = $noticiaModel->listarCardsNoticias($filtros);
 $totalRegistros = $noticiaModel->paginacaoNoticias($filtros);
 $paginas = (int) ceil($totalRegistros / 6);
+
+require_once '../../components/popup/formulario-noticia.php';
+ob_end_flush();
 ?>
 
 <main class="conteudo-principal">
@@ -48,15 +48,19 @@ $paginas = (int) ceil($totalRegistros / 6);
                         <div class="drop" id="esc-status" aria-haspopup="true" aria-expanded="false">
                             <div class="drop-title" tabindex="0">
                                 <p id="status-label">
-                                    <?= isset($_GET['status']) && $_GET['status'] !== ''
-                                        ? ucfirst(strtolower($_GET['status']))
-                                        : 'Status' ?>
+                                    <?php
+                                    if (!isset($_GET['status']) || $_GET['status'] === '') {
+                                        echo "Status";
+                                    } else {
+                                        echo ucfirst(strtolower($_GET['status']));
+                                    }
+                                    ?>
                                 </p>
                                 <i class="fa-solid fa-angle-down"></i>
                             </div>
 
                             <div class="drop-menu" role="menu" aria-labelledby="status-label">
-                                <button type="button" class="item" data-value="">Todas</button>
+                                <!-- <button type="button" class="item" data-value="">Status</button> -->
                                 <button type="button" class="item" data-value="ATIVO">Ativo</button>
                                 <button type="button" class="item" data-value="INATIVO">Inativo</button>
                             </div>
@@ -65,14 +69,7 @@ $paginas = (int) ceil($totalRegistros / 6);
                         </div>
                     </div>
                 </form>
-
-
-
             </div>
-
-
-            <!-- r -->
-
 
             <section id="box-ongs">
                 <!-- LISTAR CARDS NOTÍCIAS -->
@@ -92,20 +89,20 @@ $paginas = (int) ceil($totalRegistros / 6);
                             echo 'Você não tem notícias ativas no momento.';
                         } elseif ($status === 'INATIVO') {
                             echo 'Você não tem notícias inativas no momento.';
-                        // } else {
-                        //     echo 'Não foi possível encontrar nenhuma noticia :(';
-                         }
+                            // } else {
+                            //     echo 'Não foi possível encontrar nenhuma noticia :(';
+                        }
                     }
                     ?>
                     <!-- 
-               // if ($lista) {
-               ////     foreach ($lista as $noticia) {
-                ////        require '../../components/cards/card-noticia.php';
-                ///    }//
-               /// } else {
-                //    echo '<p>Nenhuma Notícia cadastrada!</p>';
-               /// }
-                ?> -->
+                // if ($lista) {
+                ////     foreach ($lista as $noticia) {
+                    ////        require '../../components/cards/card-noticia.php';
+                    ///    }//
+                /// } else {
+                    //    echo '<p>Nenhuma Notícia cadastrada!</p>';
+                /// }
+                    ?> -->
 
             </section>
             <?php if ($paginas > 1): ?>

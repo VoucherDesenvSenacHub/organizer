@@ -13,13 +13,14 @@ $ongId = $_SESSION['ong_id'];
 // Monta os filtros
 $filtros = [
     'pagina' => $paginaAtual,
-    'pesquisa' => $_GET['pesquisa'] ?? null
+    'pesquisa' => $_GET['pesquisa'] ?? '',
+    'status' => ($_GET['status'] ?? '') !== '' ? $_GET['status'] : null
 ];
 
 // Busca lista e paginação
 $lista = $projetoModel->listarCardsProjetos($filtros);
 $totalRegistros = $projetoModel->paginacaoProjetos($filtros);
-$paginas = ceil($totalRegistros / 8);
+$paginas = (int) ceil($totalRegistros / 6);
 
 ?>
 <main class="conteudo-principal">
@@ -36,14 +37,26 @@ $paginas = ceil($totalRegistros / 8);
                         <div class="drop" id="esc-status" aria-haspopup="true" aria-expanded="false">
                             <div class="drop-title" tabindex="0">
                                 <p id="status-label">
-                                    <?= isset($_GET['status']) ? ucfirst(strtolower($_GET['status'])) : 'Status' ?></p>
+                                    <?php
+                                    $status = $_GET['status'] ?? '';
+
+                                    if ($status === '' || $status === null) {
+                                        echo "Todas";
+                                    } else {
+                                        echo ucfirst(strtolower($status));
+                                    }
+                                    ?>
+                                </p>
+
                                 <i class="fa-solid fa-angle-down"></i>
                             </div>
 
                             <div class="drop-menu" role="menu" aria-labelledby="status-label">
+                                <button type="button" class="item" data-value="">Todas</button>
                                 <button type="button" class="item" data-value="ATIVO">Ativo</button>
                                 <button type="button" class="item" data-value="INATIVO">Inativo</button>
                                 <button type="button" class="item" data-value="FINALIZADO">Finalizado</button>
+
                             </div>
                             <input type="hidden" name="status" id="status-hidden" value="<?= $_GET['status'] ?? '' ?>">
                         </div>
@@ -71,10 +84,10 @@ $paginas = ceil($totalRegistros / 8);
                         echo 'Você não tem projetos inativos no momento.';
                     } elseif ($status === 'FINALIZADO') {
                         echo 'Você não tem projetos finalizados no momento.';
-                    } 
+                    }
                 }
                 ?>
-                
+
             </section>
             <?php if ($paginas > 1): ?>
                 <nav class="paginacao">

@@ -11,11 +11,14 @@ $paginaAtual = (int) ($_GET['pagina'] ?? 1);
 // Monta filtros
 $filtros = [
     'pagina' => $paginaAtual,
-    'pesquisa' => $_GET['pesquisa'] ?? null
+    'pesquisa' => $_GET['pesquisa'] ?? null,
+    'status' => $_GET['status'] ?? null
 ];
+
 
 // Busca lista e paginação
 $lista = $ongModel->listarCardsOngs($filtros);
+
 $totalRegistros = $ongModel->paginacaoOngs($filtros);
 $paginas = (int) ceil($totalRegistros / 6);
 
@@ -31,9 +34,9 @@ $paginas = (int) ceil($totalRegistros / 6);
                     <button class="btn" type="submit"><i class="fa-solid fa-search"></i></button>
                 </form>
 
-                <form id="form-filtro" action="projetos.php" method="GET">
+                <form id="form-filtro" action="ongs.php" method="GET">
                     <div class="ul-group">
-                        <div class="drop" id="esc-status" aria-haspopup="true" aria-expanded="false">
+                        <div class="drop" id="esc-status">
                             <div class="drop-title" tabindex="0">
                                 <p id="status-label">
                                     <?= isset($_GET['status']) ? ucfirst(strtolower($_GET['status'])) : 'Status' ?>
@@ -41,15 +44,16 @@ $paginas = (int) ceil($totalRegistros / 6);
                                 <i class="fa-solid fa-angle-down"></i>
                             </div>
 
-                            <div class="drop-menu" role="menu" aria-labelledby="status-label">
+                            <div class="drop-menu">
                                 <button type="button" class="item" data-value="ATIVO">Ativo</button>
                                 <button type="button" class="item" data-value="INATIVO">Inativo</button>
-                                <button type="button" class="item" data-value="FINALIZADO">Finalizado</button>
                             </div>
+
                             <input type="hidden" name="status" id="status-hidden" value="<?= $_GET['status'] ?? '' ?>">
                         </div>
                     </div>
                 </form>
+
             </div>
             <!-- Quantidade da busca -->
             <?php if (isset($_GET['pesquisa'])) {
