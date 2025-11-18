@@ -1,7 +1,7 @@
 <?php
 
 require_once __DIR__ . "/../../config/database.php";
-require_once __DIR__ . "/../../services/EmailService.php";
+require_once __DIR__ . "/../../service/EmailService.php";
 require_once __DIR__ . "/../../exceptions/EmailException.php";
 
 $email = $_POST["email"];
@@ -14,6 +14,18 @@ $expiry = date("Y-m-d H:i:s", time() + 60 * 30);
 
 global $pdo;
 
+$sqlSelect = "SELECT nome FROM usuarios WHERE email = ?";
+$stmtSelect = $pdo->prepare($sqlSelect);
+$stmtSelect->bindValue(1, $email, PDO::PARAM_STR);
+$stmtSelect->execute();
+
+$nomeUsuario = null;
+if ($stmtSelect->rowCount() > 0) {
+    $usuario = $stmtSelect->fetch(PDO::FETCH_ASSOC);
+    $nomeUsuario = $usuario['nome'];
+}
+
+// Atualizar o token de reset
 $sql = "UPDATE usuarios
         SET reset_token_hash = ?,
             reset_token_expires_at = ?
@@ -37,7 +49,10 @@ if ($stmt->rowCount() > 0) {
         // Gera o link de recuperação
         $linkRecuperacao = "http://" . $_SERVER['HTTP_HOST'] . "/organizer/view/pages/visitante/reset-password.php?token=" . $token;
         
-        $emailService->enviarEmailRedefinirSenha($email, $linkRecuperacao);
+        // Usar o nome do usuário se encontrado, ou um nome genérico
+        $nomeParaEmail = $nomeUsuario ? $nomeUsuario : "Usuário";
+        
+        $emailService->enviarEmailRedefinirSenha($email, $nomeParaEmail, $linkRecuperacao);
         
         $_SESSION['mensagem_toast'] = ['info', 'Email de recuperação enviado! Verifique sua caixa de entrada.'];
         
