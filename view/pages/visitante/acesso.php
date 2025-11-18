@@ -1,5 +1,5 @@
 <?php
-session_start();
+require_once __DIR__ . '/../../../session_config.php';
 
 //Verificar se o usuário não têm nenhum tipo de acesso
 if (isset($_SESSION['usuario']) && empty(array_filter($_SESSION['usuario']['acessos']))) {

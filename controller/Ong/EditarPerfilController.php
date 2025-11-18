@@ -1,9 +1,7 @@
 <?php
 require_once __DIR__ . '/../../autoload.php';
 
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
+require_once __DIR__ . '/../../session_config.php';
 
 class EditarPerfilController
 {

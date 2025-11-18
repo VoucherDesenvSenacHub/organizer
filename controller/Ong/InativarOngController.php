@@ -1,6 +1,9 @@
 <?php
 require_once __DIR__ . '/../../autoload.php';
-session_start();
+
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 class InativarOngController
 {
@@ -13,51 +16,71 @@ class InativarOngController
 
     public function inativarOng()
     {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['inativar-ong'])) {
-            try {
-                $ongId = isset($_POST['ong_id']) ? $_POST['ong_id'] : $_SESSION['ong_id'];
+        // Verifica se veio um POST válido
+        if ($_SERVER['REQUEST_METHOD'] !== 'POST' || !isset($_POST['inativar-ong'])) {
+            return;
+        }
 
-                // Atualizar status da ONG para INATIVO
-                $resultado = $this->ongModel->inativar($ongId);
+        try {
+            // Determina o ID da ONG
+            if (!empty($_POST['ong_id'])) {
+                $ongId = $_POST['ong_id'];
+            } elseif (!empty($_SESSION['ong_id'])) {
+                $ongId = $_SESSION['ong_id'];
+            } else {
+                $_SESSION['mensagem_toast'] = ['erro', 'ID da ONG não encontrado!'];
+                header('Location: ../../view/pages/ong/conta.php');
+                exit;
+            }
 
-                if ($resultado) {
-                    if ($_SESSION['perfil_usuario'] === 'adm') {
-                        $_SESSION['mensagem_toast'] = ['sucesso', 'ONG inativada com sucesso!'];
-                        header('Location: ../../view/pages/adm/ongs.php');
-                        exit;
-                    } else {
-                        // Limpar sessão e redirecionar para página inicial
-                        session_destroy();
-                        session_start();
-                        $_SESSION['mensagem_toast'] = ['sucesso', 'Sua ONG foi inativada com Sucesso!'];
-                        header('Location: ../../view/pages/visitante/login.php');
-                        exit;
-                    }
-                } else {
-                    $_SESSION['mensagem_toast'] = ['erro', 'Falha ao inativar ONG!'];
-                    if ($_SESSION['perfil_usuario'] === 'adm') {
-                        header('Location: ../../view/pages/adm/ongs.php');
-                        exit;
-                    } else {
-                        header('Location: ../../view/pages/ong/conta.php');
-                        exit;
-                    }
-                }
-            } catch (Exception $e) {
-                $_SESSION['mensagem_toast'] = ['erro', 'Falha ao inativar ONG!'];
-                if ($_SESSION['perfil_usuario'] === 'adm') {
+            // Inativa
+            $resultado = $this->ongModel->inativar($ongId);
+
+            if ($resultado) {
+
+                // Se for ADMIN
+                if (!empty($_SESSION['perfil_usuario']) && $_SESSION['perfil_usuario'] === 'adm') {
+                    $_SESSION['mensagem_toast'] = ['sucesso', 'ONG inativada com sucesso!'];
                     header('Location: ../../view/pages/adm/ongs.php');
                     exit;
+                }
+
+                // Se for ONG normal
+                session_unset();
+                session_destroy();
+
+                session_start();
+                $_SESSION['mensagem_toast'] = ['sucesso', 'Sua ONG foi inativada com sucesso!'];
+
+                header('Location: ../../view/pages/visitante/login.php');
+                exit;
+
+            } else {
+                $_SESSION['mensagem_toast'] = ['erro', 'Falha ao inativar ONG!'];
+
+                if (!empty($_SESSION['perfil_usuario']) && $_SESSION['perfil_usuario'] === 'adm') {
+                    header('Location: ../../view/pages/adm/ongs.php');
                 } else {
                     header('Location: ../../view/pages/ong/conta.php');
-                    exit;
                 }
+                exit;
             }
+
+        } catch (Exception $e) {
+
+            $_SESSION['mensagem_toast'] = ['erro', 'Erro inesperado ao inativar ONG!'];
+
+            if (!empty($_SESSION['perfil_usuario']) && $_SESSION['perfil_usuario'] === 'adm') {
+                header('Location: ../../view/pages/adm/ongs.php');
+            } else {
+                header('Location: ../../view/pages/ong/conta.php');
+            }
+            exit;
         }
     }
 }
 
-// Processar a requisição
+// Executa
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $controller = new InativarOngController();
     $controller->inativarOng();
