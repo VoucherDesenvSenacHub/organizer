@@ -1,121 +1,142 @@
 <?php
 require_once '../../../model/RelatoriosModel.php';
 
-// Criação de gráfico de linhas
-
 /**
- * Sumary of graficoBarrasVerticais
+ * Cria um gráfico de linhas em SVG
  * 
- * @param int $width Largura em pixels da área da imagem do gráfico
- * @param int $height Altura em pixels da área da imagem do gráfico
- * @param int $idOng ID da ong para query do banco de dados
+ * @param int $width  Largura do gráfico
+ * @param int $height Altura do gráfico
+ * @param int $idOng  ID da ONG
  * 
- * 
+ * @return string SVG renderizado
  */
-
-
-function graficoLinhas($width, $height, $idOng){
+function graficoLinhas($width, $height, $idOng)
+{
     $relatorio = new RelatoriosModel();
-    $year = date('Y');
-    $dados = array();
-    $valoresArrecadados = array();
-    $mesExtenso = ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
-        for($month = 1; $month <=12; $month++):
-            $arrecadacao = $relatorio->painelDeArrecadacao($idOng, $month, $year);
-            if($arrecadacao['total_doado'] === null){
-                $valorTotal = 0;
-            }else {
-                $valorTotal = (float)$arrecadacao['total_doado'];
-            }
-            $mes = [$mesExtenso[$month-1], $valorTotal];
-            array_push($dados, $mes);
-            array_push($valoresArrecadados, $valorTotal);
-        endfor;
-        $maiorIndice = max($valoresArrecadados)*1.1;
-        $indices = array();
-        $divisao = 1;
+    $ano = date('Y');
 
-        // Cria um array com os índices a serem utilizados de acordo com a divisão exata possível
-        if($maiorIndice != 0){
-            if($maiorIndice % 5 == 0){
-                $divisao = $maiorIndice / 5;
-            }else if ($maiorIndice % 4 == 0){
-                $divisao = $maiorIndice / 4;
-            }else if ($maiorIndice % 3 == 0){
-                $divisao = $maiorIndice / 3;
-            }
-            while($maiorIndice >=0){
-                array_push($indices, (int)$maiorIndice);
-                $maiorIndice -= $divisao;
-            }
-        } else {
-            $maiorIndice = 5; // Cria uma média de índices fictícia caso não haja apoiadores nos projetos da ONG somente para renderização gráfica
-            $indices = [5, 3, 0]; // Atribui índices verticais fictícios para o caso de não existência de apoiadores
-        }
-        $mi=0;
-        if($width>240){
-            $alturaUtil = $height-27; // Calcula a altura útil para vetorização do gráfico
-            $xDash = 40;
-        }else{
-            $alturaUtil = $height-15; // Calcula a altura útil para vetorização do gráfico
-            $xDash = 16;
-        }
-        $linhasHorizontais = '';
-        $barrasVerticais = '';
-        $xFinal = $width-1;
-        $divisoes = (int)($alturaUtil/(sizeof($indices)-1));
-            
-        //Desenha linhas horizontais de referência do gráfico e escreve os índices do eixo Y
+    // ----------------------------
+    // 1. Coleta dos dados
+    // ----------------------------
+    $meses = ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
+    $dados = [];
+    $valores = [];
 
-        for($i = 1; $i <=$alturaUtil; $i+=$divisoes){
-            $width >240?$iText = $i+10 : $iText = $i+5;
-            $indiceCalculado = 'R$ '.number_format($indices[$mi], 2,',','.');
-            $linhasHorizontais = $linhasHorizontais."
-                <line x1='$xDash' y1='$i' x2='$width' y2='$i' style='stroke: gray; stroke-dasharray: 3 '/>
-                <text x='0' y='$iText'>$indiceCalculado</text>     
-            ";
-            $mi++;
-        }
+    for ($m = 1; $m <= 12; $m++) {
+        $registro = $relatorio->painelDeArrecadacao($idOng, $m, $ano);
 
-        // Desenha as divisões verticais e escreve os índices do eixo X
-        $linhaIndicesY = $height-5;
-        for($i = 0; $i < sizeof($dados); $i++){
-            $indiceY = $dados[$i][0];
-            $localTexto = ($i*($width-$xDash)/sizeof($dados))+$xDash;
-            $barrasVerticais = $barrasVerticais."
-            <text x='$localTexto' y='$linhaIndicesY' textlenght='7'>$indiceY</text>
-            <line x1='$localTexto' y1='1' x2='$localTexto' y2='$alturaUtil' style='stroke: black; stroke-dasharray: 4 '/>
-            ";
-        }
+        $valor = $registro['total_doado'] ?? 0;
+        $valor = (float)$valor;
 
-        //Desenha o gráfico proporcional aos dados coletados
-        $width > 240 ? $x1 = 60 : $x1 = 25;
-        $passo = (($width-$xDash)/sizeof($dados));
-        $x2 = $x1+$passo;
-        $graficoLinhas = '';
-        for($i=0; $i<sizeof($dados); $i++){
-            $localPonto = $alturaUtil - ($alturaUtil*$dados[$i][1]/$indices[0]);
-            if($i == sizeof($dados)-1){
-                $localPonto2 = $localPonto;
-                $x2 = $x1;
-            }else{
-                $localPonto2 = $alturaUtil - ($alturaUtil * $dados[$i+1][1]/$indices[0]);
-            }
-            $graficoLinhas = $graficoLinhas."
-            <line x1='$x1' y1='$localPonto' x2='$x2' y2='$localPonto2'
-            style='stroke: #007AFF; stroke-width: 2;'/>
-            <circle r='4' cx='$x1' cy='$localPonto' fill='#007AFF'/>
-            ";
-            $x1+=$passo;
-            $x2+=$passo;
-        }
-        
-        return "
-        <svg style = 'width: $width; height: $height;'>
-        $linhasHorizontais
-        $barrasVerticais
-        $graficoLinhas
-        <line x1='$xFinal' y1='1' x2='$xFinal' y2='$alturaUtil' style='stroke: black; stroke-dasharray: 4 '/>
-        </svg>
+        $dados[] = [$meses[$m-1], $valor];
+        $valores[] = $valor;
+    }
+
+    // ----------------------------
+    // 2. Cálculo dos índices (Y)
+    // ----------------------------
+    $maxValor = max($valores);
+
+    // Evita divisão por zero
+    if ($maxValor > 0) {
+        $maxValor *= 1.1;
+    } else {
+        $maxValor = 10;
+    }
+
+    // Criar 5 divisões fixas
+    $divisoesY = 5;
+    $intervalo = $maxValor / $divisoesY;
+    $indices = [];
+
+    for ($i = 0; $i <= $divisoesY; $i++) {
+        $indices[] = (int)($maxValor - $intervalo * $i);
+    }
+
+    // ----------------------------
+    // 3. Parâmetros do gráfico
+    // ----------------------------
+    $xDash = ($width > 240) ? 40 : 20;
+    $alturaUtil = $height - 25;
+    $linhaBaseY = $height - 5;
+    $xFinal = $width - 1;
+
+    // ----------------------------
+    // 4. Linhas horizontais + texto Y
+    // ----------------------------
+    $linhasHorizontais = '';
+    $passoY = $alturaUtil / $divisoesY;
+
+    for ($i = 0; $i <= $divisoesY; $i++) {
+        $y = $i * $passoY;
+        $valorIdx = 'R$ '.number_format($indices[$i], 2, ',', '.');
+
+        $linhasHorizontais .= "
+            <line x1='$xDash' y1='$y' x2='$width' y2='$y' style='stroke: #ccc; stroke-dasharray: 3;'/>
+            <text x='0' y='".($y+10)."' font-size='10'>$valorIdx</text>
         ";
     }
+
+    // ----------------------------
+    // 5. Linhas verticais + meses
+    // ----------------------------
+    $barrasVerticais = '';
+    $qtd = count($dados);
+    $passoX = ($width - $xDash) / $qtd;
+
+    for ($i = 0; $i < $qtd; $i++) {
+        $x = $xDash + $i * $passoX;
+        $mes = $dados[$i][0];
+
+        $barrasVerticais .= "
+            <line x1='$x' y1='0' x2='$x' y2='$alturaUtil' style='stroke: #ddd; stroke-dasharray: 4'/>
+            <text x='$x' y='$linhaBaseY' font-size='10'>$mes</text>
+        ";
+    }
+
+    // ----------------------------
+    // 6. Linhas do gráfico
+    // ----------------------------
+    $grafico = '';
+    $x = $xDash;
+    $pontosX = [];
+    $pontosY = [];
+
+    foreach ($dados as $d) {
+        $valor = $d[1];
+
+        // proporcional
+        $y = $alturaUtil - ($valor / $maxValor) * $alturaUtil;
+
+        $pontosX[] = $x;
+        $pontosY[] = $y;
+
+        $x += $passoX;
+    }
+
+    // Desenhar linhas e pontos
+    for ($i = 0; $i < $qtd - 1; $i++) {
+        $grafico .= "
+            <line x1='{$pontosX[$i]}' y1='{$pontosY[$i]}'
+                  x2='{$pontosX[$i+1]}' y2='{$pontosY[$i+1]}'
+                  style='stroke:#007AFF; stroke-width:2;'/>
+            <circle cx='{$pontosX[$i]}' cy='{$pontosY[$i]}' r='4' fill='#007AFF'/>
+        ";
+    }
+
+    // Último ponto
+    $ultimo = $qtd - 1;
+    $grafico .= "<circle cx='{$pontosX[$ultimo]}' cy='{$pontosY[$ultimo]}' r='4' fill='#007AFF'/>";
+
+    // ----------------------------
+    // 7. Retorno SVG
+    // ----------------------------
+    return "
+        <svg width='$width' height='$height'>
+            $linhasHorizontais
+            $barrasVerticais
+            $grafico
+            <line x1='$xFinal' y1='0' x2='$xFinal' y2='$alturaUtil' style='stroke:black; stroke-dasharray:4;'/>
+        </svg>
+    ";
+}
