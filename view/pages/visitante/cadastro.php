@@ -33,12 +33,12 @@ $usuarioModel = new UsuarioModel();
                     </div>
                     <div class="inputBox">
                         <label for="telefone">Telefone<span>*</span></label>
-                        <input data-mask="(##) #####-####" id="telefone" name="telefone" type="text" placeholder="(67) 90000-0000">
+                        <input data-mask="(##) #####-####" id="telefone" name="telefone" type="text" placeholder="(00) 00000-0000">
                         <span class="visor"></span>
                     </div>
                     <div class="inputBox">
                         <label for="cpf">CPF<span>*</span></label>
-                        <input data-mask="###.###.###-##" maxlength="15" id="cpf" name="cpf" type="text" placeholder="000.000.000-00">
+                        <input data-mask="###.###.###-##" id="cpf" name="cpf" type="text" placeholder="000.000.000-00">
                         <span class="visor"></span>
                     </div>
                     <div class="inputBox">
