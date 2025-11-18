@@ -21,12 +21,12 @@
                 </div>
                 <div class="input-box inputM">
                     <label>Telefone</label>
-                    <input id="telefone_div" type="tel" value="<?= $usuario['telefone'] ?>" readonly>
+                    <input data-mask="(##) #####-####" id="telefone_div" type="tel" value="<?= $usuario['telefone'] ?>" readonly>
                     <i class="fa-solid fa-phone"></i>
                 </div>
                 <div class="input-box inputM">
                     <label>CPF</label>
-                    <input id="cpf_div" type="text" value="<?= $usuario['cpf'] ?>" readonly>
+                    <input data-mask="###.###.###-##" id="cpf_div" type="text" value="<?= $usuario['cpf'] ?>" readonly>
                     <i class="fa-regular fa-address-card"></i>
                 </div>
                 <div class="input-box">
