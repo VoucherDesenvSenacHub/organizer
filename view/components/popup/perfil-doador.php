@@ -120,9 +120,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="upload-area" id="uploadAreaDoador">
                     <input type="file" id="foto_usuario" name="foto_usuario" accept="image/*" style="display:none;">
                     <img id="preview-foto" src="<?= !empty($_SESSION['usuario']['foto'])
-                        ? '../../../' . $_SESSION['usuario']['foto']
-                        : 'view/assets/images/global/image-placeholder.svg'
-                        ?>">
+                                                    ? '../../../' . $_SESSION['usuario']['foto']
+                                                    : 'view/assets/images/global/image-placeholder.svg'
+                                                ?>">
                     <div id="uploadTextDoador">
                         <i class="fa-solid fa-cloud-upload-alt"></i><br>
                         Arraste ou clique para trocar
@@ -152,14 +152,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </div>
                 <div class="input-box inputM">
                     <label for="telefone_usuario">Telefone</label>
-                    <input name="telefone_usuario" id="telefone_usuario" type="tel"
+                    <input data-mask="(##) #####-####" name="telefone_usuario" id="telefone_usuario" type="text"
                         value="<?= htmlspecialchars($usuario['telefone']) ?>" required minlength="11">
                     <i class="fa-solid fa-phone"></i>
                 </div>
                 <div class="input-box inputM">
                     <label for="cpf_usuario">CPF</label>
-                    <input name="cpf_usuario" id="cpf_usuario" type="text"
-                        value="<?= htmlspecialchars($usuario['cpf']) ?>" required minlength="14">
+                    <input data-mask="###.###.###-##" name="cpf_usuario" id="cpf_usuario" type="text"
+                        value="<?= htmlspecialchars($usuario['cpf']) ?>" required>
                     <i class="fa-regular fa-address-card"></i>
                 </div>
                 <div class="input-box">
