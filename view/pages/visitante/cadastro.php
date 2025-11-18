@@ -33,12 +33,12 @@ $usuarioModel = new UsuarioModel();
                     </div>
                     <div class="inputBox">
                         <label for="telefone">Telefone<span>*</span></label>
-                        <input id="telefone" name="telefone" type="text" placeholder="(67) 9 0000-0000">
+                        <input data-mask="(##) #####-####" id="telefone" name="telefone" type="text" placeholder="(00) 00000-0000">
                         <span class="visor"></span>
                     </div>
                     <div class="inputBox">
                         <label for="cpf">CPF<span>*</span></label>
-                        <input id="cpf" name="cpf" type="text" placeholder="000.000.000-00">
+                        <input data-mask="###.###.###-##" id="cpf" name="cpf" type="text" placeholder="000.000.000-00">
                         <span class="visor"></span>
                     </div>
                     <div class="inputBox">
@@ -79,21 +79,6 @@ $usuarioModel = new UsuarioModel();
         </div>
     </section>
 </main>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
-<script type="text/javascript">
-    $("#telefone").mask("(00) 0 0000-0000");
-    $("#cpf").mask("000.000.000-00");
-    $("#num_cartao").mask("0000 0000 0000 0000");
-    $("#code_cartao").mask("000");
-
-
-    $("#nome").on("input", function () {
-        var valor = $(this).val();
-        // Remove tudo que não for letra ou espaço
-        $(this).val(valor.replace(/[^a-zA-ZÀ-ÿ\s]/g, ""));
-    });
-</script>
 <?php
 $jsPagina = ['usuario/cadastro.js'];
 require_once '../../components/layout/footer/footer-visitante.php';
