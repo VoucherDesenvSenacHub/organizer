@@ -27,6 +27,14 @@ CREATE TABLE usuarios (
     email VARCHAR(255) UNIQUE NOT NULL,
     telefone VARCHAR(20) NOT NULL,
     senha VARCHAR(255) NOT NULL,
+-- Endereço do usuário
+    cep VARCHAR(10) NOT NULL,
+    rua VARCHAR(200) NOT NULL,
+    numero VARCHAR(10) NOT NULL,
+    complemento VARCHAR(100) NOT NULL,
+    bairro VARCHAR(100) NOT NULL,
+    cidade VARCHAR(100) NOT NULL,
+    estado VARCHAR(2) NOT NULL,
 -- Campos para recuperação de senha
     reset_token_hash VARCHAR(64) NULL DEFAULT NULL UNIQUE,
     reset_token_expires_at DATETIME NULL DEFAULT NULL,
