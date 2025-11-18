@@ -1,13 +1,162 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <title>Bem-vindo ao Organizer!</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bem-vindo ao Organizer!</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #F8F9FA;
+    }
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: #F8F9FA;
+    }
+    .header {
+      background-color: #1C3464;
+      padding: 25px;
+    }
+    .header a {
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 15px;
+    }
+    .header img {
+      height: 60px;
+    }
+    .header h1 {
+      color: #FFFFFF;
+      font-size: 28px;
+      margin: 0;
+      font-weight: bold;
+    }
+    .content {
+      background-color: #FFFFFF;
+      padding: 40px 25px;
+      text-align: center;
+    }
+    .content img {
+      width: 150px;
+      height: 180px;
+      margin: 10px 0;
+    }
+    h1 {
+      color: #1C3464;
+      font-size: 24px;
+      margin: 20px 0;
+    }
+    p {
+      color: #666666;
+      font-size: 16px;
+      line-height: 1.5;
+      margin: 15px 40px;
+    }
+    .welcome-button {
+      background-color: #e3b652;
+      color: #FFFFFF;
+      padding: 15px 30px;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 14px;
+      display: inline-block;
+      margin: 30px 0;
+      border: 2px solid #ffffffba;
+    }
+    .welcome-button:hover {
+      background-color: #e3b552d1;
+    }
+    .info {
+      color: #666666;
+      font-size: 14px;
+    }
+    .support {
+      padding: 15px 25px;
+      background-color: #FFFFFF;
+      text-align: center;
+    }
+    .support p {
+      margin: 5px 0;
+      font-size: 14px;
+    }
+    .footer {
+      background-color: #1C3464;
+      padding: 20px 25px 30px;
+      text-align: center;
+    }
+    .footer h2 {
+      color: #FFFFFF;
+      font-size: 18px;
+      margin: 0 0 15px;
+    }
+    .footer .subtitle {
+      color: #E3B652;
+      font-size: 14px;
+      margin: 10px 0;
+    }
+    .footer .copyright {
+      color: #CCCCCC;
+      font-size: 12px;
+      margin-top: 15px;
+      line-height: 1.5;
+    }
+    @media only screen and (max-width: 600px) {
+      .header {
+        flex-direction: column;
+        gap: 15px;
+      }
+      p {
+        margin: 15px 20px;
+      }
+      h1 {
+        font-size: 20px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <h2>Bem-vindo, {{NOME}}!</h2>
-    <p>Seu cadastro no Organizer foi realizado com sucesso.</p>
-    <p>A partir de agora você pode utilizar todos os recursos da plataforma.</p>
-    <p style="color: #888; font-size: 0.9em;">Esta é uma mensagem automática. Por favor, não responda a este e-mail.</p>
+  <div class="container">
+    <div class="header">
+      <a href="http://192.168.22.9/organizer">
+        <img src="/view/assets/images/global/Logo-Organizer.png" alt="Organizer">
+        <h1>Organizer</h1>
+      </a>
+    </div>
+
+    <div class="content">
+      <img src="/view/assets/images/pages/visitante/pessoa-flutuando.png" alt="Bem-vindo">
+      
+      <h1>BEM-VINDO AO ORGANIZER!</h1>
+      
+      <p><strong>Olá, {{NOME}}!</strong></p>
+      
+      <p>Seu cadastro no Organizer foi realizado com sucesso.</p>
+      
+      <p>A partir de agora você pode utilizar todos os recursos da plataforma para fazer a diferença na vida das organizações.</p>
+      
+      <a href="http://192.168.22.9/organizer" class="welcome-button">ACESSAR PLATAFORMA</a>
+      
+      <p class="info">Explore projetos, faça doações e ajude organizações a crescerem!</p>
+    </div>
+
+    <div class="support">
+      <p>Precisa de ajuda? Entre em contato conosco:</p>
+      <p style="color: #1C3464;"><strong>📧 organizer145@gmail.com</strong> </p>
+    </div>
+
+    <div class="footer">
+      <h2>💙 Obrigado por usar o Organizer!</h2>
+      <p class="subtitle">Juntos, fazemos a diferença na vida das organizações!</p>
+      <p class="copyright">
+        Esta é uma mensagem automática. Por favor, não responda a este e-mail.<br>
+        © 2025 Organizer - Todos os direitos reservados.
+      </p>
+    </div>
+  </div>
 </body>
 </html>
