@@ -6,7 +6,7 @@ function proximo(indice) {
     if (indice == 1) {
         if (
             !validarCampo(input[0], 0, 'Digite seu nome completo.', 5) ||
-            !validarCampo(input[1], 1, 'Insira um número válido.', 16) ||
+            !validarCampo(input[1], 1, 'Insira um número válido.', 15) ||
             !validarCampo(input[2], 2, 'Insira um CPF válido.', 14) ||
             !validarCampo(input[3], 3, 'Insira uma data.')
         ) {
@@ -19,7 +19,7 @@ function proximo(indice) {
     else if (indice == 2) {
         if (
             !validarCampo(input[0], 0, 'Digite seu nome completo.', 5) ||
-            !validarCampo(input[1], 1, 'Insira um número válido.', 16) ||
+            !validarCampo(input[1], 1, 'Insira um número válido.', 15) ||
             !validarCampo(input[2], 2, 'Insira um CPF válido.', 14) ||
             !validarCampo(input[3], 3, 'Insira uma data.')
         ) {
@@ -87,6 +87,7 @@ function proximo(indice) {
 
         return true;
     }
+<<<<<<< HEAD
 }
 
 // Remover máscara dos campos antes de enviar
@@ -96,3 +97,7 @@ $("#form").submit(function (event) {
     $("#num_cartao").unmask();
     $("#code_cartao").unmask();
 });
+=======
+
+}
+>>>>>>> 569823b2c53dc4490e8e755cb7e34c09e791208b
