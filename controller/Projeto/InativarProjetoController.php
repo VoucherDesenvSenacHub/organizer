@@ -22,7 +22,7 @@ class InativarProjetoController
                 $projetoId = $_POST['projeto_id'];
 
                 // Buscar dados do projeto e ONG responsável antes da inativação
-                $projetoData = $this->projetoModel->buscarPerfil($projetoId);
+                $projetoData = $this->projetoModel->buscarPerfilProjeto($projetoId);
                 
                 if (!$projetoData) {
                     $_SESSION['mensagem_toast'] = ['erro', 'Projeto não encontrado!'];
