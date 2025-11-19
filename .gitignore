@@ -1,2 +1,4 @@
 # Ignorar tudo dentro de upload/
+.env
 upload/
+/vendor
