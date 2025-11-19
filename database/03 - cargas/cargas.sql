@@ -60,7 +60,7 @@
     -- INSERÇÃO DE DADOS NA TABELA USÚARIOS
     -- ================================
     INSERT INTO usuarios (
-        nome, cpf, data_nascimento, imagem_id, email, telefone, senha, doador, ong, adm, status
+        nome, cpf, data_nascimento, imagem_id, email, telefone, senha, cep, rua, numero, bairro, cidade, estado, doador, ong, adm, status
     ) VALUES (
         'Gean Augusto',
         '00100200305',
@@ -69,6 +69,12 @@
         'gean@organizer.com',
         '67991202907',
         '$2y$10$AJjK477ZpcxLxe9jowzCJuxBLs8nsYgHsU2QF41BauggY3vfxmDSG',
+        '01310-100',
+        'Av. Paulista',
+        '1578',
+        'Bela Vista',
+        'São Paulo',
+        'SP',
         TRUE,
         TRUE,
         TRUE,
@@ -76,7 +82,7 @@
     );
 
     INSERT INTO usuarios (
-        nome, cpf, data_nascimento, imagem_id, email, telefone, senha, doador, ong, adm, status
+        nome, cpf, data_nascimento, imagem_id, email, telefone, senha, cep, rua, numero, bairro, cidade, estado, doador, ong, adm, status
     ) VALUES (
         'Filipe Correia',
         '00000012345',
@@ -85,6 +91,12 @@
         'filipe@organizer.com',
         '67991233362',
         '$2y$10$AJjK477ZpcxLxe9jowzCJuxBLs8nsYgHsU2QF41BauggY3vfxmDSG',
+        '20040-020',
+        'Rua da Assembleia',
+        '50',
+        'Centro',
+        'Rio de Janeiro',
+        'RJ',
         TRUE,
         TRUE,
         TRUE,
@@ -92,7 +104,7 @@
     );
 
     INSERT INTO usuarios (
-        nome, cpf, data_nascimento, imagem_id, email, telefone, senha, doador, ong, adm, status
+        nome, cpf, data_nascimento, imagem_id, email, telefone, senha, cep, rua, numero, bairro, cidade, estado, doador, ong, adm, status
     ) VALUES (
         'Daniel',
         '07825982185',
@@ -101,6 +113,12 @@
         'daniel@organizer.com',
         '67992240987',
         '$2y$10$AJjK477ZpcxLxe9jowzCJuxBLs8nsYgHsU2QF41BauggY3vfxmDSG',
+        '30130-110',
+        'Av. Álvares Cabral',
+        '400',
+        'Lourdes',
+        'Belo Horizonte',
+        'MG',
         TRUE,
         TRUE,
         TRUE,
@@ -108,7 +126,7 @@
     );
 
     INSERT INTO usuarios (
-        nome, cpf, data_nascimento, imagem_id, email, telefone, senha, doador, ong, adm, status
+        nome, cpf, data_nascimento, imagem_id, email, telefone, senha, cep, rua, numero, bairro, cidade, estado, doador, ong, adm, status
     ) VALUES (
         'Bruna Cavalheiro Borges',
         '07999339105',
@@ -117,6 +135,12 @@
         'bruna@organizer.com',
         '67999232384',
         '$2y$10$AJjK477ZpcxLxe9jowzCJuxBLs8nsYgHsU2QF41BauggY3vfxmDSG',
+        '80010-160',
+        'Rua XV de Novembro',
+        '1250',
+        'Centro',
+        'Curitiba',
+        'PR',
         TRUE,
         TRUE,
         TRUE,
@@ -124,7 +148,7 @@
     );
 
     INSERT INTO usuarios (
-        nome, cpf, data_nascimento, imagem_id, email, telefone, senha, doador, ong, adm, status
+        nome, cpf, data_nascimento, imagem_id, email, telefone, senha, cep, rua, numero, bairro, cidade, estado, doador, ong, adm, status
     ) VALUES (
         'Duda Tawany',
         '13297423322',
@@ -133,6 +157,12 @@
         'duda@organizer.com',
         '67992163882',
         '$2y$10$AJjK477ZpcxLxe9jowzCJuxBLs8nsYgHsU2QF41BauggY3vfxmDSG',
+        '69005-070',
+        'Avenida Eduardo Ribeiro',
+        '651',
+        'Centro',
+        'Manaus',
+        'AM',
         TRUE,
         TRUE,
         TRUE,
@@ -140,7 +170,7 @@
     );
 
     INSERT INTO usuarios (
-        nome, cpf, data_nascimento, imagem_id, email, telefone, senha, doador, ong, adm, status
+        nome, cpf, data_nascimento, imagem_id, email, telefone, senha, cep, rua, numero, bairro, cidade, estado, doador, ong, adm, status
     ) VALUES (
         'Vitor Coronel',
         '10000980000',
@@ -149,6 +179,12 @@
         'vitor@organizer.com',
         '67982175519',
         '$2y$10$AJjK477ZpcxLxe9jowzCJuxBLs8nsYgHsU2QF41BauggY3vfxmDSG',
+        '88010-400',
+        'Rua Conselheiro Mafra',
+        '92',
+        'Centro',
+        'Florianópolis',
+        'SC',
         TRUE,
         TRUE,
         TRUE,
@@ -156,7 +192,7 @@
     );
 
     INSERT INTO usuarios (
-        nome, cpf, data_nascimento, imagem_id, email, telefone, senha,
+        nome, cpf, data_nascimento, imagem_id, email, telefone, senha, cep, rua, numero, bairro, cidade, estado,
         doador, ong, adm, status
     ) VALUES (
         'Adercio Barbuio Junior',
@@ -166,6 +202,12 @@
         'adercio@organizer.com',
         '67992663558',
         '$2y$10$AJjK477ZpcxLxe9jowzCJuxBLs8nsYgHsU2QF41BauggY3vfxmDSG',
+        '66010-000',
+        'Av. Presidente Vargas',
+        '456',
+        'Campina',
+        'Belém',
+        'PA',
         FALSE,
         FALSE,
         FALSE,
@@ -173,7 +215,7 @@
     );
 
     INSERT INTO usuarios (
-        nome, cpf, data_nascimento, imagem_id, email, telefone, senha,
+        nome, cpf, data_nascimento, imagem_id, email, telefone, senha, cep, rua, numero, bairro, cidade, estado,
         doador, ong, adm, status
     ) VALUES (
         'Giovana Vitória Gomes',
@@ -183,6 +225,12 @@
         'giovana@organizer.com',
         '67998047393',
         '$2y$10$AJjK477ZpcxLxe9jowzCJuxBLs8nsYgHsU2QF41BauggY3vfxmDSG',
+        '40020-000',
+        'Rua Chile',
+        '25',
+        'Comércio',
+        'Salvador',
+        'BA',
         FALSE,
         FALSE,
         FALSE,
