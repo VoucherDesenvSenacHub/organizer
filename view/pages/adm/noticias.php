@@ -15,7 +15,16 @@ $filtros = [
     'status' => ($_GET['status'] ?? '') !== '' ? $_GET['status'] : null
 ];
 
-// Notícia padrão para formulário
+// Monta a queryString para a paginação
+$queryString = '';
+if (!empty($_GET['pesquisa'])) {
+    $queryString .= '&pesquisa=' . urlencode($_GET['pesquisa']);
+}
+if (isset($_GET['status']) && $_GET['status'] !== '') {
+    $queryString .= '&status=' . urlencode($_GET['status']);
+}
+
+// Notícia padrão
 $PerfilNoticia = (object) [
     'noticia_id' => null,
     'titulo' => null,
@@ -38,12 +47,18 @@ ob_end_flush();
         <div class="container">
             <div class="top">
                 <h1><i class="fa-solid fa-newspaper"></i> PAINEL DE NOTÍCIAS</h1>
+
+                <!-- BUSCA -->
                 <form id="form-busca" action="noticias.php" method="GET">
-                    <input type="text" name="pesquisa" placeholder="Busque uma notícia">
+                    <input type="text" name="pesquisa" placeholder="Busque uma notícia"
+                           value="<?= $_GET['pesquisa'] ?? '' ?>">
                     <button class="btn" type="submit"><i class="fa-solid fa-search"></i></button>
                 </form>
 
+                <!-- FILTRO -->
                 <form id="form-filtro" action="noticias.php" method="GET">
+                    <input type="hidden" name="pesquisa" value="<?= $_GET['pesquisa'] ?? '' ?>">
+
                     <div class="ul-group">
                         <div class="drop" id="esc-status" aria-haspopup="true" aria-expanded="false">
                             <div class="drop-title" tabindex="0">
@@ -60,23 +75,26 @@ ob_end_flush();
                             </div>
 
                             <div class="drop-menu" role="menu" aria-labelledby="status-label">
-                                <!-- <button type="button" class="item" data-value="">Status</button> -->
                                 <button type="button" class="item" data-value="ATIVO">Ativo</button>
                                 <button type="button" class="item" data-value="INATIVO">Inativo</button>
                             </div>
 
-                            <input type="hidden" name="status" id="status-hidden" value="<?= $_GET['status'] ?? '' ?>">
+                            <input type="hidden" name="status" id="status-hidden"
+                                   value="<?= $_GET['status'] ?? '' ?>">
                         </div>
                     </div>
                 </form>
             </div>
 
             <section id="box-ongs">
-                <!-- LISTAR CARDS NOTÍCIAS -->
 
-                <?php if (isset($_GET['pesquisa'])) {
-                    echo "<p id='qnt-busca'><i class='fa-solid fa-search'></i> " . $totalRegistros . " Notícias Encontradas</p>";
-                } ?>
+                <!-- RESULTADO DA BUSCA -->
+                <?php if (isset($_GET['pesquisa'])): ?>
+                    <p id='qnt-busca'>
+                        <i class='fa-solid fa-search'></i> <?= $totalRegistros ?> Notícias Encontradas
+                    </p>
+                <?php endif; ?>
+
                 <div class="area-cards">
                     <?php
                     if ($lista) {
@@ -89,36 +107,31 @@ ob_end_flush();
                             echo 'Você não tem notícias ativas no momento.';
                         } elseif ($status === 'INATIVO') {
                             echo 'Você não tem notícias inativas no momento.';
-                            // } else {
-                            //     echo 'Não foi possível encontrar nenhuma noticia :(';
+                        } else {
+                            echo 'Nenhuma notícia encontrada.';
                         }
                     }
                     ?>
-                    <!-- 
-                // if ($lista) {
-                ////     foreach ($lista as $noticia) {
-                    ////        require '../../components/cards/card-noticia.php';
-                    ///    }//
-                /// } else {
-                    //    echo '<p>Nenhuma Notícia cadastrada!</p>';
-                /// }
-                    ?> -->
-
+                </div>
             </section>
+
+            <!-- PAGINAÇÃO -->
             <?php if ($paginas > 1): ?>
                 <nav class="paginacao">
                     <?php for ($i = 1; $i <= $paginas; $i++): ?>
-                        <a href="?pagina=<?= $i ?><?= isset($_GET['pesquisa']) ? '&pesquisa=' . urlencode($_GET['pesquisa']) : '' ?>"
-                            class="<?= $i === $paginaAtual ? 'active' : '' ?>">
+                        <a href="?pagina=<?= $i . $queryString ?>"
+                           class="<?= $i === $paginaAtual ? 'active' : '' ?>">
                             <?= $i ?>
                         </a>
                     <?php endfor; ?>
                 </nav>
             <?php endif; ?>
+
         </div>
     </section>
 </main>
+
 <?php
-$jsPagina = ['adm/listagem.js']; //Colocar o arquivo .js
+$jsPagina = ['adm/listagem.js'];
 require_once '../../components/layout/footer/footer-logado.php';
 ?>

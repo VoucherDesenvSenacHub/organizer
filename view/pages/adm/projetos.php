@@ -16,11 +16,19 @@ $filtros = [
     'status' => ($_GET['status'] ?? '') !== '' ? $_GET['status'] : null
 ];
 
+// Monta a query string para paginação
+$queryString = '';
+if (!empty($_GET['pesquisa'])) {
+    $queryString .= '&pesquisa=' . urlencode($_GET['pesquisa']);
+}
+if (isset($_GET['status']) && $_GET['status'] !== '') {
+    $queryString .= '&status=' . urlencode($_GET['status']);
+}
+
 // Busca lista e paginação
 $lista = $projetoModel->listarCardsProjetos($filtros);
 $totalRegistros = $projetoModel->paginacaoProjetos($filtros);
 $paginas = (int) ceil($totalRegistros / 6);
-
 ?>
 <main class="conteudo-principal">
     <section>
@@ -28,14 +36,14 @@ $paginas = (int) ceil($totalRegistros / 6);
             <div class="top">
                 <h1><i class="fa-solid fa-diagram-project"></i> PAINEL DE PROJETOS</h1>
 
-                <!-- FORM DE BUSCA (mantém valor digitado) -->
+                <!-- FORM DE BUSCA -->
                 <form id="form-busca" action="projetos.php" method="GET">
                     <input type="text" name="pesquisa" placeholder="Busque um projeto"
                            value="<?= $_GET['pesquisa'] ?? '' ?>">
                     <button class="btn" type="submit"><i class="fa-solid fa-search"></i></button>
                 </form>
 
-                <!-- FORM DE FILTRO (mantém pesquisa junto com o status) -->
+                <!-- FORM DE FILTRO -->
                 <form id="form-filtro" action="projetos.php" method="GET">
                     <input type="hidden" name="pesquisa" value="<?= $_GET['pesquisa'] ?? '' ?>">
 
@@ -47,7 +55,7 @@ $paginas = (int) ceil($totalRegistros / 6);
                                     $status = $_GET['status'] ?? '';
 
                                     if ($status === '' || $status === null) {
-                                        echo "Todas";
+                                        echo "Todos";
                                     } else {
                                         echo ucfirst(strtolower($status));
                                     }
@@ -71,7 +79,7 @@ $paginas = (int) ceil($totalRegistros / 6);
 
             </div>
 
-            <!-- Quantidade da busca -->
+            <!-- Quantidade -->
             <?php if (isset($_GET['pesquisa'])): ?>
                 <p class="qnt-busca">
                     <i class="fa-solid fa-search"></i> <?= $totalRegistros ?> Projetos Encontrados
@@ -79,7 +87,7 @@ $paginas = (int) ceil($totalRegistros / 6);
             <?php endif; ?>
 
             <section id="box-ongs">
-                <!-- LISTAR CARDS PROJETOS -->
+                <!-- LISTA DE PROJETOS -->
                 <?php
                 if ($lista) {
                     foreach ($lista as $projeto) {
@@ -100,14 +108,12 @@ $paginas = (int) ceil($totalRegistros / 6);
                 ?>
             </section>
 
-            <!-- PAGINAÇÃO (mantém pesquisa e status) -->
+            <!-- PAGINAÇÃO -->
             <?php if ($paginas > 1): ?>
                 <nav class="paginacao">
                     <?php for ($i = 1; $i <= $paginas; $i++): ?>
-                        <a href="?pagina=<?= $i ?>
-                        <?= isset($_GET['pesquisa']) ? '&pesquisa=' . urlencode($_GET['pesquisa']) : '' ?>
-                        <?= isset($_GET['status']) ? '&status=' . urlencode($_GET['status']) : '' ?>"
-                        class="<?= $i === $paginaAtual ? 'active' : '' ?>">
+                        <a href="?pagina=<?= $i . $queryString ?>"
+                           class="<?= $i === $paginaAtual ? 'active' : '' ?>">
                             <?= $i ?>
                         </a>
                     <?php endfor; ?>
