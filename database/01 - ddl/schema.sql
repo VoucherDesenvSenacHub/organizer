@@ -31,7 +31,6 @@ CREATE TABLE usuarios (
     cep VARCHAR(10) NOT NULL,
     rua VARCHAR(200) NOT NULL,
     numero VARCHAR(10) NOT NULL,
-    complemento VARCHAR(100) NOT NULL,
     bairro VARCHAR(100) NOT NULL,
     cidade VARCHAR(100) NOT NULL,
     estado VARCHAR(2) NOT NULL,

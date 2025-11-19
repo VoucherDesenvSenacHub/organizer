@@ -21,11 +21,11 @@ $usuarioModel = new UsuarioModel();
                 </div>
                 <div class="item">
                     <div class="circle"><i class="fa-solid fa-check"></i></div>
-                    <p>Login</p>
+                    <p>Endereço</p>
                 </div>
                 <div class="item">
                     <div class="circle"><i class="fa-solid fa-check"></i></div>
-                    <p>Endereço</p>
+                    <p>Login</p>
                 </div>
             </div>
             <form id="form" action="../../../controller/Usuario/CadastrarUsuarioController.php" method="POST">
@@ -54,27 +54,6 @@ $usuarioModel = new UsuarioModel();
                         <button class="btn" type="button" onclick="return proximo(1)">Próximo</button>
                     </div>
                 </div>
-                <div class="formBox">
-                    <div class="inputBox" id="BoxG">
-                        <label for="email">Email<span>*</span></label>
-                        <input id="email" name="email" type="email" maxlength="45" placeholder="usuário@conta.com">
-                        <span class="visor"></span>
-                    </div>
-                    <div class="inputBox">
-                        <label for="senha">Senha<span>*</span></label>
-                        <input id="senha" name="senha" type="password" maxlength="20" placeholder="********">
-                        <span class="visor"></span>
-                    </div>
-                    <div class="inputBox">
-                        <label for="confirm_senha">Confirmar Senha<span>*</span></label>
-                        <input id="confirm_senha" type="password" maxlength="20" placeholder="********">
-                        <span class="visor"></span>
-                    </div>
-                    <div class="btnNextBack">
-                        <button class="btn btnVoltar" type="button" onclick="moverPara(0, 33)">Voltar</button>
-                        <button class="btn" type="button" onclick="return proximo(2)">Próximo</button>
-                    </div>
-                </div>
                 <div class="formBox busca-cep">
                     <div class="inputBox">
                         <label for="cep">CEP<span>*</span></label>
@@ -89,11 +68,6 @@ $usuarioModel = new UsuarioModel();
                     <div class="inputBox">
                         <label for="numero">Nº<span>*</span></label>
                         <input name="numero" id="numero" type="text">
-                        <span class="visor"></span>
-                    </div>
-                    <div class="inputBox">
-                        <label for="complemento">Complemento<span>*</span></label>
-                        <input name="complemento" id="complemento" type="text">
                         <span class="visor"></span>
                     </div>
                     <div class="inputBox">
@@ -116,6 +90,27 @@ $usuarioModel = new UsuarioModel();
                         <input type="text" disabled>
                     </div>
                     <div class="btnNextBack">
+                        <button class="btn btnVoltar" type="button" onclick="moverPara(0, 33)">Voltar</button>
+                        <button class="btn" type="button" onclick="return proximo(2)">Próximo</button>
+                    </div>
+                </div>
+                <div class="formBox">
+                    <div class="inputBox" id="BoxG">
+                        <label for="email">Email<span>*</span></label>
+                        <input id="email" name="email" type="email" maxlength="45" placeholder="usuário@conta.com">
+                        <span class="visor"></span>
+                    </div>
+                    <div class="inputBox">
+                        <label for="senha">Senha<span>*</span></label>
+                        <input id="senha" name="senha" type="password" maxlength="20" placeholder="********">
+                        <span class="visor"></span>
+                    </div>
+                    <div class="inputBox">
+                        <label for="confirm_senha">Confirmar Senha<span>*</span></label>
+                        <input id="confirm_senha" type="password" maxlength="20" placeholder="********">
+                        <span class="visor"></span>
+                    </div>
+                     <div class="btnNextBack">
                         <button class="btn btnVoltar" type="button" onclick="moverPara(1, 33)">Voltar</button>
                         <button class="btn" type="submit" onclick="return proximo(3)">CADASTRAR</button>
                     </div>

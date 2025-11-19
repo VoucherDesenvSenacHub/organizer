@@ -66,10 +66,9 @@ function proximo(indice) {
             !validarCampo(input[7], 7, 'Digite um CEP válido.', 9) ||
             !validarCampo(input[8], 8, 'Digite sua rua.', 2) ||
             !validarCampo(input[9], 9, 'Obrigatório.', 1) ||
-            !validarCampo(input[10], 10, 'Digite seu complemento.', 0) ||
-            !validarCampo(input[11], 11, 'Digite seu bairro.', 2) ||
-            !validarCampo(input[12], 12, 'Digite sua cidade.', 2) ||
-            !validarCampo(input[13], 13, 'Digite seu estado.', 2)
+            !validarCampo(input[10], 10, 'Digite seu bairro.', 2) ||
+            !validarCampo(input[11], 11, 'Digite sua cidade.', 2) ||
+            !validarCampo(input[12], 12, 'Digite seu estado.', 2)
         ) {
             check[2].classList.remove('input-valid');
             return false;

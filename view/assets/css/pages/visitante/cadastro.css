@@ -218,5 +218,20 @@ section .container h1 {
 
     .container .formBox {
         width: 300px;
+        justify-content: space-evenly;
+        align-content: space-evenly;
+        gap: 0px 0;
+    }
+     .formBox.busca-cep .inputBox {
+        flex: 1 1 230px;
+    }
+
+    .formBox.busca-cep .inputBox:nth-child(3),
+    .formBox.busca-cep .inputBox:nth-child(6){
+        max-width: 50px;
+    }
+
+    .formBox.busca-cep {
+        gap: 20px;
     }
 }

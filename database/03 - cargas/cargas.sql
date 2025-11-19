@@ -60,7 +60,7 @@
     -- INSERÇÃO DE DADOS NA TABELA USÚARIOS
     -- ================================
     INSERT INTO usuarios (
-        nome, cpf, data_nascimento, imagem_id, email, telefone, senha, cep, rua, numero, complemento, bairro, cidade, estado, doador, ong, adm, status
+        nome, cpf, data_nascimento, imagem_id, email, telefone, senha, cep, rua, numero, bairro, cidade, estado, doador, ong, adm, status
     ) VALUES (
         'Gean Augusto',
         '00100200305',
@@ -72,7 +72,6 @@
         '01310-100',
         'Av. Paulista',
         '1578',
-        '8º andar',
         'Bela Vista',
         'São Paulo',
         'SP',
@@ -83,7 +82,7 @@
     );
 
     INSERT INTO usuarios (
-        nome, cpf, data_nascimento, imagem_id, email, telefone, senha, cep, rua, numero, complemento, bairro, cidade, estado, doador, ong, adm, status
+        nome, cpf, data_nascimento, imagem_id, email, telefone, senha, cep, rua, numero, bairro, cidade, estado, doador, ong, adm, status
     ) VALUES (
         'Filipe Correia',
         '00000012345',
@@ -95,7 +94,6 @@
         '20040-020',
         'Rua da Assembleia',
         '50',
-        '',
         'Centro',
         'Rio de Janeiro',
         'RJ',
@@ -106,7 +104,7 @@
     );
 
     INSERT INTO usuarios (
-        nome, cpf, data_nascimento, imagem_id, email, telefone, senha, cep, rua, numero, complemento, bairro, cidade, estado, doador, ong, adm, status
+        nome, cpf, data_nascimento, imagem_id, email, telefone, senha, cep, rua, numero, bairro, cidade, estado, doador, ong, adm, status
     ) VALUES (
         'Daniel',
         '07825982185',
@@ -118,7 +116,6 @@
         '30130-110',
         'Av. Álvares Cabral',
         '400',
-        'Sala 1203',
         'Lourdes',
         'Belo Horizonte',
         'MG',
@@ -129,7 +126,7 @@
     );
 
     INSERT INTO usuarios (
-        nome, cpf, data_nascimento, imagem_id, email, telefone, senha, cep, rua, numero, complemento, bairro, cidade, estado, doador, ong, adm, status
+        nome, cpf, data_nascimento, imagem_id, email, telefone, senha, cep, rua, numero, bairro, cidade, estado, doador, ong, adm, status
     ) VALUES (
         'Bruna Cavalheiro Borges',
         '07999339105',
@@ -141,7 +138,6 @@
         '80010-160',
         'Rua XV de Novembro',
         '1250',
-        '',
         'Centro',
         'Curitiba',
         'PR',
@@ -152,7 +148,7 @@
     );
 
     INSERT INTO usuarios (
-        nome, cpf, data_nascimento, imagem_id, email, telefone, senha, cep, rua, numero, complemento, bairro, cidade, estado, doador, ong, adm, status
+        nome, cpf, data_nascimento, imagem_id, email, telefone, senha, cep, rua, numero, bairro, cidade, estado, doador, ong, adm, status
     ) VALUES (
         'Duda Tawany',
         '13297423322',
@@ -164,7 +160,6 @@
         '69005-070',
         'Avenida Eduardo Ribeiro',
         '651',
-        '',
         'Centro',
         'Manaus',
         'AM',
@@ -175,7 +170,7 @@
     );
 
     INSERT INTO usuarios (
-        nome, cpf, data_nascimento, imagem_id, email, telefone, senha, cep, rua, numero, complemento, bairro, cidade, estado, doador, ong, adm, status
+        nome, cpf, data_nascimento, imagem_id, email, telefone, senha, cep, rua, numero, bairro, cidade, estado, doador, ong, adm, status
     ) VALUES (
         'Vitor Coronel',
         '10000980000',
@@ -187,7 +182,6 @@
         '88010-400',
         'Rua Conselheiro Mafra',
         '92',
-        'Loja 03',
         'Centro',
         'Florianópolis',
         'SC',
@@ -198,7 +192,7 @@
     );
 
     INSERT INTO usuarios (
-        nome, cpf, data_nascimento, imagem_id, email, telefone, senha, cep, rua, numero, complemento, bairro, cidade, estado,
+        nome, cpf, data_nascimento, imagem_id, email, telefone, senha, cep, rua, numero, bairro, cidade, estado,
         doador, ong, adm, status
     ) VALUES (
         'Adercio Barbuio Junior',
@@ -211,7 +205,6 @@
         '66010-000',
         'Av. Presidente Vargas',
         '456',
-        '',
         'Campina',
         'Belém',
         'PA',
@@ -222,7 +215,7 @@
     );
 
     INSERT INTO usuarios (
-        nome, cpf, data_nascimento, imagem_id, email, telefone, senha, cep, rua, numero, complemento, bairro, cidade, estado,
+        nome, cpf, data_nascimento, imagem_id, email, telefone, senha, cep, rua, numero, bairro, cidade, estado,
         doador, ong, adm, status
     ) VALUES (
         'Giovana Vitória Gomes',
@@ -235,7 +228,6 @@
         '40020-000',
         'Rua Chile',
         '25',
-        '',
         'Comércio',
         'Salvador',
         'BA',

@@ -17,7 +17,6 @@ $dados = [
     'cep'              => $_POST['cep'],
     'rua'              => $_POST['rua'],
     'numero'           => $_POST['numero'],
-    'complemento'      => $_POST['complemento'] ?? '',
     'bairro'           => $_POST['bairro'],
     'cidade'           => $_POST['cidade'],
     'estado'           => $_POST['estado']
