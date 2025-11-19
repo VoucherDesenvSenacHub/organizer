@@ -1,6 +1,4 @@
 <?php
-// --- CONFIGURAÇÃO PARA MANTER LOGIN POR 30 DIAS ---
-
 // Tempo em segundos (30 dias)
 $lifetime = 60 * 60 * 24 * 30;
 
@@ -9,7 +7,7 @@ session_set_cookie_params([
     'lifetime' => $lifetime,
     'path' => '/',
     'domain' => '', 
-    'secure' => isset($_SERVER['HTTPS']), // true se HTTPS
+    'secure' => isset($_SERVER['HTTPS']),
     'httponly' => true,
     'samesite' => 'Lax'
 ]);

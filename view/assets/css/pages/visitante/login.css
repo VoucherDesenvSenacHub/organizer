@@ -88,7 +88,7 @@ form .input-group {
 form .remember-forgot {
     display: flex;
     font-size: 11px;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
     gap: 5px;
 }
