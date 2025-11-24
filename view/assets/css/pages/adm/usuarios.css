@@ -71,7 +71,7 @@
     filter: brightness(.9);
 }
 
-.input-box input {
+#perfil-doador-adm-popup .input-box input {
     cursor: not-allowed;
 }
 
