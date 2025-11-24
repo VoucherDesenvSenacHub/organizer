@@ -78,13 +78,6 @@ if (isset($_GET['id'])) {
         </div>
     </section>
 </main>
-<!-- Mascara do popup de ver perfil -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
-<script type="text/javascript">
-    $("#telefone_div").mask("(00) 0 0000-0000");
-    $("#cpf_div").mask("000.000.000-00");
-</script>
 <?php
 $jsPagina = []; //Colocar o arquivo .js
 require_once '../../components/layout/footer/footer-logado.php';

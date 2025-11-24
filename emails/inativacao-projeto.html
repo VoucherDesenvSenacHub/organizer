@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projeto Inativado - Organizer</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #F8F9FA;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: #F8F9FA;
+    }
+
+    .header {
+      background-color: #dc3545;
+      padding: 25px;
+    }
+
+    .header a {
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .header img {
+      height: 60px;
+    }
+
+    .header h1 {
+      color: #FFFFFF;
+      font-size: 28px;
+      margin: 0;
+      font-weight: bold;
+    }
+
+    .content {
+      background-color: #f3f4f6;
+      border: 1px solid #e5e7eb;
+      padding: 40px 25px;
+      text-align: center;
+    }
+
+    .warning-icon {
+      width: 80px;
+      height: 80px;
+      margin: 20px auto;
+      background-color: #dc3545;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 40px;
+      color: white;
+    }
+
+    h1 {
+      color: #1C3464;
+      font-size: 24px;
+      margin: 20px 0;
+    }
+
+    p {
+      color: #666666;
+      font-size: 16px;
+      line-height: 1.5;
+      margin: 15px 40px;
+    }
+
+    .alert-box {
+      background-color: #fff3cd;
+      border: 1px solid #ffeaa7;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 25px 0;
+      text-align: left;
+    }
+
+    .alert-title {
+      color: #856404;
+      font-weight: bold;
+      font-size: 18px;
+      margin: 0 0 15px 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .alert-content {
+      color: #856404;
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    .consequences {
+      text-align: left;
+      margin: 25px 0;
+    }
+
+    .consequences h3 {
+      color: #1C3464;
+      font-size: 18px;
+      margin: 0 0 15px 0;
+      text-align: center;
+    }
+
+    .consequences ul {
+      color: #666666;
+      font-size: 16px;
+      line-height: 1.5;
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    .consequences li {
+      margin: 8px 0;
+    }
+
+    .contact-info {
+      background-color: #f8f9fa;
+      padding: 20px;
+      border-radius: 8px;
+      margin: 30px 0;
+    }
+
+    .contact-info p {
+      margin: 8px 0;
+      font-size: 14px;
+    }
+
+    .support {
+      padding: 15px 25px;
+      background-color: #f3f4f6;
+      text-align: center;
+    }
+
+    .support p {
+      margin: 5px 0;
+      font-size: 14px;
+    }
+
+    .footer {
+      background-color: #dc3545;
+      padding: 20px 25px 30px;
+      text-align: center;
+    }
+
+    .footer h2 {
+      color: #FFFFFF;
+      font-size: 18px;
+      margin: 0 0 15px;
+    }
+
+    .footer .subtitle {
+      color: #FFFFFF;
+      font-size: 14px;
+      margin: 10px 0;
+    }
+
+    .footer .copyright {
+      color: #FFFFFF;
+      font-size: 12px;
+      margin-top: 15px;
+      line-height: 1.5;
+    }
+
+    @media only screen and (max-width: 600px) {
+      .header {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      p {
+        margin: 15px 20px;
+      }
+
+      h1 {
+        font-size: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="header">
+      <a href="http://192.168.22.9/organizer">
+        <img src="http://192.168.22.9/organizer/view/assets/images/global/Logo-Organizer.png" alt="Organizer">
+        <h1 style="color: #1C3464;">Organizer</h1>
+      </a>
+    </div>
+
+    <div class="content">
+      <div class="warning-icon">
+        <img src="http://192.168.22.9/organizer/view/assets/images/icons/gif-projeto.gif" alt="" style="height: 60px;">
+      </div>
+
+      <h1>PROJETO INATIVADO</h1>
+
+      <p><strong>Olá!</strong></p>
+
+      <p>O projeto <strong>{{PROJETO_NOME}}</strong> foi inativado no Organizer.</p>
+
+      <div class="alert-box">
+        <div class="alert-title">
+          <i class="fa-solid fa-triangle-exclamation"></i>
+          ATENÇÃO
+        </div>
+        <div class="alert-content">
+          O projeto foi <strong>INATIVADO</strong>
+        </div>
+      </div>
+
+      <div class="consequences">
+        <h3>O que aconteceu:</h3>
+        <ul>
+          <li>o projeto foi inativado permanentemente</li>
+          <li>Impedido novas doações e apoios</li>
+          <li>Não pode ser desfeita</li>
+        </ul>
+      </div>
+
+      <div class="contact-info">
+        <p><strong>Se você acredita que isso foi um erro ou deseja mais informações sobre a inativação, entre em contato
+            conosco:</strong></p>
+        <p style="color: #1C3464;"><strong>📧 organizer145@gmail.com</strong></p>
+      </div>
+    </div>
+
+    <div class="support">
+      <p>Precisando de ajuda? Estamos aqui para ajudar!</p>
+    </div>
+
+    <div class="footer">
+      <h2>⚠️ Projeto Inativado - Organizer</h2>
+      <p class="subtitle">Entre em contato conosco para mais informações</p>
+      <p class="copyright">
+        Esta é uma mensagem automática. Por favor, não responda a este e-mail.<br>
+        © 2025 Organizer - Todos os direitos reservados.
+      </p>
+    </div>
+  </div>
+</body>
+
+</html>

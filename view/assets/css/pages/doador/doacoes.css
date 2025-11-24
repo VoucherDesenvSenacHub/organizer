@@ -122,6 +122,75 @@ section h1 i {
     height: 36px;
     padding: 10px;
 }
+/* Popup doação */
+
+.input-grupo {
+    margin-bottom: 20px;
+}
+
+.input-grupo,
+.credit-card-popup input {
+    color: #666;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0px 20px;
+}
+
+.row .input-grupo:first-child {
+    flex: 2;
+}
+
+.row .input-grupo:last-child {
+    flex: 1;
+}
+
+.cvv {
+    max-width: 80px;
+}
+#popup-adicionar-cartao {
+    padding: 10px;
+}
+
+.credit-card-popup {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 500px;
+    width: 100%;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    font-family: Arial, sans-serif;
+}
+
+.input-grupo {
+    margin-bottom: 20px;
+}
+
+.input-grupo,
+.credit-card-popup input {
+    color: #666;
+}
+
+.credit-card-popup label {
+    display: block;
+    font-size: 0.9em;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.credit-card-popup input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1em;
+}
+
+.credit-card-popup input::placeholder {
+    color: #999;
+}
 
 @media (max-width: 500px) {
     .card-doacao h4 {

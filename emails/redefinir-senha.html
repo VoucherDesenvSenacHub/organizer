@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Redefinir Senha - Organizer</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #F8F9FA;
+    }
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: #F8F9FA;
+    }
+    .header {
+      background-color: #1C3464;
+      padding: 25px;
+    }
+    .header a {
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 15px;
+    }
+    .header img {
+      height: 60px;
+    }
+    .header h1 {
+      color: #FFFFFF;
+      font-size: 28px;
+      margin: 0;
+      font-weight: bold;
+    }
+    .content {
+      background-color: #f3f4f6;
+      border: 1px solid #e5e7eb;
+      padding: 40px 25px;
+      text-align: center;
+    }
+    .content img {
+      width: 150px;
+      height: 180px;
+      margin: 10px 0;
+    }
+    h1 {
+      color: #1C3464;
+      font-size: 24px;
+      margin: 20px 0;
+    }
+    p {
+      color: #666666;
+      font-size: 16px;
+      line-height: 1.5;
+      margin: 15px 40px;
+    }
+    .reset-button {
+      background-color: #e3b652;
+      color: #FFFFFF;
+      padding: 15px 30px;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 14px;
+      display: inline-block;
+      margin: 30px 0;
+      border: 2px solid #ffffffba;
+    }
+    .reset-button:hover {
+      background-color: #e3b552d1;
+    }
+    .warning {
+      color: #ff4d4d;
+      font-size: 14px;
+    }
+    .info {
+      color: #666666;
+      font-size: 14px;
+    }
+    .support {
+      padding: 15px 25px;
+      background-color: #f3f4f6;
+      border: 1px solid #e5e7eb;
+      text-align: center;
+    }
+    .support p {
+      margin: 5px 0;
+      font-size: 14px;
+    }
+    .footer {
+      background-color: #1C3464;
+      padding: 20px 25px 30px;
+      text-align: center;
+    }
+    .footer h2 {
+      color: #FFFFFF;
+      font-size: 18px;
+      margin: 0 0 15px;
+    }
+    .footer .subtitle {
+      color: #E3B652;
+      font-size: 14px;
+      margin: 10px 0;
+    }
+    .footer .copyright {
+      color: #CCCCCC;
+      font-size: 12px;
+      margin-top: 15px;
+      line-height: 1.5;
+    }
+    @media only screen and (max-width: 600px) {
+      .header {
+        flex-direction: column;
+        gap: 15px;
+      }
+      p {
+        margin: 15px 20px;
+      }
+      h1 {
+        font-size: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <a href="http://192.168.22.9/organizer">
+        <img src="http://192.168.22.9/organizer/view/assets/images/global/Logo-Organizer.png" alt="Organizer">
+        <h1>Organizer</h1>
+      </a>
+    </div>
+
+    <div class="content">
+      <img src="https://fvshgjw.stripocdn.email/content/guids/CABINET_dd354a98a803b60e2f0411e893c82f56/images/23891556799905703.png" alt="Redefinir Senha">
+      
+      <h1>ESQUECEU SUA SENHA?</h1>
+      
+      <p><strong>Olá, {{NAME}}!</strong></p>
+      
+      <p>Recebemos uma solicitação para redefinir sua senha em nosso sistema.</p>
+      
+      <p>Se você não fez essa solicitação, ignore este e-mail. Caso contrário, clique no botão abaixo para criar uma nova senha:</p>
+      
+      <a href="{{LINK}}" class="reset-button" style="color: #FFFFFF; text-decoration: none;">REDEFINIR SENHA</a>
+      
+      <p class="warning"><strong>Importante:</strong> Este link é válido por apenas <strong>1 hora</strong>.</p>
+      
+      <p class="info">Para sua segurança, após usar este link uma vez, ele será automaticamente invalidado.</p>
+    </div>
+
+    <div class="support">
+      <p>Precisa de ajuda? Entre em contato conosco:</p>
+      <p style="color: #1C3464;"><strong>📧 organizer145@gmail.com</strong> </p>
+    </div>
+
+    <div class="footer">
+      <h2>💙 Obrigado por usar o Organizer!</h2>
+      <p class="subtitle">Juntos, fazemos a diferença na vida das organizações!</p>
+      <p class="copyright">
+        Esta é uma mensagem automática. Por favor, não responda a este e-mail.<br>
+        © 2025 Organizer - Todos os direitos reservados.
+      </p>
+    </div>
+  </div>
+</body>
+</html>
