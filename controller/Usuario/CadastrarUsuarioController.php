@@ -13,7 +13,13 @@ $dados = [
     'cpf'              => $_POST['cpf'],
     'data_nascimento'  => $_POST['data_nascimento'],
     'email'            => $_POST['email'],
-    'senha'            => $_POST['senha']
+    'senha'            => $_POST['senha'],
+    'cep'              => $_POST['cep'],
+    'rua'              => $_POST['rua'],
+    'numero'           => $_POST['numero'],
+    'bairro'           => $_POST['bairro'],
+    'cidade'           => $_POST['cidade'],
+    'estado'           => $_POST['estado']
 ];
 
 $cadastroUsuario = $usuarioModel->cadastro($dados);
