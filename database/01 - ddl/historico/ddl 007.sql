@@ -1,0 +1,8 @@
+-- Colunas de endereço para a tabela usuarios
+ALTER TABLE usuarios
+ADD COLUMN cep VARCHAR(10) NOT NULL AFTER senha,
+ADD COLUMN rua VARCHAR(100) NOT NULL AFTER cep,
+ADD COLUMN numero VARCHAR(10) NOT NULL AFTER rua,
+ADD COLUMN bairro VARCHAR(100) NOT NULL AFTER numero,
+ADD COLUMN cidade VARCHAR(100) NOT NULL AFTER bairro,
+ADD COLUMN estado VARCHAR(2) NOT NULL AFTER cidade; 

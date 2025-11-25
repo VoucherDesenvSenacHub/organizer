@@ -1,0 +1,6 @@
+{
+    "require": {
+        "phpmailer/phpmailer": "^7.0",
+        "symfony/dotenv": "^7.3"
+    }
+}
