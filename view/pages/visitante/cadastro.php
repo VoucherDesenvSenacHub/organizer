@@ -57,7 +57,7 @@ $usuarioModel = new UsuarioModel();
                 <div class="formBox busca-cep">
                     <div class="inputBox">
                         <label for="cep">CEP<span>*</span></label>
-                        <input name="cep" id="cep" type="text" placeholder="00000-000">
+                        <input data-mask="#####-###" name="cep" id="cep" type="text" placeholder="00000-000">
                         <span class="visor"></span>
                     </div>
                     <div class="inputBox">
@@ -110,7 +110,7 @@ $usuarioModel = new UsuarioModel();
                         <input id="confirm_senha" type="password" maxlength="20" placeholder="********">
                         <span class="visor"></span>
                     </div>
-                     <div class="btnNextBack">
+                    <div class="btnNextBack">
                         <button class="btn btnVoltar" type="button" onclick="moverPara(1, 33)">Voltar</button>
                         <button class="btn" type="submit" onclick="return proximo(3)">CADASTRAR</button>
                     </div>
@@ -120,6 +120,6 @@ $usuarioModel = new UsuarioModel();
     </section>
 </main>
 <?php
-$jsPagina = ['usuario/cadastro.js'];
+$jsPagina = ['usuario/cadastro.js', 'ong/cep.js'];
 require_once '../../components/layout/footer/footer-visitante.php';
 ?>
