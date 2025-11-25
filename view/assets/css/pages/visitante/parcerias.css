@@ -1,6 +1,13 @@
 main {
-    padding: 40px 0;
+    padding: 40px 20px;
 }
+
+@media (max-width: 1230px) {
+    main {
+        padding-inline: 15px;
+    }
+}
+
 
 main.container {
     flex-direction: column;
