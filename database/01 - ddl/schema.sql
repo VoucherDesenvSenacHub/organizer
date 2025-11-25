@@ -117,6 +117,8 @@ CREATE TABLE projetos (
     categoria_id INT NOT NULL,
 -- Status e controle
     status ENUM('ATIVO', 'INATIVO', 'FINALIZADO') NOT NULL DEFAULT 'ATIVO',
+    motivo_finalizado VARCHAR(255) NULL,
+    data_finalizado TIMESTAMP NULL,
     data_cadastro TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     data_atualizacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 -- Relacionamento com ONG
