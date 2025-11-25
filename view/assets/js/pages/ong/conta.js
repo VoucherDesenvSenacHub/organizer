@@ -67,12 +67,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Função para confirmar edição
 function confirmarEdicao() {
-    // Remover máscara dos campos antes de enviar
-    if (typeof $ !== 'undefined') {
-        $("#telefone").unmask();
-        $("#cnpj").unmask();
-    }
-    
     // Fechar modal
     fechar_popup('confirmar-edicao-popup');
     

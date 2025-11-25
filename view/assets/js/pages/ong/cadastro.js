@@ -92,12 +92,6 @@ function proximo(indice) {
         check[1].classList.add('input-valid');
         check[2].classList.add('input-valid');
         check[3].classList.add('input-valid');
-
-        $("#form").submit(function (event) {
-            // Remover máscara dos campos antes de enviar
-            $("#telefone").unmask();
-            $("#cnpj").unmask();
-        });
         
         cadastrar_ong();
         return true;

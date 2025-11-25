@@ -60,12 +60,12 @@ function proximo(indice) {
         }
 
         if (
-            !validarEmail(input[4], 4, 'Digite um email válido.') ||
-            !validarCampo(input[5], 5, 'Insira a senha entre 8-20 caracteres.', 8) ||
-            !validarSenha(input[5], input[6], 6, 'As senhas não coincidem.')
+            !validarEmail(input[11], 10, 'Digite um email válido.') ||
+            !validarCampo(input[12], 11, 'Insira a senha entre 8-20 caracteres.', 8) ||
+            !validarSenha(input[12], input[13], 12, 'As senhas não coincidem.')
         ) {
-            moverPara(1, 33);
-            check[1].classList.remove('input-valid');
+            moverPara(2, 33);
+            check[2].classList.remove('input-valid');
             return false;
         }
 
