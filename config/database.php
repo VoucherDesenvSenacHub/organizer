@@ -8,7 +8,7 @@
     // BANCO DE DADOS LOCAL (PARA TESTES):
         $host = 'localhost';
         $port = 3306;
-        $dbname = 'organizer2';
+        $dbname = 'organizer';
         $user = 'root';
         $password = '';
     
