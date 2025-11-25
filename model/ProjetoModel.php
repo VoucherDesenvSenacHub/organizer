@@ -345,6 +345,18 @@ class ProjetoModel
         return $stmt->fetch();
     }
 
+    function finalizarProjeto($id, $motivo)
+    {
+        $query = "UPDATE $this->tabela 
+                  SET status = 'FINALIZADO', motivo_finalizado = :motivo, data_finalizado = NOW() 
+                  WHERE projeto_id = :id";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindParam(':motivo', $motivo, PDO::PARAM_STR);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->rowCount();
+    }
+
     function inativar($id)
     {
         $query = "UPDATE $this->tabela SET status = 'INATIVO' WHERE projeto_id = :id";
