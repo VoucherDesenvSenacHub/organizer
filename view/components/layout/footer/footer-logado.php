@@ -14,7 +14,7 @@
                 </div>
             <?php endif ?>
         </div>
-        <?php if (isset($_SESSION['usuario']['acessos']['ong']) and $_SESSION['usuario']['id']): ?>
+        <?php if (isset($_SESSION['usuario']['id']) and !$_SESSION['usuario']['acessos']['ong']): ?>
             <div>
                 <div class="item">
                     <h1>Criar uma Ong</h1>
@@ -24,6 +24,7 @@
                         <button class="btn">Criar uma Ong</button>
                     </form>
                 </div>
+        <?php endif ?>
                 <div class="item">
                     <h1>Apoio</h1>
                     <p>Senac Hub Academy</p>
@@ -33,7 +34,6 @@
                     </div>
                 </div>
             </div>
-        <?php endif ?>
     </div>
 </footer>
 </div><!-- Fecha a div#container-conteudo -->
