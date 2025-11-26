@@ -39,7 +39,7 @@ $stmt->bindValue(3, $email, PDO::PARAM_STR);
 
 $stmt->execute();
 
-session_start();
+require_once __DIR__ . '/../../session_config.php';
 
 // Verifica se o email existe no sistema
 if ($stmt->rowCount() > 0) {

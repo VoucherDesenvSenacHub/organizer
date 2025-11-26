@@ -1,9 +1,9 @@
 <?php
+require_once __DIR__ . '/../../session_config.php';
 require_once __DIR__ . '/../../config/database.php';
 require_once __DIR__ . '/../../model/NoticiaModel.php';
 require_once __DIR__ . '/../../model/OngModel.php';
 require_once __DIR__ . '/../../service/EmailService.php';
-session_start();
 
 class InativarNoticiaController
 {

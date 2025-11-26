@@ -2,7 +2,7 @@
 require_once __DIR__ . '/../../model/ProjetoModel.php';
 require_once __DIR__ . '/../../service/PagamentoService.php';
 
-session_start();
+require_once __DIR__ . '/../../session_config.php';
 
 $projetoModel = new ProjetoModel();
 $pagamentoService = new PagamentoService();

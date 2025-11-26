@@ -1,6 +1,6 @@
 <?php
 require_once '../../model/OngModel.php';
-session_start();
+require_once __DIR__ . '/../../session_config.php';
 $ongModel = new OngModel();
 
 $dados = [

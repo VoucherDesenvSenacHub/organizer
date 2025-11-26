@@ -8,7 +8,7 @@ $FotoUsuario = $doador['caminho'] ?? '../../assets/images/global/user-placeholde
 <div class="card-doadores">
     <div class="dados">
         <div class="img">
-            <img src="<?= $FotoUsuario ?>">
+            <img src="<?= '../../../' .  $FotoUsuario ?>">
         </div>
         <div class="info">
             <p><?= $NomeUsuario ?></p>

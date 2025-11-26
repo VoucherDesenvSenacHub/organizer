@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__ . '/../../model/ProjetoModel.php';
-session_start();
+require_once __DIR__ . '/../../session_config.php';
 
 $projetoModel = new ProjetoModel();
 

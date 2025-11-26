@@ -19,10 +19,7 @@ require_once '../../components/layout/base-inicio.php';
                     <i id="togglePassword" class="fas fa-eye"></i>
                 </div>
                 <div class="remember-forgot">
-                    <div class="remember">
-                        <input type="checkbox" id="lembrar">
-                        <label for="lembrar">Manter conectado</label>
-                    </div>
+                    
                     <button type="button" onclick="abrir_popup('fundo-cadastro-popup')">Esqueci a senha</button>
                 </div>
             </div>
