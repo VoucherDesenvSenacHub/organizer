@@ -37,6 +37,7 @@ $categorias = $categoriaModel->buscarCategorias();
                             </li>
                         <?php endforeach; ?>
                     </ul>
+                    <button class="limpar-filtro"><img src="../../assets/images/icons/icon-remover-filtro.png">Limpar filtros</button>
                 </div>
                 <div class="input-pesquisa">
                     <input type="text" name="pesquisa" placeholder="Busque um projeto">
@@ -58,6 +59,6 @@ $categorias = $categoriaModel->buscarCategorias();
 </main>
 
 <?php
-$jsPagina = [];
+$jsPagina = ["ong/limpar-filtro.js"];
 require_once '../../components/layout/footer/footer-logado.php';
 ?>

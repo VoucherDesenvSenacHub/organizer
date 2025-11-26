@@ -1,17 +1,12 @@
-<?php
-?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recibo Doação</title>
+    <title>Relatório</title>
     <style>
         h1, h2, h3 {
             text-align: center;
-        }
-        p {
-            text-indent: 30px;
         }
         @page {
             margin: 1cm 1cm 2cm 1cm;
@@ -46,10 +41,15 @@
         th {
             text-align: left;
         }
+        tfoot {
+            font-weight: bold;
+        }
         .valor {
+            width: 150px;
             text-align: right;
         }
-        .mes {
+        .projeto {
+            width: 280px;
             text-align: left;
         }
 
@@ -59,16 +59,22 @@
             font-size: 0.5em;
         }
     </style>
+
 </head>
 <body>
-    <h1>RECIBO</h1>
-    <br><br><br>
-    <p>Declaramos para os devidos fins que recebemos de <?= $nome ?> a importância de <strong><?= $valor ?></strong>, referente a contribuição financeira para custeio do projeto <strong><?= $projeto ?>.</strong>, de responsabilidade da instituição <strong><?= $ong ?></strong></p>
-    <br><br><br>
-    <h3><?= $cidade ?>, <?= $data?></h3>
-    <br><br><br>
-    <h2><?= $ong ?></h2>
-    <h3>CNPJ: <?= $cnpj ?></h3>
-
-</body>
+    <h2>Relatório de arrecadação total por projeto</h2>
+    <table class="no-break">
+        <thead>
+            <th>Projeto</th>
+            <th>Valor - R$</th>
+            <th>Percentual (%)</th>
+        </thead>
+        <tbody>
+            <?= $tabela ?>
+        </tbody>
+        <tfoot>
+            <?= $rodape ?>
+        </tfoot>
+    </table>
+    </body>
 </html>

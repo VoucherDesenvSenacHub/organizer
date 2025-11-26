@@ -1,12 +1,13 @@
 <?php
 require_once __DIR__ . '/../../model/ProjetoModel.php';
-require_once __DIR__ . '/../../model/Interacoes/ValidarPagamentoModel.php';
+require_once __DIR__ . '/../../service/PagamentoService.php';
+
 session_start();
+
 $projetoModel = new ProjetoModel();
-$validacao = new ValidarPagamentoModel();
+$pagamentoService = new PagamentoService();
 
 if (isset($_POST['valor-doacao'])) {
-
     // Dados do Projeto
     $IdProjeto = $_POST['projeto-id'];
     $ValorArrecadado = $_POST['valor-arrecadado'];
@@ -14,7 +15,7 @@ if (isset($_POST['valor-doacao'])) {
     $NumberCartao = str_replace(' ', '', $_POST['number-cartao']);
     $ValidadeCartao = $_POST['validade-cartao'];
     $mesExpiracao = substr($ValidadeCartao, 0, 2);
-    $anoExpiracao = substr($ValidadeCartao, 3, 4);
+    $anoExpiracao ="20".substr($ValidadeCartao, 2, 2);
     $Cvv = $_POST['cvv'];
     $titular = $_POST['titular'];
     $nome = $_POST['nome'];
@@ -36,27 +37,38 @@ if (isset($_POST['valor-doacao'])) {
         exit;
     } else {
         //Capturar nome do projeto e usuário para validação do pagamento
-        $transacao_id = $validacao->validarPagamentoCartao($NumberCartao, $titular,
-        $mesExpiracao, $anoExpiracao, $Cvv, $PerfilProjeto, $ValorDoacao,
-        $nome, $cpf, $email,
-        "79100000", "1000", 'Casa',$telefone);
+        $resposta = $pagamentoService->processarPagamentoCartao(
+            $NumberCartao,
+            $titular,
+            $mesExpiracao,
+            $anoExpiracao,
+            $Cvv,
+            $PerfilProjeto,
+            $ValorDoacao,
+            $nome,
+            $cpf,
+            $email,
+            "79100000",
+            "1000",
+            'Casa',
+            $telefone
+        );
 
-        if($transacao_id['situacao'] === "APROVADA" ){
-            $resultadoDoacao = $projetoModel->realizarDoacaoProjeto($IdProjeto, $_SESSION['usuario']['id'], $ValorDoacao, $transacao_id['id']);
+        if ($resposta['situacao'] === "APROVADA") {
+            $resultadoDoacao = $projetoModel->realizarDoacaoProjeto($IdProjeto, $_SESSION['usuario']['id'], $ValorDoacao, $resposta['id']);
             if ($resultadoDoacao > 0) {
                 $_SESSION['mensagem_toast'] = ['sucesso', 'Doação realizada com sucesso!'];
                 header('Location: ' . $_SERVER['HTTP_REFERER']);
                 exit;
             } else {
-                $_SESSION['mensagem_toast'] = ['erro', 'Compra não aprovada pela operadora!'];
+                $_SESSION['mensagem_toast'] = ['erro', 'Falha ao processar doação!'];
                 header('Location: ' . $_SERVER['HTTP_REFERER']);
                 exit;
             }
         } else {
-            $_SESSION['mensagem_toast'] = ['erro', 'Falha ao processar doação!'];
+            $_SESSION['mensagem_toast'] = ['erro', 'Doação não aprovada pela operadora!'];
             header('Location: ' . $_SERVER['HTTP_REFERER']);
             exit;
         }
-        
     }
 }

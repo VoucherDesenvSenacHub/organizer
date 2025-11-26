@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <!-- Início voluntários por projeto -->
                 <div class="card1">
                     <div class="icon">
-                        Voluntários por Projeto
+                        Apoiadores por Projeto
                         <button onclick="clicar()"><img src="../../assets/images/pages/ong/relatorios/icon-download.png" alt=""></button>
                     </div>
                     <div class="graficos">
@@ -86,7 +86,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <!-- Início doações voluntários por projeto -->
                 <div class="card1">
                     <div class="icon">
-                        Doações/Voluntários por Projeto
+                        Doações/Apoiadores por Projeto
                         <button onclick="clicar()"><img src="../../assets/images/pages/ong/relatorios/icon-download.png" alt=""></button>
 
                     </div>
