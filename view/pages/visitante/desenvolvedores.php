@@ -114,7 +114,7 @@ $lista = [
             <?php foreach ($lista as $dev): ?>
                 <div class="card-desenvolvedor">
                     <div class="foto-dev">
-                        <img src="../../assets/images/pages/visitante/<?= $dev['foto'] ?>" alt="<?= htmlspecialchars($dev['nome']) ?>" class="foto">
+                        <img src="<?= $dev['foto'] ?>" alt="<?= htmlspecialchars($dev['nome']) ?>" class="foto">
                         <div class="social-links">
                             <?php if (!empty($dev['linkedin'])): ?>
                                 <a href="<?= $dev['linkedin'] ?>" target="_blank" class="social-icon">
