@@ -14,6 +14,14 @@ $lista = [
         'github' => 'https://github.com/Eduardo28110'
     ],
     [
+        'nome' => 'Luiz Felipe Mariano Bonfim',
+        'cargo' => 'Full Stack Developer',
+        'descricao' => 'Desenvolvedor especializado em desenvolvimento Front-end e Back-end.',
+        'foto' => 'https://github.com/Luizfelipereal007.png?size=150',
+        'linkedin' => '',
+        'github' => 'https://github.com/Luizfelipereal007'
+    ],
+    [
         'nome' => 'Eduarda Tawany',
         'cargo' => 'Full Stack Developer',
         'descricao' => 'Especialista em interface do usuário e experiência do usuário.',
