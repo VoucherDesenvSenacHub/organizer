@@ -9,7 +9,7 @@ $lista = [
         'nome' => 'Eduardo Silva Oliveira Filho',
         'cargo' => 'Full Stack Developer',
         'descricao' => 'Desenvolvedor especializado em desenvolvimento web e sistemas robustos.',
-        'foto' => 'https://avatars.githubusercontent.com/Eduardo28110',
+        'foto' => 'https://github.com/Eduardo28110.png?size=150',
         'linkedin' => 'https://www.linkedin.com/in/eduardo-filho-b46434333/',
         'github' => 'https://github.com/Eduardo28110'
     ],
@@ -17,7 +17,7 @@ $lista = [
         'nome' => 'Eduarda Tawany',
         'cargo' => 'Full Stack Developer',
         'descricao' => 'Especialista em interface do usuário e experiência do usuário.',
-        'foto' => 'https://avatars.githubusercontent.com/TawanyDuda',
+        'foto' => 'https://github.com/TawanyDuda.png?size=150',
         'linkedin' => 'https://www.linkedin.com/in/eduarda-tawany-souza-937503323/',
         'github' => 'https://github.com/TawanyDuda'
     ],
@@ -25,7 +25,7 @@ $lista = [
         'nome' => 'Carlos Gabryel Rumiatto Costa Pfeiffer',
         'cargo' => 'Full Stack Developer',
         'descricao' => 'Especialista em arquitetura de sistemas e desenvolvimento de APIs.',
-        'foto' => 'user-placeholder.jpg',
+        'foto' => 'https://github.com/gabryel2008.png?size=150',
         'linkedin' => 'https://www.linkedin.com/in/carlos-gabryel-rumiatto-costa-pfeiffer-550780392/',
         'github' => 'https://github.com/gabryel2008'
     ],
@@ -33,7 +33,7 @@ $lista = [
         'nome' => 'Giovana Vitória Gomes Fernandes',
         'cargo' => 'Full Stack Developer',
         'descricao' => 'Designer especializada em experiência do usuário e design de interfaces.',
-        'foto' => 'user-placeholder.jpg',
+        'foto' => 'https://github.com/GiovanaGomessz.png?size=150',
         'linkedin' => '',
         'github' => 'https://github.com/GiovanaGomessz'
     ],
@@ -41,7 +41,7 @@ $lista = [
         'nome' => 'Bruna Cavalheiro Borges',
         'cargo' => 'Full Stack Developer',
         'descricao' => 'Desenvolvedora com foco em tecnologias web modernas.',
-        'foto' => 'user-placeholder.jpg',
+        'foto' => 'https://github.com/BrunaBorgs.png?size=150',
         'linkedin' => 'https://www.linkedin.com/in/bruna-cavalheiro-borges-21b5942ab?trk=contact-info',
         'github' => 'https://github.com/BrunaBorgs'
     ],
@@ -49,7 +49,7 @@ $lista = [
         'nome' => 'Thiago dos Santos Godoy Ferreira',
         'cargo' => 'Full Stack Developer',
         'descricao' => 'Especialista em interfaces responsivas e frameworks JavaScript.',
-        'foto' => 'user-placeholder.jpg',
+        'foto' => 'https://github.com/ThiagoSantos-del.png?size=150',
         'linkedin' => 'https://www.linkedin.com/in/thiago-santos-505804392?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
         'github' => 'https://github.com/ThiagoSantos-del'
     ],
@@ -57,7 +57,7 @@ $lista = [
         'nome' => 'Vitor dos Santos C. Ribeiro',
         'cargo' => 'Full Stack Developer',
         'descricao' => 'Especialista em infraestrutura e automação de deploy.',
-        'foto' => 'user-placeholder.jpg',
+        'foto' => 'https://github.com/rrbeirop.png?size=150',
         'linkedin' => 'https://github.com/rrbeirop',
         'github' => 'https://github.com/rrbeirop'
     ],
@@ -65,7 +65,7 @@ $lista = [
         'nome' => 'Daniel Dourado Mota',
         'cargo' => 'Full Stack Developer',
         'descricao' => 'Especialista em banco de dados e arquitetura de sistemas.',
-        'foto' => 'user-placeholder.jpg',
+        'foto' => 'https://github.com/danieldmota.png?size=150',
         'linkedin' => 'https://www.linkedin.com/in/danieldmota',
         'github' => 'https://github.com/danieldmota'
     ],
@@ -73,7 +73,7 @@ $lista = [
         'nome' => 'Adercio Barbuio Junior',
         'cargo' => 'Full Stack Developer',
         'descricao' => 'Desenvolvedor com experiência em múltiplas tecnologias.',
-        'foto' => 'user-placeholder.jpg',
+        'foto' => 'https://github.com/barbuiojr.png?size=150',
         'linkedin' => 'https://www.linkedin.com/in/adercio-barbuio-junior-173ba4164/',
         'github' => 'https://github.com/barbuiojr'
     ],
@@ -81,7 +81,7 @@ $lista = [
         'nome' => 'Caio Fagundes Mendonça Oliveira',
         'cargo' => 'Full Stack Developer',
         'descricao' => 'Especialista em desenvolvimento de aplicações móveis.',
-        'foto' => 'user-placeholder.jpg',
+        'foto' => 'https://github.com/Caio373.png?size=150',
         'linkedin' => 'https://www.linkedin.com/in/caio-fagundes-mendon%C3%A7a-oliveira-81838629a/',
         'github' => 'https://github.com/Caio373'
     ],
@@ -89,7 +89,7 @@ $lista = [
         'nome' => 'Luiz Fernando Ferreira Mendes',
         'cargo' => 'Full Stack Developer',
         'descricao' => 'Desenvolvedor com amplo conhecimento em tecnologias web.',
-        'foto' => 'user-placeholder.jpg',
+        'foto' => 'https://github.com/l2fm.png?size=150',
         'linkedin' => 'https://www.linkedin.com/in/luiz-fernando-ferreira-mendes-624750212?utm_source=share&utm_content=profile&utm_medium=member_android',
         'github' => 'https://github.com/l2fm'
     ]
@@ -128,7 +128,6 @@ $lista = [
         </div>
     </section>
 
-    <!-- Seção de Feedback dos Desenvolvedores -->
     <section class="feedback-devs">
         <div class="conteudo-feedback">
             <h3><i class="fa-solid fa-code-branch"></i> NOSSA MISSÃO TÉCNICA</h3>
