@@ -47,6 +47,12 @@ $lista = $ongModel->listarCardsOngs(['recentes' => true]);
                         transparente para você contribuir e se envolver.</p>
                 </div>
                 <div>
+                    <i class="fa-solid fa-laptop-code"></i>
+                    <h3>Desenvolvedores</h3>
+                    <p>os desenvolvedores foram cruciais para a materialização da nossa visão, eles traduziram nossos objetivos estratégicos em uma solução de software robusta e pronta.</p>
+                    <a href="desenvolvedores.php">Saiba Mais</a>
+                </div>
+                <div>
                     <i class="fa-solid fa-handshake"></i>
                     <h3>Nossos Parceiros</h3>
                     <p>Conheça empresas e organizações que colaboram conosco para criar um impacto positivo. Veja como
