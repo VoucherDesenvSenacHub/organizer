@@ -2,10 +2,13 @@
     <div class="container-popup">
         <button class="btn-fechar-popup fa-solid fa-xmark" onclick="fechar_popup('perfil-doador-adm-popup')"></button>
         <div id="left" class="box">
-            <div id="perfil">
-                <img src="<?= '../../../' . $usuario['caminho'] ?>">
-                <p><?= $usuario['nome'] ?></p>
+            <div class="upload-area-doador" id="uploadAreaDoador">
+                <img id="preview-foto" src="<?= !empty($usuario['caminho'])
+                        ? '../../../' . $usuario['caminho']
+                        : '../../assets/images/global/user-placeholder.jpg'
+                        ?>">                
             </div>
+            <div><p><?= $usuario['nome'] ?></p></div>
             <button class="btn" title="Inativar Usuário">
                 <i class="fa-solid fa-user-xmark"></i>
                 BLOQUEAR

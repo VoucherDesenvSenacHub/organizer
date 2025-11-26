@@ -24,17 +24,6 @@
     word-wrap: break-word;
 }
 
-/* Corrigir imagem do popup do DOADOR (adm) */
-.perfil-usuario-popup #perfil img {
-    width: 130px;          /* tamanho fixo ideal */
-    height: 130px;
-    object-fit: cover;     /* corta corretamente */
-    border-radius: 10px;
-    display: block;
-    margin: 0 auto 10px auto;
-}
-
-
 /* Foto de Perfil */
 .perfil-usuario-popup .upload-area-doador {
     width: 150px;

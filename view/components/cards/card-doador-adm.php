@@ -3,12 +3,16 @@ $NomeUsuario = $doador['nome'] ?? 'Nome do Usuário';
 $EmailUsuario = $doador['email'] ?? 'usuario@email.com';
 $DataCadastro = date('d/m/Y H:i', strtotime($doador['data_cadastro'])) ?? '00/00/0000';
 $IdUsuario = $doador['usuario_id'];
-$FotoUsuario = $doador['caminho'] ?? '../../assets/images/global/user-placeholder.jpg';
+if (!empty($doador['caminho'])) {
+    $FotoUsuario = '../../../' . $doador['caminho'];
+} else {
+    $FotoUsuario = '../../assets/images/global/user-placeholder.jpg';
+}
 ?>
 <div class="card-doadores">
     <div class="dados">
         <div class="img">
-            <img src="<?= '../../../' .  $FotoUsuario ?>">
+            <img src="<?= $FotoUsuario ?>">
         </div>
         <div class="info">
             <p><?= $NomeUsuario ?></p>
