@@ -1,15 +1,9 @@
 <?php
-<<<<<<< HEAD
-require_once '../../model/NoticiaModel.php';
 require_once __DIR__ . '/../../session_config.php';
-$noticiaModel = new NoticiaModel();
-=======
 require_once __DIR__ . '/../../config/database.php';
 require_once __DIR__ . '/../../model/NoticiaModel.php';
 require_once __DIR__ . '/../../model/OngModel.php';
 require_once __DIR__ . '/../../service/EmailService.php';
-session_start();
->>>>>>> bfd208f298a7e6ddc635d9cd7dce53cc0c94cd12
 
 class InativarNoticiaController
 {
