@@ -85,4 +85,13 @@ class ImagemModel
         $stmt->bindValue(':id', $idImagem);
         return $stmt->execute();
     }
+
+    public function vincularNaOng(int $idImagem, int $idOng)
+{
+    $sql = "UPDATE ongs SET imagem_id = :imagem_id WHERE ong_id = :ong_id";
+    $stmt = $this->pdo->prepare($sql);
+    $stmt->bindValue(':imagem_id', $idImagem);
+    $stmt->bindValue(':ong_id', $idOng);
+    return $stmt->execute();
+}
 }
