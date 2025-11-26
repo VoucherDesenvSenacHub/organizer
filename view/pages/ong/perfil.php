@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '../../../session_config.php';
+require_once __DIR__ . '/../../../session_config.php';
 $acesso = $_SESSION['perfil_usuario'] ?? 'visitante';
 $tituloPagina = 'Sobre a ONG | Organizer';
 $cssPagina = ['ong/perfil.css'];

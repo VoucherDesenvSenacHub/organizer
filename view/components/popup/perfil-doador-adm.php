@@ -3,7 +3,7 @@
         <button class="btn-fechar-popup fa-solid fa-xmark" onclick="fechar_popup('perfil-doador-adm-popup')"></button>
         <div id="left" class="box">
             <div id="perfil">
-                <img src="<?= $usuario['caminho'] ?>">
+                <img src="<?= '../../../' . $usuario['caminho'] ?>">
                 <p><?= $usuario['nome'] ?></p>
             </div>
             <button class="btn" title="Inativar Usuário">

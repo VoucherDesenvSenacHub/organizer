@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__ . '/../../model/Interacoes/FavoritarModel.php';
-require_once __DIR__ . '/../session_config.php'; 
+require_once __DIR__ . '/../../session_config.php'; 
 
 $favoritoModel = new FavoritarModel();
 

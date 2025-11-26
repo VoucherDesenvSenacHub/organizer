@@ -1,6 +1,6 @@
 <?php
 require_once '../../model/NoticiaModel.php';
-require_once __DIR__ . '/../session_config.php';
+require_once __DIR__ . '/../../session_config.php';
 $noticiaModel = new NoticiaModel();
 
 $noticiaId = $_POST['noticia-id'] ?? null;
