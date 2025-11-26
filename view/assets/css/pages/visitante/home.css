@@ -158,10 +158,15 @@ a {
 
 #secao-3 #info {
   display: flex;
-  justify-content: space-around;
   width: 100%;
   gap: 30px;
-  flex-wrap: wrap;
+}
+
+@media (max-width: 770px) {
+  #secao-3 #info {
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
 }
 
 #secao-3 #info div {
