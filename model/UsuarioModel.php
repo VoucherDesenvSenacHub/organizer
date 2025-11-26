@@ -40,8 +40,8 @@ class UsuarioModel
         try {
             $senhaHash = password_hash($dados['senha'], PASSWORD_DEFAULT);
 
-            $query = "INSERT INTO $this->tabela (nome, cpf, data_nascimento, email, telefone, senha)
-                  VALUES (:nome, :cpf, :data_nascimento, :email, :telefone, :senha)";
+            $query = "INSERT INTO $this->tabela (nome, cpf, data_nascimento, email, telefone, senha, cep, rua, numero, bairro, cidade, estado)
+                  VALUES (:nome, :cpf, :data_nascimento, :email, :telefone, :senha, :cep, :rua, :numero, :bairro, :cidade, :estado)";
 
             $stmt = $this->pdo->prepare($query);
 
@@ -51,6 +51,12 @@ class UsuarioModel
             $stmt->bindParam(':email', $dados['email']);
             $stmt->bindParam(':telefone', $dados['telefone']);
             $stmt->bindParam(':senha', $senhaHash);
+            $stmt->bindParam(':cep', $dados['cep']);
+            $stmt->bindParam(':rua', $dados['rua']);
+            $stmt->bindParam(':numero', $dados['numero']);
+            $stmt->bindParam(':bairro', $dados['bairro']);
+            $stmt->bindParam(':cidade', $dados['cidade']);
+            $stmt->bindParam(':estado', $dados['estado']);
 
             return $stmt->execute();
         } catch (PDOException $e) {

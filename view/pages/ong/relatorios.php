@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="cards">
                 <div class="card1">
                     <div class="icon">
-                        Voluntários por Projeto
+                        Apoiadores por Projeto
                         <form action="../../../controller/RelatorioController.php" method="POST">
                             <input type="hidden" value="<?= $IdOng ?>" name="id-ong" id="id-ong">
                             <input type="hidden" value="voluntarios" name="relatorio" id="relatorio">

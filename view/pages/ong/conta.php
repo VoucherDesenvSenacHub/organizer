@@ -44,8 +44,16 @@ ob_end_flush();
                 <legend><i class="fa-solid fa-building-flag"></i> DADOS DA ONG</legend>
                 <div class="form">
                     <label><span>Nome da ONG</span><input id="nome" name="nome" type="text" required value="<?= $perfil['nome'] ?>"></label>
-                    <label><span>CPNJ</span><input name="cnpj" id="cnpj" type="text" required value="<?= $perfil['cnpj'] ?>"></label>
-                    <label><span>Telefone</span><input name="telefone" id="telefone" type="text" required value="<?= $perfil['telefone'] ?>"></label>
+                    <label>
+                        <span>CPNJ</span>
+                        <input data-mask="##.###.###/####-##" name="cnpj" id="cnpj" type="text" value="<?= $perfil['cnpj'] ?>"
+                        required title="Informe o CNPJ corretamente." pattern="(\d{2}\.\d{3}\.\d{3}/\d{4}-\d{2}|\d{14})">
+                    </label>
+                    <label>
+                        <span>Telefone</span>
+                        <input data-mask="(##) #####-####" name="telefone" id="telefone" type="text" value="<?= $perfil['telefone'] ?>"
+                        required title="Informe o número corretamente" pattern="(\(\d{2}\)\s\d{5}-\d{4}|\d{11})">
+                    </label>
                     <label><span>Email</span><input name="email" type="text" required value="<?= $perfil['email'] ?>"></label>
                 </div>
                 <div class="form form-descricao">
@@ -57,7 +65,7 @@ ob_end_flush();
             <fieldset>
                 <legend><i class="fa-solid fa-location-dot"></i> DADOS DE ENDEREÇO</legend>
                 <div class="form">
-                    <label><span>CEP</span><input name="cep" id="cep" type="text" required value="<?= $perfil['cep'] ?>"></label>
+                    <label><span>CEP</span><input data-mask="#####-###" name="cep" id="cep" type="text" required value="<?= $perfil['cep'] ?>"></label>
                     <label><span>Rua</span><input name="rua" id="rua" type="text" required readonly value="<?= $perfil['rua'] ?>"></label>
                     <label class="label-short"><span>Nº</span><input name="numero" id="numero" type="text" required value="<?= $perfil['numero'] ?>"></label>
                     <label><span>Bairro</span><input id="bairro" name="bairro" type="text" required  value="<?= $perfil['bairro'] ?>"></label>
@@ -80,8 +88,8 @@ ob_end_flush();
                             <?php endforeach; ?>
                         </select>
                     </label>
-                    <label><span>Agência</span><input name="agencia" id="agencia" type="text" required value="<?= $perfil['agencia'] ?>"></label>
-                    <label><span>Número da conta</span><input name="conta_numero" id="conta" type="text" required value="<?= $perfil['conta_numero'] ?>"></label>
+                    <label><span>Agência</span><input data-mask="####-#" name="agencia" id="agencia" type="text" required value="<?= $perfil['agencia'] ?>"></label>
+                    <label><span>Número da conta</span><input data-mask="#####-##" name="conta_numero" id="conta" type="text" required value="<?= $perfil['conta_numero'] ?>"></label>
                     <label>
                         <span>Tipo de Conta</span>
                         <select name="tipo_conta">
