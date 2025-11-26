@@ -38,7 +38,7 @@ main.container h1 {
     border-top: 1px solid var(--cor-amarelo);
 }
 
-.dados-ong fieldset i {
+.dados-ong fieldset i:not(.seta) {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -278,4 +278,61 @@ main.container h1 {
     .btn-acoes button {
         flex: 1 1 225px;
     }
+}
+/* REMOVER SETA NATIVA */
+select::-ms-expand {
+    display: none;
+}
+
+select {
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    background-image: none !important;
+}
+select {
+    transform-origin: top center !important;
+}
+
+/* AJUSTE DO TEXTO DO LABEL */
+label > span {
+    z-index: 2;
+    background: #fff;
+    position: relative;
+    padding-right: 6px;
+}
+
+/* WRAPPER DO SELECT */
+.select-wrapper {
+    position: relative;
+    z-index: 1;
+}
+
+.select-wrapper select {
+    width: 100%;
+    padding: 10px 40px 10px 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background: #fff;
+    cursor: pointer;
+}
+
+/* SETA */
+.select-wrapper .seta {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    pointer-events: none;
+    transition: transform 0.25s ease;
+}
+
+.select-wrapper .seta {
+    transition: transform 0.25s ease;
+    transform-style: preserve-3d;
+}
+
+.select-wrapper.open .seta {
+    transform: translateY(-50%) rotateX(180deg);
 }

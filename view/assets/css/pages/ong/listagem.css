@@ -74,3 +74,29 @@ main.conteudo-principal .container .area-cards {
         justify-content: center;
     }
 }
+/* Define a animação da seta */
+.drop .fa-angle-down {
+    transition: transform 0.50s ease;
+    transform-origin: center;
+}
+
+/* Quando o dropdown estiver aberto */
+.drop.open .fa-angle-down {
+    transform: rotateX(180deg);
+}
+
+/* Dropdown menu abrindo para baixo */
+.drop-menu {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: max-height 1.0s ease, opacity 1.0s ease, transform 1.0s ease;
+}
+
+.drop.open .drop-menu {
+    max-height: 300px; /* o suficiente para seus itens */
+    opacity: 1;
+    transform: translateY(0);
+}
+

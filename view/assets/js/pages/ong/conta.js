@@ -157,3 +157,16 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+document.querySelectorAll('.select-wrapper select').forEach(select => {
+    const wrapper = select.closest('.select-wrapper');
+
+    select.addEventListener('click', () => {
+        wrapper.classList.toggle('open');
+    });
+
+    select.addEventListener('blur', () => {
+        wrapper.classList.remove('open');
+    });
+});
+
+

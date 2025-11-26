@@ -106,27 +106,31 @@ ob_end_flush();
                 <div class="form">
                     <label>
                         <span>Banco</span>
-                        <select name="banco">
-                            <?php foreach ($lista_banco as $banco): ?>
-                                <option value="<?= $banco['banco_id'] ?>" <?= ($perfil['banco_id'] === $banco['banco_id']) ? 'selected' : '' ?>>
-                                    <?= $banco['nome']; ?>
-                                </option>
-                            <?php endforeach; ?>
-                        </select>
+                        <div class="select-wrapper">
+                            <select name="banco">
+                                <?php foreach ($lista_banco as $banco): ?>
+                                    <option value="<?= $banco['banco_id'] ?>" <?= ($perfil['banco_id'] === $banco['banco_id']) ? 'selected' : '' ?>>
+                                        <?= $banco['nome']; ?>
+                                    </option>
+                                <?php endforeach; ?>
+                            </select>
+                            <i class="fa-solid fa-angle-down seta"></i>
+                        </div>
                     </label>
                     <label><span>Agência</span><input name="agencia" id="agencia" type="text" required
                             value="<?= $perfil['agencia'] ?>"></label>
                     <label><span>Número da conta</span><input name="conta_numero" id="conta" type="text" required
-                            value="<?= $perfil['conta_numero'] ?>"></label>
+                            value="<?= $perfil['conta_numero'] ?>"></label> 
                     <label>
-                        <span>Tipo de Conta</span>
+                    <span>Tipo de Conta</span>
+                    <div class="select-wrapper">
                         <select name="tipo_conta">
-                            <option value="POUPANÇA" <?= ($perfil['tipo_conta'] === 'POUPANÇA') ? 'selected' : '' ?>>Poupança
-                            </option>
-                            <option value="CORRENTE" <?= ($perfil['tipo_conta'] === 'CORRENTE') ? 'selected' : '' ?>>Corrente
-                            </option>
+                            <option value="POUPANÇA" <?= ($perfil['tipo_conta'] === 'POUPANÇA') ? 'selected' : '' ?>>Poupança</option>
+                            <option value="CORRENTE" <?= ($perfil['tipo_conta'] === 'CORRENTE') ? 'selected' : '' ?>>Corrente</option>
                         </select>
-                    </label>
+                        <i class="fa-solid fa-angle-down seta"></i>
+                    </div>
+                </label>
                 </div>
             </fieldset>
             <!-- <fieldset>

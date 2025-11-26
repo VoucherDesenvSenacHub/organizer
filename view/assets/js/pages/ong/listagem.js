@@ -44,3 +44,26 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
+
+document.querySelectorAll('.drop').forEach(drop => {
+
+    const title = drop.querySelector('.drop-title');
+    const menu = drop.querySelector('.drop-menu');
+
+    // ABRIR AO PASSAR O MOUSE
+    drop.addEventListener('mouseenter', () => {
+        drop.classList.add('open');
+    });
+
+    // FECHAR AO SAIR DO MOUSE
+    drop.addEventListener('mouseleave', () => {
+        drop.classList.remove('open');
+    });
+
+    // FECHA AO CLICAR FORA (mantido)
+    document.addEventListener('click', (e) => {
+        if (!drop.contains(e.target)) {
+            drop.classList.remove('open');
+        }
+    });
+});
