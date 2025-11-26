@@ -69,6 +69,116 @@ section#box-ongs {
     padding-bottom: 30px;
 }
 
+/* ARÉA DOS CARDS */
+main.conteudo-principal .container .area-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+    width: 100%;
+}
+
+@media (max-width: 500px) {
+    main.conteudo-principal .container .topo {
+        justify-content: center;
+    }
+}
+
+/*filtrinhos
+
+#form-filtro {
+    margin-right: auto;
+}
+
+#form-filtro .ul-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* ==============================
+   DROPDOWN
+   ============================== */
+#form-filtro .drop {
+    position: relative;
+    width: 190px;
+    min-width: 140px;
+}
+
+/* --- Título do Dropdown --- */
+#form-filtro .drop .drop-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 40px;
+    padding: 6px 12px;
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 6px;
+    box-shadow: rgba(60, 64, 67, 0.06) 0 1px 2px;
+    cursor: pointer;
+    user-select: none;
+    color: var(--cor-principal);
+}
+
+#form-filtro .drop .drop-title p {
+    margin: 0;
+    font-size: 14px;
+    color: var(--cor-principal);
+}
+
+#form-filtro .drop .drop-title i {
+    margin-left: 8px;
+    color: var(--cor-principal);
+}
+
+/* --- Menu do Dropdown --- */
+#form-filtro .drop .drop-menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    min-width: 190px;
+    display: none;
+    flex-direction: column;
+    background: #fff;
+    border-radius: 6px;
+    box-shadow:
+        rgba(50, 50, 93, 0.25) 0 6px 18px -6px,
+        rgba(0, 0, 0, 0.12) 0 1px 2px;
+    z-index: 9999;
+    padding: 6px;
+}
+
+#form-filtro .drop .drop-menu .item {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    text-align: left;
+    background: transparent;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    color: var(--cor-principal);
+    transition: 0.2s ease;
+}
+
+#form-filtro .drop .drop-menu .item:hover {
+    background-color: rgba(227, 181, 82, 0.10);
+}
+
+/* Mostrar menu quando aberto */
+#form-filtro .drop.open .drop-menu {
+    display: flex;
+}
+
+@media (max-width: 500px) {
+    #form-filtro {
+        margin: 0 auto;
+    }
+}
+
+
 /* RESPONSIVIDADE */
 @media (max-width: 1200px) {
     section#box-ongs {

@@ -221,7 +221,7 @@ main.container h1 {
     object-fit: cover;
 }
 
-.btn-remover {
+.btn-remover-foto {
     position: absolute;
     top: 10px;
     right: 10px;
@@ -237,7 +237,7 @@ main.container h1 {
     justify-content: center;
     font-size: 14px;
     transition: 0.3s;
-    opacity: 0;
+    
 }
 
 .foto-preview:hover .btn-remover {
