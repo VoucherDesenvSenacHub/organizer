@@ -40,6 +40,11 @@ ob_end_flush();
         <?php if (!isset($_GET['id']) || empty($PerfilProjeto['projeto_id'])): ?>
             <h2>ERRO AO ENCONTRAR PROJETO!</h2>
         <?php else: ?>
+            <?php if ($PerfilProjeto['status'] === 'INATIVO'): ?>
+                <h1 class="info-inativo">PROJETO INATIVO!</h1>
+            <?php elseif ($PerfilProjeto['status'] === 'FINALIZADO'): ?>
+                <h1 class="info-finalizado">ESTE PROJETO CONCLUIU SUA META!</h1>
+            <?php endif; ?>
             <section id="apresentacao" class="container-section">
                 <div id="dados-projeto">
                     <h1><?= $PerfilProjeto['nome'] ?></h1>

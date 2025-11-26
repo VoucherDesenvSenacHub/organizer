@@ -45,6 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
+<<<<<<< HEAD
 document.querySelectorAll('.drop').forEach(drop => {
 
     const title = drop.querySelector('.drop-title');
@@ -67,3 +68,7 @@ document.querySelectorAll('.drop').forEach(drop => {
         }
     });
 });
+=======
+
+
+>>>>>>> 9a4731129de1a777f4c70b76be2e6ebe4a82f86a

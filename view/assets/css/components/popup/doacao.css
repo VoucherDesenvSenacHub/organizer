@@ -37,17 +37,17 @@
     transition: .3s;
 }
 
-#doacao-popup #radio-group label input[type= "radio"] {
+#doacao-popup #radio-group label input[type="radio"] {
     display: none;
 }
 
-#doacao-popup #radio-group label input:checked + span,
-#doacao-popup #radio-group label input:checked ~ input {
+#doacao-popup #radio-group label input:checked+span,
+#doacao-popup #radio-group label input:checked~input {
     background-color: rgba(81, 205, 50, 0.7);
     color: #1d4912;
 }
 
-#doacao-popup #radio-group label input[type= "number"] {
+#doacao-popup #radio-group label input[type="number"] {
     outline: none;
     border: none;
     width: 100%;
@@ -64,6 +64,75 @@
     width: 100%;
     margin-top: 10px;
     background-color: var(--cor-verde-barra);
+}
+
+/* ======= Popup: Adicionar Cartão ======= */
+
+.credit-card-popup {
+    background: white;
+    padding: 15px;
+    /* border-radius: 10px; */
+    max-width: 500px;
+    width: 100%;
+    /* box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); */
+    border: 1px solid #eee;
+    font-family: Arial, sans-serif;
+}
+
+.credit-card-popup .input-grupo label {
+    border: none !important;
+}
+
+.input-grupo {
+    margin-bottom: 20px;
+}
+
+.input-grupo,
+.credit-card-popup input {
+    color: #666;
+    outline: none;
+}
+
+.credit-card-popup label {
+    display: block;
+    font-size: 0.9em;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.credit-card-popup input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1em;
+    transition: .3s;
+}
+
+.credit-card-popup input:focus {
+    border-color: #000;
+}
+
+.credit-card-popup input::placeholder {
+    color: #999;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0px 20px;
+}
+
+.row .input-grupo:first-child {
+    flex: 2;
+}
+
+.row .input-grupo:last-child {
+    flex: 1;
+}
+
+.cvv {
+    max-width: 80px;
 }
 
 @media (max-width: 500px) {
