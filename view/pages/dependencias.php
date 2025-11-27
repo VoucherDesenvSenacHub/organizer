@@ -108,7 +108,7 @@
             </li>
         </ol>
         <div class="footer">
-            <a href="visitante/home.php">VOLTAR</a>
+            <a href="visitante/home.php">TENTAR NOVAMENTE</a>
         </div>
     </div>
 </body>
