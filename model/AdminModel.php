@@ -65,6 +65,7 @@ class AdminModel
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
         return $stmt->fetchAll();
     }
+
     function buscarNoticias()
     {
         $query = "SELECT noticia_id, titulo, data_cadastro FROM noticias n LIMIT 4";
@@ -74,50 +75,25 @@ class AdminModel
         return $stmt->fetchAll();
     }
 
-    // Buscar parcerias aprovadas para exibição pública
-    function ListarParceriasAprovadas()
+    // Buscar parcerias pelo status
+    function listarParcerias($status)
     {
-        $query = "SELECT parceria_id, nome, email, telefone, cnpj, descricao, 
-                     DATE_FORMAT(data_envio, '%d/%m/%Y') as data_aprovacao
-                     FROM parcerias 
-                     WHERE status = 'APROVADA' 
-                     ORDER BY data_envio DESC";
-        $stmt = $this->pdo->prepare($query);
-        $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    }
-    
-    // Novo: Listar Parcerias Aceitas com paginação
-    function listarParceriasAceitas($parametros)
-    {
-        $limite = 8;
-        $offset = ($parametros['pagina'] - 1) * $limite;
-
-        $query = "SELECT parceria_id, nome, email, telefone, cnpj, descricao,
-                     DATE_FORMAT(data_envio, '%d/%m/%Y') as criadoEm
-                     FROM parcerias 
-                     WHERE status = 'APROVADA'
-                     ORDER BY data_envio DESC
-                     LIMIT :limite OFFSET :offset";
+        $query = "SELECT parceria_id, nome, email, telefone, cnpj, 
+                    CASE 
+                        WHEN status = 'APROVADA' THEN descricao 
+                        ELSE mensagem 
+                    END as mensagem,
+                    DATE_FORMAT(data_envio, '%d/%m/%Y') as criadoEm
+                 FROM parcerias 
+                 WHERE status = :status
+                 ORDER BY data_envio DESC";
 
         $stmt = $this->pdo->prepare($query);
-        $stmt->bindParam(':limite', $limite, PDO::PARAM_INT);
-        $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
-        $stmt->execute();
+        $stmt->execute(['status' => $status]);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    // Novo: Contar o total de parcerias aceitas
-    function contarParceriasAceitas()
-    {
-        $query = "SELECT COUNT(*) FROM parcerias WHERE status = 'APROVADA'";
-        $stmt = $this->pdo->prepare($query);
-        $stmt->execute();
-        return $stmt->fetchColumn();
-    }
-
-
-    // Buscar contadores para os cards que tem na home adm
+    // Buscar contadores das solicitações
     function ContadoresSolicitacoes()
     {
         $query = "SELECT
@@ -129,36 +105,7 @@ class AdminModel
         return $stmt->fetch();
     }
 
-    // Buscar lista de solicitações de Empresas (parcerias)
-    function ListarSolicitacoesEmpresas($parametros)
-    {
-        $limite = 8;
-        $offset = ($parametros['pagina'] - 1) * $limite;
-
-        $query = "SELECT parceria_id, nome, email, telefone, cnpj, mensagem, 
-                     DATE_FORMAT(data_envio, '%d/%m/%Y') as criadoEm
-                     FROM parcerias 
-                     WHERE status = 'PENDENTE' 
-                     ORDER BY data_envio DESC
-                     LIMIT :limite OFFSET :offset";
-
-        $stmt = $this->pdo->prepare($query);
-        $stmt->bindParam(':limite', $limite, PDO::PARAM_INT);
-        $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
-        $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    }
-
-    // Novo: Contar o total de parcerias pendentes
-    function contarSolicitacoes()
-    {
-        $query = "SELECT COUNT(*) FROM parcerias WHERE status = 'PENDENTE'";
-        $stmt = $this->pdo->prepare($query);
-        $stmt->execute();
-        return $stmt->fetchColumn();
-    }
-
-    // Buscar lista de solicitações de ONGs
+    // Listar solicitação de ONGs pendentes
     function ListarSolicitacoesOngs()
     {
         $query = "SELECT o.ong_id, o.nome, u.nome as responsavel, o.descricao as mensagem,
@@ -172,8 +119,7 @@ class AdminModel
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-
-    // Inserir nova solicitação de parceria
+    // Criar nova solicitação de parceria
     function CriarSolicitacaoParceria($dados)
     {
         try {
@@ -193,19 +139,22 @@ class AdminModel
         }
     }
 
-    // Aprovar/Recusar solicitação
+    // Aprovar/Recusar solicitação (corrigido)
     function ProcessarSolicitacao($tipo, $id, $acao)
     {
         try {
             switch ($tipo) {
                 case 'empresas':
                     $status = $acao === 'approve' ? 'APROVADA' : 'RECUSADA';
-                    $query = "UPDATE parcerias SET status = ? WHERE parceria_id = ? AND status = 'PENDENTE'";
+                    // 🔥 Correção: remover trava de "status = 'PENDENTE'"
+                    $query = "UPDATE parcerias SET status = ? WHERE parceria_id = ?";
                     break;
+
                 case 'ongs':
                     $status = $acao === 'approve' ? 'ATIVO' : 'INATIVO';
-                    $query = "UPDATE ongs SET status = ? WHERE ong_id = ? AND status = 'PENDENTE'";
+                    $query = "UPDATE ongs SET status = ? WHERE ong_id = ?";
                     break;
+
                 default:
                     return false;
             }
@@ -213,8 +162,41 @@ class AdminModel
             $stmt = $this->pdo->prepare($query);
             $stmt->execute([$status, $id]);
             return $stmt->rowCount() > 0;
+
         } catch (Exception $e) {
             return false;
         }
+    }
+
+    function ListarParceriasAprovadas()
+    {
+        $query = "SELECT parceria_id, nome, email, telefone, cnpj, descricao, 
+                     DATE_FORMAT(data_envio, '%d/%m/%Y') as data_aprovacao
+                     FROM parcerias 
+                     WHERE status = 'APROVADA' 
+                     ORDER BY data_envio DESC";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    // Listar parcerias aceitas com paginação
+    function listarParceriasAceitas($parametros)
+    {
+        $limite = 8;
+        $offset = ($parametros['pagina'] - 1) * $limite;
+
+        $query = "SELECT parceria_id, nome, email, telefone, cnpj, descricao,
+                     DATE_FORMAT(data_envio, '%d/%m/%Y') as criadoEm
+                     FROM parcerias 
+                     WHERE status = 'APROVADA'
+                     ORDER BY data_envio DESC
+                     LIMIT :limite OFFSET :offset";
+
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindParam(':limite', $limite, PDO::PARAM_INT);
+        $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 }

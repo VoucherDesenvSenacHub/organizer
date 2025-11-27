@@ -2,7 +2,7 @@
 <?php
 require_once __DIR__ . '/../../model/UsuarioModel.php';
 
-session_start(); // Inicia a sessão para armazenar os dados do usuário após o login
+require_once __DIR__ . '/../../session_config.php';
 
 $usuarioModel = new UsuarioModel();
 
@@ -18,7 +18,7 @@ if ($contaUsuario && password_verify($senha, $contaUsuario['senha'])) {
     $_SESSION['usuario'] = [
         'id'    => $contaUsuario['usuario_id'],
         'nome'  => $contaUsuario['nome'],
-        'foto'  => $contaUsuario['caminho'] ?? '../../assets/images/global/user-placeholder.jpg', // Foto padrão caso não tenha
+        'foto'  => $contaUsuario['caminho'] ?? 'view/assets/images/global/user-placeholder.jpg', // Foto padrão caso não tenha
         'acessos' => [
             'doador' => (bool) $contaUsuario['doador'], // Conversão explícita para booleano
             'ong'    => (bool) $contaUsuario['ong'],

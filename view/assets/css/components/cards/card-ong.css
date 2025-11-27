@@ -180,6 +180,10 @@
     color: white;
 }
 
+.card-ong .status.pendente {
+    background-color: var(--cor-laranja);
+}
+
 @media (max-width: 450px) {
     .card-ong {
         max-height: none;

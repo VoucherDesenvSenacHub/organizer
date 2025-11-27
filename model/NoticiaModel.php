@@ -9,7 +9,6 @@ class NoticiaModel
     {
         global $pdo;
         $this->pdo = $pdo;
-        $this->pdo->exec("SET time_zone = '-04:00'");
     }
 
     function criar($titulo, $subtitulo, $texto, $subtexto, $id)
@@ -160,7 +159,7 @@ class NoticiaModel
 
     function inativarNoticia($id)
     {
-        $query = "UPDATE {$this->tabela} set status= 'INATIVO' WHERE noticia_id = :id";
+        $query = "UPDATE {$this->tabela} SET status = 'INATIVO' WHERE noticia_id = :id";
         $stmt = $this->pdo->prepare($query);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->execute();

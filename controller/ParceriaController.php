@@ -1,5 +1,6 @@
 <?php
-session_start();
+require_once __DIR__ . '/../session_config.php'; // INICIA SESSÃO DA FORMA CORRETA
+
 header('Content-Type: application/json');
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: POST');
@@ -43,19 +44,19 @@ try {
     $resultado = $adminModel->CriarSolicitacaoParceria($dados);
 
     if ($resultado) {
-        // $_SESSION['mensagem_toast'] = ['sucesso', 'Solicitação de parceria enviada com sucesso!'];
         $_SESSION['parceria'] = true;
+
         echo json_encode([
             'success' => true,
             'message' => 'Solicitação de parceria enviada com sucesso! Nossa equipe entrará em contato em breve.'
         ]);
     } else {
-        // $_SESSION['mensagem_toast'] = ['erro', 'Erro ao enviar solicitação!'];
         http_response_code(500);
         echo json_encode(['error' => 'Erro ao processar solicitação. Tente novamente.']);
     }
 } catch (Exception $e) {
     http_response_code(500);
+
     if (strpos($e->getMessage(), 'Duplicate entry') !== false) {
         if (strpos($e->getMessage(), 'email') !== false) {
             echo json_encode(['error' => 'Este email já possui uma solicitação cadastrada.']);

@@ -1,5 +1,5 @@
 <?php
-session_start();
+require_once __DIR__ . '/../../../session_config.php';
 $acesso = $_SESSION['perfil_usuario'] ?? 'visitante';
 $tituloPagina = 'Descubra Ongs | Organizer';
 $cssPagina = ['shared/catalogo.css'];
@@ -32,6 +32,7 @@ require_once '../../components/layout/base-inicio.php';
                         <li><label><input type="radio" name="doacoes" value="20">Até 20</label></li>
                         <li><label><input type="radio" name="doacoes" value="mais20">Mais de 20</label></li>
                     </ul>
+                    <button class="limpar-filtro"><img src="../../assets/images/icons/icon-remover-filtro.png">Limpar filtros</button>
                 </div>
                 <div class="input-pesquisa">
                     <input type="text" name="pesquisa" placeholder="Busque uma ONG">
@@ -51,8 +52,7 @@ require_once '../../components/layout/base-inicio.php';
         </section>
     </div>
 </main>
-
 <?php
-$jsPagina = [];
+$jsPagina = ["ong/limpar-filtro.js"];
 require_once '../../components/layout/footer/footer-logado.php';
 ?>

@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__ . '/../autoload.php';
-session_start();
+require_once __DIR__ . '/../session_config.php';
 
 // Verifica se usuário está logado e é administrador
 if (!isset($_SESSION['usuario']) || $_SESSION['perfil_usuario'] !== 'adm') {
@@ -20,9 +20,9 @@ if ($method === 'GET') {
     $tipo = $_GET['tipo'] ?? '';
 
     switch ($tipo) {
-        case 'empresas':
-            $data = $adminModel->ListarSolicitacoesEmpresas();
-            break;
+        // case 'empresas':
+        //     $data = $adminModel->ListarSolicitacoesEmpresas();
+        //     break;
         case 'ongs':
             $data = $adminModel->ListarSolicitacoesOngs();
             break;
