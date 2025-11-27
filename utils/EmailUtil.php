@@ -4,7 +4,16 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception as PHPMailerException;
 use Symfony\Component\Dotenv\Dotenv;
 
-require_once __DIR__ . "/../vendor/autoload.php";
+$autoloadPath = __DIR__ . '/../vendor/autoload.php';
+
+if (!file_exists($autoloadPath)) {
+    // Redireciona para página explicando que precisa rodar "composer install"
+    header("Location: /organizer/view/pages/dependencias.php");
+    exit;
+}
+
+require_once $autoloadPath;
+
 require_once __DIR__ . "/../exceptions/EmailException.php";
 
 class EmailUtil
