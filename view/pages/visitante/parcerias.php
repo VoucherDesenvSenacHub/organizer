@@ -28,7 +28,6 @@ require_once '../../components//layout/base-inicio.php';
                     <div class="card-parceiro">
                         <div class="logo-empresa">
                             <i class="fa-solid fa-building"></i>
-                            <!-- <img src="" alt=""> -->
                         </div>
                         <div class="texto">
                             <h4><?= htmlspecialchars($parceria['nome']) ?></h4>
@@ -44,7 +43,6 @@ require_once '../../components//layout/base-inicio.php';
         <?php endif; ?>
     </section>
 
-    <!-- Seção de Solicitação de Parceria -->
     <section class="solicitar-parceria">
         <div class="conteudo-solicitacao">
             <h3><i class="fa-solid fa-plus-circle"></i> QUER SER NOSSO PARCEIRO?</h3>
@@ -55,6 +53,7 @@ require_once '../../components//layout/base-inicio.php';
 </main>
 
 <?php require_once '../../components/popup/solicitacao-parceria.php'; ?>
+
 <div class="popup-fundo" id="parceria-enviada">
     <div class="container-popup">
         <button class="btn-fechar-popup fa-solid fa-xmark" onclick="fechar_popup('parceria-enviada')"></button>
@@ -67,7 +66,7 @@ require_once '../../components//layout/base-inicio.php';
 $jsPagina = ['visitante/parcerias.js'];
 require_once '../../components/layout/footer/footer-visitante.php';
 
-// Mostrar mensagem de erro ou sucesso.
+// Mostrar popup
 if (isset($_SESSION['parceria'])) {
     if ($_SESSION['parceria']) {
         echo "<script>abrir_popup('parceria-enviada')</script>";
