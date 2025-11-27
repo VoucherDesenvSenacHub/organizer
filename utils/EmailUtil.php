@@ -10,16 +10,17 @@ require_once __DIR__ . "/../exceptions/EmailException.php";
 class EmailUtil
 {
     private $mailer;
+    private $ativo = true; // indica se o email pode funcionar
 
     public function __construct()
     {
-        $dotenv = new Dotenv();
-        $dotenv->load(__DIR__ . '/../.env');
-
-        $this->mailer = new PHPMailer(true);
-
         try {
-            // Configurações do servidor SMTP (Gmail)
+            $dotenv = new Dotenv();
+            $dotenv->load(__DIR__ . '/../.env');
+
+            $this->mailer = new PHPMailer(true);
+
+            // Configurações SMTP
             $this->mailer->isSMTP();
             $this->mailer->Host = $_ENV['EMAIL_HOST'];
             $this->mailer->SMTPAuth = true;
@@ -29,11 +30,20 @@ class EmailUtil
             $this->mailer->Port = (int) $_ENV['EMAIL_PORT'];
             $this->mailer->CharSet = 'UTF-8';
             $this->mailer->isHTML(true);
-            $this->mailer->setFrom($_ENV['EMAIL_USERNAME'], $_ENV['EMAIL_FROM_NAME'] ?: 'Suporte');
+            $this->mailer->setFrom(
+                $_ENV['EMAIL_USERNAME'],
+                $_ENV['EMAIL_FROM_NAME'] ?: 'Suporte'
+            );
             $this->mailer->SMTPDebug = 0;
 
         } catch (PHPMailerException $e) {
-            throw new EmailException("Falha ao configurar o PHPMailer: " . $e->getMessage());
+
+            // Não lançar exception aqui!
+            error_log("Falha ao configurar PHPMailer: " . $e->getMessage());
+
+            // Desativa envio de email
+            $this->mailer = null;
+            $this->ativo = false;
         }
     }
 
@@ -42,8 +52,15 @@ class EmailUtil
      */
     public function enviar($destinatario, $assunto, $mensagem)
     {
+        // Se o email está desativado, apenas registra e não quebra o sistema
+        if (!$this->ativo || $this->mailer === null) {
+            error_log("Envio de e-mail ignorado (PHPMailer indisponível).");
+            return false;
+        }
+
         if (!filter_var($destinatario, FILTER_VALIDATE_EMAIL)) {
-            throw EmailException::emailInvalido($destinatario);
+            error_log("Email inválido: " . $destinatario);
+            return false;
         }
 
         try {
@@ -52,10 +69,12 @@ class EmailUtil
             $this->mailer->Subject = $assunto;
             $this->mailer->Body = $mensagem;
 
-            $this->mailer->send();
+            return $this->mailer->send();
 
         } catch (PHPMailerException $e) {
-            throw new EmailException("Erro ao enviar e-mail: " . $e->getMessage());
+            // Não lançar exception — apenas registra o erro
+            error_log("Erro ao enviar e-mail: " . $e->getMessage());
+            return false;
         }
     }
 }

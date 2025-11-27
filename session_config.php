@@ -1,4 +1,13 @@
 <?php
+// Verifica dependências essenciais (vendor/autoload e .env) e encaminha para a página de tutorial
+$autoloadPath = __DIR__ . '/vendor/autoload.php';
+$envPath = __DIR__ . '/.env';
+$dependenciasUrl = '/organizer/view/pages/dependencias.php';
+$currentScript = basename($_SERVER['SCRIPT_NAME'] ?? '');
+if (( !file_exists($autoloadPath) || !file_exists($envPath) ) && $currentScript !== 'dependencias.php') {
+    header('Location: ' . $dependenciasUrl);
+    exit;
+}
 // Tempo em segundos (30 dias)
 $lifetime = 60 * 60 * 24 * 30;
 
