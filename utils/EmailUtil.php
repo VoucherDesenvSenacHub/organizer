@@ -38,7 +38,7 @@ class EmailUtil
 
         } catch (PHPMailerException $e) {
 
-            // 🚨 Importante: NÃO lançar exception aqui!
+            // Não lançar exception aqui!
             error_log("Falha ao configurar PHPMailer: " . $e->getMessage());
 
             // Desativa envio de email
@@ -72,7 +72,7 @@ class EmailUtil
             return $this->mailer->send();
 
         } catch (PHPMailerException $e) {
-            // Não lançar exception — apenas logar
+            // Não lançar exception — apenas registra o erro
             error_log("Erro ao enviar e-mail: " . $e->getMessage());
             return false;
         }
