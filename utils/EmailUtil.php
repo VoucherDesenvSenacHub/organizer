@@ -31,7 +31,6 @@ class EmailUtil
             $this->mailer->isHTML(true);
             $this->mailer->setFrom($_ENV['EMAIL_USERNAME'], $_ENV['EMAIL_FROM_NAME'] ?: 'Suporte');
             $this->mailer->SMTPDebug = 0;
-
         } catch (PHPMailerException $e) {
             throw new EmailException("Falha ao configurar o PHPMailer: " . $e->getMessage());
         }
@@ -53,7 +52,6 @@ class EmailUtil
             $this->mailer->Body = $mensagem;
 
             $this->mailer->send();
-
         } catch (PHPMailerException $e) {
             throw new EmailException("Erro ao enviar e-mail: " . $e->getMessage());
         }
