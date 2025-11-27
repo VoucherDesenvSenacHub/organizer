@@ -4,7 +4,7 @@ require_once __DIR__ . '/../../../autoload.php';
 $projetoModel = new ProjetoModel();
 
 //Definições da página
-session_start();
+require_once __DIR__ . '/../../../session_config.php';
 $acesso = $_SESSION['perfil_usuario'] ?? 'visitante';
 $tituloPagina = 'Sobre o Projeto | Organizer';
 $cssPagina = ['projeto/perfil.css'];

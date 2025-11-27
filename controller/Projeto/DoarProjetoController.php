@@ -2,7 +2,7 @@
 require_once __DIR__ . '/../../model/ProjetoModel.php';
 require_once __DIR__ . '/../../service/PagamentoService.php';
 
-session_start();
+require_once __DIR__ . '/../../session_config.php';
 
 $projetoModel = new ProjetoModel();
 $pagamentoService = new PagamentoService();
@@ -15,7 +15,7 @@ if (isset($_POST['valor-doacao'])) {
     $NumberCartao = str_replace(' ', '', $_POST['number-cartao']);
     $ValidadeCartao = $_POST['validade-cartao'];
     $mesExpiracao = substr($ValidadeCartao, 0, 2);
-    $anoExpiracao = substr($ValidadeCartao, 3, 4);
+    $anoExpiracao ="20".substr($ValidadeCartao, 2, 2);
     $Cvv = $_POST['cvv'];
     $titular = $_POST['titular'];
     $nome = $_POST['nome'];

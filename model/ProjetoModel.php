@@ -9,7 +9,6 @@ class ProjetoModel
     {
         global $pdo;
         $this->pdo = $pdo;
-        $this->pdo->exec("SET time_zone = '-04:00'");
     }
 
     function listarCardsProjetos(array $filtros = [])
@@ -101,6 +100,7 @@ class ProjetoModel
             $where .= " AND nome LIKE :nome";
             $params[':nome'] = "%{$filtros['pesquisa']}%";
         }
+        
         // Filtrar por ONG
         if (!empty($filtros['ong_id'])) {
             $where .= " AND ong_id = :ong_id";

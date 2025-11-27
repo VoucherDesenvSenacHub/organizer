@@ -48,7 +48,7 @@
                     <div class="row">
                         <div class="input-grupo">
                             <label for="">Validade</label>
-                            <input data-mask="##/##" id="validade-cartao" name="validade-cartao" type="text" placeholder="MM/AAAA" minlength="5" maxlength="5">
+                            <input data-mask="##/##" id="validade-cartao" name="validade-cartao" type="text" placeholder="MM/AA" minlength="5" maxlength="5">
                         </div>
     
                         <div class="input-grupo">

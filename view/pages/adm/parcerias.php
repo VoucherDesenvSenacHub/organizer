@@ -42,7 +42,7 @@ $lista = $adminModel->listarParcerias($statusMap[$abaAtiva]);
                             <div class="btn-doar">
                                 <h4>
                                     <?php
-                                    switch($abaAtiva) {
+                                    switch ($abaAtiva) {
                                         case 'solicitacoes':
                                             echo 'Nenhuma solicitação de parceria pendente.';
                                             break;
@@ -54,7 +54,8 @@ $lista = $adminModel->listarParcerias($statusMap[$abaAtiva]);
                                             break;
                                     }
                                     ?>
-                                    <i class="fa-regular <?= $abaAtiva === 'recusadas' ? 'fa-face-smile' : 'fa-face-frown' ?>"></i>
+                                    <i
+                                        class="fa-regular <?= $abaAtiva === 'recusadas' ? 'fa-face-smile' : 'fa-face-frown' ?>"></i>
                                 </h4>
                                 <?php if ($abaAtiva === 'aceitas'): ?>
                                     <a href="../empresa/lista.php">
@@ -83,15 +84,27 @@ $lista = $adminModel->listarParcerias($statusMap[$abaAtiva]);
                                         <span><i class="fa-solid fa-phone"></i><?= $parceria['telefone'] ?></span>
                                     </div>
                                     <div class="mensagem">
-                                        <span><i class="fa-solid fa-quote-left"></i> <?= $abaAtiva === 'aceitas' ? 'Descrição' : 'Mensagem' ?>:</span>
+                                        <span><i class="fa-solid fa-quote-left"></i>
+                                            <?= $abaAtiva === 'aceitas' ? 'Descrição' : 'Mensagem' ?>:</span>
                                         <p><?= $parceria['mensagem'] ?></p>
                                     </div>
                                     <?php if ($abaAtiva === 'solicitacoes'): ?>
                                         <div class="btn-acoes">
-                                            <button class="btn-aprovar" data-id="<?= $parceria['parceria_id'] ?? '' ?>" data-tipo="empresas">
+                                            <button class="btn-aprovar" data-id="<?= $parceria['parceria_id'] ?? '' ?>"
+                                                data-tipo="empresas">
                                                 <i class="fa-solid fa-thumbs-up"></i>
                                             </button>
-                                            <button class="btn-recusar" data-id="<?= $parceria['parceria_id'] ?? '' ?>" data-tipo="empresas">
+                                            <button class="btn-recusar" data-id="<?= $parceria['parceria_id'] ?? '' ?>"
+                                                data-tipo="empresas">
+                                                <i class="fa-solid fa-thumbs-down"></i>
+                                            </button>
+                                        </div>
+                                    <?php endif; ?>
+                                    <?php if ($abaAtiva === 'aceitas'): ?>
+                                        <div class="btn-acoes">
+                                            <button class="btn-recusar"
+                                                data-id="<?= $parceria['id'] ?? $parceria['parceria_id'] ?? $parceria['id_parceria'] ?? 0 ?>"
+                                                data-tipo="empresas">
                                                 <i class="fa-solid fa-thumbs-down"></i>
                                             </button>
                                         </div>
