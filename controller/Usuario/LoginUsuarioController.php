@@ -2,7 +2,7 @@
 <?php
 require_once __DIR__ . '/../../model/UsuarioModel.php';
 
-session_start(); // Inicia a sessão para armazenar os dados do usuário após o login
+require_once __DIR__ . '/../../session_config.php';
 
 $usuarioModel = new UsuarioModel();
 

@@ -1,5 +1,5 @@
 <?php
-session_start();
+require_once __DIR__ . '/../../../session_config.php';
 
 require_once __DIR__ . '/../../../autoload.php';
 
@@ -63,12 +63,12 @@ $lista_banco = $bancoModel->listar();
                         </div>
                         <div class="inputBox">
                             <label for="telefone">Telefone da ONG<span>*</span></label>
-                            <input name="telefone" id="telefone" type="text" placeholder="(00) 00000-0000">
+                            <input data-mask="(##) #####-####" name="telefone" id="telefone" type="text" placeholder="(00) 00000-0000">
                             <span class="visor"></span>
                         </div>
                         <div class="inputBox">
                             <label for="cnpj">CNPJ<span>*</span></label>
-                            <input name="cnpj" id="cnpj" type="text" placeholder="00.000.000/0000-00">
+                            <input data-mask="##.###.###/####-##" name="cnpj" id="cnpj" type="text" placeholder="00.000.000/0000-00">
                             <span class="visor"></span>
                         </div>
                         <div class="inputBox">
@@ -94,7 +94,7 @@ $lista_banco = $bancoModel->listar();
                     <div class="formBox busca-cep">
                         <div class="inputBox">
                             <label for="cep">CEP<span>*</span></label>
-                            <input name="cep" id="cep" type="text" placeholder="00000-000">
+                            <input data-mask="#####-###" name="cep" id="cep" type="text" placeholder="00000-000">
                             <span class="visor"></span>
                         </div>
                         <div class="inputBox">
@@ -150,12 +150,12 @@ $lista_banco = $bancoModel->listar();
                         </div>
                         <div class="inputBox">
                             <label for="agencia">Agência<span>*</span></label>
-                            <input name="agencia" id="agencia" type="text" placeholder="0000-0">
+                            <input data-mask="####-#" name="agencia" id="agencia" type="text" placeholder="0000-0">
                             <span class="visor"></span>
                         </div>
                         <div class="inputBox">
                             <label for="conta">Conta<span>*</span></label>
-                            <input name="conta" id="conta" type="text" placeholder="00000-00">
+                            <input data-mask="#####-##" name="conta" id="conta" type="text" placeholder="00000-00">
                             <span class="visor"></span>
                         </div>
                         <div class="btnNextBack">
@@ -175,31 +175,7 @@ $lista_banco = $bancoModel->listar();
     <script src="../../assets/js/global/cadastro.js"></script>
     <script src="../../assets/js/pages/ong/cadastro.js"></script>
     <script src="../../assets/js/pages/ong/cep.js"></script>
-
-    <!-- Scripts de Mascaras -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
-    <script type="text/javascript">
-        $("#telefone").mask("(00) 00000-0000");
-        $("#cnpj").mask("00.000.000/0000-00");
-        $("#cep").mask("00000-000");
-        $("#cpf-resp").mask("000.000.000-00");
-        $("#telefone-resp").mask("(00) 00000-0000");
-        $("#agencia").mask("0000-0");
-        $("#conta").mask("00000-00");
-        $("#nome").on("input", function() {
-            var valor = $(this).val();
-            $(this).val(valor.replace(/[^a-zA-ZÀ-ÿ\s]/g, ""));
-        });
-        $("#bairro").on("input", function() {
-            var valor = $(this).val();
-            $(this).val(valor.replace(/[^a-zA-ZÀ-ÿ\s]/g, ""));
-        });
-        $("#cidade").on("input", function() {
-            var valor = $(this).val();
-            $(this).val(valor.replace(/[^a-zA-ZÀ-ÿ\s]/g, ""));
-        });
-    </script>
+    <script src="../../assets/js/global/mascaras.js"></script>
 </body>
 
 </html>

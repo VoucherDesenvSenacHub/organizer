@@ -31,10 +31,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="cards">
                 <div class="card1">
                     <div class="icon">
-                        Voluntários por Projeto
-                        <form action="../../components/reports-pdf/pdf-generator.php" method="POST">
+                        Apoiadores por Projeto
+                        <form action="../../../controller/RelatorioController.php" method="POST">
                             <input type="hidden" value="<?= $IdOng ?>" name="id-ong" id="id-ong">
-                            <input type="hidden" value="voluntarios-por-projeto.php" name="relatorio" id="relatorio">
+                            <input type="hidden" value="voluntarios" name="relatorio" id="relatorio">
                             <button onclick="clicar()">
                                 <img src="../../assets/images/pages/ong/relatorios/icon-download.png" alt="">
                             </button>
@@ -42,36 +42,44 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </div>
                     <div class="graficos">
                         <?php
-                        echo graficoBarrasVerticais($largura, $altura, $contagem_projetos);
+                        if (isset($load) && $load === true) {
+                            echo graficoBarrasVerticais($largura, $altura, $contagem_projetos);
+                        }
                         ?>
                     </div>
                 </div>
                 <div class="card1">
                     <div class="icon">
                         Doações Mensais
-                        <form action="../../components/reports-pdf/pdf-generator.php" method="POST">
+                        <form action="../../../controller/RelatorioController.php" method="POST">
                             <input type="hidden" value="<?= $IdOng ?>" name="id-ong" id="id-ong">
-                            <input type="hidden" value="doacoes-mensais.php" name="relatorio" id="relatorio">
+                            <input type="hidden" value="doacoes-mensais" name="relatorio" id="relatorio">
                             <button onclick="clicar()"><img src="../../assets/images/pages/ong/relatorios/icon-download.png" alt=""></button>
                         </form>
                     </div>
                     <div class="grafico-linhas">
-                        <?php echo graficoLinhas($largura, $altura, $IdOng) ?>
+                        <?php 
+                        if (isset($load) && $load === true) {
+                            echo graficoLinhas($largura, $altura, $IdOng);
+                        }
+                        ?>
                     </div>
                 </div>
                 <div class="card1">
                     <div class="icon">
                         Doações por projeto
-                        <form action="../../components/reports-pdf/pdf-generator.php" method="POST">
+                        <form action="../../../controller/RelatorioController.php" method="POST">
                             <input type="hidden" value="<?= $IdOng ?>" name="id-ong" id="id-ong">
-                            <input type="hidden" value="doacoes-por-projeto.php" name="relatorio" id="relatorio">
+                            <input type="hidden" value="doacoes-projeto" name="relatorio" id="relatorio">
                             <button onclick="clicar()"><img src="../../assets/images/pages/ong/relatorios/icon-download.png" alt=""></button>
                         </form>
                         <!-- <button onclick="clicar()"><img src="../../assets/images/pages/ong/relatorios/icon-download.png" alt=""></button> -->
                     </div>
                     <div class="grafico-pizza">
                         <?php
-                        echo graficoPizza($largura, $altura, $IdOng);
+                        if (isset($load) && $load === true) {
+                            echo graficoPizza($largura, $altura, $IdOng);
+                        }
                         ?>
                     </div>
                 </div>

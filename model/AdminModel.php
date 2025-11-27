@@ -52,7 +52,6 @@ class AdminModel
         return $stmt->fetchAll();
     }
 
-
     function buscarDoadores()
     {
         $query = "SELECT usuario_id, nome, SUM(dp.valor) AS valor_doado
@@ -66,6 +65,7 @@ class AdminModel
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
         return $stmt->fetchAll();
     }
+
     function buscarNoticias()
     {
         $query = "SELECT noticia_id, titulo, data_cadastro FROM noticias n LIMIT 4";
@@ -92,11 +92,8 @@ class AdminModel
         $stmt->execute(['status' => $status]);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
-    
 
-
-
-    // Buscar contadores para os cards que tem na home adm
+    // Buscar contadores das solicitações
     function ContadoresSolicitacoes()
     {
         $query = "SELECT
@@ -108,9 +105,7 @@ class AdminModel
         return $stmt->fetch();
     }
 
-
-
-    // Buscar lista de solicitações de ONGs
+    // Listar solicitação de ONGs pendentes
     function ListarSolicitacoesOngs()
     {
         $query = "SELECT o.ong_id, o.nome, u.nome as responsavel, o.descricao as mensagem,
@@ -124,8 +119,7 @@ class AdminModel
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-
-    // Inserir nova solicitação de parceria
+    // Criar nova solicitação de parceria
     function CriarSolicitacaoParceria($dados)
     {
         try {
@@ -145,19 +139,22 @@ class AdminModel
         }
     }
 
-    // Aprovar/Recusar solicitação
+    // Aprovar/Recusar solicitação (corrigido)
     function ProcessarSolicitacao($tipo, $id, $acao)
     {
         try {
             switch ($tipo) {
                 case 'empresas':
                     $status = $acao === 'approve' ? 'APROVADA' : 'RECUSADA';
-                    $query = "UPDATE parcerias SET status = ? WHERE parceria_id = ? AND status = 'PENDENTE'";
+                    // 🔥 Correção: remover trava de "status = 'PENDENTE'"
+                    $query = "UPDATE parcerias SET status = ? WHERE parceria_id = ?";
                     break;
+
                 case 'ongs':
                     $status = $acao === 'approve' ? 'ATIVO' : 'INATIVO';
-                    $query = "UPDATE ongs SET status = ? WHERE ong_id = ? AND status = 'PENDENTE'";
+                    $query = "UPDATE ongs SET status = ? WHERE ong_id = ?";
                     break;
+
                 default:
                     return false;
             }
@@ -165,6 +162,7 @@ class AdminModel
             $stmt = $this->pdo->prepare($query);
             $stmt->execute([$status, $id]);
             return $stmt->rowCount() > 0;
+
         } catch (Exception $e) {
             return false;
         }
@@ -181,8 +179,8 @@ class AdminModel
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
-    
-    // Novo: Listar Parcerias Aceitas com paginação
+
+    // Listar parcerias aceitas com paginação
     function listarParceriasAceitas($parametros)
     {
         $limite = 8;

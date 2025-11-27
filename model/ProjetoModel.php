@@ -9,7 +9,6 @@ class ProjetoModel
     {
         global $pdo;
         $this->pdo = $pdo;
-        $this->pdo->exec("SET time_zone = '-04:00'");
     }
 
     function listarCardsProjetos(array $filtros = [])
@@ -56,10 +55,7 @@ class ProjetoModel
                 $params[$key] = $status;
             }
             $where .= " AND status IN (" . implode(',', $placeholders) . ")";
-        } 
-        // else {
-        //     $where .= " AND status <> 'INATIVO'";
-        // }
+        }
         // Filtro Categorias
         if (!empty($filtros['categorias']) && is_array($filtros['categorias'])) {
             $placeholders = [];
@@ -104,6 +100,7 @@ class ProjetoModel
             $where .= " AND nome LIKE :nome";
             $params[':nome'] = "%{$filtros['pesquisa']}%";
         }
+        
         // Filtrar por ONG
         if (!empty($filtros['ong_id'])) {
             $where .= " AND ong_id = :ong_id";
@@ -211,14 +208,15 @@ class ProjetoModel
         return $stmt->fetchAll();
     }
 
-    function realizarDoacaoProjeto($projeto_id, $usuario_id, $valor)
+    function realizarDoacaoProjeto($projeto_id, $usuario_id, $valor, $transacao_id)
     {
-        $query = 'INSERT INTO doacoes_projetos (projeto_id, usuario_id, valor)
-                  VALUES (:projeto, :doador, :valor)';
+        $query = 'INSERT INTO doacoes_projetos (projeto_id, usuario_id, valor, transacao_id)
+                  VALUES (:projeto, :doador, :valor, :transacao_id)';
         $stmt = $this->pdo->prepare($query);
         $stmt->bindParam(':projeto', $projeto_id);
         $stmt->bindParam(':doador', $usuario_id);
         $stmt->bindParam(':valor', $valor);
+        $stmt->bindParam(':transacao_id', $transacao_id);
         $stmt->execute();
         return $stmt->rowCount();
     }
@@ -316,6 +314,47 @@ class ProjetoModel
         $stmt->bindParam(':projeto_id', $projeto_id, PDO::PARAM_INT);
         $stmt->execute();
         return $stmt->fetch();
+    }
+
+    public function buscarIdOng($projeto_id)
+    {
+        $query = "SELECT ong_id FROM projetos WHERE projeto_id = :id";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindParam(':id', $projeto_id, PDO::PARAM_INT);
+        $stmt->execute();
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        return $stmt->fetch();
+    }
+
+    public function buscarOngProjeto($idOng)
+    {
+        $query = "SELECT 
+                o.nome,
+                o.cnpj,
+                o.cidade,
+                o.estado
+            FROM 
+                ongs AS o
+            WHERE 
+                o.ong_id = :ong_id;
+            ";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindParam(':ong_id', $idOng);
+        $stmt->execute();
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        return $stmt->fetch();
+    }
+
+    function finalizarProjeto($id, $motivo)
+    {
+        $query = "UPDATE $this->tabela 
+                  SET status = 'FINALIZADO', motivo_finalizado = :motivo, data_finalizado = NOW() 
+                  WHERE projeto_id = :id";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindParam(':motivo', $motivo, PDO::PARAM_STR);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->rowCount();
     }
 
     function inativar($id)

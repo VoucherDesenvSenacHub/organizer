@@ -1,6 +1,6 @@
 <?php
 require_once '../../model/OngModel.php';
-session_start();
+require_once __DIR__ . '/../../session_config.php';
 $ongModel = new OngModel();
 
 $dados = [
@@ -31,6 +31,17 @@ try {
         $usuarioModel = new UsuarioModel();
         $usuarioModel->primeiroAcesso($_SESSION['usuario']['id'], 'ong');
         $_SESSION['usuario']['acessos']['ong'] = true;
+        
+        require_once __DIR__ . '/../../service/EmailService.php';
+        $emailService = new EmailService();
+        
+        try {
+            $emailService->enviarEmailBoasVindasOng($dados['email'], $dados['nome']);
+        } catch (Exception $e) {
+            // Log erro do email, mas não impede o cadastro
+            error_log("Erro ao enviar email de boas-vindas ONG: " . $e->getMessage());
+        }
+        
         $_SESSION['mensagem_toast'] = ['sucesso', 'Cadastro realizado com Sucesso!'];
         header('Location: ../../view/pages/ong/home.php');
         exit;

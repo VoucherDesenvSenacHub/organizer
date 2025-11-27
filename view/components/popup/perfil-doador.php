@@ -2,126 +2,28 @@
 require_once __DIR__ . '/../../../model/UsuarioModel.php';
 require_once __DIR__ . '/../../../model/ImagemModel.php';
 
-$imagemModel = new ImagemModel();
 $usuarioModel = new UsuarioModel();
 $usuario = $usuarioModel->buscar_perfil($_SESSION['usuario']['id']);
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Atualização de dados do perfil
-    if (isset($_POST['id_usuario'])) {
-        $id = $_POST['id_usuario'];
-        $nome = $_POST['nome_usuario'];
-        $telefone = preg_replace('/[^0-9]/', '', $_POST['telefone_usuario']);
-        $cpf = preg_replace('/[^0-9]/', '', $_POST['cpf_usuario']);
-        $data = $_POST['data_usuario'];
-        $email = $_POST['email_usuario'];
-        $idade = $usuarioModel->calcularIdade($data);
-
-        if ($idade >= 18) {
-            try {
-                $resultado = 0;
-                $imagemPadrao = 'view/assets/images/global/user-placeholder.jpg';
-
-                // Remover Foto
-                if (isset($_POST['remover_foto']) && $_POST['remover_foto'] === 'true') {
-                    // Pega imagem atual
-                    $idImagemAtual = $usuario['imagem_id'] ?? null;
-
-                    if ($idImagemAtual) {
-                        // Apaga a imagem do servidor e do banco
-                        $imagemModel->deletarImagem($idImagemAtual);
-                    }
-
-                    // Remove o vínculo da imagem com o usuário
-                    $usuarioModel->atualizarImagem($_SESSION['usuario']['id'], null);
-
-                    // Atualiza a sessão para o placeholder
-                    $_SESSION['usuario']['foto'] = 'view/assets/images/global/user-placeholder.jpg';
-                    $resultado = 1;
-                }
-
-                // Nova Imagem
-                if (!empty($_FILES['foto_usuario']['name'])) {
-                    $pasta = __DIR__ . '/../../../upload/images/usuarios/';
-                    if (!is_dir($pasta))
-                        mkdir($pasta, 0777, true);
-
-                    $tmp = $_FILES['foto_usuario']['tmp_name'];
-                    $nomeOriginal = basename($_FILES['foto_usuario']['name']);
-                    $novoNome = uniqid() . '-' . $nomeOriginal;
-                    $destino = $pasta . $novoNome;
-
-                    if (move_uploaded_file($tmp, $destino)) {
-                        $idImagem = $imagemModel->salvarCaminhoImagem('upload/images/usuarios/' . $novoNome);
-                        $usuarioModel->atualizarImagem($_SESSION['usuario']['id'], $idImagem);
-
-                        $_SESSION['usuario']['foto'] = 'upload/images/usuarios/' . $novoNome;
-                        $resultado = 1;
-                    }
-                }
-
-                //Atualizar dados
-                $resultadoDados = $usuarioModel->update($id, $nome, $telefone, $cpf, $data, $email);
-                if ($resultadoDados > 0)
-                    $resultado = 1;
-
-                //Mensagem usuarios
-                if ($resultado > 0) {
-                    $_SESSION['mensagem_toast'] = ['sucesso', 'Dados atualizados com sucesso!'];
-                } else {
-                    $_SESSION['mensagem_toast'] = ['info', 'Nenhuma alteração feita!'];
-                }
-
-                header('Location: ' . $_SERVER['HTTP_REFERER']);
-                exit;
-            } catch (PDOException $e) {
-                $_SESSION['mensagem_toast'] = ['erro', 'Falha ao atualizar dados!'];
-                header('Location: ' . $_SERVER['HTTP_REFERER']);
-                exit;
-            }
-        } else {
-            echo "<script>alert('Você precisa ter 18 anos ou mais para atualizar o cadastro.')</script>";
-        }
-    }
-
-    // Atualização de senha
-    if (isset($_POST['usuario_id'])) {
-        $id = $_POST['usuario_id'];
-        $senha = $_POST['senha_usuario'];
-        $senhaconfirm = $_POST['senhaconfirm'];
-
-        if ($senha === $senhaconfirm) {
-            $resultado_senha = $usuarioModel->updatesenha($id, $senha);
-            if ($resultado_senha) {
-                $_SESSION['mensagem_toast'] = ['sucesso', 'Senha alterada com sucesso!'];
-            } else {
-                $_SESSION['mensagem_toast'] = ['erro', 'Falha ao alterar senha!'];
-            }
-            header('Location: ' . $_SERVER['HTTP_REFERER']);
-            exit;
-        } else {
-            echo "<script>alert('As senhas não coincidem')</script>";
-        }
-    }
-}
+// var_dump($usuario);
+// exit;
 ?>
 
 
-
-<!-- HTML do perfil -->
-
 <div class="popup-fundo perfil-usuario-popup" id="perfil-doador-popup">
-    <form class="container-popup" action="#" method="POST" enctype="multipart/form-data"
-        onsubmit="return confirm('Tem certeza que deseja alterar seus dados?')">
+    <form class="container-popup" 
+      action="../../../controller/usuario/EditarPerfilController.php" 
+      method="POST" 
+      enctype="multipart/form-data"
+      onsubmit="return confirm('Tem certeza que deseja alterar seus dados?')">
         <button type="button" class="btn-fechar-popup fa-solid fa-xmark"
             onclick="fechar_popup('perfil-doador-popup')"></button>
         <div id="left" class="box">
             <div id="perfil">
-                <div class="upload-area" id="uploadAreaDoador">
+                <div class="upload-area-doador" id="uploadAreaDoador">
                     <input type="file" id="foto_usuario" name="foto_usuario" accept="image/*" style="display:none;">
-                    <img id="preview-foto" src="<?= !empty($_SESSION['usuario']['foto'])
-                        ? '../../../' . $_SESSION['usuario']['foto']
-                        : 'view/assets/images/global/image-placeholder.svg'
+                    <img id="preview-foto" src="<?= !empty($usuario['caminho'])
+                        ? '../../../' . $usuario['caminho']
+                        : '../../assets/images/global/user-placeholder.jpg'
                         ?>">
                     <div id="uploadTextDoador">
                         <i class="fa-solid fa-cloud-upload-alt"></i><br>
@@ -152,14 +54,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </div>
                 <div class="input-box inputM">
                     <label for="telefone_usuario">Telefone</label>
-                    <input name="telefone_usuario" id="telefone_usuario" type="tel"
-                        value="<?= htmlspecialchars($usuario['telefone']) ?>" required minlength="11">
+                    <input data-mask="(##) #####-####" name="telefone_usuario" id="telefone_usuario" type="text"
+                        value="<?= htmlspecialchars($usuario['telefone']) ?>" required minlength="15" maxlength="15"
+                        inputmode="numeric"
+                        pattern="(\(\d{2}\)\s\d{5}-\d{4}|\d{11})"
+                        title="Informe o número de telefone corretamente.">
                     <i class="fa-solid fa-phone"></i>
                 </div>
                 <div class="input-box inputM">
                     <label for="cpf_usuario">CPF</label>
-                    <input name="cpf_usuario" id="cpf_usuario" type="text"
-                        value="<?= htmlspecialchars($usuario['cpf']) ?>" required minlength="14">
+                    <input data-mask="###.###.###-##" name="cpf_usuario" id="cpf_usuario" type="text"
+                        value="<?= htmlspecialchars($usuario['cpf']) ?>" required minlength="14" maxlength="14" inputmode="numeric"
+                        pattern="(\d{3}\.\d{3}\.\d{3}-\d{2}|\d{11})" title="Informe o CPF corretamente.">
                     <i class="fa-regular fa-address-card"></i>
                 </div>
                 <div class="input-box">

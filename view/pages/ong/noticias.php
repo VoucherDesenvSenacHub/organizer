@@ -44,7 +44,6 @@ ob_end_flush();
                     <input type="text" name="pesquisa" placeholder="Busque uma notícia" value="<?= $_GET['pesquisa'] ?? '' ?>">
                     <input type="hidden" name="status" value="<?= $_GET['status'] ?? '' ?>">
                     <button class="btn" type="submit"><i class="fa-solid fa-search"></i></button>
-                    <button class="limpar-filtro" onclick="limparFiltros()">Limpar filtros</button>
                 </form>
                 <button class="btn btn-novo" onclick="abrir_popup('editar-noticia-popup')">NOVA NOTÍCIA +</button>
             </div>
@@ -106,6 +105,6 @@ ob_end_flush();
 
 </main>
 <?php
-$jsPagina = ['ong/limpar-filtro.js'];
+$jsPagina = ['ong/listagem.js'];
 require_once '../../components/layout/footer/footer-logado.php';
 ?>
