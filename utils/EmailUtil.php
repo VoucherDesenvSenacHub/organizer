@@ -4,20 +4,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception as PHPMailerException;
 use Symfony\Component\Dotenv\Dotenv;
 
-$autoloadPath = __DIR__ . '/../vendor/autoload.php';
-if (!file_exists($autoloadPath)) {
-    // Redireciona para página explicando que precisa rodar "composer install"
-    header("Location: /organizer/view/pages/dependencias.php");
-    exit;
-}
-require_once $autoloadPath;
-
-$envPath = __DIR__ . '/../.env';
-if (!file_exists($envPath)) {
-    header("Location: /organizer/view/pages/dependencias.php");
-    exit;
-}
-
+require_once __DIR__ . "/../vendor/autoload.php";
 require_once __DIR__ . "/../exceptions/EmailException.php";
 
 class EmailUtil
@@ -44,7 +31,6 @@ class EmailUtil
             $this->mailer->isHTML(true);
             $this->mailer->setFrom($_ENV['EMAIL_USERNAME'], $_ENV['EMAIL_FROM_NAME'] ?: 'Suporte');
             $this->mailer->SMTPDebug = 0;
-
         } catch (PHPMailerException $e) {
             throw new EmailException("Falha ao configurar o PHPMailer: " . $e->getMessage());
         }
@@ -66,7 +52,6 @@ class EmailUtil
             $this->mailer->Body = $mensagem;
 
             $this->mailer->send();
-
         } catch (PHPMailerException $e) {
             throw new EmailException("Erro ao enviar e-mail: " . $e->getMessage());
         }

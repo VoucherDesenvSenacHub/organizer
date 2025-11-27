@@ -6,6 +6,14 @@ require_once __DIR__ . '/../../session_config.php';
 
 $usuarioModel = new UsuarioModel();
 
+// Checagem de dependências (proteção extra caso session_config não seja incluído por engano)
+$autoloadPath = __DIR__ . '/../../vendor/autoload.php';
+$envPath = __DIR__ . '/../../.env';
+if (!file_exists($autoloadPath) || !file_exists($envPath)) {
+    header('Location: ../../view/pages/dependencias.php');
+    exit;
+}
+
 // Coleta os dados enviados pelo formulário de cadastro
 $dados = [
     'nome'             => $_POST['nome'],
