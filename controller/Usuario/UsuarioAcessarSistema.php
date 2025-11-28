@@ -14,7 +14,8 @@ if ($perfilUsuario === 'ong') {
         header("Location: ../../view/pages/ong/cadastro.php");
         exit;
     }
-    $_SESSION['ong_id'] = $ongExiste;
+    $_SESSION['ong_id'] = $ongExiste['ong_id'];
+    $_SESSION['ong_status'] = $ongExiste['status'];
 }
 
 // Leva para home do acesso escolhido

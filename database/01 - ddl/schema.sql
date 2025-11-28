@@ -95,7 +95,7 @@ CREATE TABLE ongs (
 -- Dados adicionais
     imagem_id INT NULL,
     descricao TEXT NOT NULL,
-    status ENUM('ATIVO', 'INATIVO') NOT NULL DEFAULT 'ATIVO',
+    status ENUM('ATIVO', 'INATIVO', 'PENDENTE') NOT NULL DEFAULT 'PENDENTE',
 -- Datas de controle
     data_cadastro TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     data_atualizacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
