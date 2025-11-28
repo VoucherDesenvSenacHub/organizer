@@ -5,7 +5,7 @@ footer {
 }
 
 footer .container {
-    padding: 30px 0;
+    padding: 30px 0 10px 0;
     margin: 0 auto;
     align-items: start;
 }
@@ -89,7 +89,7 @@ footer .item .btn:hover {
 
 /* Copyright */
 footer .copyright {
-    padding: 20px;
+    padding-top: 20px;
     margin: 0 auto;
 }
 
