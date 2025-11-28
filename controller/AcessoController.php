@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/../session_config.php'; 
+require_once __DIR__ . '/../session_config.php';
 
 function VerificarAcesso($acesso)
 {
@@ -9,8 +9,13 @@ function VerificarAcesso($acesso)
         exit;
     }
 
-    if(isset($_SESSION['usuario']['id']) && count(array_filter($_SESSION['usuario']['acessos'])) === 0) {
+    if (isset($_SESSION['usuario']['id']) && count(array_filter($_SESSION['usuario']['acessos'])) === 0) {
         header("Location: ../visitante/primeiro-acesso.php");
+        exit;
+    }
+
+    if (isset($_SESSION['usuario']['id']) && $acesso === 'ong' && $_SESSION['ong_status'] != 'ATIVO') {
+        header("Location: ../ong/analise.php");
         exit;
     }
 

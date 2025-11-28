@@ -112,6 +112,11 @@ section h1 i {
     font-weight: 600;
 }
 
+.card-doacao form {
+    margin-left: auto;
+    align-self: center;
+}
+
 .card-doacao .btn {
     background-color: var(--cor-azul);
     display: flex;
