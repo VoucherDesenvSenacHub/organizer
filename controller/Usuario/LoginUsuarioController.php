@@ -37,7 +37,8 @@ if ($contaUsuario && password_verify($senha, $contaUsuario['senha'])) {
     }
 
     // Armazena o ID da ONG associada na sessão (caso exista)
-    $_SESSION['ong_id'] = $usuarioModel->buscarOngUsuario($_SESSION['usuario']['id']);
+    $dadosOng = $usuarioModel->buscarOngUsuario($_SESSION['usuario']['id']);
+    $_SESSION['ong_id'] = $dadosOng['ong_id'];
 
     if ($quantidadeAcessos === 1) {
         // Se o usuário tem apenas um tipo de acesso, redireciona diretamente para a home correspondente

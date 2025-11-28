@@ -1,0 +1,3 @@
+-- Status pendente para novas ONGs
+ALTER TABLE ongs
+MODIFY COLUMN status ENUM('ATIVO', 'INATIVO', 'PENDENTE') NOT NULL DEFAULT 'PENDENTE';

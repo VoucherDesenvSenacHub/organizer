@@ -27,12 +27,14 @@ class UsuarioModel
     // Verificar se o usuário tem uma ONG!
     function buscarOngUsuario($usuarioId)
     {
-        $query = "SELECT ong_id FROM ongs WHERE responsavel_id = :id LIMIT 1";
+        $query = "SELECT ong_id, status FROM ongs WHERE responsavel_id = :id LIMIT 1";
         $stmt = $this->pdo->prepare($query);
         $stmt->bindParam(':id', $usuarioId, PDO::PARAM_INT);
         $stmt->execute();
-        return $stmt->fetchColumn();
+
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
+
 
     function cadastro($dados)
     {
@@ -237,5 +239,4 @@ class UsuarioModel
         $stmt->bindValue(':id', $idUsuario, PDO::PARAM_INT);
         return $stmt->execute();
     }
-
 }
