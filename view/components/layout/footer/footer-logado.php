@@ -22,7 +22,13 @@
 
         <div class="col-section">
             <div class="item-group">
-                <?php if (isset($_SESSION['usuario']['id']) && !$_SESSION['usuario']['acessos']['ong']): ?>
+                <?php if (!isset($_SESSION['usuario']['id'])): ?>
+                    <div class="item">
+                        <h1>Junte-se a Nós</h1>
+                        <p>Faça parte da nossa comunidade e ajude a fazer a diferença no mundo.</p>
+                        <a href="../visitante/login.php"><button class="btn">Cadastrar-se</button></a>
+                    </div>
+                <?php elseif (isset($_SESSION['usuario']['id']) && !$_SESSION['usuario']['acessos']['ong']): ?>
                     <div class="item">
                         <h1>Criar uma ONG</h1>
                         <p>Já pensou em criar sua própria ONG? Transforme ideias em impacto real.</p>
@@ -32,12 +38,6 @@
                             <input type="hidden" name="escolha" value="ong">
                             <button class="btn">Criar uma ONG</button>
                         </form>
-                    </div>
-                <?php else: ?>
-                    <div class="item">
-                        <h1>Junte-se a Nós</h1>
-                        <p>Faça parte da nossa comunidade e ajude a fazer a diferença no mundo.</p>
-                        <a href="../visitante/login.php"><button class="btn">Cadastrar-se</button></a>
                     </div>
                 <?php endif ?>
                 <div class="item">
@@ -50,11 +50,11 @@
                 </div>
             </div>
         </div>
-
-    </div>
-    
-    <div class="copyright">
-        <p>&copy; <?php echo date('Y'); ?> Organizer. Todos os direitos reservados.</p>
+        
+        
+        <div class="copyright">
+            <p>&copy; <?php echo date('Y'); ?> Organizer. Todos os direitos reservados.</p>
+        </div>
     </div>
 </footer>
 
